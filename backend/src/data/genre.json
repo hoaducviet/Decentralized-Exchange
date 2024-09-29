@@ -1,0 +1,129 @@
+[
+  {
+    "name_vi": "Hành động",
+    "name_en": "Action",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Phiêu lưu",
+    "name_en": "Adventure",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Hài",
+    "name_en": "Comedy",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Tình cảm",
+    "name_en": "Romance",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Kinh dị",
+    "name_en": "Horror",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Khoa học viễn tưởng",
+    "name_en": "Sci-fi",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Hình sự",
+    "name_en": "Crime",
+    "type": "Movies"
+  },
+
+  {
+    "name_vi": "Tâm lý",
+    "name_en": "Drama",
+    "type": "Movies"
+  },
+
+  {
+    "name_vi": "Gia đình",
+    "name_en": "Family",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Hoạt hình",
+    "name_en": "Animation",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Tài liệu",
+    "name_en": "Documentary",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Lịch sử",
+    "name_en": "History",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Chiến tranh",
+    "name_en": "War",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Viễn tây",
+    "name_en": "Western",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Âm nhạc",
+    "name_en": "Musical",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Thần thoại",
+    "name_en": "Fantasy",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Kinh dị hài",
+    "name_en": "Comedy Horror",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Bí ẩn",
+    "name_en": "Mystery",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Thể thao",
+    "name_en": "Sports",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Âm nhạc",
+    "name_en": "Music",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Phim ngắn",
+    "name_en": "Short Film",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Kinh dị tâm lý",
+    "name_en": "Psychological Horror",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Phim võ thuật",
+    "name_en": "Martial Arts",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Thảm hoạ",
+    "name_en": "Disaster",
+    "type": "Movies"
+  },
+  {
+    "name_vi": "Cổ trang",
+    "name_en": "Period Drama",
+    "type": "Movies"
+  }
+]

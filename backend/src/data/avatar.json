@@ -1,0 +1,27 @@
+[
+  {
+    "name": "avatar1",
+    "idMedia": "66b347056240e82c0f8aea77",
+    "imageURL": "/avatars/avatar1"
+  },
+  {
+    "name": "avatar2",
+    "idMedia": "66b347056240e82c0f8aea78",
+    "imageURL": "/avatars/avatar2"
+  },
+  {
+    "name": "avatar3",
+    "idMedia": "66b347056240e82c0f8aea79",
+    "imageURL": "/avatars/avatar3"
+  },
+  {
+    "name": "avatar4",
+    "idMedia": "66b347056240e82c0f8aea7a",
+    "imageURL": "/avatars/avatar4"
+  },
+  {
+    "name": "avatar5",
+    "idMedia": "66b347056240e82c0f8aea7b",
+    "imageURL": "/avatars/avatar5"
+  }
+]
