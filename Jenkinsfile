@@ -93,4 +93,17 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            script {
+                echo 'Dọn dẹp Docker images...'
+
+                // Xóa Docker image đã tạo ra
+                sh 'docker rmi $(docker images -q viethoaduc/dex_frontend) || true'
+                sh 'docker rmi $(docker images -q viethoaduc/dex_backend) || true'
+
+                echo 'Hoàn thành dọn dẹp Docker.'
+            }
+        }
+    }
 }
