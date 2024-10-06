@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
+require('dotenv').config();
 
 // Định nghĩa một task có tên là 'accounts'
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -13,5 +14,13 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.27",
-  
+  networks: {
+    sepolia: {
+      url: process.env.ALCHEMY_SEPOLIA_URL,
+      accounts: [process.env.ACCOUNT_PRIVATE_KEY]
+    }
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
+  },
 };
