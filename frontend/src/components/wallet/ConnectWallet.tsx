@@ -16,12 +16,12 @@ export default function ConnectWallet() {
     const { isConnected } = useAccount()
 
     return (
-        <div className="flex flex-wrap">
+        <div className="flex items-center">
             {isConnected ? <Account /> : (
                 <div className="flex flex-row">
                     <Popover>
                         <PopoverTrigger asChild>
-                            <Button>
+                            <Button variant="secondary">
                                 Connect Wallet
                             </Button>
                         </PopoverTrigger>

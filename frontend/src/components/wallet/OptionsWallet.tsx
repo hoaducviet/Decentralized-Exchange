@@ -10,6 +10,7 @@ export default function OptionsWallet() {
     <div>
       {hasConnectors.map((connector) => (
         <Button
+          variant="outline"
           key={connector.id}
           className="flex flex-row justify-start w-full"
           onClick={() => connect({ connector })}
