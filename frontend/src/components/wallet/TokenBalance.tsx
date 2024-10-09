@@ -3,11 +3,7 @@
 import { useAccount, useBalance } from 'wagmi'
 import tokenList from "@/assets/token/tokenList.json";
 
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface Token {
     ticker: string;
@@ -22,7 +18,6 @@ const tokens: Token[] = tokenList as Token[];
 
 export default function TokenBalance() {
     const { address } = useAccount()
-
     const tokenBalances = tokens.map((token) => {
         const { data: tokenBalance } = useBalance({
             address,
@@ -30,13 +25,12 @@ export default function TokenBalance() {
         })
         return { token, balance: tokenBalance }
     })
-
     const hasToken = tokenBalances.filter(({ balance }) => !!balance)
 
     return (
         <div className='flex flex-col w-full'>
             {hasToken && hasToken.map(({ token, balance }) => (
-                <div className='flex flex-row justify-between'>
+                <div key={token.address} className='flex flex-row justify-between'>
                     <div className='flex flex-row'>
                         <Avatar className="flex mx-2">
                             <AvatarImage src={token.img} alt={token.name} />
@@ -50,7 +44,6 @@ export default function TokenBalance() {
                         {Number(balance?.value)}
                         {balance?.symbol}
                     </div>
-
                 </div>
             ))}
         </div>

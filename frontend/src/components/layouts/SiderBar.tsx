@@ -2,8 +2,6 @@
 import Image from 'next/image'
 import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
 import { Button } from '@/components/ui/button'
-
-
 import TokenBalance from '@/components/wallet/TokenBalance'
 
 

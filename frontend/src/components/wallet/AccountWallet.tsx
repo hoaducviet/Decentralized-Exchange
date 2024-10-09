@@ -16,7 +16,7 @@ export default function Account() {
     <div className='flex flex-row'>
       <Avatar className="flex mr-1.5">
         <AvatarImage src={ensAvatar ? ensAvatar : "https://github.com/shadcn.png"} alt="@shadcn" />
-        <AvatarFallback>Account</AvatarFallback>
+        <AvatarFallback>V</AvatarFallback>
       </Avatar>
       <div className='flex items-center'>
         {ensName ? (

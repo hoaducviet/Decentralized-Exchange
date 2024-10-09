@@ -5,6 +5,7 @@ import "./globals.css";
 import { cookieToInitialState } from 'wagmi'
 import { ThemeProvider } from '@/store/ThemeProvider';
 import { ConnectProvider } from "@/store/ConnectProvider";
+import { Web3Provider } from '@/store/Web3Provider';
 import { Providers } from "@/redux/providers";
 import { configWallet } from "@/config/configWallet";
 import MainLayout from '@/components/layouts/MainLayout';
@@ -45,14 +46,15 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
-          <Providers>
-            <ConnectProvider initialState={initialState}>
-              <MainLayout>
-                {children}
-              </MainLayout>
-            </ConnectProvider>
-          </Providers>
+        ><Web3Provider>
+            <Providers>
+              <ConnectProvider initialState={initialState}>
+                <MainLayout>
+                  {children}
+                </MainLayout>
+              </ConnectProvider>
+            </Providers>
+          </Web3Provider>
         </ThemeProvider>
       </body>
     </html>
