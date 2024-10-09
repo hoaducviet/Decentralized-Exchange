@@ -2,9 +2,10 @@ import { headers } from 'next/headers'
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Providers } from "@/redux/providers";
 import { cookieToInitialState } from 'wagmi'
-import { ConnectProviders } from "@/store/ConnectProviders";
+import { ThemeProvider } from '@/store/ThemeProvider';
+import { ConnectProvider } from "@/store/ConnectProvider";
+import { Providers } from "@/redux/providers";
 import { configWallet } from "@/config/configWallet";
 import MainLayout from '@/components/layouts/MainLayout';
 
@@ -38,16 +39,21 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Providers>
-          <ConnectProviders initialState={initialState}>
-            <MainLayout>
-              {children}
-            </MainLayout>
-          </ConnectProviders>
-        </Providers>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Providers>
+            <ConnectProvider initialState={initialState}>
+              <MainLayout>
+                {children}
+              </MainLayout>
+            </ConnectProvider>
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );

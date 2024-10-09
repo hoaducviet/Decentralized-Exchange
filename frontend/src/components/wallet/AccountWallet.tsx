@@ -14,7 +14,7 @@ export default function Account() {
 
   return (
     <div className='flex flex-row'>
-      <Avatar className="flex mx-2">
+      <Avatar className="flex mr-1.5">
         <AvatarImage src={ensAvatar ? ensAvatar : "https://github.com/shadcn.png"} alt="@shadcn" />
         <AvatarFallback>Account</AvatarFallback>
       </Avatar>
@@ -29,7 +29,7 @@ export default function Account() {
             </div>
           </div>
         )
-          : <div>{addressConfig}</div>
+          : (<div className='flex ml-1.5'>{addressConfig}</div>)
         }
       </div>
     </div>

@@ -11,7 +11,7 @@ type Props = {
     initialState: State | undefined,
 }
 
-export function ConnectProviders({ children, initialState }: Props) {
+export function ConnectProvider({ children, initialState }: Props) {
     const [queryClient] = useState(() => new QueryClient())
 
     return (

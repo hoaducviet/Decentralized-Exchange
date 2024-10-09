@@ -12,7 +12,7 @@ export default function MainLayout({ children }: Props) {
     const { isConnected } = useAccount()
 
     return (
-        <div className="bg-slate-400">
+        <div className="bg-transparent">
             <Header />
             <div className="relative flex flex-row">
                 <div className="bg-green-700">
