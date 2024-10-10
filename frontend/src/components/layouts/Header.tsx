@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import { publicRoutes } from "@/routes/routes"
 import routes from "@/config/configRoutes"
 
-
 export default function Header() {
 
     return <div className="bg-transparent flex justify-between items-center">

@@ -6,7 +6,8 @@ import { cookieToInitialState } from 'wagmi'
 import { ThemeProvider } from '@/store/ThemeProvider';
 import { ConnectProvider } from "@/store/ConnectProvider";
 import { Web3Provider } from '@/store/Web3Provider';
-import { Providers } from "@/redux/providers";
+import { LoadProvider } from '@/store/LoadProvider';
+import { ReduxProvider } from "@/redux/ReduxProvider";
 import { configWallet } from "@/config/configWallet";
 import MainLayout from '@/components/layouts/MainLayout';
 
@@ -39,23 +40,28 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        ><Web3Provider>
-            <Providers>
+        <ReduxProvider>
+          <Web3Provider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
               <ConnectProvider initialState={initialState}>
-                <MainLayout>
-                  {children}
-                </MainLayout>
+                <LoadProvider>
+                  <MainLayout>
+                    {children}
+                  </MainLayout>
+                </LoadProvider>
               </ConnectProvider>
-            </Providers>
+            </ThemeProvider>
           </Web3Provider>
-        </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

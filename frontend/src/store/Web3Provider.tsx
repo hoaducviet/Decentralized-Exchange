@@ -2,20 +2,18 @@
 import Web3 from "web3";
 import { createContext, useEffect, useState } from "react";
 import Look from '@/artifacts/Lock.json';
+import { Children } from "@/lib/type";
 
 interface Props {
-    children: React.ReactNode;
+    children: Children;
 }
-
 interface Web3ContextType {
     web3: Web3 | null;
     contract: [];
     isLoaded: boolean;
 }
 
-
 const contractLookAddress = process.env.CONTRACT_ADDRESS_LOCK
-
 export const Web3Context = createContext<Web3ContextType | undefined>(undefined)
 
 export function Web3Provider({ children }: Props) {

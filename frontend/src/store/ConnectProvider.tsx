@@ -1,13 +1,13 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { type ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { type State, WagmiProvider } from 'wagmi'
-
 import { configWallet } from '@/config/configWallet'
+import { Children } from '@/lib/type'
 
 type Props = {
-    children: ReactNode,
+    children: Children,
     initialState: State | undefined,
 }
 

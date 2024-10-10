@@ -1,16 +1,15 @@
 'use client'
-
 import { useAccount } from "wagmi";
 import Footer from "@/components/layouts/Footer";
 import Header from "@/components/layouts/Header";
 import SiderBar from "@/components/layouts/SiderBar";
+import { type Children } from "@/lib/type";
 interface Props {
-    children: React.ReactNode
+    children: Children;
 }
 
 export default function MainLayout({ children }: Props) {
     const { isConnected } = useAccount()
-
     return (
         <div className="bg-transparent">
             <Header />

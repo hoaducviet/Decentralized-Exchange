@@ -1,7 +1,8 @@
 'use client'
+
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 
-export const useCounter = () => {
-    return useSelector((state: RootState) => state.counter)
+export const useWallet = () => {
+    return useSelector((state: RootState) => state.wallet)
 }

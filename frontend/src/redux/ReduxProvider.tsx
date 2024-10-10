@@ -7,7 +7,7 @@ interface ProvidersProps {
     children: React.ReactNode
 }
 
-export function Providers({ children }: ProvidersProps) {
+export function ReduxProvider({ children }: ProvidersProps) {
 
     return (
         <Provider store={store}>
