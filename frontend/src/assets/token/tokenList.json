@@ -21,10 +21,10 @@
         "decimals": 6
     },
     {
-        "ticker": "GUSD",
+        "ticker": "VND",
         "img": "https://cdn.moralis.io/eth/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd.png",
-        "name": "Gemini USD",
-        "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
+        "name": "VND",
+        "address": "0x0BC503b4e072AC881175c320E2e1cEa2fF82E089",
         "decimals": 2
     },
     {

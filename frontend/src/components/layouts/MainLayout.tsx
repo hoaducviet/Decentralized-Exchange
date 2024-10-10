@@ -14,7 +14,7 @@ export default function MainLayout({ children }: Props) {
         <div className="bg-transparent">
             <Header />
             <div className="relative flex flex-row">
-                <div className="bg-green-700">
+                <div className="flex flex-col w-[100vw] h-[100vh]">
                     {children}
                 </div>
                 <div className="absolute top-0 right-0 w-[25%] bg-transparent">

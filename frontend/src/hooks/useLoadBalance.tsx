@@ -8,7 +8,6 @@ import { type Token, type BalancesType } from '@/lib/type'
 
 const tokens: Token[] = tokenList as Token[];
 const eth: Token = tokenETH as Token;
-
 export function useLoadBalance() {
     const { address } = useAccount()
     const dispatch = useDispatch()
@@ -24,7 +23,7 @@ export function useLoadBalance() {
     });
 
     balances = [...balances, ...tokenBalances]
-    const hasToken = balances.filter(({ balance }) => !!balance)
+    const hasToken = balances.filter(({ balance }) => (!!balance && !!balance?.value))
     const newBalances = hasToken.map(({ token, balance }) => {
         return {
             token,

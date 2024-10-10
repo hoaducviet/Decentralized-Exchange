@@ -4,12 +4,11 @@ import { useWallet } from '@/hooks/useWallet'
 
 export default function TokenBalance() {
     const { balances } = useWallet()
-    // console.log(balances)
-
+    if (balances.length == 0) return <></>
     return (
         <div className='flex flex-col w-full'>
             {balances.length > 0 && balances.map(({ token, balance }) => (
-                <div key={token.address} className='flex flex-row justify-between'>
+                <div key={token.address} className='flex flex-row justify-between items-center w-full h-[5.5vh]'>
                     <div className='flex flex-row'>
                         <Avatar className="flex mx-2">
                             <AvatarImage src={token.img} alt={token.name} />
@@ -19,9 +18,11 @@ export default function TokenBalance() {
                             {token.ticker}
                         </div>
                     </div>
-                    <div className='flex flex-row items-center'>
-                        {balance?.value}
-                        {balance?.symbol}
+                    <div className='flex flex-row justify-end items-center w-[50%] mr-[3%]'>
+                        {balance?.formatted}
+                        <div className="flex justify-start items-center ml-[5%] w-[20%]">
+                            {balance?.symbol}
+                        </div>
                     </div>
                 </div>
             ))}
