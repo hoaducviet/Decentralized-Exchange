@@ -32,7 +32,7 @@ export default function LimitItem({ token }: Props) {
     }
 
     return (
-        <div className="select-none my-[0.5vh] border-none outline-none">
+        <div className="select-none my-[0.5vh]">
             <Card className='border-none outline-none'>
                 <CardHeader className="flex flex-row justify-between items-center py-0">
                     <div className="flex flex-row justify-start items-start text-md">

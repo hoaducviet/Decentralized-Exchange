@@ -15,10 +15,11 @@ const tokens: Token[] = [eth, ...tokensErc20];
 
 interface Props {
     title: string;
+    isDisabled?: boolean;
 
 }
 
-export default function TradeBoxItem({ title }: Props) {
+export default function TradeBoxItem({ isDisabled = false, title }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const handleClick = () => {
         if (ref.current) {
@@ -34,6 +35,7 @@ export default function TradeBoxItem({ title }: Props) {
                 </CardHeader>
                 <div className="flex flex-row justify-center items-center mx-[5%]">
                     <input
+                        disabled={isDisabled}
                         ref={ref}
                         type='number'
                         placeholder='0'

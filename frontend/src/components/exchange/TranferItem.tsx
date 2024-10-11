@@ -41,10 +41,11 @@ export default function TranferItem({ token }: Props) {
                         step='any'
                         value={parseFloat(value)}
                         onChange={handleChange}
-                        className="appearance-none text-center border-none outline-none focus:caret-black-500 max-w-[80%] text-5xl font-medium"
-                        style={{ width: `${value.length + 1}ch` }}
-                        placeholder='0'
+                        className="appearance-none bg-transparent text-start border-none outline-none focus:caret-black-500 max-w-[80%] font-medium"
+                        style={{ width: value.length === 0 ? '1px' : `${(value.length + 1) * 1.5}rem` }}
                     />
+                    {value.length === 0 ? <p>0</p> : <></>}
+
                 </div>
                 <div className='opacity-50 text-xl'>0 {token.ticker}</div>
             </CardContent>
