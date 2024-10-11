@@ -9,7 +9,7 @@ import TranferBox from '@/components/exchange/TranferBox'
 export default function Swap() {
     return (
         <div className="flex flex-col items-center mt-[10vh] w-full h-full">
-            <Tabs defaultValue="limit" className="flex flex-col justify-center w-[40%]">
+            <Tabs defaultValue="tranfer" className="flex flex-col justify-center w-[40%]">
                 <TabsList className="flex flex-rol justify-between w-full">
                     <TabsTrigger value="swap" className="w-[20%] h-full">Swap</TabsTrigger>
                     <TabsTrigger value="limit" className="w-[20%] h-full">Limit</TabsTrigger>

@@ -2,7 +2,6 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 
-
 const listTime = [
     { name: '1 day' },
     { name: '1 week' },

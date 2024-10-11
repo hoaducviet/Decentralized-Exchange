@@ -1,11 +1,18 @@
 'use client'
 import { useState } from 'react';
 import Image from "next/image";
-import DialogItem from '@/components/exchange/DialogItem';
 import { Button } from "@/components/ui/button";
+import DialogItem from '@/components/exchange/DialogItem';
 import { Card, CardHeader, CardFooter } from '@/components/ui/card'
 import { HeightIcon } from "@radix-ui/react-icons";
+import tokenList from "@/assets/token/tokenList.json";
+import tokenETH from "@/assets/token/tokenETH.json";
 import { type Token } from '@/lib/type';
+
+const tokensErc20: Token[] = tokenList as Token[];
+const eth: Token = tokenETH as Token;
+const tokens: Token[] = [eth, ...tokensErc20];
+
 interface Props {
     token: Token;
 
@@ -45,7 +52,14 @@ export default function LimitItem({ token }: Props) {
                         123.4353
                     </div>
                     <div className='flex justify-center items-center w-[30%] h-full'>
-                        <DialogItem isButton={false} />
+                        <div className='flex flex-row justify-center shadow-xl rounded-2xl items-center w-[50%] h-full'>
+                            <DialogItem>
+                                <div className="flex flex-row justify-center items-center w-full h-full">
+                                    <Image src={tokens[0].img} alt={tokens[0].name} width="15" height="15" />
+                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokens[0].ticker}</p>
+                                </div>
+                            </DialogItem>
+                        </div>
                     </div>
                 </div>
                 <CardFooter className="flex justify-start items-center pb-[2%]">

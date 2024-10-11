@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import tokenList from "@/assets/token/tokenList.json";
 import tokenETH from "@/assets/token/tokenETH.json";
-import { type Token } from "@/lib/type";
+import { Children, Token } from "@/lib/type";
 
 const tokensErc20: Token[] = tokenList as Token[];
 const eth: Token = tokenETH as Token;
@@ -14,26 +14,16 @@ const tokens: Token[] = [eth, ...tokensErc20];
 
 interface Props {
     isButton?: boolean;
+    children: Children
 }
 
-export default function DialogItem({ isButton = true }: Props) {
+export default function DialogItem({ isButton = true, children }: Props) {
 
     return (
         <div className="flex justify-center items-center w-full h-full px-[2vw]">
             <Dialog>
                 <DialogTrigger className="flex flex-row justify-around items-center w-full h-full">
-                    {isButton ? (
-                        <div className="flex flex-row justify-around items-center bg-secondary/80 hover:bg-secondary/80 rounded-xl shadow-lg w-full h-full">
-                            <Image src={tokens[0].img} alt={tokens[0].name} width="24" height="24" />
-                            <p className="text-2xl font-semibold">{tokens[0].ticker}</p>
-                            <CaretDownIcon className="w-[24px] h-[24px]" />
-                        </div>
-                    ) : (
-                        <div className="flex flex-row justify-center items-center shadow-xl rounded-2xl w-full h-full">
-                            <Image src={tokens[0].img} alt={tokens[0].name} width="20" height="20" />
-                            <p className="text-xl font-semibold mx-[0.3vw]">{tokens[0].ticker}</p>
-                        </div>
-                    )}
+                    {children}
                 </DialogTrigger>
                 <DialogContent className="w-[25vw] h-[70vh] px-0 pb-0">
                     <DialogHeader className="bg-fixed w-full p-[2%]">
