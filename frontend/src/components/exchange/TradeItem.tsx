@@ -10,7 +10,6 @@ interface Props {
 }
 
 export default function TradeBoxItem({ title }: Props) {
-
     const ref = useRef<HTMLInputElement>(null)
     const handleClick = () => {
         if (ref.current) {

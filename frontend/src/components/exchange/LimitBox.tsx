@@ -6,12 +6,21 @@ import LimitItem from "@/components/exchange/LimitItem"
 import { Button } from "@/components/ui/button"
 import { HeightIcon } from "@radix-ui/react-icons"
 
+import { type Token } from '@/lib/type';
+
+import tokenList from "@/assets/token/tokenList.json";
+import tokenETH from "@/assets/token/tokenETH.json";
+
+const eth: Token = tokenETH as Token;
+
+
+
 export default function LimitBox() {
 
 
     return (
         <div className="flex flex-col w-full h-full">
-            <LimitItem />
+            <LimitItem token={eth}/>
             <div className="relative flex flex-col w-full h-full">
                 <TradeBoxItem title="Buy" />
                 <TradeBoxItem title="Sell" />
