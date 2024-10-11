@@ -9,7 +9,7 @@ interface Props {
 
 }
 
-export default function TradeBoxItem({ title }: Props) {
+export default function LimitItem() {
 
     const ref = useRef<HTMLInputElement>(null)
     const handleClick = () => {
@@ -22,7 +22,7 @@ export default function TradeBoxItem({ title }: Props) {
         <div onClick={handleClick} className="select-none my-[0.5vh] border-none outline-none">
             <Card className='border-none outline-none '>
                 <CardHeader>
-                    <CardDescription>{title}</CardDescription>
+                    <CardDescription></CardDescription>
                 </CardHeader>
                 <div className="flex flex-row justify-center items-center mx-[5%]">
                     <input

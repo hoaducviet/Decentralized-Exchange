@@ -25,23 +25,23 @@ export default function DialogItem() {
                     <p className="text-2xl font-semibold">{tokens[0].ticker}</p>
                     <CaretDownIcon className="w-[24px] h-[24px]" />
                 </DialogTrigger>
-                <DialogContent className="w-[25vw]">
-                    <DialogHeader >
+                <DialogContent className="w-[25vw] h-[70vh] px-0 pb-0">
+                    <DialogHeader className="bg-fixed w-full p-[2%]">
                         <DialogTitle>Select a token</DialogTitle>
-                        <ScrollArea className="flex flex-col w-full h-[70vh]">
-                            {tokens.length && tokens.map((token) => {
-                                return (
-                                    <Button variant="ghost" key={token.address} className="flex flex-row w-full h-[6.5vh] my-[0.4vh]">
-                                        <Image src={token.img} alt={token.name} width="48" height="48" className="justify-center" />
-                                        <div className="flex flex-col justify-center items-start mx-4 w-full h-full">
-                                            <p className="text-xl font-semibold">{token.name}</p>
-                                            <p>{token.ticker}</p>
-                                        </div>
-                                    </Button>
-                                )
-                            })}
-                        </ScrollArea>
                     </DialogHeader>
+                    <div className="flex flex-col w-full h-full overflow-auto">
+                        {tokens.length && tokens.map((token) => {
+                            return (
+                                <Button variant="ghost" key={token.address} className="flex flex-row w-full h-[6.5vh] my-[0.2vh]">
+                                    <Image src={token.img} alt={token.name} width="48" height="48" className="justify-center" />
+                                    <div className="flex flex-col justify-center items-start mx-4 w-full h-full">
+                                        <p className="text-xl font-semibold">{token.name}</p>
+                                        <p>{token.ticker}</p>
+                                    </div>
+                                </Button>
+                            )
+                        })}
+                    </div>
                 </DialogContent>
             </Dialog>
 
