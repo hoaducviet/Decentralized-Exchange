@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Image from 'next/image'
 import { useConnect } from 'wagmi'
 import { Button } from '@/components/ui/button'
 
@@ -15,10 +16,10 @@ export default function OptionsWallet() {
           className="flex flex-row justify-start w-full"
           onClick={() => connect({ connector })}
         >
-          <img
-            src={connector.icon}
+          <Image
+            src={connector.icon || "/image/default-image.png"}
             alt={connector.name}
-            className="mx-5" width="36px" height="36px" />
+            className="mx-5" width="36" height="36" />
           <div className="mx-5">
             {connector.name}
           </div>

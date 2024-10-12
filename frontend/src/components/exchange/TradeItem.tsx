@@ -7,7 +7,7 @@ import DialogItem from '@/components/exchange/DialogItem';
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import tokenList from "@/assets/token/tokenList.json";
 import tokenETH from "@/assets/token/tokenETH.json";
-import { Children, Token } from "@/lib/type";
+import { Token } from "@/lib/type";
 
 const tokensErc20: Token[] = tokenList as Token[];
 const eth: Token = tokenETH as Token;

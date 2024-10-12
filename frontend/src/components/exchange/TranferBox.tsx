@@ -4,7 +4,7 @@ import TranferItem from "@/components/exchange/TranferItem";
 import DialogItem from "@/components/exchange/DialogItem"
 import AddressItem from "@/components/exchange/AddressItem";
 import SubmitItem from "@/components/exchange/SubmitItem"
-import { Card, CardHeader, CardFooter, CardDescription } from '@/components/ui/card'
+import { Card } from '@/components/ui/card'
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { Token } from '@/lib/type'
 

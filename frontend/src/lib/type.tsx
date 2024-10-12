@@ -1,8 +1,12 @@
+import { Contract, AbiItem } from "web3";
+
+export type Address = `0x${string}`
+
 export type Token = {
     ticker: string;
     img: string;
     name: string;
-    address: `0x${string}`;
+    address: Address;
     decimals: number;
 }
 
@@ -18,4 +22,7 @@ export type BalancesType = {
     balance: Balance | undefined;
 }
 
+export type Contracts = {
+    look: Contract<AbiItem[]>;
+}
 export type Children = React.ReactNode

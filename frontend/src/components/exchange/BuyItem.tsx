@@ -7,7 +7,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/co
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { Token } from "@/lib/type"
 
-const listPrice = [
+
+type Price = {
+    name: string;
+    value: string;
+}
+
+const listPrice: Price[] = [
     { name: '$100', value: '100' },
     { name: '$300', value: '300' },
     { name: '$1000', value: '1000' },
@@ -30,7 +36,7 @@ export default function BuyItem({ token }: Props) {
             ref.current.focus()
         }
     }
-    const handleActive = (index: number, item: any) => {
+    const handleActive = (index: number, item: Price) => {
         setIsActive(index)
         setValue(item.value)
     }
