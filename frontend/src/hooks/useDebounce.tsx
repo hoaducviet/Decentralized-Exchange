@@ -1,6 +1,13 @@
+'use client'
+
 import { useState, useEffect } from "react";
 
-function useDebounce(value, delay) {
+interface Props {
+  value: string;
+  delay: number;
+}
+
+export default function useDebounce({ value, delay }: Props) {
   const [debounceValue, setDebounceValue] = useState(value);
 
   useEffect(() => {
@@ -8,10 +15,8 @@ function useDebounce(value, delay) {
 
     return () => clearTimeout(handler);
 
-    /* eslint-disable react-hooks/exhaustive-deps */
-  }, [value]);
+
+  }, [value, delay]);
 
   return debounceValue;
 }
-
-export default useDebounce;

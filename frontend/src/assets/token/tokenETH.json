@@ -1,7 +1,7 @@
 {
   "ticker": "ETH",
   "img": "https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/256/Ethereum-ETH-icon.png",
-  "name": "Ethereum",
+  "name": "Ether",
   "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
   "decimals": 18
 }
