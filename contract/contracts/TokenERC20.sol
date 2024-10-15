@@ -13,4 +13,13 @@ contract TokenERC20 is ERC20 {
     ) ERC20(name, symbol) {
         _mint(initialOwner, initialSupply);
     }
+
+    function mintToken(
+        address receiver,
+        uint256 amount
+    ) external returns (uint256) {
+        require(amount > 0, "Amount cannot be negative");
+        _mint(receiver, amount);
+        return amount;
+    }
 }
