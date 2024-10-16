@@ -22,7 +22,7 @@ export const walletSlice = createSlice({
             )
             if (!existed) {
                 state.balances = [...state.balances, action.payload];
-                state.isLoaded = (tokens.length === state.balances.length);
+                state.isLoaded = (tokens.length + 1 === state.balances.length);
             }
         },
         resetBalances: (state) => {

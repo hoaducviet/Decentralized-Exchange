@@ -1,21 +1,18 @@
 'use client'
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import DialogItem from '@/components/exchange/DialogItem';
+import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardFooter } from '@/components/ui/card'
 import { HeightIcon } from "@radix-ui/react-icons";
-import tokenList from "@/assets/token/tokenList.json";
-import tokenETH from "@/assets/token/tokenETH.json";
-import { type Token } from '@/lib/type';
-
-const tokensErc20: Token[] = tokenList as Token[];
-const eth: Token = tokenETH as Token;
-const tokens: Token[] = [eth, ...tokensErc20];
+import { BalancesType } from '@/lib/type';
 
 interface Props {
-    token: Token;
-
+    tokenOne: BalancesType | undefined;
+    tokenTwo: BalancesType | undefined;
+    tokenBalances: BalancesType[] | [];
+    setTokenOne: Dispatch<SetStateAction<BalancesType | undefined>>;
+    setTokenTwo: Dispatch<SetStateAction<BalancesType | undefined>>;
 }
 
 const listOptions = [
@@ -25,10 +22,16 @@ const listOptions = [
     { name: '+10%' },
 ]
 
-export default function LimitItem({ token }: Props) {
+export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenOne, setTokenTwo }: Props) {
     const [isActive, setIsActive] = useState<number | null>(0)
     const handleActive = (index: number) => {
         setIsActive(index)
+    }
+    const handleSwitchTokens = () => {
+        const one = tokenOne
+        const two = tokenTwo
+        setTokenOne(two)
+        setTokenTwo(one)
     }
 
     return (
@@ -37,12 +40,16 @@ export default function LimitItem({ token }: Props) {
                 <CardHeader className="flex flex-row justify-between items-center py-0">
                     <div className="flex flex-row justify-start items-start text-md">
                         <div className="mr-1">When 1</div>
-                        <Image src={token.img} alt={token.name} width="20" height="20" className="mr-1" />
-                        <div className="mr-1 font-bold">{token.ticker}</div>
+                        <div className="mr-1 font-bold">
+                            <DialogItem tokenBalances={tokenBalances} setToken={setTokenTwo}>
+                                <Image src={tokenOne?.token.img || "/image/default-token.png"} alt={tokenOne?.token.name || "token"} width="20" height="20" className="mr-1" />
+                                {tokenOne?.token.ticker}
+                            </DialogItem>
+                        </div>
                         <div className="mr-1">is worth</div>
                     </div>
                     <div className="flex flex-row justify-end items-center">
-                        <Button variant="secondary">
+                        <Button onClick={handleSwitchTokens} variant="secondary">
                             <HeightIcon />
                         </Button>
                     </div>
@@ -53,10 +60,10 @@ export default function LimitItem({ token }: Props) {
                     </div>
                     <div className='flex justify-center items-center w-[30%] h-full'>
                         <div className='flex flex-row justify-center shadow-xl rounded-2xl items-center w-[50%] h-full'>
-                            <DialogItem>
+                            <DialogItem tokenBalances={tokenBalances} setToken={setTokenTwo}>
                                 <div className="flex flex-row justify-center items-center w-full h-full">
-                                    <Image src={tokens[0].img} alt={tokens[0].name} width="15" height="15" />
-                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokens[0].ticker}</p>
+                                    <Image src={tokenTwo?.token.img || "/image/default-token.png"} alt={tokenTwo?.token.name || "token"} width="15" height="15" />
+                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokenTwo?.token.ticker}</p>
                                 </div>
                             </DialogItem>
                         </div>

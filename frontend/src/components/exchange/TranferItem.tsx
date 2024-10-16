@@ -1,17 +1,15 @@
 'use client'
 import { useRef, useState } from 'react';
-
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardContent, CardDescription, CardFooter } from '@/components/ui/card'
 import { HeightIcon } from "@radix-ui/react-icons"
-import { Token } from '@/lib/type'
-
+import { BalancesType } from '@/lib/type'
 
 interface Props {
-    token: Token
+    tokenBalance: BalancesType | undefined;
 }
 
-export default function TranferItem({ token }: Props) {
+export default function TranferItem({ tokenBalance }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const [value, setValue] = useState<string>("")
     const handleClick = () => {
@@ -19,16 +17,18 @@ export default function TranferItem({ token }: Props) {
             ref.current.focus()
         }
     }
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value)
+    }
+    const handleSwitch = () => {
+        
     }
 
     return (
         <Card onClick={handleClick} className='w-full h-full select-none outline-none border-none'>
             <CardHeader className='flex flex-row justify-between items-center w-full'>
                 <CardDescription>You are sending</CardDescription>
-                <Button variant="secondary">
+                <Button onClick={handleSwitch} variant="secondary">
                     <HeightIcon />
                 </Button>
             </CardHeader>
@@ -47,7 +47,7 @@ export default function TranferItem({ token }: Props) {
                     {value.length === 0 ? <p>0</p> : <></>}
 
                 </div>
-                <div className='opacity-50 text-xl'>0 {token.ticker}</div>
+                <div className='opacity-50 text-xl'>0 {tokenBalance?.token.ticker}</div>
             </CardContent>
             <CardFooter></CardFooter>
         </Card>

@@ -1,25 +1,21 @@
 'use client'
-
-import { useRef } from 'react';
+import { useRef, Dispatch, SetStateAction } from 'react';
 import Image from "next/image";
 import { Card, CardHeader, CardFooter, CardDescription } from '@/components/ui/card'
 import DialogItem from '@/components/exchange/DialogItem';
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import tokenList from "@/assets/token/tokenList.json";
-import tokenETH from "@/assets/token/tokenETH.json";
-import { Token } from "@/lib/type";
-
-const tokensErc20: Token[] = tokenList as Token[];
-const eth: Token = tokenETH as Token;
-const tokens: Token[] = [eth, ...tokensErc20];
+import { BalancesType } from "@/lib/type";
 
 interface Props {
     title: string;
     isDisabled?: boolean;
+    tokenBalance: BalancesType | undefined;
+    tokenBalances: BalancesType[] | [];
+    setToken: Dispatch<SetStateAction<BalancesType | undefined>>;
 
 }
 
-export default function TradeBoxItem({ isDisabled = false, title }: Props) {
+export default function TradeItem({ isDisabled = false, title, tokenBalance, tokenBalances, setToken }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const handleClick = () => {
         if (ref.current) {
@@ -40,20 +36,20 @@ export default function TradeBoxItem({ isDisabled = false, title }: Props) {
                         type='number'
                         placeholder='0'
                         className="appearance-none bg-transparent border-none outline-none focus:caret-black-500 w-[70%] h-full text-5xl font-medium" />
-                    <div className='flex justify-center items-center w-[30%] h-full'>
-                        <div className='flex justify-center items-center w-full h-full'>
-                            <DialogItem >
-                                <div className="flex flex-row justify-around items-center bg-secondary/80 hover:bg-secondary/80 rounded-xl shadow-lg w-full h-full">
-                                    <Image src={tokens[0].img} alt={tokens[0].name} width="24" height="24" />
-                                    <p className="text-2xl font-semibold">{tokens[0].ticker}</p>
-                                    <CaretDownIcon className="w-[24px] h-[24px]" />
+                    <div className='flex justify-center items-center w-[18%] h-full'>
+                        <div className='flex justify-center items-end w-full h-full'>
+                            <DialogItem tokenBalances={tokenBalances} setToken={setToken}>
+                                <div className="flex flex-row justify-around items-center hover:bg-secondary/80 rounded-xl shadow-lg w-full h-full">
+                                    <Image src={tokenBalance?.token.img || "/image/default-token.png"} alt={tokenBalance?.token.name || "token name"} width="20" height="20" />
+                                    <p className="text-xl font-semibold">{tokenBalance?.token.ticker}</p>
+                                    <CaretDownIcon className="w-[20px] h-[20px]" />
                                 </div>
                             </DialogItem>
                         </div>
                     </div>
                 </div>
                 <CardFooter className="flex justify-end items-center">
-                    <CardDescription className="flex justify-center items-center w-[20%]">Balance: 0</CardDescription>
+                    <CardDescription className="flex flex-row justify-end items-center w-[35%] pr-[1vw]">Balance: {tokenBalance?.balance?.formatted}</CardDescription>
                 </CardFooter>
             </Card>
         </div>

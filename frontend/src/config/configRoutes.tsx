@@ -1,7 +1,7 @@
 
 const routes = {
     home: '/',
-    swap: '/swap',
+    trade: '/trade',
     explore: '/explore',
     nft: '/nft',
     pool: '/pool',

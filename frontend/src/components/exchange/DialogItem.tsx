@@ -1,40 +1,41 @@
 'use client'
-
+import { Dispatch, SetStateAction, useState } from 'react';
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import tokenList from "@/assets/token/tokenList.json";
-import tokenETH from "@/assets/token/tokenETH.json";
-import { Children, Token } from "@/lib/type";
-
-const tokensErc20: Token[] = tokenList as Token[];
-const eth: Token = tokenETH as Token;
-const tokens: Token[] = [eth, ...tokensErc20];
+import { Children, BalancesType } from "@/lib/type";
 
 interface Props {
-    children: Children
+    children: Children;
+    tokenBalances: BalancesType[] | [];
+    setToken: Dispatch<SetStateAction<BalancesType | undefined>>;
 }
 
-export default function DialogItem({ children }: Props) {
+export default function DialogItem({ children, tokenBalances, setToken }: Props) {
+    const [open, setOpen] = useState(false)
+    const handleClick = (tokenBalance: BalancesType) => {
+        setToken(tokenBalance);
+        setOpen(false)
+    }
 
     return (
-        <div className="flex justify-center items-center w-full h-full px-[2vw]">
-            <Dialog>
+        <div className="flex justify-center items-center w-full h-full">
+            <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger className="flex flex-row justify-around items-center w-full h-full">
                     {children}
                 </DialogTrigger>
-                <DialogContent className="w-[25vw] h-[70vh] px-0 pb-0">
+                <DialogContent className="w-[23vw] max-h-[50vw] px-0 pb-0">
                     <DialogHeader className="bg-fixed w-full p-[2%]">
                         <DialogTitle className="px-[1vw]">Select a token</DialogTitle>
                     </DialogHeader>
                     <div className="flex flex-col w-full h-full overflow-auto">
-                        {tokens.length && tokens.map((token) => {
+                        {tokenBalances.length && tokenBalances.map((tokenBalance) => {
                             return (
-                                <Button variant="ghost" key={token.address} className="flex flex-row w-full h-[6.5vh]  px-[1vw]">
-                                    <Image src={token.img} alt={token.name} width="36" height="36" className="justify-center" />
+                                <Button onClick={() => handleClick(tokenBalance)} variant="ghost" key={tokenBalance.token.address} className="flex flex-row w-full h-[3vw]  px-[1vw]">
+                                    <Image src={tokenBalance.token.img} alt={tokenBalance.token.name} width="36" height="36" className="justify-center" />
                                     <div className="flex flex-col justify-center items-start mx-4 w-full h-full">
-                                        <p className="text-xl font-semibold">{token.name}</p>
-                                        <p>{token.ticker}</p>
+                                        <p className="text-xl font-semibold">{tokenBalance.token.name}</p>
+                                        <p>{tokenBalance.token.ticker}</p>
                                     </div>
                                 </Button>
                             )
@@ -42,7 +43,6 @@ export default function DialogItem({ children }: Props) {
                     </div>
                 </DialogContent>
             </Dialog>
-
         </div>
     )
 }

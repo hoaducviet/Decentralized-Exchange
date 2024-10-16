@@ -1,12 +1,11 @@
 'use client'
-import { useRef, useState } from "react"
+import { useRef, useState, Dispatch, SetStateAction } from "react"
 import Image from "next/image"
 import DialogItem from "@/components/exchange/DialogItem"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { Token } from "@/lib/type"
-
+import { BalancesType } from "@/lib/type"
 
 type Price = {
     name: string;
@@ -20,10 +19,14 @@ const listPrice: Price[] = [
 ]
 
 interface Props {
-    token: Token;
+    tokenBalance: BalancesType | undefined;
+    tokenBalances: BalancesType[] | [];
+    setToken: Dispatch<SetStateAction<BalancesType | undefined>>;
+
+
 }
 
-export default function BuyItem({ token }: Props) {
+export default function BuyItem({ tokenBalance, tokenBalances, setToken }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const [isActive, setIsActive] = useState<number | undefined>()
     const [value, setValue] = useState<string>("")
@@ -60,11 +63,11 @@ export default function BuyItem({ token }: Props) {
                     />
                     {value.length === 0 ? <p>0</p> : <></>}
                 </div>
-                <DialogItem>
+                <DialogItem tokenBalances={tokenBalances} setToken={setToken}>
                     <div className="flex flex-row justify-center items-center text-xl font-medium w-full h-full">
-                        <Image src={token.img} alt={token.name} width="20" height="24" className="mr-[0.1vw]" />
+                        <Image src={tokenBalance?.token.img || "/image/default-token.png"} alt={tokenBalance?.token.name || "token"} width="20" height="24" className="mr-[0.1vw]" />
                         <p className="opacity-50 mx-[0.1vw]">{123}</p>
-                        <p className="opacity-50 font-semibold ml-[0.1vw]">{token.ticker}</p>
+                        <p className="opacity-50 font-semibold ml-[0.1vw]">{tokenBalance?.token.ticker}</p>
                         <CaretDownIcon className="opacity-50 w-[1.5vw] h-[2.5vh]" />
                     </div>
                 </DialogItem>
