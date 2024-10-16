@@ -57,26 +57,58 @@ contract LiquidityPool {
         uint256 amount1,
         uint256 amount2
     ) public returns (uint256 liquidityTokens) {
+        require(
+            amount1 > 0 && amount2 > 0,
+            "Amounts must be greater than zero"
+        );
+        require(
+            ERC20(token1).allowance(msg.sender, address(this)) >= amount1,
+            "Insufficient token allowance"
+        );
+        require(
+            ERC20(token2).allowance(msg.sender, address(this)) >= amount2,
+            "Insufficient token allowance"
+        );
+
         //Transfer token from provider to address contract
         ERC20(token1).transferFrom(msg.sender, address(this), amount1);
         ERC20(token2).transferFrom(msg.sender, address(this), amount2);
+
+        uint256 amount1Used = amount1;
+        uint256 amount2Used = amount2;
 
         //Estimate number of liquidity tokens send to provider
         if (reserve1 == 0 && reserve2 == 0) {
             liquidityTokens = sqrt(amount1 * amount2);
         } else {
+            uint256 optinmalAmount1 = (amount2 * reserve1) / reserve2;
+            uint256 optinmalAmount2 = (amount1 * reserve2) / reserve1;
+
+            if (amount1 > optinmalAmount1) {
+                amount1Used = optinmalAmount1;
+            } else {
+                amount2Used = optinmalAmount2;
+            }
+
             liquidityTokens = min(
-                (amount1 * reserve2) / reserve1,
-                (amount2 * reserve1) / reserve2
+                (amount1Used * reserve2) / reserve1,
+                (amount2Used * reserve1) / reserve2
             );
         }
 
-        reserve1 += amount1;
-        reserve2 += amount2;
+        reserve1 += amount1Used;
+        reserve2 += amount2Used;
         totalLiquidityPool += liquidityTokens;
         liquidity[msg.sender] += liquidityTokens;
 
         lpToken.mint(msg.sender, liquidityTokens);
+
+        if (amount1 > amount1Used) {
+            ERC20(token1).transfer(msg.sender, amount1 - amount1Used);
+        }
+        if (amount2 > amount2Used) {
+            ERC20(token2).transfer(msg.sender, amount2 - amount2Used);
+        }
 
         emit LiquidityAdded(msg.sender, amount1, amount2, liquidityTokens);
     }

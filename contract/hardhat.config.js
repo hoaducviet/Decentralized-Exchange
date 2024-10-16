@@ -1,5 +1,12 @@
+const { extendEnvironment } = require("hardhat/config");
+
 require("@nomicfoundation/hardhat-toolbox");
+require("@nomicfoundation/hardhat-ignition-ethers");
 require("dotenv").config();
+
+extendEnvironment((hre) => {
+  hre.hi = "Hello, hardhat";
+});
 
 // Định nghĩa một task có tên là 'accounts'
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -10,12 +17,21 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   });
 });
 
+task("envtest", async (taskArgs, hre) => {
+  console.log(hre.hi);
+});
+
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   defaultNetwork: "localhost",
   networks: {
     localhost: {
       url: "http://127.0.0.1:8545",
+      ignition: {
+        maxFeePerGasLimit: 50_000_000_000n, // 50 gwei
+        maxPriorityFeePerGas: 2_000_000_000n, // 2 gwei
+        disableFeeBumping: false,
+      },
     },
     hardhat: {},
     sepolia: {
@@ -34,5 +50,12 @@ module.exports = {
         runs: 200,
       },
     },
+  },
+  ignition: {
+    blockPollingInterval: 1_000,
+    timeBeforeBumpingFees: 3 * 60 * 1_000,
+    maxFeeBumps: 4,
+    requiredConfirmations: 5,
+    disableFeeBumping: false,
   },
 };
