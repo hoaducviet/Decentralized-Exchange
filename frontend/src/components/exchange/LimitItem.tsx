@@ -41,7 +41,7 @@ export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenO
                     <div className="flex flex-row justify-start items-start text-md">
                         <div className="mr-1">When 1</div>
                         <div className="mr-1 font-bold">
-                            <DialogItem tokenBalances={tokenBalances} setToken={setTokenTwo}>
+                            <DialogItem tokenBalances={tokenBalances} setToken={setTokenOne}>
                                 <Image src={tokenOne?.token.img || "/image/default-token.png"} alt={tokenOne?.token.name || "token"} width="20" height="20" className="mr-1" />
                                 {tokenOne?.token.ticker}
                             </DialogItem>

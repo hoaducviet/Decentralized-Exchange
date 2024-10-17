@@ -2,7 +2,7 @@
 const routes = {
     home: '/',
     trade: '/trade',
-    explore: '/explore',
+    explore: '/explore/tokens',
     nft: '/nft',
     pool: '/pool',
     notfound: '*'
