@@ -11,10 +11,10 @@ interface Props {
 export default function MainLayout({ children }: Props) {
     const { isConnected } = useAccount()
     return (
-        <div className="bg-transparent">
+        <div className="bg-transparent w-[100vw]">
             <Header />
-            <div className="relative flex flex-row w-full">
-                <div className="flex flex-col w-[100vw] h-[100vh]">
+            <div className="relative flex flex-row w-full min-h-[100vh]">
+                <div className="flex flex-col w-full h-full">
                     {children}
                 </div>
                 <div className="absolute top-0 right-0 w-[25vw] bg-transparent">
