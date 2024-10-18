@@ -30,7 +30,7 @@ export default function ExploreLayout({ children }: Readonly<{
         setIsActive(index)
     }
 
-    if (pathname.startsWith('/explore/tokens/') || pathname.startsWith('/explore/pools')) {
+    if (pathname.startsWith('/explore/tokens/') || pathname.startsWith('/explore/pools/')) {
         return <>{children}</>;
     }
     return (
