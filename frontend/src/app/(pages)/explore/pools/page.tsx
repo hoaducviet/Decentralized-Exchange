@@ -21,7 +21,7 @@ export default function Pools() {
             <div className="flex flex-col w-full">
                 {tokens.map((token, index) => {
                     return (
-                        <div className="w-full h-[4vw]">
+                        <div key={index} className="w-full h-[4vw]">
                             <Link href={`/explore/pools/${token.ticker}`}>
                                 <Button variant="ghost" className="flex flex-row justify-start items-center rounded-none w-full h-full text-lg font-semibold">
                                     <p className="font-medium w-[10%]">{index + 1}</p>

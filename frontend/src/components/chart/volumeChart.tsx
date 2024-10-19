@@ -128,16 +128,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export default function Component() {
-    const [activeChart, setActiveChart] =
-        React.useState<keyof typeof chartConfig>("desktop")
-
-    const total = React.useMemo(
-        () => ({
-            desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
-            mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0),
-        }),
-        []
-    )
+    const [activeChart] = React.useState<keyof typeof chartConfig>("desktop")
 
     return (
         <Card className="border-none outline-none shadow-none">

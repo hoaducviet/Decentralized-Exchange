@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useWallet } from "@/hooks/useWallet"
 import tokensErc20 from '@/assets/token/tokenList.json'
 import { Token } from "@/lib/type"
 import { Button } from "@/components/ui/button"
@@ -25,7 +24,7 @@ export default function Tokens() {
             <div className="flex flex-col w-full">
                 {tokens.map((token, index) => {
                     return (
-                        <div className="w-full h-[4vw]">
+                        <div key={index} className="w-full h-[4vw]">
                             <Link href={`/explore/tokens/${token.ticker}`}>
                                 <Button variant="ghost" className="flex flex-row justify-between items-center rounded-none w-full h-full text-lg font-semibold">
                                     <p className="font-medium w-[10%]">{index + 1}</p>

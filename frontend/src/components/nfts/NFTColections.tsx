@@ -1,8 +1,7 @@
 
 
-import { Card, CardHeader, CardDescription, CardContent } from '@/components/ui/card'
+import { Card} from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 
@@ -125,21 +124,21 @@ export default function NFTColections() {
         <div className='select-none flex flex-col w-full'>
             <p className='text-2xl font-semibold'>NFT collections</p>
             <Card className='w-full border-none outline-none shadow-sm'>
-                <CardHeader className='flex flex-row px-[2.8vw]'>
-                    <CardDescription className='w-[35%]'>Collection name</CardDescription>
-                    <div className='flex flex-row justify-between space-x-[1vw] w-[65%]'>
-                        <CardDescription className='flex flex-row justify-center w-[20%]'>Floor</CardDescription>
-                        <CardDescription className='flex flex-row justify-center w-[20%]'>Volume</CardDescription>
-                        <CardDescription className='flex flex-row justify-center w-[20%]'>Volume change</CardDescription>
-                        <CardDescription className='flex flex-row justify-center w-[20%]'>Items</CardDescription>
-                        <CardDescription className='flex flex-row justify-center w-[20%]'>Owners</CardDescription>
+                <div className='flex flex-row justify-start items-center pl-[2vw] h-[3vw]'>
+                    <p className='w-[35%]'>Collection name</p>
+                    <div className='flex flex-row justify-start w-[65%]'>
+                        <p className='flex flex-row justify-start w-[20%]'>Floor</p>
+                        <p className='flex flex-row justify-start w-[20%]'>Volume</p>
+                        <p className='flex flex-row justify-start w-[20%]'>Volume change</p>
+                        <p className='flex flex-row justify-start w-[20%]'>Items</p>
+                        <p className='flex flex-row justify-start w-[20%]'>Owners</p>
                     </div>
-                </CardHeader>
-                <CardContent className='flex flex-col w-full px-0'>
+                </div>
+                <div className='flex flex-col w-full pl-[2vw]'>
                     {list.map((item, index) => {
                         return (
-                            <Link href={`/nfts/${item.id}`} className='flex flex-col w-full'>
-                                <Button variant="ghost" className='cursor-pointer rounded-none flex flex-row items-center h-[4vw]'>
+                            <Link key={index} href={`/nfts/${item.id}`} className='flex flex-col w-full'>
+                                <div className='cursor-pointer hover:bg-secondary/80 rounded-none flex flex-row items-center h-[4vw]'>
                                     <div className='flex flex-row items-center space-x-[0.5vw] w-[35%] text-md'>
                                         <p>{index + 1}</p>
                                         <Avatar className="ml-[0.5vw]">
@@ -149,17 +148,17 @@ export default function NFTColections() {
                                         <p className='font-medium'>{item.name}</p>
                                     </div>
                                     <div className='flex flex-row justify-between items-center text-md font-medium w-[65%]'>
-                                        <p className='flex flex-row justify-center w-[20%]'>{item.floor}</p>
-                                        <p className='flex flex-row justify-center w-[20%]'>{item.volume}</p>
-                                        <p className='flex flex-row justify-center w-[20%]'>{item.volumeChange}</p>
-                                        <p className='flex flex-row justify-center w-[20%]'>{item.items}</p>
-                                        <p className='flex flex-row justify-center w-[20%]'>{item.owners}</p>
+                                        <p className='flex flex-row justify-start w-[20%]'>{item.floor}</p>
+                                        <p className='flex flex-row justify-start w-[20%]'>{item.volume}</p>
+                                        <p className='flex flex-row justify-start w-[20%]'>{item.volumeChange}</p>
+                                        <p className='flex flex-row justify-start w-[20%]'>{item.items}</p>
+                                        <p className='flex flex-row justify-start w-[20%]'>{item.owners}</p>
                                     </div>
-                                </Button>
+                                </div>
                             </Link>
                         )
                     })}
-                </CardContent>
+                </div>
             </Card>
         </div>
     )

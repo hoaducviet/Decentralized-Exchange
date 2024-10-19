@@ -122,6 +122,7 @@ const transactions = [
 
 export default function Token() {
     const { token } = useParams()
+    console.log(token)
 
     return (
         <div className="flex flex-col justify-center items-start mx-[15vw] my-[5vw]">

@@ -23,6 +23,7 @@ export default function TokenBalance({ address, token, isETH = false }: Props) {
             const newBalance = { ...balance, value: Number(balance?.value) }
             dispatch(setBalances({ token, balance: newBalance }))
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [balance])
 
     return (
