@@ -1,16 +1,8 @@
-
 'use client'
-
 import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import tokensErc20 from '@/assets/token/tokenList.json'
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
 import { Token } from "@/lib/type"
 
 const tokens: Token[] = tokensErc20 as Token[]
@@ -18,36 +10,35 @@ const tokens: Token[] = tokensErc20 as Token[]
 export default function Pools() {
 
     return (
-        <div>
-            <Table>
-                <TableHeader>
-                    <TableRow className="w-full h-[3vw] bg-secondary/80">
-                        <TableHead className="w-[100px]">#</TableHead>
-                        <TableHead>Pool</TableHead>
-                        <TableHead>TVL</TableHead>
-                        <TableHead>1D vol</TableHead>
-                        <TableHead className="text-right">7D vol</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {tokens.map((token, index) => {
-                        return (
-                            <TableRow key={index} className="cursor-pointer w-full h-[4vw] text-lg font-semibold opacity-80">
-                                <TableCell className="font-medium">{index + 1}</TableCell>
-                                <TableCell>
-                                    <div className="flex flex-row items-center space-x-[0.3vw]">
-                                        <Image src={token.img} alt={token.name} width={36} height={36} className="opacity-100" />
+        <div className="flex flex-col w-full h-[3vw]">
+            <Button variant="secondary" className="flex flex-row justify-start items-center text-md font-semibold rounded-none w-full h-full">
+                <p className="w-[10%]">#</p>
+                <p className="flex flex-row justify-start items-center w-[30%]">Pool</p>
+                <p className="w-[20%]">TVL</p>
+                <p className="w-[20%]">1D vol</p>
+                <p className="w-[20%]">7D vol</p>
+            </Button>
+            <div className="flex flex-col w-full">
+                {tokens.map((token, index) => {
+                    return (
+                        <div className="w-full h-[4vw]">
+                            <Link href={`/explore/pools/${token.ticker}`}>
+                                <Button variant="ghost" className="flex flex-row justify-start items-center rounded-none w-full h-full text-lg font-semibold">
+                                    <p className="font-medium w-[10%]">{index + 1}</p>
+                                    <div className=" flex flex-row justify-start items-center space-x-[0.3vw] w-[30%]">
+                                        <Image src={token.img} alt={token.name} width={36} height={36} />
+                                        <p>{token.name}</p>
                                         <p className="opacity-60">{token.ticker}</p>
                                     </div>
-                                </TableCell>
-                                <TableCell>$1000</TableCell>
-                                <TableCell>1.5%</TableCell>
-                                <TableCell className="text-right">$7.5B</TableCell>
-                            </TableRow>
-                        )
-                    })}
-                </TableBody>
-            </Table>
+                                    <p className="opacity-70 w-[20%]">$111</p>
+                                    <p className="opacity-70 w-[20%]">1.5%</p>
+                                    <p className="opacity-70 w-[20%]">$1.5B</p>
+                                </Button>
+                            </Link>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }

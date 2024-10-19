@@ -135,7 +135,7 @@ export default function NFTColections() {
                         <CardDescription className='flex flex-row justify-center w-[20%]'>Owners</CardDescription>
                     </div>
                 </CardHeader>
-                <CardContent className='flex flex-col w-full'>
+                <CardContent className='flex flex-col w-full px-0'>
                     {list.map((item, index) => {
                         return (
                             <Link href={`/nfts/${item.id}`} className='flex flex-col w-full'>
