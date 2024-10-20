@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation"
 import PoolChart from "@/components/chart/poolChart"
-import PoolTransactions from "@/components/Explore/PoolTransactions"
+import PoolTransactions from "@/components/explore/PoolTransactions"
 
 const transactions = [
     {

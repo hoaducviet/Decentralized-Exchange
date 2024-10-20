@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation"
 import TokenChart from "@/components/chart/tokenChart"
-import TokenTransactions from "@/components/Explore/TokenTransactions"
+import TokenTransactions from "@/components/explore/TokenTransactions"
 
 const transactions = [
     {
