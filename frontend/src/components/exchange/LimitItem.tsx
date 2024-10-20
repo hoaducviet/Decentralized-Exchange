@@ -43,7 +43,7 @@ export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenO
                         <div className="mr-1 font-bold">
                             <DialogItem tokenBalances={tokenBalances} setToken={setTokenOne}>
                                 <Image src={tokenOne?.token.img || "/image/default-token.png"} alt={tokenOne?.token.name || "token"} width="20" height="20" className="mr-1" />
-                                {tokenOne?.token.ticker}
+                                {tokenOne?.token.symbol}
                             </DialogItem>
                         </div>
                         <div className="mr-1">is worth</div>
@@ -63,7 +63,7 @@ export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenO
                             <DialogItem tokenBalances={tokenBalances} setToken={setTokenTwo}>
                                 <div className="flex flex-row justify-center items-center w-full h-full">
                                     <Image src={tokenTwo?.token.img || "/image/default-token.png"} alt={tokenTwo?.token.name || "token"} width="15" height="15" />
-                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokenTwo?.token.ticker}</p>
+                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokenTwo?.token.symbol}</p>
                                 </div>
                             </DialogItem>
                         </div>

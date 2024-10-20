@@ -1,0 +1,7 @@
+{
+  "name": "Ether",
+  "symbol": "ETH",
+  "img": "https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/256/Ethereum-ETH-icon.png",
+  "decimals": 18,
+  "address": "0x00000000000000000000000000000000000"
+}

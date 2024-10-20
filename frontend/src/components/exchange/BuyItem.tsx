@@ -67,7 +67,7 @@ export default function BuyItem({ tokenBalance, tokenBalances, setToken }: Props
                     <div className="flex flex-row justify-center items-center text-xl font-medium w-full h-full">
                         <Image src={tokenBalance?.token.img || "/image/default-token.png"} alt={tokenBalance?.token.name || "token"} width="20" height="24" className="mr-[0.1vw]" />
                         <p className="opacity-50 mx-[0.1vw]">{123}</p>
-                        <p className="opacity-50 font-semibold ml-[0.1vw]">{tokenBalance?.token.ticker}</p>
+                        <p className="opacity-50 font-semibold ml-[0.1vw]">{tokenBalance?.token.symbol}</p>
                         <CaretDownIcon className="opacity-50 w-[1.5vw] h-[2.5vh]" />
                     </div>
                 </DialogItem>

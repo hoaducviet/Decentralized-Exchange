@@ -47,7 +47,7 @@ export default function TranferItem({ tokenBalance }: Props) {
                     {value.length === 0 ? <p>0</p> : <></>}
 
                 </div>
-                <div className='opacity-50 text-xl'>0 {tokenBalance?.token.ticker}</div>
+                <div className='opacity-50 text-xl'>0 {tokenBalance?.token.symbol}</div>
             </CardContent>
             <CardFooter></CardFooter>
         </Card>

@@ -41,7 +41,7 @@ export default function TradeItem({ isDisabled = false, title, tokenBalance, tok
                             <DialogItem tokenBalances={tokenBalances} setToken={setToken}>
                                 <div className="flex flex-row justify-around items-center hover:bg-secondary/80 rounded-xl shadow-lg w-full h-full">
                                     <Image src={tokenBalance?.token.img || "/image/default-token.png"} alt={tokenBalance?.token.name || "token name"} width="20" height="20" />
-                                    <p className="text-xl font-semibold">{tokenBalance?.token.ticker}</p>
+                                    <p className="text-xl font-semibold">{tokenBalance?.token.symbol}</p>
                                     <CaretDownIcon className="w-[20px] h-[20px]" />
                                 </div>
                             </DialogItem>

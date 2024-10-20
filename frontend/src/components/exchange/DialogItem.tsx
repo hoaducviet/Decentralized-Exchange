@@ -35,7 +35,7 @@ export default function DialogItem({ children, tokenBalances, setToken }: Props)
                                     <Image src={tokenBalance.token.img} alt={tokenBalance.token.name} width="36" height="36" className="justify-center" />
                                     <div className="flex flex-col justify-center items-start mx-4 w-full h-full">
                                         <p className="text-xl font-semibold">{tokenBalance.token.name}</p>
-                                        <p>{tokenBalance.token.ticker}</p>
+                                        <p>{tokenBalance.token.symbol}</p>
                                     </div>
                                 </Button>
                             )

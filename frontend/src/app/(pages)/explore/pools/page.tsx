@@ -2,13 +2,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import tokensErc20 from '@/assets/token/tokenList.json'
-import { Token } from "@/lib/type"
-
-const tokens: Token[] = tokensErc20 as Token[]
+import { useTokens } from "@/hooks/useTokens"
 
 export default function Pools() {
-
+    const { tokens } = useTokens()
     return (
         <div className="flex flex-col w-full h-[3vw]">
             <Button variant="secondary" className="flex flex-row justify-start items-center text-md font-semibold rounded-none w-full h-full">
@@ -22,13 +19,13 @@ export default function Pools() {
                 {tokens.map((token, index) => {
                     return (
                         <div key={index} className="w-full h-[4vw]">
-                            <Link href={`/explore/pools/${token.ticker}`}>
+                            <Link href={`/explore/pools/${token.symbol}`}>
                                 <Button variant="ghost" className="flex flex-row justify-start items-center rounded-none w-full h-full text-lg font-semibold">
                                     <p className="font-medium w-[10%]">{index + 1}</p>
                                     <div className=" flex flex-row justify-start items-center space-x-[0.3vw] w-[30%]">
                                         <Image src={token.img} alt={token.name} width={36} height={36} />
                                         <p>{token.name}</p>
-                                        <p className="opacity-60">{token.ticker}</p>
+                                        <p className="opacity-60">{token.symbol}</p>
                                     </div>
                                     <p className="opacity-70 w-[20%]">$111</p>
                                     <p className="opacity-70 w-[20%]">1.5%</p>

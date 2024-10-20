@@ -1,19 +1,18 @@
-'use client'
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit";
-import tokens from "@/assets/token/tokenList.json";
+import tokens from "@/assets/token/tokens.json";
 import { type BalancesType } from '@/lib/type'
 
-export interface WalletState {
+export interface BalancesState {
     balances: BalancesType[];
     isLoaded: boolean;
 }
-const initialState: WalletState = {
+const initialState: BalancesState = {
     balances: [],
     isLoaded: false
 }
-export const walletSlice = createSlice({
-    name: 'wallet',
+export const balancesSlice = createSlice({
+    name: 'balances',
     initialState,
     reducers: {
         setBalances: (state, action: PayloadAction<BalancesType>) => {
@@ -32,5 +31,5 @@ export const walletSlice = createSlice({
     }
 })
 
-export const { setBalances, resetBalances } = walletSlice.actions;
-export default walletSlice.reducer
+export const { setBalances, resetBalances } = balancesSlice.actions;
+export default balancesSlice.reducer

@@ -7,12 +7,12 @@ import AddressItem from "@/components/exchange/AddressItem";
 import SubmitItem from "@/components/exchange/SubmitItem"
 import { Card } from '@/components/ui/card'
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { useWallet } from '@/hooks/useWallet'
+import { useBalances } from '@/hooks/useBalances'
 import { BalancesType } from '@/lib/type'
 
 
 export default function TranferBox() {
-    const { balances, isLoaded } = useWallet();
+    const { balances, isLoaded } = useBalances();
     const [tokenOne, setTokenOne] = useState<BalancesType | undefined>(undefined);
 
     useEffect(() => {

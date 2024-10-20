@@ -2,12 +2,21 @@ import { Contract, AbiItem } from "web3";
 
 export type Address = `0x${string}`
 
-export type Token = {
-    ticker: string;
-    img: string;
+export type ETH = {
     name: string;
-    address: Address;
+    symbol: string;
+    img: string;
     decimals: number;
+    address: Address;
+}
+
+export type Token = {
+    name: string;
+    symbol: string;
+    img: string;
+    decimals: number;
+    owner: Address;
+    address: Address;
 }
 
 export type Balance = {
@@ -18,7 +27,7 @@ export type Balance = {
 }
 
 export type BalancesType = {
-    token: Token;
+    token: Token | ETH;
     balance: Balance | undefined;
 }
 

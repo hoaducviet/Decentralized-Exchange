@@ -2,11 +2,11 @@
 import { useState, useEffect } from 'react'
 import SubmitItem from "@/components/exchange/SubmitItem"
 import SellItem from "@/components/exchange/SellItem"
-import { useWallet } from '@/hooks/useWallet'
+import { useBalances } from '@/hooks/useBalances'
 import { BalancesType } from '@/lib/type';
 
 export default function SellBox() {
-    const { balances, isLoaded } = useWallet();
+    const { balances, isLoaded } = useBalances();
     const [tokenOne, setTokenOne] = useState<BalancesType | undefined>(undefined);
     useEffect(() => {
         if (isLoaded) {

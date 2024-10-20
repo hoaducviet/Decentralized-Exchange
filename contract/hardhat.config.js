@@ -55,7 +55,7 @@ module.exports = {
     blockPollingInterval: 1_000,
     timeBeforeBumpingFees: 3 * 60 * 1_000,
     maxFeeBumps: 4,
-    requiredConfirmations: 5,
+    requiredConfirmations: 1,
     disableFeeBumping: false,
   },
 };

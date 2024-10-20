@@ -6,11 +6,11 @@ import TradeItem from "@/components/exchange/TradeItem"
 import LimitItem from "@/components/exchange/LimitItem"
 import { Button } from "@/components/ui/button"
 import { HeightIcon } from "@radix-ui/react-icons"
-import { useWallet } from '@/hooks/useWallet'
+import { useBalances } from '@/hooks/useBalances'
 import { BalancesType } from '@/lib/type';
 
 export default function LimitBox() {
-    const { balances, isLoaded } = useWallet();
+    const { balances, isLoaded } = useBalances();
     const [tokenOne, setTokenOne] = useState<BalancesType | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<BalancesType | undefined>(undefined);
 
@@ -34,7 +34,7 @@ export default function LimitBox() {
 
     return (
         <div className="flex flex-col w-full h-full">
-            <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} tokenBalances={tokenBalances} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo}/>
+            <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} tokenBalances={tokenBalances} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo} />
             <div className="relative flex flex-col w-full h-full">
                 <TradeItem title="Buy" tokenBalance={tokenOne} tokenBalances={tokenBalances} setToken={setTokenOne} />
                 <TradeItem title="Sell" tokenBalance={tokenTwo} tokenBalances={tokenBalances} setToken={setTokenTwo} isDisabled />

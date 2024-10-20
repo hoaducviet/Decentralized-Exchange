@@ -1,15 +1,12 @@
 'use client'
 
+import { useTokens } from "@/hooks/useTokens"
 import Image from "next/image"
 import Link from "next/link"
-import tokensErc20 from '@/assets/token/tokenList.json'
-import { Token } from "@/lib/type"
 import { Button } from "@/components/ui/button"
 
-const tokens: Token[] = tokensErc20 as Token[]
-
-
 export default function Tokens() {
+    const { tokens} = useTokens()
 
     return (
         <div className="flex flex-col w-full h-[3vw]">
@@ -25,13 +22,13 @@ export default function Tokens() {
                 {tokens.map((token, index) => {
                     return (
                         <div key={index} className="w-full h-[4vw]">
-                            <Link href={`/explore/tokens/${token.ticker}`}>
+                            <Link href={`/explore/tokens/${token.symbol}`}>
                                 <Button variant="ghost" className="flex flex-row justify-between items-center rounded-none w-full h-full text-lg font-semibold">
                                     <p className="font-medium w-[10%]">{index + 1}</p>
                                     <div className=" flex flex-row justify-start items-center space-x-[0.3vw] w-[30%]">
                                         <Image src={token.img} alt={token.name} width={36} height={36} />
                                         <p>{token.name}</p>
-                                        <p className="opacity-60">{token.ticker}</p>
+                                        <p className="opacity-60">{token.symbol}</p>
                                     </div>
                                     <p className="opacity-70 w-[20%]">$111</p>
                                     <p className="opacity-70 w-[15%]">1.5%</p>

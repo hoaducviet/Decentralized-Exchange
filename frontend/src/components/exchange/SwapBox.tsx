@@ -4,11 +4,11 @@ import SubmitItem from "@/components/exchange/SubmitItem"
 import TradeItem from "@/components/exchange/TradeItem"
 import { Button } from "@/components/ui/button"
 import { HeightIcon } from "@radix-ui/react-icons"
-import { useWallet } from '@/hooks/useWallet'
+import { useBalances } from '@/hooks/useBalances'
 import { BalancesType } from "@/lib/type"
 
 export default function SwapBox() {
-    const { balances, isLoaded } = useWallet();
+    const { balances, isLoaded } = useBalances();
     const [tokenOne, setTokenOne] = useState<BalancesType | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<BalancesType | undefined>(undefined);
 

@@ -2,13 +2,13 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useBalance } from "wagmi";
-import { setBalances } from "@/redux/features/wallet/walletSlice";
+import { setBalances } from "@/redux/features/balances/balancesSlice";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Address, Token } from "@/lib/type"
+import { Address, Token, ETH } from "@/lib/type"
 
 interface Props {
     address: Address | undefined;
-    token: Token;
+    token: Token | ETH;
     isETH?: boolean;
 }
 
@@ -16,14 +16,14 @@ export default function TokenBalance({ address, token, isETH = false }: Props) {
     const dispatch = useDispatch()
     const { data: balance } = useBalance({
         address,
-        token: isETH ? undefined : token.address
+        token: isETH ? undefined : token?.address
     })
     useEffect(() => {
         if (!!balance) {
             const newBalance = { ...balance, value: Number(balance?.value) }
             dispatch(setBalances({ token, balance: newBalance }))
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [balance])
 
     return (
@@ -33,13 +33,13 @@ export default function TokenBalance({ address, token, isETH = false }: Props) {
                     <div className="flex flex-row justify-start items-center">
                         <Avatar className="ml-[0.5vw]">
                             <AvatarImage src={token.img} />
-                            <AvatarFallback>{token.ticker}</AvatarFallback>
+                            <AvatarFallback>{token.symbol}</AvatarFallback>
                         </Avatar>
                         <p className="flex justify-start font-semibold mx-[0.3vw]">{token.name}</p>
                     </div>
                     <div className="flex flex-row justify-end items-center">
                         <p className="flex justify-end mx-[0.3vw]">{balance.formatted}</p>
-                        <p className="font-semibold mr-[0.5vw]">{token.ticker}</p>
+                        <p className="font-semibold mr-[0.5vw]">{token.symbol}</p>
                     </div>
                 </div>
             }

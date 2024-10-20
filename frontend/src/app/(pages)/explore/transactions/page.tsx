@@ -1,8 +1,7 @@
-
 'use client'
 
+import { useTokens } from "@/hooks/useTokens"
 import Image from "next/image"
-import tokensErc20 from '@/assets/token/tokenList.json'
 import {
     Table,
     TableBody,
@@ -11,11 +10,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { Token } from "@/lib/type"
-
-const tokens: Token[] = tokensErc20 as Token[]
 
 export default function Transactions() {
+    const { tokens } = useTokens()
 
     return (
         <div>
@@ -38,7 +35,7 @@ export default function Transactions() {
                                 <TableCell>
                                     <div className="flex flex-row items-center space-x-[0.3vw]">
                                         <Image src={token.img} alt={token.name} width={36} height={36} className="opacity-100" />
-                                        <p>{token.ticker}</p>
+                                        <p>{token.symbol}</p>
                                     </div>
                                 </TableCell>
                                 <TableCell>$1000</TableCell>
