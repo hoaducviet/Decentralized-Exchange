@@ -20,8 +20,8 @@
   {
     "ticker": "VND",
     "img": "https://cdn.moralis.io/eth/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd.png",
-    "name": "VND",
-    "decimals": 2
+    "name": "Viet Nam Dolar",
+    "decimals": 18
   },
   {
     "ticker": "DAI",

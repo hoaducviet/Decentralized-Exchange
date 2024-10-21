@@ -1,5 +1,4 @@
 const { extendEnvironment } = require("hardhat/config");
-
 require("@nomicfoundation/hardhat-toolbox");
 require("@nomicfoundation/hardhat-ignition-ethers");
 require("dotenv").config();

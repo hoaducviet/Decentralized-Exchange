@@ -1,5 +1,6 @@
 const fs = require("fs");
 const hre = require("hardhat");
+const { ethers } = require("hardhat");
 const FactoryToken = require("../ignition/modules/FactoryToken");
 
 const tokensBuild = require("../tokensBuild.json");
@@ -16,10 +17,10 @@ async function main() {
         token.img,
         token.decimals,
         process.env.ACCOUT_ADDRESS_HARDHAT,
-        90000000
+        ethers.parseUnits("90000000", token.decimals)
       ); // Gọi hàm launch
       await receipt.wait(); // Chờ giao dịch hoàn thành
-
+      console.log(ethers.parseUnits("90000000", token.decimals));
       console.log(`Token launched! Transaction hash: ${receipt.hash}`);
     })
   );
