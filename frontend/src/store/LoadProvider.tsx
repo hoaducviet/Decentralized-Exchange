@@ -27,18 +27,24 @@ interface Props {
 
 export function LoadProvider({ children }: Props) {
     const { address, isConnected } = useAccount()
+    const dispatch = useDispatch()
     const web3 = useWeb3()
     const provider = web3?.provider
-    const dispatch = useDispatch()
-    dispatch(setTokens(tokensInfo))
-    dispatch(setPools(poolsInfo))
+    const { isLoaded } = useBalances()
 
-    const context = useBalances()
-    // console.log(context)
+
+
+    useEffect(() => {
+        const setData = async () => {
+            dispatch(setTokens(tokensInfo))
+            dispatch(setPools(poolsInfo))
+        }
+
+        setData()
+    }, [dispatch])
 
     const { pools } = usePools()
     const { tokens } = useTokens()
-
 
     // Get liquid pool balances
     useEffect(() => {
@@ -49,7 +55,7 @@ export function LoadProvider({ children }: Props) {
             }
             liquidBalanaces()
         }
-    }, [pools, tokens, provider, isConnected, address, dispatch])
+    }, [pools, tokens, provider, isConnected, address, isLoaded, dispatch])
 
     //Get token balances
     useEffect(() => {
@@ -60,7 +66,7 @@ export function LoadProvider({ children }: Props) {
             }
             tokenBalanaces()
         }
-    }, [tokens, provider, isConnected, address, dispatch])
+    }, [tokens, provider, isConnected, address, isLoaded, dispatch])
 
 
 

@@ -10,7 +10,7 @@ export default function SellBox() {
     const [tokenOne, setTokenOne] = useState<TokenBalancesType | undefined>(undefined);
     useEffect(() => {
         if (isLoaded) {
-            setTokenOne(balances[0])
+            setTokenOne(tokenBalances[0])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])
@@ -18,7 +18,7 @@ export default function SellBox() {
 
     return (
         <div className="flex flex-col select-none justify-center items-center">
-            <SellItem tokenBalance={tokenOne} tokenBalances={tokenBalances} setToken={setTokenOne} />
+            <SellItem tokenBalance={tokenOne} tokenBalances={balances} setToken={setTokenOne} />
             <SubmitItem name="Sell" />
         </div>
     )

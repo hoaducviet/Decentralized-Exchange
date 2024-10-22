@@ -16,9 +16,8 @@ export default function LimitBox() {
 
     useEffect(() => {
         if (isLoaded) {
-            setTokenOne(balances[0])
-            setTokenTwo(balances[1])
-            console.log(balances[0], balances[1]);
+            setTokenOne(tokenBalances[0])
+            setTokenTwo(tokenBalances[1])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])

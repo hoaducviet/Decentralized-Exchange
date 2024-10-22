@@ -1,4 +1,3 @@
-'use client'
 import { useRef, Dispatch, SetStateAction } from 'react';
 import Image from "next/image";
 import { Card, CardHeader, CardFooter, CardDescription } from '@/components/ui/card'
@@ -12,14 +11,22 @@ interface Props {
     tokenBalance: TokenBalancesType | undefined;
     tokenBalances: TokenBalancesType[] | [];
     setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
-
+    amount: string;
+    setAmount: Dispatch<SetStateAction<string>>;
 }
 
-export default function TradeItem({ isDisabled = false, title, tokenBalance, tokenBalances, setToken }: Props) {
+export default function TradeItem({ isDisabled = false, title, tokenBalance, tokenBalances, setToken, amount, setAmount }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const handleClick = () => {
         if (ref.current) {
             ref.current.focus()
+        }
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!isDisabled) {
+            const value = e.target.value.trim()
+            setAmount(value)
         }
     }
 
@@ -32,9 +39,12 @@ export default function TradeItem({ isDisabled = false, title, tokenBalance, tok
                 <div className="flex flex-row justify-center items-center mx-[5%]">
                     <input
                         disabled={isDisabled}
+                        onChange={handleChange}
                         ref={ref}
                         type='number'
+                        step='any'
                         placeholder='0'
+                        value={amount}
                         className="appearance-none bg-transparent border-none outline-none focus:caret-black-500 w-[70%] h-full text-5xl font-medium" />
                     <div className='flex justify-center items-center w-[18%] h-full'>
                         <div className='flex justify-center items-end w-full h-full'>

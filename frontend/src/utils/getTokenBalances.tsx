@@ -1,4 +1,4 @@
-import { BrowserProvider, JsonRpcSigner, formatUnits } from 'ethers'
+import { BrowserProvider, formatUnits } from 'ethers'
 import { loadTokenContract } from "@/utils/loadTokenContract"
 import { TokenBalancesType, Token, Address } from "@/lib/type"
 
