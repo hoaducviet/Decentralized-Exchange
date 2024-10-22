@@ -5,7 +5,7 @@ import DialogItem from "@/components/exchange/DialogItem"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { BalancesType } from "@/lib/type"
+import { TokenBalancesType } from "@/lib/type"
 
 type Price = {
     name: string;
@@ -19,9 +19,9 @@ const listPrice: Price[] = [
 ]
 
 interface Props {
-    tokenBalance: BalancesType | undefined;
-    tokenBalances: BalancesType[] | [];
-    setToken: Dispatch<SetStateAction<BalancesType | undefined>>;
+    tokenBalance: TokenBalancesType | undefined;
+    tokenBalances: TokenBalancesType[] | [];
+    setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
 }
 
 export default function SellItem({ tokenBalance, tokenBalances, setToken }: Props) {
@@ -50,8 +50,8 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken }: Prop
                 <div className="flex flex-col justify-center items-center w-[30%]">
                     <DialogItem tokenBalances={tokenBalances} setToken={setToken}>
                         <div className="flex flex-row justify-end items-center text-xl font-medium h-full px-[1vw]">
-                            <Image src={tokenBalance?.token.img || "/image/default-token.png"} alt={tokenBalance?.token.name || "token"} width="20" height="24" className="mr-[0.2vw]" />
-                            <p className="font-semibold ml-[0.2vw]">{tokenBalance?.token.symbol}</p>
+                            <Image src={tokenBalance?.info.img || "/image/default-token.png"} alt={tokenBalance?.info.name || "token"} width="20" height="24" className="mr-[0.2vw]" />
+                            <p className="font-semibold ml-[0.2vw]">{tokenBalance?.info.symbol}</p>
                             <CaretDownIcon className="w-[1.5vw] h-[2.5vh]" />
                         </div>
                     </DialogItem>
@@ -68,7 +68,7 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken }: Prop
                         className="appearance-none bg-transparent text-end border-none outline-none focus:caret-black-500 max-w-[80%] font-medium"
                         style={{ width: value.length === 0 ? '1px' : `${(value.length + 0.5) * 2.5}rem` }}
                     />
-                    {value.length === 0 ? <p>0</p> : <div className="text-xl font-semibold mx-[1vw]">{tokenBalance?.token.symbol}</div>}
+                    {value.length === 0 ? <p>0</p> : <div className="text-xl font-semibold mx-[1vw]">{tokenBalance?.info.symbol}</div>}
 
                 </div>
                 <div className="flex flex-row justify-center items-center text-xl font-medium opacity-50 w-full h-full">
@@ -87,7 +87,7 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken }: Prop
                             className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || value === item.value) && 'bg-purple-200 hover:bg-purple-200 opacity-100'}`}>
                             <div className="flex flex-row">
                                 <p className="mr-[0.1vw]">{item.name}</p>
-                                <p className="font-semibold ml-[0.1vw]">{tokenBalance?.token.symbol}</p>
+                                <p className="font-semibold ml-[0.1vw]">{tokenBalance?.info.symbol}</p>
                             </div>
                         </Button>
                     )

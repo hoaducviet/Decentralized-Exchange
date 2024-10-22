@@ -1,16 +1,35 @@
 'use client'
-import { increment } from "@/redux/features/counter/counterSlice";
-import { useDispatch } from "react-redux";
-import { useCounter } from "@/hooks/useStore";
+
+import { useEffect } from "react"
+import { useWeb3 } from '@/hooks/useWeb3'
+
 
 export default function Home() {
-  const count = useCounter()
-  const dispatch = useDispatch()
+  const context = useWeb3()
+
+
+
+  useEffect(() => {
+    if (!!context) {
+      const { contracts } = context
+      console.log(contracts)
+      const app = async () => {
+
+        const result = await contracts?.look.reserve1()
+
+        // console.log(result)
+      }
+
+
+      app()
+
+    }
+  }, [context])
+
 
   return (
     <>
-      <div>{count.value}</div>
-      <button onClick={() => dispatch(increment())}>Increment</button>
+
     </>
   )
 }

@@ -1,25 +1,40 @@
 'use client'
-import { useAccount } from "wagmi";
-import { useTokens } from "@/hooks/useTokens";
+import { useBalances } from "@/hooks/useBalances";
 import TokenBalance from "@/components/TokenBalance";
+import LiquidityBalance from "@/components/LiquidityBalance";
 
 export default function AddressBalance() {
-    const { address, isConnected } = useAccount()
-    const { eth, tokens } = useTokens()
+    const { tokenBalances, liquidBalances, isLoaded } = useBalances()
+    const balances = tokenBalances.filter(tokenBalance => tokenBalance.balance?.formatted !== 0)
+    const LPbalances = liquidBalances.filter(liquidBalance => liquidBalance.balance?.formatted !== 0)
 
     return (
-        <div className='select-none flex flex-col w-full'>
-            <p className="flex justify-start text-md font-semibold opacity-90 m-[0.4vw]">Tokens balance</p>
-            <div className="flex flex-col w-full">
-                <TokenBalance address={address} token={eth} isETH />
-            </div>
-            {isConnected && tokens.map((token, index) => {
-                return (
-                    <div key={index} className="flex flex-col w-full">
-                        <TokenBalance address={address} token={token} />
+        <>
+            {isLoaded &&
+                <div className='select-none flex flex-col space-y-[1vw]'>
+                    <div className="flex flex-col ">
+                        <p className="flex justify-start text-md font-semibold opacity-90 m-[0.4vw]">Tokens balance</p>
+                        {balances.map((tokenBalance, index) => {
+                            return (
+                                <div key={index} className="flex flex-col w-full">
+                                    <TokenBalance tokenBalance={tokenBalance} />
+                                </div>
+                            )
+                        })}
                     </div>
-                )
-            })}
-        </div>
+                    <div className="flex flex-col border-t border-gray-100 py-[1vw]">
+                        <p className="flex justify-start text-md font-semibold opacity-90 m-[0.4vw]">Liquidity pools balance</p>
+                        {LPbalances.map((liquidBalance, index) => {
+                            return (
+                                <div key={index} className="flex flex-col w-full">
+                                    <LiquidityBalance liquidityBalance={liquidBalance} />
+                                </div>
+                            )
+                        })
+                        }
+                    </div>
+                </div>
+            }
+        </>
     )
 }

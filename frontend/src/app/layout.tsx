@@ -45,22 +45,22 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ReduxProvider>
-          <Web3Provider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <ConnectProvider initialState={initialState}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ConnectProvider initialState={initialState}>
+              <Web3Provider>
                 <LoadProvider>
                   <MainLayout>
                     {children}
                   </MainLayout>
                 </LoadProvider>
-              </ConnectProvider>
-            </ThemeProvider>
-          </Web3Provider>
+              </Web3Provider>
+            </ConnectProvider>
+          </ThemeProvider>
         </ReduxProvider>
       </body>
     </html>

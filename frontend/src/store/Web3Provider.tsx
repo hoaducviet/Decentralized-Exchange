@@ -1,46 +1,60 @@
 'use client'
 import { createContext, useEffect, useState } from "react";
-import Web3 from "web3";
-import Look from '@/artifacts/Lock.json';
-import { AbiItem } from "web3";
-import { Contracts, Children } from "@/lib/type";
+import { useAccount, useWalletClient } from "wagmi";
+import { BrowserProvider, JsonRpcSigner } from 'ethers'
+import { loadLiquidContract } from "@/utils/loadLiquidContract";
+import { Contracts, Children, Address } from "@/lib/type";
+
+const addressContract: Address = "0x24B3c7704709ed1491473F30393FFc93cFB0FC34" as Address
 
 interface Props {
     children: Children;
 }
 interface Web3ContextType {
-    web3: Web3 | undefined;
+    provider: BrowserProvider | undefined;
+    signer: JsonRpcSigner | undefined;
     contracts: Contracts | undefined;
     isLoaded: boolean;
 }
 
-const contractLookAddress = process.env.CONTRACT_ADDRESS_LOCK
 export const Web3Context = createContext<Web3ContextType | undefined>(undefined)
 export function Web3Provider({ children }: Props) {
-    const [web3, setWeb3] = useState<Web3 | undefined>(undefined)
+    const { isConnected } = useAccount()
+    const { data: walletClient } = useWalletClient()
+    const [provider, setProvider] = useState<BrowserProvider | undefined>(undefined)
+    const [signer, setSigner] = useState<JsonRpcSigner | undefined>(undefined)
     const [contracts, setContracts] = useState<Contracts | undefined>(undefined)
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
     useEffect(() => {
-        const initWeb3 = async () => {
-            const provider = Web3.givenProvider
-            if (!provider) {
-                const web3Instance = new Web3(provider)
-                const contractLook = new web3Instance.eth.Contract(Look.abi as AbiItem[], contractLookAddress)
+        const connetWallet = async () => {
+            if (!isConnected || !walletClient) { return }
 
-                setContracts({
-                    look: contractLook,
-                })
-                setWeb3(web3Instance)
-                setIsLoaded(true)
-            }
+            const provider = new BrowserProvider(walletClient)
+            const signer = await provider.getSigner();
+            setProvider(provider);
+            setSigner(signer);
         }
+        connetWallet()
 
-        initWeb3()
-    }, [])
+    }, [isConnected, walletClient])
+
+    useEffect(() => {
+        if (!!provider) {
+            const app = async () => {
+                const contract = await loadLiquidContract({ provider, address: addressContract })
+                setContracts({ look: contract })
+                setIsLoaded(true)
+
+            }
+            app()
+
+        }
+    }, [provider])
 
     const value = {
-        web3,
+        provider,
+        signer,
         contracts,
         isLoaded
     }

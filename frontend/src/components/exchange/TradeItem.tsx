@@ -4,14 +4,14 @@ import Image from "next/image";
 import { Card, CardHeader, CardFooter, CardDescription } from '@/components/ui/card'
 import DialogItem from '@/components/exchange/DialogItem';
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { BalancesType } from "@/lib/type";
+import { TokenBalancesType } from "@/lib/type";
 
 interface Props {
     title: string;
     isDisabled?: boolean;
-    tokenBalance: BalancesType | undefined;
-    tokenBalances: BalancesType[] | [];
-    setToken: Dispatch<SetStateAction<BalancesType | undefined>>;
+    tokenBalance: TokenBalancesType | undefined;
+    tokenBalances: TokenBalancesType[] | [];
+    setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
 
 }
 
@@ -40,8 +40,8 @@ export default function TradeItem({ isDisabled = false, title, tokenBalance, tok
                         <div className='flex justify-center items-end w-full h-full'>
                             <DialogItem tokenBalances={tokenBalances} setToken={setToken}>
                                 <div className="flex flex-row justify-around items-center hover:bg-secondary/80 rounded-xl shadow-lg w-full h-full">
-                                    <Image src={tokenBalance?.token.img || "/image/default-token.png"} alt={tokenBalance?.token.name || "token name"} width="20" height="20" />
-                                    <p className="text-xl font-semibold">{tokenBalance?.token.symbol}</p>
+                                    <Image src={tokenBalance?.info.img || "/image/default-token.png"} alt={tokenBalance?.info.name || "token name"} width="20" height="20" />
+                                    <p className="text-xl font-semibold">{tokenBalance?.info.symbol}</p>
                                     <CaretDownIcon className="w-[20px] h-[20px]" />
                                 </div>
                             </DialogItem>

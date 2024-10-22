@@ -1,35 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit";
-import tokens from "@/assets/token/tokens.json";
-import { type BalancesType } from '@/lib/type'
+import { TokenBalancesType, LiquidBalancesType } from '@/lib/type'
 
 export interface BalancesState {
-    balances: BalancesType[];
+    tokenBalances: TokenBalancesType[];
+    liquidBalances: LiquidBalancesType[];
     isLoaded: boolean;
 }
 const initialState: BalancesState = {
-    balances: [],
+    tokenBalances: [],
+    liquidBalances: [],
     isLoaded: false
 }
 export const balancesSlice = createSlice({
     name: 'balances',
     initialState,
     reducers: {
-        setBalances: (state, action: PayloadAction<BalancesType>) => {
-            const existed = state.balances.find(
-                balance => balance.token.address === action.payload.token.address
-            )
-            if (!existed) {
-                state.balances = [...state.balances, action.payload];
-                state.isLoaded = (tokens.length + 1 === state.balances.length);
+        setTokenBalances: (state, action: PayloadAction<TokenBalancesType[]>) => {
+            state.tokenBalances = action.payload;
+            if (state.tokenBalances.length > 0 && state.liquidBalances.length > 0) {
+                state.isLoaded = true;
+            }
+        },
+        setLiquidBalances: (state, action: PayloadAction<LiquidBalancesType[]>) => {
+            state.liquidBalances = action.payload;
+            if (state.tokenBalances.length > 0 && state.liquidBalances.length > 0) {
+                state.isLoaded = true;
             }
         },
         resetBalances: (state) => {
-            state.balances = [];
+            state.tokenBalances = [];
+            state.liquidBalances = [];
             state.isLoaded = false;
         }
     }
 })
 
-export const { setBalances, resetBalances } = balancesSlice.actions;
+export const { setTokenBalances, setLiquidBalances, resetBalances } = balancesSlice.actions;
 export default balancesSlice.reducer

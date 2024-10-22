@@ -8,31 +8,31 @@ import SubmitItem from "@/components/exchange/SubmitItem"
 import { Card } from '@/components/ui/card'
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { useBalances } from '@/hooks/useBalances'
-import { BalancesType } from '@/lib/type'
+import { TokenBalancesType } from '@/lib/type'
 
 
 export default function TranferBox() {
-    const { balances, isLoaded } = useBalances();
-    const [tokenOne, setTokenOne] = useState<BalancesType | undefined>(undefined);
+    const { tokenBalances, isLoaded } = useBalances();
+    const [tokenOne, setTokenOne] = useState<TokenBalancesType | undefined>(undefined);
 
     useEffect(() => {
         if (isLoaded) {
-            setTokenOne(balances[0])
+            setTokenOne(tokenBalances[0])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])
-    const tokenBalances = isLoaded ? balances.filter(tokenBalance => tokenBalance.token.address !== tokenOne?.token.address) : [];
+    const balances = isLoaded ? tokenBalances.filter(tokenBalance => tokenBalance.info.address !== tokenOne?.info.address) : [];
 
     return (
         <div className="flex flex-col justify-center items-center w-full h-full">
             <TranferItem tokenBalance={tokenOne} />
             <div className="flex w-full my-[1vh]">
                 <Card className="w-full select-none border-none outline-none py-[0.8vh] hover:opacity-50">
-                    <DialogItem tokenBalances={tokenBalances} setToken={setTokenOne}>
+                    <DialogItem tokenBalances={balances} setToken={setTokenOne}>
                         <div className="flex flex-row justify-center items-center w-full mx-[1vw]">
-                            <Image src={tokenOne?.token.img || "/image/default-token.png"} alt={tokenOne?.token.name || "token"} width="48" height="48" className="justify-center" />
+                            <Image src={tokenOne?.info.img || "/image/default-token.png"} alt={tokenOne?.info.name || "token"} width="48" height="48" className="justify-center" />
                             <div className="flex flex-col justify-center items-start mx-4 w-full h-full">
-                                <p className="text-xl font-medium">{tokenOne?.token.name}</p>
+                                <p className="text-xl font-medium">{tokenOne?.info.name}</p>
                                 <p>Balance: {tokenOne?.balance?.formatted}</p>
                             </div>
                             <CaretDownIcon width={36} height={36} />

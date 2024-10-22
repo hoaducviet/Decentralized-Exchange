@@ -3,10 +3,10 @@ import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardContent, CardDescription, CardFooter } from '@/components/ui/card'
 import { HeightIcon } from "@radix-ui/react-icons"
-import { BalancesType } from '@/lib/type'
+import { TokenBalancesType } from '@/lib/type'
 
 interface Props {
-    tokenBalance: BalancesType | undefined;
+    tokenBalance: TokenBalancesType | undefined;
 }
 
 export default function TranferItem({ tokenBalance }: Props) {
@@ -47,7 +47,7 @@ export default function TranferItem({ tokenBalance }: Props) {
                     {value.length === 0 ? <p>0</p> : <></>}
 
                 </div>
-                <div className='opacity-50 text-xl'>0 {tokenBalance?.token.symbol}</div>
+                <div className='opacity-50 text-xl'>0 {tokenBalance?.info.symbol}</div>
             </CardContent>
             <CardFooter></CardFooter>
         </Card>

@@ -5,14 +5,14 @@ import DialogItem from '@/components/exchange/DialogItem';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardFooter } from '@/components/ui/card'
 import { HeightIcon } from "@radix-ui/react-icons";
-import { BalancesType } from '@/lib/type';
+import { TokenBalancesType } from '@/lib/type';
 
 interface Props {
-    tokenOne: BalancesType | undefined;
-    tokenTwo: BalancesType | undefined;
-    tokenBalances: BalancesType[] | [];
-    setTokenOne: Dispatch<SetStateAction<BalancesType | undefined>>;
-    setTokenTwo: Dispatch<SetStateAction<BalancesType | undefined>>;
+    tokenOne: TokenBalancesType | undefined;
+    tokenTwo: TokenBalancesType | undefined;
+    tokenBalances: TokenBalancesType[] | [];
+    setTokenOne: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
+    setTokenTwo: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
 }
 
 const listOptions = [
@@ -42,8 +42,8 @@ export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenO
                         <div className="mr-1">When 1</div>
                         <div className="mr-1 font-bold">
                             <DialogItem tokenBalances={tokenBalances} setToken={setTokenOne}>
-                                <Image src={tokenOne?.token.img || "/image/default-token.png"} alt={tokenOne?.token.name || "token"} width="20" height="20" className="mr-1" />
-                                {tokenOne?.token.symbol}
+                                <Image src={tokenOne?.info.img || "/image/default-token.png"} alt={tokenOne?.info.name || "token"} width="20" height="20" className="mr-1" />
+                                {tokenOne?.info.symbol}
                             </DialogItem>
                         </div>
                         <div className="mr-1">is worth</div>
@@ -62,8 +62,8 @@ export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenO
                         <div className='flex flex-row justify-center shadow-xl rounded-2xl items-center w-[50%] h-full'>
                             <DialogItem tokenBalances={tokenBalances} setToken={setTokenTwo}>
                                 <div className="flex flex-row justify-center items-center w-full h-full">
-                                    <Image src={tokenTwo?.token.img || "/image/default-token.png"} alt={tokenTwo?.token.name || "token"} width="15" height="15" />
-                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokenTwo?.token.symbol}</p>
+                                    <Image src={tokenTwo?.info.img || "/image/default-token.png"} alt={tokenTwo?.info.name || "token"} width="15" height="15" />
+                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokenTwo?.info.symbol}</p>
                                 </div>
                             </DialogItem>
                         </div>

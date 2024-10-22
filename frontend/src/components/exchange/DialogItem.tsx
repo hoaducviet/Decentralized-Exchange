@@ -3,17 +3,17 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Children, BalancesType } from "@/lib/type";
+import { Children, TokenBalancesType } from "@/lib/type";
 
 interface Props {
     children: Children;
-    tokenBalances: BalancesType[] | [];
-    setToken: Dispatch<SetStateAction<BalancesType | undefined>>;
+    tokenBalances: TokenBalancesType[] | [];
+    setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
 }
 
 export default function DialogItem({ children, tokenBalances, setToken }: Props) {
     const [open, setOpen] = useState(false)
-    const handleClick = (tokenBalance: BalancesType) => {
+    const handleClick = (tokenBalance: TokenBalancesType) => {
         setToken(tokenBalance);
         setOpen(false)
     }
@@ -31,11 +31,11 @@ export default function DialogItem({ children, tokenBalances, setToken }: Props)
                     <div className="flex flex-col w-full h-full overflow-auto">
                         {tokenBalances.length && tokenBalances.map((tokenBalance) => {
                             return (
-                                <Button onClick={() => handleClick(tokenBalance)} variant="ghost" key={tokenBalance.token.address} className="flex flex-row w-full h-[3vw]  px-[1vw]">
-                                    <Image src={tokenBalance.token.img} alt={tokenBalance.token.name} width="36" height="36" className="justify-center" />
+                                <Button onClick={() => handleClick(tokenBalance)} variant="ghost" key={tokenBalance.info.address} className="flex flex-row w-full h-[3vw]  px-[1vw]">
+                                    <Image src={tokenBalance.info.img} alt={tokenBalance.info.name} width="36" height="36" className="justify-center" />
                                     <div className="flex flex-col justify-center items-start mx-4 w-full h-full">
-                                        <p className="text-xl font-semibold">{tokenBalance.token.name}</p>
-                                        <p>{tokenBalance.token.symbol}</p>
+                                        <p className="text-xl font-semibold">{tokenBalance.info.name}</p>
+                                        <p>{tokenBalance.info.symbol}</p>
                                     </div>
                                 </Button>
                             )

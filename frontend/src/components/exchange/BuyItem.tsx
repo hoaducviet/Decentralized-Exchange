@@ -5,7 +5,7 @@ import DialogItem from "@/components/exchange/DialogItem"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { BalancesType } from "@/lib/type"
+import { TokenBalancesType } from "@/lib/type"
 
 type Price = {
     name: string;
@@ -19,11 +19,9 @@ const listPrice: Price[] = [
 ]
 
 interface Props {
-    tokenBalance: BalancesType | undefined;
-    tokenBalances: BalancesType[] | [];
-    setToken: Dispatch<SetStateAction<BalancesType | undefined>>;
-
-
+    tokenBalance: TokenBalancesType | undefined;
+    tokenBalances: TokenBalancesType[] | [];
+    setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
 }
 
 export default function BuyItem({ tokenBalance, tokenBalances, setToken }: Props) {
@@ -65,9 +63,9 @@ export default function BuyItem({ tokenBalance, tokenBalances, setToken }: Props
                 </div>
                 <DialogItem tokenBalances={tokenBalances} setToken={setToken}>
                     <div className="flex flex-row justify-center items-center text-xl font-medium w-full h-full">
-                        <Image src={tokenBalance?.token.img || "/image/default-token.png"} alt={tokenBalance?.token.name || "token"} width="20" height="24" className="mr-[0.1vw]" />
+                        <Image src={tokenBalance?.info.img || "/image/default-token.png"} alt={tokenBalance?.info.name || "token"} width="20" height="24" className="mr-[0.1vw]" />
                         <p className="opacity-50 mx-[0.1vw]">{123}</p>
-                        <p className="opacity-50 font-semibold ml-[0.1vw]">{tokenBalance?.token.symbol}</p>
+                        <p className="opacity-50 font-semibold ml-[0.1vw]">{tokenBalance?.info.symbol}</p>
                         <CaretDownIcon className="opacity-50 w-[1.5vw] h-[2.5vh]" />
                     </div>
                 </DialogItem>

@@ -1,48 +1,27 @@
-'use client'
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useBalance } from "wagmi";
-import { setBalances } from "@/redux/features/balances/balancesSlice";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Address, Token, ETH } from "@/lib/type"
+import { TokenBalancesType } from "@/lib/type"
 
 interface Props {
-    address: Address | undefined;
-    token: Token | ETH;
-    isETH?: boolean;
+    tokenBalance: TokenBalancesType
 }
 
-export default function TokenBalance({ address, token, isETH = false }: Props) {
-    const dispatch = useDispatch()
-    const { data: balance } = useBalance({
-        address,
-        token: isETH ? undefined : token?.address
-    })
-    useEffect(() => {
-        if (!!balance) {
-            const newBalance = { ...balance, value: Number(balance?.value) }
-            dispatch(setBalances({ token, balance: newBalance }))
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [balance])
-
+export default function TokenBalance({ tokenBalance }: Props) {
     return (
         <>
-            {(balance && balance?.value.toString() !== '0') &&
-                <div className="flex flex-row justify-between text-lg w-full h-[3.5vw]">
-                    <div className="flex flex-row justify-start items-center">
-                        <Avatar className="ml-[0.5vw]">
-                            <AvatarImage src={token.img} />
-                            <AvatarFallback>{token.symbol}</AvatarFallback>
-                        </Avatar>
-                        <p className="flex justify-start font-semibold mx-[0.3vw]">{token.name}</p>
-                    </div>
-                    <div className="flex flex-row justify-end items-center">
-                        <p className="flex justify-end mx-[0.3vw]">{balance.formatted}</p>
-                        <p className="font-semibold mr-[0.5vw]">{token.symbol}</p>
-                    </div>
+            <div className="cursor-pointer flex flex-row justify-between hover:bg-secondary/80 text-md w-full h-[3vw] px-[1vw]">
+                <div className=" flex flex-row justify-start items-center w-[55%]">
+                    <Avatar className="w-[1.5vw] h-[1.5vw]">
+                        <AvatarImage src={tokenBalance.info.img} />
+                        <AvatarFallback>{tokenBalance.info.symbol}</AvatarFallback>
+                    </Avatar>
+                    <p className="flex justify-start font-semibold mx-[0.3vw]">{tokenBalance.info.name}</p>
                 </div>
-            }
+                <div className="flex flex-row justify-end items-center w-[45%]">
+                    <div className="flex justify-end mx-[0.5vw]">{tokenBalance?.balance?.formatted}</div>
+                    <div className="flex justify-start font-semibold text-md w-[20%] mr-[1vw]">{tokenBalance.info.symbol}</div>
+                </div>
+            </div>
+
         </>
     )
 }

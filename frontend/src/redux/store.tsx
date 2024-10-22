@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import balancesReducer from './features/balances/balancesSlice';
 import counterReducer from './features/counter/counterSlice';
 import tokensReducer from './features/tokens/tokensSlice';
+import poolsReducer from './features/pools/poolsSlice';
 import { apiSlice } from './features/api/apiSlice'
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
         balances: balancesReducer,
         counter: counterReducer,
         tokens: tokensReducer,
+        pools: poolsReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
 
     },
