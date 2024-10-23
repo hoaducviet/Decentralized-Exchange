@@ -35,8 +35,8 @@ export default function LimitBox() {
         <div className="flex flex-col w-full h-full">
             <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} tokenBalances={balances} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo} />
             <div className="relative flex flex-col w-full h-full">
-                <TradeItem title="Buy" tokenBalance={tokenOne} tokenBalances={balances} setToken={setTokenOne} />
-                <TradeItem title="Sell" tokenBalance={tokenTwo} tokenBalances={balances} setToken={setTokenTwo} isDisabled />
+                {/* <TradeItem title="Buy" tokenBalance={tokenOne} tokenBalances={balances} setToken={setTokenOne} />
+                <TradeItem title="Sell" tokenBalance={tokenTwo} tokenBalances={balances} setToken={setTokenTwo} isDisabled /> */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[10%] h-[10%]">
                     <Button onClick={handleSwitchTokens} variant="secondary" className="w-[full] h-full">
                         <HeightIcon className="w-full h-full" />

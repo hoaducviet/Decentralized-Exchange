@@ -1,11 +1,15 @@
 'use client'
-
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
-
+import { resetBalances } from "@/redux/features/balances/balancesSlice"
+import { removeLiquidityPool } from "@/services/liquiditypool/removeLiquidityPool"
 import { TrashIcon } from "@radix-ui/react-icons"
-import { useBalances } from "@/hooks/useBalances"
+import { LiquidBalancesType } from '@/lib/type'
+import { useAccount } from "wagmi"
 
 const headers = [
     { name: "#" },
@@ -15,10 +19,38 @@ const headers = [
     { name: "Withdraw" },
 ]
 
-export default function PoolBalances() {
-    const { liquidBalances } = useBalances()
-    const LPbalances = liquidBalances.filter(liquidBalance => liquidBalance.balance?.formatted !== 0)
+interface Props {
+    liquidBalances: LiquidBalancesType[];
+}
 
+export default function PoolBalances({ liquidBalances }: Props) {
+    const { address } = useAccount()
+    const dispatch = useDispatch()
+    const web3 = useWeb3()
+    const provider = web3?.provider
+    const signer = web3?.signer
+    const [currentPool, setCurrentPool] = useState<LiquidBalancesType | undefined>(undefined)
+
+    const handleClick = (index: number) => {
+        setCurrentPool(liquidBalances[index])
+    }
+
+    const handleSend = async () => {
+        if (!!provider && !!signer && !!currentPool && !!address) {
+            try {
+                const receipt = await removeLiquidityPool({ provider, signer, pool: currentPool, address })
+                const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
+                if (confirmedReceipt?.status === 1) {
+                    dispatch(resetBalances())
+                } else {
+                    console.error("Transaction error:", confirmedReceipt);
+                }
+                console.log(confirmedReceipt)
+            } catch (error) {
+                console.error("Transaction error:", error);
+            }
+        }
+    }
     return (
         <div className="flex flex-col select-none w-full shadow-lg">
             <p className="text-xl font-semibold opacity-80">Liquidity Balances</p>
@@ -31,7 +63,7 @@ export default function PoolBalances() {
                     <div className="flex flex-col justify-center items-start text-base font-medium w-[20%]">{headers[4].name}</div>
                 </div>
                 <div className="flex flex-col w-full max-h-[40vw] overflow-x-auto">
-                    {LPbalances.map((liquidityBalance, index) => {
+                    {liquidBalances.map((liquidityBalance, index) => {
                         return (
                             <div key={index} className=" cursor-pointer flex flex-row items-center text-base font-medium space-x-[2%] hover:bg-secondary/80 w-full px-[1vw] py-[1vw]">
                                 <div className="flex flex-col justify-center items-start  w-[5%] ">{index + 1}</div>
@@ -54,7 +86,7 @@ export default function PoolBalances() {
                                 <div className="flex flex-col justify-center items-start  w-[20%]">
                                     <AlertDialog>
                                         <AlertDialogTrigger asChild>
-                                            <Button variant="ghost">
+                                            <Button onClick={() => handleClick(index)} variant="ghost">
                                                 <TrashIcon />
                                             </Button>
                                         </AlertDialogTrigger>
@@ -67,12 +99,11 @@ export default function PoolBalances() {
                                             </AlertDialogHeader>
                                             <AlertDialogFooter>
                                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                <AlertDialogAction>Continue</AlertDialogAction>
+                                                <AlertDialogAction onClick={handleSend}>Continue</AlertDialogAction>
                                             </AlertDialogFooter>
                                         </AlertDialogContent>
                                     </AlertDialog>
                                 </div>
-
                             </div>
                         )
                     })}

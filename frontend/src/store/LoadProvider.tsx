@@ -66,6 +66,7 @@ export function LoadProvider({ children }: Props) {
             }
             tokenBalanaces()
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tokens, provider, isConnected, address, isLoaded, dispatch])
 
 

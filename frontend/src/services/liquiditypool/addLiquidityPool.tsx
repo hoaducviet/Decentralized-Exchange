@@ -1,23 +1,20 @@
-import { JsonRpcSigner, parseUnits } from 'ethers'
+import { BrowserProvider, JsonRpcSigner, parseUnits } from 'ethers'
 import { LiquidBalancesType, TokenBalancesType, Address } from '@/lib/type'
 import { loadLiquidContract } from '@/utils/loadLiquidContract'
 import { loadTokenContract } from '@/utils/loadTokenContract'
 
 interface Props {
+    provider: BrowserProvider,
     signer: JsonRpcSigner,
     address: Address
     pool: LiquidBalancesType,
     tokenOne: TokenBalancesType,
     amount1: string,
     amount2: string,
-
 }
 
-export const addLiquidityPool = async ({ signer, address, pool, tokenOne, amount1, amount2 }: Props) => {
+export const addLiquidityPool = async ({ provider, signer, address, pool, tokenOne, amount1, amount2 }: Props) => {
     const isEth = pool?.info.token2?.symbol !== 'ETH' ? false : true;
-
-    console.log(amount1, amount2, tokenOne.info.symbol)
-
     const contract = await loadLiquidContract({ provider: signer, address: pool?.info?.address, isEth: isEth });
     const contractToken1 = await loadTokenContract({ provider: signer, address: pool.info.addressToken1 })
     const balance1 = await contractToken1.balanceOf(address);
@@ -32,16 +29,20 @@ export const addLiquidityPool = async ({ signer, address, pool, tokenOne, amount
         value1 = parseUnits(amount2, pool.info.decimals1)
         value2 = parseUnits(amount1, pool.info.decimals2)
     }
-    console.log(value1, value2)
 
-    console.log(balance1, value1)
     if (balance1 < value1) {
         throw new Error("Insufficient balance for token 1");
     }
 
-
-    const approveTX1 = await contractToken1.approve(pool.info.address, value1)
-    await approveTX1.wait()
+    try {
+        const nonce1 = await provider.getTransactionCount(address, 'latest');
+        const approveTX1 = await contractToken1.approve(pool?.info?.address, value1, {
+            nonce: nonce1
+        })
+        await approveTX1.wait()
+    } catch {
+        throw new Error("Failed to approve token 1");
+    }
 
     if (!isEth) {
         const contractToken2 = await loadTokenContract({ provider: signer, address: pool.info.addressToken2 })
@@ -50,20 +51,30 @@ export const addLiquidityPool = async ({ signer, address, pool, tokenOne, amount
         if (balance2 < value2) {
             throw new Error("Insufficient balance for token 2");
         }
-        const approveTX2 = await contractToken2.approve(pool.info.address, value2)
-        await approveTX2.wait()
+        try {
+            const nonce2 = await provider.getTransactionCount(address, 'latest');
+            const approveTX2 = await contractToken2.approve(pool.info.address, value2, {
+                nonce: nonce2
+            })
+            await approveTX2.wait()
+        } catch {
+            throw new Error("Failed to approve token 2");
+        }
     }
 
     try {
-
+        const nonce3 = await provider.getTransactionCount(address, 'latest');
         if (!isEth) {
-            console.log(value1, value2)
-            const receipt = await contract.addLiquidity(value1, value2)
+            const receipt = await contract.addLiquidity(value1, value2, {
+                nonce: nonce3
+            })
             await receipt.wait()
             return receipt
         } else {
-            console.log(value1, value2)
-            const receipt = await contract.addLiquidity(value1, { value: value2 })
+            const receipt = await contract.addLiquidity(value1, {
+                nonce: nonce3,
+                value: value2
+            })
             await receipt.wait()
             return receipt
         }

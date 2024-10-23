@@ -3,9 +3,9 @@ import { createContext, useEffect, useState } from "react";
 import { useAccount, useWalletClient } from "wagmi";
 import { BrowserProvider, JsonRpcSigner } from 'ethers'
 import { loadLiquidContract } from "@/utils/loadLiquidContract";
-import { Contracts, Children, Address } from "@/lib/type";
-
-const addressContract: Address = "0x24B3c7704709ed1491473F30393FFc93cFB0FC34" as Address
+import { Contracts, Children } from "@/lib/type";
+import { useBalances } from "@/hooks/useBalances";
+import { Address } from "viem";
 
 interface Props {
     children: Children;
@@ -20,11 +20,14 @@ interface Web3ContextType {
 export const Web3Context = createContext<Web3ContextType | undefined>(undefined)
 export function Web3Provider({ children }: Props) {
     const { isConnected } = useAccount()
+    const { liquidBalances } = useBalances()
     const { data: walletClient } = useWalletClient()
     const [provider, setProvider] = useState<BrowserProvider | undefined>(undefined)
     const [signer, setSigner] = useState<JsonRpcSigner | undefined>(undefined)
     const [contracts, setContracts] = useState<Contracts | undefined>(undefined)
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
+
+
 
     useEffect(() => {
         const connetWallet = async () => {
@@ -40,8 +43,9 @@ export function Web3Provider({ children }: Props) {
     }, [isConnected, walletClient])
 
     useEffect(() => {
-        if (!!provider) {
+        if (!!provider && liquidBalances.length > 0) {
             const app = async () => {
+                const addressContract: Address = liquidBalances[0]?.info.address as Address;
                 const contract = await loadLiquidContract({ provider, address: addressContract })
                 setContracts({ look: contract })
                 setIsLoaded(true)
@@ -50,6 +54,7 @@ export function Web3Provider({ children }: Props) {
             app()
 
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider])
 
     const value = {

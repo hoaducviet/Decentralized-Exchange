@@ -28,6 +28,9 @@ export const balancesSlice = createSlice({
                 state.isLoaded = true;
             }
         },
+        resetStatus: (state) => {
+            state.isLoaded = false;
+        },
         resetBalances: (state) => {
             state.tokenBalances = [];
             state.liquidBalances = [];
@@ -36,5 +39,5 @@ export const balancesSlice = createSlice({
     }
 })
 
-export const { setTokenBalances, setLiquidBalances, resetBalances } = balancesSlice.actions;
+export const { setTokenBalances, setLiquidBalances, resetBalances, resetStatus } = balancesSlice.actions;
 export default balancesSlice.reducer

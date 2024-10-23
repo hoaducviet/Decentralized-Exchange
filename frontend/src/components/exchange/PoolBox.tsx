@@ -4,23 +4,28 @@ import { useDispatch } from "react-redux"
 import { useAccount } from "wagmi"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
-import { useBalances } from '@/hooks/useBalances'
 import SubmitItem from "@/components/exchange/SubmitItem"
 import TradeItem from "@/components/exchange/TradeItem"
-import { HeightIcon } from "@radix-ui/react-icons"
 import { addLiquidityPool } from "@/services/liquiditypool/addLiquidityPool"
 import { getReservePairPool } from "@/utils/getReservePairPool"
 import { getLiquidityPool } from "@/utils/getLiquidityPool"
 import { resetBalances } from "@/redux/features/balances/balancesSlice"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+import { HeightIcon } from "@radix-ui/react-icons"
 import { TokenBalancesType, LiquidBalancesType } from "@/lib/type"
 
-export default function PoolBox() {
+interface Props {
+    tokenBalances: TokenBalancesType[],
+    liquidBalances: LiquidBalancesType[],
+    isLoaded: boolean,
+}
+
+export default function PoolBox({ tokenBalances, liquidBalances, isLoaded }: Props) {
     const { address } = useAccount()
     const dispatch = useDispatch()
     const web3 = useWeb3()
     const provider = web3?.provider
     const signer = web3?.signer
-    const { tokenBalances, liquidBalances, isLoaded } = useBalances();
     const [tokenOne, setTokenOne] = useState<TokenBalancesType | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<TokenBalancesType | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<LiquidBalancesType | undefined>(undefined);
@@ -33,7 +38,7 @@ export default function PoolBox() {
     useEffect(() => {
         if (isLoaded) {
             setTokenOne(tokenBalances[0])
-            setTokenTwo(tokenBalances[1])
+            setTokenTwo(tokenBalances[2])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])
@@ -57,6 +62,7 @@ export default function PoolBox() {
                 const liquidityPool = getLiquidityPool({ liquidBalances, tokenOne, tokenTwo })
                 if (liquidityPool) {
                     const { reserve1, reserve2 } = await getReservePairPool({ provider, pool: liquidityPool, tokenOne })
+
                     setCurrentPool(liquidityPool)
                     setReserve1(reserve1)
                     setReserve2(reserve2)
@@ -64,6 +70,7 @@ export default function PoolBox() {
             }
         }
         getResever()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tokenOne, tokenTwo, provider])
 
     // Tính đầu ra cho amount2 of tokens2
@@ -77,16 +84,21 @@ export default function PoolBox() {
     }, [amount1, reserve1, reserve2])
 
     const handleSend = async () => {
-        if (!!currentPool && !!signer && !!address && !!tokenOne && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
-            const receipt = await addLiquidityPool({ signer, address, pool: currentPool, tokenOne, amount1, amount2 })
-
-            if (receipt) {
-                dispatch(resetBalances())
+        if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
+            try {
+                const receipt = await addLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount1, amount2 })
+                const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
+                if (confirmedReceipt?.status === 1) {
+                    dispatch(resetBalances())
+                } else {
+                    console.error("Transaction error:", confirmedReceipt);
+                }
+                console.log(receipt)
+            } catch (error) {
+                console.error("Transaction error:", error);
             }
-            console.log(receipt.hash)
         }
     }
-
     return (
         <div className="flex flex-col w-full h-full">
             <div className="relative flex flex-col w-full h-full">
@@ -98,8 +110,28 @@ export default function PoolBox() {
                     </Button>
                 </div>
             </div>
-            <div onClick={handleSend}>
-                <SubmitItem name="Send" />
+            <div >
+                <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <div>
+                            <SubmitItem name="Send" />
+                        </div>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                This will permanently withdraw your liquidity and send your tokens from liquidity pool.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction onClick={handleSend} >
+                                Continue
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         </div>
     )
