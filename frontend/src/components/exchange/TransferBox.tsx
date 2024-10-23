@@ -51,6 +51,7 @@ export default function TransferBox() {
             const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
             if (confirmedReceipt?.status === 1) {
                 dispatch(resetBalances())
+                setAmount("")
             } else {
                 console.error("Transaction error:", confirmedReceipt);
             }

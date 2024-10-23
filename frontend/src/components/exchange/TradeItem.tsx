@@ -44,7 +44,7 @@ export default function TradeItem({ isDisabled = false, title, tokenBalance, tok
                         type='number'
                         step='any'
                         placeholder='0'
-                        value={amount}
+                        value={amount.slice(0, amount.indexOf(".") + 7)}
                         className="appearance-none bg-transparent border-none outline-none focus:caret-black-500 w-[70%] h-full text-5xl font-medium" />
                     <div className='flex justify-center items-center w-[18%] h-full'>
                         <div className='flex justify-center items-end w-full h-full'>
@@ -59,7 +59,7 @@ export default function TradeItem({ isDisabled = false, title, tokenBalance, tok
                     </div>
                 </div>
                 <CardFooter className="flex justify-end items-center">
-                    <CardDescription className="flex flex-row justify-end items-center w-[35%] pr-[1vw]">Balance: {tokenBalance?.balance?.formatted}</CardDescription>
+                    <CardDescription className="flex flex-row justify-start items-center w-[25%] pr-[1vw]">Balance: {tokenBalance?.balance?.formatted}</CardDescription>
                 </CardFooter>
             </Card>
         </div>

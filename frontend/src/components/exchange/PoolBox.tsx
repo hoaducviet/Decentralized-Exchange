@@ -89,6 +89,8 @@ export default function PoolBox({ tokenBalances, liquidBalances, isLoaded }: Pro
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1) {
                     dispatch(resetBalances())
+                    setAmount1("")
+                    setAmount2("")
                 } else {
                     console.error("Transaction error:", confirmedReceipt);
                 }

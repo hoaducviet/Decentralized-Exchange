@@ -42,6 +42,7 @@ export default function PoolBalances({ liquidBalances }: Props) {
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1) {
                     dispatch(resetBalances())
+                    setCurrentPool(undefined)
                 } else {
                     console.error("Transaction error:", confirmedReceipt);
                 }

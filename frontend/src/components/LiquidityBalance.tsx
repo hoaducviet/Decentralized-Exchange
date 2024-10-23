@@ -28,7 +28,6 @@ export default function LiquidityBalance({ liquidityBalance }: Props) {
                     <p className="flex justify-start font-semibold w-[20%] mr-[1vw]">LPT</p>
                 </div>
             </div>
-
         </>
     )
 }

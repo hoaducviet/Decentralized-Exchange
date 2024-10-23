@@ -17,12 +17,13 @@ export const getLiquidBalances = async ({ pools, tokens, provider, address }: Pr
         const value = await contract.balanceOf(address)
         const decimals = Number(await contract.decimals())
         const formatted = formatUnits(value, decimals)
+        const balanceFormatted = formatted.slice(0, formatted.indexOf(".") + 7)
         const symbol = await contract.symbol()
 
         const balance = {
             value: Number(value),
             symbol: symbol,
-            formatted: formatted,
+            formatted: balanceFormatted,
             decimals: decimals
         }
 

@@ -24,7 +24,7 @@ export type Pool = {
 export type Balance = {
     value: number | bigint | undefined;
     symbol: string | undefined;
-    formatted: number | string;
+    formatted: string;
     decimals: number;
 }
 

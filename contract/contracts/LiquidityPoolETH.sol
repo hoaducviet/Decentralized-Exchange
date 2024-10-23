@@ -126,39 +126,39 @@ contract LiquidityPoolETH {
 
         lpToken.burn(msg.sender, liquidityTokens);
 
-        emit LiquidityAdded(msg.sender, amount1, amount2, liquidityTokens);
+        emit LiquidityRemoved(msg.sender, amount1, amount2, liquidityTokens);
     }
 
     function swapToken(
         address fromToken,
-        uint256 amountIn
+        uint256 _amountIn
     ) public payable returns (uint256 amountOut) {
         require(
             fromToken == token1 || fromToken == address(0),
             "Invalid token"
         );
+        uint256 valueIn = msg.value;
 
         if (fromToken == token1) {
-            amountOut = getAmountOutSwapToken(amountIn, reserve1, reserve2);
-            ERC20(token1).transferFrom(msg.sender, address(this), amountIn);
+            amountOut = getAmountOutSwapToken(_amountIn, reserve1, reserve2);
+            ERC20(token1).transferFrom(msg.sender, address(this), _amountIn);
             payable(msg.sender).transfer(amountOut);
 
-            reserve1 += amountIn;
+            reserve1 += _amountIn;
             reserve2 -= amountOut;
         } else {
-            uint256 valueIn = msg.value;
             amountOut = getAmountOutSwapToken(valueIn, reserve2, reserve1);
             ERC20(token1).transfer(msg.sender, amountOut);
 
             reserve1 -= amountOut;
-            reserve2 += amountIn;
+            reserve2 += valueIn;
         }
 
         emit TokensSwapped(
             msg.sender,
             fromToken,
             fromToken == token1 ? address(0) : token1,
-            amountIn,
+            fromToken == token1 ? _amountIn : valueIn,
             amountOut
         );
     }

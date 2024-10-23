@@ -11,7 +11,7 @@ export default function TokenBalance({ tokenBalance }: Props) {
             <div className="cursor-pointer flex flex-row justify-between hover:bg-secondary/80 text-md w-full h-[3vw] px-[1vw]">
                 <div className=" flex flex-row justify-start items-center w-[55%]">
                     <Avatar className="w-[1.5vw] h-[1.5vw]">
-                        <AvatarImage src={tokenBalance.info.img} className="z-1"/>
+                        <AvatarImage src={tokenBalance.info.img} className="z-1" />
                         <AvatarFallback>{tokenBalance.info.symbol}</AvatarFallback>
                     </Avatar>
                     <p className="flex justify-start font-semibold mx-[0.3vw]">{tokenBalance.info.name}</p>

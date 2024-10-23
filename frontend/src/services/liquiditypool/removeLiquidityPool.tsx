@@ -13,7 +13,8 @@ export const removeLiquidityPool = async ({ provider, signer, pool, address }: P
     const isEth = pool?.info.token2?.symbol !== 'ETH' ? false : true;
     const contract = await loadLiquidContract({ provider: signer, address: pool?.info?.address, isEth: isEth });
     const amount = (pool.balance?.formatted ?? "").toString()
-    const value = parseUnits(amount, pool.balance?.decimals)
+    const amountLimit = amount.slice(0, amount.indexOf(".") + (pool?.balance?.decimals ?? 18) + 1)
+    const value = parseUnits(amountLimit, pool?.balance?.decimals)
 
     try {
         const nonce = await provider.getTransactionCount(address, 'latest');

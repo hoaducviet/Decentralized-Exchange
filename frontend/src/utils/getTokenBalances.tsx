@@ -15,12 +15,14 @@ export const getTokenBalances = async ({ tokens, provider, address }: Props) => 
 
         if (token.symbol === "ETH") {
             const ethBalance = await provider.getBalance(address)
+            const ethFormatted = formatUnits(ethBalance, token.decimals)
+            const balanceFormatted = ethFormatted.slice(0, ethFormatted.indexOf(".") + 7)
             return {
                 info: token,
                 balance: {
                     value: Number(ethBalance),
                     symbol: token.symbol,
-                    formatted: formatUnits(ethBalance, token.decimals),
+                    formatted: balanceFormatted,
                     decimals: 18
                 }
             }
@@ -30,12 +32,13 @@ export const getTokenBalances = async ({ tokens, provider, address }: Props) => 
         const value = await contract.balanceOf(address)
         const decimals = Number(await contract.decimals())
         const formatted = formatUnits(value, decimals)
+        const balanceFormatted = formatted.slice(0, formatted.indexOf(".") + 7)
         const symbol = await contract.symbol()
 
         const balance = {
             value: Number(value),
             symbol: symbol,
-            formatted: formatted,
+            formatted: balanceFormatted,
             decimals: decimals
         }
 

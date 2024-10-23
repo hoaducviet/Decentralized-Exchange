@@ -23,17 +23,15 @@ export const addLiquidityPool = async ({ provider, signer, address, pool, tokenO
     let value2
 
     if (tokenOne.info.address === pool?.info?.addressToken1) {
-        value1 = parseUnits(amount1, pool.info.decimals1)
-        value2 = parseUnits(amount2, pool.info.decimals2)
+        value1 = parseUnits(amount1.slice(0, amount1.indexOf(".") + pool.info.decimals1 + 1), pool.info.decimals1)
+        value2 = parseUnits(amount2.slice(0, amount2.indexOf(".") + pool.info.decimals2 + 1), pool.info.decimals2)
     } else {
-        value1 = parseUnits(amount2, pool.info.decimals1)
-        value2 = parseUnits(amount1, pool.info.decimals2)
+        value1 = parseUnits(amount2.slice(0, amount2.indexOf(".") + pool.info.decimals1 + 1), pool.info.decimals1)
+        value2 = parseUnits(amount1.slice(0, amount1.indexOf(".") + pool.info.decimals2 + 1), pool.info.decimals2)
     }
-
     if (balance1 < value1) {
         throw new Error("Insufficient balance for token 1");
     }
-
     try {
         const nonce1 = await provider.getTransactionCount(address, 'latest');
         const approveTX1 = await contractToken1.approve(pool?.info?.address, value1, {
@@ -57,28 +55,28 @@ export const addLiquidityPool = async ({ provider, signer, address, pool, tokenO
                 nonce: nonce2
             })
             await approveTX2.wait()
-        } catch {
-            throw new Error("Failed to approve token 2");
-        }
-    }
 
-    try {
-        const nonce3 = await provider.getTransactionCount(address, 'latest');
-        if (!isEth) {
+            const nonce3 = await provider.getTransactionCount(address, 'latest');
             const receipt = await contract.addLiquidity(value1, value2, {
                 nonce: nonce3
             })
             await receipt.wait()
             return receipt
-        } else {
+
+        } catch {
+            throw new Error("Failed to approve token 2");
+        }
+    } else {
+        try {
+            const nonce3 = await provider.getTransactionCount(address, 'latest');
             const receipt = await contract.addLiquidity(value1, {
                 nonce: nonce3,
                 value: value2
             })
             await receipt.wait()
             return receipt
+        } catch {
+            throw new Error("Failed to add liquidity");
         }
-    } catch {
-        throw new Error("Failed to add liquidity");
     }
 }
