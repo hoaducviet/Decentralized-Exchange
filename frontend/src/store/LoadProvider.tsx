@@ -31,9 +31,6 @@ export function LoadProvider({ children }: Props) {
     const web3 = useWeb3()
     const provider = web3?.provider
     const { isLoaded } = useBalances()
-
-
-
     useEffect(() => {
         const setData = async () => {
             dispatch(setTokens(tokensInfo))
@@ -66,7 +63,7 @@ export function LoadProvider({ children }: Props) {
             }
             tokenBalanaces()
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tokens, provider, isConnected, address, isLoaded, dispatch])
 
 

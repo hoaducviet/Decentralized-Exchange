@@ -62,7 +62,6 @@ export default function PoolBox({ tokenBalances, liquidBalances, isLoaded }: Pro
                 const liquidityPool = getLiquidityPool({ liquidBalances, tokenOne, tokenTwo })
                 if (liquidityPool) {
                     const { reserve1, reserve2 } = await getReservePairPool({ provider, pool: liquidityPool, tokenOne })
-
                     setCurrentPool(liquidityPool)
                     setReserve1(reserve1)
                     setReserve2(reserve2)
