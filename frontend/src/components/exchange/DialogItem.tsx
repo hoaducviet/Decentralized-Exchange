@@ -28,7 +28,7 @@ export default function DialogItem({ children, tokenBalances, setToken }: Props)
                     <DialogHeader className="bg-fixed w-full p-[2%]">
                         <DialogTitle className="px-[1vw]">Select a token</DialogTitle>
                     </DialogHeader>
-                    <div className="flex flex-col w-full h-full overflow-auto">
+                    <div className="flex flex-col w-full h-full overflow-x-auto mb-[2vw]">
                         {tokenBalances.length && tokenBalances.map((tokenBalance) => {
                             return (
                                 <Button onClick={() => handleClick(tokenBalance)} variant="ghost" key={tokenBalance.info.address} className="flex flex-row w-full h-[3vw]  px-[1vw]">

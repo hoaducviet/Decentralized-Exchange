@@ -23,10 +23,12 @@ const tokensInfo = [ethInfo, ...tokensERC20]
 
 const USDToken = tokensInfo.find(token => token.symbol === 'USD');
 const USDTToken = tokensInfo.find(token => token.symbol === 'USDT');
-const USDPool = poolsInfo.find(pool =>  (pool.addressToken1 === USDToken?.address || pool.addressToken2 === USDToken?.address) && (pool.addressToken1 === USDTToken?.address || pool.addressToken2 === USDTToken?.address))
+const ETHToken = tokensInfo.find(token => token.symbol === 'ETH');
+const USDUSDTPool = poolsInfo.find(pool => (pool.addressToken1 === USDToken?.address || pool.addressToken2 === USDToken?.address) && (pool.addressToken1 === USDTToken?.address || pool.addressToken2 === USDTToken?.address))
+const USDETHPool = poolsInfo.find(pool => (pool.addressToken1 === USDToken?.address || pool.addressToken2 === USDToken?.address) && (pool.addressToken1 === ETHToken?.address || pool.addressToken2 === ETHToken?.address))
 
 const tokenPools = poolsInfo.filter(pool => pool.addressToken1 !== USDToken?.address && pool.addressToken2 !== USDToken?.address)
-const liquidPools: Pool[] = [...tokenPools, USDPool] as Pool[]
+const liquidPools: Pool[] = [...tokenPools, USDUSDTPool, USDETHPool] as Pool[]
 
 interface Props {
     children: Children;

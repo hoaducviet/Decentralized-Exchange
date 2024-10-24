@@ -27,7 +27,7 @@ export default function TransferBox() {
     const [tokenOne, setTokenOne] = useState<TokenBalancesType | undefined>(undefined);
     const [amount, setAmount] = useState<string>("")
     const [addressReceiver, setAddressReceiver] = useState<string>("");
-    const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.balance?.value !== 0 && tokenBalance.info.symbol !== 'USD')
+    const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.info.symbol !== 'USD')
 
     useEffect(() => {
         if (isLoaded) {
@@ -49,6 +49,7 @@ export default function TransferBox() {
             if (confirmedReceipt?.status === 1) {
                 dispatch(resetBalances())
                 setAmount("")
+                setAddressReceiver("")
             } else {
                 console.error("Transaction error:", confirmedReceipt);
             }

@@ -28,9 +28,8 @@ export default function SwapBox() {
     const [reserve2, setReserve2] = useState<number>(0)
     const [amount1, setAmount1] = useState<string>("")
     const [amount2, setAmount2] = useState<string>("")
-    const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.balance?.value !== 0 && tokenBalance.info.symbol !== 'USD')
-
-
+    const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.info.symbol !== 'USD')
+    const balances = isLoaded ? tokensbalances.filter(tokenBalance => tokenBalance.info.address !== tokenOne?.info.address && tokenBalance.info.address !== tokenTwo?.info.address) : [];
 
     useEffect(() => {
         if (isLoaded) {
@@ -40,7 +39,6 @@ export default function SwapBox() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])
 
-    const balances = isLoaded ? tokensbalances.filter(tokenBalance => tokenBalance.info.address !== tokenOne?.info.address && tokenBalance.info.address !== tokenTwo?.info.address) : [];
 
     const handleSwitchTokens = () => {
         const one = tokenOne

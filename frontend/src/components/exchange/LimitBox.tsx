@@ -31,7 +31,7 @@ export default function LimitBox() {
     const [amount1, setAmount1] = useState<string>("")
     const [amount2, setAmount2] = useState<string>("")
     const [price, setPrice] = useState<string>("")
-    const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.balance?.value !== 0 && tokenBalance.info.symbol !== 'USD')
+    const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.info.symbol !== 'USD')
 
     useEffect(() => {
         if (isLoaded) {
