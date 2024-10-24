@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState, Dispatch, SetStateAction } from "react"
+import { useRef, useState, useEffect, Dispatch, SetStateAction } from "react"
 import Image from "next/image"
 import DialogItem from "@/components/exchange/DialogItem"
 import { Button } from "@/components/ui/button"
@@ -22,15 +22,23 @@ interface Props {
     tokenBalance: TokenBalancesType | undefined;
     tokenBalances: TokenBalancesType[] | [];
     setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
+    setAmount: Dispatch<SetStateAction<string>>;
+    amount1: string;
+    amount2: string;
 }
 
-export default function SellItem({ tokenBalance, tokenBalances, setToken }: Props) {
+export default function SellItem({ tokenBalance, tokenBalances, setToken, setAmount, amount1, amount2 }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const [isActive, setIsActive] = useState<number | undefined>()
-    const [value, setValue] = useState<string>("")
+
+    useEffect(() => {
+        if (amount2 === "") {
+            setIsActive(undefined)
+        }
+    }, [amount2])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
+        setAmount(e.target.value)
         setIsActive(undefined)
     }
     const handleClick = () => {
@@ -40,7 +48,7 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken }: Prop
     }
     const handleActive = (index: number, item: Price) => {
         setIsActive(index)
-        setValue(item.value)
+        setAmount(item.value)
     }
 
     return (
@@ -63,17 +71,18 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken }: Prop
                         ref={ref}
                         type='number'
                         step='any'
-                        value={parseFloat(value)}
+                        value={amount1.slice(0, amount1.indexOf(".") + 7)}
                         onChange={handleChange}
                         className="appearance-none bg-transparent text-end border-none outline-none focus:caret-black-500 max-w-[80%] font-medium"
-                        style={{ width: value.length === 0 ? '1px' : `${(value.length + 0.5) * 2.5}rem` }}
+                        style={{ width: amount1.length === 0 ? '1px' : `${(amount1.length + 0.5) * 2.5}rem` }}
                     />
-                    {value.length === 0 ? <p>0</p> : <div className="text-xl font-semibold mx-[1vw]">{tokenBalance?.info.symbol}</div>}
+                    {amount1.length === 0 ? <p>0</p> : <div className="text-xl font-semibold mx-[1vw]">{tokenBalance?.info.symbol}</div>}
 
                 </div>
                 <div className="flex flex-row justify-center items-center text-xl font-medium opacity-50 w-full h-full">
                     <p className="mr-[0.1vw]">$</p>
-                    <p className="mx-[0.1vw]">{123}</p>
+                    {amount2.length === 0 ? <p className="font-medium ml-[0.1vw]">0</p> : <></>}
+                    <p className="mx-[0.1vw]">{amount2.slice(0, amount2.indexOf(".") + 7)}</p>
                     <p className="font-bold ml-[0.1vw]">USD</p>
                 </div>
             </CardContent>
@@ -84,7 +93,7 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken }: Prop
                             key={index}
                             variant="ghost"
                             onClick={() => handleActive(index, item)}
-                            className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || value === item.value) && 'bg-purple-200 hover:bg-purple-200 opacity-100'}`}>
+                            className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || amount1 === item.value) && 'bg-purple-200 hover:bg-purple-200 opacity-100'}`}>
                             <div className="flex flex-row">
                                 <p className="mr-[0.1vw]">{item.name}</p>
                                 <p className="font-semibold ml-[0.1vw]">{tokenBalance?.info.symbol}</p>

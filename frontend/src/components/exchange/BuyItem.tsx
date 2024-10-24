@@ -32,10 +32,10 @@ export default function BuyItem({ tokenBalance, tokenBalances, setToken, setAmou
     const [isActive, setIsActive] = useState<number | undefined>()
 
     useEffect(() => {
-        if(amount2 === ""){
+        if(amount1 === ""){
             setIsActive(undefined)
         }
-    }, [amount2])
+    }, [amount1])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAmount(e.target.value)
