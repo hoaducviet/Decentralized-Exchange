@@ -13,6 +13,7 @@ interface Props {
     tokenBalances: TokenBalancesType[] | [];
     setTokenOne: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
     setTokenTwo: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
+    price: string;
 }
 
 const listOptions = [
@@ -22,7 +23,7 @@ const listOptions = [
     { name: '+10%' },
 ]
 
-export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenOne, setTokenTwo }: Props) {
+export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenOne, setTokenTwo, price }: Props) {
     const [isActive, setIsActive] = useState<number | null>(0)
     const handleActive = (index: number) => {
         setIsActive(index)
@@ -55,8 +56,8 @@ export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenO
                     </div>
                 </CardHeader>
                 <div className="flex flex-row justify-center items-center mx-[5%] pb-[1%]">
-                    <div className="bg-transparent border-none outline-none focus:caret-black-500 w-[70%] h-full text-5xl font-medium">
-                        123.4353
+                    <div className="bg-transparent border-none outline-none focus:caret-black-500 w-[70%] h-[3vw] text-5xl font-medium">
+                        {price}
                     </div>
                     <div className='flex justify-center items-center w-[30%] h-full'>
                         <div className='flex flex-row justify-center shadow-xl rounded-2xl items-center w-[50%] h-full'>

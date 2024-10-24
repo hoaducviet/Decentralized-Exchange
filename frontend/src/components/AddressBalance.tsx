@@ -5,7 +5,7 @@ import LiquidityBalance from "@/components/LiquidityBalance";
 
 export default function AddressBalance() {
     const { tokenBalances, liquidBalances, isLoaded } = useBalances()
-    const balances = tokenBalances.filter(tokenBalance => tokenBalance.balance?.value !== 0)
+    const balances = tokenBalances.filter(tokenBalance => tokenBalance.balance?.value !== 0 && tokenBalance.info.symbol !== 'USD')
     const LPbalances = liquidBalances.filter(liquidBalance => liquidBalance.balance?.value !== 0)
 
     return (

@@ -1,5 +1,11 @@
 [
   {
+    "ticker": "USD",
+    "img": "https://images.kienthuc.net.vn/zoom/800/uploaded/quocquan/2021_12_29/giai-ma-bieu-tuong-thien-nhan-tren-to-tien-do-la-my-hinh-10.jpg",
+    "name": "US Dollar",
+    "decimals": 6
+  },
+  {
     "ticker": "USDC",
     "img": "https://cdn.moralis.io/eth/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.png",
     "name": "USD Coin",

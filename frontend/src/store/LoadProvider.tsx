@@ -21,6 +21,13 @@ const tokensERC20: Token[] = tokenERC20 as Token[];
 const poolsInfo: Pool[] = poolTokens as Pool[];
 const tokensInfo = [ethInfo, ...tokensERC20]
 
+const USDToken = tokensInfo.find(token => token.symbol === 'USD');
+const USDTToken = tokensInfo.find(token => token.symbol === 'USDT');
+const USDPool = poolsInfo.find(pool =>  (pool.addressToken1 === USDToken?.address || pool.addressToken2 === USDToken?.address) && (pool.addressToken1 === USDTToken?.address || pool.addressToken2 === USDTToken?.address))
+
+const tokenPools = poolsInfo.filter(pool => pool.addressToken1 !== USDToken?.address && pool.addressToken2 !== USDToken?.address)
+const liquidPools: Pool[] = [...tokenPools, USDPool] as Pool[]
+
 interface Props {
     children: Children;
 }
@@ -34,7 +41,7 @@ export function LoadProvider({ children }: Props) {
     useEffect(() => {
         const setData = async () => {
             dispatch(setTokens(tokensInfo))
-            dispatch(setPools(poolsInfo))
+            dispatch(setPools(liquidPools))
         }
 
         setData()

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useAccount } from "wagmi"
 import { useWeb3 } from "@/hooks/useWeb3"
+import { useBalances } from '@/hooks/useBalances'
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import TradeItem from "@/components/exchange/TradeItem"
@@ -11,7 +12,6 @@ import { resetBalances } from "@/redux/features/balances/balancesSlice"
 import { getReservePairPool } from "@/utils/getReservePairPool"
 import { getLiquidityPool } from "@/utils/getLiquidityPool"
 import { HeightIcon } from "@radix-ui/react-icons"
-import { useBalances } from '@/hooks/useBalances'
 import { TokenBalancesType, LiquidBalancesType } from "@/lib/type"
 
 export default function SwapBox() {
@@ -28,16 +28,19 @@ export default function SwapBox() {
     const [reserve2, setReserve2] = useState<number>(0)
     const [amount1, setAmount1] = useState<string>("")
     const [amount2, setAmount2] = useState<string>("")
+    const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.balance?.value !== 0 && tokenBalance.info.symbol !== 'USD')
+
+
 
     useEffect(() => {
         if (isLoaded) {
-            setTokenOne(tokenBalances[0])
-            setTokenTwo(tokenBalances[1])
+            setTokenOne(tokensbalances[0])
+            setTokenTwo(tokensbalances[1])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])
 
-    const balances = isLoaded ? tokenBalances.filter(tokenBalance => tokenBalance.info.address !== tokenOne?.info.address && tokenBalance.info.address !== tokenTwo?.info.address) : [];
+    const balances = isLoaded ? tokensbalances.filter(tokenBalance => tokenBalance.info.address !== tokenOne?.info.address && tokenBalance.info.address !== tokenTwo?.info.address) : [];
 
     const handleSwitchTokens = () => {
         const one = tokenOne

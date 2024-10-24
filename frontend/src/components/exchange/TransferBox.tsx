@@ -1,22 +1,20 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
-import { ethers } from 'ethers';
+import { useAccount } from 'wagmi';
 import { useDispatch } from "react-redux"
-
+import { ethers } from 'ethers';
+import { useWeb3 } from '@/hooks/useWeb3';
+import { useBalances } from '@/hooks/useBalances'
+import { Card } from '@/components/ui/card'
 import Image from "next/image";
+import { transferToken } from '@/services/liquiditypool/transferToken';
+import { resetBalances } from "@/redux/features/balances/balancesSlice"
 import TransferItem from "@/components/exchange/TransferItem";
 import DialogItem from "@/components/exchange/DialogItem"
 import AddressItem from "@/components/exchange/AddressItem";
 import SubmitItem from "@/components/exchange/SubmitItem"
-import { Card } from '@/components/ui/card'
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { useBalances } from '@/hooks/useBalances'
 import { TokenBalancesType } from '@/lib/type'
-import { resetBalances } from "@/redux/features/balances/balancesSlice"
-
-import { transferToken } from '@/services/liquiditypool/transferToken';
-import { useWeb3 } from '@/hooks/useWeb3';
-import { useAccount } from 'wagmi';
 import { Address } from '@/lib/type';
 
 export default function TransferBox() {
@@ -29,17 +27,16 @@ export default function TransferBox() {
     const [tokenOne, setTokenOne] = useState<TokenBalancesType | undefined>(undefined);
     const [amount, setAmount] = useState<string>("")
     const [addressReceiver, setAddressReceiver] = useState<string>("");
-
+    const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.balance?.value !== 0 && tokenBalance.info.symbol !== 'USD')
 
     useEffect(() => {
         if (isLoaded) {
-            setTokenOne(tokenBalances[0])
+            setTokenOne(tokensbalances[0])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])
-    const balances = isLoaded ? tokenBalances.filter(tokenBalance => tokenBalance.info.address !== tokenOne?.info.address) : [];
 
-
+    const balances = isLoaded ? tokensbalances.filter(tokenBalance => tokenBalance.info.address !== tokenOne?.info.address) : [];
     const handleSend = useCallback(async () => {
         if (!ethers.isAddress(addressReceiver)) {
             console.log("Address incorrect")
@@ -58,7 +55,6 @@ export default function TransferBox() {
             console.log(receipt)
         }
     }, [provider, signer, address, addressReceiver, tokenOne, amount, dispatch])
-
     return (
         <div className="flex flex-col justify-center items-center w-full h-full">
             <TransferItem tokenBalance={tokenOne} amount={amount} setAmount={setAmount} />

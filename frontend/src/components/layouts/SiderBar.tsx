@@ -6,13 +6,16 @@ import ActionsManagement from '@/components/ActionsManagement'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from '@/components/ui/button'
 import { LayersIcon } from '@radix-ui/react-icons'
+import { useBalances } from '@/hooks/useBalances'
 
 export default function SiderBar() {
     const { address } = useAccount()
     const { disconnect } = useDisconnect()
+    const { tokenBalances} = useBalances()
     const { data: ensName } = useEnsName({ address })
     const { data: ensAvatar } = useEnsAvatar({ name: ensName! })
     const addressConfig = (address ? address.slice(0, 6) + "..." + address.slice(38) : "")
+    const usdBalances = tokenBalances.find(tokenBalance => tokenBalance.info.symbol === 'USD')
 
     return (
         <div className=' absolute flex flex-col w-full max-h-[100vh] overflow-x-auto z-10'>
@@ -35,6 +38,11 @@ export default function SiderBar() {
                     </div>
                     <Button variant="secondary" className='bg-transparent flex justify-center items-center rounded-3xl w-[30%] mx-[1vw]' onClick={() => disconnect()}>Disconnect</Button>
 
+                </div>
+                <div className='flex flex-row justify-start items-center space-x-[0.5vw] mx-[1.5vw] my-[0.5vw]'>
+                    <p className='text-xl font-semibold opacity-80'>Balance:</p>
+                    <p className='text-lg font-medium'>{usdBalances?.balance?.formatted}</p>
+                    <p className='text-xl font-semibold opacity-80'>$</p>
                 </div>
                 <div className='flex flex-col items-center w-full z-100'>
                     <ActionsManagement />

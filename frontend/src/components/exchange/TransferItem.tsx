@@ -43,7 +43,7 @@ export default function TransferItem({ tokenBalance, amount, setAmount }: Props)
                                 ref={ref}
                                 type='number'
                                 step='any'
-                                value={amount}
+                                value={amount.includes(".") ? amount.slice(0, amount.indexOf(".") + 7) : amount}
                                 onChange={handleChange}
                                 className="appearance-none bg-transparent text-start border-none outline-none focus:caret-black-500 max-w-[80%] font-medium"
                                 style={{ width: amount.length === 0 ? '1px' : `${(amount.length + 1) * 1.5}rem` }}
@@ -58,7 +58,7 @@ export default function TransferItem({ tokenBalance, amount, setAmount }: Props)
                                 ref={ref}
                                 type='number'
                                 step='any'
-                                value={amount}
+                                value={amount.includes(".") ? amount.slice(0, amount.indexOf(".") + 7) : amount}
                                 onChange={handleChange}
                                 placeholder='0'
                                 className="appearance-none bg-transparent text-start border-none outline-none focus:caret-black-500 max-w-[80%] font-medium"
