@@ -5,11 +5,7 @@ const { ethers } = require("hardhat");
 const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
 module.exports = buildModule("NFTMarket", (m) => {
-  const initialOwner = m.getParameter(
-    "initialOwner",
-    process.env.ACCOUT_ADDRESS_HARDHAT
-  );
-  const nftMarket = m.contract("NFTMarket", [initialOwner]);
+  const nftMarket = m.contract("NFTMarket", []);
 
   return { nftMarket };
 });

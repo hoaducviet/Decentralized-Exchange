@@ -28,7 +28,7 @@ export default function SellBox() {
     const [amount2, setAmount2] = useState<string>("")
     const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.info.symbol === 'ETH' || tokenBalance.info.symbol === 'USDT')
     const usdBalances = tokenBalances.find(tokenBalance => tokenBalance.info.symbol === "USD")
-    const balances = isLoaded ? tokensbalances.filter(tokenBalance => tokenBalance.info.address !== tokenTwo?.info.address) : [];
+    const balances = isLoaded ? tokensbalances.filter(tokenBalance => tokenBalance.info.address !== tokenOne?.info.address) : [];
 
     useEffect(() => {
         if (isLoaded) {

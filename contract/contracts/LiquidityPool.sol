@@ -61,14 +61,15 @@ contract LiquidityPool {
             amount1 > 0 && amount2 > 0,
             "Amounts must be greater than zero"
         );
+
         require(
             ERC20(token1).allowance(msg.sender, address(this)) >= amount1,
-            "Insufficient token allowance"
+            "Insufficient token allowance token1"
         );
 
         require(
             ERC20(token2).allowance(msg.sender, address(this)) >= amount2,
-            "Insufficient token allowance"
+            "Insufficient token allowance token2"
         );
 
         //Transfer token from provider to address contract

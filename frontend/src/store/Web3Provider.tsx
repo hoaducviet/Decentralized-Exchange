@@ -27,8 +27,6 @@ export function Web3Provider({ children }: Props) {
     const [contracts, setContracts] = useState<Contracts | undefined>(undefined)
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
-
-
     useEffect(() => {
         const connetWallet = async () => {
             if (!isConnected || !walletClient) { return }
