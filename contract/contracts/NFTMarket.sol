@@ -1,104 +1,103 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.27;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "./NFTERC721.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {NFTCollection, ERC721} from "./NFTCollection.sol";
 
 contract NFTMarket is Ownable {
-    struct NFTInfo {
-        address contractAddress;
-        uint256 nftId;
-        uint256 price;
+    uint256 public counter;
+    struct CollectionInfo {
+        address collectionAddress;
         string name;
         string symbol;
-        string uri;
     }
-    mapping(uint256 => NFTInfo) public nfts;
-    uint256 public nftCounter;
+    mapping(uint256 => CollectionInfo) public collections;
 
-    event NFTCreated(address contractAddress, address owner, uint256 price);
-    event NFTBought(uint256 nftId, address buyer, uint256 price);
-    event NFTListed(uint256 nftId, uint256 price);
-    event NFTTransfer(uint256 nftId, address receiver);
+    event CollectionCreated(
+        address collectionAddress,
+        address owner,
+        string name,
+        string symbol
+    );
 
-    constructor(address initialOwner) Ownable(initialOwner) {
-        nftCounter = 0;
+    event CollectionAdd(address collectionAddress, string name, string symbol);
+    event CollectionRemove(
+        address collectionAddress,
+        string name,
+        string symbol
+    );
+
+    constructor() Ownable(msg.sender) {
+        counter = 0;
     }
 
-    function createNFT(
+    function createCollection(
         string memory _name,
-        string memory _symbol,
-        string memory _uri,
-        uint256 _price
-    ) public onlyOwner {
-        require(_price > 0, "Price must be greater than zero");
-        uint256 newNftId = nftCounter;
-
-        NFTERC721 newNFT = new NFTERC721(
+        string memory _symbol
+    ) public payable onlyOwner {
+        NFTCollection newCollection = new NFTCollection(
             _name,
             _symbol,
-            _uri,
-            _price,
             msg.sender
         );
 
-        newNFT.mintNFT(msg.sender, newNftId);
-
-        nfts[newNftId] = NFTInfo({
-            contractAddress: address(newNFT),
-            nftId: newNftId,
-            price: _price,
+        CollectionInfo memory newCollectionInfo = CollectionInfo({
+            collectionAddress: address(newCollection),
             name: _name,
-            symbol: _symbol,
-            uri: _uri
+            symbol: _symbol
         });
 
-        emit NFTCreated(address(newNFT), msg.sender, _price);
-        nftCounter += 1;
-    }
+        uint256 collectionId = counter++;
+        collections[collectionId] = newCollectionInfo;
 
-    function buyNFT(uint256 nftId) external payable {
-        NFTInfo storage nft = nfts[nftId];
-        require(nft.price > 0, "Price must be greater than zero");
-        require(msg.value >= nft.price, "Incorrect Ether amount");
-
-        NFTERC721(nft.contractAddress).buyNFT{value: msg.value}(msg.sender);
-
-        emit NFTBought(nftId, msg.sender, nft.price);
-        nft.price = 0;
-    }
-
-    function transferNFT(uint256 nftId, address receiver) public {
-        NFTInfo storage nft = nfts[nftId];
-
-        require(
-            NFTERC721(nft.contractAddress).ownerOf(nftId) == msg.sender,
-            "Not the owner"
-        );
-        NFTERC721(nft.contractAddress).transferFrom(
+        emit CollectionCreated(
+            address(newCollection),
             msg.sender,
-            receiver,
-            nftId
+            _name,
+            _symbol
         );
-
-        emit NFTTransfer(nftId, receiver);
     }
 
-    function listNFT(uint256 nftId, uint256 newPrice) public {
-        NFTInfo storage nft = nfts[nftId];
-        require(nft.price > 0, "Price must be greater than zero");
-        require(
-            NFTERC721(nft.contractAddress).owner() == msg.sender,
-            "Not the owner"
+    function addCollection(address _collectionAddress) external payable {
+        require(msg.value >= 1 ether, "Not enough fee add to market is 1 ETH");
+        payable(msg.sender).transfer(msg.value);
+        ERC721 newCollection = ERC721(_collectionAddress);
+
+        CollectionInfo memory newCollectionInfo = CollectionInfo({
+            collectionAddress: address(newCollection),
+            name: newCollection.name(),
+            symbol: newCollection.symbol()
+        });
+
+        uint256 collectionId = counter++;
+        collections[collectionId] = newCollectionInfo;
+
+        emit CollectionAdd(
+            address(newCollection),
+            newCollection.name(),
+            newCollection.symbol()
         );
-
-        NFTERC721(nft.contractAddress).setPriceNFT(msg.sender, newPrice);
-        nft.price = newPrice;
-
-        emit NFTListed(nftId, newPrice);
     }
 
-    function getNFTInfo(uint256 nftId) public view returns (NFTInfo memory) {
-        return nfts[nftId];
+    function removeCollection(uint256 _collectionId) public onlyOwner {
+        require(counter > 0, "Not has an collection");
+        uint256 collectionId = --counter;
+        CollectionInfo memory collection = collections[_collectionId];
+        collections[_collectionId] = collections[collectionId];
+
+        emit CollectionRemove(
+            collection.collectionAddress,
+            collection.name,
+            collection.symbol
+        );
+    }
+
+    function getAllCollection() public view returns (CollectionInfo[] memory) {
+        CollectionInfo[] memory allCollection = new CollectionInfo[](counter);
+        for (uint256 i = 0; i < counter; i++) {
+            allCollection[i] = collections[i];
+        }
+
+        return allCollection;
     }
 }

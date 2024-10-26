@@ -13,20 +13,27 @@ interface Props {
     tokenBalances: TokenBalancesType[] | [];
     setTokenOne: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
     setTokenTwo: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
+    setPercent: Dispatch<SetStateAction<string>>;
     price: string;
 }
 
-const listOptions = [
-    { name: 'Market' },
-    { name: '+1%' },
-    { name: '+5%' },
-    { name: '+10%' },
-]
+type list = {
+    name: string;
+    value: string;
+}
 
-export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenOne, setTokenTwo, price }: Props) {
-    const [isActive, setIsActive] = useState<number | null>(0)
+const listOptions: list[] = [
+    { name: 'Market', value: "1.0" },
+    { name: '+1%', value: "1.01" },
+    { name: '+5%', value: "1.05" },
+    { name: '+10%', value: "1.1" },
+] as list[];
+
+export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenOne, setTokenTwo, price, setPercent }: Props) {
+    const [isActive, setIsActive] = useState<number>(0)
     const handleActive = (index: number) => {
         setIsActive(index)
+        setPercent(listOptions[index].value)
     }
     const handleSwitchTokens = () => {
         const one = tokenOne

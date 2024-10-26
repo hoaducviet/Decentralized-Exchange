@@ -10,11 +10,14 @@ import TimeItem from "@/components/exchange/TimeItem"
 import TradeItem from "@/components/exchange/TradeItem"
 import LimitItem from "@/components/exchange/LimitItem"
 import { resetBalances } from "@/redux/features/balances/balancesSlice"
-import { swapLiquidityPool } from "@/services/liquiditypool/swapLiquidityPool"
+import { swapLimitPool } from "@/services/liquiditypool/swapLimitPool"
 import { getReservePairPool } from "@/utils/getReservePairPool"
 import { getLiquidityPool } from "@/utils/getLiquidityPool"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { LiquidBalancesType, TokenBalancesType } from '@/lib/type';
+import { Address } from '@/lib/type'
+
+const addressContract: Address = "0x5FbDB2315678afecb367f032d93F642f64180aa3" as Address
 
 export default function LimitBox() {
     const { address } = useAccount()
@@ -31,6 +34,7 @@ export default function LimitBox() {
     const [amount1, setAmount1] = useState<string>("")
     const [amount2, setAmount2] = useState<string>("")
     const [price, setPrice] = useState<string>("")
+    const [percent, setPercent] = useState<string>("1.0")
     const tokensbalances = tokenBalances.filter(tokenBalance => tokenBalance.info.symbol !== 'USD')
 
     useEffect(() => {
@@ -73,24 +77,24 @@ export default function LimitBox() {
             setAmount2("")
         } else {
             const value = parseFloat(amount1)
-            const amountReceiver = value * reserve2 / (reserve1 + value)
+            const amountReceiver = value * reserve2 * parseFloat(percent) / (reserve1 + value)
             setAmount2(amountReceiver.toString())
         }
-    }, [amount1, reserve1, reserve2])
+    }, [amount1, reserve1, reserve2, percent])
 
     useEffect(() => {
         if (reserve1 > 0 && reserve2 > 0) {
-            const value = (reserve2 / reserve1).toString();
+            const value = ((reserve2 / reserve1) * parseFloat(percent)).toString();
             setPrice(value.slice(0, value.indexOf('.') + 7));
         } else {
             setPrice("");
         }
-    }, [reserve1, reserve2])
+    }, [reserve1, reserve2, percent])
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && parseFloat(amount1) > 0) {
             try {
-                const receipt = await swapLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount: amount1 })
+                const receipt = await swapLimitPool({ provider, signer, address, addressContract, pool: currentPool, tokenOne, amount: amount1, price })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1) {
                     dispatch(resetBalances())
@@ -104,14 +108,14 @@ export default function LimitBox() {
                 console.error("Transaction error:", error);
             }
         }
-    }, [provider, signer, currentPool, address, tokenOne, amount1, dispatch])
+    }, [provider, signer, currentPool, address, tokenOne, amount1, price, dispatch])
 
     return (
         <div className="flex flex-col w-full h-full">
-            <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} price={price} tokenBalances={balances} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo} />
+            <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} price={price} tokenBalances={balances} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo} setPercent={setPercent} />
             <div className="relative flex flex-col w-full h-full">
-                <TradeItem title="Buy" tokenBalance={tokenOne} tokenBalances={balances} setToken={setTokenOne} amount={amount1} setAmount={setAmount1} />
-                <TradeItem title="Sell" tokenBalance={tokenTwo} tokenBalances={balances} setToken={setTokenTwo} amount={amount2} setAmount={setAmount2} isDisabled />
+                <TradeItem title="From" tokenBalance={tokenOne} tokenBalances={balances} setToken={setTokenOne} amount={amount1} setAmount={setAmount1} />
+                <TradeItem title="To" tokenBalance={tokenTwo} tokenBalances={balances} setToken={setTokenTwo} amount={amount2} setAmount={setAmount2} isDisabled />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[10%] h-[10%]">
                     <Button onClick={handleSwitchTokens} variant="secondary" className="w-[full] h-full">
                         <HeightIcon className="w-full h-full" />

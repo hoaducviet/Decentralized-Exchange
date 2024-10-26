@@ -6,10 +6,9 @@ import SwapBox from '@/components/exchange/SwapBox'
 import TransferBox from '@/components/exchange/TransferBox'
 
 export default function Swap() {
-
     return (
         <div className="flex flex-col items-center mt-[10vh] w-full h-full">
-            <Tabs defaultValue="sell" className="flex flex-col justify-center w-[40%]">
+            <Tabs defaultValue="limit" className="flex flex-col justify-center w-[40%]">
                 <TabsList className="flex flex-rol select-none justify-between w-full">
                     <TabsTrigger value="swap" className="w-[20%] h-full">Swap</TabsTrigger>
                     <TabsTrigger value="limit" className="w-[20%] h-full">Limit</TabsTrigger>
