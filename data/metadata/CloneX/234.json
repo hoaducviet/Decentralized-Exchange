@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "234",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xf6e06975844ee819ace2d0d4997cb52257d8ad84",
+  "last_metadata_sync": "2024-08-23T22:43:16.064Z",
+  "last_token_uri_sync": "2024-08-23T22:43:15.874Z",
+  "metadata": "{\"name\":\"CloneX #8413\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Hair\",\"value\":\"BLND Hairclip\"},{\"trait_type\":\"Clothing\",\"value\":\"ORNG FRSH Shirt\"},{\"trait_type\":\"Eyewear\",\"value\":\"Kawaii Patch\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/234.png\"}",
+  "block_number": "20838911",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "ab1d27bdd583d65c8f30b59885c68534",
+  "token_uri": "https://clonex-assets.rtfkt.com/234",
+  "minter_address": null,
+  "rarity_rank": 7878,
+  "rarity_percentage": 40.19,
+  "rarity_label": "Top 41%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #8413",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/234.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLND Hairclip",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 89,
+        "percentage": 0.45
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "ORNG FRSH Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 229,
+        "percentage": 1.17
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "Kawaii Patch",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 109,
+        "percentage": 0.56
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

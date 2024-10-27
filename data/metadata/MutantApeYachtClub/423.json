@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "423",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x465dca9995d6c2a81a9be80fbced5a770dee3dae",
+  "last_metadata_sync": "2024-08-24T19:57:47.967Z",
+  "last_token_uri_sync": "2024-08-24T19:57:07.179Z",
+  "metadata": "{\"image\":\"ipfs://QmefZdvdz3zfqo83EM9F8yRmbXEjjeVaGUYrj2KxVkSQHW\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M2 White\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Angry\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Biker Vest\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Unshaven Kazoo\"},{\"trait_type\":\"Earring\",\"value\":\"M2 Silver Hoop\"}]}",
+  "block_number": "14697585",
+  "block_number_minted": "13117248",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "9a2874cddfb3b5d05de1ed28ff9e5ac6",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/423",
+  "minter_address": "0x90f3146fa0e9e2056bbe383ecd2ff5864eaa78c5",
+  "rarity_rank": 630,
+  "rarity_percentage": 3.23,
+  "rarity_label": "Top 4%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmefZdvdz3zfqo83EM9F8yRmbXEjjeVaGUYrj2KxVkSQHW",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 610,
+        "percentage": 3.13
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 White",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 214,
+        "percentage": 1.1
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Angry",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 214,
+        "percentage": 1.1
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Biker Vest",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 130,
+        "percentage": 0.67
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Unshaven Kazoo",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 37,
+        "percentage": 0.19
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M2 Silver Hoop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 393,
+        "percentage": 2.02
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

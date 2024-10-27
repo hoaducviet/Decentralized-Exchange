@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "254",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x697e68424f5756f1a7709ee7f863effec2a733d8",
+  "last_metadata_sync": "2024-08-23T22:43:15.651Z",
+  "last_token_uri_sync": "2024-08-23T22:43:15.599Z",
+  "metadata": "{\"name\":\"CloneX #9378\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Demon\"},{\"trait_type\":\"Hair\",\"value\":\"PNK BWLCUT\"},{\"trait_type\":\"Clothing\",\"value\":\"GM HOODIE\"},{\"trait_type\":\"Eyewear\",\"value\":\"BILLIONAIRE\"},{\"trait_type\":\"Mouth\",\"value\":\"TCTL SMILE\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/254.png\"}",
+  "block_number": "19839006",
+  "block_number_minted": "13792277",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "c14283edf068a575e1922656d6d99923",
+  "token_uri": "https://clonex-assets.rtfkt.com/254",
+  "minter_address": "0x87a5542bfd30a745b1057409037ca55fd3aee023",
+  "rarity_rank": 13690,
+  "rarity_percentage": 69.85,
+  "rarity_label": "Top 70%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #9378",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/254.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Demon",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1717,
+        "percentage": 8.76
+      },
+      {
+        "trait_type": "Hair",
+        "value": "PNK BWLCUT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 183,
+        "percentage": 0.93
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "GM HOODIE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 202,
+        "percentage": 1.03
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "BILLIONAIRE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 484,
+        "percentage": 2.47
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "TCTL SMILE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 269,
+        "percentage": 1.37
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

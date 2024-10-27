@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "15",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x1edb1fb7deea16e2d5b19f36ab237873828ad81f",
+  "last_metadata_sync": "2024-10-21T18:41:19.599Z",
+  "last_token_uri_sync": "2024-10-21T18:41:19.392Z",
+  "metadata": "{\"image\":\"ipfs://QmeGWaFNJyVpkr1LmkKye7qfUGwK9jTRW2sMxKnMDrJKtr\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"Gray\"},{\"trait_type\":\"Fur\",\"value\":\"Gray\"},{\"trait_type\":\"Eyes\",\"value\":\"Zombie\"},{\"trait_type\":\"Mouth\",\"value\":\"Phoneme L\"},{\"trait_type\":\"Clothes\",\"value\":\"Black T\"},{\"trait_type\":\"Hat\",\"value\":\"Girl's Hair Pink\"}]}",
+  "block_number": "15270155",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "e7c0d5732427e9ee906f88e776fd72bd",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/15",
+  "minter_address": null,
+  "rarity_rank": 2948,
+  "rarity_percentage": 29.48,
+  "rarity_label": "Top 30%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmeGWaFNJyVpkr1LmkKye7qfUGwK9jTRW2sMxKnMDrJKtr",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 12% trait",
+        "count": 1170,
+        "percentage": 11.7
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 496,
+        "percentage": 4.96
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Zombie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 308,
+        "percentage": 3.08
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Phoneme L",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 241,
+        "percentage": 2.41
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Black T",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 334,
+        "percentage": 3.34
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Girl's Hair Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 105,
+        "percentage": 1.05
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

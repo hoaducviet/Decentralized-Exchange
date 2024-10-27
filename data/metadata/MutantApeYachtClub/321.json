@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "321",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x061ad300518132965c509772c3f28e68fab76ef3",
+  "last_metadata_sync": "2024-08-24T19:57:32.034Z",
+  "last_token_uri_sync": "2024-08-24T19:56:51.322Z",
+  "metadata": "{\"image\":\"ipfs://QmNQRnjPWcs8A6cAFZtuxHrBjpvQEHx71niSihpQ7B3Rfe\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Gray\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Coins\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Hip Hop\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Phoneme L\"}]}",
+  "block_number": "13118103",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "54c5772813eb50b676d3e7a02e0a12ab",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/321",
+  "minter_address": null,
+  "rarity_rank": 13469,
+  "rarity_percentage": 69.08,
+  "rarity_label": "Top 70%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmNQRnjPWcs8A6cAFZtuxHrBjpvQEHx71niSihpQ7B3Rfe",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1752,
+        "percentage": 8.99
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1955,
+        "percentage": 10.03
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Coins",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 704,
+        "percentage": 3.61
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Hip Hop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 190,
+        "percentage": 0.97
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Phoneme L",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 362,
+        "percentage": 1.86
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

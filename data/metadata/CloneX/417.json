@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "417",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x49a2799acde4fdacff1d429a2a1bf883f223050e",
+  "last_metadata_sync": "2024-10-08T08:31:23.336Z",
+  "last_token_uri_sync": "2024-10-08T08:31:23.214Z",
+  "metadata": "{\"name\":\"CloneX #17958\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Hair\",\"value\":\"Top Hat\"},{\"trait_type\":\"Jewelry\",\"value\":\"SLVR Two Piece\"},{\"trait_type\":\"Clothing\",\"value\":\"SD Tee\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/417.png\"}",
+  "block_number": "16091533",
+  "block_number_minted": "13792283",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "6fb222d5f7e1b729dee9091975edd119",
+  "token_uri": "https://clonex-assets.rtfkt.com/417",
+  "minter_address": "0x25589dfc6450a27fab38484882206a67212ea02c",
+  "rarity_rank": 16041,
+  "rarity_percentage": 81.84,
+  "rarity_label": "Top 82%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #17958",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/417.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Top Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 66,
+        "percentage": 0.34
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "SLVR Two Piece",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 277,
+        "percentage": 1.41
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "SD Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 395,
+        "percentage": 2.02
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "202",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xcdfd504e82211b37c5e18ec0f37355a2ea3fab6d",
+  "last_metadata_sync": "2024-10-07T21:17:12.157Z",
+  "last_token_uri_sync": "2024-10-07T21:16:31.544Z",
+  "metadata": "{\"image\":\"ipfs://QmQemntYGATv53aG8NTgW2gF7L9AnBWQv7tWNDGwZN1ugc\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Orange\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Golden Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Wide Eyed\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Kings Robe\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Seaman's Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Cigarette\"}]}",
+  "block_number": "14321679",
+  "block_number_minted": "13117238",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "4858c1faebffa93488b7525a015eea48",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/202",
+  "minter_address": "0xc8f1a199eeb0eccedfb0f401b828ee6fb894aaa7",
+  "rarity_rank": 12080,
+  "rarity_percentage": 61.96,
+  "rarity_label": "Top 62%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmQemntYGATv53aG8NTgW2gF7L9AnBWQv7tWNDGwZN1ugc",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Orange",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1855,
+        "percentage": 9.51
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Golden Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1114,
+        "percentage": 5.71
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Wide Eyed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 793,
+        "percentage": 4.07
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Kings Robe",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 108,
+        "percentage": 0.55
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Seaman's Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 617,
+        "percentage": 3.16
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Cigarette",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1027,
+        "percentage": 5.27
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

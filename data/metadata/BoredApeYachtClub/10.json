@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "10",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0xc883a79e8e4594c4f89434edb754a10da2311139",
+  "last_metadata_sync": "2024-10-27T12:54:00.867Z",
+  "last_token_uri_sync": "2024-10-27T12:54:00.853Z",
+  "metadata": "{\"image\":\"ipfs://QmPQdVU1riwzijhCs1Lk6CHmDo4LpmwPPLuDauY3i8gSzL\",\"attributes\":[{\"trait_type\":\"Clothes\",\"value\":\"Navy Striped Tee\"},{\"trait_type\":\"Background\",\"value\":\"Aquamarine\"},{\"trait_type\":\"Hat\",\"value\":\"Bayc Hat Red\"},{\"trait_type\":\"Fur\",\"value\":\"Dmt\"},{\"trait_type\":\"Eyes\",\"value\":\"Eyepatch\"},{\"trait_type\":\"Mouth\",\"value\":\"Bored\"}]}",
+  "block_number": "14124528",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "183be9e648dee786aa2c8f96492a277b",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/10",
+  "minter_address": null,
+  "rarity_rank": 3225,
+  "rarity_percentage": 32.25,
+  "rarity_label": "Top 33%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmPQdVU1riwzijhCs1Lk6CHmDo4LpmwPPLuDauY3i8gSzL",
+    "attributes": [
+      {
+        "trait_type": "Clothes",
+        "value": "Navy Striped Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 334,
+        "percentage": 3.34
+      },
+      {
+        "trait_type": "Background",
+        "value": "Aquamarine",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1266,
+        "percentage": 12.66
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Bayc Hat Red",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 119,
+        "percentage": 1.19
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Dmt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 215,
+        "percentage": 2.15
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Eyepatch",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 333,
+        "percentage": 3.33
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 23% trait",
+        "count": 2272,
+        "percentage": 22.72
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

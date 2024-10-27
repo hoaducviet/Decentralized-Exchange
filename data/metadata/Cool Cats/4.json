@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "4",
+  "token_address": "0x1a92f7381b9f03921564a437210bb9396471050c",
+  "contract_type": "ERC721",
+  "owner_of": "0x38249927581370a727d46c24c9e2b209af4707a9",
+  "last_metadata_sync": "2024-09-13T00:23:38.502Z",
+  "last_token_uri_sync": "2024-09-13T00:23:38.472Z",
+  "metadata": "{\"description\":\"Cool Cats is a collection of 9,999 randomly generated and stylistically curated NFTs that exist on the Ethereum Blockchain. Cool Cat holders can participate in exclusive events such as NFT claims, raffles, community giveaways, and more. Remember, all cats are cool, but some are cooler than others. Visit [www.coolcatsnft.com](https://www.coolcatsnft.com/) to learn more.\",\"image\":\"https://ipfs.io/ipfs/QmQsSnk1o8eCzJzXeLLvNAZaUBMVpQsMospuLaQJSgo3n3\",\"name\":\"Cool Cat #4\",\"attributes\":[{\"trait_type\":\"body\",\"value\":\"blue cat skin\"},{\"trait_type\":\"hats\",\"value\":\"hat white\"},{\"trait_type\":\"shirt\",\"value\":\"buttondown tan\"},{\"trait_type\":\"face\",\"value\":\"unamused\"},{\"trait_type\":\"tier\",\"value\":\"cool_1\"}],\"points\":{\"Body\":0,\"Hats\":1,\"Shirt\":1,\"Face\":1},\"ipfs_image\":\"https://ipfs.io/ipfs/QmQsSnk1o8eCzJzXeLLvNAZaUBMVpQsMospuLaQJSgo3n3\",\"google_image\":\"https://drive.google.com/uc?id=1cXybdygaYthDCMp-K1KGxLu0ZI9v4TxJ\"}",
+  "block_number": "18557302",
+  "block_number_minted": "12735776",
+  "name": "Cool Cats",
+  "symbol": "COOL",
+  "token_hash": "f275e3949b581b80aebd53d5c180c4b0",
+  "token_uri": "https://api.coolcatsnft.com/cat/4",
+  "minter_address": "0x4265de963cdd60629d03fee2cd3285e6d5ff6015",
+  "rarity_rank": 9002,
+  "rarity_percentage": 90.31,
+  "rarity_label": "Top 91%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Cool Cat #4",
+    "description": "Cool Cats is a collection of 9,999 randomly generated and stylistically curated NFTs that exist on the Ethereum Blockchain. Cool Cat holders can participate in exclusive events such as NFT claims, raffles, community giveaways, and more. Remember, all cats are cool, but some are cooler than others. Visit [www.coolcatsnft.com](https://www.coolcatsnft.com/) to learn more.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://ipfs.io/ipfs/QmQsSnk1o8eCzJzXeLLvNAZaUBMVpQsMospuLaQJSgo3n3",
+    "attributes": [
+      {
+        "trait_type": "body",
+        "value": "blue cat skin",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 100% trait",
+        "count": 9968,
+        "percentage": 100
+      },
+      {
+        "trait_type": "hats",
+        "value": "hat white",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 253,
+        "percentage": 2.54
+      },
+      {
+        "trait_type": "shirt",
+        "value": "buttondown tan",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 185,
+        "percentage": 1.86
+      },
+      {
+        "trait_type": "face",
+        "value": "unamused",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 253,
+        "percentage": 2.54
+      },
+      {
+        "trait_type": "tier",
+        "value": "cool_1",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 20% trait",
+        "count": 1989,
+        "percentage": 19.95
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/LIov33kogXOK4XZd2ESj29sqm_Hww5JSdO7AFn5wjt8xgnJJ0UpNV9yITqxra3s_LMEW1AnnrgOVB_hDpjJRA1uF4skI5Sdi_9rULi8?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/9db3e1197b7655b791b125dd86db4bc7.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "1",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x46efbaedc92067e6d60e84ed6395099723252496",
+  "last_metadata_sync": "2024-10-27T12:54:00.861Z",
+  "last_token_uri_sync": "2024-10-27T12:54:00.853Z",
+  "metadata": "{\"image\":\"ipfs://QmPbxeGcXhYQQNgsC6a36dDyYUcHgMLnGKnF8pVFmGsvqi\",\"attributes\":[{\"trait_type\":\"Mouth\",\"value\":\"Grin\"},{\"trait_type\":\"Clothes\",\"value\":\"Vietnam Jacket\"},{\"trait_type\":\"Background\",\"value\":\"Orange\"},{\"trait_type\":\"Eyes\",\"value\":\"Blue Beams\"},{\"trait_type\":\"Fur\",\"value\":\"Robot\"}]}",
+  "block_number": "12344148",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "1110988e2d21ed8c8c812d32d0fdc5d2",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/1",
+  "minter_address": null,
+  "rarity_rank": 441,
+  "rarity_percentage": 4.41,
+  "rarity_label": "Top 5%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmPbxeGcXhYQQNgsC6a36dDyYUcHgMLnGKnF8pVFmGsvqi",
+    "attributes": [
+      {
+        "trait_type": "Mouth",
+        "value": "Grin",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 713,
+        "percentage": 7.13
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Vietnam Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 224,
+        "percentage": 2.24
+      },
+      {
+        "trait_type": "Background",
+        "value": "Orange",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1273,
+        "percentage": 12.73
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Blue Beams",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 49,
+        "percentage": 0.49
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 265,
+        "percentage": 2.65
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

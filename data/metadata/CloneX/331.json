@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "331",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xc7603a38b500d24d542e1d97ebe171c8c4e564a1",
+  "last_metadata_sync": "2024-08-23T22:43:17.741Z",
+  "last_token_uri_sync": "2024-08-23T22:43:17.655Z",
+  "metadata": "{\"name\":\"CloneX #2167\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\\n\\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Eye Color\",\"value\":\"AWAKEN\"},{\"trait_type\":\"Hair\",\"value\":\"WHT Turban\"},{\"trait_type\":\"Jewelry\",\"value\":\"MRBLE G-Link\"},{\"trait_type\":\"Clothing\",\"value\":\"CAMO BBL Vest\"},{\"trait_type\":\"Type\",\"value\":\"MURAKAMI DRIP\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/331.png\"}",
+  "block_number": "18728836",
+  "block_number_minted": "13792280",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "f1b55848ab59d332c99612b7535088c4",
+  "token_uri": "https://clonex-assets.rtfkt.com/331",
+  "minter_address": "0xb7112e018bb5f59798f6fd5a568e859a0ae13e80",
+  "rarity_rank": 11275,
+  "rarity_percentage": 57.53,
+  "rarity_label": "Top 58%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #2167",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\n\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/331.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "AWAKEN",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 268,
+        "percentage": 1.37
+      },
+      {
+        "trait_type": "Hair",
+        "value": "WHT Turban",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 100,
+        "percentage": 0.51
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "MRBLE G-Link",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 205,
+        "percentage": 1.05
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "CAMO BBL Vest",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 219,
+        "percentage": 1.12
+      },
+      {
+        "trait_type": "Type",
+        "value": "MURAKAMI DRIP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 16% trait",
+        "count": 3021,
+        "percentage": 15.41
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": "2",
+  "floor_price_usd": "4958.747",
+  "floor_price_currency": "eth"
+}

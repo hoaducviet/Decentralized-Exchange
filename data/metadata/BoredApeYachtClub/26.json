@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "26",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x0eeffea78e89a75f6baf1d345f16b185ee75a815",
+  "last_metadata_sync": "2024-10-21T18:41:42.202Z",
+  "last_token_uri_sync": "2024-10-21T18:41:41.834Z",
+  "metadata": "{\"image\":\"ipfs://QmXzHn4rnSBdjMpwB3Psty49BbNon6AixUm5DhifxjPRv3\",\"attributes\":[{\"trait_type\":\"Eyes\",\"value\":\"3d\"},{\"trait_type\":\"Fur\",\"value\":\"Dark Brown\"},{\"trait_type\":\"Hat\",\"value\":\"Stuntman Helmet\"},{\"trait_type\":\"Mouth\",\"value\":\"Bored Cigarette\"},{\"trait_type\":\"Background\",\"value\":\"Aquamarine\"},{\"trait_type\":\"Clothes\",\"value\":\"Stunt Jacket\"}]}",
+  "block_number": "13220881",
+  "block_number_minted": "12292922",
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "1ebd03d3292df0014d1e956638f5b7c9",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/26",
+  "minter_address": "0xaba7161a7fb69c88e16ed9f455ce62b791ee4d03",
+  "rarity_rank": 6491,
+  "rarity_percentage": 64.91,
+  "rarity_label": "Top 65%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmXzHn4rnSBdjMpwB3Psty49BbNon6AixUm5DhifxjPRv3",
+    "attributes": [
+      {
+        "trait_type": "Eyes",
+        "value": "3d",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 487,
+        "percentage": 4.87
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Dark Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 14% trait",
+        "count": 1352,
+        "percentage": 13.52
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Stuntman Helmet",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 157,
+        "percentage": 1.57
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bored Cigarette",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 710,
+        "percentage": 7.1
+      },
+      {
+        "trait_type": "Background",
+        "value": "Aquamarine",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1266,
+        "percentage": 12.66
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Stunt Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 178,
+        "percentage": 1.78
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

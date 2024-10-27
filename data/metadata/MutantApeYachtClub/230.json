@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "230",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x438bbff80252c9c959797d0180a5c868e1a86c91",
+  "last_metadata_sync": "2024-10-15T14:11:38.760Z",
+  "last_token_uri_sync": "2024-10-15T14:10:54.496Z",
+  "metadata": "{\"image\":\"ipfs://QmTR3gczyHGGsf7XFPdEUfrGV2LCaUsMDyTd2vrHw6bZKv\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Blue\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Eyepatch\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Biker Vest\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Baby's Bonnet\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Pipe\"}]}",
+  "block_number": "21007622",
+  "block_number_minted": "13117239",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "0ebca266fa441930fdc9dde782005193",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/230",
+  "minter_address": "0x5e59ac40c4d661e55a97c317a5002bf6d9e7109c",
+  "rarity_rank": 1738,
+  "rarity_percentage": 8.91,
+  "rarity_label": "Top 9%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmTR3gczyHGGsf7XFPdEUfrGV2LCaUsMDyTd2vrHw6bZKv",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 654,
+        "percentage": 3.35
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 241,
+        "percentage": 1.24
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Eyepatch",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 164,
+        "percentage": 0.84
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Biker Vest",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 130,
+        "percentage": 0.67
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Baby's Bonnet",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 85,
+        "percentage": 0.44
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Pipe",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 75,
+        "percentage": 0.38
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "281",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xb1d0631170033d9bf6c1f446e17e206e5c708c21",
+  "last_metadata_sync": "2024-10-18T15:52:40.067Z",
+  "last_token_uri_sync": "2024-10-18T15:51:59.567Z",
+  "metadata": "{\"image\":\"ipfs://QmQtQz3fooTxi2sQCM8PzSGfHxC3ztpLQpPFAM8MLm7yzL\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Tan\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Closed\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Bandolier\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Spinner Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Discomfort\"}]}",
+  "block_number": "14571570",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "f5f39dd484a35953755b19ade63677fa",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/281",
+  "minter_address": null,
+  "rarity_rank": 2127,
+  "rarity_percentage": 10.91,
+  "rarity_label": "Top 11%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmQtQz3fooTxi2sQCM8PzSGfHxC3ztpLQpPFAM8MLm7yzL",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 654,
+        "percentage": 3.35
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Tan",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 274,
+        "percentage": 1.41
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Closed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 304,
+        "percentage": 1.56
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Bandolier",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 75,
+        "percentage": 0.38
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Spinner Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 105,
+        "percentage": 0.54
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Discomfort",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 83,
+        "percentage": 0.43
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

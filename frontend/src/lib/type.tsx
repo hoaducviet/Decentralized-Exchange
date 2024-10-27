@@ -44,6 +44,10 @@ export type LiquidBalancesType = {
     balance: Balance | undefined;
 }
 
+export type Collection = {
+    name: string;
+}
+
 export type Contracts = {
     look: Contract;
 }

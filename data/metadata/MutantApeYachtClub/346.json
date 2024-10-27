@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "346",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x49340958980c856b319a3761b96596c5720539d8",
+  "last_metadata_sync": "2024-08-24T19:57:34.748Z",
+  "last_token_uri_sync": "2024-08-24T19:56:54.204Z",
+  "metadata": "{\"image\":\"ipfs://QmSj4JvbcdYRDXeqdge5pHrTgk5ZSPfZtiKHB1GCK7oJRk\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Trippy\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 3d\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Cowboy Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Phoneme L\"}]}",
+  "block_number": "17120914",
+  "block_number_minted": "13117245",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "ca9994c849b560dca49dee952122956b",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/346",
+  "minter_address": "0x9bad8c60d464c23c2bdf164c2fe42f85c9a000f2",
+  "rarity_rank": 7016,
+  "rarity_percentage": 35.99,
+  "rarity_label": "Top 36%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmSj4JvbcdYRDXeqdge5pHrTgk5ZSPfZtiKHB1GCK7oJRk",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1917,
+        "percentage": 9.83
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Trippy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 135,
+        "percentage": 0.69
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 3d",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 692,
+        "percentage": 3.55
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Cowboy Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 516,
+        "percentage": 2.65
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Phoneme L",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 362,
+        "percentage": 1.86
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

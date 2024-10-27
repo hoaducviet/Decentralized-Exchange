@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "44",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xfa3b46839118b79d4b46de6f10f62d753368b39b",
+  "last_metadata_sync": "2024-10-15T14:13:49.493Z",
+  "last_token_uri_sync": "2024-10-15T14:13:07.444Z",
+  "metadata": "{\"image\":\"ipfs://QmZGvVYMomkpNVp6UxaACFoqVVrkW991B413N61FdgfXqj\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Gray\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Dark Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Tanktop\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Sushi Chef Headband\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Dumbfounded\"}]}",
+  "block_number": "19155225",
+  "block_number_minted": "13117228",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "fa03776be11494c7ad3b7c3bd25e86c0",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/44",
+  "minter_address": "0xc7daff430efad15679f8bb53530debee0308eb1b",
+  "rarity_rank": 17575,
+  "rarity_percentage": 90.14,
+  "rarity_label": "Top 91%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmZGvVYMomkpNVp6UxaACFoqVVrkW991B413N61FdgfXqj",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1752,
+        "percentage": 8.99
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Dark Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1989,
+        "percentage": 10.2
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 2526,
+        "percentage": 12.96
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Tanktop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 341,
+        "percentage": 1.75
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Sushi Chef Headband",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 280,
+        "percentage": 1.44
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Dumbfounded",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 753,
+        "percentage": 3.86
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

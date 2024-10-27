@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "495",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xa6b2af45a4f255c0ab1324c5adfc379634bffcdb",
+  "last_metadata_sync": "2024-08-23T22:43:19.319Z",
+  "last_token_uri_sync": "2024-08-23T22:43:19.262Z",
+  "metadata": "{\"name\":\"CloneX #10322\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Hair\",\"value\":\"BLCK BWLCUT\"},{\"trait_type\":\"Jewelry\",\"value\":\"GLD Two Piece\"},{\"trait_type\":\"Clothing\",\"value\":\"28 JCKT\"},{\"trait_type\":\"Eyewear\",\"value\":\"VSN Glasses\"},{\"trait_type\":\"Mouth\",\"value\":\"Mustache\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/495.png\"}",
+  "block_number": "14254243",
+  "block_number_minted": "13792287",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "9075d84e5724f10c3c2a67b13f178b85",
+  "token_uri": "https://clonex-assets.rtfkt.com/495",
+  "minter_address": "0x24d9be8c2589c9873bc636e24972cdb891cdbc25",
+  "rarity_rank": 9208,
+  "rarity_percentage": 46.98,
+  "rarity_label": "Top 47%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #10322",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/495.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLCK BWLCUT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 277,
+        "percentage": 1.41
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "GLD Two Piece",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 310,
+        "percentage": 1.58
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "28 JCKT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 116,
+        "percentage": 0.59
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "VSN Glasses",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 390,
+        "percentage": 1.99
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Mustache",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 139,
+        "percentage": 0.71
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

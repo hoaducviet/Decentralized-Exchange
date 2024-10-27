@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "179",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x98c181c80a505b7c30acd1d24d4790326ac37966",
+  "last_metadata_sync": "2024-10-18T15:50:06.592Z",
+  "last_token_uri_sync": "2024-10-18T15:49:41.159Z",
+  "metadata": "{\"image\":\"ipfs://QmVmaznR12KCKwdbgGZZtanh6FxbjsknPvG4KS7rSEb5gY\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Zombie\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Biker Vest\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Horns\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Cigarette\"},{\"trait_type\":\"Earring\",\"value\":\"M1 Gold Stud\"}]}",
+  "block_number": "17779743",
+  "block_number_minted": "13117238",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "04c6218f95d45498f9be1910d8d58686",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/179",
+  "minter_address": "0xc1cccd378c8400d08b2c5ec091e93135ea58a5b8",
+  "rarity_rank": 7649,
+  "rarity_percentage": 39.23,
+  "rarity_label": "Top 40%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmVmaznR12KCKwdbgGZZtanh6FxbjsknPvG4KS7rSEb5gY",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1917,
+        "percentage": 9.83
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1955,
+        "percentage": 10.03
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Zombie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 474,
+        "percentage": 2.43
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Biker Vest",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 375,
+        "percentage": 1.92
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Horns",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 371,
+        "percentage": 1.9
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Cigarette",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1027,
+        "percentage": 5.27
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M1 Gold Stud",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 632,
+        "percentage": 3.24
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

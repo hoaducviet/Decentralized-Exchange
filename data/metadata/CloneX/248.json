@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "248",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x82e68ebf61b5865261fcfd5f9e7ef6fa6f6a68ab",
+  "last_metadata_sync": "2024-08-23T22:43:15.991Z",
+  "last_token_uri_sync": "2024-08-23T22:43:15.929Z",
+  "metadata": "{\"name\":\"CloneX #14708\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"YLLW\"},{\"trait_type\":\"Back\",\"value\":\"Energy Wings\"},{\"trait_type\":\"Hair\",\"value\":\"YU-BRED\"},{\"trait_type\":\"Clothing\",\"value\":\"IRI Tech JCKT\"},{\"trait_type\":\"Mouth\",\"value\":\"GLD GRILLZ\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/248.png\"}",
+  "block_number": "14525285",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "27d62929fc5d6a54188cf2f06ea990bf",
+  "token_uri": "https://clonex-assets.rtfkt.com/248",
+  "minter_address": null,
+  "rarity_rank": 5940,
+  "rarity_percentage": 30.31,
+  "rarity_label": "Top 31%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #14708",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/248.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "YLLW",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 864,
+        "percentage": 4.41
+      },
+      {
+        "trait_type": "Back",
+        "value": "Energy Wings",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 231,
+        "percentage": 1.18
+      },
+      {
+        "trait_type": "Hair",
+        "value": "YU-BRED",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 169,
+        "percentage": 0.86
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "IRI Tech JCKT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 94,
+        "percentage": 0.48
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "GLD GRILLZ",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 227,
+        "percentage": 1.16
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

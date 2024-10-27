@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "308",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x519e8ec584a415ade20be5ad6a5f5865bfadc230",
+  "last_metadata_sync": "2024-10-07T20:38:28.514Z",
+  "last_token_uri_sync": "2024-10-07T20:38:28.194Z",
+  "metadata": "{\"name\":\"CloneX #2246\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\\n\\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"BRWN\"},{\"trait_type\":\"Back\",\"value\":\"GRY UNDRWRLD WINGZ\"},{\"trait_type\":\"Hair\",\"value\":\"LoneSome Cowboy\"},{\"trait_type\":\"Clothing\",\"value\":\"Blade Melt Tee\"},{\"trait_type\":\"Mouth\",\"value\":\"Organism M78.8\"},{\"trait_type\":\"Type\",\"value\":\"MURAKAMI DRIP\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/308.png\"}",
+  "block_number": "13859230",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "9cf85dcf37cffdd5df857b6af7b0123f",
+  "token_uri": "https://clonex-assets.rtfkt.com/308",
+  "minter_address": null,
+  "rarity_rank": 2068,
+  "rarity_percentage": 10.55,
+  "rarity_label": "Top 11%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #2246",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\n\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/308.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "BRWN",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 960,
+        "percentage": 4.9
+      },
+      {
+        "trait_type": "Back",
+        "value": "GRY UNDRWRLD WINGZ",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 107,
+        "percentage": 0.55
+      },
+      {
+        "trait_type": "Hair",
+        "value": "LoneSome Cowboy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 138,
+        "percentage": 0.7
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "Blade Melt Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 368,
+        "percentage": 1.88
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Organism M78.8",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 158,
+        "percentage": 0.81
+      },
+      {
+        "trait_type": "Type",
+        "value": "MURAKAMI DRIP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 16% trait",
+        "count": 3021,
+        "percentage": 15.41
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

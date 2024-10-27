@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "297",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xa9937e4865b873e235e3d56717bc7c929b807520",
+  "last_metadata_sync": "2024-10-15T14:13:09.121Z",
+  "last_token_uri_sync": "2024-10-15T14:12:26.220Z",
+  "metadata": "{\"image\":\"ipfs://QmXycXHi5tHnF1qv9vo96Dv62NoXXFHNXMiZASrgRSf87C\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Gray\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Pink\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Lumberjack Shirt\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Short Mohawk\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Kazoo\"}]}",
+  "block_number": "16326891",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "972c9a63b9c2f7c9e58de6ad0f89f858",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/297",
+  "minter_address": null,
+  "rarity_rank": 9083,
+  "rarity_percentage": 46.59,
+  "rarity_label": "Top 47%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmXycXHi5tHnF1qv9vo96Dv62NoXXFHNXMiZASrgRSf87C",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1752,
+        "percentage": 8.99
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 738,
+        "percentage": 3.79
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 2526,
+        "percentage": 12.96
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Lumberjack Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 321,
+        "percentage": 1.65
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Short Mohawk",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 463,
+        "percentage": 2.37
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Kazoo",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 109,
+        "percentage": 0.56
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

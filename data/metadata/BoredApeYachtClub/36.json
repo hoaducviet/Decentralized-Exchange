@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "36",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0xf395767ae0e947504651a33ac2899520c551955d",
+  "last_metadata_sync": "2024-10-21T18:42:04.721Z",
+  "last_token_uri_sync": "2024-10-21T18:42:04.425Z",
+  "metadata": "{\"image\":\"ipfs://QmcaEumnTbujyzzV55DXK536Q5gVZ1S2rCooDkU9wixY5H\",\"attributes\":[{\"trait_type\":\"Clothes\",\"value\":\"Sailor Shirt\"},{\"trait_type\":\"Background\",\"value\":\"Purple\"},{\"trait_type\":\"Eyes\",\"value\":\"Bored\"},{\"trait_type\":\"Mouth\",\"value\":\"Bored Unshaven\"},{\"trait_type\":\"Fur\",\"value\":\"Dark Brown\"}]}",
+  "block_number": "19619090",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "df951d368ff9420c35a09b2913483b17",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/36",
+  "minter_address": null,
+  "rarity_rank": 9971,
+  "rarity_percentage": 99.71,
+  "rarity_label": "Top 100%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmcaEumnTbujyzzV55DXK536Q5gVZ1S2rCooDkU9wixY5H",
+    "attributes": [
+      {
+        "trait_type": "Clothes",
+        "value": "Sailor Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 284,
+        "percentage": 2.84
+      },
+      {
+        "trait_type": "Background",
+        "value": "Purple",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1291,
+        "percentage": 12.91
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 1714,
+        "percentage": 17.14
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 16% trait",
+        "count": 1551,
+        "percentage": 15.51
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Dark Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 14% trait",
+        "count": 1352,
+        "percentage": 13.52
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

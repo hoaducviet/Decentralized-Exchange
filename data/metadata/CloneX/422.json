@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "422",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x81cf40f650c81e863aa9bb60edf084693d8f5f03",
+  "last_metadata_sync": "2024-10-08T08:31:23.880Z",
+  "last_token_uri_sync": "2024-10-08T08:31:23.743Z",
+  "metadata": "{\"name\":\"CloneX #7528\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"BRWN\"},{\"trait_type\":\"Facial Feature\",\"value\":\"Angry TAT\"},{\"trait_type\":\"Hair\",\"value\":\"BLCK Unkept\"},{\"trait_type\":\"Clothing\",\"value\":\"CAMO PFA JCKT\"},{\"trait_type\":\"Mouth\",\"value\":\"Angry\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/422.png\"}",
+  "block_number": "14377997",
+  "block_number_minted": "13792283",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "72dadfc6adfff7e6cd35afe2498061c2",
+  "token_uri": "https://clonex-assets.rtfkt.com/422",
+  "minter_address": "0xd17ff37a8047f3520d0271b548f9a1066a8737df",
+  "rarity_rank": 12953,
+  "rarity_percentage": 66.09,
+  "rarity_label": "Top 67%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #7528",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/422.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "BRWN",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 960,
+        "percentage": 4.9
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "Angry TAT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 176,
+        "percentage": 0.9
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLCK Unkept",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 226,
+        "percentage": 1.15
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "CAMO PFA JCKT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 222,
+        "percentage": 1.13
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Angry",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 573,
+        "percentage": 2.92
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

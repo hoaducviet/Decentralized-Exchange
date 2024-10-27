@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "91",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xca7d744c364cd4c8ffc375f875c59d76fd684980",
+  "last_metadata_sync": "2024-10-07T21:24:18.613Z",
+  "last_token_uri_sync": "2024-10-07T21:23:37.757Z",
+  "metadata": "{\"image\":\"ipfs://QmcBX5KfXJ5i5nzU43pSfNJHVKThcXuQbBtr3T8UQNzPef\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Death Bot\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Sad\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Prom Dress\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Girl's Hair Pink\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored\"}]}",
+  "block_number": "13598694",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "9ab8093582b823a79df71f8dabffcd12",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/91",
+  "minter_address": null,
+  "rarity_rank": 7480,
+  "rarity_percentage": 38.36,
+  "rarity_label": "Top 39%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmcBX5KfXJ5i5nzU43pSfNJHVKThcXuQbBtr3T8UQNzPef",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1917,
+        "percentage": 9.83
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Death Bot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 287,
+        "percentage": 1.47
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Sad",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 788,
+        "percentage": 4.04
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Prom Dress",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 133,
+        "percentage": 0.68
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Girl's Hair Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 154,
+        "percentage": 0.79
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 3321,
+        "percentage": 17.03
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

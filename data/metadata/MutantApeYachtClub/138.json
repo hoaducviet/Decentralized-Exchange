@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "138",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xf726a2cf9e12c9b647f5274aeec3ca3c5d1f9027",
+  "last_metadata_sync": "2024-10-18T15:44:08.427Z",
+  "last_token_uri_sync": "2024-10-18T15:43:27.685Z",
+  "metadata": "{\"image\":\"ipfs://QmQoWMyJpj4faJfZGwbqAJDEnyPLradH6vYV9qTu1UbMBu\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Orange\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Black\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Sad\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Safari\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Grin\"}]}",
+  "block_number": "19071439",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "26b5c86f5d65350bdd2f100ec06cb403",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/138",
+  "minter_address": null,
+  "rarity_rank": 16834,
+  "rarity_percentage": 86.34,
+  "rarity_label": "Top 87%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmQoWMyJpj4faJfZGwbqAJDEnyPLradH6vYV9qTu1UbMBu",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Orange",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1855,
+        "percentage": 9.51
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1797,
+        "percentage": 9.22
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Sad",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 788,
+        "percentage": 4.04
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Safari",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 260,
+        "percentage": 1.33
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Grin",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1050,
+        "percentage": 5.39
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

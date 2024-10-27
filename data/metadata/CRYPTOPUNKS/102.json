@@ -1,0 +1,69 @@
+{
+  "amount": "1",
+  "token_id": "102",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0xb88f61e6fbda83fbfffabe364112137480398018",
+  "last_metadata_sync": "2024-10-26T18:40:10.925Z",
+  "last_token_uri_sync": "2024-10-26T18:40:10.345Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk102.png\",\"name\":\"CryptoPunk 102\",\"attributes\":[\"Vampire Hair\",\"Luxurious Beard\"],\"description\":\"Male\"}",
+  "block_number": "11798559",
+  "block_number_minted": null,
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "90c7affe3b93533e6f05a654030c6255",
+  "token_uri": "Invalid uri",
+  "minter_address": null,
+  "rarity_rank": 4090,
+  "rarity_percentage": 40.9,
+  "rarity_label": "Top 41%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 102",
+    "description": "Male",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk102.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Male",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 61% trait",
+        "count": 6039,
+        "percentage": 60.39
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Vampire Hair",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 147,
+        "percentage": 1.47
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Luxurious Beard",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 286,
+        "percentage": 2.86
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

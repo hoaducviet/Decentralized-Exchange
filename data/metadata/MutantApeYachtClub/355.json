@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "355",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x4b32906c1daaa71988175c43b95668936c4020c3",
+  "last_metadata_sync": "2024-08-24T19:57:35.959Z",
+  "last_token_uri_sync": "2024-08-24T19:56:55.190Z",
+  "metadata": "{\"image\":\"ipfs://QmVuWSCCYAEKxNdgntun6DAdi3oQ77TkTABzdadKFGeQSn\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Pink\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 3d\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Puffy Vest\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Fez\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Dumbfounded\"}]}",
+  "block_number": "20749610",
+  "block_number_minted": "13117246",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "f085a18c7eee3c23361d3b8e3658b6e0",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/355",
+  "minter_address": "0xb276a9a6e7414529873af8b149369602c3a6206c",
+  "rarity_rank": 3981,
+  "rarity_percentage": 20.42,
+  "rarity_label": "Top 21%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmVuWSCCYAEKxNdgntun6DAdi3oQ77TkTABzdadKFGeQSn",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 654,
+        "percentage": 3.35
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 231,
+        "percentage": 1.18
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 3d",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 230,
+        "percentage": 1.18
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Puffy Vest",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 110,
+        "percentage": 0.56
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Fez",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 180,
+        "percentage": 0.92
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Dumbfounded",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 215,
+        "percentage": 1.1
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": "3",
+  "floor_price_usd": "7438.121",
+  "floor_price_currency": "eth"
+}

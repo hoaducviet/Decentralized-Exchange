@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "66",
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "contract_type": "ERC721",
+  "owner_of": "0x18c3a4bbfeced0bc7fec131b10f7547d7cd0431a",
+  "last_metadata_sync": "2024-10-07T20:20:44.478Z",
+  "last_token_uri_sync": "2024-10-07T20:20:44.289Z",
+  "metadata": "{\"image\":\"ipfs://QmXGy874U4MhFRMGTsUaHscTX1DJdckfPfBuEwmu2c7Gyw\",\"name\":\"Doodle #66\",\"description\":\"A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.\",\"attributes\":[{\"trait_type\":\"face\",\"value\":\"grumpy\"},{\"trait_type\":\"hair\",\"value\":\"blue brushcut\"},{\"trait_type\":\"body\",\"value\":\"white turtleneck\"},{\"trait_type\":\"background\",\"value\":\"pink\"},{\"trait_type\":\"head\",\"value\":\"pink\"},{\"trait_type\":\"piercing\",\"value\":\"pearl\"}]}",
+  "block_number": "16299106",
+  "block_number_minted": null,
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "token_hash": "9cb043b0dcac4263cb2aed5383e88a9c",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/66",
+  "minter_address": null,
+  "rarity_rank": 3353,
+  "rarity_percentage": 33.53,
+  "rarity_label": "Top 34%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Doodle #66",
+    "description": "A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmXGy874U4MhFRMGTsUaHscTX1DJdckfPfBuEwmu2c7Gyw",
+    "attributes": [
+      {
+        "trait_type": "face",
+        "value": "grumpy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 685,
+        "percentage": 6.85
+      },
+      {
+        "trait_type": "hair",
+        "value": "blue brushcut",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 325,
+        "percentage": 3.25
+      },
+      {
+        "trait_type": "body",
+        "value": "white turtleneck",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 327,
+        "percentage": 3.27
+      },
+      {
+        "trait_type": "background",
+        "value": "pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 690,
+        "percentage": 6.9
+      },
+      {
+        "trait_type": "head",
+        "value": "pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 970,
+        "percentage": 9.7
+      },
+      {
+        "trait_type": "piercing",
+        "value": "pearl",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1078,
+        "percentage": 10.78
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

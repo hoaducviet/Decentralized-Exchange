@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "27",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xeaf9f4f9afe7a1e61549fed36b4f0c4021a44a8a",
+  "last_metadata_sync": "2024-10-18T15:52:24.294Z",
+  "last_token_uri_sync": "2024-10-18T15:51:43.604Z",
+  "metadata": "{\"image\":\"ipfs://QmT8yP1nWP8pM2WkSPBcY7azFMQPffi1qYAEwWhDdipzc9\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Gray\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Golden Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Closed\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Bone Necklace\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Bayc Hat Black\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Unshaven Cigar\"},{\"trait_type\":\"Earring\",\"value\":\"M2 Gold Stud\"}]}",
+  "block_number": "20637129",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "14339f2822a000df5228a472b948f55b",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/27",
+  "minter_address": null,
+  "rarity_rank": 456,
+  "rarity_percentage": 2.34,
+  "rarity_label": "Top 3%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmT8yP1nWP8pM2WkSPBcY7azFMQPffi1qYAEwWhDdipzc9",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 595,
+        "percentage": 3.05
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Golden Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 350,
+        "percentage": 1.8
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Closed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 304,
+        "percentage": 1.56
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Bone Necklace",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 95,
+        "percentage": 0.49
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Bayc Hat Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 139,
+        "percentage": 0.71
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Unshaven Cigar",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 56,
+        "percentage": 0.29
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M2 Gold Stud",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 238,
+        "percentage": 1.22
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

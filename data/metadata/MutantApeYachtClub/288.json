@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "288",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xfcda265d4641c788e3d7385a99b68987e80c46cb",
+  "last_metadata_sync": "2024-10-18T15:52:47.361Z",
+  "last_token_uri_sync": "2024-10-18T15:52:06.721Z",
+  "metadata": "{\"image\":\"ipfs://QmRcLGzjbyTgSLRi4Tm7PHzsD9tuvchV5gsHyy14v9yT8W\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Gray\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Blue\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Heart\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Striped Tee\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Bayc Hat Black\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Unshaven\"}]}",
+  "block_number": "18385929",
+  "block_number_minted": "13117241",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "d68e35ade251df9e2316047426cdac76",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/288",
+  "minter_address": "0x0985fbcb517b2889eb2340a3c2747e133a825cd2",
+  "rarity_rank": 16514,
+  "rarity_percentage": 84.7,
+  "rarity_label": "Top 85%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmRcLGzjbyTgSLRi4Tm7PHzsD9tuvchV5gsHyy14v9yT8W",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1752,
+        "percentage": 8.99
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 699,
+        "percentage": 3.59
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Heart",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 588,
+        "percentage": 3.02
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Striped Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 585,
+        "percentage": 3
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Bayc Hat Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 363,
+        "percentage": 1.86
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 12% trait",
+        "count": 2262,
+        "percentage": 11.6
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

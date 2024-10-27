@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "201",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0x42d2b7b7820945c6eb6b756b401b9b43b312da20",
+  "last_metadata_sync": "2024-10-08T09:43:22.216Z",
+  "last_token_uri_sync": "2024-10-08T09:43:22.135Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk201.png\",\"name\":\"CryptoPunk 201\",\"attributes\":[\"Blue Eye Shadow\",\"Hot Lipstick\",\"Dark Hair\",\"Cigarette\"],\"description\":\"Female\"}",
+  "block_number": "20822498",
+  "block_number_minted": "3918285",
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "b61f2ef99baf5382bd1e7b09898e4b81",
+  "token_uri": "Invalid uri",
+  "minter_address": "0xc352b534e8b987e036a93539fd6897f53488e56a",
+  "rarity_rank": 1127,
+  "rarity_percentage": 11.27,
+  "rarity_label": "Top 12%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 201",
+    "description": "Female",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk201.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Female",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 39% trait",
+        "count": 3840,
+        "percentage": 38.4
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Blue Eye Shadow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 266,
+        "percentage": 2.66
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Hot Lipstick",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 696,
+        "percentage": 6.96
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Dark Hair",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 157,
+        "percentage": 1.57
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Cigarette",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 961,
+        "percentage": 9.61
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

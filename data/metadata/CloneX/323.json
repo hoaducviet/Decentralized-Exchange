@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "323",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x09caf6cafea345f6d162a12dfcf625e3251652b8",
+  "last_metadata_sync": "2024-08-23T22:43:14.529Z",
+  "last_token_uri_sync": "2024-08-23T22:43:14.476Z",
+  "metadata": "{\"name\":\"CloneX #6968\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Demon\"},{\"trait_type\":\"Hair\",\"value\":\"PNK Curtains\"},{\"trait_type\":\"Clothing\",\"value\":\"BLCK BKR JCKT\"},{\"trait_type\":\"Accessories\",\"value\":\"PTRA Earring\"},{\"trait_type\":\"Type\",\"value\":\"DRK\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/323.png\"}",
+  "block_number": "19397545",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "20e6cb82d8bbe4e1640c0ece705d08b9",
+  "token_uri": "https://clonex-assets.rtfkt.com/323",
+  "minter_address": null,
+  "rarity_rank": 4876,
+  "rarity_percentage": 24.88,
+  "rarity_label": "Top 25%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #6968",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/323.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Demon",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1717,
+        "percentage": 8.76
+      },
+      {
+        "trait_type": "Hair",
+        "value": "PNK Curtains",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 257,
+        "percentage": 1.31
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "BLCK BKR JCKT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 287,
+        "percentage": 1.46
+      },
+      {
+        "trait_type": "Accessories",
+        "value": "PTRA Earring",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 475,
+        "percentage": 2.42
+      },
+      {
+        "trait_type": "Type",
+        "value": "DRK",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 198,
+        "percentage": 1.01
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

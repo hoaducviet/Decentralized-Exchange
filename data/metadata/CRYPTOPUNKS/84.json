@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "84",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0xa858ddc0445d8131dac4d1de01f834ffcba52ef1",
+  "last_metadata_sync": "2024-10-08T09:46:48.295Z",
+  "last_token_uri_sync": "2024-10-08T09:46:48.258Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk084.png\",\"name\":\"CryptoPunk 084\",\"attributes\":[\"Messy Hair\",\"Big Shades\",\"Earring\"],\"description\":\"Male\"}",
+  "block_number": "14405924",
+  "block_number_minted": null,
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "fa4ffe1c471faf3ff5a886b61b64b6eb",
+  "token_uri": "Invalid uri",
+  "minter_address": null,
+  "rarity_rank": 9835,
+  "rarity_percentage": 98.35,
+  "rarity_label": "Top 99%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 084",
+    "description": "Male",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk084.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Male",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 61% trait",
+        "count": 6039,
+        "percentage": 60.39
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Messy Hair",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 460,
+        "percentage": 4.6
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Big Shades",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 535,
+        "percentage": 5.35
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Earring",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 25% trait",
+        "count": 2459,
+        "percentage": 24.59
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

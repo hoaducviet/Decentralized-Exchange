@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "131",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x8aabea36a7b3d4b9b26fea25b84c4b113f96fa1f",
+  "last_metadata_sync": "2024-10-27T15:55:43.455Z",
+  "last_token_uri_sync": "2024-10-27T15:55:43.423Z",
+  "metadata": "{\"name\":\"CloneX #629\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Hair\",\"value\":\"BLCK Ponytailz\"},{\"trait_type\":\"Jewelry\",\"value\":\"Bladez CHKR\"},{\"trait_type\":\"Clothing\",\"value\":\"V2 WHT SKL GRL\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/131.png\"}",
+  "block_number": "13792272",
+  "block_number_minted": "13792272",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "15ee21876ce159b098172ade7e43fe83",
+  "token_uri": "https://clonex-assets.rtfkt.com/131",
+  "minter_address": "0x8aabea36a7b3d4b9b26fea25b84c4b113f96fa1f",
+  "rarity_rank": 7254,
+  "rarity_percentage": 37.01,
+  "rarity_label": "Top 38%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #629",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/131.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLCK Ponytailz",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 104,
+        "percentage": 0.53
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "Bladez CHKR",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 77,
+        "percentage": 0.39
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "V2 WHT SKL GRL",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 75,
+        "percentage": 0.38
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

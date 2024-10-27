@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "83",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xcdba12fc39e4e1e9cb3806890ad29d862397d9ee",
+  "last_metadata_sync": "2024-10-18T15:55:13.540Z",
+  "last_token_uri_sync": "2024-10-18T15:54:32.781Z",
+  "metadata": "{\"image\":\"ipfs://QmV9bt4wUrAXJPNWhVsn6JfHhQcj472XaX37wSNfnY9Vy8\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Purple\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bloodshot\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Black T\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Rage\"}]}",
+  "block_number": "16970727",
+  "block_number_minted": "13117229",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "0f83a92af6129757b2b4a55bc3408a29",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/83",
+  "minter_address": "0x5fd2c02689d138547b7b1b9e7d9a309d5a03edcd",
+  "rarity_rank": 18134,
+  "rarity_percentage": 93.01,
+  "rarity_label": "Top 94%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmV9bt4wUrAXJPNWhVsn6JfHhQcj472XaX37wSNfnY9Vy8",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Purple",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1879,
+        "percentage": 9.64
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1955,
+        "percentage": 10.03
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bloodshot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 1283,
+        "percentage": 6.58
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Black T",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 503,
+        "percentage": 2.58
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Rage",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 384,
+        "percentage": 1.97
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

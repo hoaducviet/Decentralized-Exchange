@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "462",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x03ac349ad5cbfe5606e1b505a05bddfcf9bde159",
+  "last_metadata_sync": "2024-10-15T14:13:55.442Z",
+  "last_token_uri_sync": "2024-10-15T14:13:13.790Z",
+  "metadata": "{\"image\":\"ipfs://Qmb8WGu55dy6wkUYg9VpPu966umTpaq3NDSgQ2pyMcdYk8\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 New Punk Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Cream\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Angry\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Fez\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Jovial\"}]}",
+  "block_number": "14655023",
+  "block_number_minted": "13117250",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "4eae7ecff46091e29b5e0173a2d1dd2b",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/462",
+  "minter_address": "0x592ff4c996478d75a677c5662c4234db2ec29ddc",
+  "rarity_rank": 15365,
+  "rarity_percentage": 78.81,
+  "rarity_label": "Top 79%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://Qmb8WGu55dy6wkUYg9VpPu966umTpaq3NDSgQ2pyMcdYk8",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 New Punk Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1808,
+        "percentage": 9.27
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Cream",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 933,
+        "percentage": 4.79
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Angry",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 611,
+        "percentage": 3.13
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Fez",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 550,
+        "percentage": 2.82
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Jovial",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 416,
+        "percentage": 2.13
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "52",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xa2b8ef8a69251aaab7e53f71a79bf1bf195872a2",
+  "last_metadata_sync": "2024-08-24T19:57:58.355Z",
+  "last_token_uri_sync": "2024-08-24T19:57:17.823Z",
+  "metadata": "{\"image\":\"ipfs://QmVjfD493q5XriVfeHqDZWnyQy8kxopo2ejcGdeFns8Jto\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Aquamarine\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Gray\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Rainbow Suspenders\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Phoneme Wah\"}]}",
+  "block_number": "18562874",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "8f727bb71cd9a12ff6f03cfca19c08f1",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/52",
+  "minter_address": null,
+  "rarity_rank": 12231,
+  "rarity_percentage": 62.73,
+  "rarity_label": "Top 63%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmVjfD493q5XriVfeHqDZWnyQy8kxopo2ejcGdeFns8Jto",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Aquamarine",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1877,
+        "percentage": 9.63
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 732,
+        "percentage": 3.75
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 2526,
+        "percentage": 12.96
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Rainbow Suspenders",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 194,
+        "percentage": 1
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Phoneme Wah",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 243,
+        "percentage": 1.25
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

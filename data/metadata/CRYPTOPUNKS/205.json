@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "205",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0x2be665ee27096344b8f015b1952d3dfdb4db4691",
+  "last_metadata_sync": "2024-10-08T09:43:22.617Z",
+  "last_token_uri_sync": "2024-10-08T09:43:22.486Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk205.png\",\"name\":\"CryptoPunk 205\",\"attributes\":[\"Normal Beard Black\",\"Big Shades\",\"Mohawk Dark\"],\"description\":\"Male\"}",
+  "block_number": "16488490",
+  "block_number_minted": null,
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "16bfd3c373db58ceb7af12221e4acaee",
+  "token_uri": "Invalid uri",
+  "minter_address": null,
+  "rarity_rank": 6694,
+  "rarity_percentage": 66.94,
+  "rarity_label": "Top 67%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 205",
+    "description": "Male",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk205.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Male",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 61% trait",
+        "count": 6039,
+        "percentage": 60.39
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Normal Beard Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 289,
+        "percentage": 2.89
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Big Shades",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 535,
+        "percentage": 5.35
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Mohawk Dark",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 429,
+        "percentage": 4.29
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

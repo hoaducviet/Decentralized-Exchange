@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "324",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xf6e06975844ee819ace2d0d4997cb52257d8ad84",
+  "last_metadata_sync": "2024-08-23T22:43:17.681Z",
+  "last_token_uri_sync": "2024-08-23T22:43:17.641Z",
+  "metadata": "{\"name\":\"CloneX #12330\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Angel\"},{\"trait_type\":\"Hair\",\"value\":\"RTFKT TECH Cap\"},{\"trait_type\":\"Clothing\",\"value\":\"CLNX Tee\"},{\"trait_type\":\"Accessories\",\"value\":\"GLD STUD\"},{\"trait_type\":\"Mouth\",\"value\":\"Gas Mask\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/324.png\"}",
+  "block_number": "20406728",
+  "block_number_minted": "13792280",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "925d35c96a378282d5fcbfcc69355da3",
+  "token_uri": "https://clonex-assets.rtfkt.com/324",
+  "minter_address": "0xb1e079854268985431935ce53aa54c8e1722fa0d",
+  "rarity_rank": 2774,
+  "rarity_percentage": 14.15,
+  "rarity_label": "Top 15%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #12330",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/324.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Angel",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1710,
+        "percentage": 8.72
+      },
+      {
+        "trait_type": "Hair",
+        "value": "RTFKT TECH Cap",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 83,
+        "percentage": 0.42
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "CLNX Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 412,
+        "percentage": 2.1
+      },
+      {
+        "trait_type": "Accessories",
+        "value": "GLD STUD",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 140,
+        "percentage": 0.71
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Gas Mask",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 191,
+        "percentage": 0.97
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

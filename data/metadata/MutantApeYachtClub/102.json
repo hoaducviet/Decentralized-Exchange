@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "102",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x8413f65e93d31f52706c301bcc86e0727fd7c025",
+  "last_metadata_sync": "2024-10-18T16:43:48.744Z",
+  "last_token_uri_sync": "2024-10-18T16:43:48.362Z",
+  "metadata": "{\"image\":\"ipfs://QmYZxmy7wHnBZULsfU6VziXSYTUndxv5Kpvhvu9xnv2rRH\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Orange\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Pink\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Crazy\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Guayabera\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Beanie\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Unshaven\"}]}",
+  "block_number": "18495567",
+  "block_number_minted": "13117233",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "693d84b5b1c2a86ad490e895f2484701",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/102",
+  "minter_address": "0xa16cd0ab409899e0dd70ab85861c43ba0fc7f9ff",
+  "rarity_rank": 4447,
+  "rarity_percentage": 22.81,
+  "rarity_label": "Top 23%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmYZxmy7wHnBZULsfU6VziXSYTUndxv5Kpvhvu9xnv2rRH",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Orange",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 596,
+        "percentage": 3.06
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 231,
+        "percentage": 1.18
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Crazy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 173,
+        "percentage": 0.89
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Guayabera",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 110,
+        "percentage": 0.56
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Beanie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 255,
+        "percentage": 1.31
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 712,
+        "percentage": 3.65
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

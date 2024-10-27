@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "35",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xb18aed372c820b3047e2226900e03f7600d337b4",
+  "last_metadata_sync": "2024-10-27T15:54:58.391Z",
+  "last_token_uri_sync": "2024-10-27T15:54:58.350Z",
+  "metadata": "{\"name\":\"CloneX #14851\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"BLU\"},{\"trait_type\":\"Facial Feature\",\"value\":\"TRi TAT\"},{\"trait_type\":\"Hair\",\"value\":\"BLCK Stylish\"},{\"trait_type\":\"Clothing\",\"value\":\"BLU ORNG BNDN Shirt\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/35.png\"}",
+  "block_number": "18516085",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "b1bcd98519d70530706cad71ce9c20a5",
+  "token_uri": "https://clonex-assets.rtfkt.com/35",
+  "minter_address": null,
+  "rarity_rank": 11440,
+  "rarity_percentage": 58.37,
+  "rarity_label": "Top 59%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #14851",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/35.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "BLU",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 928,
+        "percentage": 4.73
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "TRi TAT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 127,
+        "percentage": 0.65
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLCK Stylish",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 198,
+        "percentage": 1.01
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "BLU ORNG BNDN Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 191,
+        "percentage": 0.97
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

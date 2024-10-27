@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "24",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x50d9090d6ce6307b7ec8904cd3dca17b4da56353",
+  "last_metadata_sync": "2024-08-24T19:57:06.524Z",
+  "last_token_uri_sync": "2024-08-24T19:56:25.330Z",
+  "metadata": "{\"image\":\"ipfs://QmWpQpRNdGByj1Qbkwr3oSUcZ8LXJoFPsabpkkahDyg982\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Cream\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Sunglasses\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Bone Tee\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Dumbfounded\"}]}",
+  "block_number": "18055954",
+  "block_number_minted": "13117228",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "b9e273b043f15b05b7013d22adab9a40",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/24",
+  "minter_address": "0xa8672c3cef0dce305102f20ac820c921c91ff7e2",
+  "rarity_rank": 15414,
+  "rarity_percentage": 79.06,
+  "rarity_label": "Top 80%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmWpQpRNdGByj1Qbkwr3oSUcZ8LXJoFPsabpkkahDyg982",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1808,
+        "percentage": 9.27
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Cream",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 933,
+        "percentage": 4.79
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Sunglasses",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 498,
+        "percentage": 2.55
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Bone Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 351,
+        "percentage": 1.8
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Dumbfounded",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 753,
+        "percentage": 3.86
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

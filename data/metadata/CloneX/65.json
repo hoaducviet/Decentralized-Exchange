@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "65",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xb63b5bd9fedda7827d8c28e4d515d5c609541fbc",
+  "last_metadata_sync": "2024-10-27T15:55:10.967Z",
+  "last_token_uri_sync": "2024-10-27T15:55:10.927Z",
+  "metadata": "{\"name\":\"CloneX #12970\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Demon\"},{\"trait_type\":\"Hair\",\"value\":\"GRN Shape Up\"},{\"trait_type\":\"Clothing\",\"value\":\"SPACE TRIP Tee\"},{\"trait_type\":\"Mouth\",\"value\":\"Mustache\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/65.png\"}",
+  "block_number": "19585440",
+  "block_number_minted": "13792269",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "766a43824f8c4e20c0a303fa132f88db",
+  "token_uri": "https://clonex-assets.rtfkt.com/65",
+  "minter_address": "0xe262a1c3a435d8ad158309d40003a40e8ff2feea",
+  "rarity_rank": 14790,
+  "rarity_percentage": 75.46,
+  "rarity_label": "Top 76%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #12970",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/65.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Demon",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1717,
+        "percentage": 8.76
+      },
+      {
+        "trait_type": "Hair",
+        "value": "GRN Shape Up",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 311,
+        "percentage": 1.59
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "SPACE TRIP Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 419,
+        "percentage": 2.14
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Mustache",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 139,
+        "percentage": 0.71
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

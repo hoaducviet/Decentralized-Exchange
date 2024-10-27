@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "262",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x79f64e7c9fa5b54735f565d101d0ac2dd6031918",
+  "last_metadata_sync": "2024-10-07T20:38:14.905Z",
+  "last_token_uri_sync": "2024-10-07T20:38:14.765Z",
+  "metadata": "{\"name\":\"CloneX #12459\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Angel\"},{\"trait_type\":\"Hair\",\"value\":\"BLCK Ponytailz\"},{\"trait_type\":\"Clothing\",\"value\":\"FLOOR Tee\"},{\"trait_type\":\"Eyewear\",\"value\":\"Kawaii Patch\"},{\"trait_type\":\"Mouth\",\"value\":\"Angry\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/262.png\"}",
+  "block_number": "17633994",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "877b12af24f5a4d24ee2b99731e0ddba",
+  "token_uri": "https://clonex-assets.rtfkt.com/262",
+  "minter_address": null,
+  "rarity_rank": 6819,
+  "rarity_percentage": 34.79,
+  "rarity_label": "Top 35%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #12459",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/262.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Angel",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1710,
+        "percentage": 8.72
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLCK Ponytailz",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 104,
+        "percentage": 0.53
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "FLOOR Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 440,
+        "percentage": 2.24
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "Kawaii Patch",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 109,
+        "percentage": 0.56
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Angry",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 573,
+        "percentage": 2.92
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

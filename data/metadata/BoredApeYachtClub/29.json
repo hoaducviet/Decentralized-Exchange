@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "29",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0xb81965ddfdda3923f292a47a1be83ba3a36b5133",
+  "last_metadata_sync": "2024-10-21T18:41:51.870Z",
+  "last_token_uri_sync": "2024-10-21T18:41:51.632Z",
+  "metadata": "{\"image\":\"ipfs://QmQnps7UF7zCBk2bsANKTuXeeuhVRhxcgWfc3AHq2B6gcc\",\"attributes\":[{\"trait_type\":\"Mouth\",\"value\":\"Bored Unshaven\"},{\"trait_type\":\"Eyes\",\"value\":\"Robot\"},{\"trait_type\":\"Background\",\"value\":\"Blue\"},{\"trait_type\":\"Fur\",\"value\":\"Tan\"}]}",
+  "block_number": "19211718",
+  "block_number_minted": "12292922",
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "fa2e6680bf07314e880c3eb6f3cd0d73",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/29",
+  "minter_address": "0xaba7161a7fb69c88e16ed9f455ce62b791ee4d03",
+  "rarity_rank": 629,
+  "rarity_percentage": 6.29,
+  "rarity_label": "Top 7%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmQnps7UF7zCBk2bsANKTuXeeuhVRhxcgWfc3AHq2B6gcc",
+    "attributes": [
+      {
+        "trait_type": "Mouth",
+        "value": "Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 16% trait",
+        "count": 1551,
+        "percentage": 15.51
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 350,
+        "percentage": 3.5
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1242,
+        "percentage": 12.42
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Tan",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 626,
+        "percentage": 6.26
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

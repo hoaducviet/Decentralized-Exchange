@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "85",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xfbda2adeb517af9a2cbc8a6851edbae476f56a3d",
+  "last_metadata_sync": "2024-10-15T14:15:22.595Z",
+  "last_token_uri_sync": "2024-10-15T14:14:42.036Z",
+  "metadata": "{\"image\":\"ipfs://QmTRWAnALf1PtXx5V2Fz7pXsDSqXgzvqk7zk1MZwBBRdPC\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Gray\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Dark Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Scumbag\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Caveman Pelt\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Girl's Hair Short\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Jovial\"}]}",
+  "block_number": "17542761",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "92f67de469575136e87bb35180efd571",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/85",
+  "minter_address": null,
+  "rarity_rank": 1602,
+  "rarity_percentage": 8.22,
+  "rarity_label": "Top 9%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmTRWAnALf1PtXx5V2Fz7pXsDSqXgzvqk7zk1MZwBBRdPC",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 595,
+        "percentage": 3.05
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Dark Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 590,
+        "percentage": 3.03
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Scumbag",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 110,
+        "percentage": 0.56
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Caveman Pelt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 86,
+        "percentage": 0.44
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Girl's Hair Short",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 64,
+        "percentage": 0.33
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Jovial",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 141,
+        "percentage": 0.72
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

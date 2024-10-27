@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "277",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x31fc97d832885fa80c1afd6237860528aaa3eba8",
+  "last_metadata_sync": "2024-08-24T19:57:20.516Z",
+  "last_token_uri_sync": "2024-08-24T19:56:39.746Z",
+  "metadata": "{\"image\":\"ipfs://QmZuyvF7imCVQ32AqZUVvNHEfuwXEnoSYYQ1w134bqQ7m9\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Golden Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Closed\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Leather Punk Jacket\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Fez\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored\"}]}",
+  "block_number": "13982096",
+  "block_number_minted": "13117240",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "52df759b685ae54154299bb8cf0a8f52",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/277",
+  "minter_address": "0x90f3146fa0e9e2056bbe383ecd2ff5864eaa78c5",
+  "rarity_rank": 17726,
+  "rarity_percentage": 90.92,
+  "rarity_label": "Top 91%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmZuyvF7imCVQ32AqZUVvNHEfuwXEnoSYYQ1w134bqQ7m9",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1808,
+        "percentage": 9.27
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Golden Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1114,
+        "percentage": 5.71
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Closed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1035,
+        "percentage": 5.31
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Leather Punk Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 230,
+        "percentage": 1.18
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Fez",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 550,
+        "percentage": 2.82
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 3321,
+        "percentage": 17.03
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

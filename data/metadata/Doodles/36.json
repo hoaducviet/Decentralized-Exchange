@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "36",
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "contract_type": "ERC721",
+  "owner_of": "0x8f3c6aab1f3b29f61bf860cb766ce0f6f2477935",
+  "last_metadata_sync": "2024-10-07T20:15:57.990Z",
+  "last_token_uri_sync": "2024-10-07T20:15:57.980Z",
+  "metadata": "{\"image\":\"ipfs://Qma9Pq9XzUgGFnxTFcTtYSB3p8KDYVtVdLZ66Yh2eVcWkf\",\"name\":\"Doodle #36\",\"description\":\"A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.\",\"attributes\":[{\"trait_type\":\"face\",\"value\":\"straw\"},{\"trait_type\":\"hair\",\"value\":\"white bucket cap\"},{\"trait_type\":\"body\",\"value\":\"yellow puffer\"},{\"trait_type\":\"background\",\"value\":\"grey\"},{\"trait_type\":\"head\",\"value\":\"blue\"}]}",
+  "block_number": "18907870",
+  "block_number_minted": "13435572",
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "token_hash": "49832a062112af683178fb7c96b89d0c",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/36",
+  "minter_address": "0x992984c607644b42d4a491f51a0191b0b59f4569",
+  "rarity_rank": 6816,
+  "rarity_percentage": 68.16,
+  "rarity_label": "Top 69%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Doodle #36",
+    "description": "A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://Qma9Pq9XzUgGFnxTFcTtYSB3p8KDYVtVdLZ66Yh2eVcWkf",
+    "attributes": [
+      {
+        "trait_type": "face",
+        "value": "straw",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 411,
+        "percentage": 4.11
+      },
+      {
+        "trait_type": "hair",
+        "value": "white bucket cap",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 207,
+        "percentage": 2.07
+      },
+      {
+        "trait_type": "body",
+        "value": "yellow puffer",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 346,
+        "percentage": 3.46
+      },
+      {
+        "trait_type": "background",
+        "value": "grey",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 742,
+        "percentage": 7.42
+      },
+      {
+        "trait_type": "head",
+        "value": "blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1042,
+        "percentage": 10.42
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "floor_price": "5.52",
+  "floor_price_usd": "13686.142",
+  "floor_price_currency": "eth"
+}

@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "19",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x14656e6fc27d9c7b1b54aa4ad82a037fa1a58183",
+  "last_metadata_sync": "2024-10-27T14:46:23.026Z",
+  "last_token_uri_sync": "2024-10-27T14:46:22.759Z",
+  "metadata": "{\"image\":\"ipfs://QmRcuopgwX16miSpLtEkY5kzZS96iwwNMWjMUaqUeyA619\",\"attributes\":[{\"trait_type\":\"Eyes\",\"value\":\"Eyepatch\"},{\"trait_type\":\"Fur\",\"value\":\"Tan\"},{\"trait_type\":\"Background\",\"value\":\"Army Green\"},{\"trait_type\":\"Hat\",\"value\":\"Bayc Hat Black\"},{\"trait_type\":\"Mouth\",\"value\":\"Rage\"}]}",
+  "block_number": "16433208",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "4510ae97ce0ed95fcbed1e98470267f0",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/19",
+  "minter_address": null,
+  "rarity_rank": 5711,
+  "rarity_percentage": 57.11,
+  "rarity_label": "Top 58%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmRcuopgwX16miSpLtEkY5kzZS96iwwNMWjMUaqUeyA619",
+    "attributes": [
+      {
+        "trait_type": "Eyes",
+        "value": "Eyepatch",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 333,
+        "percentage": 3.33
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Tan",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 626,
+        "percentage": 6.26
+      },
+      {
+        "trait_type": "Background",
+        "value": "Army Green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1243,
+        "percentage": 12.43
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Bayc Hat Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 228,
+        "percentage": 2.28
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Rage",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 266,
+        "percentage": 2.66
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

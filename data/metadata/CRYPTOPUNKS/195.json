@@ -1,0 +1,69 @@
+{
+  "amount": "1",
+  "token_id": "195",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0xc06dbddf5b059d4de36ed72fde4bc3793c63ce6e",
+  "last_metadata_sync": "2024-09-24T19:32:43.447Z",
+  "last_token_uri_sync": "2024-09-24T19:32:43.309Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk195.png\",\"name\":\"CryptoPunk 195\",\"attributes\":[\"Straight Hair Blonde\",\"Nerd Glasses\"],\"description\":\"Female\"}",
+  "block_number": "11794632",
+  "block_number_minted": null,
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "b07d45df3ca9b35ca83d73256dce81fd",
+  "token_uri": "Invalid uri",
+  "minter_address": null,
+  "rarity_rank": 4036,
+  "rarity_percentage": 40.36,
+  "rarity_label": "Top 41%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 195",
+    "description": "Female",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk195.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Female",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 39% trait",
+        "count": 3840,
+        "percentage": 38.4
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Straight Hair Blonde",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 144,
+        "percentage": 1.44
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Nerd Glasses",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 572,
+        "percentage": 5.72
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

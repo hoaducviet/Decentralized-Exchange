@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "375",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xaaa2da255df9ee74c7075bcb6d81f97940908a5d",
+  "last_metadata_sync": "2024-08-24T19:57:40.575Z",
+  "last_token_uri_sync": "2024-08-24T19:56:59.578Z",
+  "metadata": "{\"image\":\"ipfs://QmTs3FuFWv11QWuKPuFV7f2Fo5XFC7aaQv9Q1UzEQCVnwC\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 New Punk Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Black\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bloodshot\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Sleeveless T\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Laurel Wreath\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Phoneme  Ooo\"}]}",
+  "block_number": "18644705",
+  "block_number_minted": "13117247",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "3fd1b9114604321e6b2d2d6b612d2dd6",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/375",
+  "minter_address": "0xa7b5ca022774bd02842932e4358ddcbea0ccaade",
+  "rarity_rank": 9735,
+  "rarity_percentage": 49.93,
+  "rarity_label": "Top 50%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmTs3FuFWv11QWuKPuFV7f2Fo5XFC7aaQv9Q1UzEQCVnwC",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 New Punk Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1808,
+        "percentage": 9.27
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1797,
+        "percentage": 9.22
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bloodshot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 1283,
+        "percentage": 6.58
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Sleeveless T",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 382,
+        "percentage": 1.96
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Laurel Wreath",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 105,
+        "percentage": 0.54
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Phoneme  Ooo",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 361,
+        "percentage": 1.85
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

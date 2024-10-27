@@ -1,0 +1,58 @@
+{
+  "amount": "1",
+  "token_id": "127",
+  "token_address": "0x769272677fab02575e84945f03eca517acc544cc",
+  "contract_type": "ERC721",
+  "owner_of": "0xf4689604b9548e381646a9fb0dbd19ce36bf83fb",
+  "last_metadata_sync": "2024-10-24T23:34:27.307Z",
+  "last_token_uri_sync": "2024-10-24T23:34:27.056Z",
+  "metadata": "{\"description\":\"Captainz\",\"image\":\"https://captainz-api.memeland.com/images/3e6e78e0-63c5-4d59-895d-e755e68d7acb/127.png\",\"name\":\"Captainz #127\",\"attributes\":[{\"trait_type\":\"Stage\",\"value\":\"2\"},{\"trait_type\":\"Type\",\"value\":\"Kraken\"}],\"external_url\":\"https://www.memeland.com/profile/captainz/127\"}",
+  "block_number": "17778068",
+  "block_number_minted": null,
+  "name": "Captainz",
+  "symbol": "Captainz",
+  "token_hash": "41f977de6f58b4ac3774aa6901f4ce87",
+  "token_uri": "https://captainz-api.memeland.com/metadata/127.json",
+  "minter_address": null,
+  "rarity_rank": 415,
+  "rarity_percentage": 4.15,
+  "rarity_label": "Top 5%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Captainz #127",
+    "description": "Captainz",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://captainz-api.memeland.com/images/3e6e78e0-63c5-4d59-895d-e755e68d7acb/127.png",
+    "attributes": [
+      {
+        "trait_type": "Stage",
+        "value": "2",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 73% trait",
+        "count": 7207,
+        "percentage": 72.08
+      },
+      {
+        "trait_type": "Type",
+        "value": "Kraken",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 362,
+        "percentage": 3.62
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gcs/files/6df4d75778066bce740050615bc84e21.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/62448fe425d5e5e2bd44ded754865f37.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

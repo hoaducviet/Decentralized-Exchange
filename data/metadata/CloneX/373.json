@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "373",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x09479dd71e7fa3f318182352eab643b3597272e4",
+  "last_metadata_sync": "2024-10-08T09:02:07.044Z",
+  "last_token_uri_sync": "2024-10-08T09:02:06.910Z",
+  "metadata": "{\"name\":\"CloneX #1091\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Hair\",\"value\":\"BLU MoHWK\"},{\"trait_type\":\"Jewelry\",\"value\":\"PURP Two Piece\"},{\"trait_type\":\"Clothing\",\"value\":\"SPACE TRIP Tee\"},{\"trait_type\":\"Eyewear\",\"value\":\"Cyborg V2\"},{\"trait_type\":\"Mouth\",\"value\":\"Romantico\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/373.png\"}",
+  "block_number": "13864821",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "24f1d88434f4b09cf77351b44c8fe0e9",
+  "token_uri": "https://clonex-assets.rtfkt.com/373",
+  "minter_address": null,
+  "rarity_rank": 6773,
+  "rarity_percentage": 34.56,
+  "rarity_label": "Top 35%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #1091",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/373.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLU MoHWK",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 129,
+        "percentage": 0.66
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "PURP Two Piece",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 282,
+        "percentage": 1.44
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "SPACE TRIP Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 419,
+        "percentage": 2.14
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "Cyborg V2",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 152,
+        "percentage": 0.78
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Romantico",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 180,
+        "percentage": 0.92
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "121",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x589668303d20bf9d820a3836658a4960475fdaa4",
+  "last_metadata_sync": "2024-10-18T15:41:27.921Z",
+  "last_token_uri_sync": "2024-10-18T15:40:47.296Z",
+  "metadata": "{\"image\":\"ipfs://QmQuoRhV1Bdc3MfLHFgursUqrHJr6mCVqnQCVqdhAPATAt\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Purple\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Dmt\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Heart\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Black T\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Sea Captain's Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored\"}]}",
+  "block_number": "13117995",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "68a4cdd07fad4169c3fcd264b5f9a3b3",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/121",
+  "minter_address": null,
+  "rarity_rank": 13743,
+  "rarity_percentage": 70.49,
+  "rarity_label": "Top 71%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmQuoRhV1Bdc3MfLHFgursUqrHJr6mCVqnQCVqdhAPATAt",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Purple",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1879,
+        "percentage": 9.64
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Dmt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 336,
+        "percentage": 1.72
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Heart",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 588,
+        "percentage": 3.02
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Black T",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 503,
+        "percentage": 2.58
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Sea Captain's Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 446,
+        "percentage": 2.29
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 3321,
+        "percentage": 17.03
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

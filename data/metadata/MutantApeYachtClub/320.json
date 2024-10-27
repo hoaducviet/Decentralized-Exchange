@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "320",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x0305647eadcdd970b2ac209a95140e3b97db4e92",
+  "last_metadata_sync": "2024-08-24T19:57:32.277Z",
+  "last_token_uri_sync": "2024-08-24T19:56:51.220Z",
+  "metadata": "{\"image\":\"ipfs://QmU5Pzz9KsKKWKMf8DfNjiFZVpd2EhPELnmvs5j4r9qMGR\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Aquamarine\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Pink\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Closed\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Unshaven\"}]}",
+  "block_number": "16493370",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "f84c6247de78f6e9286184297558d5a8",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/320",
+  "minter_address": null,
+  "rarity_rank": 2601,
+  "rarity_percentage": 13.34,
+  "rarity_label": "Top 14%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmU5Pzz9KsKKWKMf8DfNjiFZVpd2EhPELnmvs5j4r9qMGR",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Aquamarine",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 598,
+        "percentage": 3.07
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 231,
+        "percentage": 1.18
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Closed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 304,
+        "percentage": 1.56
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 712,
+        "percentage": 3.65
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,69 @@
+{
+  "amount": "1",
+  "token_id": "131",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0xa858ddc0445d8131dac4d1de01f834ffcba52ef1",
+  "last_metadata_sync": "2024-09-24T19:32:02.035Z",
+  "last_token_uri_sync": "2024-09-24T19:32:01.767Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk131.png\",\"name\":\"CryptoPunk 131\",\"attributes\":[\"Hot Lipstick\",\"Straight Hair Dark\"],\"description\":\"Female\"}",
+  "block_number": "14401793",
+  "block_number_minted": "3918258",
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "f7a55fd28aaa5a5dfbd50b77b9a4e744",
+  "token_uri": "Invalid uri",
+  "minter_address": "0xc352b534e8b987e036a93539fd6897f53488e56a",
+  "rarity_rank": 4412,
+  "rarity_percentage": 44.12,
+  "rarity_label": "Top 45%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 131",
+    "description": "Female",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk131.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Female",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 39% trait",
+        "count": 3840,
+        "percentage": 38.4
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Hot Lipstick",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 696,
+        "percentage": 6.96
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Straight Hair Dark",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 148,
+        "percentage": 1.48
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

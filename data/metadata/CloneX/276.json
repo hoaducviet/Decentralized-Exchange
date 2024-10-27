@@ -1,0 +1,69 @@
+{
+  "amount": "1",
+  "token_id": "276",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x5d7aaa862681920ea4f350a670816b0977c80b37",
+  "last_metadata_sync": "2024-08-23T22:43:13.903Z",
+  "last_token_uri_sync": "2024-08-23T22:43:13.850Z",
+  "metadata": "{\"name\":\"CloneX #51\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Hair\",\"value\":\"RTFKT TECH Cap\"},{\"trait_type\":\"Clothing\",\"value\":\"STRIPED POLO\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/276.png\"}",
+  "block_number": "14608733",
+  "block_number_minted": "13792277",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "199139f964177a6b18b906cffcb75c2d",
+  "token_uri": "https://clonex-assets.rtfkt.com/276",
+  "minter_address": "0xd4b1bb38e18d7b0f1d1203fb53a130e7bb774eb4",
+  "rarity_rank": 14028,
+  "rarity_percentage": 71.57,
+  "rarity_label": "Top 72%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #51",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/276.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Hair",
+        "value": "RTFKT TECH Cap",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 83,
+        "percentage": 0.42
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "STRIPED POLO",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 73,
+        "percentage": 0.37
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

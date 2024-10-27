@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "280",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x49edb84c9254574ef0d48023984235cf965ad45a",
+  "last_metadata_sync": "2024-08-23T22:43:17.657Z",
+  "last_token_uri_sync": "2024-08-23T22:43:17.607Z",
+  "metadata": "{\"name\":\"CloneX #1185\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"BLU-PURP\"},{\"trait_type\":\"Hair\",\"value\":\"GRN BWLCUT\"},{\"trait_type\":\"Clothing\",\"value\":\"WHT Utility Vest\"},{\"trait_type\":\"Mouth\",\"value\":\"MAD\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/280.png\"}",
+  "block_number": "18543994",
+  "block_number_minted": "13792277",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "aa92c2905ed14f0bc59d496e8077e8df",
+  "token_uri": "https://clonex-assets.rtfkt.com/280",
+  "minter_address": "0x2b18233fb4306a705471a7271c018ce0ff7dd754",
+  "rarity_rank": 16693,
+  "rarity_percentage": 85.17,
+  "rarity_label": "Top 86%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #1185",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/280.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "BLU-PURP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 668,
+        "percentage": 3.41
+      },
+      {
+        "trait_type": "Hair",
+        "value": "GRN BWLCUT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 198,
+        "percentage": 1.01
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "WHT Utility Vest",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 195,
+        "percentage": 0.99
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "MAD",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 225,
+        "percentage": 1.15
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "336",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xf325f2be91e49f4a9fc4610d956ec808e564f5cf",
+  "last_metadata_sync": "2024-10-15T14:13:19.545Z",
+  "last_token_uri_sync": "2024-10-15T14:12:37.920Z",
+  "metadata": "{\"image\":\"ipfs://QmQQmr3ohKSpvafWgLyA2iyn2oTNi6iKCZTdx9JBiMdEoS\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Orange\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Dark Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Sleepy\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Girl's Hair Pink\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Jovial\"}]}",
+  "block_number": "19924135",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "6cfdcffa3f3510cea17b4f474dabe9ff",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/336",
+  "minter_address": null,
+  "rarity_rank": 3431,
+  "rarity_percentage": 17.6,
+  "rarity_label": "Top 18%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmQQmr3ohKSpvafWgLyA2iyn2oTNi6iKCZTdx9JBiMdEoS",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Orange",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 596,
+        "percentage": 3.06
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Dark Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 590,
+        "percentage": 3.03
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Sleepy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 357,
+        "percentage": 1.83
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Girl's Hair Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 54,
+        "percentage": 0.28
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Jovial",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 141,
+        "percentage": 0.72
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

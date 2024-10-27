@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "276",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xe98e08a70d5e6dce0e0acaf0ddaf25db140448c7",
+  "last_metadata_sync": "2024-10-07T21:19:39.075Z",
+  "last_token_uri_sync": "2024-10-07T21:18:58.543Z",
+  "metadata": "{\"image\":\"ipfs://QmcpiVLkSHSEQ79qdh12M2yJcXDyzkxUCr7BVBCtd7Hkac\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Aquamarine\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Tan\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Sad\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Smoking Jacket\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Phoneme  Ooo\"}]}",
+  "block_number": "13836606",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "44fa77477db623f25a3a293f765a7724",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/276",
+  "minter_address": null,
+  "rarity_rank": 3568,
+  "rarity_percentage": 18.3,
+  "rarity_label": "Top 19%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmcpiVLkSHSEQ79qdh12M2yJcXDyzkxUCr7BVBCtd7Hkac",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Aquamarine",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 598,
+        "percentage": 3.07
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Tan",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 274,
+        "percentage": 1.41
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Sad",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 255,
+        "percentage": 1.31
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Smoking Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 83,
+        "percentage": 0.43
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Phoneme  Ooo",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 109,
+        "percentage": 0.56
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

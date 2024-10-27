@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "59",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xd41049f31a102f1523dcacaa7c9f01a787ef8785",
+  "last_metadata_sync": "2024-10-18T15:54:14.021Z",
+  "last_token_uri_sync": "2024-10-18T15:53:33.434Z",
+  "metadata": "{\"image\":\"ipfs://QmczC63DrtvqhTFQnRmjDicUZZSzs5imWvRjNRU5uxyKrp\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Golden Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Bone Tee\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Fisherman's Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Cigarette\"}]}",
+  "block_number": "17229766",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "5d4ff56e2b2ae1f61d7a5be7e9dc5fe2",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/59",
+  "minter_address": null,
+  "rarity_rank": 5138,
+  "rarity_percentage": 26.35,
+  "rarity_label": "Top 27%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmczC63DrtvqhTFQnRmjDicUZZSzs5imWvRjNRU5uxyKrp",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 610,
+        "percentage": 3.13
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Golden Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 350,
+        "percentage": 1.8
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 774,
+        "percentage": 3.97
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Bone Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 87,
+        "percentage": 0.45
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Fisherman's Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 152,
+        "percentage": 0.78
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Cigarette",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 317,
+        "percentage": 1.63
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

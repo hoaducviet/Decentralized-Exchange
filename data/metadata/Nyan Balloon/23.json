@@ -1,0 +1,47 @@
+{
+  "amount": "1",
+  "token_id": "23",
+  "token_address": "0x286e531f363768fed5e18b468f5b76a9ffc33af5",
+  "contract_type": "ERC1155",
+  "owner_of": "0xfeed2eab7fc2c43d06f55ecd5ef5db5f2fe77935",
+  "last_metadata_sync": "2024-10-27T15:44:21.091Z",
+  "last_token_uri_sync": "2024-10-27T15:44:20.870Z",
+  "metadata": "{\"created_by\":\"NyanCat\",\"name\":\"Starry Nyan Balloon\",\"external_url\":\"https://opensea.io/collection/nyanballoon\",\"description\":\"Nyan Balloon is a character I personally created back in October 2011 that was originally meant to serve as a backstory to a certain space cat.  I hope you enjoy this lovely rendition and it brings you joy! ✨🎈\",\"attributes\":[{\"trait_type\":\"Artist\",\"value\":\"NyanCat\"}],\"image_details\":{\"bytes\":838481,\"format\":\"GIF\",\"sha256\":\"2977d18c9356efae7071a8e2fe79592b86d91765e380df04e5042570811ccd4b\",\"width\":1667,\"height\":1667},\"image\":\"https://arweave.net/Hvk5pymoYpxDwPfwXN8kHD12AmYhMn5Ap_BCNu4R8oI\",\"image_url\":\"https://arweave.net/Hvk5pymoYpxDwPfwXN8kHD12AmYhMn5Ap_BCNu4R8oI\"}",
+  "block_number": "19037839",
+  "block_number_minted": null,
+  "name": "Nyan Balloon",
+  "symbol": "NyanBall",
+  "token_hash": "cabfd2222034a1e4840c7fbe1e9d173d",
+  "token_uri": "https://arweave.net/i3aVxpJWZlyaGWXTTMtMwduoza2HfuA-zw7Ns162D4M",
+  "minter_address": "ERC1155 tokens don't have a single minter",
+  "rarity_rank": 10,
+  "rarity_percentage": 37.04,
+  "rarity_label": "Top 38%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Starry Nyan Balloon",
+    "description": "Nyan Balloon is a character I personally created back in October 2011 that was originally meant to serve as a backstory to a certain space cat.  I hope you enjoy this lovely rendition and it brings you joy! ✨🎈",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://arweave.net/Hvk5pymoYpxDwPfwXN8kHD12AmYhMn5Ap_BCNu4R8oI",
+    "attributes": [
+      {
+        "trait_type": "Artist",
+        "value": "NyanCat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 67% trait",
+        "count": 18,
+        "percentage": 66.67
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gcs/files/e8bd58f2759b0c260d36aa469e664ec3.gif?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/dfc777ce66df8576580eaa5970f28c27.png?w=500&auto=format",
+  "floor_price": "0.099",
+  "floor_price_usd": "245.458",
+  "floor_price_currency": "eth"
+}

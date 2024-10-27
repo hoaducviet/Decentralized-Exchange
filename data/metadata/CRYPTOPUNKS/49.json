@@ -1,0 +1,69 @@
+{
+  "amount": "1",
+  "token_id": "49",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0xa858ddc0445d8131dac4d1de01f834ffcba52ef1",
+  "last_metadata_sync": "2024-10-08T09:44:55.627Z",
+  "last_token_uri_sync": "2024-10-08T09:44:55.579Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk049.png\",\"name\":\"CryptoPunk 049\",\"attributes\":[\"Bandana\",\"Purple Eye Shadow\"],\"description\":\"Female\"}",
+  "block_number": "14405950",
+  "block_number_minted": null,
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "d1daecdf2cba67457c7c19fe9f23965a",
+  "token_uri": "Invalid uri",
+  "minter_address": null,
+  "rarity_rank": 5998,
+  "rarity_percentage": 59.98,
+  "rarity_label": "Top 60%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 049",
+    "description": "Female",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk049.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Female",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 39% trait",
+        "count": 3840,
+        "percentage": 38.4
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Bandana",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 481,
+        "percentage": 4.81
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Purple Eye Shadow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 262,
+        "percentage": 2.62
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

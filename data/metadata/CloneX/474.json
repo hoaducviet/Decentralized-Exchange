@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "474",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x0c02881e3d9491c384ae9955ed1117cd87a9a3c7",
+  "last_metadata_sync": "2024-08-23T22:43:16.169Z",
+  "last_token_uri_sync": "2024-08-23T22:43:16.099Z",
+  "metadata": "{\"name\":\"CloneX #1172\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Hair\",\"value\":\"PNK BWLCUT\"},{\"trait_type\":\"Clothing\",\"value\":\"IRI BLW UP JCKT\"},{\"trait_type\":\"Accessories\",\"value\":\"SLVR STUD\"},{\"trait_type\":\"Mouth\",\"value\":\"SFTY Mask\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/474.png\"}",
+  "block_number": "15146470",
+  "block_number_minted": "13792286",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "0147a01b8a2e634a2e0883fa00a6fb0e",
+  "token_uri": "https://clonex-assets.rtfkt.com/474",
+  "minter_address": "0x4d71b79c612e410858addb8578e6d6df56948ce8",
+  "rarity_rank": 6959,
+  "rarity_percentage": 35.51,
+  "rarity_label": "Top 36%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #1172",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/474.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Hair",
+        "value": "PNK BWLCUT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 183,
+        "percentage": 0.93
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "IRI BLW UP JCKT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 135,
+        "percentage": 0.69
+      },
+      {
+        "trait_type": "Accessories",
+        "value": "SLVR STUD",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 235,
+        "percentage": 1.2
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "SFTY Mask",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 317,
+        "percentage": 1.62
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "131",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x69e22fbb1e95c26c39fe445bd60ca219c91ef7ff",
+  "last_metadata_sync": "2024-10-18T15:42:52.561Z",
+  "last_token_uri_sync": "2024-10-18T15:42:11.968Z",
+  "metadata": "{\"image\":\"ipfs://QmeC79D2bzQJtgdE8V6RXHCe6qpe2o6QJKFUZk5JEmfU9B\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Orange\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Tanktop\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Army Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Grin Multicolored\"}]}",
+  "block_number": "13117233",
+  "block_number_minted": "13117233",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "902fd417613dcb9af480fce96696160a",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/131",
+  "minter_address": "0x69e22fbb1e95c26c39fe445bd60ca219c91ef7ff",
+  "rarity_rank": 14422,
+  "rarity_percentage": 73.97,
+  "rarity_label": "Top 74%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmeC79D2bzQJtgdE8V6RXHCe6qpe2o6QJKFUZk5JEmfU9B",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Orange",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1855,
+        "percentage": 9.51
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1955,
+        "percentage": 10.03
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 2526,
+        "percentage": 12.96
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Tanktop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 341,
+        "percentage": 1.75
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Army Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 432,
+        "percentage": 2.22
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Grin Multicolored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 199,
+        "percentage": 1.02
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

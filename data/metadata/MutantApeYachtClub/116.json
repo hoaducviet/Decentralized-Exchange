@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "116",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x9db60b9adf8acbe062d3a78ec68896da3e4a1a7b",
+  "last_metadata_sync": "2024-10-18T15:40:09.171Z",
+  "last_token_uri_sync": "2024-10-18T15:40:09.022Z",
+  "metadata": "{\"image\":\"ipfs://QmUaxd7HoGoyw3dUc4CAcEb3KCqrTC1iyChva8uZmokQA5\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Zombie\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Robot\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Rainbow Suspenders\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Trippy Captain's Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Unshaven\"},{\"trait_type\":\"Earring\",\"value\":\"M1 Diamond Stud\"}]}",
+  "block_number": "20071181",
+  "block_number_minted": "13117233",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "db231c3e1a01c8009f89e53b3c53f532",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/116",
+  "minter_address": "0x736011b7d04d8a014efdae6a653e3405f3cdc720",
+  "rarity_rank": 3453,
+  "rarity_percentage": 17.71,
+  "rarity_label": "Top 18%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmUaxd7HoGoyw3dUc4CAcEb3KCqrTC1iyChva8uZmokQA5",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1808,
+        "percentage": 9.27
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Zombie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 476,
+        "percentage": 2.44
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 494,
+        "percentage": 2.53
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Rainbow Suspenders",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 194,
+        "percentage": 1
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Trippy Captain's Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 111,
+        "percentage": 0.57
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 12% trait",
+        "count": 2262,
+        "percentage": 11.6
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M1 Diamond Stud",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 321,
+        "percentage": 1.65
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": "3.2",
+  "floor_price_usd": "7933.996",
+  "floor_price_currency": "eth"
+}

@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "39",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x9deee70544f6879047a102527b4251f75b239434",
+  "last_metadata_sync": "2024-08-24T19:57:45.362Z",
+  "last_token_uri_sync": "2024-08-24T19:57:04.681Z",
+  "metadata": "{\"image\":\"ipfs://QmX3NsPj7KnNAfweJWvLjVtKPcSMnEHEGaijqApZhDeaWJ\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Army Green\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Death Bot\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Toga\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Discomfort\"}]}",
+  "block_number": "20823297",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "fc3e55c64179f76c53627efdc484a8c0",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/39",
+  "minter_address": null,
+  "rarity_rank": 2469,
+  "rarity_percentage": 12.66,
+  "rarity_label": "Top 13%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmX3NsPj7KnNAfweJWvLjVtKPcSMnEHEGaijqApZhDeaWJ",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Army Green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 546,
+        "percentage": 2.8
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Death Bot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 118,
+        "percentage": 0.61
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 774,
+        "percentage": 3.97
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Toga",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 96,
+        "percentage": 0.49
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Discomfort",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 83,
+        "percentage": 0.43
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

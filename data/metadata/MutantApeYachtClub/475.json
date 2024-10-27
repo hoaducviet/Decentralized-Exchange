@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "475",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xf0cf2edc6181dfe446ba3482fcafecbbc33ae6f4",
+  "last_metadata_sync": "2024-08-24T19:57:51.576Z",
+  "last_token_uri_sync": "2024-08-24T19:57:10.509Z",
+  "metadata": "{\"image\":\"ipfs://QmX9jRH16btobZSnj6zJkymMssZKiinaty3mrKweQ3sYb5\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Army Green\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Red\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Coins\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Guayabera\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Grin\"},{\"trait_type\":\"Earring\",\"value\":\"M1 Silver Stud\"}]}",
+  "block_number": "14155987",
+  "block_number_minted": "13117250",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "f16666b7b3d447600847f7b61821c475",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/475",
+  "minter_address": "0x722e9468d7f8c2710b6dbfdf70f01b045aca1851",
+  "rarity_rank": 13119,
+  "rarity_percentage": 67.29,
+  "rarity_label": "Top 68%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmX9jRH16btobZSnj6zJkymMssZKiinaty3mrKweQ3sYb5",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Army Green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1794,
+        "percentage": 9.2
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Red",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 712,
+        "percentage": 3.65
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Coins",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 704,
+        "percentage": 3.61
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Guayabera",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 332,
+        "percentage": 1.7
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Grin",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1050,
+        "percentage": 5.39
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M1 Silver Stud",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 1194,
+        "percentage": 6.12
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

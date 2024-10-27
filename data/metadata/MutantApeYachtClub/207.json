@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "207",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x8a2c9f1ecdab5d32811f7daf495e89b4058fb233",
+  "last_metadata_sync": "2024-10-18T15:51:08.950Z",
+  "last_token_uri_sync": "2024-10-18T15:50:28.426Z",
+  "metadata": "{\"image\":\"ipfs://QmRtrExGyGQ2VbWA7iALDBoZQ1U53N2TQ5R9ZxopptJUqR\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Army Green\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Zombie\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Coins\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Lumberjack Shirt\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Bayc Hat Red\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored\"},{\"trait_type\":\"Earring\",\"value\":\"M2 Gold Stud\"}]}",
+  "block_number": "15441477",
+  "block_number_minted": "13117239",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "994854b0194c55335db14df6d4136f81",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/207",
+  "minter_address": "0x7588a6cd8d70ecf35a005ae6334c2de1e967b6d6",
+  "rarity_rank": 596,
+  "rarity_percentage": 3.06,
+  "rarity_label": "Top 4%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmRtrExGyGQ2VbWA7iALDBoZQ1U53N2TQ5R9ZxopptJUqR",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Army Green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 546,
+        "percentage": 2.8
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Zombie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 141,
+        "percentage": 0.72
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Coins",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 231,
+        "percentage": 1.18
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Lumberjack Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 95,
+        "percentage": 0.49
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Bayc Hat Red",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 95,
+        "percentage": 0.49
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 997,
+        "percentage": 5.11
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M2 Gold Stud",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 238,
+        "percentage": 1.22
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": "20",
+  "floor_price_usd": "49587.472",
+  "floor_price_currency": "eth"
+}

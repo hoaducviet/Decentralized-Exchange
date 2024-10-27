@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "16",
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "contract_type": "ERC721",
+  "owner_of": "0x620b70123fb810f6c653da7644b5dd0b6312e4d8",
+  "last_metadata_sync": "2024-10-07T20:13:23.331Z",
+  "last_token_uri_sync": "2024-10-07T20:13:23.318Z",
+  "metadata": "{\"image\":\"ipfs://QmUyzURXFQJcEQSegDfwuCaYZKEMUFA6jRjUgBGhUwDHq3\",\"name\":\"Doodle #16\",\"description\":\"A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.\",\"attributes\":[{\"trait_type\":\"face\",\"value\":\"aviators with cig\"},{\"trait_type\":\"hair\",\"value\":\"halo\"},{\"trait_type\":\"body\",\"value\":\"pink fleece\"},{\"trait_type\":\"background\",\"value\":\"green\"},{\"trait_type\":\"head\",\"value\":\"green\"}]}",
+  "block_number": "19615767",
+  "block_number_minted": null,
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "token_hash": "b2f3372e3391a66ffa72e1634df303d1",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/16",
+  "minter_address": null,
+  "rarity_rank": 4889,
+  "rarity_percentage": 48.89,
+  "rarity_label": "Top 49%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Doodle #16",
+    "description": "A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmUyzURXFQJcEQSegDfwuCaYZKEMUFA6jRjUgBGhUwDHq3",
+    "attributes": [
+      {
+        "trait_type": "face",
+        "value": "aviators with cig",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 201,
+        "percentage": 2.01
+      },
+      {
+        "trait_type": "hair",
+        "value": "halo",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 176,
+        "percentage": 1.76
+      },
+      {
+        "trait_type": "body",
+        "value": "pink fleece",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 317,
+        "percentage": 3.17
+      },
+      {
+        "trait_type": "background",
+        "value": "green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 749,
+        "percentage": 7.49
+      },
+      {
+        "trait_type": "head",
+        "value": "green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 983,
+        "percentage": 9.83
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

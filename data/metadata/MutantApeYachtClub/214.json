@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "214",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xe2a83b15fc300d8457eb9e176f98d92a8ff40a49",
+  "last_metadata_sync": "2024-10-18T15:51:18.265Z",
+  "last_token_uri_sync": "2024-10-18T15:50:37.755Z",
+  "metadata": "{\"image\":\"ipfs://QmZvocRSRAD3XM5qoRgBjhS1RP32aMghCg3V4CMYnT5wWD\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Golden Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Crazy\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Tanktop\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Halo\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Unshaven\"},{\"trait_type\":\"Earring\",\"value\":\"M1 Gold Stud\"}]}",
+  "block_number": "16618472",
+  "block_number_minted": "13117239",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "9998e7999a87721d47c21c6ad2403b48",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/214",
+  "minter_address": "0x983cb3da627aac4d8c0979e76d9619af2f350490",
+  "rarity_rank": 8004,
+  "rarity_percentage": 41.05,
+  "rarity_label": "Top 42%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmZvocRSRAD3XM5qoRgBjhS1RP32aMghCg3V4CMYnT5wWD",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1917,
+        "percentage": 9.83
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Golden Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1114,
+        "percentage": 5.71
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Crazy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 609,
+        "percentage": 3.12
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Tanktop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 341,
+        "percentage": 1.75
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Halo",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 467,
+        "percentage": 2.4
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 12% trait",
+        "count": 2262,
+        "percentage": 11.6
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M1 Gold Stud",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 632,
+        "percentage": 3.24
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

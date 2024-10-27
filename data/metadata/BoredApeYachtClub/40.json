@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "40",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x9b059f4d2199e73aa86f8938167a1a6067474cf4",
+  "last_metadata_sync": "2024-10-21T18:42:15.941Z",
+  "last_token_uri_sync": "2024-10-21T18:42:15.622Z",
+  "metadata": "{\"image\":\"ipfs://QmWykq5cb9YTrNTH6XAe5KagFBtTTPB82PKNw5f9ZiGiLf\",\"attributes\":[{\"trait_type\":\"Mouth\",\"value\":\"Bored\"},{\"trait_type\":\"Fur\",\"value\":\"Dark Brown\"},{\"trait_type\":\"Background\",\"value\":\"New Punk Blue\"},{\"trait_type\":\"Clothes\",\"value\":\"Biker Vest\"},{\"trait_type\":\"Eyes\",\"value\":\"Sad\"},{\"trait_type\":\"Hat\",\"value\":\"Spinner Hat\"}]}",
+  "block_number": "13000827",
+  "block_number_minted": "12299208",
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "ea8870fcce8acea9a6d3357f1a181b6f",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/40",
+  "minter_address": "0x33569c101562e1faf5b24581057e5cee4c8288d7",
+  "rarity_rank": 8506,
+  "rarity_percentage": 85.06,
+  "rarity_label": "Top 86%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmWykq5cb9YTrNTH6XAe5KagFBtTTPB82PKNw5f9ZiGiLf",
+    "attributes": [
+      {
+        "trait_type": "Mouth",
+        "value": "Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 23% trait",
+        "count": 2272,
+        "percentage": 22.72
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Dark Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 14% trait",
+        "count": 1352,
+        "percentage": 13.52
+      },
+      {
+        "trait_type": "Background",
+        "value": "New Punk Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1232,
+        "percentage": 12.32
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Biker Vest",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 253,
+        "percentage": 2.53
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Sad",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 551,
+        "percentage": 5.51
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Spinner Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 181,
+        "percentage": 1.81
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "162",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xd91c566668d4de749b88db3c6b5a971e277ca4b5",
+  "last_metadata_sync": "2024-10-27T15:55:56.145Z",
+  "last_token_uri_sync": "2024-10-27T15:55:56.109Z",
+  "metadata": "{\"name\":\"CloneX #725\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"BLU\"},{\"trait_type\":\"Facial Feature\",\"value\":\"TRi TAT\"},{\"trait_type\":\"Hair\",\"value\":\"BRWN 1 Horn\"},{\"trait_type\":\"Clothing\",\"value\":\"BLCK GM Tee\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/162.png\"}",
+  "block_number": "19306383",
+  "block_number_minted": "13792273",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "89531b3cf6ad613de45a55a8f6ea8866",
+  "token_uri": "https://clonex-assets.rtfkt.com/162",
+  "minter_address": "0xee88a8f50f1b77adc695dfcc34b0c820ec8a3278",
+  "rarity_rank": 11814,
+  "rarity_percentage": 60.28,
+  "rarity_label": "Top 61%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #725",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/162.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "BLU",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 928,
+        "percentage": 4.73
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "TRi TAT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 127,
+        "percentage": 0.65
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BRWN 1 Horn",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 150,
+        "percentage": 0.77
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "BLCK GM Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 378,
+        "percentage": 1.93
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

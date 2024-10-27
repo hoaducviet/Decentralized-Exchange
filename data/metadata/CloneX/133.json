@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "133",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x0224da567bedc6c2f9a75bfdc2cbd841a8c5ec49",
+  "last_metadata_sync": "2024-10-27T15:55:44.476Z",
+  "last_token_uri_sync": "2024-10-27T15:55:44.208Z",
+  "metadata": "{\"name\":\"CloneX #13006\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\\n\\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Eye Color\",\"value\":\"HALF-OPEN\"},{\"trait_type\":\"Hair\",\"value\":\"BLU Shape Up\"},{\"trait_type\":\"Clothing\",\"value\":\"FLOOR Tee\"},{\"trait_type\":\"Type\",\"value\":\"MURAKAMI DRIP\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/133.png\"}",
+  "block_number": "16955493",
+  "block_number_minted": "13792272",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "943e4f44b51b059cf17e8e588bc076d7",
+  "token_uri": "https://clonex-assets.rtfkt.com/133",
+  "minter_address": "0x3a465b0701e9f3b405af6c1f4ddfaf6a3471d87c",
+  "rarity_rank": 16904,
+  "rarity_percentage": 86.24,
+  "rarity_label": "Top 87%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #13006",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\n\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/133.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "HALF-OPEN",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 213,
+        "percentage": 1.09
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLU Shape Up",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 338,
+        "percentage": 1.72
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "FLOOR Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 440,
+        "percentage": 2.24
+      },
+      {
+        "trait_type": "Type",
+        "value": "MURAKAMI DRIP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 16% trait",
+        "count": 3021,
+        "percentage": 15.41
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

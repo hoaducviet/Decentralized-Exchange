@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "104",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0x8088d74111a2368f5b7f0064a581d3bb72e6527e",
+  "last_metadata_sync": "2024-10-26T18:40:10.979Z",
+  "last_token_uri_sync": "2024-10-26T18:40:10.366Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk104.png\",\"name\":\"CryptoPunk 104\",\"attributes\":[\"Normal Beard Black\",\"Earring\",\"Crazy Hair\",\"Eye Patch\"],\"description\":\"Male\"}",
+  "block_number": "14393491",
+  "block_number_minted": null,
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "927b9b14d175a4ed0b2383655c6f91d7",
+  "token_uri": "Invalid uri",
+  "minter_address": null,
+  "rarity_rank": 2404,
+  "rarity_percentage": 24.04,
+  "rarity_label": "Top 25%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 104",
+    "description": "Male",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk104.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Male",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 61% trait",
+        "count": 6039,
+        "percentage": 60.39
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Normal Beard Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 289,
+        "percentage": 2.89
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Earring",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 25% trait",
+        "count": 2459,
+        "percentage": 24.59
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Crazy Hair",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 414,
+        "percentage": 4.14
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Eye Patch",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 461,
+        "percentage": 4.61
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

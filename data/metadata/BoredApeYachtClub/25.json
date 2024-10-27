@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "25",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x5ed0f666e6c20f5eeb2214514b56df2adc47a0b2",
+  "last_metadata_sync": "2024-10-21T18:41:40.779Z",
+  "last_token_uri_sync": "2024-10-21T18:41:40.328Z",
+  "metadata": "{\"image\":\"ipfs://QmSR1aCRtn6cGrJaWNog586943N8BgfrXLKzAavCfjSuzE\",\"attributes\":[{\"trait_type\":\"Mouth\",\"value\":\"Bored Cigarette\"},{\"trait_type\":\"Background\",\"value\":\"Blue\"},{\"trait_type\":\"Clothes\",\"value\":\"Guayabera\"},{\"trait_type\":\"Fur\",\"value\":\"Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"Closed\"}]}",
+  "block_number": "19662047",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "51841e2927718913de7e3301045cb2cd",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/25",
+  "minter_address": null,
+  "rarity_rank": 9524,
+  "rarity_percentage": 95.24,
+  "rarity_label": "Top 96%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmSR1aCRtn6cGrJaWNog586943N8BgfrXLKzAavCfjSuzE",
+    "attributes": [
+      {
+        "trait_type": "Mouth",
+        "value": "Bored Cigarette",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 710,
+        "percentage": 7.1
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1242,
+        "percentage": 12.42
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Guayabera",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 232,
+        "percentage": 2.32
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 14% trait",
+        "count": 1370,
+        "percentage": 13.7
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Closed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 710,
+        "percentage": 7.1
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

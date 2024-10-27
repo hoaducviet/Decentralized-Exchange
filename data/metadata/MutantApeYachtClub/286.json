@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "286",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x930fa6a1485da30a52bf09abd51e5053debf0d8a",
+  "last_metadata_sync": "2024-10-18T15:52:46.710Z",
+  "last_token_uri_sync": "2024-10-18T15:52:06.042Z",
+  "metadata": "{\"image\":\"ipfs://QmVa7Di4kwNAnRFrLz5WBhvdtnCbM8Mjzr8EzSwH5C9m4o\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 New Punk Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Cheetah\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Zombie\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Tanktop\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Bowler\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored\"}]}",
+  "block_number": "16784696",
+  "block_number_minted": "13117241",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "e4476f39e5e797e29696af016bc4406e",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/286",
+  "minter_address": "0x0985fbcb517b2889eb2340a3c2747e133a825cd2",
+  "rarity_rank": 14417,
+  "rarity_percentage": 73.94,
+  "rarity_label": "Top 74%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmVa7Di4kwNAnRFrLz5WBhvdtnCbM8Mjzr8EzSwH5C9m4o",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 New Punk Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1808,
+        "percentage": 9.27
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Cheetah",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 604,
+        "percentage": 3.1
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Zombie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 474,
+        "percentage": 2.43
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Tanktop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 341,
+        "percentage": 1.75
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Bowler",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 384,
+        "percentage": 1.97
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 3321,
+        "percentage": 17.03
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

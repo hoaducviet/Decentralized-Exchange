@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "40",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0xa858ddc0445d8131dac4d1de01f834ffcba52ef1",
+  "last_metadata_sync": "2024-10-27T15:15:23.213Z",
+  "last_token_uri_sync": "2024-10-27T15:15:23.183Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk040.png\",\"name\":\"CryptoPunk 040\",\"attributes\":[\"Bandana\",\"Chinstrap\",\"Smile\"],\"description\":\"Male\"}",
+  "block_number": "14401994",
+  "block_number_minted": "3918216",
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "62ddbabe944d664c0f09d9095db76a53",
+  "token_uri": "Invalid uri",
+  "minter_address": "0xc352b534e8b987e036a93539fd6897f53488e56a",
+  "rarity_rank": 4818,
+  "rarity_percentage": 48.18,
+  "rarity_label": "Top 49%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 040",
+    "description": "Male",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk040.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Male",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 61% trait",
+        "count": 6039,
+        "percentage": 60.39
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Bandana",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 481,
+        "percentage": 4.81
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Chinstrap",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 282,
+        "percentage": 2.82
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Smile",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 238,
+        "percentage": 2.38
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

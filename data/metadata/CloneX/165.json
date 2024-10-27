@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "165",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x99b5c7fe6cc2f5c2d4f8464cb6486651e30c8cf9",
+  "last_metadata_sync": "2024-10-27T15:55:57.157Z",
+  "last_token_uri_sync": "2024-10-27T15:55:57.122Z",
+  "metadata": "{\"name\":\"CloneX #4128\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"BLU-PURP\"},{\"trait_type\":\"Hair\",\"value\":\"BRED Buns\"},{\"trait_type\":\"Clothing\",\"value\":\"NEON HOODIE\"},{\"trait_type\":\"Mouth\",\"value\":\"SMILE\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/165.png\"}",
+  "block_number": "16015453",
+  "block_number_minted": "13792274",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "a95684fd7d0cc159f856795757e1d237",
+  "token_uri": "https://clonex-assets.rtfkt.com/165",
+  "minter_address": "0x1b1ea5f6827467f1098abc29428bfd014a774a71",
+  "rarity_rank": 15278,
+  "rarity_percentage": 77.95,
+  "rarity_label": "Top 78%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #4128",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/165.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "BLU-PURP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 668,
+        "percentage": 3.41
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BRED Buns",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 47,
+        "percentage": 0.24
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "NEON HOODIE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 237,
+        "percentage": 1.21
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "SMILE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 582,
+        "percentage": 2.97
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

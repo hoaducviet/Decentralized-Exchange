@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "39",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x202668270988b29d5ec4008d071cf95d6a73c080",
+  "last_metadata_sync": "2024-10-21T18:42:13.697Z",
+  "last_token_uri_sync": "2024-10-21T18:42:13.439Z",
+  "metadata": "{\"image\":\"ipfs://QmeiURZgvKcjw9JLir9i94jAocrjdhFbZ2t9Zp6tR9c8iN\",\"attributes\":[{\"trait_type\":\"Hat\",\"value\":\"Fez\"},{\"trait_type\":\"Background\",\"value\":\"Aquamarine\"},{\"trait_type\":\"Fur\",\"value\":\"Gray\"},{\"trait_type\":\"Mouth\",\"value\":\"Dumbfounded\"},{\"trait_type\":\"Eyes\",\"value\":\"Bloodshot\"},{\"trait_type\":\"Clothes\",\"value\":\"Leather Jacket\"}]}",
+  "block_number": "14006579",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "41b091feed65b6593a46ee23d6712c8b",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/39",
+  "minter_address": null,
+  "rarity_rank": 7995,
+  "rarity_percentage": 79.95,
+  "rarity_label": "Top 80%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmeiURZgvKcjw9JLir9i94jAocrjdhFbZ2t9Zp6tR9c8iN",
+    "attributes": [
+      {
+        "trait_type": "Hat",
+        "value": "Fez",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 377,
+        "percentage": 3.77
+      },
+      {
+        "trait_type": "Background",
+        "value": "Aquamarine",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1266,
+        "percentage": 12.66
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 496,
+        "percentage": 4.96
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Dumbfounded",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 505,
+        "percentage": 5.05
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Bloodshot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 846,
+        "percentage": 8.46
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Leather Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 206,
+        "percentage": 2.06
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

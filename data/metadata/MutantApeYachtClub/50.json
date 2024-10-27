@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "50",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x7fee302a14d6b945c0eb6da9c4426c8d75d38a73",
+  "last_metadata_sync": "2024-10-27T09:54:16.623Z",
+  "last_token_uri_sync": "2024-10-27T09:54:16.432Z",
+  "metadata": "{\"image\":\"ipfs://QmaWQrwDG7Af2riJoRp8ccGXLjY2F3HA1Q3t1apdbZ6fgk\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Aquamarine\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Cream\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bloodshot\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Wool Turtleneck\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Short Mohawk\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored\"}]}",
+  "block_number": "16270598",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "c90ba1b179081c27946049c2e4a55176",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/50",
+  "minter_address": null,
+  "rarity_rank": 18765,
+  "rarity_percentage": 96.25,
+  "rarity_label": "Top 97%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmaWQrwDG7Af2riJoRp8ccGXLjY2F3HA1Q3t1apdbZ6fgk",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Aquamarine",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1877,
+        "percentage": 9.63
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Cream",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 933,
+        "percentage": 4.79
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bloodshot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 1283,
+        "percentage": 6.58
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Wool Turtleneck",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 386,
+        "percentage": 1.98
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Short Mohawk",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 463,
+        "percentage": 2.37
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 3321,
+        "percentage": 17.03
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

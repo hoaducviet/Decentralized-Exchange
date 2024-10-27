@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "199",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xe01b44a302812eed2e202eac5a4abbe416fc18f7",
+  "last_metadata_sync": "2024-08-24T19:56:40.702Z",
+  "last_token_uri_sync": "2024-08-24T19:55:59.957Z",
+  "metadata": "{\"image\":\"ipfs://QmP7kYrw532sNU8QLTw1PUGFqREwnbSf5PG991k7D1H9nf\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 New Punk Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Sunglasses\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Vietnam Jacket\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Beanie\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Unshaven\"}]}",
+  "block_number": "14069275",
+  "block_number_minted": "13117238",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "1a95bfc314257a637da650be9a2ec505",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/199",
+  "minter_address": "0xb8dc9d4bbeb6705fdba1f89458a4bc2a2066a6c9",
+  "rarity_rank": 18366,
+  "rarity_percentage": 94.2,
+  "rarity_label": "Top 95%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmP7kYrw532sNU8QLTw1PUGFqREwnbSf5PG991k7D1H9nf",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 New Punk Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1808,
+        "percentage": 9.27
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1955,
+        "percentage": 10.03
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Sunglasses",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 498,
+        "percentage": 2.55
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Vietnam Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 331,
+        "percentage": 1.7
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Beanie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 841,
+        "percentage": 4.31
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 12% trait",
+        "count": 2262,
+        "percentage": 11.6
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

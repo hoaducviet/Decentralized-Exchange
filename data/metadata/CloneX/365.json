@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "365",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xbd7590f93ebedcf227cecab5eb6ea1027474f371",
+  "last_metadata_sync": "2024-08-23T22:43:17.412Z",
+  "last_token_uri_sync": "2024-08-23T22:43:17.362Z",
+  "metadata": "{\"name\":\"CloneX #5797\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Robot\"},{\"trait_type\":\"Hair\",\"value\":\"GRN Hacker\"},{\"trait_type\":\"Jewelry\",\"value\":\"IRI Blade CHKR\"},{\"trait_type\":\"Clothing\",\"value\":\"Future Dress\"},{\"trait_type\":\"Eyewear\",\"value\":\"VSN Glasses\"},{\"trait_type\":\"Accessories\",\"value\":\"RTFKT Earrings\"},{\"trait_type\":\"Type\",\"value\":\"MK1\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/365.png\"}",
+  "block_number": "13934457",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "3f49dcff1c1804f2a253d21125c22926",
+  "token_uri": "https://clonex-assets.rtfkt.com/365",
+  "minter_address": null,
+  "rarity_rank": 587,
+  "rarity_percentage": 2.99,
+  "rarity_label": "Top 3%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #5797",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/365.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 30% trait",
+        "count": 5875,
+        "percentage": 29.97
+      },
+      {
+        "trait_type": "Hair",
+        "value": "GRN Hacker",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 118,
+        "percentage": 0.6
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "IRI Blade CHKR",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 82,
+        "percentage": 0.42
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "Future Dress",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 39,
+        "percentage": 0.2
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "VSN Glasses",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 390,
+        "percentage": 1.99
+      },
+      {
+        "trait_type": "Accessories",
+        "value": "RTFKT Earrings",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 90,
+        "percentage": 0.46
+      },
+      {
+        "trait_type": "Type",
+        "value": "MK1",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1035,
+        "percentage": 5.28
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

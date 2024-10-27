@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "344",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xee582e716f5407cf9b34dfd2df272d517857b96d",
+  "last_metadata_sync": "2024-10-17T18:10:03.404Z",
+  "last_token_uri_sync": "2024-10-17T18:10:03.221Z",
+  "metadata": "{\"image\":\"ipfs://QmfYevSknLLmLF2HCUEmkc6Py81sdC5T6AzFXcX6kpb6Ta\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Purple\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Pink\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Hypnotized\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Work Vest\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Halo\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Phoneme L\"},{\"trait_type\":\"Earring\",\"value\":\"M1 Silver Hoop\"}]}",
+  "block_number": "17098940",
+  "block_number_minted": "13117245",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "ce5f7980ef07b0ffd05bd5f4891f0e3e",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/344",
+  "minter_address": "0x9bad8c60d464c23c2bdf164c2fe42f85c9a000f2",
+  "rarity_rank": 7156,
+  "rarity_percentage": 36.7,
+  "rarity_label": "Top 37%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmfYevSknLLmLF2HCUEmkc6Py81sdC5T6AzFXcX6kpb6Ta",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Purple",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1879,
+        "percentage": 9.64
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 738,
+        "percentage": 3.79
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Hypnotized",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 303,
+        "percentage": 1.55
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Work Vest",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 268,
+        "percentage": 1.37
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Halo",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 467,
+        "percentage": 2.4
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Phoneme L",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 362,
+        "percentage": 1.86
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M1 Silver Hoop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 1258,
+        "percentage": 6.45
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

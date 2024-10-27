@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "84",
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "contract_type": "ERC721",
+  "owner_of": "0x4d011685fbc21a0850722dd09f0bcd6213bc77ae",
+  "last_metadata_sync": "2024-10-07T20:22:54.527Z",
+  "last_token_uri_sync": "2024-10-07T20:22:54.513Z",
+  "metadata": "{\"image\":\"ipfs://QmXAkwgyjUWb6teWMGqfVkMTB3cWBUD8rxM55GgEzqGrZZ\",\"name\":\"Doodle #84\",\"description\":\"A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.\",\"attributes\":[{\"trait_type\":\"face\",\"value\":\"pink beard\"},{\"trait_type\":\"hair\",\"value\":\"pink long\"},{\"trait_type\":\"body\",\"value\":\"green hoodie\"},{\"trait_type\":\"background\",\"value\":\"gradient 2\"},{\"trait_type\":\"head\",\"value\":\"yellow\"}]}",
+  "block_number": "20724458",
+  "block_number_minted": null,
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "token_hash": "c9475549e0038c7eae458d2f0ed2e890",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/84",
+  "minter_address": null,
+  "rarity_rank": 4349,
+  "rarity_percentage": 43.49,
+  "rarity_label": "Top 44%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Doodle #84",
+    "description": "A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmXAkwgyjUWb6teWMGqfVkMTB3cWBUD8rxM55GgEzqGrZZ",
+    "attributes": [
+      {
+        "trait_type": "face",
+        "value": "pink beard",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 137,
+        "percentage": 1.37
+      },
+      {
+        "trait_type": "hair",
+        "value": "pink long",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 279,
+        "percentage": 2.79
+      },
+      {
+        "trait_type": "body",
+        "value": "green hoodie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 305,
+        "percentage": 3.05
+      },
+      {
+        "trait_type": "background",
+        "value": "gradient 2",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 664,
+        "percentage": 6.64
+      },
+      {
+        "trait_type": "head",
+        "value": "yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 944,
+        "percentage": 9.44
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

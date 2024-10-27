@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "444",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x29541635b238c5996efe236efb0423184ec72cfa",
+  "last_metadata_sync": "2024-08-23T22:43:15.953Z",
+  "last_token_uri_sync": "2024-08-23T22:43:15.920Z",
+  "metadata": "{\"name\":\"CloneX #5489\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"PNK\"},{\"trait_type\":\"Hair\",\"value\":\"YU-BLU\"},{\"trait_type\":\"Clothing\",\"value\":\"BLCK VARSITY JCKT\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/444.png\"}",
+  "block_number": "14848752",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "197baf8dcbb0e60739050566aff1ddae",
+  "token_uri": "https://clonex-assets.rtfkt.com/444",
+  "minter_address": null,
+  "rarity_rank": 19251,
+  "rarity_percentage": 98.22,
+  "rarity_label": "Top 99%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #5489",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/444.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "PNK",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 902,
+        "percentage": 4.6
+      },
+      {
+        "trait_type": "Hair",
+        "value": "YU-BLU",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 153,
+        "percentage": 0.78
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "BLCK VARSITY JCKT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 218,
+        "percentage": 1.11
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": "0.55",
+  "floor_price_usd": "1363.655",
+  "floor_price_currency": "eth"
+}

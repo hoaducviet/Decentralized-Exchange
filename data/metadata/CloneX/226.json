@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "226",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xa9a7cbc1775fbf997436a71374df2ebf7ed8c667",
+  "last_metadata_sync": "2024-10-08T09:01:15.678Z",
+  "last_token_uri_sync": "2024-10-08T09:01:15.534Z",
+  "metadata": "{\"name\":\"CloneX #2990\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"PNK-BLU\"},{\"trait_type\":\"Facial Feature\",\"value\":\"BIRTHMRK\"},{\"trait_type\":\"Hair\",\"value\":\"MEDUZA\"},{\"trait_type\":\"Jewelry\",\"value\":\"DRIP CHRM\"},{\"trait_type\":\"Clothing\",\"value\":\"GM HOODIE\"},{\"trait_type\":\"Mouth\",\"value\":\"Romantico\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/226.png\"}",
+  "block_number": "14185958",
+  "block_number_minted": "13792276",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "4178d42bb0ffc3920470230a03204799",
+  "token_uri": "https://clonex-assets.rtfkt.com/226",
+  "minter_address": "0xf533a9a5bddf9d79801468d7078584d94eb316cd",
+  "rarity_rank": 5993,
+  "rarity_percentage": 30.58,
+  "rarity_label": "Top 31%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #2990",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/226.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "PNK-BLU",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 741,
+        "percentage": 3.78
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "BIRTHMRK",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 128,
+        "percentage": 0.65
+      },
+      {
+        "trait_type": "Hair",
+        "value": "MEDUZA",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 113,
+        "percentage": 0.58
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "DRIP CHRM",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 374,
+        "percentage": 1.91
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "GM HOODIE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 202,
+        "percentage": 1.03
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Romantico",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 180,
+        "percentage": 0.92
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

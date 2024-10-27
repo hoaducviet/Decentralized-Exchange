@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "101",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x89bc08ba00f135d608bc335f6b33d7a9abcc98af",
+  "last_metadata_sync": "2024-10-18T16:43:48.358Z",
+  "last_token_uri_sync": "2024-10-18T16:43:47.970Z",
+  "metadata": "{\"image\":\"ipfs://QmVwKkmLDHDCeWXrmbWEGwqUtfMZ5iq69eicdfVyeiTqFW\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Black\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Caveman Pelt\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Bayc Hat Red\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Phoneme Wah\"}]}",
+  "block_number": "18221287",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "35354fb767b181b86f71299cb9cfba7a",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/101",
+  "minter_address": null,
+  "rarity_rank": 2508,
+  "rarity_percentage": 12.86,
+  "rarity_label": "Top 13%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmVwKkmLDHDCeWXrmbWEGwqUtfMZ5iq69eicdfVyeiTqFW",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 654,
+        "percentage": 3.35
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 515,
+        "percentage": 2.64
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 774,
+        "percentage": 3.97
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Caveman Pelt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 86,
+        "percentage": 0.44
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Bayc Hat Red",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 95,
+        "percentage": 0.49
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Phoneme Wah",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 65,
+        "percentage": 0.33
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

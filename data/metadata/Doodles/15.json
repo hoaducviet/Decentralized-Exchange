@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "15",
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "contract_type": "ERC721",
+  "owner_of": "0xa549487362b9bc4a66804fbf4774b2cc26ffd4bb",
+  "last_metadata_sync": "2024-10-07T20:13:15.400Z",
+  "last_token_uri_sync": "2024-10-07T20:13:15.390Z",
+  "metadata": "{\"image\":\"ipfs://QmZzpoBuGyWPdaDxKh9zfqGncKNfD4ckWZEV3pJHkUPrRX\",\"name\":\"Doodle #15\",\"description\":\"A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.\",\"attributes\":[{\"trait_type\":\"face\",\"value\":\"surprised\"},{\"trait_type\":\"hair\",\"value\":\"blue mohawk\"},{\"trait_type\":\"body\",\"value\":\"rainbow striped sweater\"},{\"trait_type\":\"background\",\"value\":\"gradient 4\"},{\"trait_type\":\"head\",\"value\":\"blue\"}]}",
+  "block_number": "16488893",
+  "block_number_minted": "13435572",
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "token_hash": "b3fc20875b214a376c07cd9d8ced0c3f",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/15",
+  "minter_address": "0xc2017439b2ab883c2949c20469b36485b770b812",
+  "rarity_rank": 2888,
+  "rarity_percentage": 28.88,
+  "rarity_label": "Top 29%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Doodle #15",
+    "description": "A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmZzpoBuGyWPdaDxKh9zfqGncKNfD4ckWZEV3pJHkUPrRX",
+    "attributes": [
+      {
+        "trait_type": "face",
+        "value": "surprised",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 680,
+        "percentage": 6.8
+      },
+      {
+        "trait_type": "hair",
+        "value": "blue mohawk",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 296,
+        "percentage": 2.96
+      },
+      {
+        "trait_type": "body",
+        "value": "rainbow striped sweater",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 55,
+        "percentage": 0.55
+      },
+      {
+        "trait_type": "background",
+        "value": "gradient 4",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 691,
+        "percentage": 6.91
+      },
+      {
+        "trait_type": "head",
+        "value": "blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1042,
+        "percentage": 10.42
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

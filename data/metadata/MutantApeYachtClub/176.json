@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "176",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x038666d86f8c758842269915e2df6fa4ac39ec92",
+  "last_metadata_sync": "2024-10-18T15:49:51.723Z",
+  "last_token_uri_sync": "2024-10-18T15:49:11.127Z",
+  "metadata": "{\"image\":\"ipfs://QmVCZzJrg7BMLPokwEKVPDMsdsVS2FExFnnMLJskf52PK1\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Gray\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Lumberjack Shirt\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Fisherman's Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Unshaven Cigar\"}]}",
+  "block_number": "14945302",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "6478e252a79bbaef6fcba6f9431966bf",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/176",
+  "minter_address": null,
+  "rarity_rank": 12300,
+  "rarity_percentage": 63.09,
+  "rarity_label": "Top 64%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmVCZzJrg7BMLPokwEKVPDMsdsVS2FExFnnMLJskf52PK1",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1752,
+        "percentage": 8.99
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1955,
+        "percentage": 10.03
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 2526,
+        "percentage": 12.96
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Lumberjack Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 321,
+        "percentage": 1.65
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Fisherman's Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 514,
+        "percentage": 2.64
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Unshaven Cigar",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 144,
+        "percentage": 0.74
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "73",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x908694372d50ff563e55ff5d0dd516a0dffc9271",
+  "last_metadata_sync": "2024-10-27T15:55:17.521Z",
+  "last_token_uri_sync": "2024-10-27T15:55:17.477Z",
+  "metadata": "{\"name\":\"CloneX #5539\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"BLU-PURP\"},{\"trait_type\":\"Facial Feature\",\"value\":\"STARVSN TAT\"},{\"trait_type\":\"Hair\",\"value\":\"RD Stylish\"},{\"trait_type\":\"Clothing\",\"value\":\"CLNX FRSH Shirt\"},{\"trait_type\":\"Accessories\",\"value\":\"Cross Earring\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/73.png\"}",
+  "block_number": "21024502",
+  "block_number_minted": "13792270",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "7e31f4d7d1d7ebff72a9a19e41dbef4f",
+  "token_uri": "https://clonex-assets.rtfkt.com/73",
+  "minter_address": "0xa5e2bb97de3c62ca06f1a2293eb7e01c114e9a49",
+  "rarity_rank": 4958,
+  "rarity_percentage": 25.3,
+  "rarity_label": "Top 26%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #5539",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/73.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "BLU-PURP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 668,
+        "percentage": 3.41
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "STARVSN TAT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 97,
+        "percentage": 0.49
+      },
+      {
+        "trait_type": "Hair",
+        "value": "RD Stylish",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 222,
+        "percentage": 1.13
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "CLNX FRSH Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 255,
+        "percentage": 1.3
+      },
+      {
+        "trait_type": "Accessories",
+        "value": "Cross Earring",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 391,
+        "percentage": 1.99
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

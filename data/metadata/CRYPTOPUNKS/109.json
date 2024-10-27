@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "109",
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "contract_type": "CRYPTOPUNKS",
+  "owner_of": "0xeee5eb24e7a0ea53b75a1b9ad72e7d20562f4283",
+  "last_metadata_sync": "2024-10-15T03:30:18.707Z",
+  "last_token_uri_sync": "2024-10-15T03:30:18.655Z",
+  "metadata": "{\"image\":\"https://www.larvalabs.com/cryptopunks/cryptopunk109.png\",\"name\":\"CryptoPunk 109\",\"attributes\":[\"Handlebars\",\"Fedora\",\"Earring\"],\"description\":\"Male\"}",
+  "block_number": "11988304",
+  "block_number_minted": null,
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "token_hash": "c410b1ddf227253b8307c79b0e0efb80",
+  "token_uri": "Invalid uri",
+  "minter_address": null,
+  "rarity_rank": 4954,
+  "rarity_percentage": 49.54,
+  "rarity_label": "Top 50%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CryptoPunk 109",
+    "description": "Male",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://www.larvalabs.com/cryptopunks/cryptopunk109.png",
+    "attributes": [
+      {
+        "trait_type": "type",
+        "value": "Male",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 61% trait",
+        "count": 6039,
+        "percentage": 60.39
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Handlebars",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 263,
+        "percentage": 2.63
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Fedora",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 186,
+        "percentage": 1.86
+      },
+      {
+        "trait_type": "attribute",
+        "value": "Earring",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 25% trait",
+        "count": 2459,
+        "percentage": 24.59
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

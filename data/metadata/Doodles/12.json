@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "12",
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "contract_type": "ERC721",
+  "owner_of": "0x620b70123fb810f6c653da7644b5dd0b6312e4d8",
+  "last_metadata_sync": "2024-10-07T20:11:27.492Z",
+  "last_token_uri_sync": "2024-10-07T20:11:27.473Z",
+  "metadata": "{\"image\":\"ipfs://QmTd5YyQfv23irtjPmux6hkDhznASjzA2iAn6J4sfGaU2H\",\"name\":\"Doodle #12\",\"description\":\"A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.\",\"attributes\":[{\"trait_type\":\"face\",\"value\":\"default\"},{\"trait_type\":\"hair\",\"value\":\"cowboy\"},{\"trait_type\":\"body\",\"value\":\"yellow puffer\"},{\"trait_type\":\"background\",\"value\":\"grey\"},{\"trait_type\":\"head\",\"value\":\"yellow\"}]}",
+  "block_number": "19622372",
+  "block_number_minted": "13435572",
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "token_hash": "27c5e7a789027fb413e5fcfed019d60d",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/12",
+  "minter_address": "0xb9a3d1a0f8f6f52801a7ee7c03c46caa4c2b12c5",
+  "rarity_rank": 7021,
+  "rarity_percentage": 70.21,
+  "rarity_label": "Top 71%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Doodle #12",
+    "description": "A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmTd5YyQfv23irtjPmux6hkDhznASjzA2iAn6J4sfGaU2H",
+    "attributes": [
+      {
+        "trait_type": "face",
+        "value": "default",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 709,
+        "percentage": 7.09
+      },
+      {
+        "trait_type": "hair",
+        "value": "cowboy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 172,
+        "percentage": 1.72
+      },
+      {
+        "trait_type": "body",
+        "value": "yellow puffer",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 346,
+        "percentage": 3.46
+      },
+      {
+        "trait_type": "background",
+        "value": "grey",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 742,
+        "percentage": 7.42
+      },
+      {
+        "trait_type": "head",
+        "value": "yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 944,
+        "percentage": 9.44
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

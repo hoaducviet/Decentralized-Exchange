@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "15",
+  "token_address": "0xc4973de5ee925b8219f1e74559fb217a8e355ecf",
+  "contract_type": "ERC721",
+  "owner_of": "0xb9418cb8604f60e4b500f8247e26e6ecfe1c8f87",
+  "last_metadata_sync": "2024-10-24T23:13:09.303Z",
+  "last_token_uri_sync": "2024-10-24T23:13:09.074Z",
+  "metadata": "{\"name\":\"The Hopeful #15\",\"description\":\"The Hopeful are the first NFTs from Azra Games, a studio stacked with game industry veterans with decades of experience. These Ethereum PFPs are not just profile pics, but are Play Forever Passes. Holders will unlock an amazing array of benefits and perks in all future games in the Azra universe. \",\"external_url\":\"https://www.azragames.com/nft/hopeful\",\"image\":\"https://bafybeiadogk3khjwptabubdehq3d2yxd6x6q3srkiido266cj6qbacu2v4.ipfs.nftstorage.link/15.webp?ext=webp\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"Snow\"},{\"trait_type\":\"Clothing\",\"value\":\"Pilot Cobalt\"},{\"trait_type\":\"Hair\",\"value\":\"Twists Cobalt\"},{\"trait_type\":\"Gear\",\"value\":\"Machine Pistol Emerald\"},{\"trait_type\":\"Skin Tone\",\"value\":\"Almond\"},{\"trait_type\":\"Expression\",\"value\":\"Confident\"}],\"properties\":{\"files\":[{\"uri\":\"https://bafybeiadogk3khjwptabubdehq3d2yxd6x6q3srkiido266cj6qbacu2v4.ipfs.nftstorage.link/15.webp?ext=webp\",\"type\":\"image/webp\"}],\"creators\":[]}}",
+  "block_number": "21054847",
+  "block_number_minted": "15632949",
+  "name": "HOPE",
+  "symbol": "HOPE",
+  "token_hash": "1093de9a9a568e65cbb4b803980e1565",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/bafybeieldy3ybghe5aqtby6y62jahtetizhaagycem4dzgwofmphlkzsde/15.json",
+  "minter_address": "0xa58bbd301ae9e020ed790bde62e8d636f04e4f1b",
+  "rarity_rank": 4560,
+  "rarity_percentage": 82.09,
+  "rarity_label": "Top 83%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "The Hopeful #15",
+    "description": "The Hopeful are the first NFTs from Azra Games, a studio stacked with game industry veterans with decades of experience. These Ethereum PFPs are not just profile pics, but are Play Forever Passes. Holders will unlock an amazing array of benefits and perks in all future games in the Azra universe. ",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://bafybeiadogk3khjwptabubdehq3d2yxd6x6q3srkiido266cj6qbacu2v4.ipfs.nftstorage.link/15.webp?ext=webp",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Snow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 24% trait",
+        "count": 1312,
+        "percentage": 23.62
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "Pilot Cobalt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 313,
+        "percentage": 5.63
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Twists Cobalt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 140,
+        "percentage": 2.52
+      },
+      {
+        "trait_type": "Gear",
+        "value": "Machine Pistol Emerald",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 206,
+        "percentage": 3.71
+      },
+      {
+        "trait_type": "Skin Tone",
+        "value": "Almond",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 974,
+        "percentage": 17.53
+      },
+      {
+        "trait_type": "Expression",
+        "value": "Confident",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 25% trait",
+        "count": 1352,
+        "percentage": 24.34
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gcs/files/32469815c1d8c3cbec6541f35d991adc.gif?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/642de8fe6f7326fe571351f5ed77e16b.jpg?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

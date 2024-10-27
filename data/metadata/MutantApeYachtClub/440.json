@@ -1,0 +1,80 @@
+{
+  "amount": "1",
+  "token_id": "440",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xdd4659f6ce7edc9c57378c2953e684b04da8640f",
+  "last_metadata_sync": "2024-08-24T19:57:49.662Z",
+  "last_token_uri_sync": "2024-08-24T19:57:08.211Z",
+  "metadata": "{\"image\":\"ipfs://QmWUYn8w1tXKXWrx7KHEC5ofAtUkGyThVHBRSgy8R8bLad\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Army Green\"},{\"trait_type\":\"Fur\",\"value\":\"M1 White\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bloodshot\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Discomfort\"}]}",
+  "block_number": "13642418",
+  "block_number_minted": "13117250",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "27558296a415d471a4e944ed195f9e35",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/440",
+  "minter_address": "0x10ccd4136471c7c266a9fc4569622989fb4cab99",
+  "rarity_rank": 4518,
+  "rarity_percentage": 23.17,
+  "rarity_label": "Top 24%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmWUYn8w1tXKXWrx7KHEC5ofAtUkGyThVHBRSgy8R8bLad",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Army Green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1794,
+        "percentage": 9.2
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 White",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 575,
+        "percentage": 2.95
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bloodshot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 1283,
+        "percentage": 6.58
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Discomfort",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 321,
+        "percentage": 1.65
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

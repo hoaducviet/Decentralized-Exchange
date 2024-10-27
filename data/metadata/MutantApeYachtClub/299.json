@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "299",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x417299723b89f04211457ef64d62afdbb249e74c",
+  "last_metadata_sync": "2024-08-24T19:57:30.240Z",
+  "last_token_uri_sync": "2024-08-24T19:56:49.590Z",
+  "metadata": "{\"image\":\"ipfs://QmWXtNCz6ybA959cgRW3aNpPR8BBZomqHP1k3XMSNftPrr\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Blue\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Eyepatch\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Stunt Jacket\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored Unshaven\"},{\"trait_type\":\"Earring\",\"value\":\"M1 Silver Hoop\"}]}",
+  "block_number": "18099038",
+  "block_number_minted": "13117242",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "7200b76dde07f86024ad7614b54e32a8",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/299",
+  "minter_address": "0xd7a450ff32ab321e354a9a4c4d933c54d73de3b8",
+  "rarity_rank": 12284,
+  "rarity_percentage": 63,
+  "rarity_label": "Top 63%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmWXtNCz6ybA959cgRW3aNpPR8BBZomqHP1k3XMSNftPrr",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1808,
+        "percentage": 9.27
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 699,
+        "percentage": 3.59
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Eyepatch",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 486,
+        "percentage": 2.49
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Stunt Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 266,
+        "percentage": 1.36
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 12% trait",
+        "count": 2262,
+        "percentage": 11.6
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M1 Silver Hoop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 1258,
+        "percentage": 6.45
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

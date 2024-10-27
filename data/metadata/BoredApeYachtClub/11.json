@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "11",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x4e613d6ab29892cd14544dc600b5cc301f371e20",
+  "last_metadata_sync": "2024-10-21T18:41:09.504Z",
+  "last_token_uri_sync": "2024-10-21T18:41:09.214Z",
+  "metadata": "{\"image\":\"ipfs://QmVvdAbabZ2awja88uUhYHFuq67iEiroFuwLGM6HyiWcc8\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"Gray\"},{\"trait_type\":\"Fur\",\"value\":\"Dark Brown\"},{\"trait_type\":\"Hat\",\"value\":\"Laurel Wreath\"},{\"trait_type\":\"Mouth\",\"value\":\"Bored Unshaven Cigarette\"},{\"trait_type\":\"Clothes\",\"value\":\"Smoking Jacket\"},{\"trait_type\":\"Eyes\",\"value\":\"Bloodshot\"}]}",
+  "block_number": "13857265",
+  "block_number_minted": "12292922",
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "302ef2b30201f873cc839f87b7889d7d",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/11",
+  "minter_address": "0xaba7161a7fb69c88e16ed9f455ce62b791ee4d03",
+  "rarity_rank": 3716,
+  "rarity_percentage": 37.16,
+  "rarity_label": "Top 38%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmVvdAbabZ2awja88uUhYHFuq67iEiroFuwLGM6HyiWcc8",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 12% trait",
+        "count": 1170,
+        "percentage": 11.7
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Dark Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 14% trait",
+        "count": 1352,
+        "percentage": 13.52
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Laurel Wreath",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 72,
+        "percentage": 0.72
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bored Unshaven Cigarette",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 438,
+        "percentage": 4.38
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Smoking Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 221,
+        "percentage": 2.21
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Bloodshot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 846,
+        "percentage": 8.46
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "269",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xaaa2da255df9ee74c7075bcb6d81f97940908a5d",
+  "last_metadata_sync": "2024-09-22T14:42:42.711Z",
+  "last_token_uri_sync": "2024-09-22T14:42:42.390Z",
+  "metadata": "{\"image\":\"ipfs://QmSAWdgP4XyPXudUCiav4zYrYy6XuWFELP3Bs8LY8Jn2e8\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Army Green\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Cream\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Closed\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Wool Turtleneck\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Seaman's Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Phoneme L\"}]}",
+  "block_number": "18485442",
+  "block_number_minted": "13117240",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "08fcaed78a4a48d8a4e34ec7d0a15f03",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/269",
+  "minter_address": "0x90f3146fa0e9e2056bbe383ecd2ff5864eaa78c5",
+  "rarity_rank": 16161,
+  "rarity_percentage": 82.89,
+  "rarity_label": "Top 83%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmSAWdgP4XyPXudUCiav4zYrYy6XuWFELP3Bs8LY8Jn2e8",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Army Green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1794,
+        "percentage": 9.2
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Cream",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 933,
+        "percentage": 4.79
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Closed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1035,
+        "percentage": 5.31
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Wool Turtleneck",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 386,
+        "percentage": 1.98
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Seaman's Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 617,
+        "percentage": 3.16
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Phoneme L",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 362,
+        "percentage": 1.86
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

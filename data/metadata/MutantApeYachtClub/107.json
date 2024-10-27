@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "107",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xdcd9b77efdb5b9d6d3d2e3b3a2b36a5d9484509a",
+  "last_metadata_sync": "2024-10-18T16:43:49.900Z",
+  "last_token_uri_sync": "2024-10-18T16:43:49.655Z",
+  "metadata": "{\"image\":\"ipfs://Qmf5vUMFVsENk5tAUXApK4HvXpM5x4Hr7Bt3uQxHG7gpcX\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Dmt\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Closed\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Prussian Helmet\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored\"}]}",
+  "block_number": "14863439",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "61f3fd29cf319bd222ccf22a639f119c",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/107",
+  "minter_address": null,
+  "rarity_rank": 11599,
+  "rarity_percentage": 59.49,
+  "rarity_label": "Top 60%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://Qmf5vUMFVsENk5tAUXApK4HvXpM5x4Hr7Bt3uQxHG7gpcX",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1917,
+        "percentage": 9.83
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Dmt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 336,
+        "percentage": 1.72
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Closed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 1035,
+        "percentage": 5.31
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Prussian Helmet",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 186,
+        "percentage": 0.95
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 3321,
+        "percentage": 17.03
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

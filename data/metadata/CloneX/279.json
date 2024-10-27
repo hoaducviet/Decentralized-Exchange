@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "279",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x147a689478cdd24b5452271972e18eef05ef359b",
+  "last_metadata_sync": "2024-08-23T22:43:15.461Z",
+  "last_token_uri_sync": "2024-08-23T22:43:15.426Z",
+  "metadata": "{\"name\":\"CloneX #14353\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Angel\"},{\"trait_type\":\"Hair\",\"value\":\"BLCK BRDZ\"},{\"trait_type\":\"Jewelry\",\"value\":\"MRBLE G-Link\"},{\"trait_type\":\"Clothing\",\"value\":\"ORNG FRSH Shirt\"},{\"trait_type\":\"Eyewear\",\"value\":\"Cyber Bindi\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/279.png\"}",
+  "block_number": "16779502",
+  "block_number_minted": "13792277",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "f0822391460216976f9a8ea900365d70",
+  "token_uri": "https://clonex-assets.rtfkt.com/279",
+  "minter_address": "0x447a24e5a17e3b679218ab59a93d85119ddbd3b4",
+  "rarity_rank": 11526,
+  "rarity_percentage": 58.81,
+  "rarity_label": "Top 59%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #14353",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/279.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Angel",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1710,
+        "percentage": 8.72
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLCK BRDZ",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 192,
+        "percentage": 0.98
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "MRBLE G-Link",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 205,
+        "percentage": 1.05
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "ORNG FRSH Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 229,
+        "percentage": 1.17
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "Cyber Bindi",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 381,
+        "percentage": 1.94
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

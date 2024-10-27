@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "168",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x75ddb7ab958135bbe2dab48d6286826f6aa5e3b4",
+  "last_metadata_sync": "2024-10-18T15:48:50.575Z",
+  "last_token_uri_sync": "2024-10-18T15:48:09.877Z",
+  "metadata": "{\"image\":\"ipfs://QmZBcmh55WBiEr9kXHBqgoLQaDhvahsbq5bCeB8gqMdi61\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Gray\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Zombie\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Sleeveless Logo T\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Beanie\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Unshaven\"},{\"trait_type\":\"Earring\",\"value\":\"M2 Silver Stud\"}]}",
+  "block_number": "13117236",
+  "block_number_minted": "13117236",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "9c8b880672e6308481f799a5926afed1",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/168",
+  "minter_address": "0x75ddb7ab958135bbe2dab48d6286826f6aa5e3b4",
+  "rarity_rank": 1831,
+  "rarity_percentage": 9.39,
+  "rarity_label": "Top 10%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmZBcmh55WBiEr9kXHBqgoLQaDhvahsbq5bCeB8gqMdi61",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 595,
+        "percentage": 3.05
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 572,
+        "percentage": 2.93
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Zombie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 159,
+        "percentage": 0.82
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Sleeveless Logo T",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 59,
+        "percentage": 0.3
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Beanie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 255,
+        "percentage": 1.31
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 712,
+        "percentage": 3.65
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M2 Silver Stud",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 420,
+        "percentage": 2.15
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

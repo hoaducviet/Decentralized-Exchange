@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "37",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0xf7000681c2f2c97387311847703f8272ccedd54d",
+  "last_metadata_sync": "2024-10-21T18:42:14.349Z",
+  "last_token_uri_sync": "2024-10-21T18:42:09.051Z",
+  "metadata": "{\"image\":\"ipfs://QmPck961idZjfi8zuDSjAeEnWBQAn9s6Wp3PnDjRQ3EAWu\",\"attributes\":[{\"trait_type\":\"Clothes\",\"value\":\"Striped Tee\"},{\"trait_type\":\"Earring\",\"value\":\"Silver Hoop\"},{\"trait_type\":\"Fur\",\"value\":\"Blue\"},{\"trait_type\":\"Background\",\"value\":\"Blue\"},{\"trait_type\":\"Mouth\",\"value\":\"Bored\"},{\"trait_type\":\"Eyes\",\"value\":\"Bored\"},{\"trait_type\":\"Hat\",\"value\":\"Bowler\"}]}",
+  "block_number": "19602415",
+  "block_number_minted": "12299114",
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "bd6711d59083660657866b1d5eb456e3",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/37",
+  "minter_address": "0x024f1f8b3789bfdf9edb47f58a0d7a3afeaea804",
+  "rarity_rank": 5326,
+  "rarity_percentage": 53.26,
+  "rarity_label": "Top 54%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmPck961idZjfi8zuDSjAeEnWBQAn9s6Wp3PnDjRQ3EAWu",
+    "attributes": [
+      {
+        "trait_type": "Clothes",
+        "value": "Striped Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 412,
+        "percentage": 4.12
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Silver Hoop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 882,
+        "percentage": 8.82
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 490,
+        "percentage": 4.9
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1242,
+        "percentage": 12.42
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 23% trait",
+        "count": 2272,
+        "percentage": 22.72
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 1714,
+        "percentage": 17.14
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Bowler",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 262,
+        "percentage": 2.62
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

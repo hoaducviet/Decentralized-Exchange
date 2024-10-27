@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "5",
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "contract_type": "ERC721",
+  "owner_of": "0x960f5ac040245e4738513eb40514285636e26f67",
+  "last_metadata_sync": "2024-10-07T20:18:04.227Z",
+  "last_token_uri_sync": "2024-10-07T20:18:04.208Z",
+  "metadata": "{\"image\":\"ipfs://QmfRZn8LTdtngcBX4z7ukohnPdUYso7YFLQg78m8HXeuSe\",\"name\":\"Doodle #5\",\"description\":\"A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.\",\"attributes\":[{\"trait_type\":\"face\",\"value\":\"designer glasses\"},{\"trait_type\":\"hair\",\"value\":\"green brushcut\"},{\"trait_type\":\"body\",\"value\":\"combo 2 puffer\"},{\"trait_type\":\"background\",\"value\":\"green\"},{\"trait_type\":\"head\",\"value\":\"blue\"}]}",
+  "block_number": "18100078",
+  "block_number_minted": "13435572",
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "token_hash": "6ccfb164306911c5cb4eb3389818d3fe",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/5",
+  "minter_address": "0x4592cde006dc435b8a5c4e42efbd1db310570f1a",
+  "rarity_rank": 8651,
+  "rarity_percentage": 86.51,
+  "rarity_label": "Top 87%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Doodle #5",
+    "description": "A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmfRZn8LTdtngcBX4z7ukohnPdUYso7YFLQg78m8HXeuSe",
+    "attributes": [
+      {
+        "trait_type": "face",
+        "value": "designer glasses",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 662,
+        "percentage": 6.62
+      },
+      {
+        "trait_type": "hair",
+        "value": "green brushcut",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 264,
+        "percentage": 2.64
+      },
+      {
+        "trait_type": "body",
+        "value": "combo 2 puffer",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 300,
+        "percentage": 3
+      },
+      {
+        "trait_type": "background",
+        "value": "green",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 749,
+        "percentage": 7.49
+      },
+      {
+        "trait_type": "head",
+        "value": "blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 11% trait",
+        "count": 1042,
+        "percentage": 10.42
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

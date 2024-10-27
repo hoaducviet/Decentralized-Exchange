@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "382",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x192951db1ba5b1957f1346c2183d246ef068d766",
+  "last_metadata_sync": "2024-10-07T21:21:00.692Z",
+  "last_token_uri_sync": "2024-10-07T21:20:20.181Z",
+  "metadata": "{\"image\":\"ipfs://QmapDbm5xt7oFi3bSBtUUYed1TwLbPiLQXtZ4jCA4Zfsmv\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Orange\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Sleepy\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Striped Tee\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Fisherman's Hat\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Unshaven\"},{\"trait_type\":\"Earring\",\"value\":\"M2 Silver Hoop\"}]}",
+  "block_number": "17779940",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "7314db43e7c80bc13745a3fcd01fdb90",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/382",
+  "minter_address": null,
+  "rarity_rank": 3287,
+  "rarity_percentage": 16.86,
+  "rarity_label": "Top 17%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmapDbm5xt7oFi3bSBtUUYed1TwLbPiLQXtZ4jCA4Zfsmv",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Orange",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 596,
+        "percentage": 3.06
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 572,
+        "percentage": 2.93
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Sleepy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 357,
+        "percentage": 1.83
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Striped Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 184,
+        "percentage": 0.94
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Fisherman's Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 152,
+        "percentage": 0.78
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 712,
+        "percentage": 3.65
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M2 Silver Hoop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 393,
+        "percentage": 2.02
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

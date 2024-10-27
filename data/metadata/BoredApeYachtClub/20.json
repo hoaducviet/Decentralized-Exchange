@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "20",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x378791a4cc2144521e7c225ae6085753273eb427",
+  "last_metadata_sync": "2024-10-22T10:53:52.144Z",
+  "last_token_uri_sync": "2024-10-22T10:53:52.133Z",
+  "metadata": "{\"image\":\"ipfs://QmXkLGoGKXswr4YwkgPVfL7wmbvkRKabmh7WXmkACrgi68\",\"attributes\":[{\"trait_type\":\"Hat\",\"value\":\"Beanie\"},{\"trait_type\":\"Fur\",\"value\":\"Gray\"},{\"trait_type\":\"Background\",\"value\":\"Blue\"},{\"trait_type\":\"Eyes\",\"value\":\"3d\"},{\"trait_type\":\"Clothes\",\"value\":\"Bandolier\"},{\"trait_type\":\"Mouth\",\"value\":\"Phoneme Vuh\"}]}",
+  "block_number": "18467916",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "734a4785e38315bf651662ca8b375526",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/20",
+  "minter_address": null,
+  "rarity_rank": 6422,
+  "rarity_percentage": 64.22,
+  "rarity_label": "Top 65%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmXkLGoGKXswr4YwkgPVfL7wmbvkRKabmh7WXmkACrgi68",
+    "attributes": [
+      {
+        "trait_type": "Hat",
+        "value": "Beanie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 578,
+        "percentage": 5.78
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Gray",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 496,
+        "percentage": 4.96
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1242,
+        "percentage": 12.42
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "3d",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 487,
+        "percentage": 4.87
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Bandolier",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 163,
+        "percentage": 1.63
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Phoneme Vuh",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 333,
+        "percentage": 3.33
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

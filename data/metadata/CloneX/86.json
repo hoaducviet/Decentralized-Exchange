@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "86",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x0d2eb2be84e68497e2eb8c84b72597450f1b23cc",
+  "last_metadata_sync": "2024-10-27T15:55:23.857Z",
+  "last_token_uri_sync": "2024-10-27T15:55:23.803Z",
+  "metadata": "{\"name\":\"CloneX #11249\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"PURP\"},{\"trait_type\":\"Facial Feature\",\"value\":\"HRUS TAT\"},{\"trait_type\":\"Hair\",\"value\":\"TECH Cap\"},{\"trait_type\":\"Clothing\",\"value\":\"SPACE TRIP Tee\"},{\"trait_type\":\"Eyewear\",\"value\":\"Cyber Eye Patch\"},{\"trait_type\":\"Mouth\",\"value\":\"Angry\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/86.png\"}",
+  "block_number": "20906873",
+  "block_number_minted": "13792271",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "c30f7826b979a88539f43d419227b780",
+  "token_uri": "https://clonex-assets.rtfkt.com/86",
+  "minter_address": "0x51427d3cb84129bd6d05ed16353b92df2a770aff",
+  "rarity_rank": 6734,
+  "rarity_percentage": 34.36,
+  "rarity_label": "Top 35%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #11249",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/86.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "PURP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 954,
+        "percentage": 4.87
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "HRUS TAT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 139,
+        "percentage": 0.71
+      },
+      {
+        "trait_type": "Hair",
+        "value": "TECH Cap",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 88,
+        "percentage": 0.45
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "SPACE TRIP Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 419,
+        "percentage": 2.14
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "Cyber Eye Patch",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 292,
+        "percentage": 1.49
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Angry",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 573,
+        "percentage": 2.92
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

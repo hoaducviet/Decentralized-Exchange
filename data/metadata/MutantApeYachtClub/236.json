@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "236",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xc5b2c6d523498ffb86b80db3bd1a800439ba35a7",
+  "last_metadata_sync": "2024-08-24T19:57:01.017Z",
+  "last_token_uri_sync": "2024-08-24T19:56:20.015Z",
+  "metadata": "{\"image\":\"ipfs://QmTCZ9FJzGmKDAXCf6d6433RmichFEkBjfk5kZVbYGrKXD\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M1 Yellow\"},{\"trait_type\":\"Fur\",\"value\":\"M1 Robot\"},{\"trait_type\":\"Eyes\",\"value\":\"M1 Bored\"},{\"trait_type\":\"Clothes\",\"value\":\"M1 Tuxedo Tee\"},{\"trait_type\":\"Hat\",\"value\":\"M1 Fez\"},{\"trait_type\":\"Mouth\",\"value\":\"M1 Bored\"}]}",
+  "block_number": "20187357",
+  "block_number_minted": "13117239",
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "fc2dff4574eab57c970c803ccc7f99f9",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/236",
+  "minter_address": "0xfd1b8d2b036f7c78a794be2c6f9ba4de698459e8",
+  "rarity_rank": 17036,
+  "rarity_percentage": 87.38,
+  "rarity_label": "Top 88%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmTCZ9FJzGmKDAXCf6d6433RmichFEkBjfk5kZVbYGrKXD",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M1 Yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 1917,
+        "percentage": 9.83
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M1 Robot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 414,
+        "percentage": 2.12
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 2526,
+        "percentage": 12.96
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M1 Tuxedo Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 342,
+        "percentage": 1.75
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M1 Fez",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 550,
+        "percentage": 2.82
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M1 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 3321,
+        "percentage": 17.03
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

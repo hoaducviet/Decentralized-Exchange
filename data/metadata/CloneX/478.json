@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "478",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xf66909af845e2b7c80fea00f3391e1e6862b27b0",
+  "last_metadata_sync": "2024-09-21T00:34:45.232Z",
+  "last_token_uri_sync": "2024-09-21T00:34:45.128Z",
+  "metadata": "{\"name\":\"CloneX #13656\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"YLLW\"},{\"trait_type\":\"Hair\",\"value\":\"PNK MoHWK\"},{\"trait_type\":\"Jewelry\",\"value\":\"SG-PDLCK\"},{\"trait_type\":\"Clothing\",\"value\":\"BLCK Tee\"},{\"trait_type\":\"Eyewear\",\"value\":\"3RD Eye\"},{\"trait_type\":\"Mouth\",\"value\":\"ROBO\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/478.png\"}",
+  "block_number": "16719586",
+  "block_number_minted": "13792286",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "fb984e1a8270ef89d8f5c7e08f8aba61",
+  "token_uri": "https://clonex-assets.rtfkt.com/478",
+  "minter_address": "0x14dec35854c5550afb8fd8394c3cf6593a974666",
+  "rarity_rank": 10928,
+  "rarity_percentage": 55.76,
+  "rarity_label": "Top 56%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #13656",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/478.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "YLLW",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 864,
+        "percentage": 4.41
+      },
+      {
+        "trait_type": "Hair",
+        "value": "PNK MoHWK",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 155,
+        "percentage": 0.79
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "SG-PDLCK",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 288,
+        "percentage": 1.47
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "BLCK Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 386,
+        "percentage": 1.97
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "3RD Eye",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 286,
+        "percentage": 1.46
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "ROBO",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 612,
+        "percentage": 3.12
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

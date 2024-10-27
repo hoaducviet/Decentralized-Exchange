@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "466",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x430d77344b5c48b0f132b2a40a7c7ce13efeaa32",
+  "last_metadata_sync": "2024-08-23T22:43:15.708Z",
+  "last_token_uri_sync": "2024-08-23T22:43:15.660Z",
+  "metadata": "{\"name\":\"CloneX #11016\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"CLSD BRWN\"},{\"trait_type\":\"Facial Feature\",\"value\":\"PROMO TAT\"},{\"trait_type\":\"Hair\",\"value\":\"WHT Hairclip\"},{\"trait_type\":\"Jewelry\",\"value\":\"RNBW CBLE\"},{\"trait_type\":\"Clothing\",\"value\":\"GM HOODIE\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/466.png\"}",
+  "block_number": "15381880",
+  "block_number_minted": null,
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "1dfa5c5e49007591a5f4b45a1417efb3",
+  "token_uri": "https://clonex-assets.rtfkt.com/466",
+  "minter_address": null,
+  "rarity_rank": 4183,
+  "rarity_percentage": 21.34,
+  "rarity_label": "Top 22%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #11016",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/466.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "CLSD BRWN",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 120,
+        "percentage": 0.61
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "PROMO TAT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 130,
+        "percentage": 0.66
+      },
+      {
+        "trait_type": "Hair",
+        "value": "WHT Hairclip",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 96,
+        "percentage": 0.49
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "RNBW CBLE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 212,
+        "percentage": 1.08
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "GM HOODIE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 202,
+        "percentage": 1.03
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

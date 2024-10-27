@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "89",
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "contract_type": "ERC721",
+  "owner_of": "0xacd6ab55f6fba36293a9a920ffcb2f0f3d34967a",
+  "last_metadata_sync": "2024-10-07T20:23:18.960Z",
+  "last_token_uri_sync": "2024-10-07T20:23:18.935Z",
+  "metadata": "{\"image\":\"ipfs://QmWCh7M2qbhuvFMLFnDyshM693ZxN2pGRMwAnBWbJqQUo9\",\"name\":\"Doodle #89\",\"description\":\"A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.\",\"attributes\":[{\"trait_type\":\"face\",\"value\":\"bandana\"},{\"trait_type\":\"hair\",\"value\":\"holographic afro\"},{\"trait_type\":\"body\",\"value\":\"pink puffer\"},{\"trait_type\":\"background\",\"value\":\"gradient 4\"},{\"trait_type\":\"head\",\"value\":\"yellow\"}]}",
+  "block_number": "17874255",
+  "block_number_minted": "13435573",
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "token_hash": "75d2e45890dbeb5933c0db94e2e7d944",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/89",
+  "minter_address": "0x7be6dae8f4fddbbd25e68d6a28ef21c9d5c68bcc",
+  "rarity_rank": 4034,
+  "rarity_percentage": 40.34,
+  "rarity_label": "Top 41%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Doodle #89",
+    "description": "A community-driven collectibles project featuring art by Burnt Toast. Doodles come in a joyful range of colors, traits and sizes with a collection size of 10,000. Each Doodle allows its owner to vote for experiences and activations paid for by the Doodles Community Treasury. Burnt Toast is the working alias for Scott Martin, a Canadian–based illustrator, designer, animator and muralist.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmWCh7M2qbhuvFMLFnDyshM693ZxN2pGRMwAnBWbJqQUo9",
+    "attributes": [
+      {
+        "trait_type": "face",
+        "value": "bandana",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 378,
+        "percentage": 3.78
+      },
+      {
+        "trait_type": "hair",
+        "value": "holographic afro",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 90,
+        "percentage": 0.9
+      },
+      {
+        "trait_type": "body",
+        "value": "pink puffer",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 313,
+        "percentage": 3.13
+      },
+      {
+        "trait_type": "background",
+        "value": "gradient 4",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 7% trait",
+        "count": 691,
+        "percentage": 6.91
+      },
+      {
+        "trait_type": "head",
+        "value": "yellow",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 10% trait",
+        "count": 944,
+        "percentage": 9.44
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

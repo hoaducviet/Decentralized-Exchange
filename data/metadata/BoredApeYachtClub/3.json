@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "3",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x2474a7227877f2b65185f09468af7c6577fa207c",
+  "last_metadata_sync": "2024-10-21T18:41:53.348Z",
+  "last_token_uri_sync": "2024-10-21T18:41:53.015Z",
+  "metadata": "{\"image\":\"ipfs://QmYxT4LnK8sqLupjbS6eRvu1si7Ly2wFQAqFebxhWntcf6\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"Purple\"},{\"trait_type\":\"Eyes\",\"value\":\"Bored\"},{\"trait_type\":\"Mouth\",\"value\":\"Tongue Out\"},{\"trait_type\":\"Clothes\",\"value\":\"Bone Necklace\"},{\"trait_type\":\"Fur\",\"value\":\"Cheetah\"}]}",
+  "block_number": "16499512",
+  "block_number_minted": "12292922",
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "6592f72c5bcffe0060bb0b89771b0d81",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/3",
+  "minter_address": "0xaba7161a7fb69c88e16ed9f455ce62b791ee4d03",
+  "rarity_rank": 6345,
+  "rarity_percentage": 63.45,
+  "rarity_label": "Top 64%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmYxT4LnK8sqLupjbS6eRvu1si7Ly2wFQAqFebxhWntcf6",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Purple",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1291,
+        "percentage": 12.91
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 18% trait",
+        "count": 1714,
+        "percentage": 17.14
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Tongue Out",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 202,
+        "percentage": 2.02
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Bone Necklace",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 203,
+        "percentage": 2.03
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Cheetah",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 406,
+        "percentage": 4.06
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

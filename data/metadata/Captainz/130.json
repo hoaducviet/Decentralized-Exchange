@@ -1,0 +1,58 @@
+{
+  "amount": "1",
+  "token_id": "130",
+  "token_address": "0x769272677fab02575e84945f03eca517acc544cc",
+  "contract_type": "ERC721",
+  "owner_of": "0x93dd09af4025182d814f2e37195205c0cb998872",
+  "last_metadata_sync": "2024-10-24T23:34:27.608Z",
+  "last_token_uri_sync": "2024-10-24T23:34:27.231Z",
+  "metadata": "{\"description\":\"Captainz\",\"image\":\"https://captainz-api.memeland.com/images/8eaae22e-366c-49e8-bd7e-b925027fd1fb/130.png\",\"name\":\"Captainz #130\",\"attributes\":[{\"trait_type\":\"Stage\",\"value\":\"2\"},{\"trait_type\":\"Type\",\"value\":\"Shark\"}],\"external_url\":\"https://www.memeland.com/profile/captainz/130\"}",
+  "block_number": "16378806",
+  "block_number_minted": "16347378",
+  "name": "Captainz",
+  "symbol": "Captainz",
+  "token_hash": "0eba709480e8b38a5c91da1e8de83129",
+  "token_uri": "https://captainz-api.memeland.com/metadata/130.json",
+  "minter_address": "0x1c593c369136264abfb908b4b20e74c9a5949417",
+  "rarity_rank": 720,
+  "rarity_percentage": 7.2,
+  "rarity_label": "Top 8%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "Captainz #130",
+    "description": "Captainz",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://captainz-api.memeland.com/images/8eaae22e-366c-49e8-bd7e-b925027fd1fb/130.png",
+    "attributes": [
+      {
+        "trait_type": "Stage",
+        "value": "2",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 73% trait",
+        "count": 7207,
+        "percentage": 72.08
+      },
+      {
+        "trait_type": "Type",
+        "value": "Shark",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 363,
+        "percentage": 3.63
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gcs/files/6df4d75778066bce740050615bc84e21.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/62448fe425d5e5e2bd44ded754865f37.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "330",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0xe5881d7339e2885203e1d061d740f268737a4bf8",
+  "last_metadata_sync": "2024-10-15T14:13:16.804Z",
+  "last_token_uri_sync": "2024-10-15T14:12:37.475Z",
+  "metadata": "{\"image\":\"ipfs://QmVhfkoGUkDLAVuqHJafH6xwjH46TUpwF7j2Qvw3XJi6fS\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Blue\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Brown\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 X Eyes\"},{\"trait_type\":\"Clothes\",\"value\":\"M2 Vietnam Jacket\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Bunny Ears\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored Unshaven\"}]}",
+  "block_number": "15530743",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "c79e5be274ef9d952612ec874b320d2d",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/330",
+  "minter_address": null,
+  "rarity_rank": 3354,
+  "rarity_percentage": 17.2,
+  "rarity_label": "Top 18%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmVhfkoGUkDLAVuqHJafH6xwjH46TUpwF7j2Qvw3XJi6fS",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 610,
+        "percentage": 3.13
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Brown",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 572,
+        "percentage": 2.93
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 X Eyes",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 107,
+        "percentage": 0.55
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "M2 Vietnam Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 122,
+        "percentage": 0.63
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Bunny Ears",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 98,
+        "percentage": 0.5
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 712,
+        "percentage": 3.65
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

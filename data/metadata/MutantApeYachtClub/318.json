@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "318",
+  "token_address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "contract_type": "ERC721",
+  "owner_of": "0x4a035f9b754d26c5005e09e265eccd1b07695c5b",
+  "last_metadata_sync": "2024-08-24T19:57:31.937Z",
+  "last_token_uri_sync": "2024-08-24T19:56:50.913Z",
+  "metadata": "{\"image\":\"ipfs://QmRBMJnEwu51poxZyfFADiAPJEJFtddwvoQ6SYUKLu1hRo\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"M2 Aquamarine\"},{\"trait_type\":\"Fur\",\"value\":\"M2 Black\"},{\"trait_type\":\"Eyes\",\"value\":\"M2 Bloodshot\"},{\"trait_type\":\"Hat\",\"value\":\"M2 Vietnam Era Helmet\"},{\"trait_type\":\"Mouth\",\"value\":\"M2 Bored\"},{\"trait_type\":\"Earring\",\"value\":\"M2 Gold Hoop\"}]}",
+  "block_number": "19597412",
+  "block_number_minted": null,
+  "name": "MutantApeYachtClub",
+  "symbol": "MAYC",
+  "token_hash": "83f1b4fe79ff809b13f5067b3cd090ce",
+  "token_uri": "https://boredapeyachtclub.com/api/mutants/318",
+  "minter_address": null,
+  "rarity_rank": 2660,
+  "rarity_percentage": 13.64,
+  "rarity_label": "Top 14%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmRBMJnEwu51poxZyfFADiAPJEJFtddwvoQ6SYUKLu1hRo",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "M2 Aquamarine",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 598,
+        "percentage": 3.07
+      },
+      {
+        "trait_type": "Fur",
+        "value": "M2 Black",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 515,
+        "percentage": 2.64
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "M2 Bloodshot",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 409,
+        "percentage": 2.1
+      },
+      {
+        "trait_type": "Hat",
+        "value": "M2 Vietnam Era Helmet",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 108,
+        "percentage": 0.55
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "M2 Bored",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 6% trait",
+        "count": 997,
+        "percentage": 5.11
+      },
+      {
+        "trait_type": "Earring",
+        "value": "M2 Gold Hoop",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 239,
+        "percentage": 1.23
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

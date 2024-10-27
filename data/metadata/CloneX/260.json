@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "260",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x9348b2c3ce9c928eb974275fbe8452e179f5227c",
+  "last_metadata_sync": "2024-08-23T22:43:15.393Z",
+  "last_token_uri_sync": "2024-08-23T22:43:15.345Z",
+  "metadata": "{\"name\":\"CloneX #19793\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"CLSD PURP\"},{\"trait_type\":\"Facial Feature\",\"value\":\"SAD TAT\"},{\"trait_type\":\"Hair\",\"value\":\"PURP BRDZ\"},{\"trait_type\":\"Jewelry\",\"value\":\"S-HIRE CBLE\"},{\"trait_type\":\"Clothing\",\"value\":\"WAGMI Tee\"},{\"trait_type\":\"Mouth\",\"value\":\"GLD GRILLS\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/260.png\"}",
+  "block_number": "16473471",
+  "block_number_minted": "13792277",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "01f52d8d494ffc2bfea45995a347a734",
+  "token_uri": "https://clonex-assets.rtfkt.com/260",
+  "minter_address": "0x8b52decccc9d99a28f65100d659f0ab1ad880987",
+  "rarity_rank": 3596,
+  "rarity_percentage": 18.35,
+  "rarity_label": "Top 19%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #19793",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/260.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "CLSD PURP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 112,
+        "percentage": 0.57
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "SAD TAT",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 144,
+        "percentage": 0.73
+      },
+      {
+        "trait_type": "Hair",
+        "value": "PURP BRDZ",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 209,
+        "percentage": 1.07
+      },
+      {
+        "trait_type": "Jewelry",
+        "value": "S-HIRE CBLE",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 214,
+        "percentage": 1.09
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "WAGMI Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 406,
+        "percentage": 2.07
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "GLD GRILLS",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 203,
+        "percentage": 1.04
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

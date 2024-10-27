@@ -1,0 +1,91 @@
+{
+  "amount": "1",
+  "token_id": "119",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0x29469395eaf6f95920e59f858042f0e28d98a20b",
+  "last_metadata_sync": "2024-10-27T15:55:39.290Z",
+  "last_token_uri_sync": "2024-10-27T15:55:39.252Z",
+  "metadata": "{\"name\":\"CloneX #5518\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\\n\\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Demon\"},{\"trait_type\":\"Hair\",\"value\":\"BLU MoHWK\"},{\"trait_type\":\"Clothing\",\"value\":\"CLNX FRSH Shirt\"},{\"trait_type\":\"Eyewear\",\"value\":\"Cyber Bindi\"},{\"trait_type\":\"Mouth\",\"value\":\"Bubblegum\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/119.png\"}",
+  "block_number": "19839257",
+  "block_number_minted": "13792272",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "e9af5c4efa76ce5e8d2fa0379715e284",
+  "token_uri": "https://clonex-assets.rtfkt.com/119",
+  "minter_address": "0x8ad19808126a0f9d834447b8155fbf1681d4f064",
+  "rarity_rank": 11463,
+  "rarity_percentage": 58.48,
+  "rarity_label": "Top 59%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #5518",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone without any Murakami trait please read the terms regarding RTFKT - Owned Content here: https://rtfkt.com/legal-2A\n\nYou are also entitled to a commercial license, please read the terms to that here: https://rtfkt.com/legal-2C",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/119.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Demon",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 9% trait",
+        "count": 1717,
+        "percentage": 8.76
+      },
+      {
+        "trait_type": "Hair",
+        "value": "BLU MoHWK",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 129,
+        "percentage": 0.66
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "CLNX FRSH Shirt",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 255,
+        "percentage": 1.3
+      },
+      {
+        "trait_type": "Eyewear",
+        "value": "Cyber Bindi",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 381,
+        "percentage": 1.94
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bubblegum",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 184,
+        "percentage": 0.94
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

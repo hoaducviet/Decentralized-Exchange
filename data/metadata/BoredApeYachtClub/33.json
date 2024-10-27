@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "33",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0x00000000b3daca9d0452fd19b121e6484def1140",
+  "last_metadata_sync": "2024-10-21T18:41:58.503Z",
+  "last_token_uri_sync": "2024-10-21T18:41:58.122Z",
+  "metadata": "{\"image\":\"ipfs://QmQ1isiNhEbf8cB1DR4dpVvV7KYLfRk4dujtdK3Xhyn6RE\",\"attributes\":[{\"trait_type\":\"Background\",\"value\":\"Purple\"},{\"trait_type\":\"Mouth\",\"value\":\"Small Grin\"},{\"trait_type\":\"Hat\",\"value\":\"Girl's Hair Pink\"},{\"trait_type\":\"Eyes\",\"value\":\"Closed\"},{\"trait_type\":\"Clothes\",\"value\":\"Vietnam Jacket\"},{\"trait_type\":\"Fur\",\"value\":\"Red\"}]}",
+  "block_number": "20024822",
+  "block_number_minted": null,
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "60ce264a704cf5b726c8c71d46f4d3c2",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/33",
+  "minter_address": null,
+  "rarity_rank": 3776,
+  "rarity_percentage": 37.76,
+  "rarity_label": "Top 38%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmQ1isiNhEbf8cB1DR4dpVvV7KYLfRk4dujtdK3Xhyn6RE",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Purple",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1291,
+        "percentage": 12.91
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Small Grin",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 272,
+        "percentage": 2.72
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Girl's Hair Pink",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 105,
+        "percentage": 1.05
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Closed",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 710,
+        "percentage": 7.1
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Vietnam Jacket",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 224,
+        "percentage": 2.24
+      },
+      {
+        "trait_type": "Fur",
+        "value": "Red",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 474,
+        "percentage": 4.74
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

@@ -1,0 +1,113 @@
+{
+  "amount": "1",
+  "token_id": "22",
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "contract_type": "ERC721",
+  "owner_of": "0xeb5ce9fd4ab6cca2515adfe54b58efa3fe9ebca7",
+  "last_metadata_sync": "2024-10-21T18:41:34.912Z",
+  "last_token_uri_sync": "2024-10-21T18:41:34.506Z",
+  "metadata": "{\"image\":\"ipfs://QmSdGMvowFxFFHJr3EajE8RNsPpPyKd5mh4yNaZZegPYqn\",\"attributes\":[{\"trait_type\":\"Fur\",\"value\":\"Zombie\"},{\"trait_type\":\"Background\",\"value\":\"New Punk Blue\"},{\"trait_type\":\"Clothes\",\"value\":\"Tuxedo Tee\"},{\"trait_type\":\"Eyes\",\"value\":\"Sleepy\"},{\"trait_type\":\"Hat\",\"value\":\"S&m Hat\"},{\"trait_type\":\"Earring\",\"value\":\"Gold Stud\"},{\"trait_type\":\"Mouth\",\"value\":\"Bored Unshaven\"}]}",
+  "block_number": "14690410",
+  "block_number_minted": "12292922",
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "token_hash": "0fee7cae1328857fcafe042e7ca9e087",
+  "token_uri": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/22",
+  "minter_address": "0xaba7161a7fb69c88e16ed9f455ce62b791ee4d03",
+  "rarity_rank": 1762,
+  "rarity_percentage": 17.62,
+  "rarity_label": "Top 18%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": null,
+    "description": null,
+    "animation_url": null,
+    "external_link": null,
+    "image": "ipfs://QmSdGMvowFxFFHJr3EajE8RNsPpPyKd5mh4yNaZZegPYqn",
+    "attributes": [
+      {
+        "trait_type": "Fur",
+        "value": "Zombie",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 4% trait",
+        "count": 302,
+        "percentage": 3.02
+      },
+      {
+        "trait_type": "Background",
+        "value": "New Punk Blue",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 13% trait",
+        "count": 1232,
+        "percentage": 12.32
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Tuxedo Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 235,
+        "percentage": 2.35
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Sleepy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 8% trait",
+        "count": 751,
+        "percentage": 7.51
+      },
+      {
+        "trait_type": "Hat",
+        "value": "S&m Hat",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 3% trait",
+        "count": 235,
+        "percentage": 2.35
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Gold Stud",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 5% trait",
+        "count": 439,
+        "percentage": 4.39
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Bored Unshaven",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 16% trait",
+        "count": 1551,
+        "percentage": 15.51
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

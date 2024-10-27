@@ -1,0 +1,102 @@
+{
+  "amount": "1",
+  "token_id": "286",
+  "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
+  "contract_type": "ERC721",
+  "owner_of": "0xd1cfad3c65194d3680f99631102aa55f144c8880",
+  "last_metadata_sync": "2024-08-23T22:43:15.524Z",
+  "last_token_uri_sync": "2024-08-23T22:43:15.475Z",
+  "metadata": "{\"name\":\"CloneX #4020\",\"description\":\"🧬 CLONE X 🧬\\n\\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\\n\\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\\n\\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.\",\"attributes\":[{\"trait_type\":\"DNA\",\"value\":\"Human\"},{\"trait_type\":\"Eye Color\",\"value\":\"RNBW\"},{\"trait_type\":\"Facial Feature\",\"value\":\"Slash Scar\"},{\"trait_type\":\"Hair\",\"value\":\"RD Stylish\"},{\"trait_type\":\"Clothing\",\"value\":\"MONO Tee\"},{\"trait_type\":\"Type\",\"value\":\"MURAKAMI DRIP\"}],\"image\":\"https://clonex-assets.rtfkt.com/images/286.png\"}",
+  "block_number": "13792277",
+  "block_number_minted": "13792277",
+  "name": "CloneX",
+  "symbol": "CloneX",
+  "token_hash": "7dc06c5c596e314126bcad9da45da881",
+  "token_uri": "https://clonex-assets.rtfkt.com/286",
+  "minter_address": "0xd1cfad3c65194d3680f99631102aa55f144c8880",
+  "rarity_rank": 7737,
+  "rarity_percentage": 39.47,
+  "rarity_label": "Top 40%",
+  "verified_collection": true,
+  "possible_spam": false,
+  "normalized_metadata": {
+    "name": "CloneX #4020",
+    "description": "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\n\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.",
+    "animation_url": null,
+    "external_link": null,
+    "image": "https://clonex-assets.rtfkt.com/images/286.png",
+    "attributes": [
+      {
+        "trait_type": "DNA",
+        "value": "Human",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 51% trait",
+        "count": 9809,
+        "percentage": 50.05
+      },
+      {
+        "trait_type": "Eye Color",
+        "value": "RNBW",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 159,
+        "percentage": 0.81
+      },
+      {
+        "trait_type": "Facial Feature",
+        "value": "Slash Scar",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 1% trait",
+        "count": 134,
+        "percentage": 0.68
+      },
+      {
+        "trait_type": "Hair",
+        "value": "RD Stylish",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 222,
+        "percentage": 1.13
+      },
+      {
+        "trait_type": "Clothing",
+        "value": "MONO Tee",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 2% trait",
+        "count": 387,
+        "percentage": 1.97
+      },
+      {
+        "trait_type": "Type",
+        "value": "MURAKAMI DRIP",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 0,
+        "order": null,
+        "rarity_label": "Top 16% trait",
+        "count": 3021,
+        "percentage": 15.41
+      }
+    ]
+  },
+  "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}
