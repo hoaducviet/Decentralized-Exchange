@@ -1,0 +1,21 @@
+{
+  "token_address": "0x286e531f363768fed5e18b468f5b76a9ffc33af5",
+  "name": "Nyan Balloon",
+  "symbol": "NyanBall",
+  "contract_type": "ERC1155",
+  "synced_at": "2023-01-19T23:52:59.000Z",
+  "possible_spam": false,
+  "verified_collection": true,
+  "collection_logo": "https://i.seadn.io/gcs/files/e8bd58f2759b0c260d36aa469e664ec3.gif?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/dfc777ce66df8576580eaa5970f28c27.png?w=500&auto=format",
+  "collection_category": "art",
+  "project_url": "https://www.nyan.cat/",
+  "wiki_url": null,
+  "discord_url": null,
+  "telegram_url": null,
+  "twitter_username": "PRguitarman",
+  "instagram_username": null,
+  "floor_price": "0.0075",
+  "floor_price_usd": "18.595",
+  "floor_price_currency": "eth"
+}

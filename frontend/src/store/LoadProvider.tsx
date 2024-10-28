@@ -9,9 +9,11 @@ import { useWeb3 } from "@/hooks/useWeb3";
 import { setTokens } from "@/redux/features/tokens/tokensSlice";
 import { setPools } from "@/redux/features/pools/poolsSlice";
 import { setLiquidBalances, setTokenBalances } from "@/redux/features/balances/balancesSlice";
+import { setCollections } from "@/redux/features/collections/collectionsSlice";
 import { getLiquidBalances } from "@/utils/getLiquidBalances";
 import { getTokenBalances } from "@/utils/getTokenBalances";
-import { Children, Token, Pool } from "@/lib/type";
+import { getCollectionsNFT } from "@/utils/getCollectionsNFT";
+import { Children, Token, Pool, Collection } from "@/lib/type";
 import tokenERC20 from '@/assets/token/tokens.json';
 import eth from '@/assets/token/eth.json';
 import poolTokens from '@/assets/pool/pools.json';
@@ -75,7 +77,16 @@ export function LoadProvider({ children }: Props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tokens, provider, isConnected, address, isLoaded, dispatch])
 
-
+    //Get Collections NFT
+    useEffect(() => {
+        if (isConnected && !!address && !!provider && !!dispatch) {
+            const getCollections = async () => {
+                const collections: Collection[] = await getCollectionsNFT(provider)
+                dispatch(setCollections(collections))
+            }
+            getCollections()
+        }
+    }, [provider, isConnected, address, dispatch])
 
     return (<>{children}</>)
 }

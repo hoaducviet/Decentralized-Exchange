@@ -33,7 +33,7 @@ contract NFTCollection is ERC721URIStorage, Ownable {
     }
 
     function createNFT(address _to, string memory _tokenURI) public onlyOwner {
-        uint256 tokenId = counter++;
+        uint256 tokenId = ++counter;
         _safeMint(_to, tokenId);
         _setTokenURI(tokenId, _tokenURI);
 

@@ -4,6 +4,7 @@ import balancesReducer from './features/balances/balancesSlice';
 import counterReducer from './features/counter/counterSlice';
 import tokensReducer from './features/tokens/tokensSlice';
 import poolsReducer from './features/pools/poolsSlice';
+import collectionsReducer from './features/collections/collectionsSlice';
 import { apiSlice } from './features/api/apiSlice'
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
         counter: counterReducer,
         tokens: tokensReducer,
         pools: poolsReducer,
+        collections: collectionsReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
 
     },

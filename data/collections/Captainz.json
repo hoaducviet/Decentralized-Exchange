@@ -1,0 +1,21 @@
+{
+  "token_address": "0x769272677fab02575e84945f03eca517acc544cc",
+  "name": "Captainz",
+  "symbol": "Captainz",
+  "contract_type": "ERC721",
+  "synced_at": "2023-01-06T10:50:35.000Z",
+  "possible_spam": false,
+  "verified_collection": true,
+  "collection_logo": "https://i.seadn.io/gcs/files/6df4d75778066bce740050615bc84e21.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/62448fe425d5e5e2bd44ded754865f37.png?w=500&auto=format",
+  "collection_category": "pfps",
+  "project_url": "http://memeland.com/captainz",
+  "wiki_url": null,
+  "discord_url": "https://discord.gg/memeland",
+  "telegram_url": null,
+  "twitter_username": "Memeland",
+  "instagram_username": "memeland",
+  "floor_price": "2.44",
+  "floor_price_usd": "6049.672",
+  "floor_price_currency": "eth"
+}

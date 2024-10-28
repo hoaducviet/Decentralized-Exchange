@@ -1,0 +1,21 @@
+{
+  "token_address": "0x1b41d54b3f8de13d58102c50d7431fd6aa1a2c48",
+  "name": "Pirate",
+  "symbol": "PIRATE",
+  "contract_type": "ERC721",
+  "synced_at": "2023-04-06T00:05:23.000Z",
+  "possible_spam": false,
+  "verified_collection": true,
+  "collection_logo": "https://i.seadn.io/gcs/files/9dd5c3df43bcd0861cead11bc988ce3d.gif?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/4d1ebbdca54f9e0cc2c9e801863c4b93.png?w=500&auto=format",
+  "collection_category": "gaming",
+  "project_url": "https://piratenation.game",
+  "wiki_url": null,
+  "discord_url": "https://discord.gg/PirateNation",
+  "telegram_url": null,
+  "twitter_username": "PirateNation",
+  "instagram_username": null,
+  "floor_price": "1.02",
+  "floor_price_usd": "2528.961",
+  "floor_price_currency": "eth"
+}

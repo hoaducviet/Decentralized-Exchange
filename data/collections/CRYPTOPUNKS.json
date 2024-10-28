@@ -1,0 +1,21 @@
+{
+  "token_address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+  "name": "CRYPTOPUNKS",
+  "symbol": "Ͼ",
+  "contract_type": "CRYPTOPUNKS",
+  "synced_at": "2017-06-22T19:40:00.000Z",
+  "possible_spam": false,
+  "verified_collection": true,
+  "collection_logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+  "collection_category": "pfps",
+  "project_url": "https://cryptopunks.app/",
+  "wiki_url": null,
+  "discord_url": "https://discord.gg/tQp4pSE",
+  "telegram_url": null,
+  "twitter_username": "cryptopunksnfts",
+  "instagram_username": null,
+  "floor_price": null,
+  "floor_price_usd": null,
+  "floor_price_currency": null
+}

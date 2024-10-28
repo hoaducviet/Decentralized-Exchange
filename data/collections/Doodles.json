@@ -1,0 +1,21 @@
+{
+  "token_address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+  "name": "Doodles",
+  "symbol": "DOODLE",
+  "contract_type": "ERC721",
+  "synced_at": "2021-10-16T16:24:51.000Z",
+  "possible_spam": false,
+  "verified_collection": true,
+  "collection_logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+  "collection_category": "pfps",
+  "project_url": "https://web3.doodles.app",
+  "wiki_url": null,
+  "discord_url": "https://discord.gg/doodles",
+  "telegram_url": null,
+  "twitter_username": "doodles",
+  "instagram_username": null,
+  "floor_price": "1.4649711",
+  "floor_price_usd": "3632.211",
+  "floor_price_currency": "eth"
+}

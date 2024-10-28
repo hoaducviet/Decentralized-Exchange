@@ -1,0 +1,21 @@
+{
+  "token_address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "name": "BoredApeYachtClub",
+  "symbol": "BAYC",
+  "contract_type": "ERC721",
+  "synced_at": "2021-04-22T03:03:16.000Z",
+  "possible_spam": false,
+  "verified_collection": true,
+  "collection_logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+  "collection_category": "pfps",
+  "project_url": "http://www.boredapeyachtclub.com/",
+  "wiki_url": null,
+  "discord_url": "https://discord.gg/3P5K3dzgdB",
+  "telegram_url": null,
+  "twitter_username": "BoredApeYC",
+  "instagram_username": null,
+  "floor_price": "11.54",
+  "floor_price_usd": "28611.971",
+  "floor_price_currency": "eth"
+}

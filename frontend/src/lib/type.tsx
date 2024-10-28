@@ -28,7 +28,6 @@ export type Balance = {
     decimals: number;
 }
 
-
 export type TokenBalancesType = {
     info: Token;
     balance: Balance | undefined;
@@ -45,7 +44,9 @@ export type LiquidBalancesType = {
 }
 
 export type Collection = {
+    address: Address;
     name: string;
+    symbol: string;
 }
 
 export type Contracts = {
