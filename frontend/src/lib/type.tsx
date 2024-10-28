@@ -49,6 +49,17 @@ export type Collection = {
     symbol: string;
 }
 
+export type NFT = {
+    id: number;
+    price: number;
+    uri: string;
+    isListed: boolean;
+    formatted: string;
+    img: string,
+    name: string;
+    description: string;
+}
+
 export type Contracts = {
     look: Contract;
 }

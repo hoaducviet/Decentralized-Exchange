@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useAccount } from "wagmi"
 import { useWeb3 } from "@/hooks/useWeb3"
@@ -82,7 +82,7 @@ export default function PoolBox({ tokenBalances, liquidBalances, isLoaded }: Pro
         }
     }, [amount1, reserve1, reserve2])
 
-    const handleSend = async () => {
+    const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
             try {
                 const receipt = await addLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount1, amount2 })
@@ -99,7 +99,7 @@ export default function PoolBox({ tokenBalances, liquidBalances, isLoaded }: Pro
                 console.error("Transaction error:", error);
             }
         }
-    }
+    }, [provider, signer, address, currentPool, tokenOne, amount1, amount2, dispatch])
     return (
         <div className="flex flex-col w-full h-full">
             <div className="relative flex flex-col w-full h-full">

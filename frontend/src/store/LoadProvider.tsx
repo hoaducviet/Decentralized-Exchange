@@ -6,13 +6,16 @@ import { useBalances } from "@/hooks/useBalances";
 import { usePools } from "@/hooks/usePools";
 import { useTokens } from "@/hooks/useTokens";
 import { useWeb3 } from "@/hooks/useWeb3";
+import { useCollection } from "@/hooks/useCollection";
 import { setTokens } from "@/redux/features/tokens/tokensSlice";
 import { setPools } from "@/redux/features/pools/poolsSlice";
 import { setLiquidBalances, setTokenBalances } from "@/redux/features/balances/balancesSlice";
 import { setCollections } from "@/redux/features/collections/collectionsSlice";
+import { setNFTs, setListed } from "@/redux/features/collection/collectionSlice";
 import { getLiquidBalances } from "@/utils/getLiquidBalances";
 import { getTokenBalances } from "@/utils/getTokenBalances";
 import { getCollectionsNFT } from "@/utils/getCollectionsNFT";
+import { getNFTs } from "@/utils/getNFTs";
 import { Children, Token, Pool, Collection } from "@/lib/type";
 import tokenERC20 from '@/assets/token/tokens.json';
 import eth from '@/assets/token/eth.json';
@@ -41,7 +44,9 @@ export function LoadProvider({ children }: Props) {
     const dispatch = useDispatch()
     const web3 = useWeb3()
     const provider = web3?.provider
+    const signer = web3?.signer
     const { isLoaded } = useBalances()
+    const { currentCollection, nfts, listed } = useCollection()
     useEffect(() => {
         const setData = async () => {
             dispatch(setTokens(tokensInfo))
@@ -87,6 +92,22 @@ export function LoadProvider({ children }: Props) {
             getCollections()
         }
     }, [provider, isConnected, address, dispatch])
+
+    //GET NFTs
+    useEffect(() => {
+        if (!!currentCollection && !!signer && isConnected) {
+            const getNFTofCollection = async () => {
+                const { NFTs, Listed } = await getNFTs({ provider: signer, address: currentCollection.address })
+                if (NFTs.length) {
+                    dispatch(setNFTs(NFTs))
+                }
+                if (Listed.length) {
+                    dispatch(setListed(Listed))
+                }
+            }
+            getNFTofCollection()
+        }
+    }, [isConnected, currentCollection, signer, nfts, listed, dispatch])
 
     return (<>{children}</>)
 }

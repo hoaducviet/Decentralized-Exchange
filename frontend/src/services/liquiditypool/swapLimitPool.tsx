@@ -32,12 +32,12 @@ export const swapLimitPool = async ({ provider, signer, address, addressContract
                 nonce: nonce1
             })
             await approveTX.wait()
-            // const nonce2 = await provider.getTransactionCount(address, 'latest');
-            // /////
-            // const receipt = await limitContract.sendLimit(priceValue, value, tokenOne.info.address, pool.info.address, {
-            //     nonce: nonce2
-            // })
-            // await receipt.wait()
+            const nonce2 = await provider.getTransactionCount(address, 'latest');
+            /////
+            const receipt = await limitContract.sendLimit(priceValue, value, tokenOne.info.address, pool.info.address, {
+                nonce: nonce2
+            })
+            await receipt.wait()
 
             return approveTX
         } catch {
@@ -56,11 +56,11 @@ export const swapLimitPool = async ({ provider, signer, address, addressContract
                     nonce: nonce1
                 })
                 await approveTX.wait()
-                // const nonce2 = await provider.getTransactionCount(address, 'latest');
-                // const receipt = await limitContract.sendLimit(priceValue, value, tokenOne.info.address, pool.info.address, {
-                //     nonce: nonce2
-                // })
-                // await receipt.wait()
+                const nonce2 = await provider.getTransactionCount(address, 'latest');
+                const receipt = await limitContract.sendLimit(priceValue, value, tokenOne.info.address, pool.info.address, {
+                    nonce: nonce2
+                })
+                await receipt.wait()
 
                 return approveTX
             } catch {

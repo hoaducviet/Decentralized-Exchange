@@ -26,7 +26,7 @@ export default function NFTColections({ collections }: Props) {
                 <div className='flex flex-col w-full'>
                     {collections.length > 0 && collections.map((item, index) => {
                         return (
-                            <Link key={index} href={`/nfts/${item.name}`} className='flex flex-col w-full'>
+                            <Link key={index} href={`/nfts/${item.name.toLowerCase().replace(/\s+/g, '')}`} className='flex flex-col w-full'>
                                 <div className='cursor-pointer hover:bg-secondary/80 rounded-none flex flex-row items-center h-[4vw]'>
                                     <div className='flex flex-row items-center space-x-[0.5vw] w-[35%] text-md'>
                                         <p>{index + 1}</p>

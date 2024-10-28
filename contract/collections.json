@@ -31,33 +31,33 @@
   },
   {
     "address": "0xe99C29Bb0f5e21C73BD533dc955735b9F7f34421",
+    "name": "Pirate",
+    "symbol": "PIRATE"
+  },
+  {
+    "address": "0xB6014b8e18A75b3D56D1b675B5f1b45918D97768",
     "name": "Doodles",
     "symbol": "DOODLE"
   },
   {
-    "address": "0xB6014b8e18A75b3D56D1b675B5f1b45918D97768",
+    "address": "0xAcA622699Da2B319af82D550E6B8d77204B5fd57",
     "name": "Fijis",
     "symbol": "FIJI"
   },
   {
-    "address": "0xAcA622699Da2B319af82D550E6B8d77204B5fd57",
+    "address": "0xc63478729727874decEC990Bf62a84a3375b6c79",
     "name": "HOPE",
     "symbol": "HOPE"
   },
   {
-    "address": "0xc63478729727874decEC990Bf62a84a3375b6c79",
+    "address": "0x6bcCE1CE2f185368B2f45e38859f9AE8d9faD593",
     "name": "MutantApeYachtClub",
     "symbol": "MAYC"
   },
   {
-    "address": "0x6bcCE1CE2f185368B2f45e38859f9AE8d9faD593",
+    "address": "0xD018c5f287Bb2EaaF32Dd9987b0ECb54b50bf66C",
     "name": "Nyan Balloon",
     "symbol": "NyanBall"
-  },
-  {
-    "address": "0xD018c5f287Bb2EaaF32Dd9987b0ECb54b50bf66C",
-    "name": "Pirate",
-    "symbol": "PIRATE"
   },
   {
     "address": "0xC3B2512bD08a56fd5eaA8E585e585D1EAe9cc176",

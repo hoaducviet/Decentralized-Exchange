@@ -92,7 +92,7 @@ contract NFTMarket is Ownable {
         );
     }
 
-    function getAllCollection() public view returns (CollectionInfo[] memory) {
+    function getAllCollection() external view returns (CollectionInfo[] memory) {
         CollectionInfo[] memory allCollection = new CollectionInfo[](counter);
         for (uint256 i = 0; i < counter; i++) {
             allCollection[i] = collections[i];
