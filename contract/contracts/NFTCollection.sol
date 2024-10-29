@@ -11,6 +11,7 @@ contract NFTCollection is ERC721URIStorage, Ownable {
         uint256 price;
         string uri;
         bool isListed;
+        address owner;
     }
     mapping(uint256 => NFTInfo) public nfts;
 
@@ -37,7 +38,8 @@ contract NFTCollection is ERC721URIStorage, Ownable {
             id: tokenId,
             price: 0,
             uri: _tokenURI,
-            isListed: false
+            isListed: false,
+            owner: _to
         });
 
         nfts[tokenId] = newNFT;
@@ -59,6 +61,7 @@ contract NFTCollection is ERC721URIStorage, Ownable {
         payable(ownerOf(nft.id)).transfer(msg.value);
         _safeTransfer(ownerOf(nft.id), msg.sender, nft.id);
         nft.isListed = false;
+        nft.owner = msg.sender;
 
         emit NFTBought(msg.sender, nft.id, nft.price);
     }
@@ -71,6 +74,7 @@ contract NFTCollection is ERC721URIStorage, Ownable {
         );
 
         _safeTransfer(_ownerOf(_tokenId), _to, _tokenId);
+        nfts[_tokenId].owner = _to;
 
         emit NFTTransfer(_to, _tokenId);
     }

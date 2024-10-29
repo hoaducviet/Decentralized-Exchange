@@ -10,19 +10,13 @@ interface Props {
     collection: Collection
 }
 
-export const buyNFT = async ({ provider, signer, address, nft, collection }: Props) => {
+export const withdrawNFT = async ({ provider, signer, address, nft, collection }: Props) => {
     const contract = await loadNFTCollectionContract({ provider: signer, address: collection.address });
-    const balance = await provider.getBalance(address);
-    const amount = BigInt(nft.price)
-    if (balance < amount) {
-        throw new Error("Insufficient balance ether");
-    }
 
     try {
         const nonce = await provider.getTransactionCount(address, 'latest');
-        const receipt = await contract.buyNFT(nft.id, {
-            nonce: nonce,
-            value: amount
+        const receipt = await contract.removeListedNFT(nft.id, {
+            nonce: nonce
         })
         await receipt.wait()
         return receipt

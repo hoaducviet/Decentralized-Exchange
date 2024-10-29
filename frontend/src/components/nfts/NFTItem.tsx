@@ -27,23 +27,25 @@ export default function NFTItem({ nft, setNft, handleSend }: Props) {
                 <div className='flex flex-row justify-between items-center w-full'>
                     <p className='text-md'>{nft.formatted}</p>
                     <p className='text-md font-semibold'>ETH</p>
-                    <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                            <Button onClick={handleClick} variant="secondary">Buy</Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                            <AlertDialogHeader>
-                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    This will permanently withdraw your liquidity and send your tokens from liquidity pool.
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={handleSend}>Continue</AlertDialogAction>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
+                    {nft.isListed &&
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button onClick={handleClick} variant="secondary">Buy</Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        This will permanently withdraw your liquidity and send your tokens from liquidity pool.
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                    <AlertDialogAction onClick={handleSend}>Continue</AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+                    }
                 </div>
             </CardFooter>
         </Card>

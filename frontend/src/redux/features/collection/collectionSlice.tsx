@@ -7,12 +7,14 @@ export interface CollectionsState {
     currentCollection: Collection | undefined;
     nfts: NFT[];
     listed: NFT[];
+    mylist: NFT[];
 }
 
 const initialState: CollectionsState = {
     currentCollection: undefined,
     nfts: [],
-    listed: []
+    listed: [],
+    mylist: [],
 }
 
 export const collectionSlice = createSlice({
@@ -28,6 +30,9 @@ export const collectionSlice = createSlice({
         setListed: (state, action: PayloadAction<NFT[]>) => {
             state.listed = action.payload;
         },
+        setMylist: (state, action: PayloadAction<NFT[]>) => {
+            state.mylist = action.payload;
+        },
         resetCurrentCollection: (state) => {
             state.currentCollection = undefined;
             state.nfts = [];
@@ -41,5 +46,5 @@ export const collectionSlice = createSlice({
     }
 })
 
-export const { setCurrentCollection, setNFTs, setListed, resetCurrentCollection, resetNFTs } = collectionSlice.actions;
+export const { setCurrentCollection, setNFTs, setListed, setMylist, resetCurrentCollection, resetNFTs } = collectionSlice.actions;
 export default collectionSlice.reducer

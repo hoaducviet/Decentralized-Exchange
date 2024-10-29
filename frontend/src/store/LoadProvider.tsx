@@ -11,7 +11,7 @@ import { setTokens } from "@/redux/features/tokens/tokensSlice";
 import { setPools } from "@/redux/features/pools/poolsSlice";
 import { setLiquidBalances, setTokenBalances } from "@/redux/features/balances/balancesSlice";
 import { setCollections } from "@/redux/features/collections/collectionsSlice";
-import { setNFTs, setListed } from "@/redux/features/collection/collectionSlice";
+import { setNFTs, setListed, setMylist } from "@/redux/features/collection/collectionSlice";
 import { getLiquidBalances } from "@/utils/getLiquidBalances";
 import { getTokenBalances } from "@/utils/getTokenBalances";
 import { getCollectionsNFT } from "@/utils/getCollectionsNFT";
@@ -97,12 +97,15 @@ export function LoadProvider({ children }: Props) {
     useEffect(() => {
         if (!!currentCollection && !!signer && isConnected) {
             const getNFTofCollection = async () => {
-                const { NFTs, Listed } = await getNFTs({ provider: signer, address: currentCollection.address })
+                const { NFTs, Listed, Mylist } = await getNFTs({ provider: signer, address: currentCollection.address })
                 if (NFTs.length) {
                     dispatch(setNFTs(NFTs))
                 }
                 if (Listed.length) {
                     dispatch(setListed(Listed))
+                }
+                if (Mylist.length) {
+                    dispatch(setMylist(Mylist))
                 }
             }
             getNFTofCollection()

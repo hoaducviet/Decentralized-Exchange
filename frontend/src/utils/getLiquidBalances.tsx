@@ -1,11 +1,11 @@
-import { BrowserProvider, JsonRpcSigner, formatUnits } from 'ethers'
+import { BrowserProvider, formatUnits } from 'ethers'
 import { loadLPTokenContract } from "@/utils/loadLPTokenContract"
 import { LiquidBalancesType, Pool, Token, Address } from "@/lib/type"
 
 interface Props {
     pools: Pool[];
     tokens: Token[];
-    provider: BrowserProvider | JsonRpcSigner;
+    provider: BrowserProvider;
     address: Address;
 }
 
@@ -14,6 +14,8 @@ export const getLiquidBalances = async ({ pools, tokens, provider, address }: Pr
     const liquidBalances: LiquidBalancesType[] = await Promise.all(pools.map(async (pool) => {
         try {
             const contract = await loadLPTokenContract({ provider, address: pool.addressLPT })
+            // const blockNumber = await provider.getBlockNumber()
+            // console.log(blockNumber)
             const value = await contract.balanceOf(address, { blockTag: "latest" })
             const decimals = Number(await contract.decimals())
             const formatted = formatUnits(value, decimals)

@@ -1,4 +1,4 @@
-import { BrowserProvider, JsonRpcSigner } from 'ethers'
+import { BrowserProvider, JsonRpcSigner, parseEther } from 'ethers'
 import { Address, Collection, NFT } from '@/lib/type'
 import { loadNFTCollectionContract } from '@/utils/loadNFTCollectionContract'
 
@@ -7,24 +7,22 @@ interface Props {
     signer: JsonRpcSigner,
     address: Address
     nft: NFT;
-    collection: Collection
+    collection: Collection,
+    amount: string
 }
 
-export const buyNFT = async ({ provider, signer, address, nft, collection }: Props) => {
+export const sellNFT = async ({ provider, signer, address, nft, collection, amount }: Props) => {
     const contract = await loadNFTCollectionContract({ provider: signer, address: collection.address });
-    const balance = await provider.getBalance(address);
-    const amount = BigInt(nft.price)
-    if (balance < amount) {
-        throw new Error("Insufficient balance ether");
-    }
+
+    const value = parseEther(amount)
 
     try {
         const nonce = await provider.getTransactionCount(address, 'latest');
-        const receipt = await contract.buyNFT(nft.id, {
+        const receipt = await contract.listNFT(nft.id, value, {
             nonce: nonce,
-            value: amount
         })
         await receipt.wait()
+        console.log(receipt)
         return receipt
     } catch {
         throw new Error("Failed to add buy NFT");

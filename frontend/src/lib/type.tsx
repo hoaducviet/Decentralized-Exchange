@@ -54,6 +54,7 @@ export type NFT = {
     price: number;
     uri: string;
     isListed: boolean;
+    owner: Address;
     formatted: string;
     img: string,
     name: string;

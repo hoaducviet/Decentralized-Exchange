@@ -6,23 +6,18 @@ interface Props {
     provider: BrowserProvider,
     signer: JsonRpcSigner,
     address: Address
-    nft: NFT;
-    collection: Collection
+    nft: NFT,
+    collection: Collection,
+    to: Address
 }
 
-export const buyNFT = async ({ provider, signer, address, nft, collection }: Props) => {
+export const transferNFT = async ({ provider, signer, address, nft, collection, to }: Props) => {
     const contract = await loadNFTCollectionContract({ provider: signer, address: collection.address });
-    const balance = await provider.getBalance(address);
-    const amount = BigInt(nft.price)
-    if (balance < amount) {
-        throw new Error("Insufficient balance ether");
-    }
-
+    
     try {
         const nonce = await provider.getTransactionCount(address, 'latest');
-        const receipt = await contract.buyNFT(nft.id, {
+        const receipt = await contract.transferNFT(to, nft.id, {
             nonce: nonce,
-            value: amount
         })
         await receipt.wait()
         return receipt

@@ -5,6 +5,16 @@ const path = require("path");
 const collections = require("../../collections.json");
 const collection = collections.find((item) => item.symbol === "PIRATE");
 async function main() {
+  async function checkBlockNumber() {
+    const provider = new ethers.JsonRpcProvider(
+      "http://127.0.0.1:8545"
+    );
+    const blockNumber = await provider.getBlockNumber();
+    console.log("Current Hardhat Block Number:", blockNumber);
+  }
+
+  checkBlockNumber();
+
   const folderPath = `../data/metadata/${collection.name}`;
 
   const files = fs.readdirSync(folderPath);

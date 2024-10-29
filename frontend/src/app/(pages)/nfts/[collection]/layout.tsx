@@ -18,6 +18,10 @@ export default function CollectionLayout({ children }: Readonly<{
             name: 'Listed',
             link: `/nfts/${collection}/listed`
         },
+        {
+            name: "My NFT",
+            link: `/nfts/${collection}/mynft`
+        },
     ]
     return (
         <div className="flex flex-col min-h-[100vh] mx-[15vw] my-[5vw]">

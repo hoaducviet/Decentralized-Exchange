@@ -1,11 +1,11 @@
-import { BrowserProvider, JsonRpcSigner, formatEther } from 'ethers'
+import { JsonRpcSigner, formatEther } from 'ethers'
 import { loadNFTCollectionContract } from '@/utils/loadNFTCollectionContract'
 import { fetchDataURI } from '@/utils/fetchDataURI';
 import { convertToHttps } from '@/utils/convertToHttps';
 import { NFT, Address } from "@/lib/type"
 
 interface Props {
-    provider: BrowserProvider | JsonRpcSigner;
+    provider: JsonRpcSigner;
     address: Address;
 }
 
@@ -22,6 +22,7 @@ export const getNFTs = async ({ provider, address }: Props) => {
                 price: Number(result[1]),
                 uri: result[2],
                 isListed: result[3],
+                owner: result[4],
                 formatted: formatted.slice(0, formatted.indexOf('.') + 7),
                 img: img,
                 name: response.name,
@@ -29,9 +30,11 @@ export const getNFTs = async ({ provider, address }: Props) => {
             })
         }))).filter(item => item.id !== 0)
 
-        const listed = nfts.filter(item => item.isListed)
 
-        return { NFTs: nfts, Listed: listed }
+        const listed = nfts.filter(item => item.isListed)
+        const mylist = nfts.filter(item => item.owner === provider.address)
+
+        return { NFTs: nfts, Listed: listed, Mylist: mylist }
     } catch (error) {
         console.error(`Error processing`, error);
         throw error;

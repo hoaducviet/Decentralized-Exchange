@@ -32,11 +32,15 @@ module.exports = {
         disableFeeBumping: false,
       },
     },
-    hardhat: {},
-    sepolia: {
-      url: process.env.ALCHEMY_SEPOLIA_URL,
-      accounts: [process.env.ACCOUNT_PRIVATE_KEY],
-    },
+    // hardhat: {
+    //   forking: {
+    //     url: process.env.ALCHEMY_MAINNET,
+    //   },
+    // },
+    // sepolia: {
+    //   url: process.env.ALCHEMY_SEPOLIA_URL,
+    //   accounts: [process.env.ACCOUNT_PRIVATE_KEY],
+    // },
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
