@@ -10,7 +10,7 @@ class PaymentController {
   async payout(req, res) {
     try {
       console.log("Withdraw");
-      const { address, value } = req.body;
+      const { address, value, email } = req.body;
       if (!ethers.isAddress(address) || parseFloat(value) <= 0) {
         return res.status(500).json({ message: "Internal server error" });
       }
@@ -21,7 +21,7 @@ class PaymentController {
       }
       console.log("Receipt withdraw:", receipt.hash);
       const token = await getAccessToken();
-      const payout = await createPayout(token, value);
+      const payout = await createPayout(token, value, email);
       console.log("ID payout: ", payout.batch_header.payout_batch_id);
       return res.status(200).json(payout);
     } catch (error) {

@@ -1,5 +1,5 @@
 const axios = require("axios");
-async function createPayout(accessToken, value) {
+async function createPayout(accessToken, value, email) {
   try {
     const response = await axios({
       url: "https://api.sandbox.paypal.com/v1/payments/payouts",
@@ -21,7 +21,7 @@ async function createPayout(accessToken, value) {
             amount: { value: `${value}`, currency: "USD" },
             note: "Thanks for your patronage!",
             sender_item_id: `Dex_Item_${Date.now()}`,
-            receiver: "viethoaduc.12@gmail.com", // Thay bằng email của người nhận
+            receiver: `${email}`, // Thay bằng email của người nhận
           },
         ],
       },

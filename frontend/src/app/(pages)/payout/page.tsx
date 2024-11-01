@@ -1,14 +1,13 @@
 'use client'
 import { useState, useRef, useCallback } from "react"
-import { useRouter } from "next/navigation"
-import axios from 'axios';
 import { useAccount } from 'wagmi';
+import axios from 'axios';
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import AddressItem from "@/components/exchange/AddressItem";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
-import { ethers } from "ethers";
-
 
 type Price = {
     name: string;
@@ -26,7 +25,7 @@ export default function Payout() {
     const ref = useRef<HTMLInputElement>(null)
     const [amount, setAmount] = useState<string>('')
     const [isActive, setIsActive] = useState<number | undefined>(undefined)
-    const [addressReceiver, setAddressReceiver] = useState<string>("");
+    const [emailReceiver, setEmailReceiver] = useState<string>("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
@@ -44,18 +43,18 @@ export default function Payout() {
         setAmount(item.value)
     }
     const handleWithdraw = useCallback(async () => {
-        console.log(amount, addressReceiver)
-        if (parseFloat(amount) > 0 && ethers.isAddress(addressReceiver)) {
+        console.log(amount, emailReceiver)
+        if (parseFloat(amount) > 0) {
             try {
                 const response = await axios.post(
                     "http://localhost:8000/payment/paypal/payout",
-                    { address, value: amount }, {
+                    { address, value: amount, email: emailReceiver }, {
                     timeout: 100000,
                 })
                 if (response.status === 200) {
                     setIsActive(undefined)
                     setAmount("")
-                    setAddressReceiver("")
+                    setEmailReceiver("")
                     alert('success withdraw')
                 }
 
@@ -63,7 +62,7 @@ export default function Payout() {
                 console.error(error)
             }
         }
-    }, [amount, addressReceiver])
+    }, [amount, emailReceiver])
     return (
         <div className=" flex flex-col justify-start items-center pt-[10vw]">
             <div className="flex flex-col w-[40vw] space-y-[0.5vw]">
@@ -101,11 +100,43 @@ export default function Payout() {
                         })}
                     </CardFooter>
                 </Card>
-                <AddressItem address={addressReceiver} setAddress={setAddressReceiver} />
-                <div onClick={handleWithdraw} className="flex">
-                    <SubmitItem name="Withdraw" />
-                </div>
+                <AddressItem address={emailReceiver} setAddress={setEmailReceiver} isEmail />
+
+                <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <div>
+                            <SubmitItem name="Withdraw" />
+                        </div>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Withdraw USD to Paypal</AlertDialogTitle>
+                            <div className="flex font-semibold text-md">Transaction</div>
+                            <div className="flex flex-col">
+                                <div className="flex flex-row font-semibold text-md space-x-[1vw]">
+                                    <div className="w-[15%]">Currency</div>
+                                    <div className="w-[15%]">Amount</div>
+                                    <div className="w-[30%]">Address</div>
+                                    <div className="w-[40%]">Email</div>
+                                </div>
+                                <div className="flex flex-row space-x-[1vw]">
+                                    <div className="w-[15%]">USD</div>
+                                    <div className="w-[15%]">{amount ? amount : '0'}</div>
+                                    <div className="w-[30%]">{address ? address.slice(0, 6) + "..." + address.slice(38) : ""}</div>
+                                    <div className="w-[40%]">{emailReceiver}</div>
+                                </div>
+                            </div>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction onClick={handleWithdraw} >
+                                Withdraw
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         </div>
+
     )
 }
