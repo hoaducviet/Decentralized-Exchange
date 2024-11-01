@@ -24,6 +24,9 @@ contract FactoryToken {
         uint256 initialSupply
     );
 
+    event MINTUSD(address _to, address tokenAddress, uint256 _amount);
+    event BURNUSD(address _from, address tokenAddress, uint256 _amount);
+
     function createToken(
         string memory name,
         string memory symbol,
@@ -59,6 +62,39 @@ contract FactoryToken {
             decimals,
             initialSupply
         );
+    }
+
+    function mintUSD(address _to, uint256 _amount) external {
+        Token memory token;
+        for (uint256 i = 0; i < allTokens.length; i++) {
+            if (
+                keccak256(abi.encodePacked(allTokens[i].symbol)) ==
+                keccak256(abi.encodePacked("USD"))
+            ) {
+                token = allTokens[i];
+                break;
+            }
+        }
+
+        TokenERC20(token.tokenAddress).mintToken(_to, _amount);
+
+        emit MINTUSD(_to, token.tokenAddress, _amount);
+    }
+
+    function burnUSD(address _from, uint256 _amount) external {
+        Token memory token;
+        for (uint256 i = 0; i < allTokens.length; i++) {
+            if (
+                keccak256(abi.encodePacked(allTokens[i].symbol)) ==
+                keccak256(abi.encodePacked("USD"))
+            ) {
+                token = allTokens[i];
+                break;
+            }
+        }
+
+        TokenERC20(token.tokenAddress).burnToken(_from, _amount);
+        emit BURNUSD(_from, token.tokenAddress, _amount);
     }
 
     function getAllTokens() external view returns (Token[] memory) {

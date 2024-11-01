@@ -25,6 +25,12 @@ contract TokenERC20 is ERC20 {
         return amount;
     }
 
+    function burnToken(address from, uint256 amount) external {
+        require(amount > 0, "Amount cannot be negative");
+        require(balanceOf(from) > 0, "Balance not enough");
+        _burn(from, amount);
+    }
+
     function decimals() public view virtual override returns (uint8) {
         return decimal;
     }

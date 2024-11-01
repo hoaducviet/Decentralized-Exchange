@@ -11,10 +11,12 @@ deploy:
 	npx hardhat run scripts/AddCollections.js
 
 	cp ./artifacts/contracts/*/*.json ../frontend/src/artifacts
-	cp ./tokens.json ../frontend/src/assets/token
-	cp ./pools.json ../frontend/src/assets/pool
+	cp ./tokens.json ../frontend/src/assets/tokens.json
+	cp ./pools.json ../frontend/src/assets/pools.json
 
-
+	cp ./artifacts/contracts/*/*.json ../backend/src/artifacts
+	cp ./tokens.json ../backend/src/assets/token.json
+	cp ./pools.json ../backend/src/assets/pool.json
 
 rund:
 	npx hardhat run scripts/BlockNumber.js
@@ -37,6 +39,9 @@ nft:
 
 copy:
 	cp ./artifacts/contracts/*/*.json ../frontend/src/artifacts
-	cp ./tokens.json ../frontend/src/assets/token
-	cp ./pools.json ../frontend/src/assets/pool
+	cp ./tokens.json ../frontend/src/assets/tokens.json
+	cp ./pools.json ../frontend/src/assets/pools.json
+	cp ./artifacts/contracts/*/*.json ../backend/src/artifacts
+	cp ./tokens.json ../backend/src/assets/tokens.json
+	cp ./pools.json ../backend/src/assets/pools.json
 

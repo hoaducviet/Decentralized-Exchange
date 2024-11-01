@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const route = require("./routes");
 const db = require("./config/database");
+const { checkWallet } = require("./controllers/WalletController");
 
 db.connect();
 
@@ -15,6 +16,12 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors());
+
+// const wallet = async() => {
+//   const balance = await checkWallet();
+//   console.log(balance)
+// }
+// wallet()
 
 app.use(
   express.urlencoded({
