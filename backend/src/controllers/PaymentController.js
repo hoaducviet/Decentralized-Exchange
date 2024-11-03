@@ -14,15 +14,15 @@ class PaymentController {
       if (!ethers.isAddress(address) || parseFloat(value) <= 0) {
         return res.status(500).json({ message: "Internal server error" });
       }
+      const token = await getAccessToken();
+      const payout = await createPayout(token, value, email);
+      console.log("ID payout: ", payout.batch_header.payout_batch_id);
       console.log("Address withdraw:", address);
       const receipt = await withdrawUSD(address, value);
       if (!receipt) {
         return res.status(500).json({ message: "Withdraw failer" });
       }
       console.log("Receipt withdraw:", receipt.hash);
-      const token = await getAccessToken();
-      const payout = await createPayout(token, value, email);
-      console.log("ID payout: ", payout.batch_header.payout_batch_id);
       return res.status(200).json(payout);
     } catch (error) {
       console.error("Error avatar:", error.message);
@@ -81,7 +81,7 @@ class PaymentController {
     const { address, value } = req.body;
     const token = await getAccessToken();
     const result = await getOrderId(token, address, value);
-    console.log(result);
+    console.log(result.id);
     res.status(200).json({ id: result.id, url: result.links[1].href });
   }
 }

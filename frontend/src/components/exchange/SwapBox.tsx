@@ -68,7 +68,6 @@ export default function SwapBox() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tokenOne, tokenTwo, tokenBalances, reservePools])
 
-
     useEffect(() => {
         if (amount1 === "") {
             setAmount2("")
