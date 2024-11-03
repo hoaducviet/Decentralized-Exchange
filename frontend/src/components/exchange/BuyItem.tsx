@@ -5,7 +5,7 @@ import DialogItem from "@/components/exchange/DialogItem"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { TokenBalancesType } from "@/lib/type"
+import { Token } from "@/lib/type"
 
 type Price = {
     name: string;
@@ -19,20 +19,20 @@ const listPrice: Price[] = [
 ]
 
 interface Props {
-    tokenBalance: TokenBalancesType | undefined;
-    tokenBalances: TokenBalancesType[] | [];
-    setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
+    token: Token | undefined;
+    tokens: Token[] | [];
+    setToken: Dispatch<SetStateAction<Token | undefined>>;
     setAmount: Dispatch<SetStateAction<string>>;
     amount1: string;
     amount2: string;
 }
 
-export default function BuyItem({ tokenBalance, tokenBalances, setToken, setAmount, amount1, amount2 }: Props) {
+export default function BuyItem({ token, tokens, setToken, setAmount, amount1, amount2 }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const [isActive, setIsActive] = useState<number | undefined>()
 
     useEffect(() => {
-        if(amount1 === ""){
+        if (amount1 === "") {
             setIsActive(undefined)
         }
     }, [amount1])
@@ -70,12 +70,12 @@ export default function BuyItem({ tokenBalance, tokenBalances, setToken, setAmou
                     />
                     {amount1.length === 0 ? <p>0</p> : <></>}
                 </div>
-                <DialogItem tokenBalances={tokenBalances} setToken={setToken}>
+                <DialogItem tokens={tokens} setToken={setToken}>
                     <div className="flex flex-row justify-center items-center text-xl font-medium w-full h-full">
-                        <Image src={tokenBalance?.info.img || "/image/default-token.png"} alt={tokenBalance?.info.name || "token"} width="20" height="24" className="mr-[0.1vw]" />
+                        <Image src={token?.img || "/image/default-token.png"} alt={token?.name || "token"} width="20" height="24" className="mr-[0.1vw]" />
                         <p className="opacity-50 mx-[0.1vw]">{amount2.slice(0, amount2.indexOf(".") + 7)}</p>
                         {amount2.length === 0 ? <p className="opacity-50 font-medium ml-[0.1vw]">0</p> : <></>}
-                        <p className="opacity-50 font-semibold ml-[0.1vw]">{tokenBalance?.info.symbol}</p>
+                        <p className="opacity-50 font-semibold ml-[0.1vw]">{token?.symbol}</p>
                         <CaretDownIcon className="opacity-50 w-[1.5vw] h-[2.5vh]" />
                     </div>
                 </DialogItem>

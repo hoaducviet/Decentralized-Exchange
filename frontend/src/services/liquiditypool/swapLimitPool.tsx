@@ -1,6 +1,6 @@
 
 import { BrowserProvider, JsonRpcSigner, parseUnits } from 'ethers'
-import { LiquidBalancesType, TokenBalancesType, Address } from '@/lib/type'
+import { ReservePool, Token, Address } from '@/lib/type'
 import { loadLimitContract } from '@/utils/loadLimitContract'
 import { loadTokenContract } from '@/utils/loadTokenContract'
 
@@ -9,8 +9,8 @@ interface Props {
     signer: JsonRpcSigner,
     address: Address,
     addressContract: Address,
-    pool: LiquidBalancesType,
-    tokenOne: TokenBalancesType,
+    pool: ReservePool,
+    tokenOne: Token,
     amount: string,
     price: string;
 }
@@ -18,11 +18,11 @@ interface Props {
 export const swapLimitPool = async ({ provider, signer, address, addressContract, pool, tokenOne, amount, price }: Props) => {
     const isEth = pool?.info.token2?.symbol !== 'ETH' ? false : true;
     const limitContract = await loadLimitContract({ provider: signer, address: addressContract });
-    const value = parseUnits(amount.slice(0, amount.indexOf(".") + tokenOne.info.decimals + 1), tokenOne.info.decimals)
+    const value = parseUnits(amount.slice(0, amount.indexOf(".") + tokenOne.decimals + 1), tokenOne.decimals)
     const priceValue = price.slice(0, price.indexOf(".") + 7)
     if (!isEth) {
         try {
-            const contractToken = await loadTokenContract({ provider: signer, address: tokenOne.info.address })
+            const contractToken = await loadTokenContract({ provider: signer, address: tokenOne.address })
             const balance = await contractToken.balanceOf(address);
             if (balance < value) {
                 throw new Error("Insufficient balance for token 1");
@@ -34,7 +34,7 @@ export const swapLimitPool = async ({ provider, signer, address, addressContract
             await approveTX.wait()
             const nonce2 = await provider.getTransactionCount(address, 'latest');
             /////
-            const receipt = await limitContract.sendLimit(priceValue, value, tokenOne.info.address, pool.info.address, {
+            const receipt = await limitContract.sendLimit(priceValue, value, tokenOne.address, pool.info.address, {
                 nonce: nonce2
             })
             await receipt.wait()
@@ -44,9 +44,9 @@ export const swapLimitPool = async ({ provider, signer, address, addressContract
             throw new Error("Failed to approve token 1");
         }
     } else {
-        if (tokenOne.info.symbol !== 'ETH') {
+        if (tokenOne.symbol !== 'ETH') {
             try {
-                const contractToken = await loadTokenContract({ provider: signer, address: tokenOne.info.address })
+                const contractToken = await loadTokenContract({ provider: signer, address: tokenOne.address })
                 const balance = await contractToken.balanceOf(address);
                 if (balance < value) {
                     throw new Error("Insufficient balance for token 1");
@@ -57,7 +57,7 @@ export const swapLimitPool = async ({ provider, signer, address, addressContract
                 })
                 await approveTX.wait()
                 const nonce2 = await provider.getTransactionCount(address, 'latest');
-                const receipt = await limitContract.sendLimit(priceValue, value, tokenOne.info.address, pool.info.address, {
+                const receipt = await limitContract.sendLimit(priceValue, value, tokenOne.address, pool.info.address, {
                     nonce: nonce2
                 })
                 await receipt.wait()
@@ -74,7 +74,7 @@ export const swapLimitPool = async ({ provider, signer, address, addressContract
                 }
                 console.log("Balance is eth")
                 // const nonce1 = await provider.getTransactionCount(address, 'latest');
-                // const receipt = await limitContract.sendLimit(priceValue, BigInt(0), tokenOne.info.address, pool.info.address, {
+                // const receipt = await limitContract.sendLimit(priceValue, BigInt(0), tokenOne.address, pool.info.address, {
                 //     nonce: nonce1,
                 //     value: value
                 // })

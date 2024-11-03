@@ -1,20 +1,44 @@
 'use client'
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Token, TokenBalancesType, Pool, ReservePool, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType } from "@/lib/type";
 
-type ApiSlice = {
-    value: string,
-
-}
 
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/api' }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api` }),
     endpoints: (builder) => ({
-        getDataApi: builder.query<ApiSlice, string>({
-            query: (name) => `page/${name}`
+        getTokens: builder.query<Token[], void>({
+            query: () => '/tokens'
+        }),
+        getPools: builder.query<Pool[], void>({
+            query: () => '/pools'
+        }),
+        getCollections: builder.query<Collection[], void>({
+            query: () => '/collections'
+        }),
+        getCollection: builder.query<CollectionItem, GetCollection>({
+            query: ({ address, addressCollection }) => `/collection?address=${address}&addressCollection=${addressCollection}`,
+        }),
+        getTokenBalances: builder.query<TokenBalancesType[], Address>({
+            query: (address) => `/tokenbalances?address=${address}`
+        }),
+        getLiquidityBalances: builder.query<LiquidBalancesType[], Address>({
+            query: (address) => `/liquiditybalances?address=${address}`
+        }),
+        getReservePool: builder.query<ReservePool[], void>({
+            query: () => '/reservepools'
         })
     })
 })
 
-export const { useGetDataApiQuery } = apiSlice
+
+export const {
+    useGetTokensQuery,
+    useGetTokenBalancesQuery,
+    useGetPoolsQuery,
+    useGetLiquidityBalancesQuery,
+    useGetCollectionsQuery,
+    useGetCollectionQuery,
+    useGetReservePoolQuery
+} = apiSlice

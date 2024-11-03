@@ -17,11 +17,11 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-// const wallet = async() => {
+// const wallet = async () => {
 //   const balance = await checkWallet();
-//   console.log(balance)
-// }
-// wallet()
+//   console.log(balance);
+// };
+// wallet();
 
 app.use(
   express.urlencoded({

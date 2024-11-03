@@ -5,14 +5,14 @@ import DialogItem from '@/components/exchange/DialogItem';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardFooter } from '@/components/ui/card'
 import { HeightIcon } from "@radix-ui/react-icons";
-import { TokenBalancesType } from '@/lib/type';
+import { Token } from '@/lib/type';
 
 interface Props {
-    tokenOne: TokenBalancesType | undefined;
-    tokenTwo: TokenBalancesType | undefined;
-    tokenBalances: TokenBalancesType[] | [];
-    setTokenOne: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
-    setTokenTwo: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
+    tokenOne: Token | undefined;
+    tokenTwo: Token | undefined;
+    tokens: Token[] | [];
+    setTokenOne: Dispatch<SetStateAction<Token | undefined>>;
+    setTokenTwo: Dispatch<SetStateAction<Token | undefined>>;
     setPercent: Dispatch<SetStateAction<string>>;
     price: string;
 }
@@ -29,7 +29,7 @@ const listOptions: list[] = [
     { name: '+10%', value: "1.1" },
 ] as list[];
 
-export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenOne, setTokenTwo, price, setPercent }: Props) {
+export default function LimitItem({ tokenOne, tokenTwo, tokens, setTokenOne, setTokenTwo, price, setPercent }: Props) {
     const [isActive, setIsActive] = useState<number>(0)
     const handleActive = (index: number) => {
         setIsActive(index)
@@ -49,9 +49,9 @@ export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenO
                     <div className="flex flex-row justify-start items-start text-md">
                         <div className="mr-1">When 1</div>
                         <div className="mr-1 font-bold">
-                            <DialogItem tokenBalances={tokenBalances} setToken={setTokenOne}>
-                                <Image src={tokenOne?.info.img || "/image/default-token.png"} alt={tokenOne?.info.name || "token"} width="20" height="20" className="mr-1" />
-                                {tokenOne?.info.symbol}
+                            <DialogItem tokens={tokens} setToken={setTokenOne}>
+                                <Image src={tokenOne?.img || "/image/default-token.png"} alt={tokenOne?.name || "token"} width="20" height="20" className="mr-1" />
+                                {tokenOne?.symbol}
                             </DialogItem>
                         </div>
                         <div className="mr-1">is worth</div>
@@ -68,10 +68,10 @@ export default function LimitItem({ tokenOne, tokenTwo, tokenBalances, setTokenO
                     </div>
                     <div className='flex justify-center items-center w-[30%] h-full'>
                         <div className='flex flex-row justify-center shadow-xl rounded-2xl items-center w-[50%] h-full'>
-                            <DialogItem tokenBalances={tokenBalances} setToken={setTokenTwo}>
+                            <DialogItem tokens={tokens} setToken={setTokenTwo}>
                                 <div className="flex flex-row justify-center items-center w-full h-full">
-                                    <Image src={tokenTwo?.info.img || "/image/default-token.png"} alt={tokenTwo?.info.name || "token"} width="15" height="15" />
-                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokenTwo?.info.symbol}</p>
+                                    <Image src={tokenTwo?.img || "/image/default-token.png"} alt={tokenTwo?.name || "token"} width="15" height="15" />
+                                    <p className="text-xl font-semibold mx-[0.3vw]">{tokenTwo?.symbol}</p>
                                 </div>
                             </DialogItem>
                         </div>

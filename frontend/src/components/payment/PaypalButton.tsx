@@ -1,10 +1,8 @@
 'use client'
-
 import { PayPalButtons, PayPalScriptProvider, PayPalButtonsComponentProps, ReactPayPalScriptOptions } from '@paypal/react-paypal-js';
 
-
 const initialOptions: ReactPayPalScriptOptions = {
-    clientId: "AVaEIV9iJjClKsxVEw2_4nus4NQ8d4mJIqq_SCDMXVOUA6hXz429CdeYRh382vefxdQrzazmun8ZKXnh",
+    clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
     currency: "USD",
 };
 
@@ -12,8 +10,6 @@ const styles: PayPalButtonsComponentProps["style"] = {
     shape: "sharp",
     layout: "vertical",
     color: "gold",
-
-
 };
 
 const displayOnly: PayPalButtonsComponentProps["displayOnly"] = ["vaultable"];
@@ -22,7 +18,6 @@ interface Props {
     orderId: string;
 }
 export default function PaypalButton({ orderId }: Props) {
-
     const createOrder: PayPalButtonsComponentProps["createOrder"] = async () => {
         try {
             if (orderId) {
@@ -69,6 +64,5 @@ export default function PaypalButton({ orderId }: Props) {
                 onError={onError}
             />
         </PayPalScriptProvider>
-
     )
 }

@@ -1,5 +1,5 @@
 import { BrowserProvider, JsonRpcSigner, parseUnits } from 'ethers'
-import { LiquidBalancesType, TokenBalancesType, Address } from '@/lib/type'
+import { ReservePool, Token, Address } from '@/lib/type'
 import { loadLiquidContract } from '@/utils/loadLiquidContract'
 import { loadTokenContract } from '@/utils/loadTokenContract'
 
@@ -7,8 +7,8 @@ interface Props {
     provider: BrowserProvider,
     signer: JsonRpcSigner,
     address: Address
-    pool: LiquidBalancesType,
-    tokenOne: TokenBalancesType,
+    pool: ReservePool,
+    tokenOne: Token,
     amount1: string,
     amount2: string,
 }
@@ -22,7 +22,7 @@ export const addLiquidityPool = async ({ provider, signer, address, pool, tokenO
     let value1
     let value2
 
-    if (tokenOne.info.address === pool?.info?.addressToken1) {
+    if (tokenOne.address === pool?.info?.addressToken1) {
         value1 = parseUnits(amount1.slice(0, amount1.indexOf(".") + pool.info.decimals1 + 1), pool.info.decimals1)
         value2 = parseUnits(amount2.slice(0, amount2.indexOf(".") + pool.info.decimals2 + 1), pool.info.decimals2)
     } else {

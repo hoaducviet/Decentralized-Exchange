@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function MainLayout({ children }: Props) {
-    const { isConnected } = useAccount()
+    const { isConnected, address } = useAccount()
     return (
         <div className="bg-transparent w-[100vw]">
             <Header />
@@ -18,7 +18,7 @@ export default function MainLayout({ children }: Props) {
                     {children}
                 </div>
                 <div className="absolute top-0 right-0 w-[25vw] bg-transparent">
-                    {isConnected && <SiderBar />}
+                    {isConnected && address && <SiderBar address={address} />}
                 </div>
             </div>
             <Footer />

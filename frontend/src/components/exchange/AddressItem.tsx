@@ -5,7 +5,7 @@ import { Card, CardHeader, CardDescription, CardContent } from '@/components/ui/
 interface Props {
     address: string;
     setAddress: Dispatch<SetStateAction<string>>;
-    isEmail: boolean;
+    isEmail?: boolean;
 }
 
 export default function AddressItem({ address, setAddress, isEmail = false }: Props) {

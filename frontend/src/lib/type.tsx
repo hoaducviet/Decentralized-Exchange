@@ -60,6 +60,22 @@ export type NFT = {
     name: string;
     description: string;
 }
+export type GetCollection = {
+    address: Address | undefined;
+    addressCollection: Address | undefined;
+}
+
+export type ReservePool = {
+    reserve1: string;
+    reserve2: string;
+    info: InfoPool;
+}
+
+export type CollectionItem = {
+    nfts: NFT[];
+    listed: NFT[];
+    mylist: NFT[];
+}
 
 export type Contracts = {
     look: Contract;

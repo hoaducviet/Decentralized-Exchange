@@ -1,21 +1,27 @@
 'use client'
 
-import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
+import { useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
 import AddressBalance from '@/components/AddressBalance'
 import ActionsManagement from '@/components/ActionsManagement'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from '@/components/ui/button'
 import { LayersIcon } from '@radix-ui/react-icons'
-import { useBalances } from '@/hooks/useBalances'
+import { useGetTokenBalancesQuery } from '@/redux/features/api/apiSlice'
+import { useGetLiquidityBalancesQuery } from '@/redux/features/api/apiSlice'
+import { Address } from '@/lib/type'
 
-export default function SiderBar() {
-    const { address } = useAccount()
+interface Props {
+    address: Address;
+}
+
+export default function SiderBar({ address }: Props) {
     const { disconnect } = useDisconnect()
-    const { tokenBalances} = useBalances()
+    const { data: tokenBalances, isFetching: isFetchingTokens} = useGetTokenBalancesQuery(address)
+    const { data: liquidBalances, isFetching: isFetchingLiquid} = useGetLiquidityBalancesQuery(address)
     const { data: ensName } = useEnsName({ address })
     const { data: ensAvatar } = useEnsAvatar({ name: ensName! })
     const addressConfig = (address ? address.slice(0, 6) + "..." + address.slice(38) : "")
-    const usdBalances = tokenBalances.find(tokenBalance => tokenBalance.info.symbol === 'USD')
+    const usdBalances = tokenBalances?.find(tokenBalance => tokenBalance.info.symbol === 'USD')
 
     return (
         <div className=' absolute flex flex-col w-full max-h-[100vh] overflow-x-auto z-10'>
@@ -37,7 +43,6 @@ export default function SiderBar() {
                         </div>
                     </div>
                     <Button variant="secondary" className='bg-transparent flex justify-center items-center rounded-3xl w-[30%] mx-[1vw]' onClick={() => disconnect()}>Disconnect</Button>
-
                 </div>
                 <div className='flex flex-row justify-start items-center space-x-[0.5vw] mx-[1.5vw] my-[0.5vw]'>
                     <p className='text-xl font-semibold opacity-80'>Balance:</p>
@@ -48,8 +53,8 @@ export default function SiderBar() {
                     <ActionsManagement />
                 </div>
             </div>
-            <div className='w-full'>
-                <AddressBalance />
+            <div className='w-full'>{!isFetchingTokens && !isFetchingLiquid &&
+                <AddressBalance tokenBalances={tokenBalances} liquidBalances={liquidBalances}/>}
             </div>
         </div>
     )

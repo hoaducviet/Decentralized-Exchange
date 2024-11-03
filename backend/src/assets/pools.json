@@ -45,15 +45,6 @@
     "addressToken2": "0x8D03623d799E93E53FeDf96aF88e2879bA1804FA"
   },
   {
-    "name": "USD/USDC",
-    "address": "0x1f466F899d63CDE25eB4a857BC9725ADe0128439",
-    "addressLPT": "0x92E1A176b34387803AA014Ec4A4782113B939dF7",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 6,
-    "addressToken2": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e"
-  },
-  {
     "name": "UNI/CRV",
     "address": "0x93FFA71dbc8706b703bb63C58f114D4f6836d383",
     "addressLPT": "0x027C88824b2a245c5fA91B9B57FD02Acb3a32548",
@@ -171,15 +162,6 @@
     "addressToken2": "0xbc51860c89838ec548d7190657874556407423f4"
   },
   {
-    "name": "USD/LINK",
-    "address": "0x1f982a939188b0A5bC178827e4e123127575ED0f",
-    "addressLPT": "0x1dc9c6da5b32a608431aA5EFC16d6A953719e1E6",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55"
-  },
-  {
     "name": "UNI/MKR",
     "address": "0x6e32BFc91A18fBc7DfcB3086DBe58BeF1152c318",
     "addressLPT": "0x9955aFbbED5234202cC35a72FdB01f1CB31dAe4B",
@@ -288,15 +270,6 @@
     "addressToken2": "0x0948276A5430e954B42005575352eA69EBf8C72d"
   },
   {
-    "name": "USD/USDT",
-    "address": "0x77102C090Fdeab8DB3812656d9DB2eF0bD89c653",
-    "addressLPT": "0x04cAeA05631b96ab16151cdc33556c5156bB23d4",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 6,
-    "addressToken2": "0x93b6BDa6a0813D808d75aA42e900664Ceb868bcF"
-  },
-  {
     "name": "UNI/SHIB",
     "address": "0xCd9615e0cE3A792c2c3b096E9657fDd0bf72f754",
     "addressLPT": "0x34994EfdeD79c2fbFb9a46Cbf23079EC1B6A53f5",
@@ -396,15 +369,6 @@
     "addressToken2": "0xFae327c71418B10a157ccbd96c41607e77a79eE9"
   },
   {
-    "name": "USD/VND",
-    "address": "0x9aA7e44f20D6b97FF67865E56c34258D77053f6a",
-    "addressLPT": "0xd7215071785cCBB79a152C9102b64E6CD4f60F7e",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0xA22D78bc37cE77FeE1c44F0C2C0d2524318570c3"
-  },
-  {
     "name": "UNI/OKX",
     "address": "0xCdAc47486E1c5ceBde05dC7014704c35Fa00fbA4",
     "addressLPT": "0x46c3a798e6E389Df950c0E8F1dbe84640997C04a",
@@ -495,15 +459,6 @@
     "addressToken2": "0xe80d513Eddba27d60f00d383F64B9C5203d9AD47"
   },
   {
-    "name": "USD/DAI",
-    "address": "0x504b7674B2C2AfF83D0A43582d3ec58385233Fd1",
-    "addressLPT": "0xb1Eb5feD6CA8CEa953832807F53817d1305f805d",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0x0ed2E86FcE2e5A7965f59708c01f88a722BC7f07"
-  },
-  {
     "name": "UNI/AAVE",
     "address": "0x7Ae466773F8CB91653B966FeC7A71cC268aE193A",
     "addressLPT": "0xa2f3b7328182BBDa1AE3EdFD72da6Bb8773EcDbA",
@@ -585,15 +540,6 @@
     "addressToken2": "0xFae327c71418B10a157ccbd96c41607e77a79eE9"
   },
   {
-    "name": "USD/WETH",
-    "address": "0x3dFF006dff36a39ac750832d3C25D8ABAA0949F9",
-    "addressLPT": "0x2812E79EE68823953859E3f1C4ededaBa088Ea98",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0xf433C50017d963b6082043445bCD0A54716DDC1d"
-  },
-  {
     "name": "LINK/MATIC",
     "address": "0x5Bd5826aE48b01c4001297fA1e3De2720dda6fAD",
     "addressLPT": "0x2322Fd06E48aA826f1e4D8D108BdEd780D61Db10",
@@ -657,15 +603,6 @@
     "addressToken2": "0xe80d513Eddba27d60f00d383F64B9C5203d9AD47"
   },
   {
-    "name": "USD/WBTC",
-    "address": "0x815dEA0f9F489838fFCe7A8c97aBCa118C077cD9",
-    "addressLPT": "0xC9ef7a8Db9667540f7B2942724F7231a1a13EB71",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 8,
-    "addressToken2": "0x6c8D53600C7f8F97ed32e6162867F3340dE3Ab37"
-  },
-  {
     "name": "LINK/UNI",
     "address": "0xd3578621Bb09B4e4AEb6330E0f3d40b9C2b8B1D8",
     "addressLPT": "0x9E39d1e5A30806408BE8911E98f5E7b1CfA1BB2E",
@@ -720,15 +657,6 @@
     "addressToken2": "0x875A3b9fAE069AD47de9dDb3A1f4465bF54A1993"
   },
   {
-    "name": "USD/MATIC",
-    "address": "0xF2DE3f2dA74E7ECcd0e210227E27e07043093C39",
-    "addressLPT": "0xCbfe52e778c7F0f7ef1f210FFDA2b0Bbd5f6e662",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0xB06Ce7334A26e90077F0182F07aCF650Bc978936"
-  },
-  {
     "name": "LINK/CRV",
     "address": "0x6f98E5Ac3AdA5802cf34f6fEE37597E506433C5A",
     "addressLPT": "0xcF7f2D4488E13f8be312eea23b89637DA364a659",
@@ -774,15 +702,6 @@
     "addressToken2": "0x875A3b9fAE069AD47de9dDb3A1f4465bF54A1993"
   },
   {
-    "name": "USD/UNI",
-    "address": "0x2cD332d9c129Fd32f2EE2A7f39CEbF353dcCD0e5",
-    "addressLPT": "0xCfDD05E10e1Ea751cA0366AfbF9bA8F3B3588e30",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0x8D03623d799E93E53FeDf96aF88e2879bA1804FA"
-  },
-  {
     "name": "LINK/MKR",
     "address": "0x137ac1D8E6413c2F2fDc3b31650baF0648315fDe",
     "addressLPT": "0x0401E53976c4745f661Caaa9a96a148101DC11Ad",
@@ -817,15 +736,6 @@
     "addressToken1": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
     "decimals2": 18,
     "addressToken2": "0x0948276A5430e954B42005575352eA69EBf8C72d"
-  },
-  {
-    "name": "USD/CRV",
-    "address": "0xdeF78c354560DD689c564F732923Ea5e4c82Cb23",
-    "addressLPT": "0x7f8F26974917d1829500341E7BD5338766747772",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0xbc51860c89838ec548d7190657874556407423f4"
   },
   {
     "name": "LINK/SHIB",
@@ -864,15 +774,6 @@
     "addressToken2": "0xFae327c71418B10a157ccbd96c41607e77a79eE9"
   },
   {
-    "name": "USD/MKR",
-    "address": "0x097F500A78BA54Cdf74EF839a847c59Aaa46Bf84",
-    "addressLPT": "0x82015616B9Bf82A532C8293e75aBFd3f17a151fc",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0x0948276A5430e954B42005575352eA69EBf8C72d"
-  },
-  {
     "name": "LINK/OKX",
     "address": "0x961B190f866496B5B64E787EB7865CeF83941361",
     "addressLPT": "0x43f85241009e1D9E35E58194D4091eF2A3655b70",
@@ -900,15 +801,6 @@
     "addressToken2": "0xe80d513Eddba27d60f00d383F64B9C5203d9AD47"
   },
   {
-    "name": "USD/SHIB",
-    "address": "0x2fA1B7e01647EFBEdE0e3F0Ec1422e3049DBe205",
-    "addressLPT": "0x249Fba84Ad1ACaeE75c289023d402DA71878cbCf",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0xFae327c71418B10a157ccbd96c41607e77a79eE9"
-  },
-  {
     "name": "LINK/AAVE",
     "address": "0x2E195d28aa564c5CCcE1a941115CbBF736004d78",
     "addressLPT": "0x638316548cA39684Cf57e6D1b1984D8f7a51D1Be",
@@ -925,33 +817,6 @@
     "addressToken1": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
     "decimals2": 18,
     "addressToken2": "0x875A3b9fAE069AD47de9dDb3A1f4465bF54A1993"
-  },
-  {
-    "name": "USD/OKX",
-    "address": "0x406aA5e77430261E73aca4d0003C52CCA5aC0513",
-    "addressLPT": "0x79Eb143DFeb5778bDDdd8f7Ce201517889731640",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0xe80d513Eddba27d60f00d383F64B9C5203d9AD47"
-  },
-  {
-    "name": "USD/AAVE",
-    "address": "0xB5E293992426742D34352Fe5Ed374ff93Fb00d3F",
-    "addressLPT": "0x8e3841754Ab82058AfBE3609133d0693617Fce99",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0x875A3b9fAE069AD47de9dDb3A1f4465bF54A1993"
-  },
-  {
-    "name": "USD/ETH",
-    "address": "0xA07AcEe645f33a7E166711a41f60a82879AA4419",
-    "addressLPT": "0xDA45e53737d703eE6E7767DE3113dc03c79b0d1D",
-    "decimals1": 6,
-    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
-    "decimals2": 18,
-    "addressToken2": "0x0000000000000000000000000000000000000000"
   },
   {
     "name": "USDC/ETH",
@@ -1078,5 +943,23 @@
     "addressToken1": "0x875A3b9fAE069AD47de9dDb3A1f4465bF54A1993",
     "decimals2": 18,
     "addressToken2": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "name": "USD/ETH",
+    "address": "0xA07AcEe645f33a7E166711a41f60a82879AA4419",
+    "addressLPT": "0xDA45e53737d703eE6E7767DE3113dc03c79b0d1D",
+    "decimals1": 6,
+    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
+    "decimals2": 18,
+    "addressToken2": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "name": "USD/USDT",
+    "address": "0x77102C090Fdeab8DB3812656d9DB2eF0bD89c653",
+    "addressLPT": "0x04cAeA05631b96ab16151cdc33556c5156bB23d4",
+    "decimals1": 6,
+    "addressToken1": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
+    "decimals2": 6,
+    "addressToken2": "0x93b6BDa6a0813D808d75aA42e900664Ceb868bcF"
   }
 ]

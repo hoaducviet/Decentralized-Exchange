@@ -54,22 +54,27 @@ class PaymentController {
 
   async payment(req, res) {
     const eventBody = req.body;
-    if (
-      eventBody.event_type === "PAYMENT.CAPTURE.COMPLETED" &&
-      eventBody.resource.status === "COMPLETED" &&
-      ethers.isAddress(eventBody.resource.custom_id) &&
-      parseFloat(eventBody.resource.amount.value) > 0 &&
-      eventBody.resource.amount.currency_code === "USD"
-    ) {
-      console.log("Deposit");
-      const receipt = await depositUSD(
-        eventBody.resource.custom_id,
-        eventBody.resource.amount.value
-      );
-      console.log(receipt.hash);
-      console.log("Address deposit: ", eventBody.resource.custom_id);
+    try {
+      if (
+        eventBody.event_type === "PAYMENT.CAPTURE.COMPLETED" &&
+        eventBody.resource.status === "COMPLETED" &&
+        ethers.isAddress(eventBody.resource.custom_id) &&
+        parseFloat(eventBody.resource.amount.value) > 0 &&
+        eventBody.resource.amount.currency_code === "USD"
+      ) {
+        console.log("Deposit");
+        const receipt = await depositUSD(
+          eventBody.resource.custom_id,
+          eventBody.resource.amount.value
+        );
+        console.log(receipt.hash);
+        console.log("Address deposit: ", eventBody.resource.custom_id);
+      }
+      res.status(200).send("Received");
+    } catch (error) {
+      console.log(error);
+      throw new error();
     }
-    res.status(200).send("Received");
   }
 
   async orderId(req, res) {

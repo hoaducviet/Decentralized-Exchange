@@ -2,10 +2,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { useTokens } from "@/hooks/useTokens"
+import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
 
 export default function Pools() {
-    const { tokens } = useTokens()
+    const { data: tokens } = useGetTokensQuery()
     return (
         <div className="flex flex-col w-full h-[3vw]">
             <Button variant="secondary" className="flex flex-row justify-start items-center text-md font-semibold rounded-none w-full h-full">
@@ -16,7 +16,7 @@ export default function Pools() {
                 <p className="w-[20%]">7D vol</p>
             </Button>
             <div className="flex flex-col w-full">
-                {tokens.map((token, index) => {
+                {tokens && tokens.map((token, index) => {
                     return (
                         <div key={index} className="w-full h-[4vw]">
                             <Link href={`/explore/pools/${token.symbol}`}>

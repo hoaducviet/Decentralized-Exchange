@@ -1,39 +1,26 @@
 'use client'
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAccount } from "wagmi";
-import { useCollections } from "@/hooks/useCollections"
 import { useCollection } from "@/hooks/useCollection"
 import { useWeb3 } from "@/hooks/useWeb3";
+import { useGetCollectionQuery } from "@/redux/features/api/apiSlice";
 import { resetNFTs } from "@/redux/features/collection/collectionSlice";
-import { setCurrentCollection } from "@/redux/features/collection/collectionSlice";
 import { buyNFT } from "@/services/nftmarket/buyNFT"
 import NFTCards from "@/components/nfts/NFTCards"
 import { NFT } from "@/lib/type";
-interface Params {
-    collection: string;
-}
 
-export default function CollectionNFT({ params }: { params: Params }) {
-    const { collections } = useCollections()
-    const { collection } = params
+
+export default function CollectionNFT() {
     const dispatch = useDispatch()
-    const { nfts, currentCollection } = useCollection()
+    const { currentCollection } = useCollection()
     const [nft, setNft] = useState<NFT | undefined>(undefined)
     const web3 = useWeb3()
     const signer = web3?.signer
     const provider = web3?.provider
     const { address } = useAccount()
-
-
-    useEffect(() => {
-        if (!!collection) {
-            const current = collections.find(item => item.name.toLowerCase().replace(/\s+/g, '') === collection)
-            if (!!current) {
-                dispatch(setCurrentCollection(current))
-            }
-        }
-    }, [collection, collections, dispatch])
+    const { data, isFetching } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
+    const nfts = data?.nfts
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!address && !!nft && !!currentCollection) {
@@ -54,7 +41,7 @@ export default function CollectionNFT({ params }: { params: Params }) {
     }, [provider, signer, address, nft, currentCollection, dispatch])
     return (
         <div className="flex flex-co h-full">
-            <NFTCards nfts={nfts} setNft={setNft} handleSend={handleSend} />
+            {!isFetching && nfts && <NFTCards nfts={nfts} setNft={setNft} handleSend={handleSend} />}
         </div>
     )
 }

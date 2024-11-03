@@ -1,16 +1,24 @@
 'use client'
-import { useBalances } from "@/hooks/useBalances"
+import { useAccount } from "wagmi";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { useGetTokenBalancesQuery, useGetTokensQuery } from "@/redux/features/api/apiSlice";
+import { useGetReservePoolQuery } from "@/redux/features/api/apiSlice";
 import PoolBoxUSD from "@/components/exchange/PoolBoxUSD"
 
 
 export default function Pool() {
-    const { tokenBalances, liquidBalances, isLoaded } = useBalances();
-    const LPbalances = liquidBalances.filter(liquidBalance => liquidBalance.balance?.value !== 0)
-    const usdBalances = tokenBalances.filter(balance => balance.info.symbol === 'USD' || balance.info.symbol === 'USDT' || balance.info.symbol === 'ETH')
+    const { address } = useAccount()
+    const { data: allTokens, isFetching: isFetchingTokens } = useGetTokensQuery()
+    const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
+    const { data: reservePools, isFetching: isFetchingReserve } = useGetReservePoolQuery()
+    const tokens = allTokens?.filter(token => ['USD', 'USDT', 'ETH'].includes(token.symbol))
+    const balances = tokenBalances?.filter(balance => ['USD', 'USDT', 'ETH'].includes(balance.info.symbol))
 
     return (
         <div className="flex flex-col justify-start items-center w-full h-full">
-            <PoolBoxUSD tokenBalances={usdBalances} liquidBalances={LPbalances} isLoaded={isLoaded} />
+            {!isFetchingTokens && tokens && !isFetchingReserve && reservePools &&
+                <PoolBoxUSD tokens={tokens} tokenBalances={balances} reservePools={reservePools} />
+            }
         </div >
     )
 }

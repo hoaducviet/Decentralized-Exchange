@@ -1,12 +1,11 @@
 'use client'
-
-import { useTokens } from "@/hooks/useTokens"
+import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export default function Tokens() {
-    const { tokens} = useTokens()
+    const { data: tokens } = useGetTokensQuery()
 
     return (
         <div className="flex flex-col w-full h-[3vw]">
@@ -19,7 +18,7 @@ export default function Tokens() {
                 <p className="w-[20%]"></p>
             </Button>
             <div className="flex flex-col w-full">
-                {tokens.map((token, index) => {
+                {tokens && tokens.map((token, index) => {
                     return (
                         <div key={index} className="w-full h-[4vw]">
                             <Link href={`/explore/tokens/${token.symbol}`}>

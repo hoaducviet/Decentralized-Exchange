@@ -2,12 +2,14 @@
 import { useState, useRef, useCallback } from "react"
 import { useAccount } from 'wagmi';
 import axios from 'axios';
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import PaypalButton from '@/components/payment/PaypalButton'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 type Price = {
     name: string;
@@ -46,6 +48,7 @@ export default function Payment() {
     }
     const handleDeposit = useCallback(async () => {
         console.log(amount)
+        console.log("tesst1")
         if (parseFloat(amount) > 0) {
             try {
                 setLoading(true)
@@ -70,7 +73,7 @@ export default function Payment() {
         } else {
             setOpen(false)
         }
-    }, [amount])
+    }, [amount, address])
 
     return (
         <div className=" flex flex-col justify-start items-center pt-[10vw]">
@@ -112,14 +115,20 @@ export default function Payment() {
                 <div className="flex">
                     <Dialog open={open} onOpenChange={setOpen}>
                         <DialogTrigger className="flex w-full" asChild>
-                            <div onClick={handleDeposit} className="flex h-[3vw]">
+                            <div onClick={async () => {
+                                await handleDeposit()
+                                setOpen(true)
+                            }} className="flex h-[3vw]">
                                 <SubmitItem name="Deposit" />
                             </div>
                         </DialogTrigger>
-                        <DialogContent className="bg-transparent text-white w-[40vw] px-0 pb-0 border-none">
-                            {!loading && <>
+                        {!loading && <>
+                            <DialogContent className="bg-transparent text-white w-[40vw] px-0 pb-0 border-none">
                                 <DialogHeader>
-                                    <DialogTitle>Deposit USD from Paypal.</DialogTitle>
+                                    <VisuallyHidden>
+                                        <DialogTitle>Deposit USD from Paypal.</DialogTitle>
+                                        <DialogDescription>using for sell usd token</DialogDescription>
+                                    </VisuallyHidden>
                                 </DialogHeader>
                                 <div className=' flex flex-col justify-center items-center w-full'>
                                     <div className='flex flex-row w-full space-x-[0.5vw]'>
@@ -148,8 +157,8 @@ export default function Payment() {
                                         </div>
                                     </div>
                                 </div>
-                            </>}
-                        </DialogContent>
+                            </DialogContent>
+                        </>}
                     </Dialog>
                 </div>
             </div>

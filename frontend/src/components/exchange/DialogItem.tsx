@@ -3,18 +3,18 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Children, TokenBalancesType } from "@/lib/type";
+import { Children, Token } from "@/lib/type";
 
 interface Props {
     children: Children;
-    tokenBalances: TokenBalancesType[] | [];
-    setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
+    tokens: Token[] | [];
+    setToken: Dispatch<SetStateAction<Token | undefined>>;
 }
 
-export default function DialogItem({ children, tokenBalances, setToken }: Props) {
+export default function DialogItem({ children, tokens, setToken }: Props) {
     const [open, setOpen] = useState(false)
-    const handleClick = (tokenBalance: TokenBalancesType) => {
-        setToken(tokenBalance);
+    const handleClick = (token: Token) => {
+        setToken(token);
         setOpen(false)
     }
 
@@ -29,13 +29,13 @@ export default function DialogItem({ children, tokenBalances, setToken }: Props)
                         <DialogTitle className="px-[1vw]">Select a token</DialogTitle>
                     </DialogHeader>
                     <div className="flex flex-col w-full h-full overflow-x-auto mb-[2vw]">
-                        {tokenBalances.length && tokenBalances.map((tokenBalance) => {
+                        {tokens.length && tokens.map((token) => {
                             return (
-                                <Button onClick={() => handleClick(tokenBalance)} variant="ghost" key={tokenBalance.info.address} className="flex flex-row w-full h-[3vw]  px-[1vw]">
-                                    <Image src={tokenBalance.info.img} alt={tokenBalance.info.name} width="36" height="36" className="justify-center" />
+                                <Button onClick={() => handleClick(token)} variant="ghost" key={token.address} className="flex flex-row w-full h-[3vw]  px-[1vw]">
+                                    <Image src={token.img} alt={token.name} width="36" height="36" className="justify-center" />
                                     <div className="flex flex-col justify-center items-start mx-4 w-full h-full">
-                                        <p className="text-xl font-semibold">{tokenBalance.info.name}</p>
-                                        <p>{tokenBalance.info.symbol}</p>
+                                        <p className="text-xl font-semibold">{token.name}</p>
+                                        <p>{token.symbol}</p>
                                     </div>
                                 </Button>
                             )

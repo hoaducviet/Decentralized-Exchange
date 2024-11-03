@@ -5,7 +5,7 @@ import DialogItem from "@/components/exchange/DialogItem"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { TokenBalancesType } from "@/lib/type"
+import { Token } from "@/lib/type"
 
 type Price = {
     name: string;
@@ -19,15 +19,15 @@ const listPrice: Price[] = [
 ]
 
 interface Props {
-    tokenBalance: TokenBalancesType | undefined;
-    tokenBalances: TokenBalancesType[] | [];
-    setToken: Dispatch<SetStateAction<TokenBalancesType | undefined>>;
+    token: Token | undefined;
+    tokens: Token[] | [];
+    setToken: Dispatch<SetStateAction<Token | undefined>>;
     setAmount: Dispatch<SetStateAction<string>>;
     amount1: string;
     amount2: string;
 }
 
-export default function SellItem({ tokenBalance, tokenBalances, setToken, setAmount, amount1, amount2 }: Props) {
+export default function SellItem({ token, tokens, setToken, setAmount, amount1, amount2 }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const [isActive, setIsActive] = useState<number | undefined>()
 
@@ -56,10 +56,10 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken, setAmo
             <CardHeader className="flex flex-row justify-between w-full">
                 <CardDescription className="flex items-center w-[70%]">You are sell token to USD</CardDescription>
                 <div className="flex flex-col justify-center items-center w-[30%]">
-                    <DialogItem tokenBalances={tokenBalances} setToken={setToken}>
+                    <DialogItem tokens={tokens} setToken={setToken}>
                         <div className="flex flex-row justify-end items-center text-xl font-medium h-full px-[1vw]">
-                            <Image src={tokenBalance?.info.img || "/image/default-token.png"} alt={tokenBalance?.info.name || "token"} width="20" height="24" className="mr-[0.2vw]" />
-                            <p className="font-semibold ml-[0.2vw]">{tokenBalance?.info.symbol}</p>
+                            <Image src={token?.img || "/image/default-token.png"} alt={token?.name || "token"} width="20" height="24" className="mr-[0.2vw]" />
+                            <p className="font-semibold ml-[0.2vw]">{token?.symbol}</p>
                             <CaretDownIcon className="w-[1.5vw] h-[2.5vh]" />
                         </div>
                     </DialogItem>
@@ -76,7 +76,7 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken, setAmo
                         className="appearance-none bg-transparent text-end border-none outline-none focus:caret-black-500 max-w-[80%] font-medium"
                         style={{ width: amount1.length === 0 ? '1px' : `${(amount1.length + 0.5) * 2.5}rem` }}
                     />
-                    {amount1.length === 0 ? <p>0</p> : <div className="text-xl font-semibold mx-[1vw]">{tokenBalance?.info.symbol}</div>}
+                    {amount1.length === 0 ? <p>0</p> : <div className="text-xl font-semibold mx-[1vw]">{token?.symbol}</div>}
 
                 </div>
                 <div className="flex flex-row justify-center items-center text-xl font-medium opacity-50 w-full h-full">
@@ -96,7 +96,7 @@ export default function SellItem({ tokenBalance, tokenBalances, setToken, setAmo
                             className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || amount1 === item.value) && 'bg-purple-200 hover:bg-purple-200 opacity-100'}`}>
                             <div className="flex flex-row">
                                 <p className="mr-[0.1vw]">{item.name}</p>
-                                <p className="font-semibold ml-[0.1vw]">{tokenBalance?.info.symbol}</p>
+                                <p className="font-semibold ml-[0.1vw]">{token?.symbol}</p>
                             </div>
                         </Button>
                     )

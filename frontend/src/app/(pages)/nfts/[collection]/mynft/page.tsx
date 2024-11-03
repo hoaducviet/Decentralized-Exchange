@@ -5,15 +5,16 @@ import { useAccount } from "wagmi";
 import { ethers } from 'ethers';
 import { useWeb3 } from "@/hooks/useWeb3";
 import { resetNFTs } from "@/redux/features/collection/collectionSlice";
+import { useGetCollectionQuery } from "@/redux/features/api/apiSlice";
 import { useCollection } from "@/hooks/useCollection"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { sellNFT } from "@/services/nftmarket/sellNFT";
 import { withdrawNFT } from "@/services/nftmarket/withdrawNFT";
 import { transferNFT } from "@/services/nftmarket/transferNFT";
 import { NFT, Address } from "@/lib/type";
-import { Input } from "@/components/ui/input";
 
 const options = [
     {
@@ -32,7 +33,7 @@ const options = [
 
 export default function MyNFT() {
     const dispatch = useDispatch()
-    const { mylist, currentCollection } = useCollection()
+    const { currentCollection } = useCollection()
     const [nft, setNft] = useState<NFT | undefined>(undefined)
     const web3 = useWeb3()
     const signer = web3?.signer
@@ -40,7 +41,8 @@ export default function MyNFT() {
     const { address } = useAccount()
     const [amount, setAmount] = useState<string>("")
     const [to, setTo] = useState<string>("")
-
+    const { data, isFetching } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
+    const mylist = data?.mylist
     const handleChangeAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTo(e.target.value)
     }
@@ -120,7 +122,7 @@ export default function MyNFT() {
                 })}
             </div>
             <div className="flex flex-col">
-                {mylist.map((nft, index) => {
+                {!isFetching && mylist && mylist.map((nft, index) => {
                     return (
                         <div key={index} className="cursor-pointer flex flex-row justify-between items-center border-gray-200 border-b-[0.1px] h-[6vw] px-[1.5vw]">
                             <div className="flex flex-row justify-start items-center w-[25%] h-full space-x-[0.5vw]">

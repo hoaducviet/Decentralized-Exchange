@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useAccount } from "wagmi";
 import { useWeb3 } from "@/hooks/useWeb3";
 import { useCollection } from "@/hooks/useCollection"
+import { useGetCollectionQuery } from "@/redux/features/api/apiSlice";
 import { resetNFTs } from "@/redux/features/collection/collectionSlice";
 import { buyNFT } from "@/services/nftmarket/buyNFT"
 import Image from "next/image"
@@ -31,12 +32,14 @@ const options = [
 
 export default function Listed() {
     const dispatch = useDispatch()
-    const { listed, currentCollection } = useCollection()
+    const { currentCollection } = useCollection()
     const [nft, setNft] = useState<NFT | undefined>(undefined)
     const web3 = useWeb3()
     const signer = web3?.signer
     const provider = web3?.provider
     const { address } = useAccount()
+    const { data, isFetching } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
+    const listed = data?.listed
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!address && !!nft && !!currentCollection) {
@@ -68,7 +71,7 @@ export default function Listed() {
                 })}
             </div>
             <div className="flex flex-col">
-                {listed.map((nft, index) => {
+                {!isFetching && listed && listed.map((nft, index) => {
                     return (
                         <div key={index} className="cursor-pointer flex flex-row justify-between items-center border-gray-200 border-b-[0.1px] h-[6vw] px-[1.5vw]">
                             <div className="flex flex-row justify-start items-center w-[20%] h-full space-x-[0.5vw]">

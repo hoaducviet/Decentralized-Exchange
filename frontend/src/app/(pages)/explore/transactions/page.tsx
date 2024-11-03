@@ -1,6 +1,5 @@
 'use client'
-
-import { useTokens } from "@/hooks/useTokens"
+import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
 import Image from "next/image"
 import {
     Table,
@@ -12,7 +11,7 @@ import {
 } from "@/components/ui/table"
 
 export default function Transactions() {
-    const { tokens } = useTokens()
+    const { data: tokens } = useGetTokensQuery()
 
     return (
         <div>
@@ -28,7 +27,7 @@ export default function Transactions() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {tokens.map((token, index) => {
+                    {tokens && tokens.map((token, index) => {
                         return (
                             <TableRow key={index} className="cursor-pointer w-full h-[4vw] text-lg font-semibold opacity-85">
                                 <TableCell className="font-medium">{index + 1}</TableCell>

@@ -1,11 +1,9 @@
 'use client'
 import { useState } from "react"
-import { useDispatch } from "react-redux"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
-import { resetBalances } from "@/redux/features/balances/balancesSlice"
 import { removeLiquidityPool } from "@/services/liquiditypool/removeLiquidityPool"
 import { TrashIcon } from "@radix-ui/react-icons"
 import { LiquidBalancesType } from '@/lib/type'
@@ -25,7 +23,6 @@ interface Props {
 
 export default function PoolBalances({ liquidBalances }: Props) {
     const { address } = useAccount()
-    const dispatch = useDispatch()
     const web3 = useWeb3()
     const provider = web3?.provider
     const signer = web3?.signer
@@ -41,7 +38,6 @@ export default function PoolBalances({ liquidBalances }: Props) {
                 const receipt = await removeLiquidityPool({ provider, signer, pool: currentPool, address })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1) {
-                    dispatch(resetBalances())
                     setCurrentPool(undefined)
                 } else {
                     console.error("Transaction error:", confirmedReceipt);

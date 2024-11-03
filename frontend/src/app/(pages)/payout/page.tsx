@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import AddressItem from "@/components/exchange/AddressItem";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
 
 type Price = {
@@ -60,9 +60,12 @@ export default function Payout() {
 
             } catch (error) {
                 console.error(error)
+            } finally {
+                router.push('/success')
             }
         }
-    }, [amount, emailReceiver])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [address, amount, emailReceiver])
     return (
         <div className=" flex flex-col justify-start items-center pt-[10vw]">
             <div className="flex flex-col w-[40vw] space-y-[0.5vw]">

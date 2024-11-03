@@ -1,14 +1,29 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useDispatch } from "react-redux";
+import { useGetCollectionsQuery } from "@/redux/features/api/apiSlice";
+import { setCurrentCollection } from "@/redux/features/collection/collectionSlice";
 
 export default function CollectionLayout({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const dispatch = useDispatch()
+    const { data: collections } = useGetCollectionsQuery()
     const [isActive, setIsActive] = useState<number>(0)
     const { collection } = useParams()
+
+    useEffect(() => {
+        if (collections?.length) {
+            const currentCollection = collections?.find(item => item.name.toLowerCase().replace(/\s+/g, '') === collection)
+            if (currentCollection) {
+                dispatch(setCurrentCollection(currentCollection))
+            }
+        }
+    }, [collections, collection, dispatch])
+
     const options = [
         {
             name: 'Items',
