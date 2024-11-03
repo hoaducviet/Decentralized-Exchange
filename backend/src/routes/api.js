@@ -12,6 +12,7 @@ router.get("/collections", WalletController.getCollections);
 router.get("/collection", WalletController.getCollection);
 router.get("/tokenbalances", WalletController.getTokenBalances);
 router.get("/liquiditybalances", WalletController.getLiquidityBalances);
+router.get("/nftbalances", WalletController.getNFTBalances);
 router.get("/reservepools", WalletController.getReservePools);
 
 module.exports = router;

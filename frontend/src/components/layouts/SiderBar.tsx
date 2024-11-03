@@ -24,7 +24,7 @@ export default function SiderBar({ address }: Props) {
     const usdBalances = tokenBalances?.find(tokenBalance => tokenBalance.info.symbol === 'USD')
 
     return (
-        <div className=' absolute flex flex-col w-full max-h-[100vh] overflow-x-auto z-10'>
+        <div className=' absolute flex flex-col w-full max-h-[100vh] overflow-hidden z-10'>
             <div className='flex flex-col'>
                 <div className='flex justify-between m-[0.5vw]'>
                     <div className='flex flex-row justify-start items-center'>
@@ -53,7 +53,7 @@ export default function SiderBar({ address }: Props) {
                     <ActionsManagement />
                 </div>
             </div>
-            <div className='w-full'>{!isFetchingTokens && !isFetchingLiquid &&
+            <div className='w-full overflow-y-auto'>{!isFetchingTokens && !isFetchingLiquid &&
                 <AddressBalance tokenBalances={tokenBalances} liquidBalances={liquidBalances}/>}
             </div>
         </div>

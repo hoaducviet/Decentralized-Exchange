@@ -1,7 +1,7 @@
 'use client'
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Token, TokenBalancesType, Pool, ReservePool, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType } from "@/lib/type";
+import { Token, TokenBalancesType, Pool, ReservePool, NFT, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType } from "@/lib/type";
 
 
 export const apiSlice = createApi({
@@ -26,6 +26,9 @@ export const apiSlice = createApi({
         getLiquidityBalances: builder.query<LiquidBalancesType[], Address>({
             query: (address) => `/liquiditybalances?address=${address}`
         }),
+        getNFTBalances: builder.query<NFT[], Address>({
+            query: (address) => `/nftbalances?address=${address}`
+        }),
         getReservePool: builder.query<ReservePool[], void>({
             query: () => '/reservepools'
         })
@@ -40,5 +43,6 @@ export const {
     useGetLiquidityBalancesQuery,
     useGetCollectionsQuery,
     useGetCollectionQuery,
+    useGetNFTBalancesQuery,
     useGetReservePoolQuery
 } = apiSlice

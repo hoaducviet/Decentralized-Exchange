@@ -21,6 +21,7 @@ const addressNFTMarket = process.env.ADDRESS_NFT_MARKET;
 const eth = require("../assets/eth.json");
 const tokens = require("../assets/tokens.json");
 const pools = require("../assets/pools.json");
+const collections = require("../assets/collections.json");
 
 const networkUrl = process.env.NETWORK_URL;
 const privateKey = process.env.PRIVATE_KEY_ADDRESS;
@@ -114,7 +115,7 @@ class WalletController {
 
       const jsonData = JSON.stringify(pools, null, 2); // Định dạng
       // Ghi dữ liệu ra file JSON
-      fs.writeFile("./src/assets//pools.json", jsonData, (err) => {
+      fs.writeFile("./src/assets/pools.json", jsonData, (err) => {
         if (err) {
           console.error("Error writing file", err);
         } else {
@@ -135,7 +136,7 @@ class WalletController {
       if (!addressCollection) {
         return res.status(404).json("404 Not Found");
       }
-      const CollectionContract = await new ethers.Contract(
+      const CollectionContract = new ethers.Contract(
         addressCollection,
         NFTCollection.abi,
         wallet
@@ -152,6 +153,7 @@ class WalletController {
               : "";
             const formatted = ethers.formatEther(result[1]);
             return {
+              address: addressCollection,
               id: Number(result[0]),
               price: Number(result[1]),
               uri: result[2],
@@ -180,16 +182,89 @@ class WalletController {
     try {
       const allCollections = await NFTMarketContract.getAllCollection();
 
-      const allCollectionsData = allCollections.map((item) => ({
+      const collections = allCollections.map((item) => ({
         address: item[0],
         name: item[1],
         symbol: item[2],
       }));
 
-      return res.status(200).json(allCollectionsData);
+      const jsonData = JSON.stringify(collections, null, 2); // Định dạng
+      // Ghi dữ liệu ra file JSON
+      fs.writeFile("./src/assets/collections.json", jsonData, (err) => {
+        if (err) {
+          console.error("Error writing file", err);
+        } else {
+          console.log("File has been written");
+        }
+      });
+
+      return res.status(200).json(collections);
     } catch (error) {
       console.log(error);
       throw new Error();
+    }
+  }
+
+  async getNFTBalances(req, res) {
+    const address = req.query.address;
+    if (!address) return [];
+    try {
+      const nftBalances = await Promise.allSettled(
+        collections.map(async (collection) => {
+          try {
+            const contract = new ethers.Contract(
+              collection.address,
+              NFTCollection.abi,
+              wallet
+            );
+            const number = Number(await contract.balanceOf(address));
+            if (number > 0) {
+              const allResults = await contract.getAllNFTInfo();
+              const results = allResults.slice(1);
+              if (results.length > 0) {
+                const nfts = await Promise.all(
+                  results.map(async (result) => {
+                    if (result[4] === address && !!result[2]) {
+                      const response = await fetchDataURI({ uri: result[2] });
+                      const img = response.image
+                        ? await convertToHttps({ uri: response.image })
+                        : "";
+                      const formatted = ethers.formatEther(result[1]);
+                      return {
+                        address: collection.address,
+                        id: Number(result[0]),
+                        price: Number(result[1]),
+                        uri: result[2],
+                        isListed: result[3],
+                        owner: result[4],
+                        formatted: formatted.slice(
+                          0,
+                          formatted.indexOf(".") + 7
+                        ),
+                        img: img,
+                        name: response.name,
+                        description: response.description,
+                      };
+                    }
+                  })
+                );
+                return nfts.length > 0 ? nfts : null;
+              }
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        })
+      );
+      const filteredNFTs = nftBalances
+        .filter((result) => result.status === "fulfilled") // Lấy các phần tử "fulfilled"
+        .map((result) => result.value) // Trích xuất giá trị `value` (mảng NFT) từ từng phần tử
+        .flat() // Gộp tất cả các mảng NFT con lại thành một mảng duy nhất
+        .filter(Boolean); // Lọc bỏ
+
+      return res.status(200).json(filteredNFTs);
+    } catch (error) {
+      console.log(error);
     }
   }
 

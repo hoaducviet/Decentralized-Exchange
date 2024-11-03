@@ -1,6 +1,9 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import TokenBalance from "@/components/TokenBalance";
 import LiquidityBalance from "@/components/LiquidityBalance";
 import { TokenBalancesType, LiquidBalancesType } from "@/lib/type";
+import HistoryTransactions from "@/components/HistoryTransactions";
+import NFTBalance from "@/components/NFTBalance";
 interface Props {
     tokenBalances: TokenBalancesType[] | undefined;
     liquidBalances: LiquidBalancesType[] | undefined;
@@ -11,29 +14,18 @@ export default function AddressBalance({ tokenBalances, liquidBalances }: Props)
     const LPbalances = liquidBalances?.filter(liquidBalance => liquidBalance.balance?.value !== 0)
     return (
         <>
-            <div className='select-none flex flex-col space-y-[1vw]'>
-                <div className="flex flex-col ">
-                    <p className="flex justify-start text-md font-semibold opacity-90 m-[0.4vw]">Tokens balance</p>
-                    {balances?.map((tokenBalance, index) => {
-                        return (
-                            <div key={index} className="flex flex-col w-full">
-                                <TokenBalance tokenBalance={tokenBalance} />
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className="flex flex-col border-t border-gray-100 py-[1vw]">
-                    <p className="flex justify-start text-md font-semibold opacity-90 m-[0.4vw]">Liquidity pools balance</p>
-                    {LPbalances?.map((liquidBalance, index) => {
-                        return (
-                            <div key={index} className="flex flex-col w-full">
-                                <LiquidityBalance liquidityBalance={liquidBalance} />
-                            </div>
-                        )
-                    })
-                    }
-                </div>
-            </div>
+            <Tabs defaultValue="active" className="w-full my-[0.5vw] select-none">
+                <TabsList className="flex flex-row justify-center bg-secondary/80">
+                    <TabsTrigger value="token" className="w-[25%]">Token</TabsTrigger>
+                    <TabsTrigger value="pool" className="w-[25%]">Pool</TabsTrigger>
+                    <TabsTrigger value="nft" className="w-[25%]">NFT</TabsTrigger>
+                    <TabsTrigger value="active" className="w-[25%]">Active</TabsTrigger>
+                </TabsList>
+                <TabsContent value="token" ><TokenBalance tokenBalances={balances} /></TabsContent>
+                <TabsContent value="pool"><LiquidityBalance liquidityBalances={LPbalances} /></TabsContent>
+                <TabsContent value="nft"><NFTBalance /></TabsContent>
+                <TabsContent value="active"><HistoryTransactions /></TabsContent>
+            </Tabs>
         </>
     )
 }

@@ -13,7 +13,7 @@ import SubmitItem from "@/components/exchange/SubmitItem"
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery } from '@/redux/features/api/apiSlice';
 import { skipToken } from '@reduxjs/toolkit/query';
-import { Token, ReservePool, Address } from '@/lib/type'
+import { Token, Address } from '@/lib/type'
 
 export default function TransferBox() {
     const { address } = useAccount()

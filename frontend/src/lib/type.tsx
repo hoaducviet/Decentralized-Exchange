@@ -50,6 +50,7 @@ export type Collection = {
 }
 
 export type NFT = {
+    address: Address;
     id: number;
     price: number;
     uri: string;
