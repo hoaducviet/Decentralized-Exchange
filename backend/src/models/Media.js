@@ -6,18 +6,13 @@ const mongooseDelete = require("mongoose-delete");
 mongoose.plugin(slug);
 const Media = new Schema(
   {
-    title: { type: String, unique: true, required: true, maxLength: 255 },
+    token_id: { type: Object, required: true },
     detail: { type: String, required: true, maxLength: 600 },
     videoURL: { type: String, required: true, maxLength: 255 },
     trailerURL: { type: String, required: true, maxLength: 255 },
     posterURL: { type: String, required: true, maxLength: 255 },
     imageURL: { type: String, required: true, maxLength: 255 },
     ageRestriction: { type: String, maxLength: 20 },
-    type: { type: String },
-    label: { type: String, required: true },
-    genre: { type: String },
-    country: { type: String },
-    language: { type: String },
   },
   {
     timestamps: true,
