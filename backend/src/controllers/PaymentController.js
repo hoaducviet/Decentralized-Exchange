@@ -73,7 +73,6 @@ class PaymentController {
       res.status(200).send("Received");
     } catch (error) {
       console.log(error);
-      throw new error();
     }
   }
 

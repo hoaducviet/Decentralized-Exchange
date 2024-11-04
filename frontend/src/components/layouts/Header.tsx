@@ -1,3 +1,5 @@
+
+
 import ConnectWallet from "@/components/wallet/ConnectWallet"
 import SearchForm from "@/components/SearchForm"
 import ThemeMode from "@/components/ThemeMode"
@@ -10,7 +12,7 @@ import routes from "@/config/configRoutes"
 
 export default function Header() {
 
-    return <div className="bg-transparent flex justify-between items-center">
+    return <div className="bg-transparent flex justify-between items-center h-16">
         <div className="flex flex-row items-center">
             <Link href={routes.home}>
                 <div className="mx-5">

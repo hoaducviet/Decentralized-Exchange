@@ -86,7 +86,6 @@ class WalletController {
       return res.status(200).json(tokens);
     } catch (error) {
       console.log(error);
-      throw new Error();
     }
   }
 
@@ -126,7 +125,6 @@ class WalletController {
       return res.status(200).json(pools);
     } catch (error) {
       console.log(error);
-      throw new Error();
     }
   }
 
@@ -201,7 +199,6 @@ class WalletController {
       return res.status(200).json(collections);
     } catch (error) {
       console.log(error);
-      throw new Error();
     }
   }
 
@@ -417,7 +414,6 @@ class WalletController {
       res.status(200).json(reservePools);
     } catch (error) {
       console.log(error);
-      throw new Error();
     }
   }
 
