@@ -86,14 +86,14 @@ export default function SwapBox() {
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
+            const { data: newTransaction } = await addTokenTransaction({
+                type: 'Swap',
+                from_wallet: address,
+                from_token_id: tokenOne._id,
+                to_token_id: tokenTwo._id,
+                amount_in: amount1,
+            })
             try {
-                const { data: newTransaction } = await addTokenTransaction({
-                    type: 'Swap',
-                    from_wallet: address,
-                    from_token_id: tokenOne._id,
-                    to_token_id: tokenTwo._id,
-                    amount_in: amount1,
-                })
                 const receipt = await swapLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount: amount1 })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1 && newTransaction?._id) {
@@ -107,7 +107,20 @@ export default function SwapBox() {
                             status: 'Completed'
                         }
                     })
-                } else if (newTransaction?._id) {
+                } else {
+                    if (newTransaction?._id) {
+                        updateTokenTransaction({
+                            id: newTransaction._id,
+                            data: {
+                                status: 'Failed'
+                            }
+                        })
+                    }
+                }
+                console.log(receipt)
+            } catch (error) {
+                console.error("Transaction error:", error);
+                if (newTransaction?._id) {
                     updateTokenTransaction({
                         id: newTransaction._id,
                         data: {
@@ -115,9 +128,6 @@ export default function SwapBox() {
                         }
                     })
                 }
-                console.log(receipt)
-            } catch (error) {
-                console.error("Transaction error:", error);
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,6 +1,7 @@
 'use client'
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { useWeb3 } from "@/hooks/useWeb3"
+import { formatEther } from "ethers"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
@@ -8,6 +9,7 @@ import { removeLiquidityPool } from "@/services/liquiditypool/removeLiquidityPoo
 import { TrashIcon } from "@radix-ui/react-icons"
 import { LiquidBalancesType } from '@/lib/type'
 import { useAccount } from "wagmi"
+import { useAddLiquidityTransactionMutation, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
 
 const headers = [
     { name: "#" },
@@ -27,27 +29,61 @@ export default function PoolBalances({ liquidBalances }: Props) {
     const provider = web3?.provider
     const signer = web3?.signer
     const [currentPool, setCurrentPool] = useState<LiquidBalancesType | undefined>(undefined)
+    const [addLiquidityTransaction] = useAddLiquidityTransactionMutation()
+    const [updateLiquidityTransaction] = useUpdateLiquidityTransactionMutation()
 
     const handleClick = (index: number) => {
         setCurrentPool(liquidBalances[index])
     }
 
-    const handleSend = async () => {
+    const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!currentPool && !!address) {
+            const { data: newTransaction } = await addLiquidityTransaction({
+                type: 'Remove Liquidity',
+                wallet: address,
+                pool_id: currentPool.info._id,
+                token1_id: currentPool.info.token1._id,
+                token2_id: currentPool.info.token2._id,
+                amount_lpt: currentPool.balance?.formatted
+            })
             try {
                 const receipt = await removeLiquidityPool({ provider, signer, pool: currentPool, address })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-                if (confirmedReceipt?.status === 1) {
-                    setCurrentPool(undefined)
+                if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                    updateLiquidityTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                            receipt_hash: confirmedReceipt.hash,
+                            status: 'Completed'
+                        }
+                    })
                 } else {
-                    console.error("Transaction error:", confirmedReceipt);
+                    if (newTransaction?._id) {
+                        updateLiquidityTransaction({
+                            id: newTransaction._id,
+                            data: {
+                                status: 'Failed'
+                            }
+                        })
+                    }
                 }
                 console.log(confirmedReceipt)
             } catch (error) {
                 console.error("Transaction error:", error);
+                if (newTransaction?._id) {
+                    updateLiquidityTransaction({
+                        id: newTransaction?._id,
+                        data: {
+                            status: 'Failed'
+                        }
+                    })
+                }
             }
         }
-    }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [provider, signer, address, currentPool])
+
     return (
         <div className="flex flex-col select-none w-full shadow-lg">
             <p className="text-xl font-semibold opacity-80">Liquidity Balances</p>

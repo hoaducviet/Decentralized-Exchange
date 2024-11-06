@@ -39,9 +39,54 @@ class TransactionController {
     try {
       const { id } = req.params;
       const updateData = req.body;
+      const result = await TokenTransaction.findByIdAndUpdate(id, updateData, {
+        new: true,
+        runValidators: true,
+      });
+
+      if (!result) {
+        return res.status(404).json({ message: "Transaction not found" });
+      }
+      return res.status(200).json(mongooseToObject(result));
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
+
+  async addLiquidityTransaction(req, res) {
+    try {
+      const newTransaction = req.body;
+      if (
+        !newTransaction.type ||
+        !newTransaction.wallet ||
+        !newTransaction.token1_id ||
+        !newTransaction.token2_id 
+      ) {
+        return res.status(400).json({
+          message: "Missing fields.",
+        });
+      }
+
+      const result = await new LiquidityTransaction(newTransaction).save();
+
+      return res.status(200).json(mongooseToObject(result));
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
+  async updateLiquidityTransaction(req, res) {
+    try {
+      const { id } = req.params;
+      const updateData = req.body;
       console.log(id);
       console.log(updateData);
-      const result = await TokenTransaction.findByIdAndUpdate(
+      const result = await LiquidityTransaction.findByIdAndUpdate(
         id,
         updateData,
         {
@@ -61,8 +106,6 @@ class TransactionController {
         .json({ message: "Internal server error get all transaction" });
     }
   }
-
-  async addLiquidityTransaction(req, res) {}
 
   async addNftTransaction(req, res) {}
 

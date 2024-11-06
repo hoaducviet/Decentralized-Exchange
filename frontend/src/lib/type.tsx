@@ -82,7 +82,7 @@ export type CollectionItem = {
 
 export type TokenTransaction = {
     _id?: string;
-    type?: string;
+    type: string;
     from_wallet: Address;
     to_wallet?: Address;
     from_token_id: string;
@@ -96,5 +96,24 @@ export type TokenTransaction = {
     receipt_hash?: string;
     status?: string;
 }
+
+export type LiquidityTransaction = {
+    _id?: string;
+    type: string;
+    wallet: Address;
+    pool_id: string;
+    token1_id: string;
+    token2_id: string;
+    amount_token1?: string;
+    amount_token2?: string;
+    amount_lpt?: string;
+    gas_fee?: string;
+    network_fee?: string;
+    platform_fee?: string;
+    receipt_hash?: string;
+    status?: string;
+}
+
+
 
 export type Children = React.ReactNode

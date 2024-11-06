@@ -1,7 +1,7 @@
 'use client'
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Token, TokenBalancesType, Pool, ReservePool, NFT, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType, TokenTransaction } from "@/lib/type";
+import { Token, TokenBalancesType, Pool, ReservePool, NFT, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType, TokenTransaction, LiquidityTransaction } from "@/lib/type";
 
 
 export const apiSlice = createApi({
@@ -33,6 +33,8 @@ export const apiSlice = createApi({
             query: () => '/reservepools'
         }),
 
+
+//Mutations
         addTokenTransaction: builder.mutation<TokenTransaction, TokenTransaction>({
             query: (data) => ({
                 url: '/addtransaction/token',
@@ -40,11 +42,24 @@ export const apiSlice = createApi({
                 body: data
             })
         }),
-
         updateTokenTransaction: builder.mutation<TokenTransaction, { id: string, data: Partial<TokenTransaction> }>({
             query: ({ id, data }) => ({
-                
                 url: `/updatetransaction/token/${id}`,
+                method: 'PATCH',
+                body: data
+            })
+        }),
+
+        addLiquidityTransaction: builder.mutation<LiquidityTransaction, LiquidityTransaction>({
+            query: (data) => ({
+                url: '/addtransaction/liquidity',
+                method: 'POST',
+                body: data
+            })
+        }),
+        updateLiquidityTransaction: builder.mutation<LiquidityTransaction, { id: string, data: Partial<LiquidityTransaction> }>({
+            query: ({ id, data }) => ({
+                url: `/updatetransaction/liquidity/${id}`,
                 method: 'PATCH',
                 body: data
             })
@@ -66,4 +81,6 @@ export const {
     useGetReservePoolQuery,
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,
+    useAddLiquidityTransactionMutation,
+    useUpdateLiquidityTransactionMutation,
 } = apiSlice

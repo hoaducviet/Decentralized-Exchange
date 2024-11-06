@@ -124,28 +124,42 @@ export default function TransferBox() {
                 amount_in: tokenOne.symbol === 'USD' ? amount2 : amount1
 
             })
-            const receipt = await transferToken({ provider, signer, address, addressTo, token: (tokenOne.symbol === 'USD' ? tokenTwo : tokenOne), amount: (tokenOne.symbol === 'USD' ? amount2 : amount1) });
-            const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-            if (confirmedReceipt?.status === 1 && newTransaction?._id) {
-                updateTokenTransaction({
-                    id: newTransaction._id,
-                    data: {
-                        price: (reserve1 / reserve2).toString(),
-                        gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
-                        receipt_hash: receipt.hash,
-                        status: 'Completed'
+            try {
+                const receipt = await transferToken({ provider, signer, address, addressTo, token: (tokenOne.symbol === 'USD' ? tokenTwo : tokenOne), amount: (tokenOne.symbol === 'USD' ? amount2 : amount1) });
+                const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
+                if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                    updateTokenTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            price: (reserve1 / reserve2).toString(),
+                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                            receipt_hash: receipt.hash,
+                            status: 'Completed'
+                        }
+                    })
+                } else {
+                    if (newTransaction?._id) {
+                        updateTokenTransaction({
+                            id: newTransaction._id,
+                            data: {
+                                status: 'Failed'
+                            }
+                        })
+                        console.error("Transaction error:", confirmedReceipt);
                     }
-                })
-            } else if (newTransaction?._id) {
-                updateTokenTransaction({
-                    id: newTransaction._id,
-                    data: {
-                        status: 'Failed'
-                    }
-                })
-                console.error("Transaction error:", confirmedReceipt);
+                }
+                console.log(receipt)
+            } catch (error) {
+                console.error("Transaction error:", error);
+                if (newTransaction?._id) {
+                    updateTokenTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            status: 'Failed'
+                        }
+                    })
+                }
             }
-            console.log(receipt)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider, signer, address, addressReceiver, tokenOne, tokenTwo, amount1, amount2])

@@ -36,10 +36,16 @@ router.patch(
   "/updatetransaction/token/:id",
   TransactionController.updateTokenTransaction
 );
+
 router.post(
   "/addtransaction/liquidity",
   TransactionController.addLiquidityTransaction
 );
+router.patch(
+  "/updatetransaction/liquidity/:id",
+  TransactionController.updateLiquidityTransaction
+);
+
 router.post("/addnfttransaction", TransactionController.addNftTransaction);
 router.get("/tokentransactions", TransactionController.getTokenTransactionAll);
 router.get(

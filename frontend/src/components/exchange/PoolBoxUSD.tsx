@@ -1,6 +1,7 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { useAccount } from "wagmi"
+import { formatEther } from "ethers"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
@@ -9,6 +10,7 @@ import { addLiquidityPool } from "@/services/liquiditypool/addLiquidityPool"
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { TokenBalancesType, Token, ReservePool } from "@/lib/type"
+import { useAddLiquidityTransactionMutation, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
 
 interface Props {
     tokens: Token[],
@@ -24,6 +26,8 @@ export default function PoolBoxUSD({ tokens, tokenBalances, reservePools }: Prop
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
+    const [addLiquidityTransaction] = useAddLiquidityTransactionMutation()
+    const [updateLiquidityTransaction, { data: updateTransaction, isSuccess: updateSuccess }] = useUpdateLiquidityTransactionMutation()
     const [reserve1, setReserve1] = useState<number>(0)
     const [reserve2, setReserve2] = useState<number>(0)
     const [balance1, setBalance1] = useState<string>("0")
@@ -45,13 +49,9 @@ export default function PoolBoxUSD({ tokens, tokenBalances, reservePools }: Prop
     const handleSwitchTokens = () => {
         const one = tokenOne
         const two = tokenTwo
-        const balanceOne = balance1
-        const balanceTwo = balance2
         setTokenOne(two)
         setTokenTwo(one)
         setAmount1(amount2)
-        setBalance1(balanceTwo)
-        setBalance2(balanceOne)
     }
 
     // Set current pool và reserve của 2 tokens
@@ -82,23 +82,62 @@ export default function PoolBoxUSD({ tokens, tokenBalances, reservePools }: Prop
         }
     }, [amount1, reserve1, reserve2])
 
-    const handleSend = async () => {
-        if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
+    useEffect(() => {
+        if (updateTransaction && updateSuccess) {
+            setAmount1("")
+            setAmount2("")
+        }
+    }, [updateSuccess, updateTransaction])
+
+    const handleSend = useCallback(async () => {
+        if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
+            const { data: newTransaction } = await addLiquidityTransaction({
+                type: 'Add Liquidity',
+                wallet: address,
+                pool_id: currentPool.info._id,
+                token1_id: currentPool.info.token1._id,
+                token2_id: currentPool.info.token2._id,
+                amount_token1: currentPool.info.token1.symbol === tokenOne.symbol ? amount1 : amount2,
+                amount_token2: currentPool.info.token1.symbol === tokenOne.symbol ? amount2 : amount1,
+            })
             try {
                 const receipt = await addLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount1, amount2 })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-                if (confirmedReceipt?.status === 1) {
-                    setAmount1("")
-                    setAmount2("")
+                if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                    updateLiquidityTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                            receipt_hash: confirmedReceipt.hash,
+                            status: 'Completed'
+                        }
+                    })
                 } else {
-                    console.error("Transaction error:", confirmedReceipt);
+                    if (newTransaction?._id) {
+                        updateLiquidityTransaction({
+                            id: newTransaction._id,
+                            data: {
+                                status: 'Failed'
+                            }
+                        })
+                    }
                 }
                 console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
+                if (newTransaction?._id) {
+                    updateLiquidityTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            status: 'Failed'
+                        }
+                    })
+                }
             }
         }
-    }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [provider, signer, address, currentPool, tokenOne, tokenTwo, amount1, amount2])
+
     return (
         <div className="flex flex-col w-full h-full">
             <div className="relative flex flex-col w-full h-full">

@@ -21,6 +21,6 @@ export const removeLiquidityPool = async ({ provider, signer, pool, address }: P
         await receipt.wait()
         return receipt
     } catch {
-        throw new Error("Failed to add liquidity");
+        console.log("Failed to remove liquidity");
     }
 }
