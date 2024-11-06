@@ -14,10 +14,10 @@ export default function LiquidityBalance({ liquidityBalances }: Props) {
                         <div className="flex flex-row justify-start items-center w-[55%]">
                             <Avatar className="w-[1.5vw] h-[1.5vw] border border-black">
                                 <div className="realtive flex">
-                                    <AvatarImage src={balance.info.token1?.img}
+                                    <AvatarImage src={balance.info.token1.img}
                                         className="absolute w-full h-full object-cover"
                                         style={{ clipPath: "inset(0 50% 0 0)" }} />
-                                    <AvatarImage src={balance.info.token2?.img}
+                                    <AvatarImage src={balance.info.token2.img}
                                         className="absolute w-full h-full object-cover"
                                         style={{ clipPath: "inset(0 0 0 50%)" }} />
                                 </div>
@@ -26,7 +26,7 @@ export default function LiquidityBalance({ liquidityBalances }: Props) {
                             <p className="flex justify-start font-semibold mx-[0.3vw]">{balance.info.name}</p>
                         </div>
                         <div className="flex flex-row justify-end items-center w-[45%]">
-                            <p className="flex justify-end mx-[0.5vw]">{balance?.balance?.formatted}</p>
+                            <p className="flex justify-end mx-[0.5vw]">{balance.balance?.formatted}</p>
                             <p className="flex justify-start font-semibold w-[20%] mr-[1vw]">LPT</p>
                         </div>
                     </div>

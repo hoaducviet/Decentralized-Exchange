@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { useAccount } from 'wagmi';
-import { ethers } from 'ethers';
+import { ethers, formatEther } from 'ethers';
 import { useWeb3 } from '@/hooks/useWeb3';
 import { Card } from '@/components/ui/card'
 import Image from "next/image";
@@ -11,7 +11,7 @@ import DialogItem from "@/components/exchange/DialogItem"
 import AddressItem from "@/components/exchange/AddressItem";
 import SubmitItem from "@/components/exchange/SubmitItem"
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery } from '@/redux/features/api/apiSlice';
+import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { skipToken } from '@reduxjs/toolkit/query';
 import { Token, Address } from '@/lib/type'
 
@@ -23,6 +23,8 @@ export default function TransferBox() {
     const { data: tokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const { data: reservePools } = useGetReservePoolQuery()
+    const [addTokenTransaction] = useAddTokenTransactionMutation()
+    const [updateTokenTransaction, { data: updateTransaction, isSuccess: updateSuccess }] = useUpdateTokenTransactionMutation()
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [reserve1, setReserve1] = useState<number>(0)
@@ -46,19 +48,15 @@ export default function TransferBox() {
     const handleSwitchTokens = () => {
         const one = tokenOne
         const two = tokenTwo
-        const balanceOne = balance1
-        const balanceTwo = balance2
         setTokenOne(two)
         setTokenTwo(one)
         setAmount1(amount2)
-        setBalance1(balanceTwo)
-        setBalance2(balanceOne)
     }
 
     useEffect(() => {
         if (tokenOne && tokenTwo && reservePools) {
             const currentPool = reservePools.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
-            if (currentPool?.info.addressToken1 === tokenOne.address) {
+            if (currentPool?.info.token1.address === tokenOne.address) {
                 setReserve1(Number(currentPool.reserve1))
                 setReserve2(Number(currentPool.reserve2))
             } else {
@@ -104,6 +102,13 @@ export default function TransferBox() {
         }
     }, [amount1, reserve1, reserve2, tokenOne, tokenTwo, reservePools])
 
+    useEffect(() => {
+        if (updateTransaction && updateSuccess) {
+            setAmount1("")
+            setAmount2("")
+        }
+    }, [updateSuccess, updateTransaction])
+
     const handleSend = useCallback(async () => {
         if (!ethers.isAddress(addressReceiver)) {
             console.log("Address incorrect")
@@ -111,15 +116,33 @@ export default function TransferBox() {
         }
         if (!!provider && !!signer && !!address && !!addressReceiver && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
             const addressTo: Address = addressReceiver as Address
+            const { data: newTransaction } = await addTokenTransaction({
+                type: "Transfer",
+                from_wallet: address,
+                to_wallet: addressTo,
+                from_token_id: tokenOne.symbol === 'USD' ? tokenTwo._id : tokenOne._id,
+                amount_in: tokenOne.symbol === 'USD' ? amount2 : amount1
+
+            })
             const receipt = await transferToken({ provider, signer, address, addressTo, token: (tokenOne.symbol === 'USD' ? tokenTwo : tokenOne), amount: (tokenOne.symbol === 'USD' ? amount2 : amount1) });
             const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-            if (confirmedReceipt?.status === 1) {
-                setAmount1("")
-                setAmount2("")
-                setReserve1(0)
-                setReserve2(0)
-                setAddressReceiver("")
-            } else {
+            if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                updateTokenTransaction({
+                    id: newTransaction._id,
+                    data: {
+                        price: (reserve1 / reserve2).toString(),
+                        gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                        receipt_hash: receipt.hash,
+                        status: 'Completed'
+                    }
+                })
+            } else if (newTransaction?._id) {
+                updateTokenTransaction({
+                    id: newTransaction._id,
+                    data: {
+                        status: 'Failed'
+                    }
+                })
                 console.error("Transaction error:", confirmedReceipt);
             }
             console.log(receipt)

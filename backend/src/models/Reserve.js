@@ -6,7 +6,7 @@ mongoose.plugin(slug);
 
 const Reserve = new Schema(
   {
-    pool_id: { type: Schema.ObjectId, required: true, ref: "pool" },
+    pool_id: { type: Schema.Types.ObjectId, required: true, ref: "pool" },
     reserve_token1: { type: String, required: true, default: 0 },
     reserve_token2: { type: String, required: true, default: 0 },
   },

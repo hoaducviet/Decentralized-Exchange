@@ -48,24 +48,22 @@ export default function LimitBox() {
     const handleSwitchTokens = () => {
         const one = tokenOne
         const two = tokenTwo
-        const balanceOne = balance1
-        const balanceTwo = balance2
         setTokenOne(two)
         setTokenTwo(one)
         setAmount1(amount2)
-        setBalance1(balanceTwo)
-        setBalance2(balanceOne)
     }
 
     useEffect(() => {
         if (tokenOne && tokenTwo && reservePools) {
             const currentPool = reservePools.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
-            if (currentPool?.info.addressToken1 === tokenOne.address) {
+            if (currentPool?.info.token1.address === tokenOne.address) {
                 setReserve1(Number(currentPool.reserve1))
                 setReserve2(Number(currentPool.reserve2))
+                console.log(currentPool.reserve1, currentPool.reserve2)
             } else {
                 setReserve1(Number(currentPool?.reserve2))
                 setReserve2(Number(currentPool?.reserve1))
+                console.log(currentPool?.reserve2, currentPool?.reserve1)
             }
             setCurrentPool(currentPool)
             setBalance1(tokenBalances?.find(item => item.info.symbol === tokenOne.symbol)?.balance?.formatted || "0")
@@ -115,7 +113,7 @@ export default function LimitBox() {
         <>
             {!isFetchingToken && newTokens &&
                 <div className="flex flex-col w-full h-full">
-                    <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} price={price} tokens={newTokens} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo} setPercent={setPercent} />
+                    <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} price={price} tokens={newTokens} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo} setPercent={setPercent} handleSwitchTokens={handleSwitchTokens}/>
                     <div className="relative flex flex-col w-full h-full">
                         <TradeItem title="From" token={tokenOne} tokens={newTokens} setToken={setTokenOne} amount={amount1} setAmount={setAmount1} balance={balance1} />
                         <TradeItem title="To" token={tokenTwo} tokens={newTokens} setToken={setTokenTwo} amount={amount2} setAmount={setAmount2} balance={balance2} isDisabled />

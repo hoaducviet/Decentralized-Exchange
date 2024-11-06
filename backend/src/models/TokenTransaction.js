@@ -9,14 +9,18 @@ const TokenTransaction = new Schema(
     type: { type: String, enum: ["Transfer", "Swap"], required: true },
     from_wallet: { type: String, required: true, minLength: 42, maxLength: 42 },
     to_wallet: { type: String, required: false, minLength: 42, maxLength: 42 },
-    from_token_id: { type: Schema.ObjectId, required: true, ref: "token" },
-    to_token_id: { type: Schema.ObjectId, required: false, ref: "token" },
+    from_token_id: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "token",
+    },
+    to_token_id: { type: Schema.Types.ObjectId, required: false, ref: "token" },
     amount_in: { type: String, required: true },
     amount_out: { type: String, required: false },
     price: { type: String, required: false },
-    gas_fee: { type: String, required: true },
-    network_fee: { type: String, required: true },
-    platform_fee: { type: String, required: true },
+    gas_fee: { type: String, required: false },
+    network_fee: { type: String, required: false },
+    platform_fee: { type: String, required: false, default: '0.3%' },
     receipt_hash: {
       type: String,
       required: function () {
@@ -28,6 +32,7 @@ const TokenTransaction = new Schema(
       type: String,
       enum: ["Pending", "Completed", "Failed"],
       required: true,
+      default: "Pending",
     },
   },
   {

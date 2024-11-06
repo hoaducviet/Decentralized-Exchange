@@ -11,6 +11,7 @@ interface Props {
     tokenOne: Token | undefined;
     tokenTwo: Token | undefined;
     tokens: Token[] | [];
+    handleSwitchTokens: () => void;
     setTokenOne: Dispatch<SetStateAction<Token | undefined>>;
     setTokenTwo: Dispatch<SetStateAction<Token | undefined>>;
     setPercent: Dispatch<SetStateAction<string>>;
@@ -29,17 +30,11 @@ const listOptions: list[] = [
     { name: '+10%', value: "1.1" },
 ] as list[];
 
-export default function LimitItem({ tokenOne, tokenTwo, tokens, setTokenOne, setTokenTwo, price, setPercent }: Props) {
+export default function LimitItem({ tokenOne, tokenTwo, tokens, setTokenOne, setTokenTwo, handleSwitchTokens, price, setPercent }: Props) {
     const [isActive, setIsActive] = useState<number>(0)
     const handleActive = (index: number) => {
         setIsActive(index)
         setPercent(listOptions[index].value)
-    }
-    const handleSwitchTokens = () => {
-        const one = tokenOne
-        const two = tokenTwo
-        setTokenOne(two)
-        setTokenTwo(one)
     }
 
     return (

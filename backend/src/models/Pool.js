@@ -7,12 +7,24 @@ mongoose.plugin(slug);
 const Pool = new Schema(
   {
     name: { type: String, unique: true, required: true, maxLength: 255 },
-    address: { type: String, required: true, minLength: 42, maxLength: 42 },
-    address_lpt: { type: String, required: true, minLength: 42, maxLength: 42 },
-    token1_id: { type: Schema.ObjectId, required: false, ref: "token" },
-    token2_id: { type: Schema.ObjectId, required: false, ref: "token" },
-    total_liquidity: { type: String, required: true, default: 0 },
-    volume: { type: String, required: true, default: 0 },
+    address: {
+      type: String,
+      unique: true,
+      required: true,
+      minLength: 42,
+      maxLength: 42,
+    },
+    address_lpt: {
+      type: String,
+      unique: true,
+      required: true,
+      minLength: 42,
+      maxLength: 42,
+    },
+    token1_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
+    token2_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
+    total_liquidity: { type: String, required: false, default: 0 },
+    volume: { type: String, required: false, default: 0 },
   },
   {
     timestamps: true,

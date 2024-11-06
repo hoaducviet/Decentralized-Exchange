@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const swapLimitPool = async ({ provider, signer, address, addressContract, pool, tokenOne, amount, price }: Props) => {
-    const isEth = pool?.info.token2?.symbol !== 'ETH' ? false : true;
+    const isEth = pool.info.token2.symbol !== 'ETH' ? false : true;
     const limitContract = await loadLimitContract({ provider: signer, address: addressContract });
     const value = parseUnits(amount.slice(0, amount.indexOf(".") + tokenOne.decimals + 1), tokenOne.decimals)
     const priceValue = price.slice(0, price.indexOf(".") + 7)

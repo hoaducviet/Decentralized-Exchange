@@ -37,7 +37,7 @@ export default function SellBox() {
     useEffect(() => {
         if (tokenOne && tokenTwo && reservePools) {
             const currentPool = reservePools.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
-            if (currentPool?.info.addressToken1 === tokenOne.address) {
+            if (currentPool?.info.token1.address === tokenOne.address) {
                 setReserve1(Number(currentPool.reserve1))
                 setReserve2(Number(currentPool.reserve2))
             } else {

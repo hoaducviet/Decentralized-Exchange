@@ -3,6 +3,7 @@ const ethers = require("ethers");
 
 const { fetchDataURI } = require("../utils/fetchDataURI");
 const { convertToHttps } = require("../utils/convertToHttps");
+const { convertToPool } = require("../utils/convertToPool");
 
 const FactoryToken = require("../artifacts/FactoryToken.json");
 const FactoryLiquidityPool = require("../artifacts/FactoryLiquidityPool.json");
@@ -19,9 +20,9 @@ const addressFactoryLiquidityPool = process.env.ADDRESS_FACTORY_LIQUIDITYPOOL;
 const addressNFTMarket = process.env.ADDRESS_NFT_MARKET;
 
 const eth = require("../assets/eth.json");
-const tokens = require("../assets/tokens.json");
-const pools = require("../assets/pools.json");
-const collections = require("../assets/collections.json");
+const Token = require("../models/Token");
+const Pool = require("../models/Pool");
+const Collection = require("../models/Collection");
 
 const networkUrl = process.env.NETWORK_URL;
 const privateKey = process.env.PRIVATE_KEY_ADDRESS;
@@ -59,10 +60,9 @@ class WalletController {
     }
   }
 
-  async getTokens(req, res) {
+  async getTokens() {
     try {
       const allTokens = await FactoryTokenContract.getAllTokens();
-
       const allTokensData = allTokens.map((item) => ({
         name: item[0],
         symbol: item[1],
@@ -83,13 +83,13 @@ class WalletController {
         }
       });
 
-      return res.status(200).json(tokens);
+      return tokens;
     } catch (error) {
       console.log(error);
     }
   }
 
-  async getPools(req, res) {
+  async getPools() {
     try {
       const allPools = await FactoryLiquidityPoolContract.getAllPool();
       const allPoolsData = allPools.map((item) => ({
@@ -122,7 +122,33 @@ class WalletController {
         }
       });
 
-      return res.status(200).json(pools);
+      return pools;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getCollections() {
+    try {
+      const allCollections = await NFTMarketContract.getAllCollection();
+
+      const collections = allCollections.map((item) => ({
+        address: item[0],
+        name: item[1],
+        symbol: item[2],
+      }));
+
+      const jsonData = JSON.stringify(collections, null, 2); // Định dạng
+      // Ghi dữ liệu ra file JSON
+      fs.writeFile("./src/assets/collections.json", jsonData, (err) => {
+        if (err) {
+          console.error("Error writing file", err);
+        } else {
+          console.log("File has been written");
+        }
+      });
+
+      return collections;
     } catch (error) {
       console.log(error);
     }
@@ -176,35 +202,10 @@ class WalletController {
     }
   }
 
-  async getCollections(req, res) {
-    try {
-      const allCollections = await NFTMarketContract.getAllCollection();
-
-      const collections = allCollections.map((item) => ({
-        address: item[0],
-        name: item[1],
-        symbol: item[2],
-      }));
-
-      const jsonData = JSON.stringify(collections, null, 2); // Định dạng
-      // Ghi dữ liệu ra file JSON
-      fs.writeFile("./src/assets/collections.json", jsonData, (err) => {
-        if (err) {
-          console.error("Error writing file", err);
-        } else {
-          console.log("File has been written");
-        }
-      });
-
-      return res.status(200).json(collections);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   async getNFTBalances(req, res) {
     const address = req.query.address;
     if (!address) return [];
+    const collections = await Collection.find();
     try {
       const nftBalances = await Promise.allSettled(
         collections.map(async (collection) => {
@@ -268,6 +269,9 @@ class WalletController {
   async getTokenBalances(req, res) {
     const address = req.query.address;
     if (!address) return [];
+    const tokens = await Token.find().select(
+      "_id name symbol img decimals address owner volume"
+    );
     try {
       const tokenBalances = await Promise.all(
         tokens.map(async (token) => {
@@ -327,6 +331,22 @@ class WalletController {
   async getLiquidityBalances(req, res) {
     const address = req.query.address;
     if (!address) return [];
+    const results = await Pool.find()
+      .select("_id name address address_lpt total_liquidity volume")
+      .populate({
+        path: "token1_id",
+        select: "_id name symbol img decimals address owner volume",
+        model: "token",
+      })
+      .populate({
+        path: "token2_id",
+        select: "_id name symbol img decimals address owner volume",
+        model: "token",
+      })
+      .exec();
+
+    const pools = await convertToPool(results);
+
     try {
       const liquidityBalances = await Promise.all(
         pools.map(async (pool) => {
@@ -352,16 +372,8 @@ class WalletController {
               formatted: balanceFormatted,
               decimals: decimals,
             };
-
-            const token1 = tokens.find(
-              (token) => token.address === pool.addressToken1
-            );
-            const token2 = tokens.find(
-              (token) => token.address === pool.addressToken2
-            );
-
             return {
-              info: { ...pool, token1, token2 },
+              info: pool,
               balance: balance,
             };
           } catch (error) {
@@ -378,6 +390,21 @@ class WalletController {
   }
 
   async getReservePools(req, res) {
+    const results = await Pool.find()
+      .select("_id name address address_lpt total_liquidity volume")
+      .populate({
+        path: "token1_id",
+        select: "_id name symbol img decimals address owner volume",
+        model: "token",
+      })
+      .populate({
+        path: "token2_id",
+        select: "_id name symbol img decimals address owner volume",
+        model: "token",
+      })
+      .exec();
+
+    const pools = await convertToPool(results);
     try {
       const reservePools = await Promise.all(
         pools.map(async (pool) => {
@@ -390,20 +417,13 @@ class WalletController {
             );
             const value1 = await contract.reserve1();
             const value2 = await contract.reserve2();
-            const reserve1 = ethers.formatUnits(value1, pool.decimals1);
-            const reserve2 = ethers.formatUnits(value2, pool.decimals2);
-
-            const token1 = tokens.find(
-              (token) => token.address === pool.addressToken1
-            );
-            const token2 = tokens.find(
-              (token) => token.address === pool.addressToken2
-            );
+            const reserve1 = ethers.formatUnits(value1, pool.token1.decimals);
+            const reserve2 = ethers.formatUnits(value2, pool.token2.decimals2);
 
             return {
               reserve1,
               reserve2,
-              info: { ...pool, token1, token2 },
+              info: pool,
             };
           } catch (error) {
             console.error(`Error processing pool ${pool.name}:`, error);

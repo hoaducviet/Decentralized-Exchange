@@ -14,27 +14,27 @@ interface Props {
 }
 
 export const addLiquidityPool = async ({ provider, signer, address, pool, tokenOne, amount1, amount2 }: Props) => {
-    const isEth = pool?.info.token2?.symbol !== 'ETH' ? false : true;
-    const contract = await loadLiquidContract({ provider: signer, address: pool?.info?.address, isEth: isEth });
-    const contractToken1 = await loadTokenContract({ provider: signer, address: pool.info.addressToken1 })
+    const isEth = pool.info.token2.symbol !== 'ETH' ? false : true;
+    const contract = await loadLiquidContract({ provider: signer, address: pool.info.address, isEth: isEth });
+    const contractToken1 = await loadTokenContract({ provider: signer, address: pool.info.token1.address })
     const balance1 = await contractToken1.balanceOf(address);
 
     let value1
     let value2
 
-    if (tokenOne.address === pool?.info?.addressToken1) {
-        value1 = parseUnits(amount1.slice(0, amount1.indexOf(".") + pool.info.decimals1 + 1), pool.info.decimals1)
-        value2 = parseUnits(amount2.slice(0, amount2.indexOf(".") + pool.info.decimals2 + 1), pool.info.decimals2)
+    if (tokenOne.address === pool.info.token1.address) {
+        value1 = parseUnits(amount1.slice(0, amount1.indexOf(".") + pool.info.token1.decimals + 1), pool.info.token1.decimals)
+        value2 = parseUnits(amount2.slice(0, amount2.indexOf(".") + pool.info.token2.decimals + 1), pool.info.token2.decimals)
     } else {
-        value1 = parseUnits(amount2.slice(0, amount2.indexOf(".") + pool.info.decimals1 + 1), pool.info.decimals1)
-        value2 = parseUnits(amount1.slice(0, amount1.indexOf(".") + pool.info.decimals2 + 1), pool.info.decimals2)
+        value1 = parseUnits(amount2.slice(0, amount2.indexOf(".") + pool.info.token1.decimals + 1), pool.info.token1.decimals)
+        value2 = parseUnits(amount1.slice(0, amount1.indexOf(".") + pool.info.token2.decimals + 1), pool.info.token2.decimals)
     }
     if (balance1 < value1) {
         throw new Error("Insufficient balance for token 1");
     }
     try {
         const nonce1 = await provider.getTransactionCount(address, 'latest');
-        const approveTX1 = await contractToken1.approve(pool?.info?.address, value1, {
+        const approveTX1 = await contractToken1.approve(pool.info.address, value1, {
             nonce: nonce1
         })
         await approveTX1.wait()
@@ -43,7 +43,7 @@ export const addLiquidityPool = async ({ provider, signer, address, pool, tokenO
     }
 
     if (!isEth) {
-        const contractToken2 = await loadTokenContract({ provider: signer, address: pool.info.addressToken2 })
+        const contractToken2 = await loadTokenContract({ provider: signer, address: pool.info.token2.address })
         const balance2 = await contractToken2.balanceOf(address);
 
         if (balance2 < value2) {

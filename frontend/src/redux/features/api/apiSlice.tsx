@@ -1,7 +1,7 @@
 'use client'
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Token, TokenBalancesType, Pool, ReservePool, NFT, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType } from "@/lib/type";
+import { Token, TokenBalancesType, Pool, ReservePool, NFT, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType, TokenTransaction } from "@/lib/type";
 
 
 export const apiSlice = createApi({
@@ -31,7 +31,26 @@ export const apiSlice = createApi({
         }),
         getReservePool: builder.query<ReservePool[], void>({
             query: () => '/reservepools'
-        })
+        }),
+
+        addTokenTransaction: builder.mutation<TokenTransaction, TokenTransaction>({
+            query: (data) => ({
+                url: '/addtransaction/token',
+                method: 'POST',
+                body: data
+            })
+        }),
+
+        updateTokenTransaction: builder.mutation<TokenTransaction, { id: string, data: Partial<TokenTransaction> }>({
+            query: ({ id, data }) => ({
+                
+                url: `/updatetransaction/token/${id}`,
+                method: 'PATCH',
+                body: data
+            })
+        }),
+
+
     })
 })
 
@@ -44,5 +63,7 @@ export const {
     useGetCollectionsQuery,
     useGetCollectionQuery,
     useGetNFTBalancesQuery,
-    useGetReservePoolQuery
+    useGetReservePoolQuery,
+    useAddTokenTransactionMutation,
+    useUpdateTokenTransactionMutation,
 } = apiSlice

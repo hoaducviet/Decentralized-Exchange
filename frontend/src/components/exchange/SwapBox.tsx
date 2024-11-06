@@ -1,6 +1,7 @@
 'use client'
 import { useCallback, useEffect, useState } from "react"
 import { useAccount } from "wagmi"
+import { formatEther } from "ethers"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
@@ -8,7 +9,7 @@ import TradeItem from "@/components/exchange/TradeItem"
 import { swapLiquidityPool } from "@/services/liquiditypool/swapLiquidityPool"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { ReservePool, Token } from "@/lib/type"
-import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery } from "@/redux/features/api/apiSlice"
+import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { skipToken } from "@reduxjs/toolkit/query"
 
 export default function SwapBox() {
@@ -19,6 +20,8 @@ export default function SwapBox() {
     const { data: allTokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const { data: reservePools } = useGetReservePoolQuery()
+    const [addTokenTransaction] = useAddTokenTransactionMutation()
+    const [updateTokenTransaction, { data: updateTransaction, isSuccess: updateSuccess }] = useUpdateTokenTransactionMutation()
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
@@ -42,19 +45,15 @@ export default function SwapBox() {
     const handleSwitchTokens = () => {
         const one = tokenOne
         const two = tokenTwo
-        const balanceOne = balance1
-        const balanceTwo = balance2
         setTokenOne(two)
         setTokenTwo(one)
         setAmount1(amount2)
-        setBalance1(balanceTwo)
-        setBalance2(balanceOne)
     }
 
     useEffect(() => {
         if (tokenOne && tokenTwo && reservePools) {
             const currentPool = reservePools.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
-            if (currentPool?.info.addressToken1 === tokenOne.address) {
+            if (currentPool?.info.token1.address === tokenOne.address) {
                 setReserve1(Number(currentPool.reserve1))
                 setReserve2(Number(currentPool.reserve2))
             } else {
@@ -78,23 +77,51 @@ export default function SwapBox() {
         }
     }, [amount1, reserve1, reserve2])
 
+    useEffect(() => {
+        if (updateTransaction && updateSuccess) {
+            setAmount1("")
+            setAmount2("")
+        }
+    }, [updateSuccess, updateTransaction])
+
     const handleSend = useCallback(async () => {
-        if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && parseFloat(amount1) > 0) {
+        if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
             try {
+                const { data: newTransaction } = await addTokenTransaction({
+                    type: 'Swap',
+                    from_wallet: address,
+                    from_token_id: tokenOne._id,
+                    to_token_id: tokenTwo._id,
+                    amount_in: amount1,
+                })
                 const receipt = await swapLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount: amount1 })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-                if (confirmedReceipt?.status === 1) {
-                    setAmount1("")
-                    setAmount2("")
-                } else {
-                    console.error("Transaction error:", confirmedReceipt);
+                if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                    updateTokenTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            amount_out: amount2,
+                            price: (reserve1 / reserve2).toString(),
+                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                            receipt_hash: confirmedReceipt.hash,
+                            status: 'Completed'
+                        }
+                    })
+                } else if (newTransaction?._id) {
+                    updateTokenTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            status: 'Failed'
+                        }
+                    })
                 }
                 console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
             }
         }
-    }, [provider, signer, currentPool, address, tokenOne, amount1])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [provider, signer, currentPool, address, tokenOne, tokenTwo, amount1, amount2])
 
     return (
         <>

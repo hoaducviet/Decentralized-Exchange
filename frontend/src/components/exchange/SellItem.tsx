@@ -77,7 +77,6 @@ export default function SellItem({ token, tokens, setToken, setAmount, amount1, 
                         style={{ width: amount1.length === 0 ? '1px' : `${(amount1.length + 0.5) * 2.5}rem` }}
                     />
                     {amount1.length === 0 ? <p>0</p> : <div className="text-xl font-semibold mx-[1vw]">{token?.symbol}</div>}
-
                 </div>
                 <div className="flex flex-row justify-center items-center text-xl font-medium opacity-50 w-full h-full">
                     <p className="mr-[0.1vw]">$</p>
