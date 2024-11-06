@@ -6,7 +6,7 @@ const mongooseDelete = require("mongoose-delete");
 mongoose.plugin(slug);
 const TokenTransaction = new Schema(
   {
-    type: { type: String, enum: ["Transfer", "Swap"], required: true },
+    type: { type: String, enum: ["Transfer Token", "Swap Token", "Buy Token", "Sell Token"], required: true },
     from_wallet: { type: String, required: true, minLength: 42, maxLength: 42 },
     to_wallet: { type: String, required: false, minLength: 42, maxLength: 42 },
     from_token_id: {

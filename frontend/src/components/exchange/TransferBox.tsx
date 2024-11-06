@@ -3,16 +3,16 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAccount } from 'wagmi';
 import { ethers, formatEther } from 'ethers';
 import { useWeb3 } from '@/hooks/useWeb3';
+import { skipToken } from '@reduxjs/toolkit/query';
+import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { Card } from '@/components/ui/card'
-import Image from "next/image";
 import { transferToken } from '@/services/liquiditypool/transferToken';
+import Image from "next/image";
 import TransferItem from "@/components/exchange/TransferItem";
 import DialogItem from "@/components/exchange/DialogItem"
 import AddressItem from "@/components/exchange/AddressItem";
 import SubmitItem from "@/components/exchange/SubmitItem"
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
-import { skipToken } from '@reduxjs/toolkit/query';
 import { Token, Address } from '@/lib/type'
 
 export default function TransferBox() {
@@ -117,12 +117,11 @@ export default function TransferBox() {
         if (!!provider && !!signer && !!address && !!addressReceiver && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
             const addressTo: Address = addressReceiver as Address
             const { data: newTransaction } = await addTokenTransaction({
-                type: "Transfer",
+                type: "Transfer Token",
                 from_wallet: address,
                 to_wallet: addressTo,
                 from_token_id: tokenOne.symbol === 'USD' ? tokenTwo._id : tokenOne._id,
                 amount_in: tokenOne.symbol === 'USD' ? amount2 : amount1
-
             })
             try {
                 const receipt = await transferToken({ provider, signer, address, addressTo, token: (tokenOne.symbol === 'USD' ? tokenTwo : tokenOne), amount: (tokenOne.symbol === 'USD' ? amount2 : amount1) });

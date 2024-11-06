@@ -3,7 +3,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Token, TokenBalancesType, Pool, ReservePool, NFT, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType, TokenTransaction, LiquidityTransaction } from "@/lib/type";
 
-
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
     baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api` }),
@@ -64,8 +63,6 @@ export const apiSlice = createApi({
                 body: data
             })
         }),
-
-
     })
 })
 

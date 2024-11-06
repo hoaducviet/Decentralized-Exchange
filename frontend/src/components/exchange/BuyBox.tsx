@@ -1,12 +1,13 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
+import { formatEther } from 'ethers';
 import { useAccount } from 'wagmi'
 import { useWeb3 } from "@/hooks/useWeb3"
+import { useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { swapLiquidityPool } from "@/services/liquiditypool/swapLiquidityPool"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import BuyItem from "@/components/exchange/BuyItem"
 import { ReservePool, Token } from "@/lib/type"
-import { useGetTokensQuery, useGetReservePoolQuery } from "@/redux/features/api/apiSlice"
 
 export default function BuyBox() {
     const { address } = useAccount()
@@ -16,6 +17,8 @@ export default function BuyBox() {
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
+    const [addTokenTransaction] = useAddTokenTransactionMutation()
+    const [updateTokenTransaction, { data: updateTransaction, isSuccess: updateSuccess }] = useUpdateTokenTransactionMutation()
     const [reserve1, setReserve1] = useState<number>(0)
     const [reserve2, setReserve2] = useState<number>(0)
     const [amount1, setAmount1] = useState<string>("")
@@ -59,24 +62,55 @@ export default function BuyBox() {
         }
     }, [amount1, reserve1, reserve2])
 
+    useEffect(() => {
+        if (updateTransaction && updateSuccess) {
+            setAmount1("")
+            setAmount2("")
+        }
+    }, [updateSuccess, updateTransaction])
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
+            const { data: newTransaction } = await addTokenTransaction({
+                type: "Buy Token",
+                from_wallet: address,
+                from_token_id: tokenOne._id,
+                to_token_id: tokenTwo._id,
+                amount_in: amount1
+            })
+            console.log(newTransaction)
             try {
                 const receipt = await swapLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount: amount1 })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-                if (confirmedReceipt?.status === 1) {
-                    setAmount1("")
-                    setAmount2("")
+                if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                    updateTokenTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            amount_out: amount2,
+                            price: (reserve1 / reserve2).toString(),
+                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                            receipt_hash: receipt.hash,
+                            status: 'Completed'
+                        }
+                    })
                 } else {
-                    console.error("Transaction error:", confirmedReceipt);
+                    if (newTransaction?._id) {
+                        updateTokenTransaction({
+                            id: newTransaction._id,
+                            data: {
+                                status: 'Failed'
+                            }
+                        })
+                        console.error("Transaction error:", confirmedReceipt);
+                    }
                 }
                 console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
             }
         }
-    }, [provider, signer, currentPool, address, tokenOne, amount1, tokenTwo, amount2])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [provider, signer, currentPool, address, tokenOne, amount1, tokenTwo, amount2, reserve1, reserve2])
 
     return (
         <>

@@ -3,14 +3,14 @@ import { useCallback, useEffect, useState } from "react"
 import { useAccount } from "wagmi"
 import { formatEther } from "ethers"
 import { useWeb3 } from "@/hooks/useWeb3"
+import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
+import { skipToken } from "@reduxjs/toolkit/query"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import TradeItem from "@/components/exchange/TradeItem"
 import { swapLiquidityPool } from "@/services/liquiditypool/swapLiquidityPool"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { ReservePool, Token } from "@/lib/type"
-import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
-import { skipToken } from "@reduxjs/toolkit/query"
 
 export default function SwapBox() {
     const { address } = useAccount()
@@ -87,7 +87,7 @@ export default function SwapBox() {
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
             const { data: newTransaction } = await addTokenTransaction({
-                type: 'Swap',
+                type: 'Swap Token',
                 from_wallet: address,
                 from_token_id: tokenOne._id,
                 to_token_id: tokenTwo._id,

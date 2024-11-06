@@ -114,6 +114,21 @@ export type LiquidityTransaction = {
     status?: string;
 }
 
-
+export type USDTransaction = {
+    _id?: string;
+    type: string;
+    method?: string;
+    wallet: Address;
+    amount: string;
+    order_id: string;
+    payer_email: string;
+    gas_fee: string;
+    netwok_fee: string;
+    network_fee?: string;
+    platform_fee?: string;
+    receipt_hash?: string;
+    status?: string;
+    notes?: string;
+}
 
 export type Children = React.ReactNode
