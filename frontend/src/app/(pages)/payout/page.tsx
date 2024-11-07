@@ -1,8 +1,7 @@
 'use client'
 import { useState, useRef, useCallback } from "react"
 import { useAccount } from 'wagmi';
-import axios from 'axios';
-import { useRouter } from "next/navigation"
+import { useAddPayoutMutation } from '@/redux/features/pay/paySlice'
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import AddressItem from "@/components/exchange/AddressItem";
@@ -21,12 +20,11 @@ const listPrice: Price[] = [
 
 export default function Payout() {
     const { address } = useAccount()
-    const router = useRouter()
     const ref = useRef<HTMLInputElement>(null)
     const [amount, setAmount] = useState<string>('')
     const [isActive, setIsActive] = useState<number | undefined>(undefined)
     const [emailReceiver, setEmailReceiver] = useState<string>("");
-
+    const [addPayout] = useAddPayoutMutation()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
         setAmount(value.replace(',', '.'))
@@ -44,27 +42,26 @@ export default function Payout() {
     }
     const handleWithdraw = useCallback(async () => {
         console.log(amount, emailReceiver)
-        if (parseFloat(amount) > 0) {
+        if (address && parseFloat(amount) > 0) {
             try {
-                const response = await axios.post(
-                    "http://localhost:8000/payment/paypal/payout",
-                    { address, value: amount, email: emailReceiver }, {
-                    timeout: 100000,
+                const { data: response } = await addPayout({
+                    address,
+                    value: amount,
+                    email: emailReceiver
                 })
-                if (response.status === 200) {
+                if (response?._id) {
                     setIsActive(undefined)
                     setAmount("")
                     setEmailReceiver("")
                     alert('success withdraw')
                 }
-
             } catch (error) {
                 console.error(error)
             } finally {
-                router.push('/success')
+                alert("withdraw pending...")
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [address, amount, emailReceiver])
     return (
         <div className=" flex flex-col justify-start items-center pt-[10vw]">

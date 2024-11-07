@@ -1,7 +1,14 @@
 'use client'
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Token, TokenBalancesType, Pool, ReservePool, NFT, Address, Collection, CollectionItem, GetCollection, LiquidBalancesType, TokenTransaction, LiquidityTransaction } from "@/lib/type";
+import {
+    Token, TokenBalancesType,
+    Pool, ReservePool,
+    NFT, Address,
+    Collection, CollectionItem,
+    GetCollection, LiquidBalancesType,
+    TokenTransaction, LiquidityTransaction
+} from "@/lib/type";
 
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
@@ -33,7 +40,8 @@ export const apiSlice = createApi({
         }),
 
 
-//Mutations
+
+        //Mutations
         addTokenTransaction: builder.mutation<TokenTransaction, TokenTransaction>({
             query: (data) => ({
                 url: '/addtransaction/token',
@@ -63,6 +71,9 @@ export const apiSlice = createApi({
                 body: data
             })
         }),
+
+
+        
     })
 })
 

@@ -460,3 +460,4 @@ class WalletController {
 }
 
 module.exports = new WalletController();
+module.exports.wallet = wallet;

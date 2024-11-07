@@ -1,6 +1,8 @@
 const axios = require("axios");
 async function getOrderId(accessToken, address, value) {
   try {
+    const timestamp = new Date().getTime();
+    const invoiceId = `${address}-${timestamp}`;
     const response = await axios({
       url: "https://api.sandbox.paypal.com/v2/checkout/orders",
       method: "post",
@@ -20,6 +22,7 @@ async function getOrderId(accessToken, address, value) {
               },
             },
             custom_id: `${address}`,
+            invoice_id: invoiceId,
             items: [
               {
                 name: "USD Token",

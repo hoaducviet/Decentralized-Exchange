@@ -30,6 +30,16 @@ export type Balance = {
     decimals: number;
 }
 
+export type OrderIdPay = {
+    address: Address;
+    value: string;
+}
+export type Payout = {
+    address: Address;
+    value: string;
+    email: string;
+}
+
 export type TokenBalancesType = {
     info: Token;
     balance: Balance | undefined;
@@ -117,13 +127,15 @@ export type LiquidityTransaction = {
 export type USDTransaction = {
     _id?: string;
     type: string;
-    method?: string;
+    method: string;
     wallet: Address;
     amount: string;
-    order_id: string;
+    currency: string;
+    order_id?: string;
+    invoice_id?: string;
     payer_email: string;
-    gas_fee: string;
-    netwok_fee: string;
+    payee_email?: string;
+    gas_fee?: string;
     network_fee?: string;
     platform_fee?: string;
     receipt_hash?: string;

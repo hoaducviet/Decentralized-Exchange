@@ -1,6 +1,7 @@
 'use client'
 import { PayPalButtons, PayPalScriptProvider, PayPalButtonsComponentProps, ReactPayPalScriptOptions } from '@paypal/react-paypal-js';
-
+import { useAddPaymentMutation } from '@/redux/features/pay/paySlice';
+import { Address } from '@/lib/type';
 const initialOptions: ReactPayPalScriptOptions = {
     clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
     currency: "USD",
@@ -18,6 +19,7 @@ interface Props {
     orderId: string;
 }
 export default function PaypalButton({ orderId }: Props) {
+    const [addPayment] = useAddPaymentMutation()
     const createOrder: PayPalButtonsComponentProps["createOrder"] = async () => {
         try {
             if (orderId) {
@@ -33,10 +35,19 @@ export default function PaypalButton({ orderId }: Props) {
 
     const onApprove: PayPalButtonsComponentProps["onApprove"] = async (data, actions) => {
         const details = await actions.order?.capture();
-        console.log('Transaction completed by ' + details?.payer?.name?.given_name);
         alert("Transaction completed by ")
-        window.location.assign("/success");
+        const response = await addPayment({
+            wallet: details?.purchase_units?.[0].custom_id as Address,
+            amount: details?.purchase_units?.[0]?.amount?.value,
+            currency: details?.purchase_units?.[0]?.amount?.currency_code,
+            order_id: details?.id,
+            invoice_id: details?.purchase_units?.[0].invoice_id,
+            payer_email: details?.payer?.email_address,
+            payee_email: details?.purchase_units?.[0]?.payee?.email_address,
 
+        })
+
+        console.log(response)
         // Bạn có thể xử lý thông tin thanh toán ở đây
     };
 

@@ -1,16 +1,15 @@
 'use client'
 import { useState, useRef, useCallback } from "react"
 import { useAccount } from 'wagmi';
-import axios from 'axios';
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { useCreateOrderIdPayMutation } from "@/redux/features/pay/paySlice";
 import Image from 'next/image'
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import PaypalButton from '@/components/payment/PaypalButton'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
 import { DialogDescription } from "@radix-ui/react-dialog";
-
 type Price = {
     name: string;
     value: string;
@@ -30,6 +29,7 @@ export default function Payment() {
     const [orderId, setOrderId] = useState<string>('')
     const [qrCode, setQrCode] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(true)
+    const [createOrderIdPay] = useCreateOrderIdPayMutation()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
@@ -47,32 +47,28 @@ export default function Payment() {
         setAmount(item.value)
     }
     const handleDeposit = useCallback(async () => {
-        console.log(amount)
-        console.log("tesst1")
-        if (parseFloat(amount) > 0) {
+        if (address && parseFloat(amount) > 0) {
             try {
                 setLoading(true)
-                const response = await axios.post(
-                    "http://localhost:8000/payment/paypal/orderid",
-                    { address, value: amount }, {
-                    timeout: 300000,
+                const { data: response } = await createOrderIdPay({
+                    address,
+                    value: amount
                 })
-                if (response.status === 200) {
-                    setOrderId(response.data.id)
-                    setQrCode(response.data.url)
+                console.log(response)
+                if (response?.id && response?.url) {
+                    setOrderId(response.id)
+                    setQrCode(response.url)
                     setOpen(true)
-                    console.log(response)
                 }
-
             } catch (error) {
                 console.error(error)
             } finally {
                 setLoading(false)
             }
-
         } else {
             setOpen(false)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [amount, address])
 
     return (
@@ -96,7 +92,6 @@ export default function Payment() {
                             />
                             {amount.length === 0 ? <p>0</p> : <></>}
                         </div>
-
                     </CardContent>
                     <CardFooter className="flex flex-row justify-center items-center">
                         {listPrice.map((item, index) => {
@@ -151,7 +146,7 @@ export default function Payment() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='bg-blue-300 '>
+                                            <div className='bg-transparent flex flex-col justify-end'>
                                                 <PaypalButton orderId={orderId} />
                                             </div>
                                         </div>
