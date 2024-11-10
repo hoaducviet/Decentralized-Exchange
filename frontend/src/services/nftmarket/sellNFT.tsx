@@ -13,7 +13,6 @@ interface Props {
 
 export const sellNFT = async ({ provider, signer, address, nft, collection, amount }: Props) => {
     const contract = await loadNFTCollectionContract({ provider: signer, address: collection.address });
-
     const value = parseEther(amount)
 
     try {
@@ -22,7 +21,6 @@ export const sellNFT = async ({ provider, signer, address, nft, collection, amou
             nonce: nonce,
         })
         await receipt.wait()
-        console.log(receipt)
         return receipt
     } catch {
         throw new Error("Failed to add buy NFT");

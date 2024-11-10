@@ -143,4 +143,20 @@ export type USDTransaction = {
     notes?: string;
 }
 
+export type NFTTransaction = {
+    _id?: string;
+    type: string;
+    from_wallet: Address;
+    to_wallet?: Address;
+    collection_id: string;
+    nft_id: string;
+    price?: string;
+    currency?: string;
+    gas_fee?: string;
+    network_fee?: string;
+    platform_fee?: string;
+    receipt_hash?: string;
+    status?: string;
+}
+
 export type Children = React.ReactNode

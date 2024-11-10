@@ -63,7 +63,7 @@ class TransactionController {
         !newTransaction.type ||
         !newTransaction.wallet ||
         !newTransaction.token1_id ||
-        !newTransaction.token2_id 
+        !newTransaction.token2_id
       ) {
         return res.status(400).json({
           message: "Missing fields.",
@@ -107,7 +107,53 @@ class TransactionController {
     }
   }
 
-  async addNftTransaction(req, res) {}
+  async addNftTransaction(req, res) {
+    try {
+      const newTransaction = req.body;
+      if (
+        !newTransaction.type ||
+        !newTransaction.from_wallet ||
+        !newTransaction.collection_id ||
+        !newTransaction.nft_id
+      ) {
+        return res.status(400).json({
+          message: "Missing fields.",
+        });
+      }
+
+      const result = await new NftTransaction(newTransaction).save();
+
+      return res.status(200).json(mongooseToObject(result));
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
+
+  async updateNftTransaction(req, res) {
+    try {
+      const { id } = req.params;
+      const updateData = req.body;
+      console.log(id);
+      const result = await NftTransaction.findByIdAndUpdate(id, updateData, {
+        new: true,
+        runValidators: true,
+      });
+
+      console.log(result);
+      if (!result) {
+        return res.status(404).json({ message: "Transaction not found" });
+      }
+      return res.status(200).json(mongooseToObject(result));
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
 
   async getTokenTransactionAll(req, res) {}
 

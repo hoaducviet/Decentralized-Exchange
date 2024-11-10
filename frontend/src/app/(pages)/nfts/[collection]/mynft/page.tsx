@@ -1,11 +1,10 @@
 'use client'
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useAccount } from "wagmi";
+import { formatEther } from "ethers"
 import { ethers } from 'ethers';
 import { useWeb3 } from "@/hooks/useWeb3";
-import { resetNFTs } from "@/redux/features/collection/collectionSlice";
-import { useGetCollectionQuery } from "@/redux/features/api/apiSlice";
+import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetCollectionQuery } from "@/redux/features/api/apiSlice";
 import { useCollection } from "@/hooks/useCollection"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -32,7 +31,6 @@ const options = [
 ]
 
 export default function MyNFT() {
-    const dispatch = useDispatch()
     const { currentCollection } = useCollection()
     const [nft, setNft] = useState<NFT | undefined>(undefined)
     const web3 = useWeb3()
@@ -41,6 +39,8 @@ export default function MyNFT() {
     const { address } = useAccount()
     const [amount, setAmount] = useState<string>("")
     const [to, setTo] = useState<string>("")
+    const [addNftTransaction] = useAddNftTransactionMutation()
+    const [updateNftTransaction] = useUpdateNftTransactionMutation()
     const { data, isFetching } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
     const mylist = data?.mylist
     const handleChangeAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,39 +53,100 @@ export default function MyNFT() {
 
     const handleWithdraw = useCallback(async () => {
         if (!!provider && !!signer && !!address && !!nft && !!currentCollection) {
+            const { data: newTransaction } = await addNftTransaction({
+                type: 'Withdraw NFT',
+                from_wallet: address,
+                collection_id: currentCollection._id,
+                nft_id: nft.id.toString(),
+                price: nft.formatted,
+            })
             try {
                 const receipt = await withdrawNFT({ provider, signer, address, nft, collection: currentCollection })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-                if (confirmedReceipt?.status === 1) {
-                    dispatch(resetNFTs())
+                if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                    updateNftTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                            receipt_hash: confirmedReceipt.hash,
+                            status: 'Completed'
+                        }
+                    })
                     setNft(undefined)
                 } else {
-                    console.error("Transaction error:", confirmedReceipt);
+                    if (newTransaction?._id) {
+                        updateNftTransaction({
+                            id: newTransaction._id,
+                            data: {
+                                status: 'Failed'
+                            }
+                        })
+                    }
                 }
                 console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
+                if (newTransaction?._id) {
+                    updateNftTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            status: 'Failed'
+                        }
+                    })
+                }
             }
         }
-    }, [provider, signer, address, nft, currentCollection, dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [provider, signer, address, nft, currentCollection])
 
     const handleSell = useCallback(async () => {
         if (!!provider && !!signer && !!address && !!nft && !!currentCollection && parseFloat(amount) > 0) {
+            const { data: newTransaction } = await addNftTransaction({
+                type: 'Listed NFT',
+                from_wallet: address,
+                collection_id: currentCollection._id,
+                nft_id: nft.id.toString(),
+                price: amount,
+            })
+
             try {
                 const receipt = await sellNFT({ provider, signer, address, nft, collection: currentCollection, amount })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-                if (confirmedReceipt?.status === 1) {
-                    dispatch(resetNFTs())
+                if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                    updateNftTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                            receipt_hash: confirmedReceipt.hash,
+                            status: 'Completed'
+                        }
+                    })
                     setNft(undefined)
                 } else {
-                    console.error("Transaction error:", confirmedReceipt);
+                    if (newTransaction?._id) {
+                        updateNftTransaction({
+                            id: newTransaction._id,
+                            data: {
+                                status: 'Failed'
+                            }
+                        })
+                    }
                 }
                 console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
+                if (newTransaction?._id) {
+                    updateNftTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            status: 'Failed'
+                        }
+                    })
+                }
             }
         }
-    }, [provider, signer, address, nft, currentCollection, amount, dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [provider, signer, address, nft, currentCollection, amount])
 
     const handleTransfer = useCallback(async () => {
         if (!ethers.isAddress(to)) {
@@ -93,21 +154,52 @@ export default function MyNFT() {
             return
         }
         if (!!provider && !!signer && !!address && !!nft && !!currentCollection && !!to) {
+            const { data: newTransaction } = await addNftTransaction({
+                type: 'Transfer NFT',
+                from_wallet: address,
+                to_wallet: to as Address,
+                collection_id: currentCollection._id,
+                nft_id: nft.id.toString(),
+                price: nft.formatted,
+            })
             try {
                 const receipt = await transferNFT({ provider, signer, address, nft, collection: currentCollection, to: to as Address })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-                if (confirmedReceipt?.status === 1) {
-                    dispatch(resetNFTs())
+                if (confirmedReceipt?.status === 1 && newTransaction?._id) {
+                    updateNftTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
+                            receipt_hash: confirmedReceipt.hash,
+                            status: 'Completed'
+                        }
+                    })
                     setNft(undefined)
                 } else {
-                    console.error("Transaction error:", confirmedReceipt);
+                    if (newTransaction?._id) {
+                        updateNftTransaction({
+                            id: newTransaction._id,
+                            data: {
+                                status: 'Failed'
+                            }
+                        })
+                    }
                 }
                 console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
+                if (newTransaction?._id) {
+                    updateNftTransaction({
+                        id: newTransaction._id,
+                        data: {
+                            status: 'Failed'
+                        }
+                    })
+                }
             }
         }
-    }, [provider, signer, address, nft, currentCollection, to, dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [provider, signer, address, nft, currentCollection, to])
 
 
     return (

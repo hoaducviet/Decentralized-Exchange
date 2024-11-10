@@ -51,12 +51,12 @@ contract NFTCollection is ERC721URIStorage, Ownable {
         require(msg.value > 0, "Amount must be greater than zero");
         NFTInfo storage nft = nfts[_tokenId];
         require(nft.isListed, "NFT not listed");
-        require(msg.value >= nft.price, "Amount not enough");
-        require(_ownerOf(nft.id) != msg.sender, "You are owner");
         require(
             _isAuthorized(_ownerOf(nft.id), address(this), nft.id),
             "The token is not approved"
         );
+        require(_ownerOf(nft.id) != msg.sender, "You are owner");
+        require(msg.value >= nft.price, "Amount not enough");
 
         payable(ownerOf(nft.id)).transfer(msg.value);
         _safeTransfer(ownerOf(nft.id), msg.sender, nft.id);
@@ -75,6 +75,7 @@ contract NFTCollection is ERC721URIStorage, Ownable {
 
         _safeTransfer(_ownerOf(_tokenId), _to, _tokenId);
         nfts[_tokenId].owner = _to;
+        nfts[_tokenId].isListed = false;
 
         emit NFTTransfer(_to, _tokenId);
     }

@@ -11,25 +11,32 @@ const NftTransaction = new Schema(
       enum: ["Buy NFT", "Listed NFT", "Withdraw NFT", "Transfer NFT"],
       required: true,
     },
-    wallet: { type: String, required: true, minLength: 42, maxLength: 42 },
-    collection_id: { type: Schema.Types.ObjectId, required: true, ref: "collection" },
-    nft_id: { type: Schema.Types.Decimal128, required: true },
-    price: { type: String, required: true },
-    currency: { type: String, required: true, default: "ETH" },
-    gas_fee: { type: String, required: true },
-    network_fee: { type: String, required: true },
-    platform_fee: { type: String, required: true },
+    from_wallet: { type: String, required: true, minLength: 42, maxLength: 42 },
+    to_wallet: { type: String, required: false, minLength: 42, maxLength: 42 },
+    collection_id: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "collection",
+    },
+    nft_id: { type: String, required: true },
+    price: { type: String, required: false },
+    currency: { type: String, required: false, default: "ETH" },
+    gas_fee: { type: String, required: false, default: "" },
+    network_fee: { type: String, required: false, default: "" },
+    platform_fee: { type: String, required: false, default: "0.3%" },
     receipt_hash: {
       type: String,
       required: function () {
         return this.status === "Completed";
       },
       maxLength: 255,
+      default: ""
     },
     status: {
       type: String,
       enum: ["Pending", "Completed", "Failed"],
-      required: true,
+      required: false,
+      default: "Pending",
     },
   },
   {

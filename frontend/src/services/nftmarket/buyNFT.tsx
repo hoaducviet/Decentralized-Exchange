@@ -17,7 +17,6 @@ export const buyNFT = async ({ provider, signer, address, nft, collection }: Pro
     if (balance < amount) {
         throw new Error("Insufficient balance ether");
     }
-
     try {
         const nonce = await provider.getTransactionCount(address, 'latest');
         const receipt = await contract.buyNFT(nft.id, {
@@ -26,7 +25,8 @@ export const buyNFT = async ({ provider, signer, address, nft, collection }: Pro
         })
         await receipt.wait()
         return receipt
-    } catch {
+    } catch(error) {
+        console.error("Transaction Error:", error);
         throw new Error("Failed to add buy NFT");
     }
 }

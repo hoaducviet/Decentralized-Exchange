@@ -7,7 +7,8 @@ import {
     NFT, Address,
     Collection, CollectionItem,
     GetCollection, LiquidBalancesType,
-    TokenTransaction, LiquidityTransaction
+    TokenTransaction, LiquidityTransaction,
+    NFTTransaction
 } from "@/lib/type";
 
 export const apiSlice = createApi({
@@ -72,6 +73,21 @@ export const apiSlice = createApi({
             })
         }),
 
+        addNftTransaction: builder.mutation<NFTTransaction, NFTTransaction>({
+            query: (data) => ({
+                url: '/addtransaction/nft',
+                method: 'POST',
+                body: data
+            })
+        }),
+        updateNftTransaction: builder.mutation<NFTTransaction, { id: string, data: Partial<NFTTransaction> }>({
+            query: ({ id, data }) => ({
+                url: `/updatetransaction/nft/${id}`,
+                method: 'PATCH',
+                body: data
+            })
+        }),
+
 
         
     })
@@ -91,4 +107,6 @@ export const {
     useUpdateTokenTransactionMutation,
     useAddLiquidityTransactionMutation,
     useUpdateLiquidityTransactionMutation,
+    useAddNftTransactionMutation,
+    useUpdateNftTransactionMutation,
 } = apiSlice

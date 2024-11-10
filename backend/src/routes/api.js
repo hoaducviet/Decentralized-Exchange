@@ -46,7 +46,12 @@ router.patch(
   TransactionController.updateLiquidityTransaction
 );
 
-router.post("/addnfttransaction", TransactionController.addNftTransaction);
+router.post("/addtransaction/nft", TransactionController.addNftTransaction);
+router.patch(
+  "/updatetransaction/nft/:id",
+  TransactionController.updateNftTransaction
+);
+
 router.get("/tokentransactions", TransactionController.getTokenTransactionAll);
 router.get(
   "/transactionallbyaddress",
