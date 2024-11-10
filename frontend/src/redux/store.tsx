@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import counterReducer from './features/counter/counterSlice';
 import collectionReducer from './features/collection/collectionSlice';
 import depositReducer from './features/deposit/depositSlice';
 import sidebarReducer from './features/sidebar/sidebarSlice';
@@ -9,21 +8,17 @@ import { paySlice } from '@/redux/features/pay/paySlice';
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer,
         collection: collectionReducer,
         deposit: depositReducer,
         sidebar: sidebarReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
         [paySlice.reducerPath]: paySlice.reducer,
-
     },
 
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
             .concat(apiSlice.middleware)
             .concat(paySlice.middleware)
-
-
 })
 
 setupListeners(store.dispatch)

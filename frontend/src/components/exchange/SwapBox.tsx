@@ -91,7 +91,7 @@ export default function SwapBox() {
                 from_wallet: address,
                 from_token_id: tokenOne._id,
                 to_token_id: tokenTwo._id,
-                amount_in: amount1,
+                amount_in: amount1.slice(0, amount1.indexOf('.') + 7),
             })
             try {
                 const receipt = await swapLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount: amount1 })
@@ -100,7 +100,7 @@ export default function SwapBox() {
                     updateTokenTransaction({
                         id: newTransaction._id,
                         data: {
-                            amount_out: amount2,
+                            amount_out: amount2.slice(0, amount2.indexOf('.') + 7),
                             price: (reserve1 / reserve2).toString(),
                             gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
                             receipt_hash: confirmedReceipt.hash,

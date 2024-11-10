@@ -8,7 +8,7 @@ import {
     Collection, CollectionItem,
     GetCollection, LiquidBalancesType,
     TokenTransaction, LiquidityTransaction,
-    NFTTransaction
+    NFTTransaction, ActivesType
 } from "@/lib/type";
 
 export const apiSlice = createApi({
@@ -39,7 +39,9 @@ export const apiSlice = createApi({
         getReservePool: builder.query<ReservePool[], void>({
             query: () => '/reservepools'
         }),
-
+        getActives: builder.query<ActivesType[], Address>({
+            query: (address) => `/actives/${address}`
+        }),
 
 
         //Mutations
@@ -103,6 +105,7 @@ export const {
     useGetCollectionQuery,
     useGetNFTBalancesQuery,
     useGetReservePoolQuery,
+    useGetActivesQuery,
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,
     useAddLiquidityTransactionMutation,

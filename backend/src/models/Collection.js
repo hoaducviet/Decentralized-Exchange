@@ -13,7 +13,7 @@ const Collection = new Schema(
     address: { type: String, required: true, minLength: 42, maxLength: 42 },
     owner: { type: String, required: false, minLength: 42, maxLength: 42 },
     total_supply: { type: String, required: false, default: 0 },
-    description: { type: String, required: false, maxLength: 255 },
+    description: { type: String, required: false, maxLength: 255, default: "" },
     volume: { type: String, required: false, default: 0 },
   },
   {

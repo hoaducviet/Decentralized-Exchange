@@ -58,4 +58,7 @@ router.get(
   TransactionController.getActiveTransactionByAddress
 );
 
+//Active
+router.get("/actives/:address", TransactionController.getActiveTransactionByAddress);
+
 module.exports = router;

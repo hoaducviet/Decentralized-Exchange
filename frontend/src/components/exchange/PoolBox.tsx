@@ -106,6 +106,8 @@ export default function PoolBox({ tokens, tokenBalances, reservePools }: Props) 
                     updateLiquidityTransaction({
                         id: newTransaction._id,
                         data: {
+                            wallet: address,
+                            pool_id: currentPool.info._id,
                             gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
                             receipt_hash: confirmedReceipt.hash,
                             status: 'Completed'

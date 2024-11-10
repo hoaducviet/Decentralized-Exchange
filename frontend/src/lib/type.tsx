@@ -159,4 +159,80 @@ export type NFTTransaction = {
     status?: string;
 }
 
+export type NFTActiveTransaction = {
+    _id?: string;
+    type: string;
+    from_wallet: Address;
+    to_wallet?: Address;
+    collection_id: Collection;
+    nft_id: string;
+    price?: string;
+    currency?: string;
+    gas_fee?: string;
+    network_fee?: string;
+    platform_fee?: string;
+    receipt_hash?: string;
+    status?: string;
+    createdAt: string;
+}
+
+
+export type TokenActiveTransaction = {
+    _id?: string;
+    type: string;
+    from_wallet: Address;
+    to_wallet?: Address;
+    from_token_id: Token;
+    to_token_id?: Token;
+    amount_in: string;
+    amount_out?: string;
+    price?: string;
+    gas_fee?: string;
+    network_fee?: string;
+    platform_fee?: string;
+    receipt_hash?: string;
+    status?: string;
+    createdAt: string;
+}
+
+export type LiquidityActiveTransaction = {
+    _id?: string;
+    type: string;
+    wallet: Address;
+    pool_id: Pool;
+    token1_id: Token;
+    token2_id: Token;
+    amount_token1?: string;
+    amount_token2?: string;
+    amount_lpt?: string;
+    gas_fee?: string;
+    network_fee?: string;
+    platform_fee?: string;
+    receipt_hash?: string;
+    status?: string;
+    createdAt: string;
+}
+
+export type USDActiveTransaction = {
+    _id?: string;
+    type: string;
+    method: string;
+    wallet: Address;
+    amount: string;
+    currency: string;
+    order_id?: string;
+    invoice_id?: string;
+    payer_email: string;
+    payee_email?: string;
+    gas_fee?: string;
+    network_fee?: string;
+    platform_fee?: string;
+    receipt_hash?: string;
+    status?: string;
+    notes?: string;
+    createdAt: string;
+
+}
+export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction;
+
 export type Children = React.ReactNode

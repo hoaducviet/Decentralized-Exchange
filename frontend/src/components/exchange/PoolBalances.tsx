@@ -105,10 +105,12 @@ export default function PoolBalances({ liquidBalances }: Props) {
                                         <div className="realtive flex">
                                             <AvatarImage src={liquidityBalance.info.token1?.img}
                                                 className="absolute w-full h-full object-cover"
-                                                style={{ clipPath: "inset(0 50% 0 0)" }} />
+                                                style={{ clipPath: "inset(0 50% 0 0)" }}
+                                                alt="Token1" />
                                             <AvatarImage src={liquidityBalance.info.token2?.img}
                                                 className="absolute w-full h-full object-cover"
-                                                style={{ clipPath: "inset(0 0 0 50%)" }} />
+                                                style={{ clipPath: "inset(0 0 0 50%)" }}
+                                                alt="Token2" />
                                         </div>
                                         <AvatarFallback>{liquidityBalance.info.name}</AvatarFallback>
                                     </Avatar>
