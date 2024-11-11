@@ -282,6 +282,61 @@ class TransactionController {
         .json({ message: "Internal server error get all transaction" });
     }
   }
+
+  async getPoolTransactionByAddress(req, res) {
+    try {
+      const { address } = req.params;
+      if (!ethers.isAddress(address)) {
+        return res.status(400).json({
+          message: "Invalid address.",
+        });
+      }
+      const pool = await Pool.findOne({ address: address }).lean();
+
+      console.log(pool._id.toString());
+      const liquidityTransactions = await LiquidityTransaction.find({
+        pool_id: pool._id.toString(),
+      })
+        .populate({
+          path: "pool_id",
+          select: "_id name address address_lpt total_liquidity volume",
+          model: "pool",
+          populate: [
+            {
+              path: "token1_id",
+              select: "_id name symbol img decimals address owner volume",
+              model: "token",
+            },
+            {
+              path: "token2_id",
+              select: "_id name symbol img decimals address owner volume",
+              model: "token",
+            },
+          ],
+        })
+        .populate({
+          path: "token1_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .populate({
+          path: "token2_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .exec();
+
+      const results = [...liquidityTransactions];
+
+      results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      return res.status(200).json(mutipleMongooseToObject(results));
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
 }
 
 module.exports = new TransactionController();

@@ -67,5 +67,9 @@ router.get(
   "/transactions/tokens",
   TransactionController.getTokenTransactionAll
 );
+router.get(
+  "/transactions/pools/:address",
+  TransactionController.getPoolTransactionByAddress
+);
 
 module.exports = router;

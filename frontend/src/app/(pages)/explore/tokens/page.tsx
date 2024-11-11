@@ -3,42 +3,47 @@ import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+const options = ['#', 'Token', 'Price', 'Volume']
 
 export default function Tokens() {
     const { data: tokens } = useGetTokensQuery()
 
     return (
-        <div className="flex flex-col w-full h-[3vw]">
-            <Button variant="secondary" className="flex flex-row justify-between items-center text-md font-semibold rounded-none w-full h-full">
-                <p className="w-[10%]">#</p>
-                <p className="flex flex-row justify-start items-center w-[30%]">Token name</p>
-                <p className="w-[20%]">Price</p>
-                <p className="w-[15%]">1 day</p>
-                <p className="w-[15%]">Volume</p>
-                <p className="w-[20%]"></p>
-            </Button>
-            <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full">
+            <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center text-md font-semibold rounded-none h-[2vw] px-3">
+                <div className="w-[10%] flex flex-row justify-start items-center">{options[0]}</div>
+                <div className="w-[30%] flex flex-row justify-start items-center">{options[1]}</div>
+                <div className="w-[15%] flex flex-row justify-start items-center">{options[2]}</div>
+                <div className="w-[15%] flex flex-row justify-start items-center">{options[3]}</div>
+                <div className="w-[30%] flex flex-row justify-end items-center"></div>
+            </div>
+            <div className="flex flex-col max-h-[50vw] overflow-x-auto">
                 {tokens && tokens.map((token, index) => {
+                    if (token.symbol === 'USD') return <></>
                     return (
-                        <div key={index} className="w-full h-[4vw]">
+                        <>
                             <Link href={`/explore/tokens/${token.symbol}`}>
-                                <Button variant="ghost" className="flex flex-row justify-between items-center rounded-none w-full h-full text-lg font-semibold">
-                                    <p className="font-medium w-[10%]">{index + 1}</p>
-                                    <div className=" flex flex-row justify-start items-center space-x-[0.3vw] w-[30%]">
-                                        <Image src={token.img} alt={token.name} width={36} height={36} />
+                                <div key={index} className="flex flex-row cursor-pointer hover:bg-secondary/80 text-md font-semibold items-center h-[3.5vw] w-full px-3" >
+                                    <p className="w-[10%] flex flex-row justify-start items-center">{index + 1}</p>
+                                    <div className="w-[30%] flex flex-row justify-start items-center space-x-[0.3vw]">
+                                        <Avatar className="w-[1.5vw] h-[1.5vw]">
+                                            <AvatarImage src={token.img} />
+                                            <AvatarFallback>T</AvatarFallback>
+                                        </Avatar>
                                         <p>{token.name}</p>
                                         <p className="opacity-60">{token.symbol}</p>
                                     </div>
-                                    <p className="opacity-70 w-[20%]">$111</p>
-                                    <p className="opacity-70 w-[15%]">1.5%</p>
-                                    <p className="opacity-70 w-[15%]">$1.5B</p>
-                                    <p className="w-[20%]"></p>
-                                </Button>
+                                    <p className="w-[15%] justify-start items-center">$111</p>
+                                    <p className="w-[15%] justify-start items-center">{token.volume}</p>
+                                    <p className="w-[30%] justify-end items-center"></p>
+                                </div>
                             </Link>
-                        </div>
+                        </>
                     )
                 })}
             </div>
-        </div>
+        </div >
     )
 }

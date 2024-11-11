@@ -10,7 +10,7 @@ export default function Transactions() {
     return (
         <div className="flex flex-col">
             {!isFetching && transactions?.length && <>
-                <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center h-[3vw] px-3">
+                <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center text-md font-semibold h-[2vw] px-3">
                     <div className="w-[15%] flex flex-col justify-start">{options[0]}</div>
                     <div className="w-[25%] flex flex-row justify-start">{options[1]}</div>
                     <div className="w-[20%] flex flex-row justify-start">{options[2]}</div>

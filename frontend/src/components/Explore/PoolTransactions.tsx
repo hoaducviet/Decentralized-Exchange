@@ -1,49 +1,39 @@
 'use client'
+import { LiquidityActiveTransaction, Pool } from "@/lib/type";
+import { calculateElapsedTime } from "@/utils/calculateElapsedTime";
 
-const listHeaders = [
-    { name: "Time" },
-    { name: "Type" },
-    { name: "$ETH" },
-    { name: "For" },
-    { name: "USD" },
-    { name: "Wallet" },
-]
 
-type transaction = {
-    time: string,
-    type: string,
-    amount: string,
-    to: string,
-    price: string,
-    wallet: string
-}
-
+const options = ["Time", "Type", "", "", "LPT", "Price", "Wallet"]
 interface Props {
-    transactions: transaction[];
+    transactions: LiquidityActiveTransaction[];
 }
 export default function PoolTransactions({ transactions }: Props) {
+    const pool = transactions[0]?.pool_id as Pool;
 
     return (
-        <div className="flex flex-col w-full">
-            <div className="bg-purple-50 flex flex-row w-full space-x-[2%] pl-[5vw] h-[3vw]">
-                {listHeaders.map((item, index) => {
-                    return (
-                        <div key={index} className="flex flex-col justify-center items-start text-md font-medium w-[15%]">
-                            {item.name}
-                        </div>
-                    )
-                })}
+        <div className="flex flex-col text-md font-semibold">
+            <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center h-[3vw] px-3">
+                <div className="w-[15%] flex flex-row justify-start">{options[0]}</div>
+                <div className="w-[15%] flex flex-row justify-start">{options[1]}</div>
+                <div className="w-[10%] flex flex-row justify-end">{pool.token1_id?.symbol}</div>
+                <div className="w-[15%] flex flex-row justify-end">{pool.token2_id?.symbol}</div>
+                <div className="w-[15%] flex flex-row justify-end">{options[4]}</div>
+                <div className="w-[15%] flex flex-row justify-end">{options[5]}</div>
+                <div className="w-[15%] flex flex-row justify-end">{options[6]}</div>
             </div>
             <div className="flex flex-col w-full max-h-[40vw] overflow-x-auto">
-                {transactions.map((transaction, index) => {
+                {transactions.map((item, index) => {
                     return (
-                        <div key={index} className="flex flex-row text-md font-medium space-x-[2%] hover:bg-secondary/80 w-full h-[4vw] pl-[5vw]">
-                            <div className="flex flex-col justify-center items-start  w-[15%]">{transaction.time}</div>
-                            <div className="flex flex-col justify-center items-start  w-[15%]">{transaction.type}</div>
-                            <div className="flex flex-col justify-center items-start  w-[15%]">{transaction.amount}</div>
-                            <div className="flex flex-col justify-center items-start  w-[15%]">{transaction.to}</div>
-                            <div className="flex flex-col justify-center items-start  w-[15%]">{transaction.price}</div>
-                            <div className="flex flex-col justify-center items-start  w-[15%]">{transaction.wallet}</div>
+                        <div key={index} className="cursor-pointer flex flex-row justify-between items-center text-md font-semibold hover:bg-secondary/80 h-[3.5vw] px-3">
+                            <div className="w-[15%] flex flex-row justify-start font-medium">{calculateElapsedTime(item.createdAt)}</div>
+                            <div className="w-[15%] flex flex-row justify-start">
+                                <div>{item.type}</div>
+                            </div>
+                            <div className="w-[10%] flex flex-row justify-end">{item.token1_id.symbol === pool.token1_id?.symbol ? item.amount_token1?.slice(0, item.amount_token1?.indexOf(".") + 7) : item.amount_token2?.slice(0, item.amount_token2?.indexOf(".") + 7)}</div>
+                            <div className="w-[15%] flex flex-row justify-end">{item.token1_id.symbol === pool.token1_id?.symbol ? item.amount_token2?.slice(0, item.amount_token2?.indexOf(".") + 7) : item.amount_token1?.slice(0, item.amount_token1?.indexOf(".") + 7)}</div>
+                            <div className="w-[15%] flex flex-row justify-end">{item.amount_lpt?.slice(0, item.amount_lpt?.indexOf(".") + 7) || "0"}</div>
+                            <div className="w-[15%] flex flex-row justify-end">$ {item.price || "0"}</div>
+                            <div className="w-[15%] flex flex-row justify-end">{item.wallet.slice(0, 6) + "..." + item.wallet.slice(38)}</div>
                         </div>
                     )
                 })}

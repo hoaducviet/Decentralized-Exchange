@@ -17,6 +17,8 @@ export type Pool = {
     name: string;
     address: Address;
     address_lpt: Address;
+    token1_id?: Token;
+    token2_id?: Token;
     token1: Token;
     token2: Token;
     total_liquidity: string;
@@ -117,6 +119,7 @@ export type LiquidityTransaction = {
     amount_token1?: string;
     amount_token2?: string;
     amount_lpt?: string;
+    price?: string;
     gas_fee?: string;
     network_fee?: string;
     platform_fee?: string;
@@ -135,6 +138,7 @@ export type USDTransaction = {
     invoice_id?: string;
     payer_email: string;
     payee_email?: string;
+    price?: string;
     gas_fee?: string;
     network_fee?: string;
     platform_fee?: string;
@@ -205,6 +209,7 @@ export type LiquidityActiveTransaction = {
     amount_token1?: string;
     amount_token2?: string;
     amount_lpt?: string;
+    price: string;
     gas_fee?: string;
     network_fee?: string;
     platform_fee?: string;
