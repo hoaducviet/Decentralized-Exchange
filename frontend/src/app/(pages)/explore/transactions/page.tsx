@@ -1,51 +1,69 @@
 'use client'
-import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
-import Image from "next/image"
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
+import { useGetTokenTransactionAllQuery } from "@/redux/features/api/apiSlice"
+import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+const options = ['Time', 'Type', 'USD', 'Detail', 'Wallet']
 
 export default function Transactions() {
-    const { data: tokens } = useGetTokensQuery()
-
+    const { data: transactions, isFetching } = useGetTokenTransactionAllQuery()
     return (
-        <div>
-            <Table>
-                <TableHeader>
-                    <TableRow className="w-full h-[3vw] bg-secondary/80">
-                        <TableHead className="w-[100px]">Time</TableHead>
-                        <TableHead>Type</TableHead>
-                        <TableHead>USD</TableHead>
-                        <TableHead>WBTC</TableHead>
-                        <TableHead>ETH</TableHead>
-                        <TableHead>Wallet</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {tokens && tokens.map((token, index) => {
-                        return (
-                            <TableRow key={index} className="cursor-pointer w-full h-[4vw] text-lg font-semibold opacity-85">
-                                <TableCell className="font-medium">{index + 1}</TableCell>
-                                <TableCell>
-                                    <div className="flex flex-row items-center space-x-[0.3vw]">
-                                        <Image src={token.img} alt={token.name} width={36} height={36} className="opacity-100" />
-                                        <p>{token.symbol}</p>
+        <div className="flex flex-col">
+            {!isFetching && transactions?.length && <>
+                <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center h-[3vw] px-3">
+                    <div className="w-[15%] flex flex-col justify-start">{options[0]}</div>
+                    <div className="w-[25%] flex flex-row justify-start">{options[1]}</div>
+                    <div className="w-[20%] flex flex-row justify-start">{options[2]}</div>
+                    <div className="w-[25%] flex flex-row justify-start">{options[3]}</div>
+                    <div className="w-[20%] flex flex-row justify-end">{options[4]}</div>
+                </div>
+                <div className="flex flex-col max-h-[50vw] overflow-x-auto text-md font-semibold">
+                    {transactions.map((item, index) => {
+                        const wallet = item.from_wallet.slice(0, 6) + "..." + item.from_wallet.slice(38)
+                        return (<div key={index} className="hover:bg-secondary/80 cursor-pointer flex flex-row justify-between items-center h-[3.5vw] px-3">
+                            <div className="w-[15%] flex flex-col justify-start font-medium">{calculateElapsedTime(item.createdAt)}</div>
+                            <div className="w-[25%] flex flex-row items-center justify-start space-x-[0.3vw]">
+                                <div className="font-medium">{item.type.split(" ")[0]}</div>
+                                <div className="flex flex-row items-center space-x-[0.2vw]">
+                                    <Avatar className="w-[1vw] h-[1vw]">
+                                        <AvatarImage src={item.from_token_id.img} alt="Token" />
+                                        <AvatarFallback>T</AvatarFallback>
+                                    </Avatar>
+                                    <div>{item.from_token_id.symbol}</div>
+                                </div>
+                                {item.to_token_id && <>
+                                    <ArrowRightIcon width={20} height={20} />
+                                    <div className="flex flex-row items-center space-x-[0.2vw]">
+                                        <Avatar className="w-[1vw] h-[1vw]">
+                                            <AvatarImage src={item.to_token_id?.img} alt="Token" />
+                                            <AvatarFallback>T</AvatarFallback>
+                                        </Avatar>
+                                        <div>{item.to_token_id?.symbol}</div>
                                     </div>
-                                </TableCell>
-                                <TableCell>$1000</TableCell>
-                                <TableCell>1.5%</TableCell>
-                                <TableCell>1.5%</TableCell>
-                                <TableCell>0x112...12312</TableCell>
-                            </TableRow>
-                        )
+                                </>}
+                            </div>
+                            <div className="w-[20%] flex flex-row justify-start">$ {item.price?.slice(0, item.price.indexOf(".") + 7)}</div>
+                            <div className="w-[25%] flex flex-row items-center space-x-[0.3vw]">
+                                <div>
+                                    <div className="flex flex-row items-center space-x-[0.2vw]">
+                                        <div className="font-medium">{item.amount_in}</div>
+                                        <div>{item.from_token_id?.symbol}</div>
+                                    </div>
+                                </div>
+                                {item.to_token_id && <>
+                                    <ArrowRightIcon width={20} height={20} />
+                                    <div className="flex flex-row items-center space-x-[0.2vw]">
+                                        <div className="font-medium">{item.amount_out?.slice(0, item.amount_out?.indexOf(".") + 7)}</div>
+                                        <div>{item.to_token_id?.symbol}</div>
+                                    </div>
+                                </>}
+                            </div>
+                            <div className="w-[20%] flex flex-row justify-end opacity-85">{wallet}</div>
+                        </div>)
                     })}
-                </TableBody>
-            </Table>
+                </div>
+            </>
+            }
         </div>
     )
 }

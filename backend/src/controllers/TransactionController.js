@@ -188,7 +188,32 @@ class TransactionController {
     }
   }
 
-  async getTokenTransactionAll(req, res) {}
+  async getTokenTransactionAll(req, res) {
+    try {
+      const tokenTransactions = await TokenTransaction.find()
+        .populate({
+          path: "from_token_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .populate({
+          path: "to_token_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .exec();
+
+      tokenTransactions.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      return res.status(200).json(mutipleMongooseToObject(tokenTransactions));
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
 
   async getActiveTransactionByAddress(req, res) {
     try {
