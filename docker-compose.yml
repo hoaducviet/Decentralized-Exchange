@@ -9,7 +9,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     environment:
-      - api=http://backend:8000/api/
+      - NEXT_PUBLIC_BACKEND_API=http://backend:8000
 
   nginx:
     networks:
@@ -23,6 +23,19 @@ services:
     depends_on:
       - frontend
   
+  contract:
+    networks:
+      - DEX
+    container_name: dex_contract
+    build: 
+      context: ./contract
+      dockerfile: Dockerfile
+    environment:
+    - PORT=8545
+    ports:
+      - 8545:8545
+
+
   backend:
     networks:
       - DEX
@@ -33,10 +46,12 @@ services:
     environment:
     - PORT=8000
     - MONGODBURI=mongodb://mongo:27017/dex
+    - NETWORK_URL=http://contract:8545
     ports:
       - 8000:8000
     depends_on:
       - mongo
+      
 
     
   mongo:

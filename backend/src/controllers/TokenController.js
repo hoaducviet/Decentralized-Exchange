@@ -43,6 +43,8 @@ class TokenController {
         }
         validToken.push(token);
       }
+
+
       if (errors.length) {
         return res.status(400).json({
           message: "Some token items could not be added",

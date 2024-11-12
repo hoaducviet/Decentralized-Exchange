@@ -1,4 +1,15 @@
-FROM node:16-alpine
+FROM node:18-alpine
+
+ENV PORT=8000
+ENV MONGODBURI=mongodb://localhost:27017/dex
+ENV NETWORK_URL=http://localhost:8545
+ENV PRIVATE_KEY_ADDRESS=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+ENV CLIENT_ID=AVaEIV9iJjClKsxVEw2_4nus4NQ8d4mJIqq_SCDMXVOUA6hXz429CdeYRh382vefxdQrzazmun8ZKXnh
+ENV SECRET_KEY=EDKn4chTZRdooS5uoMmLQs6GjjLWfOYCyfV-mRzoXnwHUtwS8PjxOF7VpKJwdDsyDzweGPjWz-a1ssyc
+ENV ADDRESS_FACTORY_TOKEN=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+ENV ADDRESS_FACTORY_LIQUIDITYPOOL=0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE
+ENV ADDRESS_NFT_MARKET=0x6DcBc91229d812910b54dF91b5c2b592572CD6B0
+ENV IPFSLINK=https://ipfs.io/ipfs/
 
 WORKDIR /usr/src/backend
 
@@ -6,12 +17,13 @@ COPY package*.json ./
 
 RUN npm install
 
-# RUN npm install -g @babel/core @babel/cli
+RUN npm install -g @babel/core @babel/cli
 
 COPY . .
 
 EXPOSE 8000
-# RUN npm run build-src
+
+RUN npm run build-src
 
 
 CMD ["npm", "run", "build"]
