@@ -1,6 +1,5 @@
 'use client'
 import { useGetTokenTransactionAllQuery } from "@/redux/features/api/apiSlice"
-import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 const options = ['Time', 'Type', 'USD', 'Detail', 'Wallet']
@@ -21,7 +20,7 @@ export default function Transactions() {
                     {transactions.map((item, index) => {
                         const wallet = item.from_wallet.slice(0, 6) + "..." + item.from_wallet.slice(38)
                         return (<div key={index} className="hover:bg-secondary/80 cursor-pointer flex flex-row justify-between items-center h-[3.5vw] px-3">
-                            <div className="w-[15%] flex flex-col justify-start font-medium">{calculateElapsedTime(item.createdAt)}</div>
+                            <div className="w-[15%] flex flex-col justify-start font-medium">{item.createdAt}</div>
                             <div className="w-[25%] flex flex-row items-center justify-start space-x-[0.3vw]">
                                 <div className="font-medium">{item.type.split(" ")[0]}</div>
                                 <div className="flex flex-row items-center space-x-[0.2vw]">

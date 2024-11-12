@@ -1,8 +1,6 @@
 'use client'
 import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
-import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const options = ['#', 'Token', 'Price', 'Volume']
@@ -24,8 +22,8 @@ export default function Tokens() {
                     if (token.symbol === 'USD') return <></>
                     return (
                         <>
-                            <Link href={`/explore/tokens/${token.symbol}`}>
-                                <div key={index} className="flex flex-row cursor-pointer hover:bg-secondary/80 text-md font-semibold items-center h-[3.5vw] w-full px-3" >
+                            <Link key={index} href={`/explore/tokens/${token.symbol}`}>
+                                <div className="flex flex-row cursor-pointer hover:bg-secondary/80 text-md font-semibold items-center h-[3.5vw] w-full px-3" >
                                     <p className="w-[10%] flex flex-row justify-start items-center">{index + 1}</p>
                                     <div className="w-[30%] flex flex-row justify-start items-center space-x-[0.3vw]">
                                         <Avatar className="w-[1.5vw] h-[1.5vw]">

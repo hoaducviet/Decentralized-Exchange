@@ -1,5 +1,5 @@
 
-export const calculateElapsedTime = (timestamp: string) => {
+export const calculateElapsedTime = (timestamp) => {
     const now = Date.now();
     const transactionTime = new Date(timestamp).getTime();
     const secondsElapsed = Math.floor((now - transactionTime) / 1000);

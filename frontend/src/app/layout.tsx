@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description: "The center exchange crypto",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -35,13 +35,13 @@ export default function RootLayout({
 
   const initialState = cookieToInitialState(
     configWallet,
-    headers().get('cookie')
+    (await headers()).get('cookie')
   )
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ReduxProvider>

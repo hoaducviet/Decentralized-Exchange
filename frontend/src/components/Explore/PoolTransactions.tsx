@@ -1,6 +1,5 @@
 'use client'
 import { LiquidityActiveTransaction, Pool } from "@/lib/type";
-import { calculateElapsedTime } from "@/utils/calculateElapsedTime";
 
 
 const options = ["Time", "Type", "", "", "LPT", "Price", "Wallet"]
@@ -25,7 +24,7 @@ export default function PoolTransactions({ transactions }: Props) {
                 {transactions.map((item, index) => {
                     return (
                         <div key={index} className="cursor-pointer flex flex-row justify-between items-center text-md font-semibold hover:bg-secondary/80 h-[3.5vw] px-3">
-                            <div className="w-[15%] flex flex-row justify-start font-medium">{calculateElapsedTime(item.createdAt)}</div>
+                            <div className="w-[15%] flex flex-row justify-start font-medium">{item.createdAt}</div>
                             <div className="w-[15%] flex flex-row justify-start">
                                 <div>{item.type}</div>
                             </div>

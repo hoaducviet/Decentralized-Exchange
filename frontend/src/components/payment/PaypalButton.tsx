@@ -54,12 +54,12 @@ export default function PaypalButton({ orderId }: Props) {
     const onCancel: PayPalButtonsComponentProps["onCancel"] = (data) => {
         console.log("Transaction canceled", data);
         // Show a cancel page, or return to cart
-        window.location.assign("/your-cancel-page");
+        // window.location.assign("/your-cancel-page");
     }
     const onError: PayPalButtonsComponentProps["onError"] = (err) => {
         console.log("Transaction canceled", err);
         // For example, redirect to a specific error page
-        window.location.assign("/your-error-page-here");
+        // window.location.assign("/your-error-page-here");
     }
 
     return (
