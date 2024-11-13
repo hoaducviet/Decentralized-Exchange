@@ -17,7 +17,7 @@ export default function OptionsWallet() {
           onClick={() => connect({ connector })}
         >
           <Image
-            src={connector.icon || "/image/default-image.png"}
+            src={connector.icon?.trimStart() || "/image/default-image.png"}
             alt={connector.name}
             className="mx-5" width="36" height="36" />
           <div className="mx-5">

@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@eslint/config-array": "^0.19.0",
+    "@eslint/object-schema": "^2.1.4",
     "@paypal/react-paypal-js": "^8.7.0",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-avatar": "^1.1.1",
@@ -40,17 +42,21 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "viem": "^2.21.18",
-    "wagmi": "^2.12.17",
-    "web3": "^4.13.0"
+    "wagmi": "^2.12.17"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "bufferutil": "^4.0.8",
+    "encoding": "^0.1.13",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
+    "lokijs": "^1.5.12",
+    "pino-pretty": "^13.0.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "utf-8-validate": "^6.0.5"
   }
 }

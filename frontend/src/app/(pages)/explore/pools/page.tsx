@@ -1,7 +1,5 @@
 'use client'
-import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { useGetPoolsQuery } from "@/redux/features/api/apiSlice"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
@@ -23,8 +21,8 @@ export default function Pools() {
             <div className="flex flex-col w-full text-md font-semibold">
                 {pools && pools.map((pool, index) => {
                     return (
-                        <Link href={`/explore/pools/${pool.address}`}>
-                            <div key={index} className="hover:bg-secondary/80 cursor-pointer flex flex-row items-center w-full h-[3.5vw] px-3">
+                        <Link key={index} href={`/explore/pools/${pool.address}`}>
+                            <div className="hover:bg-secondary/80 cursor-pointer flex flex-row items-center w-full h-[3.5vw] px-3">
                                 <p className="font-medium w-[10%]">{index + 1}</p>
                                 <div className=" w-[25%] flex flex-row justify-start items-center space-x-[0.3vw]">
                                     <Avatar className="w-[1.5vw] h-[1.5vw] max-w-[5vw] border border-black">
