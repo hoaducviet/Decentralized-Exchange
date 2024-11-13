@@ -11,11 +11,11 @@ services:
     environment:
       - NEXT_PUBLIC_BACKEND_API=http://backend:8000
 
-  nginx:
+  nginx_14:
     networks:
       - DEX
     image: nginx:alpine
-    container_name: nginx
+    container_name: nginx_v14
     ports:
       - 80:80
     volumes:
