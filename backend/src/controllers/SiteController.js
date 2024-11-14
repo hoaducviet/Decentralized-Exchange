@@ -1,6 +1,5 @@
-const { movies } = require("../data/index.js");
-
-const Media = require("../models/Media");
+const Token = require("../models/Token.js");
+const Collection = require("../models/Collection.js");
 
 const {
   mutipleMongooseToObject,
@@ -16,19 +15,34 @@ class SiteController {
         return res.status(400).json({ message: "Missing requires field" });
       }
 
-      const results = await Media.find(
-        { $text: { $search: q } },
-        { score: { $meta: "textScore" } }
-      ).sort({ score: { $meta: "textScore" } });
+      const tokens = await Token.find({
+        $or: [
+          { name: { $regex: `.*${q}.*`, $options: "i" } },
+          { symbol: { $regex: `.*${q}.*`, $options: "i" } },
+        ],
+      })
+        .sortable(req)
+        .limit(5)
+        .exec();
 
-      console.log(results);
-      return res.status(200).json({ data: mutipleMongooseToObject(results) });
+      const nfts = await Collection.find({
+        $or: [
+          { name: { $regex: `.*${q}.*`, $options: "i" } },
+          { symbol: { $regex: `.*${q}.*`, $options: "i" } },
+        ],
+      })
+        .sortable(req)
+        .limit(5)
+        .exec();
+      return res.status(200).json({
+        tokens: mutipleMongooseToObject(tokens),
+        nfts: mutipleMongooseToObject(nfts),
+      });
     } catch (error) {
       console.error("Error avatar:", error.message);
       return res.status(500).json({ message: "Internal server error" });
     }
   }
-
 }
 
 module.exports = new SiteController();

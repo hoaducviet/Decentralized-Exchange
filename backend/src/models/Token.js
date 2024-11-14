@@ -20,6 +20,7 @@ const Token = new Schema(
   }
 );
 
+Token.index({ name: 'text', symbol: 'text' });
 //Custom query helpers
 Token.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {

@@ -21,6 +21,8 @@ const Collection = new Schema(
   }
 );
 
+Collection.index({ name: "text", symbol: "text" });
+
 //Custom query helpers
 Collection.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {

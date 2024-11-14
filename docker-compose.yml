@@ -1,27 +1,55 @@
 
 services:
-
-  frontend_v14:
+  app:
     networks:
       - DEX
-    container_name: dex_frontend_v14
-    build: 
-      context: ./frontend
-      dockerfile: Dockerfile
+    container_name: app
+    image: node:18
+    working_dir: /usr/src/frontend
+    env_file:
+      - ./frontend/.env
     environment:
       - NEXT_PUBLIC_BACKEND_API=http://backend:8000
+      - PORT=3002
+    volumes:
+      - ./frontend:/usr/src/frontend
+    command: bash -c "cd /usr/src/frontend && npm install && npm run dev"
+    ports:
+    - 3002:3002
 
-  nginx_14:
+  nginx_app:
     networks:
       - DEX
     image: nginx:alpine
-    container_name: nginx_v14
+    container_name: nginx_app
     ports:
       - 80:80
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
-      - frontend_v14
+      - app
+
+  # frontend_v14:
+  #   networks:
+  #     - DEX
+  #   container_name: dex_frontend_v14
+  #   build: 
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - NEXT_PUBLIC_BACKEND_API=http://backend:8000
+
+  # nginx_14:
+  #   networks:
+  #     - DEX
+  #   image: nginx:alpine
+  #   container_name: nginx_v14
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf
+  #   depends_on:
+  #     - frontend_v14
   
   contract:
     networks:
