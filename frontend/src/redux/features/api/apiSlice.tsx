@@ -49,6 +49,9 @@ export const apiSlice = createApi({
         getPoolTransactionByAddress: builder.query<LiquidityActiveTransaction[], Address>({
             query: (address) => `/transactions/pools/${address}`
         }),
+        getSearch: builder.query<{ tokens: Token[]; nfts: Collection[] }, string>({
+            query: (query) => `/search?_sort=true&column=name&type=asc&q=${query}`
+        }),
 
 
         //Mutations
@@ -115,6 +118,7 @@ export const {
     useGetActivesQuery,
     useGetTokenTransactionAllQuery,
     useGetPoolTransactionByAddressQuery,
+    useGetSearchQuery,
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,
     useAddLiquidityTransactionMutation,

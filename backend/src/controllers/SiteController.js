@@ -12,7 +12,10 @@ class SiteController {
       const q = req.query.q;
 
       if (!q) {
-        return res.status(400).json({ message: "Missing requires field" });
+        return res.status(200).json({
+          tokens: [],
+          nfts: [],
+        });
       }
 
       const tokens = await Token.find({
@@ -35,8 +38,8 @@ class SiteController {
         .limit(5)
         .exec();
       return res.status(200).json({
-        tokens: mutipleMongooseToObject(tokens),
-        nfts: mutipleMongooseToObject(nfts),
+        tokens: mutipleMongooseToObject(tokens) || [],
+        nfts: mutipleMongooseToObject(nfts) || [],
       });
     } catch (error) {
       console.error("Error avatar:", error.message);
