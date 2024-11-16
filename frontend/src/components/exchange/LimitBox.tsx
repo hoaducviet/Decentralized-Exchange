@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from "react"
 import { useAccount } from "wagmi"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { skipToken } from "@reduxjs/toolkit/query"
-import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery } from "@/redux/features/api/apiSlice"
+import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery } from "@/redux/features/api/apiSlice"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import TimeItem from "@/components/exchange/TimeItem"
@@ -22,7 +22,7 @@ export default function LimitBox() {
     const signer = web3?.signer
     const { data: allTokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
-    const { data: reservePools } = useGetReservePoolQuery()
+    const { data: reserves } = useGetReservesQuery()
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
@@ -54,8 +54,8 @@ export default function LimitBox() {
     }
 
     useEffect(() => {
-        if (tokenOne && tokenTwo && reservePools) {
-            const currentPool = reservePools.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool?.info.name))
+        if (tokenOne && tokenTwo && reserves) {
+            const currentPool = reserves.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool?.info.name))
             if (currentPool?.info.token1.address === tokenOne.address) {
                 setReserve1(Number(currentPool.reserve1))
                 setReserve2(Number(currentPool.reserve2))
@@ -70,7 +70,7 @@ export default function LimitBox() {
             setBalance2(tokenBalances?.find(item => item.info.symbol === tokenTwo.symbol)?.balance?.formatted || "0")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tokenOne, tokenTwo, tokenBalances, reservePools])
+    }, [tokenOne, tokenTwo, tokenBalances, reserves])
 
     useEffect(() => {
         if (amount1 === "") {

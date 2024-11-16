@@ -81,9 +81,11 @@ export type GetCollection = {
 }
 
 export type ReservePool = {
+    pool_id: string;
     reserve1: string;
     reserve2: string;
     info: Pool;
+    createdAt: string;
 }
 
 export type CollectionItem = {

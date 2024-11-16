@@ -7,7 +7,7 @@ const TokenController = require("../controllers/TokenController");
 const PoolController = require("../controllers/PoolController");
 const CollectionController = require("../controllers/CollectionController");
 const TransactionController = require("../controllers/TransactionController");
-
+const ReserveController = require("../controllers/ReserveController");
 //Site
 router.get("/search", SiteController.search);
 
@@ -16,6 +16,7 @@ router.get("/collection", WalletController.getCollection);
 router.get("/tokenbalances", WalletController.getTokenBalances);
 router.get("/liquiditybalances", WalletController.getLiquidityBalances);
 router.get("/nftbalances", WalletController.getNFTBalances);
+///// Đã không dùng
 router.get("/reservepools", WalletController.getReservePools);
 
 //Token
@@ -25,6 +26,10 @@ router.get("/tokens", TokenController.getTokenAll);
 //Pool
 router.get("/updatepools", PoolController.updatePool);
 router.get("/pools", PoolController.getPoolAll);
+
+//Reserve
+router.get("/updatereserves", ReserveController.updateReserve);
+router.get("/reserves", ReserveController.getReserveAll);
 
 //Collections
 router.get("/updatecollections", CollectionController.updateCollection);

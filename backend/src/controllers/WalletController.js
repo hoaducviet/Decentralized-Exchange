@@ -46,6 +46,7 @@ const NFTMarketContract = new ethers.Contract(
   NFTMarket.abi,
   wallet
 );
+
 class WalletController {
   async checkWallet() {
     try {
@@ -155,7 +156,7 @@ class WalletController {
   }
 
   async getCollection(req, res) {
-    const { address, addressCollection } = req.query;
+    const { address, addressCollection } = req.query;0
     try {
       if (!addressCollection) {
         return res.status(404).json("404 Not Found");

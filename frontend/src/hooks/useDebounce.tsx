@@ -11,10 +11,7 @@ export default function useDebounce({ value, delay }: Props) {
 
   useEffect(() => {
     const handler = setTimeout(() => setDebounceValue(value), delay);
-
     return () => clearTimeout(handler);
-
-
   }, [value, delay]);
 
   return debounceValue;

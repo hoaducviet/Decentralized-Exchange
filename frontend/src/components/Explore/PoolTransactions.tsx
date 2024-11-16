@@ -15,8 +15,8 @@ export default function PoolTransactions({ transactions }: Props) {
             <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center h-[3vw] px-3">
                 <div className="w-[15%] flex flex-row justify-start">{options[0]}</div>
                 <div className="w-[15%] flex flex-row justify-start">{options[1]}</div>
-                <div className="w-[10%] flex flex-row justify-end">{pool.token1_id?.symbol}</div>
-                <div className="w-[15%] flex flex-row justify-end">{pool.token2_id?.symbol}</div>
+                <div className="w-[10%] flex flex-row justify-end">{pool?.token1_id?.symbol}</div>
+                <div className="w-[15%] flex flex-row justify-end">{pool?.token2_id?.symbol}</div>
                 <div className="w-[15%] flex flex-row justify-end">{options[4]}</div>
                 <div className="w-[15%] flex flex-row justify-end">{options[5]}</div>
                 <div className="w-[15%] flex flex-row justify-end">{options[6]}</div>

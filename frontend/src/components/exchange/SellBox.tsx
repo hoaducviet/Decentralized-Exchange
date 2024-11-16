@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAccount } from 'wagmi'
 import { formatEther } from 'ethers'
 import { useWeb3 } from "@/hooks/useWeb3"
-import { useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { swapLiquidityPool } from "@/services/liquiditypool/swapLiquidityPool"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import SellItem from "@/components/exchange/SellItem"
@@ -24,7 +24,7 @@ export default function SellBox() {
     const [amount1, setAmount1] = useState<string>("")
     const [amount2, setAmount2] = useState<string>("")
     const { data: allTokens, isFetching: isFetchingToken } = useGetTokensQuery()
-    const { data: reservePools } = useGetReservePoolQuery()
+    const { data: reserves } = useGetReservesQuery()
     const usdToken = allTokens?.find(token => token.symbol === 'USD')
     const newTokens = allTokens?.filter(token => token.symbol === 'USDT' || token.symbol === 'ETH')
     const optionTokens = newTokens?.filter(token => token.symbol !== tokenOne?.symbol)
@@ -38,8 +38,8 @@ export default function SellBox() {
     }, [isFetchingToken])
 
     useEffect(() => {
-        if (tokenOne && tokenTwo && reservePools) {
-            const currentPool = reservePools.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool?.info.name))
+        if (tokenOne && tokenTwo && reserves) {
+            const currentPool = reserves.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool?.info.name))
             if (currentPool?.info.token1.address === tokenOne.address) {
                 setReserve1(Number(currentPool.reserve1))
                 setReserve2(Number(currentPool.reserve2))
@@ -50,7 +50,7 @@ export default function SellBox() {
             setCurrentPool(currentPool)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tokenOne, tokenTwo, reservePools])
+    }, [tokenOne, tokenTwo, reserves])
 
     useEffect(() => {
         if (amount1 === "") {

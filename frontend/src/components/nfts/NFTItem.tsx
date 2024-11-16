@@ -3,14 +3,15 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger, } from "@/components/ui/alert-dialog"
-import { NFT } from '@/lib/type';
+import { Address, NFT } from '@/lib/type';
 interface Props {
     nft: NFT;
     setNft: Dispatch<SetStateAction<NFT | undefined>>;
     handleSend: () => Promise<void>;
+    address: Address | undefined;
 }
 
-export default function NFTItem({ nft, setNft, handleSend }: Props) {
+export default function NFTItem({ nft, setNft, address, handleSend }: Props) {
 
     const handleClick = () => {
         if (!!nft) {
@@ -27,7 +28,7 @@ export default function NFTItem({ nft, setNft, handleSend }: Props) {
                 <div className='flex flex-row justify-between items-center w-full'>
                     <p className='text-md'>{nft.formatted}</p>
                     <p className='text-md font-semibold'>ETH</p>
-                    {nft.isListed &&
+                    {nft.isListed && nft.owner !== address &&
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
                                 <Button onClick={handleClick} variant="secondary">Buy</Button>

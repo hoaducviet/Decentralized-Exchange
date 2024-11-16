@@ -6,7 +6,7 @@ import { cookieToInitialState } from 'wagmi'
 import { ThemeProvider } from '@/store/ThemeProvider';
 import { ConnectProvider } from "@/store/ConnectProvider";
 import { Web3Provider } from '@/store/Web3Provider';
-import { LoadProvider } from '@/store/LoadProvider';
+import { SocketProvider } from '@/store/SocketProvider';
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import { configWallet } from "@/config/configWallet";
 import MainLayout from '@/components/layouts/MainLayout';
@@ -53,11 +53,11 @@ export default async function RootLayout({
           >
             <ConnectProvider initialState={initialState}>
               <Web3Provider>
-                <LoadProvider>
+                <SocketProvider>
                   <MainLayout>
                     {children}
                   </MainLayout>
-                </LoadProvider>
+                </SocketProvider>
               </Web3Provider>
             </ConnectProvider>
           </ThemeProvider>

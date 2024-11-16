@@ -1,20 +1,22 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { useGetSearchQuery } from "@/redux/features/api/apiSlice"
+import useDebounce from '@/hooks/useDebounce'
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Input } from "@/components/ui/input"
 
 export default function SearchForm() {
     const router = useRouter()
     const [searchValue, setSearchValue] = useState("")
     const [isOpened, setIsOpened] = useState(false)
     const inputRef = useRef<HTMLInputElement | null>(null)
-    const { data, isFetching } = useGetSearchQuery(searchValue)
+    const debounced = useDebounce({ value: searchValue, delay: 500 })
+    const { data, isFetching } = useGetSearchQuery(debounced)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.target.value)
+        setSearchValue((e.target.value))
         setIsOpened(e.target.value.trim().length > 0)
     }
     const handleClick = (link: string) => {

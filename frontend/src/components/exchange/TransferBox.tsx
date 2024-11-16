@@ -4,7 +4,7 @@ import { useAccount } from 'wagmi';
 import { ethers, formatEther } from 'ethers';
 import { useWeb3 } from '@/hooks/useWeb3';
 import { skipToken } from '@reduxjs/toolkit/query';
-import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservePoolQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { Card } from '@/components/ui/card'
 import { transferToken } from '@/services/liquiditypool/transferToken';
 import Image from "next/image";
@@ -22,7 +22,7 @@ export default function TransferBox() {
     const signer = web3?.signer
     const { data: tokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
-    const { data: reservePools } = useGetReservePoolQuery()
+    const { data: reserves } = useGetReservesQuery()
     const [addTokenTransaction] = useAddTokenTransactionMutation()
     const [updateTokenTransaction, { data: updateTransaction, isSuccess: updateSuccess }] = useUpdateTokenTransactionMutation()
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
@@ -54,8 +54,8 @@ export default function TransferBox() {
     }
 
     useEffect(() => {
-        if (tokenOne && tokenTwo && reservePools) {
-            const currentPool = reservePools.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
+        if (tokenOne && tokenTwo && reserves) {
+            const currentPool = reserves.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
             if (currentPool?.info.token1.address === tokenOne.address) {
                 setReserve1(Number(currentPool.reserve1))
                 setReserve2(Number(currentPool.reserve2))
@@ -67,14 +67,14 @@ export default function TransferBox() {
             setBalance2(tokenBalances?.find(item => item.info.symbol === tokenTwo.symbol)?.balance?.formatted || "0")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tokenOne, tokenTwo, tokenBalances, reservePools])
+    }, [tokenOne, tokenTwo, tokenBalances, reserves])
 
     useEffect(() => {
         if (amount1 === "") {
             setAmount2("")
             return
         }
-        if (!!tokenOne && !!tokenTwo && reservePools) {
+        if (!!tokenOne && !!tokenTwo && reserves) {
             const value = parseFloat(amount1)
             if (['USD', 'USDT', 'ETH'].includes(tokenOne.symbol) && ['USD', 'USDT', 'ETH'].includes(tokenTwo.symbol)) {
                 const amountReceiver = value * reserve2 / reserve1
@@ -82,16 +82,16 @@ export default function TransferBox() {
                 return
             } else {
                 if (tokenOne.symbol !== 'USD') {
-                    const tokenPool = reservePools.find(pool => [`${tokenOne.symbol}/USDT`, `USDT/${tokenOne.symbol}`].includes(pool.info.name))
-                    const usdPool = reservePools.find(pool => ['USD/USDT', 'USD/USDT'].includes(pool.info.name))
+                    const tokenPool = reserves.find(pool => [`${tokenOne.symbol}/USDT`, `USDT/${tokenOne.symbol}`].includes(pool.info.name))
+                    const usdPool = reserves.find(pool => ['USD/USDT', 'USD/USDT'].includes(pool.info.name))
                     const [tokenReserve1, tokenReserve2] = tokenPool?.info.name.startsWith("USDT/") ? [Number(tokenPool?.reserve1), Number(tokenPool?.reserve2)] : [Number(tokenPool?.reserve2), Number(tokenPool?.reserve1)]
                     const [usdReserve1, usdReserve2] = usdPool?.info.name.startsWith("USDT/") ? [Number(usdPool?.reserve1), Number(usdPool?.reserve2)] : [Number(usdPool?.reserve2), Number(usdPool?.reserve1)]
                     const amountReceiver = value * (tokenReserve1 / tokenReserve2) * (usdReserve2 / usdReserve1)
                     setAmount2(amountReceiver.toString())
                     return
                 } else {
-                    const tokenPool = reservePools.find(pool => [`${tokenTwo.symbol}/USDT`, `USDT/${tokenTwo.symbol}`].includes(pool.info.name))
-                    const usdPool = reservePools.find(pool => ['USD/USDT', 'USD/USDT'].includes(pool.info.name))
+                    const tokenPool = reserves.find(pool => [`${tokenTwo.symbol}/USDT`, `USDT/${tokenTwo.symbol}`].includes(pool.info.name))
+                    const usdPool = reserves.find(pool => ['USD/USDT', 'USD/USDT'].includes(pool.info.name))
                     const [tokenReserve1, tokenReserve2] = tokenPool?.info.name.startsWith("USDT/") ? [Number(tokenPool?.reserve1), Number(tokenPool?.reserve2)] : [Number(tokenPool?.reserve2), Number(tokenPool?.reserve1)]
                     const [usdReserve1, usdReserve2] = usdPool?.info.name.startsWith("USDT/") ? [Number(usdPool?.reserve1), Number(usdPool?.reserve2)] : [Number(usdPool?.reserve2), Number(usdPool?.reserve1)]
                     const amountReceiver = value * (tokenReserve2 / tokenReserve1) * (usdReserve1 / usdReserve2)
@@ -100,7 +100,7 @@ export default function TransferBox() {
                 }
             }
         }
-    }, [amount1, reserve1, reserve2, tokenOne, tokenTwo, reservePools])
+    }, [amount1, reserve1, reserve2, tokenOne, tokenTwo, reserves])
 
     useEffect(() => {
         if (updateTransaction && updateSuccess) {

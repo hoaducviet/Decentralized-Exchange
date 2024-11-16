@@ -115,23 +115,25 @@ export default function Listed() {
                             </div>
                             <div className="flex justify-start w-[20%]">{nft.owner.slice(0, 6) + "..." + nft.owner.slice(38)}</div>
                             <div className="flex justify-start w-[20%]">
-                                <AlertDialog>
-                                    <AlertDialogTrigger asChild>
-                                        <Button onClick={() => setNft(nft)} variant="secondary">Buy</Button>
-                                    </AlertDialogTrigger>
-                                    <AlertDialogContent>
-                                        <AlertDialogHeader>
-                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                            <AlertDialogDescription>
-                                                This will permanently withdraw your liquidity and send your tokens from liquidity pool.
-                                            </AlertDialogDescription>
-                                        </AlertDialogHeader>
-                                        <AlertDialogFooter>
-                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                            <AlertDialogAction onClick={handleSend}>Continue</AlertDialogAction>
-                                        </AlertDialogFooter>
-                                    </AlertDialogContent>
-                                </AlertDialog>
+                                {nft.owner !== address &&
+                                    <AlertDialog>
+                                        <AlertDialogTrigger asChild>
+                                            <Button onClick={() => setNft(nft)} variant="secondary">Buy</Button>
+                                        </AlertDialogTrigger>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>
+                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                <AlertDialogDescription>
+                                                    This will permanently withdraw your liquidity and send your tokens from liquidity pool.
+                                                </AlertDialogDescription>
+                                            </AlertDialogHeader>
+                                            <AlertDialogFooter>
+                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                <AlertDialogAction onClick={handleSend}>Continue</AlertDialogAction>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialog>
+                                }
                             </div>
                         </div>
                     )

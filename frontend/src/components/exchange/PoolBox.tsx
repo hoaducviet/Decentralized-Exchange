@@ -15,10 +15,10 @@ import { TokenBalancesType, ReservePool, Token } from "@/lib/type"
 interface Props {
     tokens: Token[];
     tokenBalances: TokenBalancesType[] | undefined,
-    reservePools: ReservePool[],
+    reserves: ReservePool[],
 }
 
-export default function PoolBox({ tokens, tokenBalances, reservePools }: Props) {
+export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
     const { address } = useAccount()
     const web3 = useWeb3()
     const provider = web3?.provider
@@ -56,7 +56,7 @@ export default function PoolBox({ tokens, tokenBalances, reservePools }: Props) 
     // Set current pool và reserve của 2 tokens
     useEffect(() => {
         if (tokenOne && tokenTwo) {
-            const currentPool = reservePools.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
+            const currentPool = reserves.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
             if (currentPool?.info.token1.address === tokenOne.address) {
                 setReserve1(Number(currentPool.reserve1))
                 setReserve2(Number(currentPool.reserve2))

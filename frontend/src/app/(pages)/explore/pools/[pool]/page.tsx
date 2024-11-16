@@ -18,18 +18,18 @@ export default function Pool() {
                     <div className="flex flex-row justify-start items-center space-x-[0.3vw]">
                         <Avatar className="w-[2.5vw] h-[2.5vw] max-w-[5vw] border border-black">
                             <div className="realtive flex">
-                                <AvatarImage src={transactions[0].pool_id.token1_id?.img}
+                                <AvatarImage src={transactions[0]?.pool_id.token1_id?.img}
                                     className="absolute w-full h-full object-cover"
                                     style={{ clipPath: "inset(0 50% 0 0)" }}
                                     alt="Token1" />
-                                <AvatarImage src={transactions[0].pool_id.token2_id?.img}
+                                <AvatarImage src={transactions[0]?.pool_id.token2_id?.img}
                                     className="absolute w-full h-full object-cover"
                                     style={{ clipPath: "inset(0 0 0 50%)" }}
                                     alt="Token2" />
                             </div>
                             <AvatarFallback>T</AvatarFallback>
                         </Avatar>
-                        <div>{transactions[0].pool_id.name}</div>
+                        <div>{transactions[0]?.pool_id.name}</div>
                     </div>
                 </>}
             </div>

@@ -11,6 +11,10 @@ import {
     NFTTransaction, ActivesType, TokenActiveTransaction,
     LiquidityActiveTransaction
 } from "@/lib/type";
+import io from "socket.io-client";
+
+const ws = io('http://localhost:8000')
+
 
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
@@ -25,6 +29,27 @@ export const apiSlice = createApi({
         getCollections: builder.query<Collection[], void>({
             query: () => '/collections'
         }),
+        getReserves: builder.query<ReservePool[], void>({
+            query: () => '/reserves',
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        updateCachedData((draft) => {
+                            const reserve = draft.find(item => item.pool_id === event.data.pool_id);
+                            if (reserve) {
+                                reserve.reserve1 = event.data.reserve1
+                                reserve.reserve2 = event.data.reserve2
+                            }
+                        })
+                    }
+                    ws.on('updateReserves', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
+        }),
         getCollection: builder.query<CollectionItem, GetCollection>({
             query: ({ address, addressCollection }) => `/collection?address=${address}&addressCollection=${addressCollection}`,
         }),
@@ -36,9 +61,6 @@ export const apiSlice = createApi({
         }),
         getNFTBalances: builder.query<NFT[], Address>({
             query: (address) => `/nftbalances?address=${address}`
-        }),
-        getReservePool: builder.query<ReservePool[], void>({
-            query: () => '/reservepools'
         }),
         getActives: builder.query<ActivesType[], Address>({
             query: (address) => `/actives/${address}`
@@ -110,15 +132,16 @@ export const {
     useGetTokensQuery,
     useGetTokenBalancesQuery,
     useGetPoolsQuery,
+    useGetReservesQuery,
     useGetLiquidityBalancesQuery,
     useGetCollectionsQuery,
     useGetCollectionQuery,
     useGetNFTBalancesQuery,
-    useGetReservePoolQuery,
     useGetActivesQuery,
     useGetTokenTransactionAllQuery,
     useGetPoolTransactionByAddressQuery,
     useGetSearchQuery,
+
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,
     useAddLiquidityTransactionMutation,
