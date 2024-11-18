@@ -3,13 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+const { ethers } = require("ethers");
 const socketIo = require("socket.io");
 const http = require("http");
 const route = require("./routes");
 const db = require("./config/database");
 const { checkWallet } = require("./controllers/WalletController");
 const socket = require("./socket");
-
+const event = require("./event");
 
 db.connect();
 
@@ -28,6 +29,13 @@ app.use(
 app.use(express.json());
 app.use(morgan("combined"));
 route(app);
+
+// const wsProvider = new ethers.WebSocketProvider(
+//   process.env.ALCHEMY_SEPOLIA_URL
+// );
+const wsProvider = new ethers.WebSocketProvider("ws://localhost:8545");
+
+event(wsProvider);
 
 const server = http.createServer(app);
 const io = socketIo(server, {

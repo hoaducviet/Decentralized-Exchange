@@ -26,10 +26,10 @@ export default function Transactions() {
                                 <div className="font-medium">{item.type.split(" ")[0]}</div>
                                 <div className="flex flex-row items-center space-x-[0.2vw]">
                                     <Avatar className="w-[1vw] h-[1vw]">
-                                        <AvatarImage src={item.from_token_id.img} alt="Token" />
+                                        <AvatarImage src={item.from_token_id?.img} alt="Token" />
                                         <AvatarFallback>T</AvatarFallback>
                                     </Avatar>
-                                    <div>{item.from_token_id.symbol}</div>
+                                    <div>{item.from_token_id?.symbol}</div>
                                 </div>
                                 {item.to_token_id && <>
                                     <ArrowRightIcon width={20} height={20} />

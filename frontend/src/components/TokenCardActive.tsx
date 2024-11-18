@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default function TokenCardAcitve({ transaction }: Props) {
-    console.log(transaction)
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {
         hour: '2-digit',
@@ -22,7 +21,7 @@ export default function TokenCardAcitve({ transaction }: Props) {
     return (
         <div className='hover:bg-secondary/80 cursor-pointer flex flex-row items-center px-[1vw] space-x-[0.5vw] border-b-[1px] py-3'>
             <Avatar className="w-[10%] max-w-[5vw] border border-blue-200">
-                <AvatarImage src={transaction.from_token_id.symbol === 'USD' ? transaction.to_token_id?.img : transaction.from_token_id.img} alt="NFT" />
+                <AvatarImage src={transaction.from_token_id?.symbol === 'USD' ? transaction.to_token_id?.img : transaction.from_token_id?.img} alt="NFT" />
                 <AvatarFallback>T</AvatarFallback>
             </Avatar>
             <div className='flex flex-col w-[90%] space-y-[0.1vw]'>
@@ -37,7 +36,7 @@ export default function TokenCardAcitve({ transaction }: Props) {
                                 {transaction.amount_in}
                             </div>
                             <div>
-                                {transaction.from_token_id.symbol}
+                                {transaction.from_token_id?.symbol}
                             </div>
                         </div>
                         {transaction.to_token_id && <>
@@ -47,7 +46,7 @@ export default function TokenCardAcitve({ transaction }: Props) {
                                     {transaction.amount_out}
                                 </div>
                                 <div>
-                                    {transaction.to_token_id.symbol}
+                                    {transaction.to_token_id?.symbol}
                                 </div>
                             </div>
                         </>}

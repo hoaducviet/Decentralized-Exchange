@@ -14,9 +14,11 @@ deploy:
 	cp ./artifacts/contracts/*/*.json ../backend/src/artifacts
 
 rund:
-	npx hardhat run scripts/BlockNumber.js
+	npx hardhat run ./scripts/AddLP.js
+
 
 nft:
+	npx hardhat run scripts/BlockNumber.js
 	npx hardhat run ./scripts/addnft/BlockQueens.js
 	npx hardhat run ./scripts/addnft/Pirate.js
 	npx hardhat run ./scripts/addnft/BoredApeYachtClub.js

@@ -23,11 +23,11 @@ export default function LiquidityCardAcitve({ transaction }: Props) {
     return <div className='hover:bg-secondary/80 cursor-pointer flex flex-row items-center px-[1vw] space-x-[0.5vw] border-b-[1px] py-3'>
         <Avatar className="w-[10%] max-w-[5vw] border border-blue-200">
             <div className="realtive flex">
-                <AvatarImage src={transaction.token1_id.img}
+                <AvatarImage src={transaction.token1_id?.img}
                     className="absolute w-full h-full object-cover"
                     style={{ clipPath: "inset(0 50% 0 0)" }}
                     alt="Token1" />
-                <AvatarImage src={transaction.token2_id.img}
+                <AvatarImage src={transaction.token2_id?.img}
                     className="absolute w-full h-full object-cover"
                     style={{ clipPath: "inset(0 0 0 50%)" }}
                     alt="Token2" />
@@ -40,7 +40,7 @@ export default function LiquidityCardAcitve({ transaction }: Props) {
                 <div className="text-sm font-medium">{formattedDate}</div>
             </div>
             <div className="flex flex-row justify-between items-center text-md font-semibold opacity-85">
-                <div className="">{transaction.pool_id.name}</div>
+                <div className="">{transaction.pool_id?.name}</div>
                 <div className="flex flex-row space-x-[0.2vw]">
                     <div>
                         {transaction.amount_lpt?.slice(0, transaction.amount_lpt.indexOf(".") + 7)}
