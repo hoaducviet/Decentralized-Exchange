@@ -66,7 +66,7 @@ export type Collection = {
 export type NFT = {
     address: Address;
     id: number;
-    price: number;
+    price: string;
     uri: string;
     isListed: boolean;
     owner: Address;
@@ -98,7 +98,7 @@ export type TokenTransaction = {
     _id?: string;
     type: string;
     from_wallet: Address;
-    to_wallet?: Address;
+    to_wallet: Address;
     from_token_id: string;
     to_token_id?: string;
     amount_in: string;

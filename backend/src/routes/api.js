@@ -16,8 +16,7 @@ router.get("/collection", WalletController.getCollection);
 router.get("/tokenbalances", WalletController.getTokenBalances);
 router.get("/liquiditybalances", WalletController.getLiquidityBalances);
 router.get("/nftbalances", WalletController.getNFTBalances);
-///// Đã không dùng
-router.get("/reservepools", WalletController.getReservePools);
+
 
 //Token
 router.get("/updatetokens", TokenController.updateToken);
@@ -38,7 +37,7 @@ router.get("/collections", CollectionController.getCollectionAll);
 //Transaction
 router.post("/addtransaction/token", TransactionController.addTokenTransaction);
 router.patch(
-  "/updatetransaction/token/:id",
+  "/updatetransaction/token",
   TransactionController.updateTokenTransaction
 );
 
@@ -47,13 +46,13 @@ router.post(
   TransactionController.addLiquidityTransaction
 );
 router.patch(
-  "/updatetransaction/liquidity/:id",
+  "/updatetransaction/liquidity",
   TransactionController.updateLiquidityTransaction
 );
 
 router.post("/addtransaction/nft", TransactionController.addNftTransaction);
 router.patch(
-  "/updatetransaction/nft/:id",
+  "/updatetransaction/nft",
   TransactionController.updateNftTransaction
 );
 

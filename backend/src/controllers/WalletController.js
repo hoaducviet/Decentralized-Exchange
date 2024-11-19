@@ -156,7 +156,8 @@ class WalletController {
   }
 
   async getCollection(req, res) {
-    const { address, addressCollection } = req.query;0
+    const { address, addressCollection } = req.query;
+    0;
     try {
       if (!addressCollection) {
         return res.status(404).json("404 Not Found");
@@ -180,7 +181,7 @@ class WalletController {
             return {
               address: addressCollection,
               id: Number(result[0]),
-              price: Number(result[1]),
+              price: result[1].toString(),
               uri: result[2],
               isListed: result[3],
               owner: result[4],
@@ -232,7 +233,7 @@ class WalletController {
                       return {
                         address: collection.address,
                         id: Number(result[0]),
-                        price: Number(result[1]),
+                        price: result[1].toString(),
                         uri: result[2],
                         isListed: result[3],
                         owner: result[4],
@@ -287,7 +288,7 @@ class WalletController {
               return {
                 info: token,
                 balance: {
-                  value: Number(ethBalance),
+                  value: ethBalance.toString(),
                   symbol: token.symbol,
                   formatted: balanceFormatted,
                   decimals: token.decimals,
@@ -309,7 +310,7 @@ class WalletController {
             );
             const symbol = await contract.symbol();
             const balance = {
-              value: Number(value),
+              value: value.toString(),
               symbol: symbol,
               formatted: balanceFormatted,
               decimals: decimals,
@@ -349,7 +350,7 @@ class WalletController {
     const pools = await convertToPool(results);
 
     try {
-      const liquidityBalances = await Promise.all(
+      let liquidityBalances = await Promise.all(
         pools.map(async (pool) => {
           try {
             const contract = new ethers.Contract(
@@ -368,7 +369,7 @@ class WalletController {
             );
             const symbol = await contract.symbol();
             const balance = {
-              value: Number(value),
+              value: value.toString(),
               symbol: symbol,
               formatted: balanceFormatted,
               decimals: decimals,
@@ -383,56 +384,10 @@ class WalletController {
           }
         })
       );
-
-      res.status(200).json(liquidityBalances);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async getReservePools(req, res) {
-    const results = await Pool.find()
-      .select("_id name address address_lpt total_liquidity volume")
-      .populate({
-        path: "token1_id",
-        select: "_id name symbol img decimals address owner volume",
-        model: "token",
-      })
-      .populate({
-        path: "token2_id",
-        select: "_id name symbol img decimals address owner volume",
-        model: "token",
-      })
-      .exec();
-
-    const pools = await convertToPool(results);
-    try {
-      const reservePools = await Promise.all(
-        pools.map(async (pool) => {
-          const isEth = pool.name.endsWith("/ETH");
-          try {
-            const contract = new ethers.Contract(
-              pool.address,
-              isEth ? LiquidityPoolETH.abi : LiquidityPool.abi,
-              wallet
-            );
-            const value1 = await contract.reserve1();
-            const value2 = await contract.reserve2();
-            const reserve1 = ethers.formatUnits(value1, pool.token1.decimals);
-            const reserve2 = ethers.formatUnits(value2, pool.token2.decimals2);
-
-            return {
-              reserve1,
-              reserve2,
-              info: pool,
-            };
-          } catch (error) {
-            console.error(`Error processing pool ${pool.name}:`, error);
-          }
-        })
+      liquidityBalances = liquidityBalances.filter(
+        (item) => item.balance.value !== "0"
       );
-
-      res.status(200).json(reservePools);
+      res.status(200).json(liquidityBalances);
     } catch (error) {
       console.log(error);
     }

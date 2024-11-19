@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { useAccount } from 'wagmi';
-import { ethers, formatEther } from 'ethers';
+import { ethers } from 'ethers';
 import { useWeb3 } from '@/hooks/useWeb3';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
@@ -128,23 +128,15 @@ export default function TransferBox() {
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1 && newTransaction?._id) {
                     updateTokenTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            price: (reserve1 / reserve2).toString(),
-                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
-                            receipt_hash: receipt.hash,
-                            status: 'Completed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: receipt.hash,
                     })
                 } else {
                     if (newTransaction?._id) {
                         updateTokenTransaction({
-                            id: newTransaction._id,
-                            data: {
-                                status: 'Failed'
-                            }
+                            _id: newTransaction._id,
+                            receipt_hash: "",
                         })
-                        console.error("Transaction error:", confirmedReceipt);
                     }
                 }
                 console.log(receipt)
@@ -152,10 +144,8 @@ export default function TransferBox() {
                 console.error("Transaction error:", error);
                 if (newTransaction?._id) {
                     updateTokenTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            status: 'Failed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: "",
                     })
                 }
             }

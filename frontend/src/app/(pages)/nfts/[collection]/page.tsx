@@ -1,7 +1,6 @@
 'use client'
 import { useCallback, useState } from "react";
 import { useAccount } from "wagmi";
-import { formatEther } from "ethers"
 import { useCollection } from "@/hooks/useCollection"
 import { useWeb3 } from "@/hooks/useWeb3";
 import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetCollectionQuery } from "@/redux/features/api/apiSlice";
@@ -35,21 +34,15 @@ export default function CollectionNFT() {
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1 && newTransaction?._id) {
                     updateNftTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
-                            receipt_hash: confirmedReceipt.hash,
-                            status: 'Completed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: confirmedReceipt.hash,
                     })
                     setNft(undefined)
                 } else {
                     if (newTransaction?._id) {
                         updateNftTransaction({
-                            id: newTransaction._id,
-                            data: {
-                                status: 'Failed'
-                            }
+                            _id: newTransaction._id,
+                            receipt_hash: ""
                         })
                     }
                 }
@@ -58,10 +51,8 @@ export default function CollectionNFT() {
                 console.error("Transaction error:", error);
                 if (newTransaction?._id) {
                     updateNftTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            status: 'Failed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: ""
                     })
                 }
             }

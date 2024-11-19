@@ -68,6 +68,9 @@ contract NFTCollection is ERC721URIStorage, Ownable {
 
     function transferNFT(address _to, uint256 _tokenId) public {
         require(_ownerOf(_tokenId) == msg.sender, "You are not owner");
+        if (!_isAuthorized(_ownerOf(_tokenId), address(this), _tokenId)) {
+            approve(address(this), _tokenId);
+        }
         require(
             _isAuthorized(_ownerOf(_tokenId), address(this), _tokenId),
             "The token is not approved"

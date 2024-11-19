@@ -1,19 +1,19 @@
 'use client'
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { useGetCollectionsQuery } from "@/redux/features/api/apiSlice";
 import { setCurrentCollection } from "@/redux/features/collection/collectionSlice";
-
 export default function CollectionLayout({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
     const dispatch = useDispatch()
-    const { data: collections } = useGetCollectionsQuery()
-    const [isActive, setIsActive] = useState<number>(0)
     const { collection } = useParams()
+    const pathname = usePathname()
+    const { data: collections } = useGetCollectionsQuery()
+    const [isActive, setIsActive] = useState<number | undefined>(undefined)
 
     useEffect(() => {
         if (collections?.length) {
@@ -38,6 +38,14 @@ export default function CollectionLayout({ children }: Readonly<{
             link: `/nfts/${collection}/mynft`
         },
     ]
+    useEffect(() => {
+        options.map((item, index) => {
+            if (item.link === pathname) {
+                setIsActive(index)
+            }
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname])
     return (
         <div className="flex flex-col min-h-[100vh] mx-[15vw] my-[5vw]">
             <div className="flex flex-row my-[1vw]">

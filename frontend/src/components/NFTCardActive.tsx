@@ -1,5 +1,4 @@
 'use clien'
-
 import { useAccount } from "wagmi";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { NFTActiveTransaction } from '@/lib/type';
@@ -34,7 +33,7 @@ export default function NFTCardAcitve({ transaction }: Props) {
                 <div className="text-sm font-medium">{formattedDate}</div>
             </div>
             <div className="flex flex-row justify-between items-center text-md font-semibold opacity-85">
-                <div className="">{nft?.name}</div>
+                <div className="">{transaction.collection_id.name} # {transaction.nft_id}</div>
                 <div className="flex flex-row space-x-[0.2vw]">
                     <div>
                         {transaction.price}

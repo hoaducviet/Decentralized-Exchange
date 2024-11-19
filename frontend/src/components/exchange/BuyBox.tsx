@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
-import { formatEther } from 'ethers';
 import { useAccount } from 'wagmi'
 import { useWeb3 } from "@/hooks/useWeb3"
 import { useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
@@ -74,39 +73,36 @@ export default function BuyBox() {
             const { data: newTransaction } = await addTokenTransaction({
                 type: "Buy Token",
                 from_wallet: address,
+                to_wallet: currentPool.info.address,
                 from_token_id: tokenOne._id,
                 to_token_id: tokenTwo._id,
-                amount_in: amount1.slice(0, amount1.indexOf('.') + 7)
+                amount_in: amount1
             })
-            console.log(newTransaction)
             try {
                 const receipt = await swapLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount: amount1 })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1 && newTransaction?._id) {
                     updateTokenTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            amount_out: amount2.slice(0, amount2.indexOf('.') + 7),
-                            price: (reserve1 / reserve2).toString(),
-                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
-                            receipt_hash: receipt.hash,
-                            status: 'Completed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: receipt.hash,
                     })
                 } else {
                     if (newTransaction?._id) {
                         updateTokenTransaction({
-                            id: newTransaction._id,
-                            data: {
-                                status: 'Failed'
-                            }
+                            _id: newTransaction._id,
+                            receipt_hash: "",
                         })
-                        console.error("Transaction error:", confirmedReceipt);
                     }
                 }
                 console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
+                if (newTransaction?._id) {
+                    updateTokenTransaction({
+                        _id: newTransaction._id,
+                        receipt_hash: "",
+                    })
+                }
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,7 +1,6 @@
 'use client'
 import { useCallback, useEffect, useState } from "react"
 import { useAccount } from "wagmi"
-import { formatEther } from "ethers"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { skipToken } from "@reduxjs/toolkit/query"
@@ -89,31 +88,26 @@ export default function SwapBox() {
             const { data: newTransaction } = await addTokenTransaction({
                 type: 'Swap Token',
                 from_wallet: address,
+                to_wallet: currentPool.info.address,
                 from_token_id: tokenOne._id,
                 to_token_id: tokenTwo._id,
-                amount_in: amount1.slice(0, amount1.indexOf('.') + 7),
+                amount_in: amount1,
             })
             try {
                 const receipt = await swapLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount: amount1 })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1 && newTransaction?._id) {
-                    updateTokenTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            amount_out: amount2.slice(0, amount2.indexOf('.') + 7),
-                            price: (reserve1 / reserve2).toString(),
-                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
-                            receipt_hash: confirmedReceipt.hash,
-                            status: 'Completed'
+                    updateTokenTransaction(
+                        {
+                            _id: newTransaction._id,
+                            receipt_hash: receipt.hash,
                         }
-                    })
+                    )
                 } else {
                     if (newTransaction?._id) {
                         updateTokenTransaction({
-                            id: newTransaction._id,
-                            data: {
-                                status: 'Failed'
-                            }
+                            _id: newTransaction._id,
+                            receipt_hash: "",
                         })
                     }
                 }
@@ -122,10 +116,8 @@ export default function SwapBox() {
                 console.error("Transaction error:", error);
                 if (newTransaction?._id) {
                     updateTokenTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            status: 'Failed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: "",
                     })
                 }
             }

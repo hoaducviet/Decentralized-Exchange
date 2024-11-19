@@ -84,9 +84,9 @@ export const apiSlice = createApi({
                 body: data
             })
         }),
-        updateTokenTransaction: builder.mutation<TokenTransaction, { id: string, data: Partial<TokenTransaction> }>({
-            query: ({ id, data }) => ({
-                url: `/updatetransaction/token/${id}`,
+        updateTokenTransaction: builder.mutation<TokenTransaction, Partial<TokenTransaction>>({
+            query: (data) => ({
+                url: `/updatetransaction/token`,
                 method: 'PATCH',
                 body: data
             })
@@ -99,9 +99,9 @@ export const apiSlice = createApi({
                 body: data
             })
         }),
-        updateLiquidityTransaction: builder.mutation<LiquidityTransaction, { id: string, data: Partial<LiquidityTransaction> }>({
-            query: ({ id, data }) => ({
-                url: `/updatetransaction/liquidity/${id}`,
+        updateLiquidityTransaction: builder.mutation<LiquidityTransaction, Partial<LiquidityTransaction>>({
+            query: (data) => ({
+                url: `/updatetransaction/liquidity`,
                 method: 'PATCH',
                 body: data
             })
@@ -114,9 +114,9 @@ export const apiSlice = createApi({
                 body: data
             })
         }),
-        updateNftTransaction: builder.mutation<NFTTransaction, { id: string, data: Partial<NFTTransaction> }>({
-            query: ({ id, data }) => ({
-                url: `/updatetransaction/nft/${id}`,
+        updateNftTransaction: builder.mutation<NFTTransaction, Partial<NFTTransaction>>({
+            query: (data) => ({
+                url: `/updatetransaction/nft`,
                 method: 'PATCH',
                 body: data
             })

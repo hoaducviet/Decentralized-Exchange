@@ -67,20 +67,19 @@ async function checkEvent(receiptHash, provider) {
 
 async function addReserves(log, provider) {
   const pool = await Pool.findOne({ address: log.address })
-    .select("_id name address address_lpt total_liquidity volume")
+    .select("_id name address")
     .populate({
       path: "token1_id",
-      select: "_id name symbol img decimals address owner volume",
+      select: "_id decimals",
       model: "token",
     })
     .populate({
       path: "token2_id",
-      select: "_id name symbol img decimals address owner volume",
+      select: "_id decimals",
       model: "token",
     })
     .exec();
 
-  console.log(pool);
   const contract = new ethers.Contract(
     log.address,
     LiquidityPool.abi,
@@ -91,14 +90,15 @@ async function addReserves(log, provider) {
   const reserve1 = ethers.formatUnits(value1, pool.token1_id.decimals);
   const reserve2 = ethers.formatUnits(value2, pool.token2_id.decimals2);
 
-  console.log(reserve1, reserve2);
   const result = await new Reserve({
     pool_id: pool._id,
     reserve_token1: reserve1,
     reserve_token2: reserve2,
   }).save();
 
-  console.log(result);
+  //   console.log(result);
+  //   console.log(log)
+  //   checkEvent(log.transactionHash, provider);
 }
 
 async function event(wsProvider) {
@@ -117,38 +117,3 @@ async function event(wsProvider) {
 }
 
 module.exports = event;
-
-// if (log.topics[0] === eventTopics[0]) {
-//   let decodedEvent;
-//   if (index === 0) {
-//     decodedEvent = ethers.AbiCoder.defaultAbiCoder.decode(
-//       ["address", "unit256", "uint256", "uint256"],
-//       log.data
-//     );
-//     const [provider, amount1, amount2, liquidityTokens] = decodedEvent;
-//     console.log(
-//       `Liquidity added by ${provider}, amount1: ${amount1}, amount2: ${amount2}, lpt: ${liquidityTokens}`
-//     );
-//   }
-//   if (log.topics[0] === eventTopics[1]) {
-//     decodedEvent = ethers.AbiCoder.defaultAbiCoder.decode(
-//       ["address", "unit256", "uint256", "uint256"],
-//       log.data
-//     );
-//     const [provider, amount1, amount2, liquidityTokens] = decodedEvent;
-//     console.log(
-//       `Liquidity remove by ${provider}, amount1: ${amount1}, amount2: ${amount2}, lpt: ${liquidityTokens}`
-//     );
-//   }
-//   if (log.topics[0] === eventTopics[2]) {
-//     decodedEvent = ethers.AbiCoder.defaultAbiCoder.decode(
-//       ["address", "address", "address", "uint256", "uint256"],
-//       log.data
-//     );
-//     const [provider, fromToken, toToken, amountIn, amountOut] =
-//       decodedEvent;
-//     console.log(
-//       `Tokens Swapped by ${provider}, fromToken: ${fromToken},toToken: ${toToken},  amountIn: ${amountIn}, amountOut: ${amountOut},`
-//     );
-//   }
-// }

@@ -15,24 +15,25 @@ const LiquidityTransaction = new Schema(
     pool_id: { type: Schema.Types.ObjectId, required: true, ref: "pool" },
     token1_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
     token2_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
-    amount_token1: { type: String, required: false },
-    amount_token2: { type: String, required: false },
-    amount_lpt: { type: String, required: false },
-    gas_fee: { type: String, required: false },
-    network_fee: { type: String, required: false },
-    platform_fee: { type: String, required: false, default: "0.3%"},
+    amount_token1: { type: String, required: false, default: "0" },
+    amount_token2: { type: String, required: false, default: "0" },
+    amount_lpt: { type: String, required: false, default: "0" },
+    gas_fee: { type: String, required: false, default: "0" },
+    network_fee: { type: String, required: false, default: "0" },
+    platform_fee: { type: String, required: false, default: "0.3%" },
     receipt_hash: {
       type: String,
       required: function () {
         return this.status === "Completed";
       },
       maxLength: 255,
+      default: "0",
     },
     status: {
       type: String,
       enum: ["Pending", "Completed", "Failed"],
       required: false,
-      default: "Pending"
+      default: "Pending",
     },
   },
   {

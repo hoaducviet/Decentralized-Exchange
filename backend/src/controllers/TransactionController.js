@@ -1,8 +1,14 @@
 const ethers = require("ethers");
+const { provider } = require("../config/provider");
+const {
+  getPriceTokenTransaction,
+} = require("../utils/getPriceTokenTransaction.js");
+
 const TokenTransaction = require("../models/TokenTransaction");
 const LiquidityTransaction = require("../models/LiquidityTransaction");
 const NftTransaction = require("../models/NftTransaction");
 const WalletController = require("./WalletController");
+
 const signer = WalletController.wallet;
 const {
   mutipleMongooseToObject,
@@ -11,6 +17,24 @@ const {
 const UsdTransaction = require("../models/UsdTransaction.js");
 const LPToken = require("../artifacts/LPToken.json");
 const Pool = require("../models/Pool.js");
+const Reserve = require("../models/Reserve.js");
+
+const liquidityEventAbi = [
+  "event LiquidityAdded( address indexed provider, uint256 amount1, uint256 amount2, uint256 liquidityTokens)",
+  "event LiquidityRemoved( address indexed provider, uint256 amount1, uint256 amount2, uint256 liquidityTokens)",
+];
+
+const liquidityEventTopics = liquidityEventAbi.map(
+  (abi) => ethers.EventFragment.from(abi).topicHash
+);
+const tokenEventAbi = [
+  "event TokensSwapped( address indexed provider, address indexed fromToken, address indexed toToken, uint256 amountIn, uint256 amountOut)",
+];
+const tokenEventTopics = tokenEventAbi.map(
+  (abi) => ethers.EventFragment.from(abi).topicHash
+);
+
+console.log(tokenEventTopics);
 
 class TransactionController {
   async addTokenTransaction(req, res) {
@@ -40,12 +64,71 @@ class TransactionController {
 
   async updateTokenTransaction(req, res) {
     try {
-      const { id } = req.params;
-      const updateData = req.body;
-      const result = await TokenTransaction.findByIdAndUpdate(id, updateData, {
-        new: true,
-        runValidators: true,
-      });
+      const { _id, receipt_hash } = req.body;
+      const transaction = await TokenTransaction.findById(_id)
+        .populate({
+          path: "from_token_id",
+          model: "token",
+        })
+        .populate({
+          path: "to_token_id",
+          model: "token",
+        });
+
+      if (!receipt_hash) {
+        const result = await TokenTransaction.findByIdAndUpdate(
+          _id,
+          { status: "Failed" },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        return res.status(404).json(mongooseToObject(result));
+      }
+      const receipt = await provider.getTransactionReceipt(receipt_hash);
+
+      let updateData = {
+        price: await getPriceTokenTransaction(
+          transaction.from_token_id,
+          transaction.amount_in
+        ),
+        gas_fee: ethers.formatEther(receipt.gasPrice * receipt.gasUsed),
+        receipt_hash,
+        status: "Completed",
+      };
+
+      if (receipt.logs && receipt.logs.length > 0) {
+        receipt.logs.forEach((log) => {
+          if (log.topics[0] === tokenEventTopics[0]) {
+            const [amountIn, amountOut] =
+              ethers.AbiCoder.defaultAbiCoder().decode(
+                ["uint256", "uint256"],
+                log.data
+              );
+            console.log(
+              `Swap token by ${log.topics[1]}, amount1: ${amountIn}, amount2: ${amountOut}`
+            );
+            updateData = {
+              amount_out: ethers.formatUnits(
+                amountOut,
+                transaction.to_token_id.decimals
+              ),
+              ...updateData,
+            };
+          }
+        });
+      }
+
+      const result = await TokenTransaction.findByIdAndUpdate(
+        transaction._id,
+        updateData,
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
 
       if (!result) {
         return res.status(404).json({ message: "Transaction not found" });
@@ -85,45 +168,67 @@ class TransactionController {
   }
   async updateLiquidityTransaction(req, res) {
     try {
-      const { id } = req.params;
-      const { wallet, pool_id, gas_fee, receipt_hash, status } = req.body;
-      const transactions = await LiquidityTransaction.find({
-        wallet: wallet,
-        pool_id: pool_id,
-      });
+      const { _id, receipt_hash } = req.body;
+      const transaction = await LiquidityTransaction.findById(_id)
+        .populate({
+          path: "token1_id",
+          model: "token",
+        })
+        .populate({
+          path: "token2_id",
+          model: "token",
+        });
 
-      const pool = await Pool.findById(pool_id);
-      const totalLpt = transactions.map((item) => {
-        const amount = parseFloat(item.amount_lpt);
-        if (isNaN(amount)) {
-          return 0; // Bỏ qua giá trị không hợp lệ
-        }
-        return item.type.includes("Add") ? amount : -amount;
-      });
-      const sumTotalLpt = totalLpt.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
+      if (!receipt_hash) {
+        const result = await LiquidityTransaction.findByIdAndUpdate(
+          _id,
+          { status: "Failed" },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
 
-      const contract = new ethers.Contract(
-        pool.address_lpt,
-        LPToken.abi,
-        signer
-      );
-      const value = await contract.balanceOf(wallet, {
-        blockTag: "latest",
-      });
+        return res.status(404).json(mongooseToObject(result));
+      }
 
-      const decimals = Number(await contract.decimals());
-      const formatted = ethers.formatUnits(value, decimals);
+      const receipt = await provider.getTransactionReceipt(receipt_hash);
+
+      let updateData = {
+        gas_fee: ethers.formatEther(receipt.gasPrice * receipt.gasUsed),
+        receipt_hash,
+        status: "Completed",
+      };
+      if (receipt.logs && receipt.logs.length > 0) {
+        receipt.logs.forEach((log) => {
+          if (liquidityEventTopics.includes(log.topics[0])) {
+            const [amount1, amount2, liquidityTokens] =
+              ethers.AbiCoder.defaultAbiCoder().decode(
+                ["uint256", "uint256", "uint256"],
+                log.data
+              );
+            console.log(
+              `Liquidity amount1: ${amount1}, amount2: ${amount2}, lpt: ${liquidityTokens}`
+            );
+            updateData = {
+              amount_token1: ethers.formatUnits(
+                amount1,
+                transaction.token1_id.decimals
+              ),
+              amount_token2: ethers.formatUnits(
+                amount2,
+                transaction.token2_id.decimals
+              ),
+              amount_lpt: ethers.formatEther(liquidityTokens),
+              ...updateData,
+            };
+          }
+        });
+      }
+
       const result = await LiquidityTransaction.findByIdAndUpdate(
-        id,
-        {
-          amount_lpt: (parseFloat(formatted) - sumTotalLpt).toString(),
-          gas_fee,
-          receipt_hash,
-          status,
-        },
+        transaction._id,
+        updateData,
         {
           new: true,
           runValidators: true,
@@ -168,14 +273,31 @@ class TransactionController {
 
   async updateNftTransaction(req, res) {
     try {
-      const { id } = req.params;
-      const updateData = req.body;
-      const result = await NftTransaction.findByIdAndUpdate(id, updateData, {
+      const { _id, receipt_hash } = req.body;
+      if (!receipt_hash) {
+        const result = await NftTransaction.findByIdAndUpdate(
+          _id,
+          { status: "Failed" },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        return res.status(404).json(mongooseToObject(result));
+      }
+      const receipt = await provider.getTransactionReceipt(receipt_hash);
+      console.log(receipt);
+      const updateData = {
+        gas_fee: ethers.formatEther(receipt.gasPrice * receipt.gasUsed),
+        receipt_hash,
+        status: "Completed",
+      };
+
+      const result = await NftTransaction.findByIdAndUpdate(_id, updateData, {
         new: true,
         runValidators: true,
       });
 
-      console.log(result);
       if (!result) {
         return res.status(404).json({ message: "Transaction not found" });
       }

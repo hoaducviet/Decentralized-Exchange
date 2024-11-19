@@ -1,7 +1,6 @@
 'use client'
 import { useState, useCallback } from "react"
 import { useAccount } from "wagmi"
-import { formatEther } from "ethers"
 import { useAddLiquidityTransactionMutation, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
@@ -44,39 +43,30 @@ export default function PoolBalances({ liquidBalances }: Props) {
                 pool_id: currentPool.info._id,
                 token1_id: currentPool.info.token1._id,
                 token2_id: currentPool.info.token2._id,
-                amount_lpt: currentPool.balance?.formatted
             })
             try {
                 const receipt = await removeLiquidityPool({ provider, signer, pool: currentPool, address })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1 && newTransaction?._id) {
                     updateLiquidityTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
-                            receipt_hash: confirmedReceipt.hash,
-                            status: 'Completed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: receipt.hash,
                     })
                 } else {
                     if (newTransaction?._id) {
                         updateLiquidityTransaction({
-                            id: newTransaction._id,
-                            data: {
-                                status: 'Failed'
-                            }
+                            _id: newTransaction._id,
+                            receipt_hash: ""
                         })
                     }
                 }
-                console.log(confirmedReceipt)
+                console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
                 if (newTransaction?._id) {
                     updateLiquidityTransaction({
-                        id: newTransaction?._id,
-                        data: {
-                            status: 'Failed'
-                        }
+                        _id: newTransaction?._id,
+                        receipt_hash: ""
                     })
                 }
             }

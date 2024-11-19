@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState, useCallback } from "react"
 import { useAccount } from "wagmi"
-import { formatEther } from "ethers"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { useAddLiquidityTransactionMutation, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
 import { Button } from "@/components/ui/button"
@@ -97,28 +96,20 @@ export default function PoolBoxUSD({ tokens, tokenBalances, reserves }: Props) {
                 pool_id: currentPool.info._id,
                 token1_id: currentPool.info.token1._id,
                 token2_id: currentPool.info.token2._id,
-                amount_token1: currentPool.info.token1.symbol === tokenOne.symbol ? amount1 : amount2,
-                amount_token2: currentPool.info.token1.symbol === tokenOne.symbol ? amount2 : amount1,
             })
             try {
                 const receipt = await addLiquidityPool({ provider, signer, address, pool: currentPool, tokenOne, amount1, amount2 })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
                 if (confirmedReceipt?.status === 1 && newTransaction?._id) {
                     updateLiquidityTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            gas_fee: formatEther(confirmedReceipt.gasPrice * confirmedReceipt.gasUsed),
-                            receipt_hash: confirmedReceipt.hash,
-                            status: 'Completed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: confirmedReceipt.hash,
                     })
                 } else {
                     if (newTransaction?._id) {
                         updateLiquidityTransaction({
-                            id: newTransaction._id,
-                            data: {
-                                status: 'Failed'
-                            }
+                            _id: newTransaction._id,
+                            receipt_hash: ""
                         })
                     }
                 }
@@ -127,10 +118,8 @@ export default function PoolBoxUSD({ tokens, tokenBalances, reserves }: Props) {
                 console.error("Transaction error:", error);
                 if (newTransaction?._id) {
                     updateLiquidityTransaction({
-                        id: newTransaction._id,
-                        data: {
-                            status: 'Failed'
-                        }
+                        _id: newTransaction._id,
+                        receipt_hash: ""
                     })
                 }
             }
