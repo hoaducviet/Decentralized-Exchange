@@ -11,10 +11,15 @@ import {
     NFTTransaction, ActivesType, TokenActiveTransaction,
     LiquidityActiveTransaction
 } from "@/lib/type";
-import io from "socket.io-client";
+import { getSocket, wsGeneral } from '@/services/socket/createSocket'
+import { Socket } from "socket.io-client";
 
-const ws = io('http://localhost:8000')
+const ws: Socket = wsGeneral
+let wss: Socket
 
+export const getWss = () => {
+    wss = getSocket()
+}
 
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
@@ -63,13 +68,48 @@ export const apiSlice = createApi({
             query: (address) => `/nftbalances?address=${address}`
         }),
         getActives: builder.query<ActivesType[], Address>({
-            query: (address) => `/actives/${address}`
+            query: (address) => `/actives/${address}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        console.log(event.data)
+                        updateCachedData((draft) => {
+                            const index = draft.findIndex(item => item._id === event.data._id);
+                            if (index === -1) {
+                                draft.unshift(event.data);
+                            } else {
+                                draft[index] = event.data;
+                            }
+                        })
+                    }
+                    wss.on('updateActiveTransactions', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
         }),
         getTokenTransactionAll: builder.query<TokenActiveTransaction[], void>({
-            query: () => '/transactions/tokens'
+            query: () => '/transactions/tokens',
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        updateCachedData((draft) => {
+                            draft.unshift(event.data)
+                        })
+                    }
+                    ws.on('updateTokenTransactions', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
         }),
         getPoolTransactionByAddress: builder.query<LiquidityActiveTransaction[], Address>({
-            query: (address) => `/transactions/pools/${address}`
+            query: (address) => `/transactions/pools/${address}`,
+
         }),
         getSearch: builder.query<{ tokens: Token[]; nfts: Collection[] }, string>({
             query: (query) => `/search?_sort=true&column=name&type=asc&q=${query}`

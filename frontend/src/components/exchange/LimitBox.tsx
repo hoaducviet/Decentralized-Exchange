@@ -57,12 +57,12 @@ export default function LimitBox() {
         if (tokenOne && tokenTwo && reserves) {
             const currentPool = reserves.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool?.info.name))
             if (currentPool?.info.token1.address === tokenOne.address) {
-                setReserve1(Number(currentPool.reserve1))
-                setReserve2(Number(currentPool.reserve2))
+                setReserve1(parseFloat(currentPool.reserve1))
+                setReserve2(parseFloat(currentPool.reserve2))
                 console.log(currentPool.reserve1, currentPool.reserve2)
             } else {
-                setReserve1(Number(currentPool?.reserve2))
-                setReserve2(Number(currentPool?.reserve1))
+                setReserve1(parseFloat(currentPool?.reserve2 || '0'))
+                setReserve2(parseFloat(currentPool?.reserve1 || '0'))
                 console.log(currentPool?.reserve2, currentPool?.reserve1)
             }
             setCurrentPool(currentPool)

@@ -20,7 +20,7 @@ export default function Transactions() {
                 <div className="flex flex-col max-h-[50vw] overflow-x-auto text-md font-semibold">
                     {transactions.map((item, index) => {
                         const wallet = item.from_wallet.slice(0, 6) + "..." + item.from_wallet.slice(38)
-                        return (<div key={index} className="hover:bg-secondary/80 cursor-pointer flex flex-row justify-between items-center h-[3.5vw] px-3">
+                        return (<div key={index} className="hover:bg-secondary/80 cursor-pointer flex flex-row justify-between items-center min-h-[3.5vw] px-3">
                             <div className="w-[15%] flex flex-col justify-start font-medium">{calculateElapsedTime(item.createdAt)}</div>
                             <div className="w-[25%] flex flex-row items-center justify-start space-x-[0.3vw]">
                                 <div className="font-medium">{item.type.split(" ")[0]}</div>
@@ -46,7 +46,7 @@ export default function Transactions() {
                             <div className="w-[25%] flex flex-row items-center space-x-[0.3vw]">
                                 <div>
                                     <div className="flex flex-row items-center space-x-[0.2vw]">
-                                        <div className="font-medium">{item.amount_in}</div>
+                                        <div className="font-medium">{item.amount_in?.slice(0, item.amount_in?.indexOf(".") + 7)}</div>
                                         <div>{item.from_token_id?.symbol}</div>
                                     </div>
                                 </div>

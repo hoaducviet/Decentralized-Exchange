@@ -312,7 +312,9 @@ class TransactionController {
 
   async getTokenTransactionAll(req, res) {
     try {
-      const tokenTransactions = await TokenTransaction.find()
+      const tokenTransactions = await TokenTransaction.find({
+        status: "Completed",
+      })
         .populate({
           path: "from_token_id",
           select: "_id name symbol img decimals address owner volume",

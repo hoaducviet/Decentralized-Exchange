@@ -30,6 +30,9 @@ export default function SiderBar({ address }: Props) {
         alert("Copied address successfully!")
     }
 
+    const handleDisconnec = () => {
+        disconnect()
+    }
     return (
         <div className={`absolute bg-white dark:bg-black border-l-[0.5px] border-l-gray-200 select-none top-0 right-0 flex flex-col h-[100vh] overflow-hidden z-10 animation-ping duration-300 ${isOpen ? 'w-full' : 'w-0'}`}>
             <div className='flex flex-col'>
@@ -49,7 +52,7 @@ export default function SiderBar({ address }: Props) {
                             </div>
                         </div>
                     </div>
-                    <Button variant="secondary" className='bg-transparent flex justify-center items-center rounded-3xl w-[30%] mx-[1vw]' onClick={() => disconnect()}>Disconnect</Button>
+                    <Button variant="secondary" className='bg-transparent flex justify-center items-center rounded-3xl w-[30%] mx-[1vw]' onClick={handleDisconnec}>Disconnect</Button>
                     <Button onClick={() => dispatch(setIsOpen())} variant="ghost" className='w-[20%] rounded-3xl'><DoubleArrowRightIcon /></Button>
                 </div>
                 <div className='flex flex-row justify-start items-center space-x-[0.5vw] mx-[1.5vw] my-[0.5vw]'>

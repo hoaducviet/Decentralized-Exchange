@@ -57,11 +57,11 @@ export default function TransferBox() {
         if (tokenOne && tokenTwo && reserves) {
             const currentPool = reserves.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
             if (currentPool?.info.token1.address === tokenOne.address) {
-                setReserve1(Number(currentPool.reserve1))
-                setReserve2(Number(currentPool.reserve2))
+                setReserve1(parseFloat(currentPool.reserve1))
+                setReserve2(parseFloat(currentPool.reserve2))
             } else {
-                setReserve1(Number(currentPool?.reserve2))
-                setReserve2(Number(currentPool?.reserve1))
+                setReserve1(parseFloat(currentPool?.reserve2 || '0'))
+                setReserve2(parseFloat(currentPool?.reserve1 || '0'))
             }
             setBalance1(tokenBalances?.find(item => item.info.symbol === tokenOne.symbol)?.balance?.formatted || "0")
             setBalance2(tokenBalances?.find(item => item.info.symbol === tokenTwo.symbol)?.balance?.formatted || "0")
@@ -81,20 +81,16 @@ export default function TransferBox() {
                 setAmount2(amountReceiver.toString())
                 return
             } else {
+                const usdPool = reserves.find(pool => pool.info.name === 'USD/ETH')
+                const tokenPool = tokenOne.symbol !== 'USD' ? reserves.find(pool => pool.info.name === `${tokenOne.symbol}/ETH`) : reserves.find(pool => pool.info.name === `${tokenTwo.symbol}/ETH`)
+                const [tokenReserve1, tokenReserve2] = [parseFloat(tokenPool?.reserve1 || '0'), parseFloat(tokenPool?.reserve2 || '0')]
+                const [usdReserve1, usdReserve2] = [parseFloat(usdPool?.reserve1 || '0'), parseFloat(usdPool?.reserve2 || '0')]
                 if (tokenOne.symbol !== 'USD') {
-                    const tokenPool = reserves.find(pool => [`${tokenOne.symbol}/USDT`, `USDT/${tokenOne.symbol}`].includes(pool.info.name))
-                    const usdPool = reserves.find(pool => ['USD/USDT', 'USD/USDT'].includes(pool.info.name))
-                    const [tokenReserve1, tokenReserve2] = tokenPool?.info.name.startsWith("USDT/") ? [Number(tokenPool?.reserve1), Number(tokenPool?.reserve2)] : [Number(tokenPool?.reserve2), Number(tokenPool?.reserve1)]
-                    const [usdReserve1, usdReserve2] = usdPool?.info.name.startsWith("USDT/") ? [Number(usdPool?.reserve1), Number(usdPool?.reserve2)] : [Number(usdPool?.reserve2), Number(usdPool?.reserve1)]
-                    const amountReceiver = value * (tokenReserve1 / tokenReserve2) * (usdReserve2 / usdReserve1)
+                    const amountReceiver = value * (tokenReserve2 / tokenReserve1) * (usdReserve1 / usdReserve2)
                     setAmount2(amountReceiver.toString())
                     return
                 } else {
-                    const tokenPool = reserves.find(pool => [`${tokenTwo.symbol}/USDT`, `USDT/${tokenTwo.symbol}`].includes(pool.info.name))
-                    const usdPool = reserves.find(pool => ['USD/USDT', 'USD/USDT'].includes(pool.info.name))
-                    const [tokenReserve1, tokenReserve2] = tokenPool?.info.name.startsWith("USDT/") ? [Number(tokenPool?.reserve1), Number(tokenPool?.reserve2)] : [Number(tokenPool?.reserve2), Number(tokenPool?.reserve1)]
-                    const [usdReserve1, usdReserve2] = usdPool?.info.name.startsWith("USDT/") ? [Number(usdPool?.reserve1), Number(usdPool?.reserve2)] : [Number(usdPool?.reserve2), Number(usdPool?.reserve1)]
-                    const amountReceiver = value * (tokenReserve2 / tokenReserve1) * (usdReserve1 / usdReserve2)
+                    const amountReceiver = value * (tokenReserve1 / tokenReserve2) * (usdReserve2 / usdReserve1)
                     setAmount2(amountReceiver.toString())
                     return
                 }
@@ -159,7 +155,7 @@ export default function TransferBox() {
                     <TransferItem token1={tokenOne} token2={tokenTwo} amount1={amount1} amount2={amount2} setAmount={setAmount1} handleSwitchTokens={handleSwitchTokens} />
                     <div className="flex w-full my-[1vh]">
                         <Card className="w-full select-none border-none outline-none py-[0.8vh] hover:opacity-50">
-                            <DialogItem tokens={newTokens} setToken={setTokenOne}>
+                            <DialogItem tokens={newTokens} setToken={tokenOne?.symbol === 'USD' ? setTokenTwo : setTokenOne}>
                                 <div className="flex flex-row justify-center items-center w-full mx-[1vw]">
                                     <Image src={(tokenOne?.symbol === 'USD' ? tokenTwo?.img : tokenOne?.img) || "/image/default-token.png"} alt={(tokenOne?.symbol === 'USD' ? tokenTwo?.name : tokenOne?.name) || "token"} width="48" height="48" className="justify-center" />
                                     <div className="flex flex-col justify-center items-start mx-4 w-full h-full">

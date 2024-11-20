@@ -61,10 +61,6 @@ async function checkEvent(receiptHash, provider) {
   }
 }
 
-//   const transactionHash =
-//     "0x80edbecefe4f9030991ee85d0ffb7f44a4d1a63991e6ac05cc5243c2f6517cfa";
-//   await checkEvent(transactionHash, wsProvider);
-
 async function addReserves(log, provider) {
   const pool = await Pool.findOne({ address: log.address })
     .select("_id name address")
@@ -95,10 +91,6 @@ async function addReserves(log, provider) {
     reserve_token1: reserve1,
     reserve_token2: reserve2,
   }).save();
-
-  //   console.log(result);
-  //   console.log(log)
-  //   checkEvent(log.transactionHash, provider);
 }
 
 async function event(wsProvider) {

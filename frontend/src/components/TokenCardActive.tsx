@@ -33,7 +33,7 @@ export default function TokenCardAcitve({ transaction }: Props) {
                     <div className="flex flex-row justify-start items-center space-x-[0.1vw]">
                         <div className="flex flex-row space-x-[0.2vw]">
                             <div>
-                                {transaction.amount_in}
+                                {transaction.amount_in.slice(0, transaction.amount_in.indexOf('.') + 7)}
                             </div>
                             <div>
                                 {transaction.from_token_id?.symbol}
@@ -43,7 +43,7 @@ export default function TokenCardAcitve({ transaction }: Props) {
                             <ArrowRightIcon width={20} height={20} />
                             <div className="flex flex-row space-x-[0.2vw]">
                                 <div>
-                                    {transaction.amount_out}
+                                    {transaction.amount_out?.slice(0, transaction.amount_out.indexOf('.') + 7)}
                                 </div>
                                 <div>
                                     {transaction.to_token_id?.symbol}
@@ -51,18 +51,19 @@ export default function TokenCardAcitve({ transaction }: Props) {
                             </div>
                         </>}
                     </div>
-                    {transaction.to_wallet && <>
-                        <ArrowRightIcon width={20} height={20} />
+                    <div>$ {transaction.price?.slice(0, transaction.price.indexOf('.') + 7)}</div>
+                </div>
+                <div className="flex flex-row text-sm justify-between">
+                    <div>{transaction.status}</div>
+                    {transaction.to_wallet && transaction.type.startsWith("Transfer") && <div className="flex flex-row items-center space-x-2">
+                        <ArrowRightIcon width={10} height={10} />
                         <div className="flex flex-row space-x-[0.2vw]">
-                            <div>Address: </div>
+                            <div>to: </div>
                             <div>
                                 {transaction.to_wallet.slice(0, 6) + "..." + transaction.to_wallet.slice(38)}
                             </div>
                         </div>
-                    </>}
-                </div>
-                <div className="flex flex-row text-sm justify-start">
-                    <div>{transaction.status}</div>
+                    </div>}
                 </div>
             </div>
         </div>
