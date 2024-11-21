@@ -18,11 +18,9 @@ export default function MainLayout({ children }: Props) {
         } else {
             localStorage.setItem('address', "")
         }
+        getWss()
     }, [address])
 
-    useEffect(() => {
-        getWss()
-    }, [])
     return (
         <div className="bg-transparent w-[100vw]">
             <Header />

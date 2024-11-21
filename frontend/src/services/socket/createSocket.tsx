@@ -4,9 +4,9 @@ import { getAddressFromLocalStorage } from '@/utils/getAddressFromLocalStorage'
 import { Address } from '@/lib/type'
 
 const wsGeneral: Socket = io(process.env.NEXT_PUBLIC_BACKEND_API)
-let wss: Socket
+let wss: Socket | undefined
 
-const getSocket = (): Socket => {
+const getSocket = async () => {
     const address: Address | string | undefined = getAddressFromLocalStorage() as Address;
     if (!wss && address) {
         const socket: Socket = io(process.env.NEXT_PUBLIC_BACKEND_API, {
@@ -15,8 +15,12 @@ const getSocket = (): Socket => {
             }
         })
         if (socket) {
-            wss = socket
-        }
+            wss = socket;
+            return socket
+        };
+    } else if (wss && !address) {
+        wss = undefined
+        return wss
     }
     return wss!;
 };

@@ -1,4 +1,3 @@
-
 import { BrowserProvider, JsonRpcSigner, parseUnits } from 'ethers'
 import { loadLiquidContract } from '@/utils/loadLiquidContract'
 import { loadTokenContract } from '@/utils/loadTokenContract'
@@ -37,8 +36,8 @@ export const swapLiquidityPool = async ({ provider, signer, address, pool, token
             await receipt.wait()
 
             return receipt
-        } catch {
-            throw new Error("Failed to approve token 1");
+        } catch (error) {
+            throw new Error(`Failed to approve token 1: ${error}`);
         }
     } else {
         if (tokenOne.symbol !== 'ETH') {
@@ -61,7 +60,7 @@ export const swapLiquidityPool = async ({ provider, signer, address, pool, token
 
                 return receipt
             } catch {
-                throw new Error("Failed to add liquidity");
+                throw new Error("Failed to swap token");
             }
         } else {
             try {
@@ -78,7 +77,7 @@ export const swapLiquidityPool = async ({ provider, signer, address, pool, token
 
                 return receipt
             } catch {
-                throw new Error("Failed to add liquidity");
+                throw new Error("Failed to swap token");
             }
         }
     }

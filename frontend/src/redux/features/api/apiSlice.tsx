@@ -15,10 +15,10 @@ import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
 
 const ws: Socket = wsGeneral
-let wss: Socket
+let wss: Socket | undefined
 
-export const getWss = () => {
-    wss = getSocket()
+export const getWss = async () => {
+    wss = await getSocket()
 }
 
 export const apiSlice = createApi({
@@ -73,7 +73,6 @@ export const apiSlice = createApi({
                 try {
                     await cacheDataLoaded
                     const listener = (event: MessageEvent) => {
-                        console.log(event.data)
                         updateCachedData((draft) => {
                             const index = draft.findIndex(item => item._id === event.data._id);
                             if (index === -1) {
@@ -83,7 +82,7 @@ export const apiSlice = createApi({
                             }
                         })
                     }
-                    wss.on('updateActiveTransactions', listener)
+                    wss?.on('updateActiveTransactions', listener)
                 } catch (error) {
                     console.log(error)
                 }
