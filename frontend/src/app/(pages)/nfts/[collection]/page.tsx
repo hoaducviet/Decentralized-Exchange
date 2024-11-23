@@ -1,6 +1,7 @@
 'use client'
 import { useCallback, useState } from "react";
 import { useAccount } from "wagmi";
+import { useParams } from "next/navigation";
 import { useCollection } from "@/hooks/useCollection"
 import { useWeb3 } from "@/hooks/useWeb3";
 import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetCollectionQuery } from "@/redux/features/api/apiSlice";
@@ -10,6 +11,7 @@ import { NFT } from "@/lib/type";
 
 export default function CollectionNFT() {
     const { currentCollection } = useCollection()
+    const { collection } = useParams()
     const [nft, setNft] = useState<NFT | undefined>(undefined)
     const web3 = useWeb3()
     const signer = web3?.signer
@@ -25,6 +27,7 @@ export default function CollectionNFT() {
             const { data: newTransaction } = await addNftTransaction({
                 type: 'Buy NFT',
                 from_wallet: address,
+                to_wallet: nft.owner,
                 collection_id: currentCollection._id,
                 nft_id: nft.id.toString(),
                 price: nft.formatted,
@@ -61,7 +64,7 @@ export default function CollectionNFT() {
     }, [provider, signer, address, nft, currentCollection])
     return (
         <div className="flex flex-co h-full">
-            {!isFetching && nfts && <NFTCards nfts={nfts} setNft={setNft} handleSend={handleSend} address={address} />}
+            {!isFetching && nfts && <NFTCards nfts={nfts} setNft={setNft} handleSend={handleSend} address={address} collectionName={collection as string} />}
         </div>
     )
 }

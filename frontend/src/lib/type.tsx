@@ -238,8 +238,13 @@ export type USDActiveTransaction = {
     status?: string;
     notes?: string;
     createdAt: string;
-
 }
+export type NFTItem = {
+    listed: NFTActiveTransaction[] | [],
+    prices: NFTActiveTransaction[],
+    actives: NFTActiveTransaction[],
+}
+
 export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction;
 
 export type Children = React.ReactNode

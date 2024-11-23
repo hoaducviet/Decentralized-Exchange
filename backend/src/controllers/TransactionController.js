@@ -339,6 +339,39 @@ class TransactionController {
     }
   }
 
+  async getNftTransactionByItem(req, res) {
+    try {
+      const { collection, nft } = req.query;
+      console.log({ collection, nft });
+      const results = await NftTransaction.find({
+        collection_id: collection,
+        nft_id: nft,
+        status: "Completed",
+      }).lean();
+      const listed = [];
+      const prices = [];
+      await Promise.all(
+        results.map((item) => {
+          if (item.type === "Listed NFT") {
+            listed.push(item);
+          }
+          if (item.type === "Buy NFT") {
+            prices.push(item);
+          }
+        })
+      );
+      results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      listed.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      prices.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+      return res.status(200).json({ listed, prices, actives: results });
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get nft transaction" });
+    }
+  }
+
   async getActiveTransactionByAddress(req, res) {
     try {
       const { address } = req.params;

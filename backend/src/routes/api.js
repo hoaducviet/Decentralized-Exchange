@@ -62,6 +62,7 @@ router.get(
   TransactionController.getActiveTransactionByAddress
 );
 
+
 //Active
 router.get(
   "/actives/:address",
@@ -75,5 +76,8 @@ router.get(
   "/transactions/pools/:address",
   TransactionController.getPoolTransactionByAddress
 );
+
+router.get("/transactions/nfts/nft", TransactionController.getNftTransactionByItem);
+
 
 module.exports = router;

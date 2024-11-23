@@ -5,6 +5,7 @@ import { useGetSearchQuery } from "@/redux/features/api/apiSlice"
 import useDebounce from '@/hooks/useDebounce'
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { Input } from "@/components/ui/input"
 
 export default function SearchForm() {
@@ -93,7 +94,7 @@ export default function SearchForm() {
                                                 <div className="flex flex-row w-full justify-between space-x[0.3vw] text-md font-semibold">
                                                     <div className=" flex flex-row items-center justify-start space-x-[0.4vw]">
                                                         <div>{item.name}</div>
-                                                        <div className="text-sm opacity-60">{item.symbol}</div>
+                                                        <CheckBadgeIcon className="w-4 h-4 text-blue-500" />
                                                     </div>
                                                     <div className="text-sm">
                                                         $100

@@ -1,6 +1,8 @@
 import { Card } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from 'next/link'
+import { CheckBadgeIcon } from '@heroicons/react/20/solid'
+
 import { Collection } from '@/lib/type'
 
 interface Props {
@@ -35,6 +37,7 @@ export default function NFTColections({ collections }: Props) {
                                             <AvatarFallback>{item.name[0]}</AvatarFallback>
                                         </Avatar>
                                         <p className='font-medium'>{item.name}</p>
+                                        <CheckBadgeIcon className="w-5 h-5 text-blue-500" />
                                     </div>
                                     <div className='flex flex-row justify-between items-center text-md font-medium w-[65%]'>
                                         <p className='flex flex-row justify-start w-[20%]'>11.45 ETH</p>

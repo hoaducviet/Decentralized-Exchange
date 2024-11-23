@@ -45,6 +45,7 @@ export default function Listed() {
             const { data: newTransaction } = await addNftTransaction({
                 type: 'Buy NFT',
                 from_wallet: address,
+                to_wallet: nft.owner,
                 collection_id: currentCollection._id,
                 nft_id: nft.id.toString(),
                 price: nft.formatted,

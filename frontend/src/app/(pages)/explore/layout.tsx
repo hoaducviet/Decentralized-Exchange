@@ -61,7 +61,7 @@ export default function ExploreLayout({ children }: Readonly<{
                                     variant="ghost"
                                     onClick={() => handleOptions(index)}
                                     key={index}
-                                    className={`text-2xl font-semibold opacity-50 ${isActive === index && 'opacity-85'}`}
+                                    className={`text-xl font-semibold opacity-50 ${isActive === index && 'opacity-85'}`}
                                 >{option.name}</Button>
                             </Link>
                         )

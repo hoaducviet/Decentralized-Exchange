@@ -4,14 +4,16 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger, } from "@/components/ui/alert-dialog"
 import { Address, NFT } from '@/lib/type';
+import Link from "next/link";
 interface Props {
     nft: NFT;
     setNft: Dispatch<SetStateAction<NFT | undefined>>;
     handleSend: () => Promise<void>;
     address: Address | undefined;
+    collectionName: string
 }
 
-export default function NFTItem({ nft, setNft, address, handleSend }: Props) {
+export default function NFTItem({ nft, setNft, address, handleSend, collectionName }: Props) {
 
     const handleClick = () => {
         if (!!nft) {
@@ -21,7 +23,9 @@ export default function NFTItem({ nft, setNft, address, handleSend }: Props) {
     return (
         <Card className='cursor-pointer border-none outline-none select-none w-full px-0 mx-0'>
             <CardContent className='w-full px-0'>
-                <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full" />
+                <Link href={`/nfts/${collectionName}/${nft.id}`}>
+                    <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full" />
+                </Link>
             </CardContent>
             <CardFooter className="flex flex-col justify-center items-start space-y-[0.5vw]">
                 <CardTitle className='opacity-70'># {nft.id}</CardTitle>

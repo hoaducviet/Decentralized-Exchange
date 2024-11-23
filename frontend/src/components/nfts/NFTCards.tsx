@@ -7,14 +7,15 @@ interface Props {
     setNft: Dispatch<SetStateAction<NFT | undefined>>;
     handleSend: () => Promise<void>;
     address: Address | undefined;
+    collectionName: string;
 }
-export default function NFTCards({ nfts, setNft, handleSend, address }: Props) {
+export default function NFTCards({ nfts, setNft, handleSend, address, collectionName }: Props) {
     return (
         <div className="flex flex-wrap flex-start gap-x-[1.5%] gap-y-[1vw]">
-            {nfts.length && nfts.map((nft, index) => {
+            {nfts.length && collectionName && nfts.map((nft, index) => {
                 return (
                     <div key={index} className="w-[18.8%]">
-                        <NFTItem nft={nft} setNft={setNft} handleSend={handleSend} address={address} />
+                        <NFTItem nft={nft} setNft={setNft} handleSend={handleSend} address={address} collectionName={collectionName} />
                     </div>
                 )
             })}

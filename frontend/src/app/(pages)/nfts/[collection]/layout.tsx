@@ -46,6 +46,11 @@ export default function CollectionLayout({ children }: Readonly<{
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname])
+
+    if (![options[0].link, options[1].link, options[2].link].includes(pathname)) {
+        return <>{children}</>
+    }
+
     return (
         <div className="flex flex-col min-h-[100vh] mx-[15vw] my-[5vw]">
             <div className="flex flex-row my-[1vw]">

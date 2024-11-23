@@ -9,7 +9,7 @@ import {
     GetCollection, LiquidBalancesType,
     TokenTransaction, LiquidityTransaction,
     NFTTransaction, ActivesType, TokenActiveTransaction,
-    LiquidityActiveTransaction
+    LiquidityActiveTransaction, NFTItem
 } from "@/lib/type";
 import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
@@ -110,6 +110,9 @@ export const apiSlice = createApi({
             query: (address) => `/transactions/pools/${address}`,
 
         }),
+        getNFTTransactionByItem: builder.query<NFTItem, { collectionId: string, nftId: string }>({
+            query: ({ collectionId, nftId }) => `/transactions/nfts/nft?collection=${collectionId}&nft=${nftId}`,
+        }),
         getSearch: builder.query<{ tokens: Token[]; nfts: Collection[] }, string>({
             query: (query) => `/search?_sort=true&column=name&type=asc&q=${query}`
         }),
@@ -179,6 +182,7 @@ export const {
     useGetActivesQuery,
     useGetTokenTransactionAllQuery,
     useGetPoolTransactionByAddressQuery,
+    useGetNFTTransactionByItemQuery,
     useGetSearchQuery,
 
     useAddTokenTransactionMutation,

@@ -55,6 +55,7 @@ export default function MyNFT() {
             const { data: newTransaction } = await addNftTransaction({
                 type: 'Withdraw NFT',
                 from_wallet: address,
+                to_wallet: currentCollection.address,
                 collection_id: currentCollection._id,
                 nft_id: nft.id.toString(),
                 price: nft.formatted,
@@ -95,6 +96,7 @@ export default function MyNFT() {
             const { data: newTransaction } = await addNftTransaction({
                 type: 'Listed NFT',
                 from_wallet: address,
+                to_wallet: currentCollection.address,
                 collection_id: currentCollection._id,
                 nft_id: nft.id.toString(),
                 price: amount,
@@ -132,11 +134,7 @@ export default function MyNFT() {
     }, [provider, signer, address, nft, currentCollection, amount])
 
     const handleTransfer = useCallback(async () => {
-        if (!ethers.isAddress(to)) {
-            console.log("Address incorrect")
-            return
-        }
-        if (!!provider && !!signer && !!address && !!nft && !!currentCollection && !!to) {
+        if (!!provider && !!signer && !!address && !!nft && !!currentCollection && ethers.isAddress(to)) {
             const { data: newTransaction } = await addNftTransaction({
                 type: 'Transfer NFT',
                 from_wallet: address,
