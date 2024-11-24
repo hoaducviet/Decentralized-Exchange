@@ -8,6 +8,7 @@ const PoolController = require("../controllers/PoolController");
 const CollectionController = require("../controllers/CollectionController");
 const TransactionController = require("../controllers/TransactionController");
 const ReserveController = require("../controllers/ReserveController");
+const TokenPriceController = require("../controllers/TokenPriceController");
 //Site
 router.get("/search", SiteController.search);
 
@@ -16,7 +17,6 @@ router.get("/collection", WalletController.getCollection);
 router.get("/tokenbalances", WalletController.getTokenBalances);
 router.get("/liquiditybalances", WalletController.getLiquidityBalances);
 router.get("/nftbalances", WalletController.getNFTBalances);
-
 
 //Token
 router.get("/updatetokens", TokenController.updateToken);
@@ -29,6 +29,10 @@ router.get("/pools", PoolController.getPoolAll);
 //Reserve
 router.get("/updatereserves", ReserveController.updateReserve);
 router.get("/reserves", ReserveController.getReserveAll);
+
+//Token Price
+router.get("/tokenprices", TokenPriceController.getTokenPriceAll);
+router.get("/tokenprices/:id", TokenPriceController.getTokenPrice);
 
 //Collections
 router.get("/updatecollections", CollectionController.updateCollection);
@@ -56,28 +60,29 @@ router.patch(
   TransactionController.updateNftTransaction
 );
 
-router.get("/tokentransactions", TransactionController.getTokenTransactionAll);
 router.get(
-  "/transactionallbyaddress",
-  TransactionController.getActiveTransactionByAddress
+  "/transactions/tokens",
+  TransactionController.getTokenTransactionsAll
+);
+router.get(
+  "/transactions/tokens/:id",
+  TransactionController.getTokenTransactions
 );
 
+router.get(
+  "/transactions/pools/:address",
+  TransactionController.getPoolTransactionsByAddress
+);
+
+router.get(
+  "/transactions/nfts/nft",
+  TransactionController.getNftTransactionsByItem
+);
 
 //Active
 router.get(
   "/actives/:address",
-  TransactionController.getActiveTransactionByAddress
+  TransactionController.getActiveTransactionsByAddress
 );
-router.get(
-  "/transactions/tokens",
-  TransactionController.getTokenTransactionAll
-);
-router.get(
-  "/transactions/pools/:address",
-  TransactionController.getPoolTransactionByAddress
-);
-
-router.get("/transactions/nfts/nft", TransactionController.getNftTransactionByItem);
-
 
 module.exports = router;

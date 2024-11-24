@@ -310,7 +310,7 @@ class TransactionController {
     }
   }
 
-  async getTokenTransactionAll(req, res) {
+  async getTokenTransactionsAll(req, res) {
     try {
       const tokenTransactions = await TokenTransaction.find({
         status: "Completed",
@@ -339,7 +339,38 @@ class TransactionController {
     }
   }
 
-  async getNftTransactionByItem(req, res) {
+  async getTokenTransactions(req, res) {
+    try {
+      const { id } = req.params;
+      const tokenTransactions = await TokenTransaction.find({
+        $or: [{ from_token_id: id }, { to_token_id: id }],
+        status: "Completed",
+      })
+        .populate({
+          path: "from_token_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .populate({
+          path: "to_token_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .exec();
+
+      tokenTransactions.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      return res.status(200).json(mutipleMongooseToObject(tokenTransactions));
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
+
+  async getNftTransactionsByItem(req, res) {
     try {
       const { collection, nft } = req.query;
       console.log({ collection, nft });
@@ -372,7 +403,7 @@ class TransactionController {
     }
   }
 
-  async getActiveTransactionByAddress(req, res) {
+  async getActiveTransactionsByAddress(req, res) {
     try {
       const { address } = req.params;
       if (!ethers.isAddress(address)) {
@@ -440,7 +471,7 @@ class TransactionController {
     }
   }
 
-  async getPoolTransactionByAddress(req, res) {
+  async getPoolTransactionsByAddress(req, res) {
     try {
       const { address } = req.params;
       if (!ethers.isAddress(address)) {

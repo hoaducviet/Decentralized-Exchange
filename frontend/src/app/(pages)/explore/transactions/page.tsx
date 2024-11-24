@@ -1,12 +1,12 @@
 'use client'
-import { useGetTokenTransactionAllQuery } from "@/redux/features/api/apiSlice"
+import { useGetTokenTransactionsAllQuery } from "@/redux/features/api/apiSlice"
 import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 const options = ['Time', 'Type', 'USD', 'Detail', 'Wallet']
 
 export default function Transactions() {
-    const { data: transactions, isFetching } = useGetTokenTransactionAllQuery()
+    const { data: transactions, isFetching } = useGetTokenTransactionsAllQuery()
     return (
         <div className="flex flex-col">
             {!isFetching && transactions?.length && <>

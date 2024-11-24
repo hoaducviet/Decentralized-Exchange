@@ -7,6 +7,7 @@ export type Token = {
     symbol: string;
     img: string;
     decimals: number;
+    price: string;
     owner: Address;
     address: Address;
     volume: string;
@@ -85,6 +86,13 @@ export type ReservePool = {
     reserve1: string;
     reserve2: string;
     info: Pool;
+    createdAt: string;
+}
+
+export type TokenPrice = {
+    _id: string;
+    token_id: string;
+    price: string;
     createdAt: string;
 }
 

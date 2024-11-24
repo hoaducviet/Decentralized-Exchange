@@ -9,7 +9,7 @@ import {
     GetCollection, LiquidBalancesType,
     TokenTransaction, LiquidityTransaction,
     NFTTransaction, ActivesType, TokenActiveTransaction,
-    LiquidityActiveTransaction, NFTItem
+    LiquidityActiveTransaction, NFTItem, TokenPrice
 } from "@/lib/type";
 import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
@@ -26,7 +26,24 @@ export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api` }),
     endpoints: (builder) => ({
         getTokens: builder.query<Token[], void>({
-            query: () => '/tokens'
+            query: () => '/tokenprices',
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        updateCachedData((draft) => {
+                            const token = draft.find(item => item._id === event.data.token_id);
+                            if (token) {
+                                token.price = event.data.price
+                            }
+                        })
+                    }
+                    ws.on('updateTokenPrices', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
         }),
         getPools: builder.query<Pool[], void>({
             query: () => '/pools'
@@ -89,7 +106,7 @@ export const apiSlice = createApi({
                 await cacheEntryRemoved
             }
         }),
-        getTokenTransactionAll: builder.query<TokenActiveTransaction[], void>({
+        getTokenTransactionsAll: builder.query<TokenActiveTransaction[], void>({
             query: () => '/transactions/tokens',
             async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
                 try {
@@ -106,11 +123,51 @@ export const apiSlice = createApi({
                 await cacheEntryRemoved
             }
         }),
-        getPoolTransactionByAddress: builder.query<LiquidityActiveTransaction[], Address>({
+        getTokenTransactions: builder.query<TokenActiveTransaction[], string>({
+            query: (id) => `/transactions/tokens/${id}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    const id = arg
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        if (event.data.token_id === id) {
+                            updateCachedData((draft) => {
+                                draft.unshift(event.data)
+                            })
+                        }
+                    }
+                    ws.on('updateTokenTransactions', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
+        }),
+        getTokenPrices: builder.query<TokenPrice[], string>({
+            query: (id) => `/tokenprices/${id}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    const id = arg
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        if (event.data.token_id === id) {
+                            updateCachedData((draft) => {
+                                draft.unshift(event.data)
+                            })
+                        }
+                    }
+                    ws.on('updateTokenPrices', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
+        }),
+        getPoolTransactionsByAddress: builder.query<LiquidityActiveTransaction[], Address>({
             query: (address) => `/transactions/pools/${address}`,
 
         }),
-        getNFTTransactionByItem: builder.query<NFTItem, { collectionId: string, nftId: string }>({
+        getNFTTransactionsByItem: builder.query<NFTItem, { collectionId: string, nftId: string }>({
             query: ({ collectionId, nftId }) => `/transactions/nfts/nft?collection=${collectionId}&nft=${nftId}`,
         }),
         getSearch: builder.query<{ tokens: Token[]; nfts: Collection[] }, string>({
@@ -180,10 +237,12 @@ export const {
     useGetCollectionQuery,
     useGetNFTBalancesQuery,
     useGetActivesQuery,
-    useGetTokenTransactionAllQuery,
-    useGetPoolTransactionByAddressQuery,
-    useGetNFTTransactionByItemQuery,
+    useGetTokenTransactionsAllQuery,
+    useGetPoolTransactionsByAddressQuery,
+    useGetNFTTransactionsByItemQuery,
     useGetSearchQuery,
+    useGetTokenTransactionsQuery,
+    useGetTokenPricesQuery,
 
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,

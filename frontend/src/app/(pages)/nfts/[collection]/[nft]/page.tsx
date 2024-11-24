@@ -6,7 +6,7 @@ import { useAccount } from "wagmi"
 import { ethers } from "ethers"
 import { useCollection } from "@/hooks/useCollection"
 import { useWeb3 } from "@/hooks/useWeb3"
-import { useGetCollectionQuery, useGetNFTTransactionByItemQuery, useGetReservesQuery, useAddNftTransactionMutation, useUpdateNftTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useGetCollectionQuery, useGetNFTTransactionsByItemQuery, useGetReservesQuery, useAddNftTransactionMutation, useUpdateNftTransactionMutation } from "@/redux/features/api/apiSlice"
 import { buyNFT } from "@/services/nftmarket/buyNFT"
 import { sellNFT } from "@/services/nftmarket/sellNFT";
 import { withdrawNFT } from "@/services/nftmarket/withdrawNFT";
@@ -30,7 +30,7 @@ export default function NFTPage() {
     const { currentCollection } = useCollection()
     const [currentNft, setCurrentNft] = useState<NFT | undefined>(undefined)
     const { collection, nft } = useParams()
-    const { data: nftItem } = useGetNFTTransactionByItemQuery({ collectionId: currentCollection?._id as string, nftId: nft as string })
+    const { data: nftItem } = useGetNFTTransactionsByItemQuery({ collectionId: currentCollection?._id as string, nftId: nft as string })
     const { data } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
     const { data: reserves } = useGetReservesQuery()
     const [addNftTransaction] = useAddNftTransactionMutation()

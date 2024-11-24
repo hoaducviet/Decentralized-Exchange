@@ -3,13 +3,13 @@ import { useParams } from "next/navigation"
 import PoolChart from "@/components/chart/poolChart"
 import PoolTransactions from "@/components/explore/PoolTransactions"
 import { skipToken } from "@reduxjs/toolkit/query"
-import { useGetPoolTransactionByAddressQuery } from '@/redux/features/api/apiSlice'
+import { useGetPoolTransactionsByAddressQuery } from '@/redux/features/api/apiSlice'
 import { Address } from "@/lib/type"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function Pool() {
     const { pool } = useParams()
-    const { data: transactions, isFetching: isFetchingTransaction } = useGetPoolTransactionByAddressQuery(pool as Address ?? skipToken)
+    const { data: transactions, isFetching: isFetchingTransaction } = useGetPoolTransactionsByAddressQuery(pool as Address ?? skipToken)
 
     return (
         <div className="flex flex-col justify-center items-start mx-[15vw] my-[5vw]">

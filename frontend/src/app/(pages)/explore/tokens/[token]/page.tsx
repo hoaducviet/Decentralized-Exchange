@@ -1,137 +1,33 @@
 'use client'
-
+import { useEffect, useState } from "react"
 import { useParams } from "next/navigation"
-import TokenChart from "@/components/chart/tokenChart"
+import TokenChart from "@/components/chart/TokenChart"
 import TokenTransactions from "@/components/explore/TokenTransactions"
-
-const transactions = [
-    {
-        time: '7m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '8m ago',
-        type: 'Sell',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '9m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '10m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '9m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '10m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '9m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '10m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '9m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '10m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '9m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '10m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '9m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-    {
-        time: '10m ago',
-        type: 'Buy',
-        amount: '0.55',
-        to: '0,22 USDT',
-        price: '$123.231',
-        wallet: '0x2123...1345'
-    },
-
-]
+import { useGetTokensQuery, useGetTokenTransactionsQuery, useGetTokenPricesQuery } from "@/redux/features/api/apiSlice"
+import { skipToken } from "@reduxjs/toolkit/query"
+import { Token as TokenType } from "@/lib/type"
 
 export default function Token() {
+    const [currentToken, setCurrentToken] = useState<TokenType | undefined>(undefined)
     const { token } = useParams()
-    console.log(token)
+    const { data: tokens } = useGetTokensQuery()
+    const { data: transactions } = useGetTokenTransactionsQuery(currentToken?._id ?? skipToken)
+    const { data: prices } = useGetTokenPricesQuery(currentToken?._id ?? skipToken)
+
+    useEffect(() => {
+        if (tokens) {
+            setCurrentToken(tokens.find(item => item.symbol === token))
+        }
+    }, [tokens, token])
 
     return (
         <div className="flex flex-col justify-center items-start mx-[15vw] my-[5vw]">
             <div className="w-full">
-                <TokenChart />
+                <TokenChart prices={prices ?? []} token={currentToken}/>
             </div>
             <div className="flex flex-col w-full">
                 <p>Transactions</p>
-                <TokenTransactions transactions={transactions}/>
+                <TokenTransactions transactions={transactions ?? []} symbol={token as string} />
             </div>
         </div>
     )

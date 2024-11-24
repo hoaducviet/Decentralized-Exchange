@@ -9,10 +9,12 @@ const TokenController = require("../controllers/TokenController");
 const PoolController = require("../controllers/PoolController");
 const CollectionController = require("../controllers/CollectionController");
 const TransactionController = require("../controllers/TransactionController");
+const TokenPriceController = require("../controllers/TokenPriceController");
 const TokenTransaction = require("../models/TokenTransaction");
 const LiquidityTransaction = require("../models/LiquidityTransaction");
 const UsdTransaction = require("../models/UsdTransaction");
 const NftTransaction = require("../models/NftTransaction");
+const TokenPrice = require("../models/TokenPrice");
 
 function socket(io) {
   Token.watch().on("change", (change) => {
@@ -21,17 +23,37 @@ function socket(io) {
     io.emit("transaction", change.fullDocument);
   });
 
-  Reserve.watch([], { fullDocument: "updateLookup" }).on("change", (change) => {
-    if (["update", "insert"].includes(change.operationType)) {
-      const updateDocument = {
-        pool_id: change.fullDocument.pool_id,
-        reserve1: change.fullDocument.reserve_token1,
-        reserve2: change.fullDocument.reserve_token2,
-      };
-      console.log(updateDocument);
-      io.emit("updateReserves", { data: updateDocument });
+  Reserve.watch([], { fullDocument: "updateLookup" }).on(
+    "change",
+    async (change) => {
+      if (["update", "insert"].includes(change.operationType)) {
+        const updateDocument = {
+          pool_id: change.fullDocument.pool_id,
+          reserve1: change.fullDocument.reserve_token1,
+          reserve2: change.fullDocument.reserve_token2,
+        };
+        console.log(updateDocument);
+        io.emit("updateReserves", { data: updateDocument });
+        await TokenPriceController.addTokenPrice(updateDocument);
+      }
     }
-  });
+  );
+
+  TokenPrice.watch([], { fullDocument: "updateLookup" }).on(
+    "change",
+    (change) => {
+      if (["update", "insert"].includes(change.operationType)) {
+        const updateDocument = {
+          _id: change.fullDocument._id,
+          token_id: change.fullDocument.token_id,
+          price: change.fullDocument.price,
+          createdAt: change.fullDocument.createdAt,
+        };
+        console.log(updateDocument);
+        io.emit("updateTokenPrices", { data: updateDocument });
+      }
+    }
+  );
 
   TokenTransaction.watch([], { fullDocument: "updateLookup" }).on(
     "change",
