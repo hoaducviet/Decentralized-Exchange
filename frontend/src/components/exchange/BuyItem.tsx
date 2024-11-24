@@ -29,7 +29,7 @@ interface Props {
 
 export default function BuyItem({ token, tokens, setToken, setAmount, amount1, amount2 }: Props) {
     const ref = useRef<HTMLInputElement>(null)
-    const [isActive, setIsActive] = useState<number | undefined>()
+    const [isActive, setIsActive] = useState<number | undefined>(undefined)
 
     useEffect(() => {
         if (amount1 === "") {

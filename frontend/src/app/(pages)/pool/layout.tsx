@@ -1,9 +1,10 @@
 'use client'
-import { useState } from "react";
-import { useAccount } from "wagmi";
-import { skipToken } from '@reduxjs/toolkit/query/react';
-import { useGetLiquidityBalancesQuery } from "@/redux/features/api/apiSlice";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+import { useGetLiquidityBalancesQuery } from "@/redux/features/api/apiSlice";
+import { skipToken } from '@reduxjs/toolkit/query/react';
 import PoolBalances from "@/components/exchange/PoolBalances";
 
 const options = [
@@ -23,9 +24,17 @@ export default function PoolLayout({
     children: React.ReactNode;
 }>) {
     const { address } = useAccount()
-    const [isActive, setIsActive] = useState<number>(0)
+    const path = usePathname()
+    const [isActive, setIsActive] = useState<number | undefined>(undefined)
     const { data: liquidBalances, isFetching } = useGetLiquidityBalancesQuery(address ?? skipToken)
     const LPbalances = liquidBalances?.filter(liquidBalance => liquidBalance.balance?.value !== 0)
+
+    useEffect(() => {
+        if (path.includes('/usd')) {
+            setIsActive(1)
+        } else { setIsActive(0) }
+    }, [path])
+
     return (
         <div className="w-full h-full">
             <div className="select-none flex flex-col justify-start items-center w-full h-full">

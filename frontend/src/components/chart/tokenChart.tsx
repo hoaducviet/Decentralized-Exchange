@@ -24,7 +24,6 @@ export default function TokenChart({ prices, token }: Props) {
     const minPrice = chartData.length ? Math.min(...chartData.map(item => parseFloat(item.price || '0'))) : 0;
     const maxPrice = chartData.length ? Math.max(...chartData.map(item => parseFloat(item.price || '0'))) : 0;
 
-    console.log(chartData)
     return (
         <Card className="border-none outline-none shadow-none">
             <CardHeader className="px-0">
@@ -36,7 +35,7 @@ export default function TokenChart({ prices, token }: Props) {
                     <div className="text-xl font-semibold">{token?.name}</div>
                     <div className="text-xl font-semibold opacity-65">{token?.symbol}</div>
                 </div>
-                <div className="text-[2vw] mx-[0.5vw] font-medium">${token?.price}</div>
+                <div className="text-[2vw] mx-[0.5vw] font-medium">${token?.price.slice(0, token.price.indexOf('.') + 7)}</div>
                 <CardDescription>
                     The prices last month
                 </CardDescription>
@@ -113,14 +112,17 @@ export default function TokenChart({ prices, token }: Props) {
                                 stackId="a"
                                 dot={(props) => {
                                     if (props.index === chartData.length - 1) { // Chỉ hiển thị dot cho điểm cuối
-                                        return <Dot {...props} fill="rgba(255, 0, 0, 0.991)"
+                                        return <Dot
+                                            {...props}
+                                            key={`dot-${props.index}`}
+                                            fill="rgba(255, 0, 0, 0.991)"
                                             r={5} // Kích thước lớn hơn dot
                                             stroke="rgba(255, 0, 0, 0.991)" // Viền sáng
                                             strokeWidth={1} // Độ dày viền
                                             style={{ boxShadow: '0px 0px 10px rgba(255, 0, 0, 0.991)' }} // Thêm hiệu ứng phát sáng
                                         />;
                                     }
-                                    return <></>;
+                                    return <g key={`empty-dot-${props.index}`} />;;
                                 }}
                             />
                             <ReferenceLine y={chartData[chartData.length - 1].price} stroke="rgba(255, 0, 0, 0.991)" strokeOpacity={0.5} strokeWidth={1} />

@@ -37,6 +37,7 @@ export default function PoolBoxUSD({ tokens, tokenBalances, reserves }: Props) {
     const usdToken = tokens.find(token => token.symbol === "USD")
     const optionTokens = tokens.filter(token => token.symbol !== tokenOne?.symbol && token.symbol !== tokenTwo?.symbol)
 
+    console.log(currentPool)
     //Set mặc định giá trị ban đầu cho 2 token
     useEffect(() => {
         setTokenOne(usdToken)

@@ -19,7 +19,7 @@ export default function Tokens() {
             </div>
             <div className="flex flex-col max-h-[50vw] overflow-x-auto">
                 {tokens && tokens.map((token, index) => {
-                    if (token.symbol === 'USD') return <></>
+                    if (token.symbol === 'USD') return <div key={index}></div>
                     return (
                         <div key={index}>
                             <Link href={`/explore/tokens/${token.symbol}`}>

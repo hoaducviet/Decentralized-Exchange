@@ -23,10 +23,10 @@ export default function Token() {
     return (
         <div className="flex flex-col justify-center items-start mx-[15vw] my-[5vw]">
             <div className="w-full">
-                <TokenChart prices={prices ?? []} token={currentToken}/>
+                <TokenChart prices={prices ?? []} token={currentToken} />
             </div>
-            <div className="flex flex-col w-full">
-                <p>Transactions</p>
+            <div className="flex flex-col w-full space-y-[1vw]">
+                <p className="flex flex-row justify-start items-center text-md font-semibold">Transactions</p>
                 <TokenTransactions transactions={transactions ?? []} symbol={token as string} />
             </div>
         </div>

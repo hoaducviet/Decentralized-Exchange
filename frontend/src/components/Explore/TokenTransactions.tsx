@@ -22,7 +22,7 @@ export default function TokenTransactions({ transactions, symbol }: Props) {
                 <div className="flex flex-row justify-end items-center w-[15vw]">{headers[5]}</div>
             </div>
             <div className="flex flex-col max-h-[50vw] overflow-x-auto">
-                {transactions.map((transaction, index) => {
+                {transactions.length ? <> {transactions.map((transaction, index) => {
                     const [token1, token2] = transaction.from_token_id.symbol === "ETH" ? [transaction.from_token_id, transaction.to_token_id] : [transaction.to_token_id, transaction.from_token_id]
                     const [amount1, amount2] = transaction.from_token_id.symbol === "ETH" ? [transaction.amount_in, transaction.amount_out] : [transaction.amount_out, transaction.amount_in]
                     return (
@@ -58,7 +58,9 @@ export default function TokenTransactions({ transactions, symbol }: Props) {
                             <div className="flex flex-row justify-end items-center w-[15%]">{`${transaction.from_wallet.slice(0, 8)}...${transaction.from_wallet.slice(38, 42)}`}</div>
                         </div>
                     )
-                })}
+                })} </> :
+                    <div className="flex flex-row justify-center items-center text-md font-medium min-h-[3vw]">Not yet exchange for {symbol}</div>
+                }
             </div>
         </div>
     )

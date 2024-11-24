@@ -130,7 +130,7 @@ export const apiSlice = createApi({
                     const id = arg
                     await cacheDataLoaded
                     const listener = (event: MessageEvent) => {
-                        if (event.data.token_id === id) {
+                        if ([event.data.from_token_id._id, event.data.to_token_id._id].includes(id)) {
                             updateCachedData((draft) => {
                                 draft.unshift(event.data)
                             })
@@ -152,7 +152,7 @@ export const apiSlice = createApi({
                     const listener = (event: MessageEvent) => {
                         if (event.data.token_id === id) {
                             updateCachedData((draft) => {
-                                draft.unshift(event.data)
+                                draft.push(event.data)
                             })
                         }
                     }

@@ -14,6 +14,7 @@ export default function Pool() {
     const tokens = allTokens?.filter(token => ['USD', 'USDT', 'ETH'].includes(token.symbol))
     const balances = tokenBalances?.filter(balance => ['USD', 'USDT', 'ETH'].includes(balance.info.symbol))
 
+    console.log(allTokens)
     return (
         <div className="flex flex-col justify-start items-center w-full h-full">
             {!isFetchingTokens && tokens && !isFetchingReserve && reserves &&

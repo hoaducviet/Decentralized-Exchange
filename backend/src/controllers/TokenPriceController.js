@@ -139,6 +139,7 @@ class TokenPriceController {
       const prices = await TokenPrice.find({ token_id: id }).select(
         "token_id price createdAt"
       );
+      prices.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
       return res.status(200).json(mutipleMongooseToObject(prices));
     } catch (error) {
