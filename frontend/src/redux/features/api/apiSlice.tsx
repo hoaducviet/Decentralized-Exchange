@@ -9,7 +9,7 @@ import {
     GetCollection, LiquidBalancesType,
     TokenTransaction, LiquidityTransaction,
     NFTTransaction, ActivesType, TokenActiveTransaction,
-    LiquidityActiveTransaction, NFTItem, TokenPrice
+    PoolTransactionsType, NFTItem, TokenPrice
 } from "@/lib/type";
 import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
@@ -163,9 +163,45 @@ export const apiSlice = createApi({
                 await cacheEntryRemoved
             }
         }),
-        getPoolTransactionsByAddress: builder.query<LiquidityActiveTransaction[], Address>({
-            query: (address) => `/transactions/pools/${address}`,
-
+        getPoolReservePrices: builder.query<ReservePool[], string>({
+            query: (id) => `/reserves/${id}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    const id = arg
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        if (event.data.pool_id === id) {
+                            updateCachedData((draft) => {
+                                draft.push(event.data)
+                            })
+                        }
+                    }
+                    ws.on('updateReserves', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
+        }),
+        getPoolTransactions: builder.query<PoolTransactionsType[], string>({
+            query: (id) => `/transactions/pools/${id}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    const id = arg
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        if (event.data.pool_id === id) {
+                            updateCachedData((draft) => {
+                                draft.unshift(event.data)
+                            })
+                        }
+                    }
+                    ws.on('updatePoolTransactions', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
         }),
         getNFTTransactionsByItem: builder.query<NFTItem, { collectionId: string, nftId: string }>({
             query: ({ collectionId, nftId }) => `/transactions/nfts/nft?collection=${collectionId}&nft=${nftId}`,
@@ -238,11 +274,12 @@ export const {
     useGetNFTBalancesQuery,
     useGetActivesQuery,
     useGetTokenTransactionsAllQuery,
-    useGetPoolTransactionsByAddressQuery,
+    useGetPoolTransactionsQuery,
     useGetNFTTransactionsByItemQuery,
     useGetSearchQuery,
     useGetTokenTransactionsQuery,
     useGetTokenPricesQuery,
+    useGetPoolReservePricesQuery,
 
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,

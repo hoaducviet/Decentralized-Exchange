@@ -63,6 +63,7 @@ function socket(io) {
         type: change.fullDocument.type,
         from_wallet: change.fullDocument.from_wallet,
         to_wallet: change.fullDocument.to_wallet,
+        pool_id: change.fullDocument.pool_id,
         from_token_id: await Token.findById(change.fullDocument.from_token_id),
         to_token_id: await Token.findById(change.fullDocument.to_token_id),
         amount_in: change.fullDocument.amount_in,
@@ -81,6 +82,9 @@ function socket(io) {
         });
         if (change.fullDocument.status === "Completed") {
           io.emit("updateTokenTransactions", { data: updateDocument });
+          if(['Swap Token', 'Buy Token', 'Sell Token'].includes(updateDocument.type)){
+            io.emit("updatePoolTransactions", { data: updateDocument });
+          }
         }
       }
     }
@@ -111,6 +115,9 @@ function socket(io) {
         io.to(updateDocument.wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
+        if (change.fullDocument.status === "Completed") {
+          io.emit("updatePoolTransactions", { data: updateDocument });
+        }
       }
     }
   );

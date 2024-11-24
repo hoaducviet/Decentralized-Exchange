@@ -2,7 +2,7 @@ const ethers = require("ethers");
 const Reserve = require("../models/Reserve");
 const Pool = require("../models/Pool");
 const { wallet } = require("./WalletController.js");
-
+const convertToPool = require("../utils/convertToPool.js");
 const LiquidityPool = require("../artifacts/LiquidityPool.json");
 const LiquidityPoolETH = require("../artifacts/LiquidityPoolETH.json");
 const {
@@ -152,7 +152,29 @@ class ReserveController {
       console.log(error);
     }
   }
-  async getReserveById(req, res) {}
+  async getReserveByPool(req, res) {
+    try {
+      const { id } = req.params;
+      const results = await Reserve.find({ pool_id: id });
+
+      if (!results.length) {
+        return res.status(404).json({ message: "Pool is null" });
+      }
+      const response = results.map((item) => ({
+        _id: item._id,
+        pool_id: item.pool_id,
+        reserve1: item.reserve_token1,
+        reserve2: item.reserve_token2,
+        createdAt: item.createdAt,
+      }));
+      response.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+
+      console.log(response);
+      return res.status(200).json(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async deleteReserveById(req, res) {}
 }
 

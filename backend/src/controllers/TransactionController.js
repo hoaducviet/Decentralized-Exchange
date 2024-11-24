@@ -471,19 +471,12 @@ class TransactionController {
     }
   }
 
-  async getPoolTransactionsByAddress(req, res) {
+  async getPoolTransactions(req, res) {
     try {
-      const { address } = req.params;
-      if (!ethers.isAddress(address)) {
-        return res.status(400).json({
-          message: "Invalid address.",
-        });
-      }
-      const pool = await Pool.findOne({ address: address }).lean();
+      const { id } = req.params;
 
-      console.log(pool._id.toString());
       const liquidityTransactions = await LiquidityTransaction.find({
-        pool_id: pool._id.toString(),
+        pool_id: id,
       })
         .populate({
           path: "pool_id",
@@ -514,7 +507,22 @@ class TransactionController {
         })
         .exec();
 
-      const results = [...liquidityTransactions];
+      const tokenTransactions = await TokenTransaction.find({
+        pool_id: id,
+      })
+        .populate({
+          path: "from_token_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .populate({
+          path: "to_token_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .exec();
+
+      const results = [...tokenTransactions, ...liquidityTransactions];
 
       results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       return res.status(200).json(mutipleMongooseToObject(results));

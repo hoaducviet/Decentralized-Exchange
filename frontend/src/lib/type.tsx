@@ -107,6 +107,7 @@ export type TokenTransaction = {
     type: string;
     from_wallet: Address;
     to_wallet: Address;
+    pool_id?: string;
     from_token_id: string;
     to_token_id?: string;
     amount_in: string;
@@ -196,6 +197,7 @@ export type TokenActiveTransaction = {
     type: string;
     from_wallet: Address;
     to_wallet?: Address;
+    pool_id?: string;
     from_token_id: Token;
     to_token_id?: Token;
     amount_in: string;
@@ -254,5 +256,5 @@ export type NFTItem = {
 }
 
 export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction;
-
+export type PoolTransactionsType = TokenActiveTransaction | LiquidityActiveTransaction
 export type Children = React.ReactNode

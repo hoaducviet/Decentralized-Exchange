@@ -29,6 +29,7 @@ router.get("/pools", PoolController.getPoolAll);
 //Reserve
 router.get("/updatereserves", ReserveController.updateReserve);
 router.get("/reserves", ReserveController.getReserveAll);
+router.get("/reserves/:id", ReserveController.getReserveByPool);
 
 //Token Price
 router.get("/tokenprices", TokenPriceController.getTokenPriceAll);
@@ -70,8 +71,8 @@ router.get(
 );
 
 router.get(
-  "/transactions/pools/:address",
-  TransactionController.getPoolTransactionsByAddress
+  "/transactions/pools/:id",
+  TransactionController.getPoolTransactions
 );
 
 router.get(

@@ -1,136 +1,137 @@
 "use client"
+import { useEffect, useState } from "react"
+import { Area, AreaChart, Dot, CartesianGrid, XAxis, YAxis, ReferenceLine } from "recharts"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { ReservePool, Token } from "@/lib/type"
 
-import * as React from "react"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-import {
-    ChartConfig,
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
-} from "@/components/ui/chart"
-
-export const description = "An interactive bar chart"
-
-const chartData = [
-    { date: "2024-05-23", desktop: 252, mobile: 290 },
-    { date: "2024-05-24", desktop: 294, mobile: 220 },
-    { date: "2024-05-25", desktop: 201, mobile: 250 },
-    { date: "2024-05-26", desktop: 213, mobile: 170 },
-    { date: "2024-05-27", desktop: 420, mobile: 460 },
-    { date: "2024-05-28", desktop: 233, mobile: 190 },
-    { date: "2024-05-29", desktop: 78, mobile: 130 },
-    { date: "2024-05-30", desktop: 340, mobile: 280 },
-    { date: "2024-05-31", desktop: 178, mobile: 230 },
-    { date: "2024-06-01", desktop: 178, mobile: 200 },
-    { date: "2024-06-02", desktop: 470, mobile: 410 },
-    { date: "2024-06-03", desktop: 103, mobile: 160 },
-    { date: "2024-06-04", desktop: 439, mobile: 380 },
-    { date: "2024-06-05", desktop: 88, mobile: 140 },
-    { date: "2024-06-06", desktop: 294, mobile: 250 },
-    { date: "2024-06-07", desktop: 323, mobile: 370 },
-    { date: "2024-06-08", desktop: 385, mobile: 320 },
-    { date: "2024-06-09", desktop: 438, mobile: 480 },
-    { date: "2024-06-10", desktop: 155, mobile: 200 },
-    { date: "2024-06-11", desktop: 92, mobile: 150 },
-    { date: "2024-06-12", desktop: 492, mobile: 420 },
-    { date: "2024-06-13", desktop: 81, mobile: 130 },
-    { date: "2024-06-14", desktop: 426, mobile: 380 },
-    { date: "2024-06-15", desktop: 307, mobile: 350 },
-    { date: "2024-06-16", desktop: 371, mobile: 310 },
-    { date: "2024-06-17", desktop: 475, mobile: 520 },
-    { date: "2024-06-18", desktop: 107, mobile: 170 },
-    { date: "2024-06-19", desktop: 341, mobile: 290 },
-    { date: "2024-06-20", desktop: 408, mobile: 450 },
-    { date: "2024-06-21", desktop: 169, mobile: 210 },
-    { date: "2024-06-22", desktop: 317, mobile: 270 },
-    { date: "2024-06-23", desktop: 480, mobile: 530 },
-    { date: "2024-06-24", desktop: 132, mobile: 180 },
-    { date: "2024-06-25", desktop: 141, mobile: 190 },
-    { date: "2024-06-26", desktop: 434, mobile: 380 },
-    { date: "2024-06-27", desktop: 448, mobile: 490 },
-    { date: "2024-06-28", desktop: 149, mobile: 200 },
-    { date: "2024-06-29", desktop: 103, mobile: 160 },
-    { date: "2024-06-30", desktop: 446, mobile: 400 },
-]
+interface Props {
+    reserves: ReservePool[];
+    switchToken: boolean;
+    token1: Token | undefined;
+    token2: Token | undefined;
+}
 
 const chartConfig = {
-    views: {
-        label: "Page Views",
-    },
-    desktop: {
-        label: "Desktop",
+    price: {
+        label: "price",
         color: "hsl(var(--chart-1))",
     },
-    mobile: {
-        label: "Mobile",
-        color: "hsl(var(--chart-2))",
-    },
 } satisfies ChartConfig
+export default function Component({ reserves, switchToken, token1, token2 }: Props) {
+    const [amount, setAmount] = useState<string>('')
+    const chartData = reserves.map(({ createdAt, reserve1, reserve2 }) => {
+        const newPrice = !switchToken ? (parseFloat(reserve1) / parseFloat(reserve2)).toString() : (parseFloat(reserve2) / parseFloat(reserve1)).toString()
+        return ({ date: createdAt, price: newPrice.slice(0, newPrice.indexOf('.') + 7) })
+    })
+    const minPrice = chartData.length ? Math.min(...chartData.map(item => parseFloat(item.price || '0'))) : 0;
+    const maxPrice = chartData.length ? Math.max(...chartData.map(item => parseFloat(item.price || '0'))) : 0;
 
-export default function Component() {
-    const [activeChart] = React.useState<keyof typeof chartConfig>("desktop")
-
+    useEffect(() => {
+        if (chartData.length) {
+            setAmount(chartData[chartData.length - 1].price)
+        }
+    }, [chartData, switchToken])
 
     return (
         <Card className="border-none outline-none shadow-none">
             <CardHeader className="px-0">
-                <CardTitle>Volume</CardTitle>
+                <CardTitle className="text-3xl ">{`1 ${token1?.symbol} = ${amount} ${token2?.symbol}`}</CardTitle>
                 <CardDescription>
-                    Showing total visitors for the last 6 months
+                    The reserve of pool last month
                 </CardDescription>
             </CardHeader>
-            <CardContent className="px-0">
-                <ChartContainer config={chartConfig}>
-                    <BarChart
-                        accessibilityLayer
-                        data={chartData}
-                        margin={{
-                            left: 0,
-                            right: 0,
-                        }}
-                    >
-                        <CartesianGrid vertical={false} />
-                        <XAxis
-                            dataKey="date"
-                            tickLine={false}
-                            axisLine={false}
-                            tickMargin={8}
-                            minTickGap={32}
-                            tickFormatter={(value) => {
-                                const date = new Date(value)
-                                return date.toLocaleDateString("en-US", {
-                                    month: "short",
-                                    day: "numeric",
-                                })
+            {reserves.length ?
+                <CardContent className="px-0">
+                    <ChartContainer config={chartConfig}>
+                        <AreaChart
+                            accessibilityLayer
+                            data={chartData}
+                            margin={{
+                                left: 0,
+                                right: 48,
                             }}
-                        />
-                        <ChartTooltip
-                            content={
-                                <ChartTooltipContent
-                                    className="w-[150px]"
+                        >
+                            <defs>
+                                <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" className="text-blue-200" stopColor="currentColor" /> {/* Màu bắt đầu */}
+                                    <stop offset="50%" className="text-blue-600" stopColor="currentColor" /> {/* Màu giữa */}
+                                    <stop offset="100%" className="text-blue-900" stopColor="currentColor" /> {/* Màu kết thúc */}
+                                </linearGradient>
+                            </defs>
+                            <CartesianGrid vertical={false} />
+                            <XAxis
+                                dataKey="date"
+                                tickLine={false}
+                                axisLine={false}
+                                tickMargin={8}
+                                minTickGap={0}
+                                domain={['auto', 'auto']}
+                                tickFormatter={(value) => {
+                                    const date = new Date(value)
+                                    return date.toLocaleDateString("en-US", {
+                                        month: "short",
+                                        day: "numeric",
+                                    })
+                                }}
+                            />
+                            <YAxis
+                                padding={{ top: 20, bottom: 0 }}
+                                domain={[
+                                    0,
+                                    Math.round((maxPrice + (maxPrice - minPrice) * 0.1) / 10) * 10
+                                ]}
+                                tickLine={false}
+                                axisLine={false}
+                                tickCount={5}
+                                tick={true}
+                            />
+                            <ChartTooltip
+                                cursor={false}
+                                content={<ChartTooltipContent
+                                    className="w-full"
                                     nameKey="views"
                                     labelFormatter={(value) => {
-                                        return new Date(value).toLocaleDateString("en-US", {
+                                        const date = new Date(value)
+                                        return date.toLocaleDateString("en-US", {
                                             month: "short",
                                             day: "numeric",
                                             year: "numeric",
-                                        })
+                                        }) + " " + date.toLocaleTimeString("en-US", {
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                        });
                                     }}
-                                />
-                            }
-                        />
-                        <Bar dataKey={activeChart} fill={`var(--color-${activeChart})`} />
-                    </BarChart>
-                </ChartContainer>
-            </CardContent>
+                                />}
+                            />
+                            <Area
+                                dataKey="price"
+                                type="monotone"
+                                fill="url(#lineGradient)"
+                                fillOpacity={0.4}
+                                stroke="url(#lineGradient)"
+                                stackId="a"
+                                dot={(props) => {
+                                    if (props.index === chartData.length - 1) { // Chỉ hiển thị dot cho điểm cuối
+                                        return <Dot
+                                            {...props}
+                                            key={`dot-${props.index}`}
+                                            fill="rgba(255, 0, 0, 0.991)"
+                                            r={5} // Kích thước lớn hơn dot
+                                            stroke="rgba(255, 0, 0, 0.991)" // Viền sáng
+                                            strokeWidth={1} // Độ dày viền
+                                            style={{ boxShadow: '0px 0px 10px rgba(255, 0, 0, 0.991)' }} // Thêm hiệu ứng phát sáng
+                                        />;
+                                    }
+                                    return <g key={`empty-dot-${props.index}`} />;;
+                                }}
+                            />
+                            <ReferenceLine y={chartData[chartData.length - 1].price} stroke="rgba(255, 0, 0, 0.991)" strokeOpacity={0.5} strokeWidth={1} />
+                        </AreaChart>
+                    </ChartContainer>
+                </CardContent>
+                : <div className="flex flex-row justify-center items-center p-4">Not yet exchange</div>
+            }
         </Card>
     )
 }

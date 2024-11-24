@@ -74,6 +74,7 @@ export default function SellBox() {
                 type: "Sell Token",
                 from_wallet: address,
                 to_wallet: currentPool.info.address,
+                pool_id: currentPool.pool_id,
                 from_token_id: tokenOne._id,
                 to_token_id: tokenTwo._id,
                 amount_in: amount1
