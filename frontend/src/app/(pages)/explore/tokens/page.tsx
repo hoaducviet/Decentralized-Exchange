@@ -33,7 +33,7 @@ export default function Tokens() {
                                         <p>{token.name}</p>
                                         <p className="opacity-60">{token.symbol}</p>
                                     </div>
-                                    <p className="w-[15%] justify-start items-center">$ {token.price.slice(0, token.price.indexOf('.') + 5)}</p>
+                                    <p className="w-[15%] justify-start items-center">${token.price.slice(0, token.price.indexOf('.') + 4)}</p>
                                     <p className="w-[15%] justify-start items-center">{token.volume}</p>
                                     <p className="w-[30%] justify-end items-center"></p>
                                 </div>

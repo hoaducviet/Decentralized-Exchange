@@ -73,15 +73,18 @@ class TokenPriceController {
           await newTokenPrice.save();
           return;
         }
-        const newTokenPrice = new TokenPrice({
-          token_id: pool.token1_id,
-          price: (
-            (parseFloat(reserve2) / parseFloat(reserve1)) *
-            USDTprice
-          ).toString(),
-        });
-        await newTokenPrice.save();
-        return;
+        if(pool.name.endsWith("/USDT")){
+          const newTokenPrice = new TokenPrice({
+            token_id: pool.token1_id,
+            price: (
+              (parseFloat(reserve2) / parseFloat(reserve1)) *
+              USDTprice
+            ).toString(),
+          });
+          await newTokenPrice.save();
+          return;
+        }
+        return
       }
       console.log("NOT have USDT");
       return;

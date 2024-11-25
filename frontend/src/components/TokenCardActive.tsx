@@ -51,7 +51,7 @@ export default function TokenCardAcitve({ transaction }: Props) {
                             </div>
                         </>}
                     </div>
-                    <div>$ {transaction.price?.slice(0, transaction.price.indexOf('.') + 7)}</div>
+                    <div>${transaction.price?.slice(0, transaction.price.indexOf('.') + 7)}</div>
                 </div>
                 <div className="flex flex-row text-sm justify-between">
                     <div>{transaction.status}</div>

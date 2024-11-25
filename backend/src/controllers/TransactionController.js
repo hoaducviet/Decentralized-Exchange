@@ -3,7 +3,13 @@ const { provider } = require("../config/provider");
 const {
   getPriceTokenTransaction,
 } = require("../utils/getPriceTokenTransaction.js");
+const {
+  getPriceLiquidityTransaction,
+} = require("../utils/getPriceLiquidityTransaction.js");
 
+const {
+  getPriceNftTransaction,
+} = require("../utils/getPriceNftTransaction.js");
 const TokenTransaction = require("../models/TokenTransaction");
 const LiquidityTransaction = require("../models/LiquidityTransaction");
 const NftTransaction = require("../models/NftTransaction");
@@ -98,6 +104,7 @@ class TransactionController {
         receipt_hash,
         status: "Completed",
       };
+      console.log(updateData);
 
       if (receipt.logs && receipt.logs.length > 0) {
         receipt.logs.forEach((log) => {
@@ -199,6 +206,8 @@ class TransactionController {
         receipt_hash,
         status: "Completed",
       };
+      let amount_token1, amount_token2, amount_lpt;
+
       if (receipt.logs && receipt.logs.length > 0) {
         receipt.logs.forEach((log) => {
           if (liquidityEventTopics.includes(log.topics[0])) {
@@ -210,21 +219,33 @@ class TransactionController {
             console.log(
               `Liquidity amount1: ${amount1}, amount2: ${amount2}, lpt: ${liquidityTokens}`
             );
-            updateData = {
-              amount_token1: ethers.formatUnits(
+            if ((amount1, amount2, liquidityTokens)) {
+              amount_token1 = ethers.formatUnits(
                 amount1,
                 transaction.token1_id.decimals
-              ),
-              amount_token2: ethers.formatUnits(
+              );
+              amount_token2 = ethers.formatUnits(
                 amount2,
                 transaction.token2_id.decimals
-              ),
-              amount_lpt: ethers.formatEther(liquidityTokens),
-              ...updateData,
-            };
+              );
+              amount_lpt = ethers.formatEther(liquidityTokens);
+            }
           }
         });
       }
+
+      updateData = {
+        price: await getPriceLiquidityTransaction(
+          transaction.token1_id,
+          transaction.token2_id,
+          amount_token1,
+          amount_token2
+        ),
+        amount_token1,
+        amount_token2,
+        amount_lpt,
+        ...updateData,
+      };
 
       const result = await LiquidityTransaction.findByIdAndUpdate(
         transaction._id,
@@ -274,6 +295,8 @@ class TransactionController {
   async updateNftTransaction(req, res) {
     try {
       const { _id, receipt_hash } = req.body;
+      const transaction = await NftTransaction.findById(_id);
+      console.log(transaction.price)
       if (!receipt_hash) {
         const result = await NftTransaction.findByIdAndUpdate(
           _id,
@@ -286,8 +309,8 @@ class TransactionController {
         return res.status(404).json(mongooseToObject(result));
       }
       const receipt = await provider.getTransactionReceipt(receipt_hash);
-      console.log(receipt);
       const updateData = {
+        priceUsd: await getPriceNftTransaction(transaction.price),
         gas_fee: ethers.formatEther(receipt.gasPrice * receipt.gasUsed),
         receipt_hash,
         status: "Completed",

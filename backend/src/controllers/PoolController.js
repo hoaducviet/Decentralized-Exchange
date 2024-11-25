@@ -21,7 +21,7 @@ class PoolController {
 
       const validPool = [];
       const errors = [];
-
+      
       await Promise.all(
         newPools.map(async (pool) => {
           const token1 = await Token.findOne({ address: pool.addressToken1 });

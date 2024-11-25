@@ -19,7 +19,8 @@ const NftTransaction = new Schema(
       ref: "collection",
     },
     nft_id: { type: String, required: true },
-    price: { type: String, required: false },
+    price: { type: String, required: false, default: "0" },
+    priceUsd: { type: String, required: false, default: "0" },
     currency: { type: String, required: false, default: "ETH" },
     gas_fee: { type: String, required: false, default: "" },
     network_fee: { type: String, required: false, default: "" },
@@ -30,7 +31,7 @@ const NftTransaction = new Schema(
         return this.status === "Completed";
       },
       maxLength: 255,
-      default: ""
+      default: "",
     },
     status: {
       type: String,

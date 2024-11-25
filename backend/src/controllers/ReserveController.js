@@ -43,7 +43,7 @@ class ReserveController {
             );
             const reserve2 = ethers.formatUnits(
               value2,
-              pool.token2_id.decimals2
+              pool.token2_id.decimals
             );
 
             return {

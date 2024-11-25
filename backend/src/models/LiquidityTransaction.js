@@ -18,6 +18,7 @@ const LiquidityTransaction = new Schema(
     amount_token1: { type: String, required: false, default: "0" },
     amount_token2: { type: String, required: false, default: "0" },
     amount_lpt: { type: String, required: false, default: "0" },
+    price: { type: String, required: false, default: "0" },
     gas_fee: { type: String, required: false, default: "0" },
     network_fee: { type: String, required: false, default: "0" },
     platform_fee: { type: String, required: false, default: "0.3%" },

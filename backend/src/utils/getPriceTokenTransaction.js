@@ -1,45 +1,14 @@
-const Pool = require("../models/Pool.js");
-const Reserve = require("../models/Reserve.js");
+const TokenPrice = require("../models/TokenPrice.js");
 
-async function getPriceTokenTransaction(fromToken, amountIn) {
-  const pool_Usd_Eth = await Pool.findOne({ name: "USD/ETH" }).lean();
-  const reserve_Usd_Eth = (
-    await Reserve.find({ pool_id: pool_Usd_Eth._id })
-      .sort({ createdAt: -1 })
-      .limit(1)
-      .lean()
-  )[0];
-
-  if (fromToken.symbol === "ETH") {
-    return (
-      parseFloat(amountIn) *
-      (parseFloat(reserve_Usd_Eth.reserve_token1) /
-        parseFloat(reserve_Usd_Eth.reserve_token2))
-    ).toString();
-  } else if (fromToken.symbol === "USD") {
+async function getPriceTokenTransaction(token, amountIn) {
+  if (token.symbol === "USD") {
     return amountIn;
-  } else {
-    const pool_Token_Eth = await Pool.findOne({
-      name: `${fromToken.symbol}/ETH`,
-    }).lean();
-
-    const reserve_Token_Eth = (
-      await Reserve.find({
-        pool_id: pool_Token_Eth._id,
-      })
-        .sort({ createdAt: -1 })
-        .limit(1)
-        .lean()
-    )[0];
-
-    return (
-      parseFloat(amountIn) *
-      (parseFloat(reserve_Token_Eth.reserve_token2) /
-        parseFloat(reserve_Token_Eth.reserve_token1)) *
-      (parseFloat(reserve_Usd_Eth.reserve_token1) /
-        parseFloat(reserve_Usd_Eth.reserve_token2))
-    ).toString();
   }
+
+  const tokenPrice = await TokenPrice.findOne({ token_id: token._id })
+    .sort({ createdAt: -1 })
+    .exec();
+  return (parseFloat(amountIn) * parseFloat(tokenPrice.price)).toString();
 }
 
 module.exports = { getPriceTokenTransaction };

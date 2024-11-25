@@ -166,6 +166,7 @@ export type NFTTransaction = {
     collection_id: string;
     nft_id: string;
     price?: string;
+    priceUsd?: string;
     currency?: string;
     gas_fee?: string;
     network_fee?: string;
@@ -182,6 +183,7 @@ export type NFTActiveTransaction = {
     collection_id: Collection;
     nft_id: string;
     price?: string;
+    priceUsd?: string;
     currency?: string;
     gas_fee?: string;
     network_fee?: string;
