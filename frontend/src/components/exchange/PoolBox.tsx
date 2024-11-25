@@ -36,8 +36,6 @@ export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
     // Lọc lại danh sách tokens, loại trừ tokenOne và tokenTwo
     const newTokens = tokens.filter(token => token?.address !== tokenOne?.address && token?.address !== tokenTwo?.address);
 
-    console.log(currentPool)
-
     //Set mặc định giá trị ban đầu cho 2 token
     useEffect(() => {
         setTokenOne(tokens[0])

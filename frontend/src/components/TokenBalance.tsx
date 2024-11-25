@@ -9,6 +9,9 @@ export default function TokenBalance({ tokenBalances }: Props) {
     return (
         <>
             {tokenBalances && tokenBalances.map(((balance, index) => {
+                if (parseFloat(balance.balance?.formatted || "") === 0) {
+                    return <div key={index}></div>
+                }
                 return (
                     <div key={index} className="cursor-pointer flex flex-row justify-between hover:bg-secondary/80 text-md w-full h-[3vw] px-[1vw]">
                         <div className=" flex flex-row justify-start items-center w-[55%]">

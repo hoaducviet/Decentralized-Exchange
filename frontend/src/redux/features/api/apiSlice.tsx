@@ -24,6 +24,10 @@ export const getWss = async () => {
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
     baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api` }),
+    refetchOnReconnect: true,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: 600,
+    tagTypes: ['TokenBalance', 'LiquidityBalance', 'NFTCollection'],
     endpoints: (builder) => ({
         getTokens: builder.query<Token[], void>({
             query: () => '/tokenprices',
@@ -74,15 +78,19 @@ export const apiSlice = createApi({
         }),
         getCollection: builder.query<CollectionItem, GetCollection>({
             query: ({ address, addressCollection }) => `/collection?address=${address}&addressCollection=${addressCollection}`,
+            providesTags: ['NFTCollection']
         }),
         getTokenBalances: builder.query<TokenBalancesType[], Address>({
-            query: (address) => `/tokenbalances?address=${address}`
+            query: (address) => `/tokenbalances?address=${address}`,
+            providesTags: ['TokenBalance']
         }),
         getLiquidityBalances: builder.query<LiquidBalancesType[], Address>({
-            query: (address) => `/liquiditybalances?address=${address}`
+            query: (address) => `/liquiditybalances?address=${address}`,
+            providesTags: ['LiquidityBalance']
         }),
         getNFTBalances: builder.query<NFT[], Address>({
-            query: (address) => `/nftbalances?address=${address}`
+            query: (address) => `/nftbalances?address=${address}`,
+            providesTags: ['NFTCollection']
         }),
         getActives: builder.query<ActivesType[], Address>({
             query: (address) => `/actives/${address}`,
@@ -224,7 +232,8 @@ export const apiSlice = createApi({
                 url: `/updatetransaction/token`,
                 method: 'PATCH',
                 body: data
-            })
+            }),
+            invalidatesTags: ['TokenBalance', 'NFTCollection']
         }),
 
         addLiquidityTransaction: builder.mutation<LiquidityTransaction, LiquidityTransaction>({
@@ -239,7 +248,8 @@ export const apiSlice = createApi({
                 url: `/updatetransaction/liquidity`,
                 method: 'PATCH',
                 body: data
-            })
+            }),
+            invalidatesTags: ['TokenBalance', 'LiquidityBalance']
         }),
 
         addNftTransaction: builder.mutation<NFTTransaction, NFTTransaction>({
@@ -254,11 +264,9 @@ export const apiSlice = createApi({
                 url: `/updatetransaction/nft`,
                 method: 'PATCH',
                 body: data
-            })
-        }),
-
-
-
+            }),
+            invalidatesTags: ['TokenBalance', 'NFTCollection']
+        })
     })
 })
 

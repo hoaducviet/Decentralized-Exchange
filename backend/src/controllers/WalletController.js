@@ -48,19 +48,6 @@ const NFTMarketContract = new ethers.Contract(
 );
 
 class WalletController {
-  async checkWallet() {
-    try {
-      console.log("Checking");
-
-      const result = await fetchDataURI("https://api.coolcatsnft.com/cat/37");
-      const img = await convertToHttps(result.image);
-      console.log("Image: ", img);
-      return result;
-    } catch (error) {
-      return console.log({ message: "Internal server error" });
-    }
-  }
-
   async getTokens() {
     try {
       const allTokens = await FactoryTokenContract.getAllTokens();
@@ -157,7 +144,7 @@ class WalletController {
 
   async getCollection(req, res) {
     const { address, addressCollection } = req.query;
-    0;
+    console.log("Call data collection");
     try {
       if (!addressCollection) {
         return res.status(404).json("404 Not Found");
@@ -269,6 +256,7 @@ class WalletController {
   }
 
   async getTokenBalances(req, res) {
+    console.log("This check call back balances");
     const address = req.query.address;
     if (!address) return [];
     const tokens = await Token.find().select(

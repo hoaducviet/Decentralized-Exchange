@@ -42,6 +42,7 @@ export default function MyNFT() {
     const [updateNftTransaction] = useUpdateNftTransactionMutation()
     const { data, isFetching } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
     const mylist = data?.mylist
+
     const handleChangeAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTo(e.target.value)
     }
