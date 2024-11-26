@@ -27,6 +27,9 @@ module.exports = {
     localhost: {
       url: "http://127.0.0.1:8545",
       ignition: {
+        gas: 40000000, // Gas mặc định cho giao dịch
+        gasPrice: 20000000000, // Giá gas mặc định (20 gwei)
+        blockGasLimit: 50000000,
         maxFeePerGasLimit: 50_000_000_000n, // 50 gwei
         maxPriorityFeePerGas: 2_000_000_000n, // 2 gwei
         disableFeeBumping: false,

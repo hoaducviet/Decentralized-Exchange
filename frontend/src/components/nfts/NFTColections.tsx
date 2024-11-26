@@ -33,11 +33,11 @@ export default function NFTColections({ collections }: Props) {
                                     <div className='flex flex-row items-center space-x-[0.5vw] w-[35%] text-md'>
                                         <p>{index + 1}</p>
                                         <Avatar className="ml-[0.5vw]">
-                                            <AvatarImage src={'/image/default-nft.png'} />
+                                            <AvatarImage src={item.logo || '/image/default-nft.png'} />
                                             <AvatarFallback>{item.name[0]}</AvatarFallback>
                                         </Avatar>
                                         <p className='font-medium'>{item.name}</p>
-                                        <CheckBadgeIcon className="w-5 h-5 text-blue-500" />
+                                        {item.verified && <CheckBadgeIcon className="w-5 h-5 text-blue-500" />}
                                     </div>
                                     <div className='flex flex-row justify-between items-center text-md font-medium w-[65%]'>
                                         <p className='flex flex-row justify-start w-[20%]'>11.45 ETH</p>

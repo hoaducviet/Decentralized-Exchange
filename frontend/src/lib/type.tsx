@@ -57,6 +57,9 @@ export type Collection = {
     _id: string;
     name: string;
     symbol: string;
+    logo: string;
+    banner: string,
+    verified: boolean;
     address: Address;
     owner: Address;
     total_supply: string;

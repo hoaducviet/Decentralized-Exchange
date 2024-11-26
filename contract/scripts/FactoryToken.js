@@ -20,8 +20,6 @@ async function main() {
         ethers.parseUnits("90000000", token.decimals)
       ); // Gọi hàm launch
       await receipt.wait(); // Chờ giao dịch hoàn thành
-      console.log(ethers.parseUnits("90000000", token.decimals));
-      console.log(`Token launched! Transaction hash: ${receipt.hash}`);
     })
   );
 

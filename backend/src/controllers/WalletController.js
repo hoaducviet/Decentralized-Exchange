@@ -7,7 +7,7 @@ const { convertToPool } = require("../utils/convertToPool");
 
 const FactoryToken = require("../artifacts/FactoryToken.json");
 const FactoryLiquidityPool = require("../artifacts/FactoryLiquidityPool.json");
-const NFTMarket = require("../artifacts/NFTMarket.json");
+const MarketNFT = require("../artifacts/MarketNFT.json");
 
 const TokenERC20 = require("../artifacts/TokenERC20.json");
 const LiquidityPool = require("../artifacts/LiquidityPool.json");
@@ -17,7 +17,7 @@ const NFTCollection = require("../artifacts/NFTCollection.json");
 
 const addressFactoryToken = process.env.ADDRESS_FACTORY_TOKEN;
 const addressFactoryLiquidityPool = process.env.ADDRESS_FACTORY_LIQUIDITYPOOL;
-const addressNFTMarket = process.env.ADDRESS_NFT_MARKET;
+const addressMarketNFT = process.env.ADDRESS_MARKET_NFT;
 
 const eth = require("../assets/eth.json");
 const Token = require("../models/Token");
@@ -41,12 +41,11 @@ const FactoryLiquidityPoolContract = new ethers.Contract(
   wallet
 );
 
-const NFTMarketContract = new ethers.Contract(
-  addressNFTMarket,
-  NFTMarket.abi,
+const MarketNFTContract = new ethers.Contract(
+  addressMarketNFT,
+  MarketNFT.abi,
   wallet
 );
-
 class WalletController {
   async getTokens() {
     try {
@@ -118,13 +117,26 @@ class WalletController {
 
   async getCollections() {
     try {
-      const allCollections = await NFTMarketContract.getAllCollection();
+      const results = await MarketNFTContract.getAllActiveCollection();
 
-      const collections = allCollections.map((item) => ({
-        address: item[0],
-        name: item[1],
-        symbol: item[2],
-      }));
+      const collections = await Promise.all(
+        results.map(async (item) => {
+          if (item[2]) {
+            const response = await fetchDataURI({ uri: item[2] });
+
+            return {
+              name: response.name,
+              symbol: response.symbol,
+              logo: response.collection_logo,
+              banner: response.collection_banner_image,
+              uri: item[2],
+              verified: response.verified_collection,
+              address: item[0],
+              owner: item[1],
+            };
+          }
+        })
+      );
 
       const jsonData = JSON.stringify(collections, null, 2); // Định dạng
       // Ghi dữ liệu ra file JSON
@@ -144,7 +156,6 @@ class WalletController {
 
   async getCollection(req, res) {
     const { address, addressCollection } = req.query;
-    console.log("Call data collection");
     try {
       if (!addressCollection) {
         return res.status(404).json("404 Not Found");
@@ -168,7 +179,7 @@ class WalletController {
             return {
               address: addressCollection,
               id: Number(result[0]),
-              price: result[1].toString(),
+              price: Number(result[1]),
               uri: result[2],
               isListed: result[3],
               owner: result[4],
@@ -220,7 +231,7 @@ class WalletController {
                       return {
                         address: collection.address,
                         id: Number(result[0]),
-                        price: result[1].toString(),
+                        price: Number(result[1]),
                         uri: result[2],
                         isListed: result[3],
                         owner: result[4],
@@ -256,7 +267,6 @@ class WalletController {
   }
 
   async getTokenBalances(req, res) {
-    console.log("This check call back balances");
     const address = req.query.address;
     if (!address) return [];
     const tokens = await Token.find().select(
@@ -276,7 +286,7 @@ class WalletController {
               return {
                 info: token,
                 balance: {
-                  value: ethBalance.toString(),
+                  value: Number(ethBalance),
                   symbol: token.symbol,
                   formatted: balanceFormatted,
                   decimals: token.decimals,
@@ -298,7 +308,7 @@ class WalletController {
             );
             const symbol = await contract.symbol();
             const balance = {
-              value: value.toString(),
+              value: Number(value),
               symbol: symbol,
               formatted: balanceFormatted,
               decimals: decimals,
@@ -338,7 +348,7 @@ class WalletController {
     const pools = await convertToPool(results);
 
     try {
-      let liquidityBalances = await Promise.all(
+      const liquidityBalances = await Promise.all(
         pools.map(async (pool) => {
           try {
             const contract = new ethers.Contract(
@@ -357,7 +367,7 @@ class WalletController {
             );
             const symbol = await contract.symbol();
             const balance = {
-              value: value.toString(),
+              value: Number(value),
               symbol: symbol,
               formatted: balanceFormatted,
               decimals: decimals,
@@ -372,10 +382,56 @@ class WalletController {
           }
         })
       );
-      liquidityBalances = liquidityBalances.filter(
-        (item) => item.balance.value !== "0"
-      );
+
       res.status(200).json(liquidityBalances);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getReservePools(req, res) {
+    const results = await Pool.find()
+      .select("_id name address address_lpt total_liquidity volume")
+      .populate({
+        path: "token1_id",
+        select: "_id name symbol img decimals address owner volume",
+        model: "token",
+      })
+      .populate({
+        path: "token2_id",
+        select: "_id name symbol img decimals address owner volume",
+        model: "token",
+      })
+      .exec();
+
+    const pools = await convertToPool(results);
+    try {
+      const reservePools = await Promise.all(
+        pools.map(async (pool) => {
+          const isEth = pool.name.endsWith("/ETH");
+          try {
+            const contract = new ethers.Contract(
+              pool.address,
+              isEth ? LiquidityPoolETH.abi : LiquidityPool.abi,
+              wallet
+            );
+            const value1 = await contract.reserve1();
+            const value2 = await contract.reserve2();
+            const reserve1 = ethers.formatUnits(value1, pool.token1.decimals);
+            const reserve2 = ethers.formatUnits(value2, pool.token2.decimals2);
+
+            return {
+              reserve1,
+              reserve2,
+              info: pool,
+            };
+          } catch (error) {
+            console.error(`Error processing pool ${pool.name}:`, error);
+          }
+        })
+      );
+
+      res.status(200).json(reservePools);
     } catch (error) {
       console.log(error);
     }

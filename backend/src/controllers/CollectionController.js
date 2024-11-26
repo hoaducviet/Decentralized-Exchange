@@ -5,7 +5,6 @@ const { mutipleMongooseToObject } = require("../utils/mongoose");
 
 class CollectionController {
   async updateCollection(req, res) {
-    console.log("collection");
     try {
       const newCollections = await WalletController.getCollections();
 
@@ -20,7 +19,12 @@ class CollectionController {
       const errors = [];
 
       for (let collection of newCollections) {
-        if (!collection.name || !collection.address || !collection.symbol) {
+        if (
+          !collection.name ||
+          !collection.address ||
+          !collection.symbol ||
+          !collection.uri
+        ) {
           errors.push({ collection, error: "Missing required fields" });
           continue;
         }
@@ -30,6 +34,7 @@ class CollectionController {
           address: collection.address,
           name: collection.name,
           symbol: collection.symbol,
+          uri: collection.uri,
         });
 
         if (existCollection) {
@@ -59,11 +64,12 @@ class CollectionController {
       return res.status(500).json({ message: "Internal server error" });
     }
   }
+
   async getCollectionAll(req, res) {
     try {
       const results = await Collection.find()
         .select(
-          "_id name symbol img address owner total_supply description volume"
+          "_id name symbol logo banner verified address owner total_supply description volume"
         )
         .exec();
       if (!results.length) {

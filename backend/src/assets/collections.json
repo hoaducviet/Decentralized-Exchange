@@ -1,67 +1,132 @@
 [
   {
-    "address": "0x6D4e833593115BeBa992038f776778845Caa7FDD",
-    "name": "CRYPTOPUNKS",
-    "symbol": "Ͼ"
-  },
-  {
-    "address": "0x2aC30867516fc39558da44499EAa746f5855f40A",
     "name": "Block Queens",
-    "symbol": "BQ"
+    "symbol": "BQ",
+    "logo": "https://i.seadn.io/gcs/files/a28727e0984bf2619ac84333febde52c.jpg?w=500&auto=format",
+    "banner": "https://i.seadn.io/gae/kR2vaTkmu8XQaLke3GPt6SSB-1wlNI5nK4l4GDAIFEXe1m-98PWmDu5Oh0LuRKC88tNoEB_zI2gMddG8vhD9cjNZGO8fGwkeW9Mu?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Block%20Queens.json",
+    "verified": true,
+    "address": "0x9264ee2dB87BA0A5ED6a5Dc1790957829B8672a8",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
   {
-    "address": "0x4A0F382C025c35Cd6140512780c3C6c97bbe6497",
-    "name": "Captainz",
-    "symbol": "Captainz"
-  },
-  {
-    "address": "0x2C93e030272724f688d71EA7D56D5cD4FCFe18E7",
     "name": "BoredApeYachtClub",
-    "symbol": "BAYC"
+    "symbol": "BAYC",
+    "logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+    "banner": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/BoredApeYachtClub.json",
+    "verified": true,
+    "address": "0x137F08d546D1B5f24b6e991a09B1de9482F39259",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
   {
-    "address": "0x5919d37Cc3c433012278B0866F8d02469A0cb902",
+    "name": "CRYPTOPUNKS",
+    "symbol": "Ͼ",
+    "logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+    "banner": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/CRYPTOPUNKS.json",
+    "verified": true,
+    "address": "0xf51Cb9d19d4039BE076b0edB053394dbb911de12",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
+  },
+  {
+    "name": "Captainz",
+    "symbol": "Captainz",
+    "logo": "https://i.seadn.io/gcs/files/6df4d75778066bce740050615bc84e21.png?w=500&auto=format",
+    "banner": "https://i.seadn.io/gcs/files/62448fe425d5e5e2bd44ded754865f37.png?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Captainz.json",
+    "verified": true,
+    "address": "0xb4ae503A01467ee84e04a8c1059f26F2A38B51F4",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
+  },
+  {
     "name": "CloneX",
-    "symbol": "CloneX"
+    "symbol": "CloneX",
+    "logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
+    "banner": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/CloneX.json",
+    "verified": true,
+    "address": "0x1f2d8A2316de0d1e2b7Fc79DfC81162d699409FD",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
   {
-    "address": "0x60f3b538cE1DB1b1cD5BA011dE97948F5B23f4DF",
-    "name": "Pirate",
-    "symbol": "PIRATE"
-  },
-  {
-    "address": "0xe99C29Bb0f5e21C73BD533dc955735b9F7f34421",
-    "name": "Doodles",
-    "symbol": "DOODLE"
-  },
-  {
-    "address": "0xB6014b8e18A75b3D56D1b675B5f1b45918D97768",
     "name": "Cool Cats",
-    "symbol": "COOL"
+    "symbol": "COOL",
+    "logo": "https://i.seadn.io/gae/LIov33kogXOK4XZd2ESj29sqm_Hww5JSdO7AFn5wjt8xgnJJ0UpNV9yITqxra3s_LMEW1AnnrgOVB_hDpjJRA1uF4skI5Sdi_9rULi8?w=500&auto=format",
+    "banner": "https://i.seadn.io/gcs/files/9db3e1197b7655b791b125dd86db4bc7.png?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Cool%20Cats.json",
+    "verified": true,
+    "address": "0x209fD72312AdB23B90cA5fAd676C9fC3B9664B57",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
   {
-    "address": "0xAcA622699Da2B319af82D550E6B8d77204B5fd57",
-    "name": "HOPE",
-    "symbol": "HOPE"
+    "name": "Doodles",
+    "symbol": "DOODLE",
+    "logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+    "banner": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Doodles.json",
+    "verified": true,
+    "address": "0xD2a4C095A9C478C4342318C5232156E260FFb9d1",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
   {
-    "address": "0xc63478729727874decEC990Bf62a84a3375b6c79",
     "name": "Fijis",
-    "symbol": "FIJI"
+    "symbol": "FIJI",
+    "logo": "https://i.seadn.io/s/raw/files/6ed48ea36b34a296379af54918543a24.gif?w=500&auto=format",
+    "banner": null,
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Fijis.json",
+    "verified": false,
+    "address": "0x96B294E162537Ed360088Eea38b2C11C7A4d6aBb",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
   {
-    "address": "0x6bcCE1CE2f185368B2f45e38859f9AE8d9faD593",
+    "name": "HOPE",
+    "symbol": "HOPE",
+    "logo": "https://i.seadn.io/gcs/files/32469815c1d8c3cbec6541f35d991adc.gif?w=500&auto=format",
+    "banner": "https://i.seadn.io/gcs/files/642de8fe6f7326fe571351f5ed77e16b.jpg?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/HOPE.json",
+    "verified": true,
+    "address": "0xcdf7f698D294BD3c434db17828b3B09B32013B5a",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
+  },
+  {
+    "name": "Pirate",
+    "symbol": "PIRATE",
+    "logo": "https://i.seadn.io/gcs/files/9dd5c3df43bcd0861cead11bc988ce3d.gif?w=500&auto=format",
+    "banner": "https://i.seadn.io/gcs/files/4d1ebbdca54f9e0cc2c9e801863c4b93.png?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Pirate.json",
+    "verified": true,
+    "address": "0x89a51cD8bb0b0d15B8c7C6a206f5010A69739538",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
+  },
+  {
     "name": "RumbleKongLeague",
-    "symbol": "RKL"
+    "symbol": "RKL",
+    "logo": "https://i.seadn.io/s/raw/files/866ed37820afd3d81fd2d942edbe5c0d.jpg?w=500&auto=format",
+    "banner": "https://i.seadn.io/gcs/files/0727d6a53b2b266e9b4bb471ba9c3ae1.jpg?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/RumbleKongLeague.json",
+    "verified": true,
+    "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
   {
-    "address": "0xD018c5f287Bb2EaaF32Dd9987b0ECb54b50bf66C",
-    "name": "MutantApeYachtClub",
-    "symbol": "MAYC"
-  },
-  {
-    "address": "0xC3B2512bD08a56fd5eaA8E585e585D1EAe9cc176",
     "name": "Nyan Balloon",
-    "symbol": "NyanBall"
+    "symbol": "NyanBall",
+    "logo": "https://i.seadn.io/gcs/files/e8bd58f2759b0c260d36aa469e664ec3.gif?w=500&auto=format",
+    "banner": "https://i.seadn.io/gcs/files/dfc777ce66df8576580eaa5970f28c27.png?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Nyan%20Balloon.json",
+    "verified": true,
+    "address": "0xEa85E71BC7F2ed5a96A9e90F47aeB8c12ad328AC",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
+  },
+  {
+    "name": "MutantApeYachtClub",
+    "symbol": "MAYC",
+    "logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+    "banner": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?w=500&auto=format",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/MutantApeYachtClub.json",
+    "verified": true,
+    "address": "0x1588f268fad0DecDBd448473C8C301292639eA5b",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   }
 ]

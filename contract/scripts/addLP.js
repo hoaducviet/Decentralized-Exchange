@@ -16,7 +16,6 @@ async function main() {
         amountToken1
       );
       await approveTx1.wait();
-      console.log(`Approved token1 of ${pool.name}`);
 
       if (pool.addressToken2 !== "0x0000000000000000000000000000000000000000") {
         const token2Contract = await ethers.getContractAt(
@@ -28,7 +27,6 @@ async function main() {
           amountToken2
         );
         await approveTx2.wait();
-        console.log(`Approved token2 of ${pool.name}`);
       }
     })
   );
@@ -49,13 +47,11 @@ async function main() {
       if (pool.addressToken2 !== "0x0000000000000000000000000000000000000000") {
         const tx = await poolContract.addLiquidity(amountToken1, amountToken2);
         await tx.wait();
-        console.log(`Adding liquidity to pool at ${pool.name}`);
       } else {
         const tx = await poolContract.addLiquidity(amountToken1, {
           value: amountToken2,
         });
         await tx.wait();
-        console.log(`Liquidity added Ethereum and token1 to pool ${pool.name}`);
       }
     })
   );
