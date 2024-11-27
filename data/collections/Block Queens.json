@@ -1,13 +1,13 @@
 {
   "token_address": "0xa98cc213495b178bc0aa690223325bbed2dbbc71",
-  "name": "Block Queens",
+  "name": "Block Queens by Jeremy Cowart",
   "symbol": "BQ",
   "contract_type": "ERC721",
   "synced_at": "2022-02-21T16:26:23.000Z",
   "possible_spam": false,
   "verified_collection": true,
   "collection_logo": "https://i.seadn.io/gcs/files/a28727e0984bf2619ac84333febde52c.jpg?w=500&auto=format",
-  "collection_banner_image": "https://i.seadn.io/gae/kR2vaTkmu8XQaLke3GPt6SSB-1wlNI5nK4l4GDAIFEXe1m-98PWmDu5Oh0LuRKC88tNoEB_zI2gMddG8vhD9cjNZGO8fGwkeW9Mu?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gae/kR2vaTkmu8XQaLke3GPt6SSB-1wlNI5nK4l4GDAIFEXe1m-98PWmDu5Oh0LuRKC88tNoEB_zI2gMddG8vhD9cjNZGO8fGwkeW9Mu?auto=format&dpr=1&w=3840",
   "collection_category": "art",
   "project_url": "http://blockqueens.io",
   "wiki_url": null,
@@ -18,5 +18,5 @@
   "floor_price": "0.0835",
   "floor_price_usd": "205.847",
   "floor_price_currency": "eth",
-  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Block%20Queens.json"
+  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Block%20Queens.json"
 }

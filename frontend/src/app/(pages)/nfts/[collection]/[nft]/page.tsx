@@ -231,8 +231,8 @@ export default function NFTPage() {
                 <div className="flex flex-col w-[60%] space-y-5">
                     <div className="flex flex-col space-y-3">
                         <div className="flex flex-row justify-start items-center space-x-3 text-blue-500">
-                            <div className="text-lg font-medium text-blue-600">{currentNft?.name}</div>
-                            <CheckBadgeIcon className="w-5 h-5" />
+                            <div className="text-lg font-semibold text-blue-600">{currentCollection?.name}</div>
+                            {currentCollection?.verified && <CheckBadgeIcon className="w-5 h-5" />}
                         </div>
                         <div className="text-4xl font-bold">{currentNft?.name}</div>
                         <div className="flex felx-row text-md font-normal space-x-2">
@@ -254,7 +254,7 @@ export default function NFTPage() {
                             <div className="flex flex-row space-x-2">
                                 {currentNft?.owner !== address ? <>
                                     {currentNft?.isListed &&
-                                        <Button onClick={handleBuy} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center">
+                                        <Button onClick={handleBuy} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[100%]">
                                             <ShoppingCartIcon className="w-6 h-6" />
                                             <div className="text-md font-semibold">Buy now</div>
                                         </Button>

@@ -1,13 +1,13 @@
 {
   "token_address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b",
-  "name": "CloneX",
+  "name": "CloneX - X TAKASHI MURAKAMI",
   "symbol": "CloneX",
   "contract_type": "ERC721",
   "synced_at": "2021-12-12T13:50:39.000Z",
   "possible_spam": false,
   "verified_collection": true,
   "collection_logo": "https://i.seadn.io/gae/XN0XuD8Uh3jyRWNtPTFeXJg_ht8m5ofDx6aHklOiy4amhFuWUa0JaR6It49AH8tlnYS386Q0TW_-Lmedn0UET_ko1a3CbJGeu5iHMg?w=500&auto=format",
-  "collection_banner_image": "https://i.seadn.io/s/raw/files/21d546f6ace12273a83affe00f47a9f3.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/s/primary-drops/0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b/3569322:about:media:f6f63025-4215-453e-803f-2b34090dfa29.jpeg?auto=format&dpr=1&w=3840",
   "collection_category": "pfps",
   "project_url": "http://www.rtfkt.com",
   "wiki_url": null,
@@ -18,5 +18,5 @@
   "floor_price": "0.39749000000000001",
   "floor_price_usd": "985.526",
   "floor_price_currency": "eth",
-  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/CloneX.json"
+  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/CloneX.json"
 }

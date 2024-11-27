@@ -5,9 +5,9 @@
   "contract_type": "ERC721",
   "synced_at": "2023-11-07T20:48:59.000Z",
   "possible_spam": false,
-  "verified_collection": false,
+  "verified_collection": true,
   "collection_logo": "https://i.seadn.io/s/raw/files/6ed48ea36b34a296379af54918543a24.gif?w=500&auto=format",
-  "collection_banner_image": null,
+  "collection_banner_image": "https://i.seadn.io/s/primary-drops/0x12dd66366d45f44128083233c6fbadfe7cbae221/30965802:about:media:8934d986-96a1-44dd-8070-754b549071d7.png?auto=format&dpr=1&w=3840",
   "collection_category": "pfps",
   "project_url": "https://peacecoin.world/",
   "wiki_url": null,
@@ -18,5 +18,5 @@
   "floor_price": "0.114",
   "floor_price_usd": "282.649",
   "floor_price_currency": "eth",
-  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Fijis.json"
+  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Fijis.json"
 }

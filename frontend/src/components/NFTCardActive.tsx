@@ -10,7 +10,7 @@ interface Props {
 
 export default function NFTCardAcitve({ transaction }: Props) {
     const { address } = useAccount()
-    const { data } = useGetCollectionQuery({ address, addressCollection: transaction.collection_id.address })
+    const { data } = useGetCollectionQuery({ address, addressCollection: transaction.collection_id?.address })
     const nfts = data?.nfts
     const nft = nfts?.find(nft => nft.id === Number(transaction.nft_id))
     const date = new Date(transaction.createdAt);
@@ -33,7 +33,7 @@ export default function NFTCardAcitve({ transaction }: Props) {
                 <div className="text-sm font-medium">{formattedDate}</div>
             </div>
             <div className="flex flex-row justify-between items-center text-md font-semibold opacity-85">
-                <div className="">{transaction.collection_id.name} # {transaction.nft_id}</div>
+                <div className="">{transaction.collection_id?.name} # {transaction.nft_id}</div>
                 <div className="flex flex-row space-x-[0.2vw]">
                     <div>
                         {transaction.price}

@@ -1,13 +1,13 @@
 {
   "token_address": "0xc4973de5ee925b8219f1e74559fb217a8e355ecf",
-  "name": "HOPE",
+  "name": "AzraGames - The Hopeful",
   "symbol": "HOPE",
   "contract_type": "ERC721",
   "synced_at": "2022-09-27T20:02:23.000Z",
   "possible_spam": false,
   "verified_collection": true,
   "collection_logo": "https://i.seadn.io/gcs/files/32469815c1d8c3cbec6541f35d991adc.gif?w=500&auto=format",
-  "collection_banner_image": "https://i.seadn.io/gcs/files/642de8fe6f7326fe571351f5ed77e16b.jpg?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/642de8fe6f7326fe571351f5ed77e16b.jpg?auto=format&dpr=1&w=3840",
   "collection_category": "gaming",
   "project_url": "https://azragames.com",
   "wiki_url": null,
@@ -18,5 +18,5 @@
   "floor_price": "0.83899899",
   "floor_price_usd": "2080.192",
   "floor_price_currency": "eth",
-  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/HOPE.json"
+  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/HOPE.json"
 }

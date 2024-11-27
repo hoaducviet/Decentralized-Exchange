@@ -7,7 +7,7 @@
   "possible_spam": false,
   "verified_collection": true,
   "collection_logo": "https://i.seadn.io/gae/LIov33kogXOK4XZd2ESj29sqm_Hww5JSdO7AFn5wjt8xgnJJ0UpNV9yITqxra3s_LMEW1AnnrgOVB_hDpjJRA1uF4skI5Sdi_9rULi8?w=500&auto=format",
-  "collection_banner_image": "https://i.seadn.io/gcs/files/9db3e1197b7655b791b125dd86db4bc7.png?w=500&auto=format",
+  "collection_banner_image": "https://i.seadn.io/gcs/files/9db3e1197b7655b791b125dd86db4bc7.png?auto=format&dpr=1&w=3840",
   "collection_category": "pfps",
   "project_url": "http://coolcatsnft.com",
   "wiki_url": null,
@@ -18,5 +18,5 @@
   "floor_price": "0.2396",
   "floor_price_usd": "594.058",
   "floor_price_currency": "eth",
-  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Cool%20Cats.json"
+  "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Cool%20Cats.json"
 }

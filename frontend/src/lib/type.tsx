@@ -64,7 +64,9 @@ export type Collection = {
     owner: Address;
     total_supply: string;
     description: string;
+    owners: string;
     volume: string;
+    createdAt: string;
 }
 
 export type NFT = {

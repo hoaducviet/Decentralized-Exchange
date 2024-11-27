@@ -1,6 +1,7 @@
 import { BrowserProvider, JsonRpcSigner } from 'ethers'
 import { Address, Collection, NFT } from '@/lib/type'
 import { loadNFTCollectionContract } from '@/utils/loadNFTCollectionContract'
+import { loadMarketNFTContract } from '@/utils/loadMarketNFTContract'
 
 interface Props {
     provider: BrowserProvider,
@@ -10,12 +11,18 @@ interface Props {
     collection: Collection
 }
 
+const addressMarketNFT = process.env.NEXT_PUBLIC_ADDRESS_MARKET_NFT as Address
 export const withdrawNFT = async ({ provider, signer, address, nft, collection }: Props) => {
     const contract = await loadNFTCollectionContract({ provider: signer, address: collection.address });
-
+    const market = await loadMarketNFTContract({ provider: signer, address: addressMarketNFT })
+    const isApproved = await contract.isApprovedForAll(address, addressMarketNFT);
+    if (!isApproved) {
+        const tx = await contract.setApprovalForAll(addressMarketNFT, true);
+        await tx.wait();
+    }
     try {
         const nonce = await provider.getTransactionCount(address, 'latest');
-        const receipt = await contract.removeListedNFT(nft.id, {
+        const receipt = await market.removeListedNFT(collection.address, nft.id, {
             nonce: nonce
         })
         await receipt.wait()

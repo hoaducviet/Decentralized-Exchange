@@ -69,7 +69,7 @@ class CollectionController {
     try {
       const results = await Collection.find()
         .select(
-          "_id name symbol logo banner verified address owner total_supply description volume"
+          "_id name symbol logo banner verified address owner total_supply description volume createdAt"
         )
         .exec();
       if (!results.length) {

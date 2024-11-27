@@ -1,28 +1,68 @@
 'use client'
-import { useState, useEffect } from "react";
 import { useParams, usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useAccount } from "wagmi";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
-import { useGetCollectionsQuery } from "@/redux/features/api/apiSlice";
+import { useGetCollectionsQuery, useGetCollectionQuery } from "@/redux/features/api/apiSlice";
 import { setCurrentCollection } from "@/redux/features/collection/collectionSlice";
+import { CheckBadgeIcon } from '@heroicons/react/20/solid'
+import { GlobeIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import { Collection } from "@/lib/type";
+import { skipToken } from "@reduxjs/toolkit/query";
+
+const optionsInfo = [
+    "Items",
+    "Created",
+    "Chain",
+    "Total volume",
+    'Floor price',
+    'Most price',
+    'Listed',
+    'Owners (Unique)'
+]
+
 export default function CollectionLayout({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
     const dispatch = useDispatch()
     const { collection } = useParams()
     const pathname = usePathname()
+    const { address } = useAccount()
+    const [floorPrice, setFloorPrice] = useState<number>(0)
+    const [mostPrice, setMostPrice] = useState<number>(0)
+    const [percentListed, setPercentListed] = useState<string>('')
     const { data: collections } = useGetCollectionsQuery()
     const [isActive, setIsActive] = useState<number | undefined>(undefined)
+    const [newCollection, setNewCollection] = useState<Collection | undefined>(undefined)
+    const { data, isFetching } = useGetCollectionQuery(address && newCollection?.address ? { address, addressCollection: newCollection.address } : skipToken)
+    const nfts = data?.nfts
 
     useEffect(() => {
         if (collections?.length) {
             const currentCollection = collections?.find(item => item.name.toLowerCase().replace(/\s+/g, '') === collection)
             if (currentCollection) {
                 dispatch(setCurrentCollection(currentCollection))
+                setNewCollection(currentCollection)
             }
         }
     }, [collections, collection, dispatch])
+
+    useEffect(() => {
+        if (nfts) {
+            const prices = nfts
+                .filter(item => item.isListed && item.formatted)
+                .map(item => parseFloat(item.formatted || '0'))
+            if (prices.length > 0) {
+                setFloorPrice(Math.min(...prices))
+                setMostPrice(Math.max(...prices))
+            }
+            const percent = (nfts.filter(item => item.isListed).length / nfts.length * 100).toFixed(2);
+            setPercentListed(percent.endsWith('.00') ? parseInt(percent, 10).toString() : percent);
+        }
+    }, [nfts])
 
     const options = [
         {
@@ -52,25 +92,103 @@ export default function CollectionLayout({ children }: Readonly<{
     }
 
     return (
-        <div className="flex flex-col min-h-[100vh] mx-[15vw] my-[5vw]">
-            <div className="flex flex-row my-[1vw]">
-                {options.map((option, index) => {
-                    return (
-                        <Button
-                            onClick={() => setIsActive(index)}
-                            key={index} variant="link"
-                            className={`text-md font-medium ${isActive === index && 'underline'}`}
-                            asChild
-                        >
-                            <Link href={option.link}>
-                                {option.name}
-                            </Link>
-                        </Button>
-                    )
-                })}
+        <div className="flex flex-col min-h-[100vh]">
+            <div className="relative select-none flex flex-col">
+                <Image src={newCollection?.banner || '/image/default-image.png'} alt={newCollection?.name || ''} width={200} height={200} className="w-full max-h-[50vh] layout:responsive object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute inset-0 flex flex-row mx-[5vw] my-[2vw] text-white">
+                    <div className="flex flex-col justify-end w-[50%] space-y-[1vw]">
+                        <Image src={newCollection?.logo || "/image/default-image.png"} alt={newCollection?.name || ""} width={20} height={20} className="w-[6vw] h-[6vw] border-[1px] rounded-2xl border-white/70" />
+                        <div className="flex flex-row justify-start divide-x-[1px] dark:divide-white items-center space-x-[1.5vw]">
+                            <div className="flex flex-row justify-start items-center space-x-[1vw]">
+                                <div className="text-2xl font-semibold">{newCollection?.name}</div>
+                                {newCollection?.verified &&
+                                    <div className="relative bg-white rounded-full w-[1vw] h-[1vw]">
+                                        <CheckBadgeIcon className="absolute top-1/2 left-1/2 w-[1.5vw] h-[1.5vw] transform -translate-x-1/2 -translate-y-1/2 m-0 text-blue-500" />
+                                    </div>
+                                }
+                            </div>
+                            <div className="flex flex-row justify-start items-center px-[1.5vw] space-x-[1vw]">
+                                <GlobeIcon className="cursor-pointer w-[1.5vw] h-[1.5vw]" />
+                                <TwitterLogoIcon className="cursor-pointer w-[1.5vw] h-[1.5vw]" />
+                            </div>
+                        </div>
+                        <div className="flex flex-row justify-start items-center space-x-[1vw] text-md">
+                            <div className="flex flex-row space-x-[0.3vw]">
+                                <div>{optionsInfo[0]}</div>
+                                <div className="font-semibold">{newCollection?.total_supply}</div>
+                            </div>
+                            <div className="w-[3px] h-[3px] bg-white rounded-full opacity-80 "></div>
+                            <div className="flex flex-row space-x-[0.3vw]">
+                                <div>{optionsInfo[1]}</div>
+                                <div className="font-semibold">{(new Date(newCollection?.createdAt || '')).toLocaleString('en-US', { year: 'numeric', month: 'short' })}</div>
+                            </div>
+                            <div className="w-[3px] h-[3px] bg-white rounded-full opacity-80"></div>
+                            <div className="flex flex-row space-x-[0.3vw]">
+                                <div>{optionsInfo[2]}</div>
+                                <div className="font-semibold">Ethereum</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex flex-row justify-end items-end w-[50%] space-x-[2vw]">
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <div>{newCollection?.volume}</div>
+                                <div>ETH</div>
+                            </div>
+                            <div>{optionsInfo[3]}</div>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <div>{floorPrice}</div>
+                                <div>ETH</div>
+                            </div>
+                            <div>{optionsInfo[4]}</div>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <div>{mostPrice}</div>
+                                <div>ETH</div>
+                            </div>
+                            <div>{optionsInfo[5]}</div>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center text-lg font-semibold">
+                                <div>{percentListed}</div>
+                                <div>%</div>
+                            </div>
+                            <div>{optionsInfo[6]}</div>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <div>{newCollection?.volume}</div>
+                            </div>
+                            <div>{optionsInfo[7]}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="w-full">
-                {children}
+            <div className="flex flex-col mx-[15vw]">
+                <div className="flex flex-row my-[1vw]">
+                    {options.map((option, index) => {
+                        return (
+                            <Button
+                                onClick={() => setIsActive(index)}
+                                key={index} variant="link"
+                                className={`text-md font-medium ${isActive === index && 'underline'}`}
+                                asChild
+                            >
+                                <Link href={option.link}>
+                                    {option.name}
+                                </Link>
+                            </Button>
+                        )
+                    })}
+                </div>
+                <div className="w-auto">
+                    {children}
+                </div>
             </div>
         </div>
     )
