@@ -2,6 +2,7 @@ const fs = require("fs");
 const ethers = require("ethers");
 
 const { fetchDataURI } = require("../utils/fetchDataURI");
+const { chunkArray } = require("../utils/chunkArray");
 const { convertToHttps } = require("../utils/convertToHttps");
 const { convertToPool } = require("../utils/convertToPool");
 
@@ -22,6 +23,7 @@ const addressMarketNFT = process.env.ADDRESS_MARKET_NFT;
 const eth = require("../assets/eth.json");
 const Token = require("../models/Token");
 const Pool = require("../models/Pool");
+const NFT = require("../models/NFT");
 const Collection = require("../models/Collection");
 
 const networkUrl = process.env.NETWORK_URL;
@@ -46,6 +48,9 @@ const MarketNFTContract = new ethers.Contract(
   MarketNFT.abi,
   wallet
 );
+
+const ipfsGateway = process.env.IPFSLINK;
+
 class WalletController {
   async getTokens() {
     try {
@@ -125,14 +130,18 @@ class WalletController {
             const response = await fetchDataURI({ uri: item[2] });
 
             return {
+              address: item[0],
+              owner: item[1],
+              uri: item[2],
               name: response.name,
               symbol: response.symbol,
               logo: response.collection_logo,
               banner: response.collection_banner_image,
-              uri: item[2],
               verified: response.verified_collection,
-              address: item[0],
-              owner: item[1],
+              project_url: response.project_url || "",
+              discord_url: response.discord_url || "",
+              twitter_username: response.twitter_username || "",
+              instagram_username: response.instagram_username || "",
             };
           }
         })
@@ -149,6 +158,106 @@ class WalletController {
       });
 
       return collections;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getNFTAll() {
+    const excludedName = [
+      "CryptoPunks",
+      "Nyan Balloon", //0
+      "Pirate Nation - Founder's Pirate", //1
+      "Mutan Ape Yacht Club", //1
+      "Fijis", //1
+      "Cool Cats", //1
+      "CloneX - X TAKASHI MURAKAMI", //1
+      "Captainz", //0
+      "Block Queens by Jeremy Cowart", //1
+
+      "Bored Ape Yacht Club",
+      // "Doodles",
+      "RumbleKongLeague",
+      "AzraGames - The Hopeful",
+    ];
+    const collections = await Collection.find({
+      name: { $nin: excludedName },
+    });
+    try {
+      const nfts = await Promise.allSettled(
+        collections.map(async (collection) => {
+          try {
+            const contract = new ethers.Contract(
+              collection.address,
+              NFTCollection.abi,
+              wallet
+            );
+
+            const counter = await contract.counter();
+            const promises = [];
+            const saved = (
+              await NFT.find({
+                collection_id: collection._id,
+              })
+            ).map((item) => Number(item.nft_id));
+
+            for (let index = 0; index < Number(counter); index++) {
+              if (!saved.includes(index)) {
+                promises.push(contract.getNFTInfo(index));
+              }
+            }
+            const results = await Promise.all(promises);
+
+            const nftsCollection = [];
+            if (results.length > 0) {
+              const nftPromises = results.map(async (result, index) => {
+                if (result[2]) {
+                  console.log(collection.name, "index", index);
+                  const response = await fetchDataURI({ uri: result[2] });
+                  const img = response.image
+                    ? await convertToHttps({ uri: response.image })
+                    : "";
+                  const formatted = ethers.formatEther(result[1]);
+                  return {
+                    collection_id: collection._id,
+                    owner: result[4],
+                    nft_id: result[0].toString(),
+                    name: response.name || "",
+                    uri: result[2],
+                    img: img || `${index}`,
+                    price: result[1].toString(),
+                    formatted,
+                    isListed: result[3],
+                    description: response.description || "",
+                  };
+                }
+              });
+
+              const chunkSize = 10;
+              const nftChunks = chunkArray(nftPromises.slice(0,20), chunkSize);
+              let index = 0;
+              for (const chunk of nftChunks) {
+                const resultsChunk = await Promise.all(chunk);
+                console.log(index++);
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                nftsCollection.push(...resultsChunk.filter(Boolean));
+              }
+            }
+
+            await new Promise((resolve) => setTimeout(resolve, 10));
+            return nftsCollection.length > 0 ? nftsCollection : null;
+          } catch (error) {
+            console.log(error);
+          }
+        })
+      );
+      const filteredNFTs = nfts
+        .filter((result) => result.status === "fulfilled") // Lấy các phần tử "fulfilled"
+        .map((result) => result.value) // Trích xuất giá trị `value` (mảng NFT) từ từng phần tử
+        .flat() // Gộp tất cả các mảng NFT con lại thành một mảng duy nhất
+        .filter(Boolean);
+
+      return filteredNFTs;
     } catch (error) {
       console.log(error);
     }
@@ -229,18 +338,18 @@ class WalletController {
                         : "";
                       const formatted = ethers.formatEther(result[1]);
                       return {
-                        address: collection.address,
-                        id: Number(result[0]),
-                        price: Number(result[1]),
-                        uri: result[2],
-                        isListed: result[3],
+                        collection_id: collection._id,
                         owner: result[4],
+                        nft_id: result[0].toString(),
+                        name: response.name,
+                        uri: result[2],
+                        img,
+                        price: result[1].toString(),
                         formatted: formatted.slice(
                           0,
                           formatted.indexOf(".") + 7
                         ),
-                        img: img,
-                        name: response.name,
+                        isListed: result[3],
                         description: response.description,
                       };
                     }

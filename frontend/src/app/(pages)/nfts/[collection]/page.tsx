@@ -4,10 +4,11 @@ import { useAccount } from "wagmi";
 import { useParams } from "next/navigation";
 import { useCollection } from "@/hooks/useCollection"
 import { useWeb3 } from "@/hooks/useWeb3";
-import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetCollectionQuery } from "@/redux/features/api/apiSlice";
+import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetNFTByCollectionQuery } from "@/redux/features/api/apiSlice";
 import { buyNFT } from "@/services/nftmarket/buyNFT"
 import NFTCards from "@/components/nfts/NFTCards"
 import { NFT } from "@/lib/type";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 export default function CollectionNFT() {
     const { currentCollection } = useCollection()
@@ -19,8 +20,7 @@ export default function CollectionNFT() {
     const { address } = useAccount()
     const [addNftTransaction] = useAddNftTransactionMutation()
     const [updateNftTransaction] = useUpdateNftTransactionMutation()
-    const { data, isFetching } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
-    const nfts = data?.nfts
+    const { data: nfts, isFetching } = useGetNFTByCollectionQuery(currentCollection?._id ?? skipToken)
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!address && !!nft && !!currentCollection) {
@@ -29,7 +29,7 @@ export default function CollectionNFT() {
                 from_wallet: address,
                 to_wallet: nft.owner,
                 collection_id: currentCollection._id,
-                nft_id: nft.id.toString(),
+                nft_id: nft.nft_id.toString(),
                 price: nft.formatted,
             })
             try {

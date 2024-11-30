@@ -17,14 +17,15 @@ export const transferNFT = async ({ provider, signer, address, nft, collection, 
     const contract = await loadNFTCollectionContract({ provider: signer, address: collection.address });
     const market = await loadMarketNFTContract({ provider: signer, address: addressMarketNFT })
     const isApproved = await contract.isApprovedForAll(address, addressMarketNFT);
-    if (!isApproved) {
-        const tx = await contract.setApprovalForAll(addressMarketNFT, true);
-        await tx.wait();
-    }
     try {
-        const nonce = await provider.getTransactionCount(address, 'latest');
-        const receipt = await market.transferNFT(collection.address, to, nft.id, {
-            nonce: nonce,
+        if (!isApproved) {
+            const nonce1 = await provider.getTransactionCount(address, 'latest');
+            const tx = await contract.setApprovalForAll(addressMarketNFT, true, { nonce: nonce1, });
+            await tx.wait();
+        }
+        const nonce2 = await provider.getTransactionCount(address, 'latest');
+        const receipt = await market.transferNFT(collection.address, to, nft.nft_id, {
+            nonce: nonce2,
         })
         await receipt.wait()
         return receipt

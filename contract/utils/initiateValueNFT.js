@@ -21,28 +21,22 @@ async function initiateValueNFT(nfts, collection) {
 
       await new Promise((resolve) => setTimeout(resolve, 1));
     } catch (error) {
-      console.log(`Error minting NFT #${index + 1}:`, error);
+      console.log(`Error minting NFT #${index}:`, error);
     }
   }
-  await new Promise((resolve) => setTimeout(resolve, 200));
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   await contractCollection.setApprovalForAll(addressMarketNft, true);
 
-  // Cấp quyền thi hành cho market
-  const allNFT = await contractCollection.getAllNFTInfo();
-  const allNFTsDatas = allNFT.map((item) => ({
-    id: Number(item[0]),
-    price: Number(item[1]),
-    uri: item[2],
-  }));
+  // // Cấp quyền thi hành cho market
+  const counter = await contractCollection.counter();
+  console.log("Counter: ", counter);
 
-  const allNFTsData = allNFTsDatas.filter((item) => item.id !== 0);
-  for (let index = 0; index < allNFTsData.length; index++) {
-    const { id } = allNFTsData[index];
+  for (let index = 0; index < Number(counter); index++) {
     const price = parseFloat(Math.random() * 50).toFixed(6);
     try {
       const receipt = await martketContract.listNFT(
         collection.address,
-        id,
+        index,
         ethers.parseEther(price.toString())
       );
       await receipt.wait();

@@ -5,6 +5,7 @@ const SiteController = require("../controllers/SiteController");
 const WalletController = require("../controllers/WalletController");
 const TokenController = require("../controllers/TokenController");
 const PoolController = require("../controllers/PoolController");
+const NFTController = require("../controllers/NFTController");
 const CollectionController = require("../controllers/CollectionController");
 const TransactionController = require("../controllers/TransactionController");
 const ReserveController = require("../controllers/ReserveController");
@@ -25,6 +26,11 @@ router.get("/tokens", TokenController.getTokenAll);
 //Pool
 router.get("/updatepools", PoolController.updatePool);
 router.get("/pools", PoolController.getPoolAll);
+
+//NFT
+router.get("/updatenfts", NFTController.updateNFT);
+router.get("/nfts/:id", NFTController.getNFTsByCollection);
+router.get("/nft", NFTController.getNFTItem);
 
 //Reserve
 router.get("/updatereserves", ReserveController.updateReserve);

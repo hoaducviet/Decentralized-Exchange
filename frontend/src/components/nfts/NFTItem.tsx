@@ -21,17 +21,19 @@ export default function NFTItem({ nft, setNft, address, handleSend, collectionNa
         }
     }
     return (
-        <Card className='cursor-pointer border-none outline-none select-none w-full px-0 mx-0'>
-            <CardContent className='w-full px-0'>
-                <Link href={`/nfts/${collectionName}/${nft.id}`}>
+        <Card className='border-none outline-none select-none w-full px-0 mx-0'>
+            <CardContent className='cursor-pointer w-full px-0'>
+                <Link href={`/nfts/${collectionName}/${nft.nft_id}`}>
                     <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full" />
                 </Link>
             </CardContent>
-            <CardFooter className="flex flex-col justify-center items-start space-y-[0.5vw]">
-                <CardTitle className='opacity-70'># {nft.id}</CardTitle>
+            <CardFooter className="flex flex-col justify-center items-start space-y-[0.5vw] h-[4vw]">
+                <CardTitle className='opacity-70'>{nft.name ? nft.name : `#${nft.nft_id}`}</CardTitle>
                 <div className='flex flex-row justify-between items-center w-full'>
-                    <p className='text-md'>{nft.formatted}</p>
-                    <p className='text-md font-semibold'>ETH</p>
+                    <div className="flex flex-row justify-start items-center space-x-1">
+                        <p className='text-md'>{nft.formatted}</p>
+                        <p className='text-md font-semibold'>ETH</p>
+                    </div>
                     {nft.isListed && nft.owner !== address &&
                         <AlertDialog>
                             <AlertDialogTrigger asChild>

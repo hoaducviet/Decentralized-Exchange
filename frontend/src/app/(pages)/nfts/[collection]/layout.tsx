@@ -1,25 +1,25 @@
 'use client'
 import { useParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { useAccount } from "wagmi";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
-import { useGetCollectionsQuery, useGetCollectionQuery } from "@/redux/features/api/apiSlice";
+import { useGetCollectionsQuery } from "@/redux/features/api/apiSlice";
 import { setCurrentCollection } from "@/redux/features/collection/collectionSlice";
 import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { GlobeIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import { formatNumber } from '@/utils/formatNumber'
 import { Collection } from "@/lib/type";
-import { skipToken } from "@reduxjs/toolkit/query";
 
+const twitterUrl = 'https://x.com/'
 const optionsInfo = [
     "Items",
     "Created",
     "Chain",
     "Total volume",
     'Floor price',
-    'Most price',
+    'Highest price',
     'Listed',
     'Owners (Unique)'
 ]
@@ -30,15 +30,10 @@ export default function CollectionLayout({ children }: Readonly<{
     const dispatch = useDispatch()
     const { collection } = useParams()
     const pathname = usePathname()
-    const { address } = useAccount()
-    const [floorPrice, setFloorPrice] = useState<number>(0)
-    const [mostPrice, setMostPrice] = useState<number>(0)
     const [percentListed, setPercentListed] = useState<string>('')
     const { data: collections } = useGetCollectionsQuery()
     const [isActive, setIsActive] = useState<number | undefined>(undefined)
     const [newCollection, setNewCollection] = useState<Collection | undefined>(undefined)
-    const { data, isFetching } = useGetCollectionQuery(address && newCollection?.address ? { address, addressCollection: newCollection.address } : skipToken)
-    const nfts = data?.nfts
 
     useEffect(() => {
         if (collections?.length) {
@@ -51,18 +46,11 @@ export default function CollectionLayout({ children }: Readonly<{
     }, [collections, collection, dispatch])
 
     useEffect(() => {
-        if (nfts) {
-            const prices = nfts
-                .filter(item => item.isListed && item.formatted)
-                .map(item => parseFloat(item.formatted || '0'))
-            if (prices.length > 0) {
-                setFloorPrice(Math.min(...prices))
-                setMostPrice(Math.max(...prices))
-            }
-            const percent = (nfts.filter(item => item.isListed).length / nfts.length * 100).toFixed(2);
+        if (newCollection) {
+            const percent = (parseFloat(newCollection.total_listed) / parseFloat(newCollection.total_items) * 100 || 0).toFixed(2);
             setPercentListed(percent.endsWith('.00') ? parseInt(percent, 10).toString() : percent);
         }
-    }, [nfts])
+    }, [newCollection])
 
     const options = [
         {
@@ -78,6 +66,7 @@ export default function CollectionLayout({ children }: Readonly<{
             link: `/nfts/${collection}/mynft`
         },
     ]
+
     useEffect(() => {
         options.map((item, index) => {
             if (item.link === pathname) {
@@ -110,14 +99,22 @@ export default function CollectionLayout({ children }: Readonly<{
                                 }
                             </div>
                             <div className="flex flex-row justify-start items-center px-[1.5vw] space-x-[1vw]">
-                                <GlobeIcon className="cursor-pointer w-[1.5vw] h-[1.5vw]" />
-                                <TwitterLogoIcon className="cursor-pointer w-[1.5vw] h-[1.5vw]" />
+                                {newCollection?.project_url &&
+                                    <a href={newCollection.project_url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 hover:shadow-xl hover:shadow-blue-200/50 hover:opacity-70" >
+                                        <GlobeIcon className="cursor-pointer w-[1.5vw] h-[1.5vw]" />
+                                    </a>
+                                }
+                                {newCollection?.twitter_username &&
+                                    <a href={`${twitterUrl}${newCollection.twitter_username}`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 hover:shadow-xl hover:shadow-blue-200/50 hover:opacity-70" >
+                                        <TwitterLogoIcon className="cursor-pointer w-[1.5vw] h-[1.5vw]" />
+                                    </a>
+                                }
                             </div>
                         </div>
                         <div className="flex flex-row justify-start items-center space-x-[1vw] text-md">
                             <div className="flex flex-row space-x-[0.3vw]">
                                 <div>{optionsInfo[0]}</div>
-                                <div className="font-semibold">{newCollection?.total_supply}</div>
+                                <div className="font-semibold">{formatNumber(parseFloat(newCollection?.total_items || ''))}</div>
                             </div>
                             <div className="w-[3px] h-[3px] bg-white rounded-full opacity-80 "></div>
                             <div className="flex flex-row space-x-[0.3vw]">
@@ -135,21 +132,21 @@ export default function CollectionLayout({ children }: Readonly<{
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
                                 <div>{newCollection?.volume}</div>
-                                <div>ETH</div>
+                                <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
                             <div>{optionsInfo[3]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
-                                <div>{floorPrice}</div>
-                                <div>ETH</div>
+                                <div>{newCollection?.floor_price}</div>
+                                <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
                             <div>{optionsInfo[4]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
-                                <div>{mostPrice}</div>
-                                <div>ETH</div>
+                                <div>{newCollection?.highest_price}</div>
+                                <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
                             <div>{optionsInfo[5]}</div>
                         </div>
@@ -162,7 +159,7 @@ export default function CollectionLayout({ children }: Readonly<{
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
-                                <div>{newCollection?.volume}</div>
+                                <div>{newCollection?.total_owners}</div>
                             </div>
                             <div>{optionsInfo[7]}</div>
                         </div>
@@ -170,7 +167,7 @@ export default function CollectionLayout({ children }: Readonly<{
                 </div>
             </div>
             <div className="flex flex-col mx-[15vw]">
-                <div className="flex flex-row my-[1vw]">
+                <div className="select-none flex flex-row my-[1vw]">
                     {options.map((option, index) => {
                         return (
                             <Button

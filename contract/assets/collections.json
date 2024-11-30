@@ -1,80 +1,80 @@
 [
   {
     "address": "0x9264ee2dB87BA0A5ED6a5Dc1790957829B8672a8",
-    "name": "Block Queens",
-    "symbol": "BQ",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Block%20Queens.json"
+    "name": "AzraGames - The Hopeful",
+    "symbol": "HOPE",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/HOPE.json"
   },
   {
     "address": "0x137F08d546D1B5f24b6e991a09B1de9482F39259",
-    "name": "BoredApeYachtClub",
-    "symbol": "BAYC",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/BoredApeYachtClub.json"
+    "name": "Block Queens by Jeremy Cowart",
+    "symbol": "BQ",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Block%20Queens.json"
   },
   {
     "address": "0xf51Cb9d19d4039BE076b0edB053394dbb911de12",
-    "name": "CRYPTOPUNKS",
-    "symbol": "Ͼ",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/CRYPTOPUNKS.json"
+    "name": "Bored Ape Yacht Club",
+    "symbol": "BAYC",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/BoredApeYachtClub.json"
   },
   {
     "address": "0xb4ae503A01467ee84e04a8c1059f26F2A38B51F4",
     "name": "Captainz",
     "symbol": "Captainz",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Captainz.json"
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Captainz.json"
   },
   {
     "address": "0x1f2d8A2316de0d1e2b7Fc79DfC81162d699409FD",
-    "name": "CloneX",
+    "name": "CloneX - X TAKASHI MURAKAMI",
     "symbol": "CloneX",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/CloneX.json"
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/CloneX.json"
   },
   {
     "address": "0x209fD72312AdB23B90cA5fAd676C9fC3B9664B57",
     "name": "Cool Cats",
     "symbol": "COOL",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Cool%20Cats.json"
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Cool%20Cats.json"
   },
   {
     "address": "0xD2a4C095A9C478C4342318C5232156E260FFb9d1",
-    "name": "Doodles",
-    "symbol": "DOODLE",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Doodles.json"
+    "name": "CryptoPunks",
+    "symbol": "Ͼ",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/CRYPTOPUNKS.json"
   },
   {
     "address": "0x96B294E162537Ed360088Eea38b2C11C7A4d6aBb",
-    "name": "Fijis",
-    "symbol": "FIJI",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Fijis.json"
+    "name": "Doodles",
+    "symbol": "DOODLE",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Doodles.json"
   },
   {
     "address": "0xcdf7f698D294BD3c434db17828b3B09B32013B5a",
-    "name": "HOPE",
-    "symbol": "HOPE",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/HOPE.json"
+    "name": "Fijis",
+    "symbol": "FIJI",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Fijis.json"
   },
   {
     "address": "0x1588f268fad0DecDBd448473C8C301292639eA5b",
-    "name": "MutantApeYachtClub",
+    "name": "Mutan Ape Yacht Club",
     "symbol": "MAYC",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/MutantApeYachtClub.json"
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/MutantApeYachtClub.json"
   },
   {
     "address": "0xEa85E71BC7F2ed5a96A9e90F47aeB8c12ad328AC",
     "name": "Nyan Balloon",
     "symbol": "NyanBall",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Nyan%20Balloon.json"
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Nyan%20Balloon.json"
   },
   {
     "address": "0x89a51cD8bb0b0d15B8c7C6a206f5010A69739538",
-    "name": "Pirate",
+    "name": "Pirate Nation - Founder's Pirate",
     "symbol": "PIRATE",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/Pirate.json"
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Pirate.json"
   },
   {
     "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
-    "name": "RumbleKongLeague",
+    "name": "Rumble Kong League",
     "symbol": "RKL",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmQcSKBb4WKcy9B5JHG579tGj9DRTuKLk3iL3piYRZJrjB/RumbleKongLeague.json"
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/RumbleKongLeague.json"
   }
 ]

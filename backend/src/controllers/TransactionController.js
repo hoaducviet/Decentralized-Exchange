@@ -40,8 +40,6 @@ const tokenEventTopics = tokenEventAbi.map(
   (abi) => ethers.EventFragment.from(abi).topicHash
 );
 
-console.log(tokenEventTopics);
-
 class TransactionController {
   async addTokenTransaction(req, res) {
     try {
@@ -296,7 +294,7 @@ class TransactionController {
     try {
       const { _id, receipt_hash } = req.body;
       const transaction = await NftTransaction.findById(_id);
-      console.log(transaction.price)
+      console.log(transaction.price);
       if (!receipt_hash) {
         const result = await NftTransaction.findByIdAndUpdate(
           _id,
@@ -396,28 +394,14 @@ class TransactionController {
   async getNftTransactionsByItem(req, res) {
     try {
       const { collection, nft } = req.query;
-      console.log({ collection, nft });
       const results = await NftTransaction.find({
         collection_id: collection,
         nft_id: nft,
         status: "Completed",
       }).lean();
-      const listed = [];
-      const prices = [];
-      await Promise.all(
-        results.map((item) => {
-          if (item.type === "Listed NFT") {
-            listed.push(item);
-          }
-          if (item.type === "Buy NFT") {
-            prices.push(item);
-          }
-        })
-      );
       results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      listed.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      prices.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-      return res.status(200).json({ listed, prices, actives: results });
+
+      return res.status(200).json(results);
     } catch (error) {
       console.error("Error transaction:", error.message);
       return res

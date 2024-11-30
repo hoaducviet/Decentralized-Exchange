@@ -15,6 +15,7 @@ const LiquidityTransaction = require("../models/LiquidityTransaction");
 const UsdTransaction = require("../models/UsdTransaction");
 const NftTransaction = require("../models/NftTransaction");
 const TokenPrice = require("../models/TokenPrice");
+const NFT = require("../models/NFT");
 
 function socket(io) {
   Token.watch().on("change", (change) => {
@@ -54,6 +55,39 @@ function socket(io) {
       }
     }
   );
+
+  Collection.watch([], { fullDocument: "updateLookup" }).on(
+    "change",
+    (change) => {
+      if (["update"].includes(change.operationType)) {
+        const updateDocument = {
+          _id: change.fullDocument._id,
+          floor_price: change.fullDocument.floor_price,
+          highest_price: change.fullDocument.highest_price,
+          total_items: change.fullDocument.total_items,
+          total_listed: change.fullDocument.total_listed,
+          total_owners: change.fullDocument.total_owners,
+          volume: change.fullDocument.volume,
+        };
+        console.log(updateDocument);
+        io.emit("updateCollection", { data: updateDocument });
+      }
+    }
+  );
+
+  NFT.watch([], { fullDocument: "updateLookup" }).on("change", (change) => {
+    if (["update"].includes(change.operationType)) {
+      const updateDocument = {
+        _id: change.fullDocument._id,
+        owner: change.fullDocument.owner,
+        price: change.fullDocument.price,
+        formatted: change.fullDocument.formatted,
+        isListed: change.fullDocument.isListed,
+      };
+      console.log(updateDocument);
+      io.emit("updateNft", { data: updateDocument });
+    }
+  });
 
   TokenTransaction.watch([], { fullDocument: "updateLookup" }).on(
     "change",
@@ -160,6 +194,7 @@ function socket(io) {
   NftTransaction.watch([], { fullDocument: "updateLookup" }).on(
     "change",
     async (change) => {
+      console.log("Change is this: ", change.fullDocument);
       if (["update", "insert"].includes(change.operationType)) {
         const updateDocument = {
           _id: change.fullDocument._id,
@@ -182,6 +217,11 @@ function socket(io) {
         io.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
+        if (change.operationType === "update") {
+          io.emit("updateNFTItemTransactions", {
+            data: updateDocument,
+          });
+        }
       }
     }
   );

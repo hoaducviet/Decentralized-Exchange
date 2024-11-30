@@ -16,19 +16,20 @@ export const buyNFT = async ({ provider, signer, address, nft, collection }: Pro
     const contract = await loadNFTCollectionContract({ provider: signer, address: collection.address });
     const market = await loadMarketNFTContract({ provider: signer, address: addressMarketNFT })
     const isApproved = await contract.isApprovedForAll(address, addressMarketNFT);
-    if (!isApproved) {
-        const tx = await contract.setApprovalForAll(addressMarketNFT, true);
-        await tx.wait();
-    }
     const balance = await provider.getBalance(address);
     const amount = BigInt(nft.price)
     if (balance < amount) {
         throw new Error("Insufficient balance ether");
     }
     try {
-        const nonce = await provider.getTransactionCount(address, 'latest');
-        const receipt = await market.buyNFT(collection.address, nft.id, {
-            nonce: nonce,
+        if (!isApproved) {
+            const nonce1 = await provider.getTransactionCount(address, 'latest');
+            const tx = await contract.setApprovalForAll(addressMarketNFT, true, { nonce: nonce1 });
+            await tx.wait();
+        }
+        const nonce2 = await provider.getTransactionCount(address, 'latest');
+        const receipt = await market.buyNFT(collection.address, nft.nft_id, {
+            nonce: nonce2,
             value: amount
         })
         await receipt.wait()

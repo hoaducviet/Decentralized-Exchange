@@ -1,18 +1,14 @@
 'use clien'
-import { useAccount } from "wagmi";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { NFTActiveTransaction } from '@/lib/type';
-import { useGetCollectionQuery } from "@/redux/features/api/apiSlice";
-
+import { useGetNFTItemQuery } from "@/redux/features/api/apiSlice";
+import { skipToken } from "@reduxjs/toolkit/query";
 interface Props {
     transaction: NFTActiveTransaction;
 }
 
 export default function NFTCardAcitve({ transaction }: Props) {
-    const { address } = useAccount()
-    const { data } = useGetCollectionQuery({ address, addressCollection: transaction.collection_id?.address })
-    const nfts = data?.nfts
-    const nft = nfts?.find(nft => nft.id === Number(transaction.nft_id))
+    const { data: nft } = useGetNFTItemQuery(transaction?.collection_id._id && transaction?.nft_id ? { collectionId: transaction.collection_id._id, nftId: transaction?.nft_id } : skipToken)
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {
         hour: '2-digit',
@@ -33,18 +29,23 @@ export default function NFTCardAcitve({ transaction }: Props) {
                 <div className="text-sm font-medium">{formattedDate}</div>
             </div>
             <div className="flex flex-row justify-between items-center text-md font-semibold opacity-85">
-                <div className="">{transaction.collection_id?.name} # {transaction.nft_id}</div>
-                <div className="flex flex-row space-x-[0.2vw]">
-                    <div>
-                        {transaction.price}
+                <div className="">{transaction.collection_id?.name} #{transaction.nft_id}</div>
+                {transaction.type !== 'Transfer NFT' &&
+                    <div className="flex flex-row space-x-[0.2vw]">
+                        <div>
+                            {transaction.price}
+                        </div>
+                        <div>
+                            {transaction.currency}
+                        </div>
                     </div>
-                    <div>
-                        {transaction.currency}
-                    </div>
-                </div>
+                }
             </div>
-            <div className="flex flex-row text-sm justify-start">
+            <div className="flex flex-row justify-between text-sm">
                 <div>{transaction.status}</div>
+                {transaction.type === 'Transfer NFT' &&
+                    <div>To: {transaction.to_wallet?.slice(2,8)}</div>
+                }
             </div>
         </div>
     </div>

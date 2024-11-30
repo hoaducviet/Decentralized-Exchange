@@ -1,25 +1,20 @@
 const fs = require("fs");
-const path = require("path");
-const collections = require("../assets/collections.json");
+const collections = require("../assets/collectionsBuild.json");
 
+const listNfts = collections.filter(
+  (item) => item.name !== "Nyan Balloon" && item.name !== "CryptoPunks"
+);
 async function main() {
-  collections.map((item) => {
-    const folderPath = `../data/metadata/${item.name}`;
-    const files = fs.readdirSync(folderPath);
-    const jsonFiles = files.filter((file) => file.endsWith(".json"));
-    const nfts = jsonFiles.map((file) => {
-      const filePath = path.join(folderPath, file);
-      const fileData = fs.readFileSync(filePath, "utf-8");
-      return JSON.parse(fileData);
-    });
-    const collections = nfts
-      .map(({ token_id, token_uri }) => ({
-        token_id,
-        token_uri,
-      }))
-      .sort((a, b) => parseInt(a.token_id) - parseInt(b.token_id));
+  listNfts.map((item) => {
+    const data = [];
+    for (let index = 0; index < item.number; index++) {
+      data.push({
+        token_id: index,
+        token_uri: `${index}${item.end_url}`,
+      });
+    }
 
-    const jsonData = JSON.stringify(collections, null, 2);
+    const jsonData = JSON.stringify(data, null, 2);
     fs.writeFile(`./assets/NFT/${item.name}.json`, jsonData, (err) => {
       if (err) {
         console.error("Error writing file", err);

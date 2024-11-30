@@ -6,7 +6,7 @@ mongoose.plugin(slug);
 
 const TokenPrice = new Schema(
   {
-    token_id: { type: Schema.Types.ObjectId, required: true, ref: "pool" },
+    token_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
     price: { type: String, required: true, default: 0 },
   },
   {

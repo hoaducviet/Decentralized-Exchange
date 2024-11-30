@@ -13,7 +13,7 @@ contract FactoryNFT is Ownable {
         string uri;
     }
     CollectionInfo[] public InfoCollections;
-    mapping(address => uint256) public collections;
+    mapping(address => uint256) private collections;
 
     event CollectionCreated(
         address collectionAddress,
@@ -35,12 +35,14 @@ contract FactoryNFT is Ownable {
     function createCollection(
         string memory _name,
         string memory _symbol,
-        string memory _uri
+        string memory _uri,
+        string memory _baseUri
     ) public onlyOwner {
         NFTCollection newCollection = new NFTCollection(
             _name,
             _symbol,
             _uri,
+            _baseUri,
             address(this)
         );
 

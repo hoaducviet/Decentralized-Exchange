@@ -1,9 +1,10 @@
 'use client'
-import { useCallback, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useCallback, useState, useEffect } from "react";
 import { useAccount } from "wagmi";
 import { ethers } from 'ethers';
 import { useWeb3 } from "@/hooks/useWeb3";
-import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetCollectionQuery } from "@/redux/features/api/apiSlice";
+import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetNFTByCollectionQuery } from "@/redux/features/api/apiSlice";
 import { useCollection } from "@/hooks/useCollection"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -12,6 +13,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { sellNFT } from "@/services/nftmarket/sellNFT";
 import { withdrawNFT } from "@/services/nftmarket/withdrawNFT";
 import { transferNFT } from "@/services/nftmarket/transferNFT";
+import { skipToken } from "@reduxjs/toolkit/query";
 import { NFT, Address } from "@/lib/type";
 
 const options = [
@@ -36,12 +38,20 @@ export default function MyNFT() {
     const signer = web3?.signer
     const provider = web3?.provider
     const { address } = useAccount()
+    const { collection } = useParams()
+    const router = useRouter()
     const [amount, setAmount] = useState<string>("")
     const [to, setTo] = useState<string>("")
     const [addNftTransaction] = useAddNftTransactionMutation()
     const [updateNftTransaction] = useUpdateNftTransactionMutation()
-    const { data, isFetching } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
-    const mylist = data?.mylist
+    const { data: nfts, isFetching } = useGetNFTByCollectionQuery(currentCollection?._id ?? skipToken)
+    const [mylist, setMylist] = useState<NFT[] | undefined>(undefined)
+
+    useEffect(() => {
+        if (nfts) {
+            setMylist(nfts.filter(item => item.owner === address))
+        }
+    }, [nfts, address])
 
     const handleChangeAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTo(e.target.value)
@@ -58,7 +68,7 @@ export default function MyNFT() {
                 from_wallet: address,
                 to_wallet: currentCollection.address,
                 collection_id: currentCollection._id,
-                nft_id: nft.id.toString(),
+                nft_id: nft.nft_id.toString(),
                 price: nft.formatted,
             })
             try {
@@ -99,7 +109,7 @@ export default function MyNFT() {
                 from_wallet: address,
                 to_wallet: currentCollection.address,
                 collection_id: currentCollection._id,
-                nft_id: nft.id.toString(),
+                nft_id: nft.nft_id.toString(),
                 price: amount,
             })
 
@@ -141,7 +151,7 @@ export default function MyNFT() {
                 from_wallet: address,
                 to_wallet: to as Address,
                 collection_id: currentCollection._id,
-                nft_id: nft.id.toString(),
+                nft_id: nft.nft_id.toString(),
                 price: nft.formatted,
             })
             try {
@@ -191,14 +201,16 @@ export default function MyNFT() {
                 {!isFetching && mylist && mylist.map((nft, index) => {
                     return (
                         <div key={index} className="cursor-pointer flex flex-row justify-between items-center border-gray-200 border-b-[0.1px] h-[6vw] px-[1.5vw]">
-                            <div className="flex flex-row justify-start items-center w-[25%] h-full space-x-[0.5vw]">
-                                <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={20} height={20} className="object-cover rounded-xl h-[4vw] w-[4vw]" />
-                                <div>#{nft.id}</div>
-                            </div>
-                            <div className="flex justify-start w-[25%]">{nft.isListed ? "Listed" : "Not Listed"}</div>
-                            <div className="flex flex-row justify-start space-x-[0.4vw] w-[25%]">
-                                <p>{nft.formatted}</p>
-                                <p className="text-md font-semibold">ETH</p>
+                            <div onClick={() => router.push(`/nfts/${collection}/${nft.nft_id}`)} className="flex flex-row justify-start items-center w-[75%]">
+                                <div className="flex flex-row justify-start items-center w-1/3 h-full space-x-[0.5vw]">
+                                    <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={20} height={20} className="object-cover rounded-xl h-[4vw] w-[4vw]" />
+                                    <div>{nft.name ? nft.name : `#${nft.nft_id}`}</div>
+                                </div>
+                                <div className="flex justify-start w-1/3">{nft.isListed ? "Listed" : "Not Listed"}</div>
+                                <div className="flex flex-row justify-start space-x-[0.4vw] w-1/3">
+                                    <p>{nft.formatted}</p>
+                                    <p className="text-md font-semibold">ETH</p>
+                                </div>
                             </div>
                             <div className="flex flex-row justify-start space-x-[1vw] w-[25%]">
                                 <AlertDialog>

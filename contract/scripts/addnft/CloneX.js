@@ -1,7 +1,7 @@
 const { initiateValueNFT } = require("../../utils/initiateValueNFT");
 const collections = require("../../assets/collections.json");
 const collection = collections.find((item) => item.symbol === "CloneX");
-const nfts = require("../../assets/NFT/CloneX.json");
+const nfts = require("../../assets/NFT/CloneX - X TAKASHI MURAKAMI.json");
 
 async function main() {
   await initiateValueNFT(nfts, collection);

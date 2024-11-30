@@ -55,35 +55,40 @@ export type LiquidBalancesType = {
 
 export type Collection = {
     _id: string;
+    address: Address;
+    owner: Address;
     name: string;
     symbol: string;
     logo: string;
     banner: string,
     verified: boolean;
-    address: Address;
-    owner: Address;
-    total_supply: string;
+    currency: string;
+    project_url?: string;
+    discord_url?: string;
+    floor_price: string;
+    highest_price: string;
+    total_items: string;
+    total_listed: string;
+    total_owners: string;
+    twitter_username: string;
+    instagram_username: string;
     description: string;
-    owners: string;
     volume: string;
     createdAt: string;
 }
 
 export type NFT = {
-    address: Address;
-    id: number;
-    price: string;
-    uri: string;
-    isListed: boolean;
+    _id: string;
+    collection_id: string,
     owner: Address;
-    formatted: string;
-    img: string,
+    nft_id: string;
     name: string;
+    uri: string;
+    img: string,
+    price: string;
+    formatted: string;
+    isListed: boolean;
     description: string;
-}
-export type GetCollection = {
-    address: Address | undefined;
-    addressCollection: Address | undefined;
 }
 
 export type ReservePool = {
@@ -99,12 +104,6 @@ export type TokenPrice = {
     token_id: string;
     price: string;
     createdAt: string;
-}
-
-export type CollectionItem = {
-    nfts: NFT[];
-    listed: NFT[];
-    mylist: NFT[];
 }
 
 export type TokenTransaction = {
@@ -256,11 +255,7 @@ export type USDActiveTransaction = {
     notes?: string;
     createdAt: string;
 }
-export type NFTItem = {
-    listed: NFTActiveTransaction[] | [],
-    prices: NFTActiveTransaction[],
-    actives: NFTActiveTransaction[],
-}
+
 
 export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction;
 export type PoolTransactionsType = TokenActiveTransaction | LiquidityActiveTransaction

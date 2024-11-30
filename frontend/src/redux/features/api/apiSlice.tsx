@@ -1,15 +1,11 @@
 'use client'
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
-    Token, TokenBalancesType,
-    Pool, ReservePool,
-    NFT, Address,
-    Collection, CollectionItem,
-    GetCollection, LiquidBalancesType,
-    TokenTransaction, LiquidityTransaction,
-    NFTTransaction, ActivesType, TokenActiveTransaction,
-    PoolTransactionsType, NFTItem, TokenPrice
+    Token, TokenBalancesType, Pool, ReservePool,
+    NFT, Address, Collection, LiquidBalancesType,
+    TokenTransaction, LiquidityTransaction, NFTTransaction,
+    ActivesType, TokenActiveTransaction, PoolTransactionsType,
+    TokenPrice, NFTActiveTransaction
 } from "@/lib/type";
 import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
@@ -25,7 +21,6 @@ export const apiSlice = createApi({
     reducerPath: 'apiSlice',
     baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api` }),
     refetchOnReconnect: true,
-    refetchOnFocus: true,
     refetchOnMountOrArgChange: 600,
     tagTypes: ['TokenBalance', 'LiquidityBalance', 'NFTCollection'],
     endpoints: (builder) => ({
@@ -53,7 +48,29 @@ export const apiSlice = createApi({
             query: () => '/pools'
         }),
         getCollections: builder.query<Collection[], void>({
-            query: () => '/collections'
+            query: () => '/collections',
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        updateCachedData((draft) => {
+                            const collection = draft.find(item => item._id === event.data._id);
+                            if (collection) {
+                                collection.floor_price = event.data.floor_price
+                                collection.highest_price = event.data.highest_price
+                                collection.total_items = event.data.total_items
+                                collection.total_listed = event.data.total_listed
+                                collection.total_owners = event.data.total_owners
+                                collection.volume = event.data.volume
+                            }
+                        })
+                    }
+                    ws.on('updateCollection', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
         }),
         getReserves: builder.query<ReservePool[], void>({
             query: () => '/reserves',
@@ -76,9 +93,50 @@ export const apiSlice = createApi({
                 await cacheEntryRemoved
             }
         }),
-        getCollection: builder.query<CollectionItem, GetCollection>({
-            query: ({ address, addressCollection }) => `/collection?address=${address}&addressCollection=${addressCollection}`,
-            providesTags: ['NFTCollection']
+        getNFTByCollection: builder.query<NFT[], string>({
+            query: (id) => `/nfts/${id}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        updateCachedData((draft) => {
+                            const nft = draft.find(item => item._id === event.data._id)
+                            if (nft) {
+                                nft.owner = event.data.owner
+                                nft.price = event.data.price
+                                nft.formatted = event.data.formatted
+                                nft.isListed = event.data.isListed
+                            }
+                        })
+                    }
+                    ws.on('updateNft', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
+        }),
+        getNFTItem: builder.query<NFT, { collectionId: string, nftId: string }>({
+            query: ({ collectionId, nftId }) => `/nft?collection=${collectionId}&nft=${nftId}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        updateCachedData((draft) => {
+                            if (draft._id === event.data._id) {
+                                draft.owner = event.data.owner
+                                draft.price = event.data.price
+                                draft.formatted = event.data.formatted
+                                draft.isListed = event.data.isListed
+                            }
+                        })
+                    }
+                    ws.on('updateNft', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
         }),
         getTokenBalances: builder.query<TokenBalancesType[], Address>({
             query: (address) => `/tokenbalances?address=${address}`,
@@ -211,8 +269,26 @@ export const apiSlice = createApi({
                 await cacheEntryRemoved
             }
         }),
-        getNFTTransactionsByItem: builder.query<NFTItem, { collectionId: string, nftId: string }>({
+        getNFTTransactionsByItem: builder.query<NFTActiveTransaction[], { collectionId: string, nftId: string }>({
             query: ({ collectionId, nftId }) => `/transactions/nfts/nft?collection=${collectionId}&nft=${nftId}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    const { collectionId, nftId } = arg
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        console.log(event.data)
+                        if (collectionId === event.data.collection_id._id && nftId === event.data.nft_id) {
+                            updateCachedData((draft) => {
+                                draft.unshift(event.data)
+                            })
+                        }
+                    }
+                    ws.on('updateNFTItemTransactions', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
         }),
         getSearch: builder.query<{ tokens: Token[]; nfts: Collection[] }, string>({
             query: (query) => `/search?_sort=true&column=name&type=asc&q=${query}`
@@ -278,7 +354,6 @@ export const {
     useGetReservesQuery,
     useGetLiquidityBalancesQuery,
     useGetCollectionsQuery,
-    useGetCollectionQuery,
     useGetNFTBalancesQuery,
     useGetActivesQuery,
     useGetTokenTransactionsAllQuery,
@@ -288,6 +363,8 @@ export const {
     useGetTokenTransactionsQuery,
     useGetTokenPricesQuery,
     useGetPoolReservePricesQuery,
+    useGetNFTByCollectionQuery,
+    useGetNFTItemQuery,
 
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,

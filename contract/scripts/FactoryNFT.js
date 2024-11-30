@@ -8,8 +8,13 @@ async function main() {
   console.log(`Factory NFT deployed to: ${await factoryNFT.getAddress()}`);
 
   await Promise.all(
-    collectionsBuild.map(async ({ name, symbol, uri }) => {
-      const receipt = await factoryNFT.createCollection(name, symbol, uri);
+    collectionsBuild.map(async ({ name, symbol, uri, base_url }) => {
+      const receipt = await factoryNFT.createCollection(
+        name,
+        symbol,
+        uri,
+        base_url
+      );
       await receipt.wait();
     })
   );

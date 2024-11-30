@@ -1,12 +1,12 @@
 'use client'
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { useEffect, useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { useAccount } from "wagmi"
 import { ethers } from "ethers"
 import { useCollection } from "@/hooks/useCollection"
 import { useWeb3 } from "@/hooks/useWeb3"
-import { useGetCollectionQuery, useGetNFTTransactionsByItemQuery, useGetReservesQuery, useAddNftTransactionMutation, useUpdateNftTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useGetNFTItemQuery, useGetNFTTransactionsByItemQuery, useGetReservesQuery, useAddNftTransactionMutation, useUpdateNftTransactionMutation } from "@/redux/features/api/apiSlice"
 import { buyNFT } from "@/services/nftmarket/buyNFT"
 import { sellNFT } from "@/services/nftmarket/sellNFT";
 import { withdrawNFT } from "@/services/nftmarket/withdrawNFT";
@@ -22,31 +22,33 @@ import ItemListings from "@/components/nfts/ItemListings"
 import ItemPriceHistory from "@/components/nfts/ItemPriceHistory"
 import ItemDescription from "@/components/nfts/ItemDescription"
 import ItemImage from "@/components/nfts/ItemImage"
-import { NFT, Address } from "@/lib/type"
+import { skipToken } from "@reduxjs/toolkit/query"
+import { Address, NFTActiveTransaction } from "@/lib/type"
 
 export default function NFTPage() {
     const { address } = useAccount()
     const { signer, provider } = useWeb3() || {}
     const { currentCollection } = useCollection()
-    const [currentNft, setCurrentNft] = useState<NFT | undefined>(undefined)
     const { collection, nft } = useParams()
-    const { data: nftItem } = useGetNFTTransactionsByItemQuery({ collectionId: currentCollection?._id as string, nftId: nft as string })
-    const { data } = useGetCollectionQuery({ address, addressCollection: currentCollection?.address })
+    const [listed, setListed] = useState<NFTActiveTransaction[] | []>([])
+    const [prices, setPrices] = useState<NFTActiveTransaction[] | []>([])
+    const { data: actives } = useGetNFTTransactionsByItemQuery(currentCollection?._id && nft ? { collectionId: currentCollection?._id as string, nftId: nft as string } : skipToken)
+    const { data: currentNft } = useGetNFTItemQuery(currentCollection?._id && nft ? { collectionId: currentCollection?._id as string, nftId: nft as string } : skipToken)
     const { data: reserves } = useGetReservesQuery()
     const [addNftTransaction] = useAddNftTransactionMutation()
     const [updateNftTransaction] = useUpdateNftTransactionMutation()
     const [to, setTo] = useState<string>("")
     const [amount, setAmount] = useState<string>("")
-    const { nfts } = data || {}
-    const { listed, prices, actives } = nftItem || {};
     const UsdEth = reserves?.find(item => item.info.name === 'USD/ETH')
     const usdPriceCurrentNft = (parseFloat(currentNft?.formatted || '0') * parseFloat(UsdEth?.reserve1 || '0') / parseFloat(UsdEth?.reserve2 || '0')).toString()
 
     useEffect(() => {
-        if (nfts) {
-            setCurrentNft(nfts.find(item => item.id === Number(nft)))
+        if (actives) {
+            setListed(actives.filter(item => item.type === "Listed NFT"))
+            const newPrices = actives.filter(item => item.type === "Buy NFT")
+            setPrices(newPrices.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
         }
-    }, [nfts, nft])
+    }, [actives])
 
     const handleChangeAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTo(e.target.value)
@@ -63,7 +65,7 @@ export default function NFTPage() {
                 from_wallet: address,
                 to_wallet: currentNft.owner,
                 collection_id: currentCollection._id,
-                nft_id: currentNft.id.toString(),
+                nft_id: currentNft.nft_id.toString(),
                 price: currentNft.formatted,
             })
             try {
@@ -74,7 +76,6 @@ export default function NFTPage() {
                         _id: newTransaction._id,
                         receipt_hash: confirmedReceipt.hash,
                     })
-                    setCurrentNft(undefined)
                 } else {
                     if (newTransaction?._id) {
                         updateNftTransaction({
@@ -104,7 +105,7 @@ export default function NFTPage() {
                 from_wallet: address,
                 to_wallet: currentCollection.address,
                 collection_id: currentCollection._id,
-                nft_id: currentNft.id.toString(),
+                nft_id: currentNft.nft_id.toString(),
                 price: currentNft?.formatted,
             })
             try {
@@ -115,7 +116,6 @@ export default function NFTPage() {
                         _id: newTransaction._id,
                         receipt_hash: receipt.hash,
                     })
-                    setCurrentNft(undefined)
                 } else {
                     if (newTransaction?._id) {
                         updateNftTransaction({
@@ -145,7 +145,7 @@ export default function NFTPage() {
                 from_wallet: address,
                 to_wallet: currentCollection.address,
                 collection_id: currentCollection._id,
-                nft_id: currentNft.id.toString(),
+                nft_id: currentNft.nft_id.toString(),
                 price: amount,
             })
 
@@ -157,7 +157,6 @@ export default function NFTPage() {
                         _id: newTransaction._id,
                         receipt_hash: receipt.hash,
                     })
-                    setCurrentNft(undefined)
                 } else {
                     if (newTransaction?._id) {
                         updateNftTransaction({
@@ -187,7 +186,7 @@ export default function NFTPage() {
                 from_wallet: address,
                 to_wallet: to as Address,
                 collection_id: currentCollection._id,
-                nft_id: currentNft.id.toString(),
+                nft_id: currentNft.nft_id.toString(),
                 price: currentNft?.formatted,
             })
             try {
@@ -198,7 +197,6 @@ export default function NFTPage() {
                         _id: newTransaction._id,
                         receipt_hash: receipt.hash,
                     })
-                    setCurrentNft(undefined)
                 } else {
                     if (newTransaction?._id) {
                         updateNftTransaction({
@@ -234,7 +232,7 @@ export default function NFTPage() {
                             <div className="text-lg font-semibold text-blue-600">{currentCollection?.name}</div>
                             {currentCollection?.verified && <CheckBadgeIcon className="w-5 h-5" />}
                         </div>
-                        <div className="text-4xl font-bold">{currentNft?.name}</div>
+                        <div className="text-4xl font-bold">{currentNft?.name ? currentNft.name : `${currentCollection?.name} # ${currentNft?.nft_id}`}</div>
                         <div className="flex felx-row text-md font-normal space-x-2">
                             <div>Owner by</div>
                             <div className="text-blue-600">{`${currentNft?.owner.slice(0, 7)}...${currentNft?.owner.slice(37, 42)}`}</div>

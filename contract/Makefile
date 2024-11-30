@@ -2,7 +2,6 @@ clean:
 	rm -rf cache artifacts ./ignition/deployments/chain-31337/artifacts ./ignition/deployments/chain-31337/deployed_addresses.json
 	npx hardhat compile
 	npx hardhat ignition deploy ./ignition/modules/Lock.js
-	npx hardhat run ./scripts/FilterCollectionsBuild.js
 	npx hardhat run ./scripts/FilterNFTsBuild.js
 
 deploy:
@@ -36,8 +35,11 @@ nft3:
 nft:
 	npx hardhat run ./scripts/addnft/CRYPTOPUNKS.js
 	npx hardhat run scripts/BlockNumber.js
+	npx hardhat run ./scripts/addnft/Captainz.js
+
 
 rund:
+	npx hardhat run ./scripts/addnft/MutantApeYachtClub.js
 
 
 copy:
@@ -47,7 +49,8 @@ copy:
 
 end:
 	$(MAKE) clean && \
-	$(MAKE) deploy
+	$(MAKE) deploy && \
+	$(MAKE) nft
 
 start:
 	$(MAKE) clean && \
