@@ -2,6 +2,9 @@ import { headers } from 'next/headers'
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
 import { cookieToInitialState } from 'wagmi'
 import { ThemeProvider } from '@/store/ThemeProvider';
 import { ConnectProvider } from "@/store/ConnectProvider";

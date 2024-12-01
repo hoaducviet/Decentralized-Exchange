@@ -88,3 +88,12 @@ body {
     -moz-appearance: textfield;
   }
 }
+
+.swiper-pagination-bullet {
+  @apply w-2 h-2 bg-white/50 rounded-full mx-1; /* Bullet mặc định */
+}
+
+/* Tùy chỉnh màu sắc khi bullet được active */
+.swiper-pagination-bullet-active {
+  @apply bg-white/70; /* Màu của bullet khi active */
+}

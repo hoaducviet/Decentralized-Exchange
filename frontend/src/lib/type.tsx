@@ -256,6 +256,10 @@ export type USDActiveTransaction = {
     createdAt: string;
 }
 
+export type CollectionTop = {
+    collection: Collection;
+    nfts: NFT[];
+}
 
 export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction;
 export type PoolTransactionsType = TokenActiveTransaction | LiquidityActiveTransaction

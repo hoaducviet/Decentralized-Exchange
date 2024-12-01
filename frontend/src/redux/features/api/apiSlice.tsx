@@ -5,7 +5,7 @@ import {
     NFT, Address, Collection, LiquidBalancesType,
     TokenTransaction, LiquidityTransaction, NFTTransaction,
     ActivesType, TokenActiveTransaction, PoolTransactionsType,
-    TokenPrice, NFTActiveTransaction
+    TokenPrice, NFTActiveTransaction, CollectionTop
 } from "@/lib/type";
 import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
@@ -293,6 +293,9 @@ export const apiSlice = createApi({
         getSearch: builder.query<{ tokens: Token[]; nfts: Collection[] }, string>({
             query: (query) => `/search?_sort=true&column=name&type=asc&q=${query}`
         }),
+        getTopCollections: builder.query<CollectionTop[], void>({
+            query: () => `/collections/top`
+        }),
 
 
         //Mutations
@@ -365,6 +368,7 @@ export const {
     useGetPoolReservePricesQuery,
     useGetNFTByCollectionQuery,
     useGetNFTItemQuery,
+    useGetTopCollectionsQuery,
 
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,

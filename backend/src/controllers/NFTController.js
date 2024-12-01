@@ -1,5 +1,6 @@
 const Collection = require("../models/Collection");
 const NFT = require("../models/NFT");
+const CollectionController = require("../controllers/CollectionController");
 const WalletController = require("./WalletController");
 const {
   mongooseToObject,
@@ -59,6 +60,12 @@ class NFTController {
         });
       }
       const results = await NFT.insertMany(validNFT);
+      const collections = await Collection.find();
+      if (results) {
+        collections.map((item) => {
+          CollectionController.updateInfoCollection(item._id);
+        });
+      }
       return res.status(201).json({
         message: "NFTs data added successfully",
         data: { results: mutipleMongooseToObject(results), errors: errors },

@@ -1,4 +1,5 @@
 const Collection = require("../models/Collection");
+const NftTransaction = require("../models/NftTransaction");
 const NFT = require("../models/NFT");
 const WalletController = require("./WalletController");
 
@@ -92,16 +93,77 @@ class CollectionController {
     const prices = listed.map((item) => parseFloat(item.formatted || "0"));
     const owners = new Set(nfts.map((item) => item.owner));
 
+    const volume = (
+      await NftTransaction.find({
+        collection_id: _id,
+        type: "Buy NFT",
+        status: "Completed",
+      })
+    )
+      .reduce((sum, transaction) => sum + parseFloat(transaction.price), 0)
+      .toString();
+
     const updateData = {
       floor_price: Math.min(...prices),
       highest_price: Math.max(...prices),
       total_items: nfts.length,
       total_listed: listed.length,
       total_owners: owners.size,
+      volume,
     };
-    
+
     await Collection.findByIdAndUpdate(_id, updateData);
     return;
+  }
+
+  async getCollectionTop(req, res) {
+    try {
+      const collections = await Collection.aggregate([
+        {
+          $addFields: {
+            volume: { $toDouble: "$volume" },
+          },
+        },
+        {
+          $sort: { volume: -1 },
+        },
+        {
+          $limit: 6,
+        },
+      ]);
+
+      const results = await Promise.all(
+        collections.map(async (collection) => {
+          const nftTransactions = await NftTransaction.aggregate([
+            { $match: { collection_id: collection._id, status: "Completed" } },
+            { $group: { _id: "$nft_id", transactionCount: { $sum: 1 } } },
+            { $sort: { transactionCount: -1 } },
+            { $limit: 5 },
+          ]);
+
+          const nftIds = nftTransactions.map((item) => item._id);
+          const nfts =
+            nftIds.length > 0
+              ? await NFT.find({
+                  collection_id: collection._id,
+                  nft_id: { $in: nftIds },
+                })
+              : [];
+
+          return {
+            collection,
+            nfts,
+          };
+        })
+      );
+
+      return res.status(200).json(results);
+    } catch (error) {
+      console.error("Error Collection:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all Collection" });
+    }
   }
 }
 

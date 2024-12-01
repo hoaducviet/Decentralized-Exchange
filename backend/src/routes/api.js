@@ -44,6 +44,7 @@ router.get("/tokenprices/:id", TokenPriceController.getTokenPrice);
 //Collections
 router.get("/updatecollections", CollectionController.updateCollection);
 router.get("/collections", CollectionController.getCollectionAll);
+router.get("/collections/top", CollectionController.getCollectionTop);
 
 //Transaction
 router.post("/addtransaction/token", TransactionController.addTokenTransaction);

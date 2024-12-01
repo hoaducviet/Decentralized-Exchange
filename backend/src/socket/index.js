@@ -221,6 +221,11 @@ function socket(io) {
           io.emit("updateNFTItemTransactions", {
             data: updateDocument,
           });
+          if (change.fullDocument.type === "Buy NFT") {
+            await CollectionController.updateInfoCollection(
+              change.fullDocument.collection_id
+            );
+          }
         }
       }
     }

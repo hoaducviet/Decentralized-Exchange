@@ -131,21 +131,21 @@ export default function CollectionLayout({ children }: Readonly<{
                     <div className="flex flex-row justify-end items-end w-[50%] space-x-[2vw]">
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
-                                <div>{newCollection?.volume}</div>
+                                <div>{newCollection?.volume.slice(0, newCollection.volume.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
                             <div>{optionsInfo[3]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
-                                <div>{newCollection?.floor_price}</div>
+                                <div>{newCollection?.floor_price.slice(0, newCollection.floor_price.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
                             <div>{optionsInfo[4]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
-                                <div>{newCollection?.highest_price}</div>
+                                <div>{newCollection?.highest_price.slice(0, newCollection.highest_price.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
                             <div>{optionsInfo[5]}</div>
