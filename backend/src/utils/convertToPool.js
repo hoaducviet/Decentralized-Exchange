@@ -6,8 +6,10 @@ async function convertToPool(results) {
     addressLPT: item.address_lpt,
     token1: item.token1_id,
     token2: item.token2_id,
-    totalLiquidity: item.total_liquidity,
-    volume: item.volume,
+    total_tvl: item.total_tvl,
+    tvl_day: item.tvl_day,
+    volume_day: item.volume_day,
+    volume_week: item.volume_week,
   }));
 
   return response;

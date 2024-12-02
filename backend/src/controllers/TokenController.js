@@ -2,6 +2,7 @@ const Token = require("../models/Token");
 const TokenPrice = require("../models/TokenPrice.js");
 const WalletController = require("./WalletController");
 const { mutipleMongooseToObject } = require("../utils/mongoose");
+const PoolController = require("./PoolController");
 
 class TokenController {
   async updateToken(req, res) {
@@ -73,7 +74,6 @@ class TokenController {
 
   async getTokenAll(req, res) {
     try {
-      console.log("Get all token");
       const results = await Token.find().select(
         "_id name symbol img decimals address owner volume"
       );

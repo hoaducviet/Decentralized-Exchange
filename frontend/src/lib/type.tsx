@@ -22,8 +22,10 @@ export type Pool = {
     token2_id?: Token;
     token1: Token;
     token2: Token;
-    total_liquidity: string;
-    volume: string;
+    total_tvl: string;
+    tvl_day: string;
+    volume_day: string;
+    volume_week: string;
 }
 
 export type Balance = {

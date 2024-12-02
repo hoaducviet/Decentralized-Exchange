@@ -124,6 +124,8 @@ function socket(io) {
             )
           ) {
             io.emit("updatePoolTransactions", { data: updateDocument });
+            console.log(updateDocument);
+            await PoolController.updatePoolVolume(change.fullDocument.pool_id);
           }
         }
       }
@@ -157,6 +159,7 @@ function socket(io) {
         });
         if (change.fullDocument.status === "Completed") {
           io.emit("updatePoolTransactions", { data: updateDocument });
+          await PoolController.updatePoolTVL(change.fullDocument.pool_id);
         }
       }
     }

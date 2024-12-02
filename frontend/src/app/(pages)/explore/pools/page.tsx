@@ -2,11 +2,13 @@
 import Link from "next/link"
 import { useGetPoolsQuery } from "@/redux/features/api/apiSlice"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { formatNumber } from "@/utils/formatNumber"
 
 const options = ['#', 'Pool', 'TVL', 'APR', '1D vol', '7D vol', '1D/TVL']
 
 export default function Pools() {
     const { data: pools } = useGetPoolsQuery()
+
     return (
         <div className="flex flex-col">
             <div className="bg-secondary flex flex-row justify-between items-center text-md font-semibold rounded-none px-3 h-[2vw]">
@@ -20,6 +22,7 @@ export default function Pools() {
             </div>
             <div className="flex flex-col w-full text-md font-semibold">
                 {pools && pools.map((pool, index) => {
+                    const ARP = parseFloat(pool.volume_day) * 0.1 / parseFloat(pool.total_tvl) * 365
                     return (
                         <Link key={index} href={`/explore/pools/${pool.address}`}>
                             <div className="hover:bg-secondary/80 cursor-pointer flex flex-row items-center w-full h-[3.5vw] px-3">
@@ -40,11 +43,11 @@ export default function Pools() {
                                     </Avatar>
                                     <div>{pool.name}</div>
                                 </div>
-                                <p className="flex flex-row justify-start w-[15%]">$111</p>
-                                <p className="flex flex-row justify-start w-[15%]">1.5%</p>
-                                <p className="flex flex-row justify-start w-[10%]">$1.5B</p>
-                                <p className="flex flex-row justify-end w-[10%]">$1.5B</p>
-                                <p className="flex flex-row justify-end w-[15%]">$1.5B</p>
+                                <p className="flex flex-row justify-start w-[15%]">{`$${formatNumber(parseFloat(pool.total_tvl))}`}</p>
+                                <p className="flex flex-row justify-start w-[15%]">{`${ARP.toFixed(2)}%`}</p>
+                                <p className="flex flex-row justify-start w-[10%]">{`$${formatNumber(parseFloat(pool.volume_day))}`}</p>
+                                <p className="flex flex-row justify-end w-[10%]">{`$${formatNumber(parseFloat(pool.volume_week))}`}</p>
+                                <p className="flex flex-row justify-end w-[15%]">{`$${formatNumber(parseFloat(pool.tvl_day))}`}</p>
                             </div>
                         </Link>
                     )

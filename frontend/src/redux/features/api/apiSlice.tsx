@@ -22,7 +22,7 @@ export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api` }),
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: 600,
-    tagTypes: ['TokenBalance', 'LiquidityBalance', 'NFTCollection'],
+    tagTypes: ['TokenBalance', 'LiquidityBalance', "PoolInfo", 'NFTCollection'],
     endpoints: (builder) => ({
         getTokens: builder.query<Token[], void>({
             query: () => '/tokenprices',
@@ -45,7 +45,8 @@ export const apiSlice = createApi({
             }
         }),
         getPools: builder.query<Pool[], void>({
-            query: () => '/pools'
+            query: () => '/pools',
+            providesTags: ['PoolInfo']
         }),
         getCollections: builder.query<Collection[], void>({
             query: () => '/collections',
@@ -318,7 +319,7 @@ export const apiSlice = createApi({
                 method: 'PATCH',
                 body: data
             }),
-            invalidatesTags: ['TokenBalance', 'NFTCollection']
+            invalidatesTags: ['TokenBalance', 'PoolInfo', 'NFTCollection']
         }),
 
         addLiquidityTransaction: builder.mutation<LiquidityTransaction, LiquidityTransaction>({
@@ -334,7 +335,7 @@ export const apiSlice = createApi({
                 method: 'PATCH',
                 body: data
             }),
-            invalidatesTags: ['TokenBalance', 'LiquidityBalance']
+            invalidatesTags: ['TokenBalance', 'LiquidityBalance', 'PoolInfo']
         }),
 
         addNftTransaction: builder.mutation<NFTTransaction, NFTTransaction>({

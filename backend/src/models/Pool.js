@@ -23,8 +23,10 @@ const Pool = new Schema(
     },
     token1_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
     token2_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
-    total_liquidity: { type: String, required: false, default: 0 },
-    volume: { type: String, required: false, default: 0 },
+    tvl_day: { type: String, required: false, default: 0 },
+    total_tvl: { type: String, required: false, default: 0 },
+    volume_day: { type: String, required: false, default: "0" },
+    volume_week: { type: String, required: false, default: "0" },
   },
   {
     timestamps: true,
