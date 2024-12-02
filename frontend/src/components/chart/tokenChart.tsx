@@ -14,6 +14,7 @@ const chartConfig = {
         color: "hsl(var(--chart-1))",
     },
 } satisfies ChartConfig
+
 interface Props {
     prices: TokenPrice[];
     token: Token | undefined;

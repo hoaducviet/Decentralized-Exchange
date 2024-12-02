@@ -1,14 +1,14 @@
 'use client'
-import { useRef, useState } from 'react';
+import { useRef, useState, } from 'react';
 import { Swiper as SwiperClass } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide, } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules';
 import Image from "next/image"
 import { useGetTopCollectionsQuery } from '@/redux/features/api/apiSlice';
 import { Card } from '@/components/ui/card';
 
 export default function NFTsTopPrice() {
-    const { data: collectionTop } = useGetTopCollectionsQuery()
+    const { data: collectionTop, isFetching } = useGetTopCollectionsQuery()
     const progressContent = useRef<HTMLSpanElement | null>(null);
     const [percent, setPercent] = useState<number>(0)
 
@@ -19,15 +19,14 @@ export default function NFTsTopPrice() {
             progressContent.current.textContent = `${Math.ceil(time / 1000)}`;
         }
     };
+
     return (
         <div className="select-none flex flex-col w-full shadow-md border-[1px] border-white/30 rounded-2xl">
             <Swiper
                 spaceBetween={0}
                 centeredSlides={true}
                 slidesPerView={1}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
-                loop={true}
+                loop={false}
                 pagination={{
                     clickable: true,
                 }}
@@ -39,7 +38,7 @@ export default function NFTsTopPrice() {
                 modules={[Autoplay, Pagination]}
                 className="w-full h-[30vw] rounded-2xl"
             >
-                {collectionTop?.map(({ collection, nfts }, index) => (
+                {!isFetching && collectionTop?.length && collectionTop?.map(({ collection, nfts }, index) => (
                     <SwiperSlide key={index}>
                         <Image src={collection.banner} alt={collection.name} width={20} height={20} className='w-full h-full layout:responsive object-cover object-center' />
                         <div className='absolute inset-0 bg-black/30'></div>
@@ -71,6 +70,6 @@ export default function NFTsTopPrice() {
                     <span ref={progressContent} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white  text-4"></span>
                 </div>
             </Swiper>
-        </div>
+        </div >
     )
 }

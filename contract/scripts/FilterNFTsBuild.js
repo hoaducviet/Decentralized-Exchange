@@ -8,6 +8,9 @@ async function main() {
   listNfts.map((item) => {
     const data = [];
     for (let index = 0; index < item.number; index++) {
+      if (index >= 2000) {
+        break;
+      }
       data.push({
         token_id: index,
         token_uri: `${index}${item.end_url}`,

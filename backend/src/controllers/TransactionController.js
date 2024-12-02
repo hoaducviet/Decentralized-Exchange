@@ -540,6 +540,56 @@ class TransactionController {
         .json({ message: "Internal server error get all transaction" });
     }
   }
+
+  async getDailyVolume(req, res) {
+    try {
+      const results = await TokenTransaction.aggregate([
+        {
+          $match: {
+            type: { $in: ["Swap Token", "Buy Token", "Sell Token"] },
+            status: "Completed",
+          },
+        },
+        {
+          // Chuyển đổi thời gian 'createdAt' thành ngày (yyyy-MM-dd)
+          $project: {
+            day: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+            price: { $toDouble: "$price" },
+            type: 1,
+            status: 1,
+          },
+        },
+        {
+          $group: {
+            _id: { day: "$day" },
+            total_price: { $sum: "$price" },
+            transaction_count: { $sum: 1 }, // Đếm số giao dịch trong ngày
+          },
+        },
+        {
+          $project: {
+            date: "$_id.day",
+            price: "$total_price",
+            transaction_count: 1,
+            _id: 0,
+          },
+        },
+        {
+          $sort: { date: 1 },
+        },
+      ]);
+
+      if (!results.length) {
+        return res.status(404).json({ message: "Volume's nft is null" });
+      }
+      return res.status(200).json(results);
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
 }
 
 module.exports = new TransactionController();

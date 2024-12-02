@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation';
 import Link from "next/link";
-import TVLChart from "@/components/chart/tvlChart";
-import VolumeChart from "@/components/chart/volumeChart";
+import { useGetDailyVolumeQuery } from '@/redux/features/api/apiSlice'
+import TVLChart from "@/components/chart/TvlChart";
+import VolumeChart from "@/components/chart/VolumeChart";
 import { Button } from "@/components/ui/button";
 
 const options = [
@@ -26,6 +27,8 @@ export default function ExploreLayout({ children }: Readonly<{
 }>) {
     const pathname = usePathname();
     const [isActive, setIsActive] = useState<number | undefined>(undefined)
+    const { data: volumes } = useGetDailyVolumeQuery()
+
     const handleOptions = (index: number) => {
         setIsActive(index)
     }
@@ -49,7 +52,7 @@ export default function ExploreLayout({ children }: Readonly<{
                     <TVLChart />
                 </div>
                 <div className="w-[50%]">
-                    <VolumeChart />
+                    <VolumeChart volumes={volumes || []} />
                 </div>
             </div>
             <div className="flex flex-col w-full">

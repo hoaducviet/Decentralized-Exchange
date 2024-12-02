@@ -87,6 +87,8 @@ router.get(
   TransactionController.getNftTransactionsByItem
 );
 
+router.get("/transactions/dailyvolume", TransactionController.getDailyVolume);
+
 //Active
 router.get(
   "/actives/:address",

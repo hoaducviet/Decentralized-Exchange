@@ -261,6 +261,12 @@ export type CollectionTop = {
     nfts: NFT[];
 }
 
+export type Volume = {
+    date: string;
+    price: string;
+    transaction_count: number;
+}
+
 export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction;
 export type PoolTransactionsType = TokenActiveTransaction | LiquidityActiveTransaction
 export type Children = React.ReactNode
