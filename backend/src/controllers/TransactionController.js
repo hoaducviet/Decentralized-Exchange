@@ -569,7 +569,7 @@ class TransactionController {
         {
           $project: {
             date: "$_id.day",
-            price: "$total_price",
+            volume: "$total_price",
             transaction_count: 1,
             _id: 0,
           },
@@ -588,6 +588,66 @@ class TransactionController {
       return res
         .status(500)
         .json({ message: "Internal server error get all transaction" });
+    }
+  }
+
+  async getDailyTVL(req, res) {
+    try {
+      const tvls = await LiquidityTransaction.aggregate([
+        {
+          $match: {
+            status: "Completed",
+          },
+        },
+        {
+          $project: {
+            date: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+            price: { $toDouble: "$price" },
+            type: 1,
+          },
+        },
+        {
+          $group: {
+            _id: { date: "$date" },
+            total_tvl: {
+              $sum: {
+                $cond: [
+                  { $eq: ["$type", "Add Liquidity"] },
+                  "$price",
+                  { $multiply: ["$price", -1] },
+                ],
+              },
+            },
+          },
+        },
+        {
+          $project: {
+            date: "$_id.date",
+            tvl: "$total_tvl",
+            _id: 0,
+          },
+        },
+        {
+          $sort: { date: 1 },
+        },
+      ]);
+
+      let cumulativeTVL = 0;
+      const results = tvls.map((item) => {
+        cumulativeTVL += item.tvl;
+        return {
+          date: item.date,
+          tvl: cumulativeTVL.toString(),
+        };
+      });
+
+      if (!results.length) {
+        return res.status(404).json({ message: "Volume's nft is null" });
+      }
+      return res.status(200).json(results);
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res.status(500).json({ message: "Internal server error get tvl" });
     }
   }
 }

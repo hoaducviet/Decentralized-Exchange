@@ -263,8 +263,12 @@ export type CollectionTop = {
 
 export type Volume = {
     date: string;
-    price: string;
+    volume: string;
     transaction_count: number;
+}
+export type TVL = {
+    date: string;
+    tvl: string;
 }
 
 export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction;

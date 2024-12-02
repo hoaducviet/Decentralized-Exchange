@@ -4,11 +4,12 @@ import { Bar, Area, CartesianGrid, XAxis, ComposedChart } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart"
 import { Volume } from "@/lib/type"
+import { formatNumber } from "@/utils/formatNumber"
 export const description = "An interactive bar chart"
 
 const chartConfig = {
-    price: {
-        label: "Price",
+    volume: {
+        label: "Volume",
         color: "hsl(var(--chart-1))",
     },
     transaction_count: {
@@ -22,14 +23,16 @@ interface Props {
 }
 
 export default function Component({ volumes }: Props) {
-    const chartData = volumes?.map(({ date, price, transaction_count }) => ({ date, price: parseFloat(price || "0"), transaction_count }))
+    const chartData = volumes?.map(({ date, volume, transaction_count }) => ({ date, volume: parseFloat(volume || "0"), transaction_count }))
+    const totalVolume = chartData.reduce((sum, item) => sum + item.volume, 0)
 
     return (
         <Card className="border-none outline-none shadow-none">
-            <CardHeader className="px-0">
+            <CardHeader className="px-0 space-y-3">
                 <CardTitle>Volume</CardTitle>
+                <div className="text-5xl font-medium">${formatNumber(totalVolume)}</div>
                 <CardDescription>
-                    Showing total visitors for the last 6 months
+                    Past month
                 </CardDescription>
             </CardHeader>
             <CardContent className="px-0">
@@ -76,7 +79,7 @@ export default function Component({ volumes }: Props) {
                             content={({ payload, label }) => {
                                 if (!payload || payload.length === 0) return null;
 
-                                const price = payload.find((item) => item.dataKey === "price")?.value;
+                                const volume = payload.find((item) => item.dataKey === "volume")?.value;
                                 const transactionCount = payload.find((item) => item.dataKey === "transaction_count")?.value;
 
                                 return (
@@ -88,8 +91,8 @@ export default function Component({ volumes }: Props) {
                                         })}`}
                                         </p>
                                         <div className="flex flex-row justify-between">
-                                            <div className="opacity-70">Price</div>
-                                            <div className="font-semibold">{`$${price}`}</div>
+                                            <div className="opacity-70">Volume</div>
+                                            <div className="font-semibold">{`$${volume}`}</div>
                                         </div>
                                         <div className="flex flex-row justify-between space-x-2">
                                             <div className="opacity-70">Number of Transactions</div>
@@ -100,7 +103,7 @@ export default function Component({ volumes }: Props) {
                             }}
                         />
                         <Area dataKey="transaction_count" type="monotone" fill="url(#lineGradient)" fillOpacity={0.4} stroke="url(#lineGradient)" stackId="a" dot={false} />
-                        <Bar dataKey="price" fill="url(#barGradient)" barSize={20} />
+                        <Bar dataKey="volume" fill="url(#barGradient)" barSize={20} />
                     </ComposedChart>
                 </ChartContainer>
             </CardContent>

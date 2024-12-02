@@ -2,33 +2,32 @@
 
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-
+import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart"
+import { formatNumber } from "@/utils/formatNumber"
+import { TVL } from '@/lib/type'
 export const description = "A linear area chart"
 
-const chartData = [
-    { month: "January", desktop: 186 },
-    { month: "February", desktop: 305 },
-    { month: "March", desktop: 237 },
-    { month: "April", desktop: 73 },
-    { month: "May", desktop: 209 },
-    { month: "June", desktop: 214 },
-]
+interface Props {
+    tvls: TVL[];
+}
 
 const chartConfig = {
-    desktop: {
-        label: "Desktop",
+    tvl: {
+        label: "TVL",
         color: "hsl(var(--chart-1))",
     },
 } satisfies ChartConfig
 
-export default function TVLChart() {
+export default function TVLChart({ tvls }: Props) {
+    const chartData = tvls?.map(({ date, tvl }) => ({ date, tvl: parseFloat(tvl || "0") }))
+
     return (
         <Card className="border-none outline-none shadow-none">
-            <CardHeader className="px-0">
+            <CardHeader className="px-0 space-y-3">
                 <CardTitle>TVL</CardTitle>
+                <div className="text-5xl font-medium">${formatNumber(chartData[chartData.length - 1]?.tvl)}</div>
                 <CardDescription>
-                    Showing total visitors for the last 6 months
+                    Past month
                 </CardDescription>
             </CardHeader>
             <CardContent className="px-0">
@@ -37,39 +36,63 @@ export default function TVLChart() {
                         accessibilityLayer
                         data={chartData}
                         margin={{
-                            left: 10,
-                            right: 0,
+                            left: 36,
+                            right: 48,
                         }}
                     >
+                        <defs>
+                            <linearGradient id="areaGradient" x1="0" y1="1" x2="0" y2="0">
+                                <stop offset="0%" className="text-blue-200" stopColor="currentColor" /> {/* Màu bắt đầu */}
+                                <stop offset="50%" className="text-blue-500" stopColor="currentColor" /> {/* Màu giữa */}
+                                <stop offset="100%" className="text-blue-800" stopColor="currentColor" /> {/* Màu kết thúc */}
+                            </linearGradient>
+                        </defs>
                         <CartesianGrid vertical={false} />
                         <XAxis
-                            dataKey="month"
+                            dataKey="date"
                             tickLine={false}
                             axisLine={false}
                             tickMargin={8}
-                            tickFormatter={(value) => value.slice(0, 3)}
+                            minTickGap={0}
+                            tickFormatter={(value) => {
+                                const date = new Date(value)
+                                return date.toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                })
+                            }}
                         />
                         <ChartTooltip
-                            content={
-                                <ChartTooltipContent
-                                    labelFormatter={(value) => {
-                                        return new Date(value).toLocaleDateString("en-US", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric",
-                                        })
-                                    }}
-                                />
-                            }
                             cursor={false}
                             defaultIndex={1}
+                            content={({ payload, label }) => {
+                                if (!payload || payload.length === 0) return null;
+                                const tvl = payload.find((item) => item.dataKey === "tvl")?.value;
+
+                                return (
+                                    <div className="bg-white/30 dark:bg-transparent dark:border-white dark:border-[1px] dark:border-opacity-20 shadow-xl p-4 space-y-1 rounded-2xl">
+                                        <p className="font-semibold">{`${new Date(label).toLocaleDateString("en-US", {
+                                            month: "short",
+                                            day: "numeric",
+                                            year: "numeric",
+                                        })}`}
+                                        </p>
+                                        <div className="flex flex-row justify-between">
+                                            <div className="opacity-70">TVL</div>
+                                            <div className="font-semibold">{`$${tvl}`}</div>
+                                        </div>
+                                    </div>
+                                );
+                            }}
                         />
                         <Area
-                            dataKey="desktop"
+                            dataKey="tvl"
                             type="linear"
-                            fill="var(--color-desktop)"
+                            fill="url(#areaGradient)"
                             fillOpacity={0.4}
-                            stroke="var(--color-desktop)"
+                            stroke="url(#areaGradient)"
+                            stackId="a"
+                            dot={false}
                         />
                     </AreaChart>
                 </ChartContainer>

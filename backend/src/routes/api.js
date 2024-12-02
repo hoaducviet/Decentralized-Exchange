@@ -88,6 +88,7 @@ router.get(
 );
 
 router.get("/transactions/dailyvolume", TransactionController.getDailyVolume);
+router.get("/transactions/dailytvl", TransactionController.getDailyTVL);
 
 //Active
 router.get(
