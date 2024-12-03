@@ -10,6 +10,8 @@ export type Token = {
     price: string;
     owner: Address;
     address: Address;
+    price_reference: string;
+    total_supply: string;
     volume: string;
 }
 

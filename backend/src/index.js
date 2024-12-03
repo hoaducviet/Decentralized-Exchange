@@ -11,6 +11,7 @@ const { provider } = require("./config/provider");
 const { checkWallet } = require("./controllers/WalletController");
 const socket = require("./socket");
 const event = require("./event");
+const schedule = require("./schedule");
 
 db.connect();
 
@@ -29,7 +30,6 @@ app.use(express.json());
 app.use(morgan("combined"));
 route(app);
 
-
 // const wsProvider = new ethers.WebSocketProvider(
 //   process.env.ALCHEMY_SEPOLIA_URL
 // );
@@ -45,6 +45,7 @@ const io = socketIo(server, {
 });
 
 socket(io);
+schedule();
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => {

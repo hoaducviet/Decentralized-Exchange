@@ -55,14 +55,22 @@ class WalletController {
   async getTokens() {
     try {
       const allTokens = await FactoryTokenContract.getAllTokens();
-      const allTokensData = allTokens.map((item) => ({
-        name: item[0],
-        symbol: item[1],
-        img: item[2],
-        decimals: Number(item[3]),
-        owner: item[4],
-        address: item[5],
-      }));
+      const allTokensData = await Promise.all(
+        allTokens.map(async (item) => {
+          const erc20 = new ethers.Contract(item[5], TokenERC20.abi, wallet);
+          const supply = await erc20.totalSupply();
+          const decimals = Number(item[3]);
+          return {
+            name: item[0],
+            symbol: item[1],
+            img: item[2],
+            decimals,
+            owner: item[4],
+            address: item[5],
+            total_supply: ethers.formatUnits(supply, decimals),
+          };
+        })
+      );
       const tokens = [eth, ...allTokensData];
 
       const jsonData = JSON.stringify(tokens, null, 2); // Định dạng
@@ -234,7 +242,7 @@ class WalletController {
               });
 
               const chunkSize = 10;
-              const nftChunks = chunkArray(nftPromises.slice(0,20), chunkSize);
+              const nftChunks = chunkArray(nftPromises.slice(0, 20), chunkSize);
               let index = 0;
               for (const chunk of nftChunks) {
                 const resultsChunk = await Promise.all(chunk);

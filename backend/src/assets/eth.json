@@ -4,5 +4,6 @@
   "img": "https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/256/Ethereum-ETH-icon.png",
   "decimals": 18,
   "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-  "address": "0x0000000000000000000000000000000000000000"
+  "address": "0x0000000000000000000000000000000000000000",
+  "total_supply": "100000"
 }

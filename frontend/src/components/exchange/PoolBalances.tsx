@@ -9,6 +9,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { removeLiquidityPool } from "@/services/liquiditypool/removeLiquidityPool"
 import { TrashIcon } from "@radix-ui/react-icons"
 import { LiquidBalancesType } from '@/lib/type'
+import { Card } from "@/components/ui/card"
 
 const headers = [
     { name: "#" },
@@ -75,10 +76,10 @@ export default function PoolBalances({ liquidBalances }: Props) {
     }, [provider, signer, address, currentPool])
 
     return (
-        <div className="flex flex-col select-none w-full shadow-lg">
+        <div className="flex flex-col select-none w-full space-y-[1vw]">
             <p className="text-xl font-semibold opacity-80">Liquidity Balances</p>
-            <div className="flex flex-col w-full">
-                <div className="bg-secondary/100 flex flex-row w-full space-x-[2%] px-[1vw] h-[2.5vw]">
+            <Card className="flex flex-col w-full rounded-2xl shadow-md">
+                <div className="bg-secondary/100 flex flex-row w-full space-x-[2%] px-[1vw] h-[3vw] rounded-t-2xl ">
                     <div className="flex flex-col justify-center items-start text-base font-medium w-[5%]">{headers[0].name}</div>
                     <div className="flex flex-col justify-center items-start text-base font-medium w-[35%]">{headers[1].name}</div>
                     <div className="flex flex-col justify-center items-start text-base font-medium w-[25%]">{headers[2].name}</div>
@@ -88,7 +89,7 @@ export default function PoolBalances({ liquidBalances }: Props) {
                 <div className="flex flex-col w-full max-h-[40vw] overflow-x-auto">
                     {liquidBalances.map((liquidityBalance, index) => {
                         return (
-                            <div key={index} className=" cursor-pointer flex flex-row items-center text-base font-medium space-x-[2%] hover:bg-secondary/80 w-full px-[1vw] py-[1vw]">
+                            <div key={index} className={`cursor-pointer flex flex-row items-center text-base font-medium space-x-[2%] hover:bg-secondary/80 dark:hover:bg-white/5 border-t-[0.2px] border-gray-300 border-opacity-20 w-full px-[1vw] py-[1vw] ${liquidBalances.length - 1 === index ? "rounded-b-2xl" : ""}`}>
                                 <div className="flex flex-col justify-center items-start  w-[5%] ">{index + 1}</div>
                                 <div className="flex flex-row justify-start items-center w-[35%]">
                                     <Avatar className="w-[1.7vw] h-[1.7vw] border border-black">
@@ -133,7 +134,7 @@ export default function PoolBalances({ liquidBalances }: Props) {
                         )
                     })}
                 </div>
-            </div>
+            </Card>
         </div>
     )
 }

@@ -73,7 +73,7 @@ class TokenPriceController {
           await newTokenPrice.save();
           return;
         }
-        if(pool.name.endsWith("/USDT")){
+        if (pool.name.endsWith("/USDT")) {
           const newTokenPrice = new TokenPrice({
             token_id: pool.token1_id,
             price: (
@@ -84,7 +84,7 @@ class TokenPriceController {
           await newTokenPrice.save();
           return;
         }
-        return
+        return;
       }
       console.log("NOT have USDT");
       return;
@@ -125,6 +125,8 @@ class TokenPriceController {
             address: "$info.address",
             owner: "$info.owner",
             volume: "$info.volume",
+            price_reference: "$info.price_reference",
+            total_supply: "$info.total_supply",
             createdAt: 1,
           },
         },

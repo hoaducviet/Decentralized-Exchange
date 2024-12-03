@@ -10,6 +10,7 @@ const CollectionController = require("../controllers/CollectionController");
 const TransactionController = require("../controllers/TransactionController");
 const ReserveController = require("../controllers/ReserveController");
 const TokenPriceController = require("../controllers/TokenPriceController");
+const UserController = require("../controllers/UserController");
 //Site
 router.get("/search", SiteController.search);
 
@@ -95,5 +96,8 @@ router.get(
   "/actives/:address",
   TransactionController.getActiveTransactionsByAddress
 );
+
+//User
+router.get("/insertuser", UserController.insertUser);
 
 module.exports = router;

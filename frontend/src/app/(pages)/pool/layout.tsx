@@ -44,7 +44,7 @@ export default function PoolLayout({
                         <div className="flex flex-row justify-end w-[10vw] space-x-[0.1vw] mx-[1vw]">
                             {options.map((option, index) => {
                                 return (
-                                    <Link key={index} href={option.link} onClick={() => setIsActive(index)} className={`cursor-pointer  flex flex-row justify-center w-[5vw] ${isActive === index ? 'bg-purple-200' : ''}`}>
+                                    <Link key={index} href={option.link} onClick={() => setIsActive(index)} className={`cursor-pointer  flex flex-row justify-center w-[5vw] ${isActive === index ? 'bg-purple-200 dark:bg-white/20' : ''}`}>
                                         {option.name}
                                     </Link>
                                 )

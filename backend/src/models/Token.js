@@ -11,8 +11,16 @@ const Token = new Schema(
     img: { type: String, unique: true, required: true, maxLength: 255 },
     decimals: { type: Number, required: true, default: 18 },
     uri: { type: String, required: false, maxLength: 255 },
-    address: { type: String, unique: true, required: true, minLength: 42, maxLength: 42 },
+    address: {
+      type: String,
+      unique: true,
+      required: true,
+      minLength: 42,
+      maxLength: 42,
+    },
     owner: { type: String, required: true, minLength: 42, maxLength: 42 },
+    price_reference: { type: String, required: false, default: 0 },
+    total_supply: { type: String, required: false, default: 0 },
     volume: { type: String, required: false, default: 0 },
   },
   {
@@ -20,7 +28,7 @@ const Token = new Schema(
   }
 );
 
-Token.index({ name: 'text', symbol: 'text' });
+Token.index({ name: "text", symbol: "text" });
 //Custom query helpers
 Token.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {

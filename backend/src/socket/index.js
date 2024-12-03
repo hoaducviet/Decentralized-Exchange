@@ -20,7 +20,6 @@ const NFT = require("../models/NFT");
 function socket(io) {
   Token.watch().on("change", (change) => {
     console.log(change);
-    console.log("Full doc:", change.fullDocument);
     io.emit("transaction", change.fullDocument);
   });
 
@@ -125,6 +124,9 @@ function socket(io) {
           ) {
             io.emit("updatePoolTransactions", { data: updateDocument });
             console.log(updateDocument);
+            await TokenController.updateTokenVolume(
+              change.fullDocument.from_token_id
+            );
             await PoolController.updatePoolVolume(change.fullDocument.pool_id);
           }
         }

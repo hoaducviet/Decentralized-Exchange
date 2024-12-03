@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useGetPoolsQuery } from "@/redux/features/api/apiSlice"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { formatNumber } from "@/utils/formatNumber"
+import { Card } from "@/components/ui/card"
 
 const options = ['#', 'Pool', 'TVL', 'APR', '1D vol', '7D vol', '1D/TVL']
 
@@ -10,8 +11,8 @@ export default function Pools() {
     const { data: pools } = useGetPoolsQuery()
 
     return (
-        <div className="flex flex-col">
-            <div className="bg-secondary flex flex-row justify-between items-center text-md font-semibold rounded-none px-3 h-[2vw]">
+        <Card className="flex flex-col w-full rounded-2xl border-[1px] shadow-md">
+            <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center text-md font-semibold rounded-t-2xl h-[3vw] px-4">
                 <p className="w-[10%] flex flex-row justify-start items-center">{options[0]}</p>
                 <p className="w-[25%] flex flex-row justify-start items-center">{options[1]}</p>
                 <p className="w-[15%] flex flex-row justify-start items-center">{options[2]}</p>
@@ -20,14 +21,14 @@ export default function Pools() {
                 <p className="w-[10%] flex flex-row justify-end items-center">{options[5]}</p>
                 <p className="w-[15%] flex flex-row justify-end items-center">{options[6]}</p>
             </div>
-            <div className="flex flex-col w-full text-md font-semibold">
+            <div className="flex flex-col max-h-[55vw] overflow-x-auto ">
                 {pools && pools.map((pool, index) => {
                     const ARP = parseFloat(pool.volume_day) * 0.1 / parseFloat(pool.total_tvl) * 365
                     return (
                         <Link key={index} href={`/explore/pools/${pool.address}`}>
-                            <div className="hover:bg-secondary/80 cursor-pointer flex flex-row items-center w-full h-[3.5vw] px-3">
+                            <div className={`flex flex-row cursor-pointer hover:bg-secondary/80 dark:hover:bg-white/5 text-md font-medium items-center h-[3.5vw] w-full px-4 border-t-[0.2px] border-gray-300 border-opacity-20 ${index === pools.length - 1 ? 'rounded-b-2xl' : ''}`} >
                                 <p className="font-medium w-[10%]">{index + 1}</p>
-                                <div className=" w-[25%] flex flex-row justify-start items-center space-x-[0.3vw]">
+                                <div className=" w-[25%] flex flex-row justify-start items-center space-x-[0.3vw] font-semibold">
                                     <Avatar className="w-[1.5vw] h-[1.5vw] max-w-[5vw] border border-black">
                                         <div className="realtive flex">
                                             <AvatarImage src={pool.token1.img}
@@ -53,6 +54,6 @@ export default function Pools() {
                     )
                 })}
             </div>
-        </div>
+        </Card>
     )
 }

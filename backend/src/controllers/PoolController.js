@@ -9,6 +9,7 @@ const {
   mutipleMongooseToObject,
   mongooseToObject,
 } = require("../utils/mongoose");
+const TokenController = require("./TokenController");
 
 class PoolController {
   async updatePool(req, res) {
