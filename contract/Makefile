@@ -9,6 +9,7 @@ deploy:
 	npx hardhat run ./scripts/FactoryLiquidityPool.js
 	npx hardhat run ./scripts/FactoryNFT.js
 	npx hardhat run ./scripts/MarketNFT.js
+	npx hardhat run ./scripts/OrderLimit.js
 
 	npx hardhat run ./scripts/AddLP.js
 	cp ./artifacts/contracts/*/*.json ../frontend/src/artifacts
@@ -49,8 +50,7 @@ copy:
 
 end:
 	$(MAKE) clean && \
-	$(MAKE) deploy && \
-	$(MAKE) nft
+	$(MAKE) deploy
 
 start:
 	$(MAKE) clean && \

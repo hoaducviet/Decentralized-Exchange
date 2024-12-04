@@ -36,6 +36,10 @@
     "uri": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
   {
+    "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
+    "uri": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
+  },
+  {
     "address": "0x1588f268fad0DecDBd448473C8C301292639eA5b",
     "uri": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   },
@@ -45,10 +49,6 @@
   },
   {
     "address": "0x89a51cD8bb0b0d15B8c7C6a206f5010A69739538",
-    "uri": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
-  },
-  {
-    "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
     "uri": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
   }
 ]

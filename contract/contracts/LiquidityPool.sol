@@ -147,6 +147,10 @@ contract LiquidityPool {
         require(fromToken == token1 || fromToken == token2, "Invalid token");
 
         if (fromToken == token1) {
+            require(
+                ERC20(token1).allowance(msg.sender, address(this)) >= amountIn,
+                "Insufficient token allowance"
+            );
             amountOut = getAmountOutSwapToken(amountIn, reserve1, reserve2);
             ERC20(token1).transferFrom(msg.sender, address(this), amountIn);
             ERC20(token2).transfer(msg.sender, amountOut);
@@ -154,6 +158,10 @@ contract LiquidityPool {
             reserve1 += amountIn;
             reserve2 -= amountOut;
         } else {
+            require(
+                ERC20(token2).allowance(msg.sender, address(this)) >= amountIn,
+                "Insufficient token allowance"
+            );
             amountOut = getAmountOutSwapToken(amountIn, reserve2, reserve1);
             ERC20(token2).transferFrom(msg.sender, address(this), amountIn);
             ERC20(token1).transfer(msg.sender, amountOut);

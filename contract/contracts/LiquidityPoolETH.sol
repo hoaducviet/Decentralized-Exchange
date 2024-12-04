@@ -140,6 +140,10 @@ contract LiquidityPoolETH {
         uint256 valueIn = msg.value;
 
         if (fromToken == token1) {
+            require(
+                ERC20(token1).allowance(msg.sender, address(this)) >= _amountIn,
+                "Insufficient token allowance"
+            );
             amountOut = getAmountOutSwapToken(_amountIn, reserve1, reserve2);
             ERC20(token1).transferFrom(msg.sender, address(this), _amountIn);
             payable(msg.sender).transfer(amountOut);
