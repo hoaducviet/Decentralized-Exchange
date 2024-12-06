@@ -56,14 +56,6 @@ class TokenController {
       }
 
       const results = await Token.insertMany(validToken);
-
-      const usdToken = results.find((item) => item.symbol === "USD");
-      const newUsdPrice = new TokenPrice({
-        token_id: usdToken._id,
-        price: "1",
-      });
-      newUsdPrice.save();
-
       return res.status(200).json({
         message: "Token data added successfully",
         data: mutipleMongooseToObject(results),

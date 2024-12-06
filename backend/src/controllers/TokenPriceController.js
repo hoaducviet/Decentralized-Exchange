@@ -10,6 +10,7 @@ const {
   mutipleMongooseToObject,
   mongooseToObject,
 } = require("../utils/mongoose");
+const Token = require("../models/Token.js");
 
 class TokenPriceController {
   async addTokenPrice(data) {
@@ -104,10 +105,10 @@ class TokenPriceController {
         },
         {
           $lookup: {
-            from: "tokens", // Từ bảng pools
-            localField: "_id", // Khớp với _id của Reserve
-            foreignField: "_id", // Khớp với _id của pool trong bảng pools
-            as: "info", // Ghi vào trường pool_info
+            from: "tokens",
+            localField: "_id",
+            foreignField: "_id",
+            as: "info",
           },
         },
         {
@@ -130,6 +131,8 @@ class TokenPriceController {
           },
         },
       ]);
+      console.log(results);
+      console.log(results.length);
 
       return res.status(200).json(results);
     } catch (error) {

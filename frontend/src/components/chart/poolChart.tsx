@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react"
 import { Area, AreaChart, Dot, CartesianGrid, XAxis, YAxis, ReferenceLine } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart"
+import { formatNumber } from '@/utils/formatNumber'
 import { ReservePool, Token } from "@/lib/type"
 
 interface Props {
@@ -66,6 +67,7 @@ export default function Component({ reserves, switchToken, token1, token2 }: Pro
                                 axisLine={false}
                                 tickMargin={8}
                                 minTickGap={0}
+                                interval={Math.floor(chartData.length / 10)}
                                 domain={['auto', 'auto']}
                                 tickFormatter={(value) => {
                                     const date = new Date(value)
@@ -88,21 +90,30 @@ export default function Component({ reserves, switchToken, token1, token2 }: Pro
                             />
                             <ChartTooltip
                                 cursor={false}
-                                content={<ChartTooltipContent
-                                    className="w-full"
-                                    nameKey="views"
-                                    labelFormatter={(value) => {
-                                        const date = new Date(value)
-                                        return date.toLocaleDateString("en-US", {
-                                            month: "short",
-                                            day: "numeric",
-                                            year: "numeric",
-                                        }) + " " + date.toLocaleTimeString("en-US", {
-                                            hour: "2-digit",
-                                            minute: "2-digit",
-                                        });
-                                    }}
-                                />}
+                                content={({ payload, label }) => {
+                                    if (!payload || payload.length === 0) return null;
+
+                                    const price = payload.find((item) => item.dataKey === "price")?.value as string;
+                                    const date = new Date(label)
+
+                                    return (
+                                        <div className="bg-white/30 dark:bg-transparent dark:border-white dark:border-[1px] dark:border-opacity-20 shadow-xl p-4 space-y-1 rounded-2xl">
+                                            <p className="font-semibold">{`${date.toLocaleDateString("en-US", {
+                                                month: "short",
+                                                day: "numeric",
+                                                year: "numeric",
+                                            })} ${date.toLocaleTimeString("en-US", {
+                                                hour: "2-digit",
+                                                minute: "2-digit",
+                                            })}`}
+                                            </p>
+                                            <div className="flex flex-row justify-between">
+                                                <div className="opacity-70">Price</div>
+                                                <div className="font-semibold">{`$${formatNumber(parseFloat(price ?? ""))}`}</div>
+                                            </div>
+                                        </div>
+                                    );
+                                }}
                             />
                             <Area
                                 dataKey="price"

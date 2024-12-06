@@ -45,7 +45,6 @@ export default function ExploreLayout({ children }: Readonly<{
         return <>{children}</>;
     }
 
-
     return (
         <div className="flex flex-col justify-start select-none w-full h-full px-[15vw] py-[2vw] space-y-[2vw]">
             <div className=" flex flex-row items-start space-x-[1vw] px-[1vw] w-full">

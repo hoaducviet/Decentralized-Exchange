@@ -67,10 +67,10 @@ export default function TVLChart({ tvls }: Props) {
                             defaultIndex={1}
                             content={({ payload, label }) => {
                                 if (!payload || payload.length === 0) return null;
-                                const tvl = payload.find((item) => item.dataKey === "tvl")?.value;
+                                const tvl = payload.find((item) => item.dataKey === "tvl")?.value as number;
 
                                 return (
-                                    <div className="bg-white/30 dark:bg-transparent dark:border-white dark:border-[1px] dark:border-opacity-20 shadow-xl p-4 space-y-1 rounded-2xl">
+                                    <div className="bg-white/30 dark:bg-transparent dark:border-white dark:border-[1px] dark:border-opacity-20 shadow-xl p-4 min-w-[6vw] space-y-1 rounded-2xl">
                                         <p className="font-semibold">{`${new Date(label).toLocaleDateString("en-US", {
                                             month: "short",
                                             day: "numeric",
@@ -79,7 +79,7 @@ export default function TVLChart({ tvls }: Props) {
                                         </p>
                                         <div className="flex flex-row justify-between">
                                             <div className="opacity-70">TVL</div>
-                                            <div className="font-semibold">{`$${tvl}`}</div>
+                                            <div className="font-semibold">{`$${formatNumber(tvl)}`}</div>
                                         </div>
                                     </div>
                                 );

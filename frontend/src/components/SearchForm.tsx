@@ -72,7 +72,7 @@ export default function SearchForm() {
                                                         <div className="text-sm opacity-60">{item.symbol}</div>
                                                     </div>
                                                     <div className="text-sm">
-                                                        $100
+                                                        {`$${item.price}`}
                                                     </div>
                                                 </div>
 

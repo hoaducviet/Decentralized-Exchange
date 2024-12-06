@@ -1,6 +1,8 @@
 const ethers = require("ethers");
 const Reserve = require("../models/Reserve");
 const Pool = require("../models/Pool");
+const Token = require("../models/Token");
+const TokenPrice = require("../models/TokenPrice");
 const { wallet } = require("./WalletController.js");
 const convertToPool = require("../utils/convertToPool.js");
 const LiquidityPool = require("../artifacts/LiquidityPool.json");
@@ -12,7 +14,6 @@ const {
 
 class ReserveController {
   async updateReserve(req, res) {
-
     const pools = await Pool.find()
       .select("_id name address address_lpt total_liquidity volume")
       .populate({
@@ -58,6 +59,12 @@ class ReserveController {
         })
       );
       const results = await Reserve.insertMany(reserves);
+
+      const usd = await Token.findOne({ symbol: "USD" });
+      await TokenPrice({
+        token_id: usd._id,
+        price: "1",
+      }).save();
 
       res.status(200).json(mutipleMongooseToObject(results));
     } catch (error) {

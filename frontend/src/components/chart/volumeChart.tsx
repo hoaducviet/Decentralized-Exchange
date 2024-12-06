@@ -79,8 +79,8 @@ export default function Component({ volumes }: Props) {
                             content={({ payload, label }) => {
                                 if (!payload || payload.length === 0) return null;
 
-                                const volume = payload.find((item) => item.dataKey === "volume")?.value;
-                                const transactionCount = payload.find((item) => item.dataKey === "transaction_count")?.value;
+                                const volume = payload.find((item) => item.dataKey === "volume")?.value as number;
+                                const transactionCount = payload.find((item) => item.dataKey === "transaction_count")?.value as number;
 
                                 return (
                                     <div className="bg-white/30 dark:bg-transparent dark:border-white dark:border-[1px] dark:border-opacity-20 shadow-xl p-4 space-y-1 rounded-2xl">
@@ -92,7 +92,7 @@ export default function Component({ volumes }: Props) {
                                         </p>
                                         <div className="flex flex-row justify-between">
                                             <div className="opacity-70">Volume</div>
-                                            <div className="font-semibold">{`$${volume}`}</div>
+                                            <div className="font-semibold">{`$${formatNumber(volume)}`}</div>
                                         </div>
                                         <div className="flex flex-row justify-between space-x-2">
                                             <div className="opacity-70">Number of Transactions</div>
