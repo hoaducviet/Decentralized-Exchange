@@ -35,7 +35,6 @@ const eventNftTopics = eventNftAbi.map(
   (abi) => ethers.EventFragment.from(abi).topicHash
 );
 
-console.log(eventNftTopics);
 const addressMarketNft = process.env.ADDRESS_MARKET_NFT;
 
 async function addReserves(log, provider) {
@@ -253,12 +252,10 @@ async function event(wsProvider) {
   };
 
   wsProvider.on(filter, (log, event) => {
-    console.log("Log:", log);
     addReserves(log, wsProvider);
   });
 
   wsProvider.on(filterNft, (log, event) => {
-    console.log("Log:", log);
     addNewPriceNft(log);
   });
 }

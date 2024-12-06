@@ -39,7 +39,7 @@ export default function Tokens() {
                                         <p>{token.name}</p>
                                         <p className="opacity-60">{token.symbol}</p>
                                     </div>
-                                    <p className="w-[15%] flex flex-row justify-end items-center">${token.price.slice(0, token.price.indexOf('.') + 4)}</p>
+                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatNumber(parseFloat(token.price))}</p>
                                     <div className="w-[15%] flex flex-row justify-end items-center">{percentChange >= 0 ?
                                         <div className="text-green-600 flex flex-row justify-end items-center space-x-[0.1vw]">
                                             <TriangleUpIcon className="w-[1.5vw] h-[1.5vw]" />
@@ -53,8 +53,8 @@ export default function Tokens() {
                                             </p>
                                         </div>
                                     }</div>
-                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatNumber(parseFloat(token.total_supply) * parseFloat(token.price))}</p>
-                                    <p className="w-[15%] flex flex-row justify-end items-center">${token.volume}</p>
+                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatNumber((parseFloat(token.total_supply) * parseFloat(token.price)))}</p>
+                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatNumber(parseFloat(token.volume))}</p>
                                     <p className="w-[15%] flex flex-row justify-end items-center"></p>
                                 </div>
                             </Link>

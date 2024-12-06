@@ -86,7 +86,6 @@ class TokenPriceController {
         }
         return;
       }
-      console.log("NOT have USDT");
       return;
     } catch (error) {
       console.log(error);

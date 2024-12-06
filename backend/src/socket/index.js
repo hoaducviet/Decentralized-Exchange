@@ -21,7 +21,6 @@ const OrderController = require("../controllers/OrderController");
 
 function socket(io) {
   Token.watch().on("change", (change) => {
-    console.log(change);
     io.emit("transaction", change.fullDocument);
   });
 
@@ -128,7 +127,6 @@ function socket(io) {
             )
           ) {
             io.emit("updatePoolTransactions", { data: updateDocument });
-            console.log(updateDocument);
             await TokenController.updateTokenVolume(
               change.fullDocument.from_token_id
             );

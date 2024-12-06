@@ -129,8 +129,6 @@ class TokenController {
         }
       );
 
-      console.log(result);
-
       return;
     } catch (error) {
       console.error("Error Pool:", error.message);

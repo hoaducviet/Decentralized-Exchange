@@ -104,7 +104,6 @@ class TransactionController {
         receipt_hash,
         status: "Completed",
       };
-      console.log(updateData);
 
       if (receipt.logs && receipt.logs.length > 0) {
         receipt.logs.forEach((log) => {
@@ -114,9 +113,6 @@ class TransactionController {
                 ["uint256", "uint256"],
                 log.data
               );
-            console.log(
-              `Swap token by ${log.topics[1]}, amount1: ${amountIn}, amount2: ${amountOut}`
-            );
             updateData = {
               amount_out: ethers.formatUnits(
                 amountOut,
@@ -579,7 +575,14 @@ class TransactionController {
       const results = await TokenTransaction.aggregate([
         {
           $match: {
-            type: { $in: ["Swap Token", "Buy Token", "Sell Token"] },
+            type: {
+              $in: [
+                "Swap Token",
+                "Buy Token",
+                "Sell Token",
+                "Swap Token Limit",
+              ],
+            },
             status: "Completed",
           },
         },
