@@ -2,13 +2,14 @@
 import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { TokenActiveTransaction } from "@/lib/type";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { formatNumber } from "@/utils/formatNumber";
 
 interface Props {
     transactions: TokenActiveTransaction[];
     symbol: string;
 }
 
-const headers = ["Time", "Type", "$ETH", "For", "USD", "Wallet"]
+const headers = ["Time", "Type", "From", "To", "USD", "Wallet"]
 export default function TokenTransactions({ transactions, symbol }: Props) {
 
     return (
@@ -16,7 +17,7 @@ export default function TokenTransactions({ transactions, symbol }: Props) {
             <div className="bg-secondary/80 flex flex-row justify-between h-[3vw] text-md font-semibold opacity-65 px-5">
                 <div className="flex flex-row justify-start items-center w-[15vw]">{headers[0]}</div>
                 <div className="flex flex-row justify-start items-center w-[15vw]">{headers[1]}</div>
-                <div className="flex flex-row justify-start items-center w-[20vw]">{symbol}</div>
+                <div className="flex flex-row justify-start items-center w-[20vw]">{headers[2]}</div>
                 <div className="flex flex-row justify-start items-center w-[20vw]">{headers[3]}</div>
                 <div className="flex flex-row justify-start items-center w-[15vw]">{headers[4]}</div>
                 <div className="flex flex-row justify-end items-center w-[15vw]">{headers[5]}</div>
@@ -54,7 +55,7 @@ export default function TokenTransactions({ transactions, symbol }: Props) {
                                         </>
                                 }
                             </div>
-                            <div className="flex flex-row justify-start items-center w-[15%]">$ {transaction.price?.slice(0, transaction.price.indexOf('.') + 4)}</div>
+                            <div className="flex flex-row justify-start items-center w-[15%]">${formatNumber(parseFloat(transaction.price ?? ""))}</div>
                             <div className="flex flex-row justify-end items-center w-[15%]">{`${transaction.from_wallet.slice(0, 8)}...${transaction.from_wallet.slice(38, 42)}`}</div>
                         </div>
                     )

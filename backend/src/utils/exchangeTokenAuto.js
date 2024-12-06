@@ -8,6 +8,7 @@ const { wallet } = require("../controllers/WalletController.js");
 const { ethers } = require("ethers");
 
 const TransactionController = require("../controllers/TransactionController.js");
+const { getNonce } = require("./getNonce.js");
 
 const mockReq = (data) => ({
   body: data,
@@ -63,25 +64,19 @@ async function exchangeTokenAuto() {
         wallet
       );
 
-      const nonce1 = await provider.getTransactionCount(
-        wallet.address,
-        "latest"
-      );
+      const nonce1 = await getNonce();
       const approveTX1 = await contractToken.approve(pool.address, value, {
         nonce: nonce1,
       });
       await approveTX1.wait();
-
       await new Promise((resolve) => setTimeout(resolve, 300));
-      const nonce2 = await provider.getTransactionCount(
-        wallet.address,
-        "latest"
-      );
 
+      const nonce2 = await getNonce();
       const receipt = await contract.swapToken(token.address, value, {
         nonce: nonce2,
       });
       await receipt.wait();
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
       const req = mockReq({
         _id: newTransaction._id,
@@ -91,22 +86,19 @@ async function exchangeTokenAuto() {
       await TransactionController.updateTokenTransaction(req, res);
 
       console.log(nonce2, receipt.hash);
-
       return;
     } catch (error) {
       console.log("Exchange auto: ", error);
     }
   } else {
     try {
-      const nonce2 = await provider.getTransactionCount(
-        wallet.address,
-        "latest"
-      );
+      const nonce2 = await getNonce();
       const receipt = await contract.swapToken(token.address, BigInt(0), {
         nonce: nonce2,
         value: value,
       });
       await receipt.wait();
+      console.log(nonce2, receipt.hash);
 
       const req = mockReq({
         _id: newTransaction._id,
@@ -115,7 +107,6 @@ async function exchangeTokenAuto() {
       const res = mockRes();
       await TransactionController.updateTokenTransaction(req, res);
 
-      console.log(nonce2, receipt.hash);
       return;
     } catch (error) {
       console.log("Exchange auto: ", error);

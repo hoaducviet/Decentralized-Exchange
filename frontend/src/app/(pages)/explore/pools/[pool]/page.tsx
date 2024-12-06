@@ -40,7 +40,7 @@ export default function Pool() {
         setSwitchToken(!switchToken)
     }
     return (
-        <div className="flex flex-col justify-center items-start mx-[15vw] my-[5vw]">
+        <div className="flex flex-col justify-center items-start mx-[15vw] my-[2vw]">
             <div className="flex flex-row justify-start text-2xl font-semibold">
                 {currentPool && <>
                     <div className="flex flex-row justify-start items-center space-x-[0.5vw]">

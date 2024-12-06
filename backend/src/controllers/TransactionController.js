@@ -212,9 +212,6 @@ class TransactionController {
                 ["uint256", "uint256", "uint256"],
                 log.data
               );
-            console.log(
-              `Liquidity amount1: ${amount1}, amount2: ${amount2}, lpt: ${liquidityTokens}`
-            );
             if ((amount1, amount2, liquidityTokens)) {
               amount_token1 = ethers.formatUnits(
                 amount1,

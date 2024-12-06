@@ -21,7 +21,7 @@ export default function Token() {
     }, [tokens, token])
 
     return (
-        <div className="flex flex-col justify-center items-start mx-[15vw] my-[5vw]">
+        <div className="flex flex-col justify-center items-start mx-[15vw] my-[2vw]">
             <div className="w-full">
                 <TokenChart prices={prices ?? []} token={currentToken} />
             </div>
