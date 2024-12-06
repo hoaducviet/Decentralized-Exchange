@@ -3,7 +3,15 @@ const OrderLimit = require("../ignition/modules/OrderLimit");
 
 async function main() {
   const { orderLimit } = await hre.ignition.deploy(OrderLimit);
-  console.log(`Order limit deployed to: ${await orderLimit.getAddress()}`);
+  const contractAddress = await orderLimit.getAddress();
+  console.log(`Order limit deployed to: ${contractAddress}`);
+
+  const [sender] = await hre.ethers.getSigners();
+  const tx = await sender.sendTransaction({
+    to: contractAddress, // Địa chỉ contract nhận ETH
+    value: hre.ethers.parseEther("1"), // Số ETH gửi (đơn vị wei)
+  });
+  await tx.wait();
 }
 
 main().catch((error) => {

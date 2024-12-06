@@ -16,6 +16,8 @@ const UsdTransaction = require("../models/UsdTransaction");
 const NftTransaction = require("../models/NftTransaction");
 const TokenPrice = require("../models/TokenPrice");
 const NFT = require("../models/NFT");
+const Order = require("../models/Order");
+const OrderController = require("../controllers/OrderController");
 
 function socket(io) {
   Token.watch().on("change", (change) => {
@@ -35,6 +37,9 @@ function socket(io) {
         console.log(updateDocument);
         io.emit("updateReserves", { data: updateDocument });
         await TokenPriceController.addTokenPrice(updateDocument);
+        setTimeout(async () => {
+          await OrderController.exchangeOrder(updateDocument.pool_id);
+        }, 5000);
       }
     }
   );
@@ -231,6 +236,19 @@ function socket(io) {
               change.fullDocument.collection_id
             );
           }
+        }
+      }
+    }
+  );
+
+  Order.watch([], { fullDocument: "updateLookup" }).on(
+    "change",
+    async (change) => {
+      if (["update"].includes(change.operationType)) {
+        if (["Failed", "Completed"].includes(change.fullDocument.status)) {
+          await TransactionController.addOrderTransaction(
+            change.fullDocument._id
+          );
         }
       }
     }

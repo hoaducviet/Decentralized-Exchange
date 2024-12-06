@@ -1,19 +1,23 @@
 'use client'
-import { useState } from "react"
+import { useState, Dispatch, SetStateAction } from 'react';
 import { Button } from "@/components/ui/button"
 
 const listTime = [
-    { name: '1 day' },
-    { name: '1 week' },
-    { name: '1 month' },
-    { name: '1 year' },
+    { name: '1 day', value: '1' },
+    { name: '1 week', value: '7' },
+    { name: '1 month', value: '30' },
+    { name: '1 year', value: '365' },
 ]
 
-export default function TimeItem() {
+interface Props {
+    setTimeDate: Dispatch<SetStateAction<string>>;
+}
 
+export default function TimeItem({ setTimeDate }: Props) {
     const [isActive, setIsActive] = useState<number | null>(0)
     const handleActive = (index: number) => {
         setIsActive(index)
+        setTimeDate(listTime[index].value)
     }
     return (
         <div className="flex flex-row justify-between items-center select-none w-full my-4 px-[2%]">

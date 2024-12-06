@@ -5,7 +5,7 @@ import {
     NFT, Address, Collection, LiquidBalancesType,
     TokenTransaction, LiquidityTransaction, NFTTransaction,
     ActivesType, TokenActiveTransaction, PoolTransactionsType,
-    TokenPrice, NFTActiveTransaction, CollectionTop, Volume, TVL
+    TokenPrice, NFTActiveTransaction, CollectionTop, Volume, TVL, Order
 } from "@/lib/type";
 import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
@@ -352,6 +352,21 @@ export const apiSlice = createApi({
                 body: data
             }),
             invalidatesTags: ['TokenBalance', 'NFTCollection']
+        }),
+        addOrder: builder.mutation<Order, Order>({
+            query: (data) => ({
+                url: '/addorder',
+                method: 'POST',
+                body: data
+            })
+        }),
+        updateOrder: builder.mutation<Order, Partial<Order>>({
+            query: (data) => ({
+                url: `/updateorder`,
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['TokenBalance']
         })
     })
 })
@@ -385,4 +400,6 @@ export const {
     useUpdateLiquidityTransactionMutation,
     useAddNftTransactionMutation,
     useUpdateNftTransactionMutation,
+    useAddOrderMutation,
+    useUpdateOrderMutation
 } = apiSlice

@@ -19,6 +19,7 @@ contract OrderLimit {
     Order[] public orders;
 
     event OrderCreated(
+        uint256 orderId,
         address indexed from,
         address indexed to,
         address indexed pool,
@@ -90,6 +91,7 @@ contract OrderLimit {
         orderId = counter++;
 
         emit OrderCreated(
+            orderId,
             msg.sender,
             address(this),
             _pool,
@@ -159,7 +161,7 @@ contract OrderLimit {
             ERC20(order.token1).transfer(order.from, order.amount);
         }
 
-        orders[_id].status = "Failer";
+        orders[_id].status = "Failed";
         emit CancelOrder(
             _id,
             address(this),

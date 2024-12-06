@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const swapLiquidityPool = async ({ provider, signer, address, pool, tokenOne, amount }: Props) => {
-    const isEth = pool.info.token2.symbol !== 'ETH' ? false : true;
+    const isEth = pool.info.token2.symbol === 'ETH'
     const contract = await loadLiquidContract({ provider: signer, address: pool.info.address, isEth: isEth });
     const value = parseUnits(amount.slice(0, amount.indexOf(".") + tokenOne.decimals + 1), tokenOne.decimals)
 

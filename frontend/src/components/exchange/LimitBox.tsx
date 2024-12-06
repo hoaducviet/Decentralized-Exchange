@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { useEffect, useState, useCallback } from "react"
 import { useAccount } from "wagmi"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { skipToken } from "@reduxjs/toolkit/query"
-import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery } from "@/redux/features/api/apiSlice"
+import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery, useAddOrderMutation, useUpdateOrderMutation } from "@/redux/features/api/apiSlice"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import TimeItem from "@/components/exchange/TimeItem"
@@ -13,8 +14,7 @@ import { swapLimitPool } from "@/services/liquiditypool/swapLimitPool"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { ReservePool, Token, Address } from "@/lib/type"
 
-const addressContract: Address = "0x5FbDB2315678afecb367f032d93F642f64180aa3" as Address
-
+const addressLimitContract = process.env.NEXT_PUBLIC_ADDRESS_LIMIT as Address
 export default function LimitBox() {
     const { address } = useAccount()
     const web3 = useWeb3()
@@ -23,9 +23,12 @@ export default function LimitBox() {
     const { data: allTokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const { data: reserves } = useGetReservesQuery()
+    const [addOrder] = useAddOrderMutation()
+    const [updateOrder] = useUpdateOrderMutation()
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
+    const [timeDate, setTimeDate] = useState<string>("1")
     const [reserve1, setReserve1] = useState<number>(0)
     const [reserve2, setReserve2] = useState<number>(0)
     const [balance1, setBalance1] = useState<string>("0")
@@ -92,28 +95,52 @@ export default function LimitBox() {
     }, [reserve1, reserve2, percent])
 
     const handleSend = useCallback(async () => {
-        if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && parseFloat(amount1) > 0) {
+        if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0) {
+            const { data: newOrder } = await addOrder({
+                wallet: address,
+                pool_id: currentPool.pool_id,
+                from_token_id: tokenOne._id,
+                to_token_id: tokenTwo._id,
+                amount_in: amount1,
+                price
+            })
             try {
-                const receipt = await swapLimitPool({ provider, signer, address, addressContract, pool: currentPool, tokenOne, amount: amount1, price })
+                const receipt = await swapLimitPool({ provider, signer, address, addressContract: addressLimitContract, pool: currentPool, tokenOne, tokenTwo, amount: amount1, price })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
-                if (confirmedReceipt?.status === 1) {
+                if (confirmedReceipt?.status === 1 && newOrder?._id) {
+                    updateOrder({
+                        _id: newOrder._id,
+                        receipt_hash: receipt.hash,
+                        date: timeDate
+                    })
                     setAmount1("")
                     setAmount2("")
                 } else {
-                    console.error("Transaction error:", confirmedReceipt);
+                    if (newOrder?._id) {
+                        updateOrder({
+                            _id: newOrder._id,
+                            receipt_hash: "",
+                        })
+                    }
                 }
                 console.log(receipt)
             } catch (error) {
                 console.error("Transaction error:", error);
+                if (newOrder?._id) {
+                    updateOrder({
+                        _id: newOrder._id,
+                        receipt_hash: "",
+                    })
+                }
             }
         }
-    }, [provider, signer, currentPool, address, tokenOne, amount1, price])
+    }, [provider, signer, currentPool, address, tokenOne, tokenTwo, amount1, price])
 
     return (
         <>
             {!isFetchingToken && newTokens &&
                 <div className="flex flex-col w-full h-full">
-                    <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} price={price} tokens={newTokens} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo} setPercent={setPercent} handleSwitchTokens={handleSwitchTokens}/>
+                    <LimitItem tokenOne={tokenOne} tokenTwo={tokenTwo} price={price} tokens={newTokens} setTokenOne={setTokenOne} setTokenTwo={setTokenTwo} setPercent={setPercent} handleSwitchTokens={handleSwitchTokens} />
                     <div className="relative flex flex-col w-full h-full">
                         <TradeItem title="From" token={tokenOne} tokens={newTokens} setToken={setTokenOne} amount={amount1} setAmount={setAmount1} balance={balance1} />
                         <TradeItem title="To" token={tokenTwo} tokens={newTokens} setToken={setTokenTwo} amount={amount2} setAmount={setAmount2} balance={balance2} isDisabled />
@@ -123,7 +150,7 @@ export default function LimitBox() {
                             </Button>
                         </div>
                     </div>
-                    <TimeItem />
+                    <TimeItem setTimeDate={setTimeDate} />
                     <div onClick={handleSend}>
                         <SubmitItem name="Confirm" />
                     </div>

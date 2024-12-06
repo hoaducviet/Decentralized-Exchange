@@ -24,6 +24,8 @@ const UsdTransaction = require("../models/UsdTransaction.js");
 const LPToken = require("../artifacts/LPToken.json");
 const Pool = require("../models/Pool.js");
 const Reserve = require("../models/Reserve.js");
+const Order = require("../models/Order.js");
+const Token = require("../models/Token.js");
 
 const liquidityEventAbi = [
   "event LiquidityAdded( address indexed provider, uint256 amount1, uint256 amount2, uint256 liquidityTokens)",
@@ -352,6 +354,37 @@ class TransactionController {
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
       return res.status(200).json(mutipleMongooseToObject(tokenTransactions));
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all transaction" });
+    }
+  }
+
+  async addOrderTransaction(_id) {
+    try {
+      const order = await Order.findById(_id);
+      const pool = await Pool.findById(order.pool_id);
+      const token = await Token.findById(order.from_token_id);
+
+      const newTransaction = {
+        type: "Swap Token Limit",
+        from_wallet: order.wallet,
+        to_wallet: pool.address,
+        from_token_id: order.from_token_id,
+        to_token_id: order.to_token_id,
+        pool_id: pool._id,
+        amount_in: order.amount_in,
+        amount_out: order.amount_out,
+        price: await getPriceTokenTransaction(token, order.amount_in),
+        receipt_hash: order.status === "Completed" ? order.receipt_hash : "",
+        status: order.status,
+      };
+
+      const result = await new TokenTransaction(newTransaction).save();
+      console.log(result);
+      return;
     } catch (error) {
       console.error("Error transaction:", error.message);
       return res

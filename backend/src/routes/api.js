@@ -10,6 +10,7 @@ const CollectionController = require("../controllers/CollectionController");
 const TransactionController = require("../controllers/TransactionController");
 const ReserveController = require("../controllers/ReserveController");
 const TokenPriceController = require("../controllers/TokenPriceController");
+const OrderController = require("../controllers/OrderController");
 const UserController = require("../controllers/UserController");
 //Site
 router.get("/search", SiteController.search);
@@ -46,6 +47,10 @@ router.get("/tokenprices/:id", TokenPriceController.getTokenPrice);
 router.get("/updatecollections", CollectionController.updateCollection);
 router.get("/collections", CollectionController.getCollectionAll);
 router.get("/collections/top", CollectionController.getCollectionTop);
+
+//Order
+router.post("/addorder", OrderController.addOrder);
+router.patch("/updateorder", OrderController.updateOrder);
 
 //Transaction
 router.post("/addtransaction/token", TransactionController.addTokenTransaction);

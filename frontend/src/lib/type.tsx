@@ -110,6 +110,21 @@ export type TokenPrice = {
     createdAt: string;
 }
 
+export type Order = {
+    _id?: string;
+    order_id?: number;
+    wallet: Address;
+    pool_id: string;
+    from_token_id: string;
+    to_token_id: string;
+    amount_in: string;
+    amount_out?: string;
+    price: string;
+    status?: string;
+    receipt_hash?: string;
+    date?: string;
+}
+
 export type TokenTransaction = {
     _id?: string;
     type: string;

@@ -8,7 +8,13 @@ const TokenTransaction = new Schema(
   {
     type: {
       type: String,
-      enum: ["Swap Token", "Transfer Token", "Buy Token", "Sell Token"],
+      enum: [
+        "Swap Token",
+        "Transfer Token",
+        "Buy Token",
+        "Sell Token",
+        "Swap Token Limit",
+      ],
       required: true,
     },
     from_wallet: { type: String, required: true, minLength: 42, maxLength: 42 },
