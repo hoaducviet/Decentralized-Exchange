@@ -25,17 +25,17 @@ async function schedule() {
     } catch (error) {
       console.error("Error in exchangeTokenAuto:", error);
     }
-  }, 15000);
+  }, 5000);
 
   await new Promise((resolve) => setTimeout(resolve, 7500));
 
-  setInterval(async () => {
-    try {
-      await exchangeLiquidityAuto();
-    } catch (error) {
-      console.error("Error in exchangeLiquidityAuto:", error);
-    }
-  }, 15000);
+  // setInterval(async () => {
+  //   try {
+  //     await exchangeLiquidityAuto();
+  //   } catch (error) {
+  //     console.error("Error in exchangeLiquidityAuto:", error);
+  //   }
+  // }, 15000);
 }
 
 module.exports = schedule;

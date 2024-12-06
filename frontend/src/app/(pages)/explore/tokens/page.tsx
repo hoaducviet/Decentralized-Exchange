@@ -10,7 +10,6 @@ const options = ['#', 'Token', 'Price', '1 day', 'FDV', 'Volume']
 
 export default function Tokens() {
     const { data: tokens } = useGetTokensQuery()
-    console.log(tokens)
     return (
         <Card className="flex flex-col w-full rounded-2xl border-[1px] shadow-md">
             <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center text-md font-semibold rounded-t-2xl h-[3vw] px-4">
@@ -39,7 +38,7 @@ export default function Tokens() {
                                         <p>{token.name}</p>
                                         <p className="opacity-60">{token.symbol}</p>
                                     </div>
-                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatNumber(parseFloat(token.price))}</p>
+                                    <p className="w-[15%] flex flex-row justify-end items-center">${(parseFloat(token.price)).toFixed(2)}</p>
                                     <div className="w-[15%] flex flex-row justify-end items-center">{percentChange >= 0 ?
                                         <div className="text-green-600 flex flex-row justify-end items-center space-x-[0.1vw]">
                                             <TriangleUpIcon className="w-[1.5vw] h-[1.5vw]" />

@@ -39,8 +39,9 @@ nft:
 	npx hardhat run ./scripts/addnft/Captainz.js
 
 
-rund:
 	npx hardhat run ./scripts/addnft/MutantApeYachtClub.js
+rund:
+	npx hardhat run ./scripts/AddLP.js
 
 
 copy:

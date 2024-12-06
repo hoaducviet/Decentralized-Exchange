@@ -2,8 +2,7 @@ const fs = require("fs");
 const hre = require("hardhat");
 const { ethers } = require("hardhat");
 const FactoryToken = require("../ignition/modules/FactoryToken");
-
-const tokensBuild = require("../tokensBuild.json");
+const tokensBuild = require("../assets/tokensBuild.json");
 
 async function main() {
   const { factoryToken } = await hre.ignition.deploy(FactoryToken);
@@ -17,7 +16,7 @@ async function main() {
         token.img,
         token.decimals,
         process.env.ACCOUT_ADDRESS_HARDHAT,
-        ethers.parseUnits("90000000", token.decimals)
+        ethers.parseUnits("90000000000", token.decimals)
       ); // Gọi hàm launch
       await receipt.wait(); // Chờ giao dịch hoàn thành
     })
@@ -26,19 +25,23 @@ async function main() {
   const allTokens = await factoryToken.getAllTokens();
 
   // Lưu thông tin token vào mảng
-  const allTokensData = allTokens.map((item) => ({
-    name: item[0],
-    symbol: item[1],
-    img: item[2],
-    decimals: Number(item[3]),
-    owner: item[4],
-    address: item[5],
-  }));
+  const allTokensData = allTokens.map((item) => {
+    const token = tokensBuild.find((itemBuild) => itemBuild.ticker === item[1]);
+    return {
+      name: item[0],
+      symbol: item[1],
+      img: item[2],
+      decimals: Number(item[3]),
+      owner: item[4],
+      address: item[5],
+      price: token.price ?? "",
+    };
+  });
 
   const jsonData = JSON.stringify(allTokensData, null, 2); // Định dạng
 
   // Ghi dữ liệu ra file JSON
-  fs.writeFile("tokens.json", jsonData, (err) => {
+  fs.writeFile("./assets/tokens.json", jsonData, (err) => {
     if (err) {
       console.error("Error writing file", err);
     } else {

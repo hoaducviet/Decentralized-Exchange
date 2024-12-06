@@ -1,11 +1,25 @@
 const { ethers } = require("hardhat");
-const pools = require("../pools.json");
+const pools = require("../assets/pools.json");
+const tokensAll = require("../assets/tokens.json");
+const eth = require("../assets/eth.json");
+const tokens = [eth, ...tokensAll];
+const variable = 10;
 
 async function main() {
   await Promise.all(
     pools.map(async (pool) => {
-      const amountToken1 = ethers.parseUnits("3", pool.decimals1);
-      const amountToken2 = ethers.parseUnits("2", pool.decimals2);
+      const token1 = tokens.find((item) => item.address === pool.addressToken1);
+      const token2 = tokens.find((item) => item.address === pool.addressToken2);
+      const value1 = variable.toString();
+      const value2 = (
+        (parseFloat(token2.price) / parseFloat(token1.price)) *
+        variable
+      )
+        .toFixed(pool.decimals1)
+        .toString();
+
+      const amountToken1 = ethers.parseUnits(value2, pool.decimals1);
+      const amountToken2 = ethers.parseUnits(value1, pool.decimals2);
 
       const token1Contract = await ethers.getContractAt(
         "ERC20",
@@ -41,8 +55,18 @@ async function main() {
         pool.address
       );
 
-      const amountToken1 = ethers.parseUnits("3", pool.decimals1);
-      const amountToken2 = ethers.parseUnits("2", pool.decimals2);
+      const token1 = tokens.find((item) => item.address === pool.addressToken1);
+      const token2 = tokens.find((item) => item.address === pool.addressToken2);
+      const value1 = variable.toString();
+      const value2 = (
+        (parseFloat(token2.price) / parseFloat(token1.price)) *
+        variable
+      )
+        .toFixed(pool.decimals1)
+        .toString();
+
+      const amountToken1 = ethers.parseUnits(value2, pool.decimals1);
+      const amountToken2 = ethers.parseUnits(value1, pool.decimals2);
 
       if (pool.addressToken2 !== "0x0000000000000000000000000000000000000000") {
         const tx = await poolContract.addLiquidity(amountToken1, amountToken2);

@@ -1,7 +1,7 @@
 const fs = require("fs");
 const hre = require("hardhat");
 const FactoryLiquidityPool = require("../ignition/modules/FactoryLiquidityPool");
-const tokens = require("../tokens.json");
+const tokens = require("../assets/tokens.json");
 
 async function main() {
   const { factoryLiquidityPool } = await hre.ignition.deploy(
@@ -46,7 +46,7 @@ async function main() {
   const jsonData = JSON.stringify(allPoolsData, null, 2); // Định dạng
 
   // Ghi dữ liệu ra file JSON
-  fs.writeFile("pools.json", jsonData, (err) => {
+  fs.writeFile("./assets/pools.json", jsonData, (err) => {
     if (err) {
       console.error("Error writing file", err);
     } else {
