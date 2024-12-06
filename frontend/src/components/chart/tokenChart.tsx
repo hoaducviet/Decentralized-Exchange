@@ -7,7 +7,6 @@ import { TokenPrice, Token } from "@/lib/type"
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar"
 import { AvatarFallback } from "@/components/ui/avatar"
 import { TriangleDownIcon, TriangleUpIcon } from "@radix-ui/react-icons"
-import { parse } from "path"
 export const description = "A simple area chart"
 
 const chartConfig = {

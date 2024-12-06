@@ -7,6 +7,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { Input } from "@/components/ui/input"
+import { formatNumber } from '@/utils/formatNumber'
+import { TriangleDownIcon, TriangleUpIcon } from "@radix-ui/react-icons"
 
 export default function SearchForm() {
     const router = useRouter()
@@ -60,6 +62,8 @@ export default function SearchForm() {
                                 <div className="flex flex-col border-b-[0.2px] my-2 py-1">
                                     <div className="text-sm font-semibold opacity-75 pb-1 px-3">Token</div>
                                     {data.tokens.map((item, index) => {
+                                        const percentChange = (parseFloat(item.price || "") - parseFloat(item.price_reference || "")) / parseFloat(item.price_reference || "")
+
                                         return (
                                             <div key={index} onClick={() => handleClick(`/explore/tokens/${item.symbol}`)} className="cursor-pointer hover:bg-secondary/80 flex flex-row items-center space-x-[0.5vw] h-[2.5vw] px-3">
                                                 <Avatar className="w-[2vw] h-[2vw] border border-blue-200">
@@ -70,9 +74,22 @@ export default function SearchForm() {
                                                     <div className=" flex flex-row items-center justify-start space-x-[0.4vw]">
                                                         <div>{item.name}</div>
                                                         <div className="text-sm opacity-60">{item.symbol}</div>
+                                                        <div className="flex flex-row justify-end items-center text-sm font-medium">{percentChange >= 0 ?
+                                                            <div className="text-green-600 flex flex-row justify-end items-center space-x-[0.1vw]">
+                                                                <TriangleUpIcon className="w-[1.5vw] h-[1.5vw]" />
+                                                                <p>
+                                                                    {percentChange.toFixed(2)}%
+                                                                </p>
+                                                            </div> : <div className="text-red-500 flex flex-row justify-end items-center space-x-[0.1vw]">
+                                                                <TriangleDownIcon className="w-[1.5vw] h-[1.5vw]" />
+                                                                <p>
+                                                                    {(0 - percentChange).toFixed(2)}%
+                                                                </p>
+                                                            </div>
+                                                        }</div>
                                                     </div>
                                                     <div className="text-sm">
-                                                        {`$${item.price}`}
+                                                        {`$${formatNumber(parseFloat(item.price))}`}
                                                     </div>
                                                 </div>
 
@@ -88,7 +105,7 @@ export default function SearchForm() {
                                         return (
                                             <div key={index} onClick={() => handleClick(`/nfts/${item.symbol}`)} className="cursor-pointer hover:bg-secondary/80 flex flex-row items-center space-x-[0.5vw] h-[2.5vw] px-3">
                                                 <Avatar className="w-[2vw] h-[2vw] border border-blue-200">
-                                                    <AvatarImage src={'/image/default-nft.png'} alt="Token" />
+                                                    <AvatarImage src={item.logo || '/image/default-nft.png'} alt="Token" />
                                                     <AvatarFallback>T</AvatarFallback>
                                                 </Avatar>
                                                 <div className="flex flex-row w-full justify-between space-x[0.3vw] text-md font-semibold">
@@ -96,9 +113,13 @@ export default function SearchForm() {
                                                         <div>{item.name}</div>
                                                         <CheckBadgeIcon className="w-4 h-4 text-blue-500" />
                                                     </div>
-                                                    <div className="text-sm">
-                                                        $100
+                                                    <div className="flex flex-row space-x-1 text-sm">
+                                                        <div>
+                                                            {item.total_items}
+                                                        </div>
+                                                        <div className='opacity-70'>items</div>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         )
