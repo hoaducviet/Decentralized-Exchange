@@ -488,11 +488,28 @@ class TransactionController {
         })
         .exec();
 
+      const orderTransactions = await Order.find({
+        wallet: address,
+        status: "Pending",
+      })
+        .populate({
+          path: "from_token_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .populate({
+          path: "to_token_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .exec();
+
       const results = [
         ...tokenTransactions,
         ...usdTransactions,
         ...liquidityTransactions,
         ...nftTransactions,
+        ...orderTransactions,
       ];
       results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       return res.status(200).json(mutipleMongooseToObject(results));

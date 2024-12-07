@@ -1,7 +1,7 @@
 'use client'
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { TokenActiveTransaction } from '@/lib/type';
+import { formatPrice } from "@/utils/formatPrice";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 interface Props {
@@ -27,7 +27,7 @@ export default function TokenCardAcitve({ transaction }: Props) {
             <div className='flex flex-col w-[90%] space-y-[0.1vw]'>
                 <div className="flex flex-row justify-between items-center text-lg font-semibold opacity-85">
                     <div>{transaction.type}</div>
-                    <div className="text-sm font-medium">{formattedDate}</div>
+                    <div className="text-xs italic font-medium">{formattedDate}</div>
                 </div>
                 <div className="flex flex-row justify-between items-center text-md font-semibold opacity-85">
                     <div className="flex flex-row justify-start items-center space-x-[0.1vw]">
@@ -51,9 +51,9 @@ export default function TokenCardAcitve({ transaction }: Props) {
                             </div>
                         </>}
                     </div>
-                    <div>${transaction.price?.slice(0, transaction.price.indexOf('.') + 7)}</div>
+                    <div>{`$${formatPrice(parseFloat(transaction.price || ""))}`}</div>
                 </div>
-                <div className="flex flex-row text-sm justify-between">
+                <div className="flex flex-row text-xs italic justify-between">
                     <div>{transaction.status}</div>
                     {transaction.to_wallet && transaction.type.startsWith("Transfer") && <div className="flex flex-row items-center space-x-2">
                         <ArrowRightIcon width={10} height={10} />

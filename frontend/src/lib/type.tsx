@@ -113,6 +113,7 @@ export type TokenPrice = {
 
 export type Order = {
     _id?: string;
+    type?: string;
     order_id?: number;
     wallet: Address;
     pool_id: string;
@@ -125,6 +126,7 @@ export type Order = {
     receipt_hash?: string;
     date?: string;
 }
+
 
 export type TokenTransaction = {
     _id?: string;
@@ -276,6 +278,24 @@ export type USDActiveTransaction = {
     createdAt: string;
 }
 
+
+export type OrderActiveTransaction = {
+    _id: string;
+    type: string;
+    order_id: number;
+    wallet: Address;
+    pool_id: string;
+    from_token_id: Token;
+    to_token_id: Token;
+    amount_in: string;
+    amount_out?: string;
+    price: string;
+    status: string;
+    receipt_hash: string;
+    expiredAt: string;
+    createdAt: string;
+}
+
 export type CollectionTop = {
     collection: Collection;
     nfts: NFT[];
@@ -291,6 +311,6 @@ export type TVL = {
     tvl: string;
 }
 
-export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction;
+export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction | OrderActiveTransaction;
 export type PoolTransactionsType = TokenActiveTransaction | LiquidityActiveTransaction
 export type Children = React.ReactNode

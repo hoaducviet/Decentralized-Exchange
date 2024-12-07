@@ -7,6 +7,7 @@ mongoose.plugin(slug);
 const Order = new Schema(
   {
     order_id: { type: Number, required: false, default: -1 },
+    type: { type: String, required: false, default: "Order Limit" },
     wallet: { type: String, required: true, minLength: 42, maxLength: 42 },
     pool_id: {
       type: Schema.Types.ObjectId,

@@ -6,11 +6,14 @@ import NFTCardAcitve from "@/components/NFTCardActive"
 import TokenCardAcitve from "@/components/TokenCardActive"
 import LiquidityCardAcitve from "@/components/LiquidityCardActive"
 import USDCardAcitve from "@/components/USDCardActive"
-import { ActivesType, NFTActiveTransaction, TokenActiveTransaction, LiquidityActiveTransaction, USDActiveTransaction } from "@/lib/type"
+import OrderCardAcitve from "@/components/OrderCardActive"
+import { ActivesType, NFTActiveTransaction, TokenActiveTransaction, LiquidityActiveTransaction, USDActiveTransaction, OrderActiveTransaction } from "@/lib/type"
 
 export default function ActiveTransactions() {
     const { address } = useAccount()
-    const { data: transactions, isFetching } = useGetActivesQuery(address ?? skipToken)
+    const { data: newtransactions, isFetching } = useGetActivesQuery(address ?? skipToken)
+    const transactions = newtransactions?.filter(item => !(item.type == 'Order Limit' && item.status !== 'Pending'))
+
     return (
         <div>
             {!isFetching && transactions && (
@@ -34,6 +37,10 @@ export default function ActiveTransactions() {
                         if (item.type.includes("Token")) {
                             TypeCard = TokenCardAcitve
                             transaction = item as TokenActiveTransaction
+                        }
+                        if (item.type.includes("Order")) {
+                            TypeCard = OrderCardAcitve
+                            transaction = item as OrderActiveTransaction
                         }
                         return (
                             <div key={index} className="flex flex-col" >

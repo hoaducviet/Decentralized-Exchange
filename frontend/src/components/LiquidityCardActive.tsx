@@ -37,7 +37,7 @@ export default function LiquidityCardAcitve({ transaction }: Props) {
         <div className='flex flex-col w-[90%] space-y-[0.1vw]'>
             <div className="flex flex-row justify-between items-center text-lg font-semibold opacity-85">
                 <div>{transaction.type}</div>
-                <div className="text-sm font-medium">{formattedDate}</div>
+                <div className="text-xs italic font-medium">{formattedDate}</div>
             </div>
             <div className="flex flex-row justify-between items-center text-md font-semibold opacity-85">
                 <div className="">{transaction.pool_id?.name}</div>
@@ -50,7 +50,7 @@ export default function LiquidityCardAcitve({ transaction }: Props) {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-row text-sm justify-start">
+            <div className="flex flex-row text-xs italic justify-start">
                 <div>{transaction.status}</div>
             </div>
         </div>

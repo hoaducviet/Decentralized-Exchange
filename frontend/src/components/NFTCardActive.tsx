@@ -26,7 +26,7 @@ export default function NFTCardAcitve({ transaction }: Props) {
         <div className='flex flex-col w-[90%] space-y-[0.1vw]'>
             <div className="flex flex-row justify-between items-center text-lg font-semibold opacity-85">
                 <div>{transaction.type}</div>
-                <div className="text-sm font-medium">{formattedDate}</div>
+                <div className="text-xs italic font-medium">{formattedDate}</div>
             </div>
             <div className="flex flex-row justify-between items-center text-md font-semibold opacity-85">
                 <div className="">{transaction.collection_id?.name} #{transaction.nft_id}</div>
@@ -41,7 +41,7 @@ export default function NFTCardAcitve({ transaction }: Props) {
                     </div>
                 }
             </div>
-            <div className="flex flex-row justify-between text-sm">
+            <div className="flex flex-row justify-between text-xs italic">
                 <div>{transaction.status}</div>
                 {transaction.type === 'Transfer NFT' &&
                     <div>To: {transaction.to_wallet?.slice(2,8)}</div>
