@@ -9,7 +9,7 @@ export default function LiquidityBalance({ liquidityBalances }: Props) {
 
     return (
         <> {
-            liquidityBalances && liquidityBalances.map((balance, index) => {
+            liquidityBalances && liquidityBalances.length ? <>{liquidityBalances.map((balance, index) => {
                 if (parseFloat(balance.balance?.formatted || "") === 0) {
                     return <div key={index}></div>
                 }
@@ -35,7 +35,7 @@ export default function LiquidityBalance({ liquidityBalances }: Props) {
                         </div>
                     </div>
                 )
-            })
+            })}</> : <div className="flex flex-row justify-center items-start w-full my-[2vw]">Please add liquidity for award!</div>
         }
         </>
     )

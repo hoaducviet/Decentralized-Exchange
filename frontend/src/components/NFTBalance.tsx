@@ -13,7 +13,7 @@ export default function NFTBalance() {
 
     return (
         <div className=" flex flex-wrap flex-start gap-x-[1.6%] gap-y-[1vw]">
-            {!isFetching && nftBalances?.map((nft, index) => {
+            {!isFetching && nftBalances && nftBalances.length ? <>{nftBalances?.map((nft, index) => {
                 const collection = collections?.find(item => item._id === nft.collection_id)
                 return (
                     <div key={index} className="cursor-pointer w-[23.8%]">
@@ -30,7 +30,8 @@ export default function NFTBalance() {
                     </div>
                 )
             }
-            )}
+            )}</> : <div className="flex flex-row justify-center items-start w-full my-[2vw]">Not yet have nft!</div>
+            }
         </div>
     )
 }

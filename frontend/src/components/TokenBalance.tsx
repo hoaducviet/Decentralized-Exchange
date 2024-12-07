@@ -8,7 +8,7 @@ interface Props {
 export default function TokenBalance({ tokenBalances }: Props) {
     return (
         <>
-            {tokenBalances && tokenBalances.map(((balance, index) => {
+            {tokenBalances && tokenBalances.length ? <>{tokenBalances.map(((balance, index) => {
                 if (parseFloat(balance.balance?.formatted || "") === 0) {
                     return <div key={index}></div>
                 }
@@ -27,7 +27,8 @@ export default function TokenBalance({ tokenBalances }: Props) {
                         </div>
                     </div>
                 )
-            }))}
+            }))}</> : <div className="flex flex-row justify-center items-start w-full my-[2vw]">Please deposit usd for exchange</div>
+            }
         </>
     )
 }

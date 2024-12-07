@@ -46,16 +46,18 @@ export default function PoolTransactions({ transactions, pool }: Props) {
                     }
                     transaction = item as LiquidityActiveTransaction
                     return (
-                        <div key={index} className="cursor-pointer flex flex-row justify-between items-center text-md hover:bg-secondary/80 h-[3.5vw] px-3">
-                            <div className="w-[15%] flex flex-row justify-start font-medium">{calculateElapsedTime(transaction.createdAt)}</div>
-                            <div className="w-[15%] flex flex-row justify-start">
-                                <div>{transaction.type}</div>
+                        <div key={index}>
+                            <div className="cursor-pointer flex flex-row justify-between items-center text-md hover:bg-secondary/80 h-[3.5vw] px-3">
+                                <div className="w-[15%] flex flex-row justify-start font-medium">{calculateElapsedTime(transaction.createdAt)}</div>
+                                <div className="w-[15%] flex flex-row justify-start">
+                                    <div>{transaction.type}</div>
+                                </div>
+                                <div className="w-[10%] flex flex-row justify-end">{transaction.token1_id?.symbol === pool?.token1_id?.symbol ? transaction.amount_token1?.slice(0, transaction.amount_token1?.indexOf(".") + 7) : transaction.amount_token2?.slice(0, transaction.amount_token2?.indexOf(".") + 7)}</div>
+                                <div className="w-[15%] flex flex-row justify-end">{transaction.token1_id?.symbol === pool?.token1_id?.symbol ? transaction.amount_token2?.slice(0, transaction.amount_token2?.indexOf(".") + 7) : transaction.amount_token1?.slice(0, transaction.amount_token1?.indexOf(".") + 7)}</div>
+                                <div className="w-[15%] flex flex-row justify-end">{formatPrice(parseFloat(transaction.amount_lpt ?? ""))}</div>
+                                <div className="w-[15%] flex flex-row justify-end">${formatPrice(parseFloat(transaction.price ?? ""))}</div>
+                                <div className="w-[15%] flex flex-row justify-end">{transaction.wallet?.slice(0, 6) + "..." + transaction.wallet?.slice(38)}</div>
                             </div>
-                            <div className="w-[10%] flex flex-row justify-end">{transaction.token1_id?.symbol === pool?.token1_id?.symbol ? transaction.amount_token1?.slice(0, transaction.amount_token1?.indexOf(".") + 7) : transaction.amount_token2?.slice(0, transaction.amount_token2?.indexOf(".") + 7)}</div>
-                            <div className="w-[15%] flex flex-row justify-end">{transaction.token1_id?.symbol === pool?.token1_id?.symbol ? transaction.amount_token2?.slice(0, transaction.amount_token2?.indexOf(".") + 7) : transaction.amount_token1?.slice(0, transaction.amount_token1?.indexOf(".") + 7)}</div>
-                            <div className="w-[15%] flex flex-row justify-end">{formatPrice(parseFloat(transaction.amount_lpt ?? ""))}</div>
-                            <div className="w-[15%] flex flex-row justify-end">${formatPrice(parseFloat(transaction.price ?? ""))}</div>
-                            <div className="w-[15%] flex flex-row justify-end">{transaction.wallet?.slice(0, 6) + "..." + transaction.wallet?.slice(38)}</div>
                         </div>
                     )
                 })}

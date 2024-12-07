@@ -47,7 +47,7 @@ export default function ActiveTransactions() {
                                 <TypeCard transaction={transaction} />
                             </div>
                         )
-                    })}</> : <div> No actives</div>}
+                    })}</> : <div className="flex flex-row justify-center items-start w-full my-[2vw]"> No actives</div>}
                 </>
             )
             }

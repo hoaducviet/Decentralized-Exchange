@@ -243,6 +243,27 @@ function socket(io) {
     "change",
     async (change) => {
       if (["update"].includes(change.operationType)) {
+        const updateDocument = {
+          _id: change.fullDocument._id,
+          type: change.fullDocument.type,
+          order_id: change.fullDocument.order_id,
+          wallet: change.fullDocument.wallet,
+          pool_id: change.fullDocument.pool_id,
+          from_token_id: await Token.findById(
+            change.fullDocument.from_token_id
+          ),
+          to_token_id: await Token.findById(change.fullDocument.to_token_id),
+          amount_in: change.fullDocument.amount_in,
+          amount_out: change.fullDocument.amount_out,
+          price: change.fullDocument.price,
+          status: change.fullDocument.status,
+          receipt_hash: change.fullDocument.receipt_hash,
+          expiredAt: change.fullDocument.expiredAt,
+          createdAt: change.fullDocument.createdAt,
+        };
+        io.to(updateDocument.wallet).emit("updateActiveTransactions", {
+          data: updateDocument,
+        });
         if (["Failed", "Completed"].includes(change.fullDocument.status)) {
           await TransactionController.addOrderTransaction(
             change.fullDocument._id

@@ -7,7 +7,6 @@ import { formatPrice } from "@/utils/formatPrice"
 import { TriangleDownIcon, TriangleUpIcon } from "@radix-ui/react-icons"
 
 const options = ['#', 'Token', 'Price', '1 day', 'FDV', 'Volume']
-
 export default function Tokens() {
     const { data: tokens } = useGetTokensQuery()
     return (
