@@ -13,6 +13,7 @@ import { SocketProvider } from '@/store/SocketProvider';
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import { configWallet } from "@/config/configWallet";
 import MainLayout from '@/components/layouts/MainLayout';
+import { Toaster } from '@/components/ui/toaster';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -65,6 +66,7 @@ export default async function RootLayout({
             </ConnectProvider>
           </ThemeProvider>
         </ReduxProvider>
+        <Toaster />
       </body>
     </html>
   );

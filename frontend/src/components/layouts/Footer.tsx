@@ -120,7 +120,7 @@ const ownerDescription = "2024 Dex, Inc. v1"
 const devDescription = "Development by viethoaduc.com"
 
 export default function Footer() {
-    return <div className="select-none border-t-[0.5px] bg-white/30 dark:border-white/20 dark:bg-transparent flex flex-col justify-center items-center px-[15vw] h-[20vw] space-y-[1vw]">
+    return <div className="select-none border-t-[0.5px] bg-white/30 dark:border-white/20 dark:bg-transparent flex flex-col justify-center items-center px-[15vw] h-[20vw] mt-[2vw] space-y-[1vw]">
         <div className="flex flex-col w-full justify-center items-start space-y-1">
             <Image src="/image/logo.png" alt="Logo" width={20} height={20} className="w-[8vw] h-[2vw] object-cover" />
             <div className="flex flex-row w-full justify-start items-center space-x-1 text-xs opacity-80 px-10">

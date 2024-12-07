@@ -11,7 +11,7 @@ import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
 
 const ws: Socket = wsGeneral
-let wss: Socket | undefined
+export let wss: Socket | undefined
 
 export const getWss = async () => {
     wss = await getSocket()
