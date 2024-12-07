@@ -1,5 +1,3 @@
-
-
 import ConnectWallet from "@/components/wallet/ConnectWallet"
 import SearchForm from "@/components/SearchForm"
 import ThemeMode from "@/components/ThemeMode"
@@ -11,12 +9,11 @@ import { publicRoutes } from "@/routes/routes"
 import routes from "@/config/configRoutes"
 
 export default function Header() {
-
     return <div className="bg-transparent flex justify-between items-center h-16">
         <div className="flex flex-row items-center">
             <Link href={routes.home}>
                 <div className="mx-5">
-                    <Image src="/image/logo.svg" alt="logo" width={180} height={50} />
+                    <Image src="/image/logo.png" alt="logo" width={180} height={50} className="w-[9vw] h-[2vw] object-cover" />
                 </div>
             </Link>
             {publicRoutes.map((item, index) => {
