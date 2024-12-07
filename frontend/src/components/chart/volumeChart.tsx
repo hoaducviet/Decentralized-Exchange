@@ -4,7 +4,7 @@ import { Bar, Area, CartesianGrid, XAxis, ComposedChart } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart"
 import { Volume } from "@/lib/type"
-import { formatNumber } from "@/utils/formatNumber"
+import { formatPrice } from "@/utils/formatPrice"
 export const description = "An interactive bar chart"
 
 const chartConfig = {
@@ -30,7 +30,7 @@ export default function Component({ volumes }: Props) {
         <Card className="border-none outline-none shadow-none">
             <CardHeader className="px-0 space-y-3">
                 <CardTitle>Volume</CardTitle>
-                <div className="text-5xl font-medium">${formatNumber(totalVolume)}</div>
+                <div className="text-5xl font-medium">${formatPrice(totalVolume)}</div>
                 <CardDescription>
                     Past month
                 </CardDescription>
@@ -92,7 +92,7 @@ export default function Component({ volumes }: Props) {
                                         </p>
                                         <div className="flex flex-row justify-between">
                                             <div className="opacity-70">Volume</div>
-                                            <div className="font-semibold">{`$${formatNumber(volume)}`}</div>
+                                            <div className="font-semibold">{`$${formatPrice(volume)}`}</div>
                                         </div>
                                         <div className="flex flex-row justify-between space-x-2">
                                             <div className="opacity-70">Number of Transactions</div>

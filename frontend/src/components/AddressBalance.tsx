@@ -10,8 +10,8 @@ interface Props {
 }
 
 export default function AddressBalance({ tokenBalances, liquidBalances }: Props) {
-    const balances = tokenBalances?.filter(tokenBalance => tokenBalance.balance?.value !== 0 && tokenBalance.info.symbol !== 'USD')
-    const LPbalances = liquidBalances?.filter(liquidBalance => liquidBalance.balance?.value !== 0)
+    const balances = tokenBalances?.filter(tokenBalance => tokenBalance.balance?.value !== "0" && tokenBalance.info.symbol !== 'USD')
+    const LPbalances = liquidBalances?.filter(liquidBalance => liquidBalance.balance?.value !== "0")
     return (
         <>
             <Tabs defaultValue="token" className="w-full my-[0.5vw] select-none">

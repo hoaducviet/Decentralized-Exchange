@@ -4,7 +4,7 @@ import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Card } from "@/components/ui/card";
-import { formatNumber } from "@/utils/formatNumber";
+import { formatPrice } from "@/utils/formatPrice";
 const options = ['Time', 'Type', 'USD', 'Detail', 'Wallet']
 
 export default function Transactions() {
@@ -49,7 +49,7 @@ export default function Transactions() {
                                             </div>
                                         </>}
                                     </div>
-                                    <div className="w-[20%] flex flex-row justify-start">${formatNumber(parseFloat(item.price ?? ""))}</div>
+                                    <div className="w-[20%] flex flex-row justify-start">${formatPrice(parseFloat(item.price ?? ""))}</div>
                                     <div className="w-[25%] flex flex-row items-center space-x-[0.3vw]">
                                         <div>
                                             <div className="flex flex-row items-center space-x-[0.2vw]">

@@ -2,7 +2,7 @@
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis, Dot, ReferenceLine, Text } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card"
 import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart"
-import { formatNumber } from "@/utils/formatNumber"
+import { formatPrice } from "@/utils/formatPrice"
 import { TokenPrice, Token } from "@/lib/type"
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar"
 import { AvatarFallback } from "@/components/ui/avatar"
@@ -123,7 +123,7 @@ export default function TokenChart({ prices, token }: Props) {
                                             </p>
                                             <div className="flex flex-row justify-between">
                                                 <div className="opacity-70">Price</div>
-                                                <div className="font-semibold">{`$${formatNumber(parseFloat(price ?? ""))}`}</div>
+                                                <div className="font-semibold">{`$${formatPrice(parseFloat(price ?? ""))}`}</div>
                                             </div>
                                         </div>
                                     );

@@ -7,7 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { Input } from "@/components/ui/input"
-import { formatNumber } from '@/utils/formatNumber'
+import { formatPrice } from '@/utils/formatPrice'
 import { TriangleDownIcon, TriangleUpIcon } from "@radix-ui/react-icons"
 
 export default function SearchForm() {
@@ -89,7 +89,7 @@ export default function SearchForm() {
                                                         }</div>
                                                     </div>
                                                     <div className="text-sm">
-                                                        {`$${formatNumber(parseFloat(item.price))}`}
+                                                        {`$${formatPrice(parseFloat(item.price))}`}
                                                     </div>
                                                 </div>
 

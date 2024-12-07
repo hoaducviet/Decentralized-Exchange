@@ -31,10 +31,11 @@ export type Pool = {
 }
 
 export type Balance = {
-    value: number | bigint | undefined;
+    value: string | undefined;
     symbol: string | undefined;
     formatted: string;
     decimals: number;
+    total_supply: string;
 }
 
 export type OrderIdPay = {

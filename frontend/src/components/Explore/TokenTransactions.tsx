@@ -3,7 +3,7 @@ import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { Card } from "@/components/ui/card"
 import { TokenActiveTransaction } from "@/lib/type";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { formatNumber } from "@/utils/formatNumber";
+import { formatPrice } from "@/utils/formatPrice";
 
 interface Props {
     transactions: TokenActiveTransaction[];
@@ -57,7 +57,7 @@ export default function TokenTransactions({ transactions, symbol }: Props) {
                                             </>
                                     }
                                 </div>
-                                <div className="flex flex-row justify-start items-center w-[15%]">${formatNumber(parseFloat(transaction.price ?? ""))}</div>
+                                <div className="flex flex-row justify-start items-center w-[15%]">${formatPrice(parseFloat(transaction.price ?? ""))}</div>
                                 <div className="flex flex-row justify-end items-center w-[15%]">{`${transaction.from_wallet.slice(0, 8)}...${transaction.from_wallet.slice(38, 42)}`}</div>
                             </div>
                         </div>

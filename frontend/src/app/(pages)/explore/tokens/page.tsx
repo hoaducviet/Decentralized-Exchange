@@ -3,7 +3,7 @@ import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
 import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { formatNumber } from "@/utils/formatNumber"
+import { formatPrice } from "@/utils/formatPrice"
 import { TriangleDownIcon, TriangleUpIcon } from "@radix-ui/react-icons"
 
 const options = ['#', 'Token', 'Price', '1 day', 'FDV', 'Volume']
@@ -52,8 +52,8 @@ export default function Tokens() {
                                             </p>
                                         </div>
                                     }</div>
-                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatNumber((parseFloat(token.total_supply) * parseFloat(token.price)))}</p>
-                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatNumber(parseFloat(token.volume))}</p>
+                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatPrice((parseFloat(token.total_supply) * parseFloat(token.price)))}</p>
+                                    <p className="w-[15%] flex flex-row justify-end items-center">${formatPrice(parseFloat(token.volume))}</p>
                                     <p className="w-[15%] flex flex-row justify-end items-center"></p>
                                 </div>
                             </Link>

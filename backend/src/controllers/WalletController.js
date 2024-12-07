@@ -483,8 +483,10 @@ class WalletController {
               formatted.indexOf(".") + 7
             );
             const symbol = await contract.symbol();
+            const total_supply = await contract.totalSupply();
             const balance = {
-              value: Number(value),
+              value: value.toString(),
+              total_supply: ethers.formatUnits(total_supply, decimals),
               symbol: symbol,
               formatted: balanceFormatted,
               decimals: decimals,

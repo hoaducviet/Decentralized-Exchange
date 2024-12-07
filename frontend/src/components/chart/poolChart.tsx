@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Area, AreaChart, Dot, CartesianGrid, XAxis, YAxis, ReferenceLine } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart"
-import { formatNumber } from '@/utils/formatNumber'
+import { formatPrice } from '@/utils/formatPrice'
 import { ReservePool, Token } from "@/lib/type"
 
 interface Props {
@@ -109,7 +109,7 @@ export default function Component({ reserves, switchToken, token1, token2 }: Pro
                                             </p>
                                             <div className="flex flex-row justify-between">
                                                 <div className="opacity-70">Price</div>
-                                                <div className="font-semibold">{`$${formatNumber(parseFloat(price ?? ""))}`}</div>
+                                                <div className="font-semibold">{`$${formatPrice(parseFloat(price ?? ""))}`}</div>
                                             </div>
                                         </div>
                                     );

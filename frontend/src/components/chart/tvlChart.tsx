@@ -3,7 +3,7 @@
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart"
-import { formatNumber } from "@/utils/formatNumber"
+import { formatPrice } from "@/utils/formatPrice"
 import { TVL } from '@/lib/type'
 export const description = "A linear area chart"
 
@@ -25,7 +25,7 @@ export default function TVLChart({ tvls }: Props) {
         <Card className="border-none outline-none shadow-none">
             <CardHeader className="px-0 space-y-3">
                 <CardTitle>TVL</CardTitle>
-                <div className="text-5xl font-medium">${formatNumber(chartData[chartData.length - 1]?.tvl)}</div>
+                <div className="text-5xl font-medium">${formatPrice(chartData[chartData.length - 1]?.tvl)}</div>
                 <CardDescription>
                     Past month
                 </CardDescription>
@@ -79,7 +79,7 @@ export default function TVLChart({ tvls }: Props) {
                                         </p>
                                         <div className="flex flex-row justify-between">
                                             <div className="opacity-70">TVL</div>
-                                            <div className="font-semibold">{`$${formatNumber(tvl)}`}</div>
+                                            <div className="font-semibold">{`$${formatPrice(tvl)}`}</div>
                                         </div>
                                     </div>
                                 );

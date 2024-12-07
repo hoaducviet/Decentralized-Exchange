@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { useGetPoolsQuery } from "@/redux/features/api/apiSlice"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { formatNumber } from "@/utils/formatNumber"
+import { formatPrice } from "@/utils/formatPrice"
 import { Card } from "@/components/ui/card"
 
 const options = ['#', 'Pool', 'TVL', 'APR', '1D vol', '7D vol', '1D/TVL']
@@ -44,11 +44,11 @@ export default function Pools() {
                                     </Avatar>
                                     <div>{pool.name}</div>
                                 </div>
-                                <p className="flex flex-row justify-start w-[15%]">{`$${formatNumber(parseFloat(pool.total_tvl))}`}</p>
+                                <p className="flex flex-row justify-start w-[15%]">{`$${formatPrice(parseFloat(pool.total_tvl))}`}</p>
                                 <p className="flex flex-row justify-start w-[15%]">{`${ARP.toFixed(2)}%`}</p>
-                                <p className="flex flex-row justify-start w-[10%]">{`$${formatNumber(parseFloat(pool.volume_day))}`}</p>
-                                <p className="flex flex-row justify-end w-[10%]">{`$${formatNumber(parseFloat(pool.volume_week))}`}</p>
-                                <p className="flex flex-row justify-end w-[15%]">{`$${formatNumber(parseFloat(pool.tvl_day))}`}</p>
+                                <p className="flex flex-row justify-start w-[10%]">{`$${formatPrice(parseFloat(pool.volume_day))}`}</p>
+                                <p className="flex flex-row justify-end w-[10%]">{`$${formatPrice(parseFloat(pool.volume_week))}`}</p>
+                                <p className="flex flex-row justify-end w-[15%]">{`$${formatPrice(parseFloat(pool.tvl_day))}`}</p>
                             </div>
                         </Link>
                     )

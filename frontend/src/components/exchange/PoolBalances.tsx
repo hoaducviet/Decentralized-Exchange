@@ -1,7 +1,7 @@
 'use client'
 import { useState, useCallback } from "react"
 import { useAccount } from "wagmi"
-import { useAddLiquidityTransactionMutation, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useAddLiquidityTransactionMutation, useGetPoolsQuery, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -10,6 +10,7 @@ import { removeLiquidityPool } from "@/services/liquiditypool/removeLiquidityPoo
 import { TrashIcon } from "@radix-ui/react-icons"
 import { LiquidBalancesType } from '@/lib/type'
 import { Card } from "@/components/ui/card"
+import { formatPrice } from "@/utils/formatPrice"
 
 const headers = [
     { name: "#" },
@@ -31,6 +32,7 @@ export default function PoolBalances({ liquidBalances }: Props) {
     const [currentPool, setCurrentPool] = useState<LiquidBalancesType | undefined>(undefined)
     const [addLiquidityTransaction] = useAddLiquidityTransactionMutation()
     const [updateLiquidityTransaction] = useUpdateLiquidityTransactionMutation()
+    const { data: pools } = useGetPoolsQuery()
 
     const handleClick = (index: number) => {
         setCurrentPool(liquidBalances[index])
@@ -88,6 +90,8 @@ export default function PoolBalances({ liquidBalances }: Props) {
                 </div>
                 <div className="flex flex-col w-full max-h-[40vw] overflow-x-auto">
                     {liquidBalances.map((liquidityBalance, index) => {
+                        const pool = pools?.find(item => item.name === liquidityBalance.info.name)
+                        const price = parseFloat(liquidityBalance.balance?.formatted || "") / parseFloat(liquidityBalance.balance?.total_supply || "") * parseFloat(pool?.total_tvl || "")
                         return (
                             <div key={index} className={`cursor-pointer flex flex-row items-center text-base font-medium space-x-[2%] hover:bg-secondary/80 dark:hover:bg-white/5 border-t-[0.2px] border-gray-300 border-opacity-20 w-full px-[1vw] py-[1vw] ${liquidBalances.length - 1 === index ? "rounded-b-2xl" : ""}`}>
                                 <div className="flex flex-col justify-center items-start  w-[5%] ">{index + 1}</div>
@@ -108,7 +112,7 @@ export default function PoolBalances({ liquidBalances }: Props) {
                                     <p className="flex justify-start font-semibold mx-[0.3vw]">{liquidityBalance.info.name}</p>
                                 </div>
                                 <div className="flex flex-col justify-center items-start  w-[25%]">{liquidityBalance.balance?.formatted}</div>
-                                <div className="flex flex-col justify-center items-start  w-[15%]">100 USD</div>
+                                <div className="flex flex-col justify-center items-start  w-[15%]">{`$${formatPrice(price)}`}</div>
                                 <div className="flex flex-col justify-center items-start  w-[20%]">
                                     <AlertDialog>
                                         <AlertDialogTrigger asChild>

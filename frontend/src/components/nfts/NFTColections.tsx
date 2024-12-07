@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from 'next/link'
 import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { formatNumber } from '@/utils/formatNumber'
+import { formatPrice } from '@/utils/formatPrice'
 import { Collection } from '@/lib/type'
 import { useGetTokensQuery } from '@/redux/features/api/apiSlice'
 
@@ -42,7 +43,7 @@ export default function NFTColections({ collections }: Props) {
                                     {item.verified && <CheckBadgeIcon className="w-5 h-5 text-blue-500" />}
                                 </div>
                                 <div className='flex flex-row justify-end w-[15%]'>{formatNumber(parseFloat(item.volume.slice(0, item.volume.indexOf('.') + 4)))}</div>
-                                <div className='flex flex-row justify-end w-[15%]'>${formatNumber(parseFloat(item.volume) * parseFloat(eth?.price || "0")).slice(0, item.volume.indexOf('.') + 3)}</div>
+                                <div className='flex flex-row justify-end w-[15%]'>${formatPrice(parseFloat(item.volume) * parseFloat(eth?.price || "0")).slice(0, item.volume.indexOf('.') + 3)}</div>
                                 <div className='flex flex-row justify-end w-[15%]'>{item.floor_price.slice(0, item.floor_price.indexOf('.') + 4)}</div>
                                 <div className='flex flex-row justify-end w-[10%]'>{formatNumber(parseFloat(item.total_items))}</div>
                                 <div className='flex flex-row justify-end w-[10%]'>{formatNumber(parseFloat(item.total_owners))}</div>
