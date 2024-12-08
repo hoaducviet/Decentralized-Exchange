@@ -25,7 +25,7 @@ export default function ConnectWallet() {
                                 Connect Wallet
                             </Button>
                         </PopoverTrigger>
-                        <PopoverContent>
+                        <PopoverContent className="rounded-2xl">
                             <OptionsWallet />
                         </PopoverContent>
                     </Popover>

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Image from 'next/image'
 import { useConnect } from 'wagmi'
-import { Button } from '@/components/ui/button'
 
 export default function OptionsWallet() {
   const { connectors, connect } = useConnect()
@@ -10,20 +9,19 @@ export default function OptionsWallet() {
   return (
     <div>
       {hasConnectors.map((connector) => (
-        <Button
-          variant="outline"
+        <div
           key={connector.id}
-          className="flex flex-row justify-start w-full"
+          className="bg-transparent hover:bg-secondary/80 dark:hover:bg-white/20 cursor-pointer rounded-2xl flex flex-row justify-start items-center w-full h-[3vw]"
           onClick={() => connect({ connector })}
         >
           <Image
             src={connector.icon?.trimStart() || "/image/default-image.png"}
             alt={connector.name}
-            className="mx-5" width="36" height="36" />
+            className="mx-5 w-[1.5vw] h-[1.5vw] object-cover" width="36" height="36" />
           <div className="mx-5">
             {connector.name}
           </div>
-        </Button>
+        </div>
       ))}
     </div>
   )
