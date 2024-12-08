@@ -367,7 +367,15 @@ export const apiSlice = createApi({
                 body: data
             }),
             invalidatesTags: ['TokenBalance']
-        })
+        }),
+        cancelOrder: builder.mutation<Order, Partial<Order>>({
+            query: (data) => ({
+                url: `/cancelorder`,
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['TokenBalance']
+        }),
     })
 })
 
@@ -401,5 +409,6 @@ export const {
     useAddNftTransactionMutation,
     useUpdateNftTransactionMutation,
     useAddOrderMutation,
-    useUpdateOrderMutation
+    useUpdateOrderMutation,
+    useCancelOrderMutation
 } = apiSlice

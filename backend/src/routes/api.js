@@ -51,6 +51,8 @@ router.get("/collections/top", CollectionController.getCollectionTop);
 //Order
 router.post("/addorder", OrderController.addOrder);
 router.patch("/updateorder", OrderController.updateOrder);
+router.post("/cancelorder", OrderController.cancelOrder);
+
 
 //Transaction
 router.post("/addtransaction/token", TransactionController.addTokenTransaction);

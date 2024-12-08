@@ -493,6 +493,12 @@ class TransactionController {
         status: "Pending",
       })
         .populate({
+          path: "pool_id",
+          select:
+            "_id name address address_lpt token1_id token2_id total_tvl tvl_day volume_day volume_week",
+          model: "pool",
+        })
+        .populate({
           path: "from_token_id",
           select: "_id name symbol img decimals address owner volume",
           model: "token",

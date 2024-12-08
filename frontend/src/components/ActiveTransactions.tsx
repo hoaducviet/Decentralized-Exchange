@@ -8,6 +8,7 @@ import LiquidityCardAcitve from "@/components/LiquidityCardActive"
 import USDCardAcitve from "@/components/USDCardActive"
 import OrderCardAcitve from "@/components/OrderCardActive"
 import { ActivesType, NFTActiveTransaction, TokenActiveTransaction, LiquidityActiveTransaction, USDActiveTransaction, OrderActiveTransaction } from "@/lib/type"
+import OrderLimitTransaction from "@/components/transaction/OrderLimitTransaction"
 
 export default function ActiveTransactions() {
     const { address } = useAccount()
@@ -41,6 +42,15 @@ export default function ActiveTransactions() {
                         if (item.type.includes("Order")) {
                             TypeCard = OrderCardAcitve
                             transaction = item as OrderActiveTransaction
+                            return (
+                                <div key={index} className="flex flex-col" >
+                                    <OrderLimitTransaction transaction={transaction}>
+                                        <div className="flex flex-col" >
+                                            <TypeCard transaction={transaction} />
+                                        </div>
+                                    </OrderLimitTransaction>
+                                </div>
+                            )
                         }
                         return (
                             <div key={index} className="flex flex-col" >

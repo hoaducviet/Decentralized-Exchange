@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from '@/components/ui/button'
 import { LayersIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons'
 import { Address } from '@/lib/type'
+import { useToast } from '@/hooks/useToast'
 interface Props {
     address: Address;
 }
@@ -25,16 +26,20 @@ export default function SiderBar({ address }: Props) {
     const { data: ensAvatar } = useEnsAvatar({ name: ensName! })
     const addressConfig = (address ? address.slice(0, 6) + "..." + address.slice(38) : "")
     const usdBalances = tokenBalances?.find(tokenBalance => tokenBalance.info.symbol === 'USD')
+    const { showInfo } = useToast()
     const handleCopy = async () => {
         await navigator.clipboard.writeText(address)
-        alert("Copied address successfully!")
+        showInfo(
+            "Copied address successfully!",
+            `Address: ${address.slice(0, 8) + "..." + address.slice(35)}`
+        )
     }
 
-    const handleDisconnec = () => {
+    const handleDisconnect = () => {
         disconnect()
     }
     return (
-        <div className={`absolute bg-white dark:bg-black border-l-[0.5px] border-l-gray-200 select-none top-0 right-0 flex flex-col h-[100vh] overflow-hidden z-10 animation-ping duration-300 ${isOpen ? 'w-full' : 'w-0'}`}>
+        <div className={`absolute bg-white dark:bg-black border-l-[0.1px] dark:border-white/20 border-gray-200 select-none top-0 right-0 flex flex-col h-[100vh] overflow-hidden z-10 animation-ping duration-300 ${isOpen ? 'w-full' : 'w-0'}`}>
             <div className='flex flex-col'>
                 <div className='flex flex-row justify-between items-center m-[0.5vw] h-16'>
                     <div className='flex flex-row justify-start items-center'>
@@ -52,7 +57,7 @@ export default function SiderBar({ address }: Props) {
                             </div>
                         </div>
                     </div>
-                    <Button variant="secondary" className='bg-transparent flex justify-center items-center rounded-3xl w-[30%] mx-[1vw]' onClick={handleDisconnec}>Disconnect</Button>
+                    <Button variant="secondary" className='bg-transparent flex justify-center items-center rounded-3xl w-[30%] mx-[1vw]' onClick={handleDisconnect}>Disconnect</Button>
                     <Button onClick={() => dispatch(setIsOpen())} variant="ghost" className='w-[20%] rounded-3xl'><DoubleArrowRightIcon /></Button>
                 </div>
                 <div className='flex flex-row justify-start items-center space-x-[0.5vw] mx-[1.5vw] my-[0.5vw]'>

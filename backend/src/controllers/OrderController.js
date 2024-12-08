@@ -190,22 +190,35 @@ class OrderController {
     }
   }
 
-  async cancelOrder(order_id) {
+  async cancelOrder(req, res) {
+    const { order_id } = req.body;
     try {
+      console.log(order_id);
       const order = await Order.findOne({ order_id, status: "Pending" });
       if (!order) {
-        return;
+        return res.status(404).json({ message: "Not found" });
       }
 
       const receipt = await orderContract.cancelOrder(order.order_id);
       await receipt.wait();
-      if (receipt.hash) {
-        await Order.findByIdAndUpdate(order._id, {
-          status: "Failed",
-        });
+      if (!receipt.hash) {
+        return res.status(404).json({ message: "Not found" });
       }
 
-      return;
+      const result = await Order.findByIdAndUpdate(
+        order._id,
+        {
+          status: "Failed",
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+      if (!result) {
+        return res.status(404).json({ message: "Transaction not found" });
+      }
+      return res.status(200).json(mongooseToObject(result));
     } catch (error) {
       console.error("Error transaction:", error.message);
     }

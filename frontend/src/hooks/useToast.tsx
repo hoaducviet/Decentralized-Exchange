@@ -15,6 +15,15 @@ export const useToast = () => {
             }
         })
     }
+    const showInfo = (title: string, message: string) => {
+        toast({
+            variant: "default",
+            title: title || "",
+            description: message,
+            className: "select-none rounded-2xl",
+        })
+    }
+
     const showError = (message: string) => {
         toast({
             variant: "destructive",
@@ -26,5 +35,6 @@ export const useToast = () => {
     return {
         showSuccess,
         showError,
+        showInfo
     }
 }
