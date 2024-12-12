@@ -16,7 +16,8 @@ import { withdrawNFT } from "@/services/nftmarket/withdrawNFT";
 import { transferNFT } from "@/services/nftmarket/transferNFT";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { NFT, Address } from "@/lib/type";
-import TransactionWaiting from "@/components/transaction/TransactionWaiting";
+import NFTTransactionWaiting from "@/components/transaction/NFTTransactionWaiting";
+import { useGasSellNFT, useGasTransferNFT, useGasWithdrawNFT } from "@/hooks/useGas";
 
 const options = [
     {
@@ -51,6 +52,9 @@ export default function MyNFT() {
     const { data: nfts, isFetching } = useGetNFTByCollectionQuery(currentCollection?._id ?? skipToken)
     const [mylist, setMylist] = useState<NFT[] | undefined>(undefined)
     const [balance, setBalance] = useState<string>("")
+    const gasWithdraw = useGasWithdrawNFT().toString()
+    const gasTransfer = useGasTransferNFT().toString()
+    const gasSell = useGasSellNFT().toString()
 
     useEffect(() => {
         if (tokenBalances) {
@@ -74,6 +78,14 @@ export default function MyNFT() {
 
     const handleToastBalance = () => {
         showError("Your balance ETH is not enoungh!")
+    }
+
+    const handleToastAddress = () => {
+        showError("Receiver address is invalid!")
+    }
+
+    const handleToastPrice = () => {
+        showError("New price is invalid!")
     }
 
     const handleWithdraw = useCallback(async () => {
@@ -236,28 +248,42 @@ export default function MyNFT() {
                                     </AlertDialogTrigger>
                                     <AlertDialogContent>
                                         <AlertDialogHeader>
-                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                            <AlertDialogTitle>Provide receiver address for transfer NFT!</AlertDialogTitle>
                                             <AlertDialogDescription>
-                                                This will permanently withdraw your liquidity and send your tokens from liquidity pool.
+                                                Please input receiver in form below.
                                             </AlertDialogDescription>
                                         </AlertDialogHeader>
                                         <div>
-                                            <Input type="text" placeholder="address" value={to} onChange={handleChangeAddress} />
+                                            <Input type="text" placeholder="Address receiver" value={to} onChange={handleChangeAddress} />
                                         </div>
                                         <AlertDialogFooter>
                                             <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                            <AlertDialogAction onClick={parseFloat(balance) > 0 ? handleTransfer : handleToastBalance}>Continue</AlertDialogAction>
+                                            {
+                                                parseFloat(balance) > 0 ?
+                                                    <>
+                                                        {ethers.isAddress(to)
+                                                            ?
+                                                            <NFTTransactionWaiting type="Transfer NFT" handleSend={handleTransfer} nft={nft} gasEth={gasTransfer} address={address} collection={currentCollection} addressReceiver={to as Address}>
+                                                                <AlertDialogAction >Continue</AlertDialogAction>
+                                                            </NFTTransactionWaiting>
+                                                            :
+                                                            <AlertDialogAction onClick={handleToastAddress}>Continue</AlertDialogAction>
+                                                        }
+                                                    </>
+                                                    :
+                                                    <AlertDialogAction onClick={handleToastBalance}>Continue</AlertDialogAction>
+                                            }
                                         </AlertDialogFooter>
                                     </AlertDialogContent>
                                 </AlertDialog>
                                 {nft.isListed &&
                                     <>
                                         {parseFloat(balance) > 0 ?
-                                            <TransactionWaiting type="Withdraw NFT" handleSend={handleWithdraw}>
+                                            <NFTTransactionWaiting type="Withdraw NFT" handleSend={handleWithdraw} nft={nft} gasEth={gasWithdraw} address={address} collection={currentCollection}>
                                                 <Button onClick={() => setNft(nft)} variant="secondary">
                                                     Withdraw
                                                 </Button>
-                                            </TransactionWaiting>
+                                            </NFTTransactionWaiting>
                                             :
                                             <Button onClick={handleToastBalance} variant="secondary">
                                                 Withdraw
@@ -272,17 +298,32 @@ export default function MyNFT() {
                                     </AlertDialogTrigger>
                                     <AlertDialogContent>
                                         <AlertDialogHeader>
-                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                            <AlertDialogTitle>Provide new price for NFT?</AlertDialogTitle>
                                             <AlertDialogDescription>
-                                                This will permanently withdraw your liquidity and send your tokens from liquidity pool.
+                                                Please input new price (ETH) in form below!
                                             </AlertDialogDescription>
                                         </AlertDialogHeader>
                                         <div>
-                                            <Input type="text" placeholder="price" value={amount} onChange={handleChangeAmount} />
+                                            <Input type="text" placeholder="Price ETH" value={amount} onChange={handleChangeAmount} />
                                         </div>
                                         <AlertDialogFooter>
                                             <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                            <AlertDialogAction onClick={parseFloat(balance) > 0 ? handleSell : handleToastBalance}>Continue</AlertDialogAction>
+                                            {
+                                                parseFloat(balance) > 0 ?
+
+                                                    <>
+                                                        {
+                                                            parseFloat(amount) > 0 ?
+                                                                <NFTTransactionWaiting type="Sell NFT" handleSend={handleSell} nft={nft} gasEth={gasSell} address={address} collection={currentCollection} addressReceiver={to as Address} newPrice={amount}>
+                                                                    <AlertDialogAction >Continue</AlertDialogAction>
+                                                                </NFTTransactionWaiting>
+                                                                :
+                                                                <AlertDialogAction onClick={handleToastPrice}>Continue</AlertDialogAction>
+                                                        }
+                                                    </>
+                                                    :
+                                                    <AlertDialogAction onClick={handleToastBalance}>Continue</AlertDialogAction>
+                                            }
                                         </AlertDialogFooter>
                                     </AlertDialogContent>
                                 </AlertDialog>
@@ -291,6 +332,6 @@ export default function MyNFT() {
                     )
                 })}
             </div>
-        </div>
+        </div >
     )
 }

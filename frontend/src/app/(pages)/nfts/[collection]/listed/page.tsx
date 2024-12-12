@@ -11,7 +11,8 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { skipToken } from "@reduxjs/toolkit/query";
 import { NFT } from "@/lib/type";
-import TransactionWaiting from "@/components/transaction/TransactionWaiting";
+import NFTTransactionWaiting from "@/components/transaction/NFTTransactionWaiting";
+import { useGasBuyNFT } from "@/hooks/useGas";
 
 const options = [
     {
@@ -47,6 +48,7 @@ export default function Listed() {
     const { data: nfts, isFetching } = useGetNFTByCollectionQuery(currentCollection?._id ?? skipToken)
     const [listed, setListed] = useState<NFT[] | undefined>(undefined)
     const [balance, setBalance] = useState<string>("")
+    const gas = useGasBuyNFT().toString()
 
     useEffect(() => {
         if (tokenBalances) {
@@ -134,9 +136,9 @@ export default function Listed() {
                             </div>
                             <div className="flex justify-start w-[20%]">
                                 {nft.owner !== address && parseFloat(balance) > parseFloat(nft?.formatted || "") ?
-                                    <TransactionWaiting type="Buy NFT" handleSend={handleSend}>
+                                    <NFTTransactionWaiting type="Buy NFT" handleSend={handleSend} nft={nft} gasEth={gas} address={address} collection={currentCollection}>
                                         <Button onClick={() => setNft(nft)} variant="secondary">Buy</Button>
-                                    </TransactionWaiting>
+                                    </NFTTransactionWaiting>
                                     :
                                     <Button onClick={handleToastBalance} variant="secondary">Buy</Button>
                                 }

@@ -1,7 +1,7 @@
 'use client'
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { useAccount } from "wagmi"
-import { useAddLiquidityTransactionMutation, useGetPoolsQuery, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useAddLiquidityTransactionMutation, useGetPoolsQuery, useGetTokenBalancesQuery, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
 import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -10,7 +10,10 @@ import { TrashIcon } from "@radix-ui/react-icons"
 import { LiquidBalancesType } from '@/lib/type'
 import { Card } from "@/components/ui/card"
 import { formatPrice } from "@/utils/formatPrice"
-import TransactionWaiting from "@/components/transaction/TransactionWaiting"
+import { useToast } from '@/hooks/useToast'
+import LiquidityTransactionWaiting from "@/components/transaction/LiquidityTransactionWaiting"
+import { useGasRemoveLiquidity } from "@/hooks/useGas"
+import { skipToken } from "@reduxjs/toolkit/query"
 
 const headers = [
     { name: "#" },
@@ -29,14 +32,25 @@ export default function PoolBalances({ liquidBalances }: Props) {
     const web3 = useWeb3()
     const provider = web3?.provider
     const signer = web3?.signer
+    const { data: tokensBalance } = useGetTokenBalancesQuery(address ?? skipToken)
+    const [ethBalance, setEthBalance] = useState<string>("")
     const [currentPool, setCurrentPool] = useState<LiquidBalancesType | undefined>(undefined)
     const [addLiquidityTransaction] = useAddLiquidityTransactionMutation()
     const [updateLiquidityTransaction] = useUpdateLiquidityTransactionMutation()
     const { data: pools } = useGetPoolsQuery()
+    const { showError } = useToast()
+    const gas = useGasRemoveLiquidity().toString()
 
     const handleClick = (index: number) => {
         setCurrentPool(liquidBalances[index])
     }
+
+    useEffect(() => {
+        if (tokensBalance) {
+            const eth = tokensBalance.find(item => item.balance?.symbol === "ETH")
+            setEthBalance(eth?.balance?.formatted ?? "")
+        }
+    }, [tokensBalance])
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!currentPool && !!address) {
@@ -77,6 +91,10 @@ export default function PoolBalances({ liquidBalances }: Props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider, signer, address, currentPool])
 
+    const handleToast = () => {
+        showError("Balance eth is not enough!")
+    }
+
     return (
         <div className="flex flex-col select-none w-full space-y-[1vw]">
             <p className="text-xl font-semibold opacity-80">Liquidity Balances</p>
@@ -114,11 +132,17 @@ export default function PoolBalances({ liquidBalances }: Props) {
                                 <div className="flex flex-col justify-center items-start  w-[25%]">{liquidityBalance.balance?.formatted}</div>
                                 <div className="flex flex-col justify-center items-start  w-[15%]">{`$${formatPrice(price)}`}</div>
                                 <div className="flex flex-col justify-center items-start  w-[20%]">
-                                    <TransactionWaiting type="Remove Liquidity" handleSend={handleSend}>
-                                        <Button onClick={() => handleClick(index)} variant="ghost">
+                                    {parseFloat(ethBalance) > 0 ?
+                                        <LiquidityTransactionWaiting type="Remove Liquidity" handleSend={handleSend} address={address} liquidPool={currentPool} gasEth={gas}>
+                                            <Button onClick={() => handleClick(index)} variant="ghost">
+                                                <TrashIcon />
+                                            </Button>
+                                        </LiquidityTransactionWaiting>
+                                        :
+                                        <Button onClick={handleToast} variant="ghost">
                                             <TrashIcon />
                                         </Button>
-                                    </TransactionWaiting>
+                                    }
                                 </div>
                             </div>
                         )

@@ -11,7 +11,8 @@ import { addLiquidityPool } from "@/services/liquiditypool/addLiquidityPool"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { TokenBalancesType, ReservePool, Token } from "@/lib/type"
 import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet"
-import TransactionWaiting from "@/components/transaction/TransactionWaiting"
+import LiquidityTransactionWaiting from "@/components/transaction/LiquidityTransactionWaiting"
+import { useGasAddLiquidity } from "@/hooks/useGas"
 
 interface Props {
     tokens: Token[];
@@ -39,6 +40,7 @@ export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
     const [amount2, setAmount2] = useState<string>("")
     // Lọc lại danh sách tokens, loại trừ tokenOne và tokenTwo
     const newTokens = tokens.filter(token => token?.address !== tokenOne?.address && token?.address !== tokenTwo?.address);
+    const gas = useGasAddLiquidity().toString()
 
     //Set mặc định giá trị ban đầu cho 2 token
     useEffect(() => {
@@ -150,15 +152,15 @@ export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
                 </div>
             </div>
             {isConnected ?
-                <div onClick={handleToast} className='flex w-full'>
+                <div className='flex w-full'>
                     {isChecked ?
-                        <TransactionWaiting type="Add Liquidity" handleSend={handleSend}>
+                        <LiquidityTransactionWaiting type="Add Liquidity" handleSend={handleSend} tokenOne={tokenOne} tokenTwo={tokenTwo} address={address} pool={currentPool} amount1={amount1} amount2={amount2} gasEth={gas}>
                             <div className="flex w-full">
                                 <SubmitItem name="Send" isChecked={isChecked} />
                             </div>
-                        </TransactionWaiting>
+                        </LiquidityTransactionWaiting>
                         :
-                        <div className="flex w-full">
+                        <div onClick={handleToast} className="flex w-full">
                             <SubmitItem name="Send" isChecked={isChecked} />
                         </div>
                     }

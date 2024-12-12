@@ -2,10 +2,11 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
-import { Address, NFT } from '@/lib/type';
+import { Address, Collection, NFT } from '@/lib/type';
 import Link from "next/link";
 import { useToast } from "@/hooks/useToast";
-import TransactionWaiting from "@/components/transaction/TransactionWaiting";
+import NFTTransactionWaiting from "@/components/transaction/NFTTransactionWaiting";
+import { useGasBuyNFT } from "@/hooks/useGas";
 interface Props {
     nft: NFT;
     setNft: Dispatch<SetStateAction<NFT | undefined>>;
@@ -14,11 +15,13 @@ interface Props {
     isConnected: boolean;
     collectionName: string;
     balance: string;
+    collection: Collection | undefined;
 }
 
-export default function NFTItem({ nft, setNft, address, isConnected, handleSend, collectionName, balance }: Props) {
+export default function NFTItem({ nft, setNft, address, isConnected, handleSend, collectionName, collection, balance }: Props) {
     const { showError } = useToast()
     const [isCheck, setIsCheck] = useState<boolean>(false)
+    const gas = useGasBuyNFT().toString()
 
     useEffect(() => {
         if (parseFloat(balance) > 0) {
@@ -40,6 +43,8 @@ export default function NFTItem({ nft, setNft, address, isConnected, handleSend,
         showError("Please Connect Wallet for Buy NFT!")
     }
 
+    console.log(nft)
+
     return (
         <Card className='border-none outline-none select-none w-full px-0 mx-0'>
             <CardContent className='cursor-pointer w-full px-0'>
@@ -58,9 +63,9 @@ export default function NFTItem({ nft, setNft, address, isConnected, handleSend,
                         <>
                             {isConnected ?
                                 <>{isCheck ?
-                                    <TransactionWaiting type="Buy NFT" handleSend={handleSend}>
+                                    <NFTTransactionWaiting type="Buy NFT" handleSend={handleSend} nft={nft} gasEth={gas} address={address} collection={collection}>
                                         <Button onClick={handleClick} variant="secondary">Buy</Button>
-                                    </TransactionWaiting>
+                                    </NFTTransactionWaiting>
                                     :
                                     <Button onClick={handleToastBalance} variant="secondary">Buy</Button>
                                 }

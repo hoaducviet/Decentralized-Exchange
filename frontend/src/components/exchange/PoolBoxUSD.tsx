@@ -11,7 +11,8 @@ import { addLiquidityPool } from "@/services/liquiditypool/addLiquidityPool"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { TokenBalancesType, Token, ReservePool } from "@/lib/type"
 import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet"
-import TransactionWaiting from "@/components/transaction/TransactionWaiting"
+import LiquidityTransactionWaiting from "@/components/transaction/LiquidityTransactionWaiting"
+import { useGasAddLiquidity } from "@/hooks/useGas"
 
 interface Props {
     tokens: Token[],
@@ -40,6 +41,7 @@ export default function PoolBoxUSD({ tokens, tokenBalances, reserves }: Props) {
     const newTokens = tokens.filter(token => ['ETH', 'USDT'].includes(token.symbol))
     const usdToken = tokens.find(token => token.symbol === "USD")
     const optionTokens = tokens.filter(token => token.symbol !== tokenOne?.symbol && token.symbol !== tokenTwo?.symbol)
+    const gas = useGasAddLiquidity().toString()
 
     //Set mặc định giá trị ban đầu cho 2 token
     useEffect(() => {
@@ -153,11 +155,11 @@ export default function PoolBoxUSD({ tokens, tokenBalances, reserves }: Props) {
             {isConnected ?
                 <div onClick={handleToast} className='flex w-full'>
                     {isChecked ?
-                        <TransactionWaiting type="Add Liquidity" handleSend={handleSend}>
+                        <LiquidityTransactionWaiting type="Add Liquidity" handleSend={handleSend} tokenOne={tokenOne} tokenTwo={tokenTwo} address={address} pool={currentPool} amount1={amount1} amount2={amount2} gasEth={gas}>
                             <div className="flex w-full">
                                 <SubmitItem name="Send" isChecked={isChecked} />
                             </div>
-                        </TransactionWaiting>
+                        </LiquidityTransactionWaiting>
                         :
                         <div className="flex w-full">
                             <SubmitItem name="Send" isChecked={isChecked} />

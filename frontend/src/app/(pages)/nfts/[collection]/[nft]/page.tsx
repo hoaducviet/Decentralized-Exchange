@@ -25,7 +25,8 @@ import ItemDescription from "@/components/nfts/ItemDescription"
 import ItemImage from "@/components/nfts/ItemImage"
 import { skipToken } from "@reduxjs/toolkit/query"
 import { Address, NFTActiveTransaction } from "@/lib/type"
-import TransactionWaiting from "@/components/transaction/TransactionWaiting"
+import NFTTransactionWaiting from "@/components/transaction/NFTTransactionWaiting"
+import { useGasBuyNFT, useGasSellNFT, useGasTransferNFT, useGasWithdrawNFT } from "@/hooks/useGas";
 
 export default function NFTPage() {
     const { isConnected, address } = useAccount()
@@ -46,6 +47,11 @@ export default function NFTPage() {
     const UsdEth = reserves?.find(item => item.info.name === 'USD/ETH')
     const usdPriceCurrentNft = (parseFloat(currentNft?.formatted || '0') * parseFloat(UsdEth?.reserve1 || '0') / parseFloat(UsdEth?.reserve2 || '0')).toString()
     const [balance, setBalance] = useState<string>("")
+    const gasBuy = useGasBuyNFT().toString()
+    const gasTransfer = useGasTransferNFT().toString()
+    const gasSell = useGasSellNFT().toString()
+    const gasWithdraw = useGasWithdrawNFT().toString()
+
 
     useEffect(() => {
         if (tokenBalances) {
@@ -71,6 +77,14 @@ export default function NFTPage() {
 
     const handleToastBalance = () => {
         showError("Your balance ETH is not enoungh!")
+    }
+
+    const handleToastAddress = () => {
+        showError("Receiver address is invalid!")
+    }
+
+    const handleToastPrice = () => {
+        showError("New price is invalid!")
     }
 
     const handleBuy = useCallback(async () => {
@@ -265,7 +279,7 @@ export default function NFTPage() {
                                     {currentNft?.formatted} ETH
                                 </div>
                                 <div className="text-sm font-semibold opacity-75">
-                                    $ {usdPriceCurrentNft.slice(0, usdPriceCurrentNft.indexOf('.') + 2)}
+                                    ${usdPriceCurrentNft.slice(0, usdPriceCurrentNft.indexOf('.') + 2)}
                                 </div>
                             </div>
                             <div className="flex flex-row space-x-2">
@@ -276,12 +290,12 @@ export default function NFTPage() {
                                                 <>
                                                     {
                                                         parseFloat(balance) > 0 ?
-                                                            <TransactionWaiting type="Buy NFT" handleSend={handleBuy}>
-                                                                <Button onClick={handleBuy} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[100%]">
+                                                            <NFTTransactionWaiting type="Buy NFT" handleSend={handleBuy} nft={currentNft} gasEth={gasBuy} address={address} collection={currentCollection}>
+                                                                <Button className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[100%]">
                                                                     <ShoppingCartIcon className="w-6 h-6" />
                                                                     <div className="text-md font-semibold">Buy now</div>
                                                                 </Button>
-                                                            </TransactionWaiting>
+                                                            </NFTTransactionWaiting>
                                                             :
                                                             <Button onClick={handleToastBalance} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[100%]">
                                                                 <ShoppingCartIcon className="w-6 h-6" />
@@ -299,56 +313,96 @@ export default function NFTPage() {
                                     }
                                 </> : <>
                                     {currentNft?.isListed ?
-                                        <Button onClick={handleWithdraw} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[50%]">
-                                            <ArrowDownCircleIcon className="w-6 h-6" />
-                                            <div className="text-md font-semibold">Withdraw</div>
-                                        </Button>
+                                        <>
+                                            {
+                                                parseFloat(balance) > 0 ?
+                                                    <NFTTransactionWaiting type="Withdraw NFT" handleSend={handleWithdraw} nft={currentNft} gasEth={gasWithdraw} address={address} collection={currentCollection}>
+                                                        <Button className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[50%]">
+                                                            <ArrowDownCircleIcon className="w-6 h-6" />
+                                                            <div className="text-md font-semibold">Withdraw</div>
+                                                        </Button>
+                                                    </NFTTransactionWaiting>
+                                                    :
+                                                    <Button onClick={handleToastBalance} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[50%]">
+                                                        <ArrowDownCircleIcon className="w-6 h-6" />
+                                                        <div className="text-md font-semibold">Withdraw</div>
+                                                    </Button>
+                                            }
+                                        </>
                                         :
                                         <AlertDialog>
                                             <AlertDialogTrigger asChild>
-                                                <Button onClick={handleSell} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[50%]">
+                                                <Button className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[50%]">
                                                     <TagIcon className="w-6 h-6" />
                                                     <div className="text-md font-semibold">Listed</div>
                                                 </Button>
                                             </AlertDialogTrigger>
                                             <AlertDialogContent>
                                                 <AlertDialogHeader>
-                                                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                    <AlertDialogTitle>Provide new price for NFT?</AlertDialogTitle>
                                                     <AlertDialogDescription>
-                                                        This will permanently withdraw your liquidity and send your tokens from liquidity pool.
+                                                        Please input new price (ETH) in form below!
                                                     </AlertDialogDescription>
                                                 </AlertDialogHeader>
                                                 <div>
-                                                    <Input type="text" placeholder="price" value={amount} onChange={handleChangeAmount} />
+                                                    <Input type="text" placeholder="Price ETH" value={amount} onChange={handleChangeAmount} />
                                                 </div>
                                                 <AlertDialogFooter>
                                                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                    <AlertDialogAction onClick={handleSell}>Continue</AlertDialogAction>
+                                                    {
+                                                        parseFloat(balance) > 0 ?
+
+                                                            <>
+                                                                {
+                                                                    parseFloat(amount) > 0 ?
+                                                                        <NFTTransactionWaiting type="Sell NFT" handleSend={handleSell} nft={currentNft} gasEth={gasSell} address={address} collection={currentCollection} addressReceiver={to as Address} newPrice={amount}>
+                                                                            <AlertDialogAction >Continue</AlertDialogAction>
+                                                                        </NFTTransactionWaiting>
+                                                                        :
+                                                                        <AlertDialogAction onClick={handleToastPrice}>Continue</AlertDialogAction>
+                                                                }
+                                                            </>
+                                                            :
+                                                            <AlertDialogAction onClick={handleToastBalance}>Continue</AlertDialogAction>
+                                                    }
                                                 </AlertDialogFooter>
                                             </AlertDialogContent>
                                         </AlertDialog>
-
                                     }
                                     <AlertDialog>
                                         <AlertDialogTrigger asChild>
-                                            <Button onClick={handleTransfer} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[50%]">
+                                            <Button className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[50%]">
                                                 <ArrowsRightLeftIcon className="w-6 h-6" />
                                                 <div className="text-md font-semibold">Transfer</div>
                                             </Button>
                                         </AlertDialogTrigger>
                                         <AlertDialogContent>
                                             <AlertDialogHeader>
-                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                <AlertDialogTitle>Provide receiver address for transfer NFT!</AlertDialogTitle>
                                                 <AlertDialogDescription>
-                                                    This will permanently withdraw your liquidity and send your tokens from liquidity pool.
+                                                    Please input receiver in form below.
                                                 </AlertDialogDescription>
                                             </AlertDialogHeader>
                                             <div>
-                                                <Input type="text" placeholder="address" value={to} onChange={handleChangeAddress} />
+                                                <Input type="text" placeholder="Address receiver" value={to} onChange={handleChangeAddress} />
                                             </div>
                                             <AlertDialogFooter>
                                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                <AlertDialogAction onClick={handleTransfer}>Continue</AlertDialogAction>
+                                                {
+                                                    parseFloat(balance) > 0 ?
+                                                        <>
+                                                            {ethers.isAddress(to)
+                                                                ?
+                                                                <NFTTransactionWaiting type="Transfer NFT" handleSend={handleTransfer} nft={currentNft} gasEth={gasTransfer} address={address} collection={currentCollection} addressReceiver={to as Address}>
+                                                                    <AlertDialogAction >Continue</AlertDialogAction>
+                                                                </NFTTransactionWaiting>
+                                                                :
+                                                                <AlertDialogAction onClick={handleToastAddress}>Continue</AlertDialogAction>
+                                                            }
+                                                        </>
+                                                        :
+                                                        <AlertDialogAction onClick={handleToastBalance}>Continue</AlertDialogAction>
+                                                }
                                             </AlertDialogFooter>
                                         </AlertDialogContent>
                                     </AlertDialog>

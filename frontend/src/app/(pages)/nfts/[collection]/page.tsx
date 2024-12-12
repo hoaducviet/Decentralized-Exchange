@@ -72,7 +72,7 @@ export default function CollectionNFT() {
     }, [provider, signer, address, nft, currentCollection])
     return (
         <div className="flex flex-co h-full">
-            {!isFetching && nfts && <NFTCards nfts={nfts} setNft={setNft} handleSend={handleSend} address={address} isConnected={isConnected} collectionName={collection as string} balance={balance}/>}
+            {!isFetching && nfts && <NFTCards nfts={nfts} setNft={setNft} handleSend={handleSend} address={address} isConnected={isConnected} collectionName={collection as string} collection={currentCollection} balance={balance}/>}
         </div>
     )
 }
