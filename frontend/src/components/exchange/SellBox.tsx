@@ -2,17 +2,25 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAccount } from 'wagmi'
 import { useWeb3 } from "@/hooks/useWeb3"
-import { useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useToast } from '@/hooks/useToast'
+import { useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation, useGetTokenBalancesQuery } from "@/redux/features/api/apiSlice"
 import { swapLiquidityPool } from "@/services/liquiditypool/swapLiquidityPool"
+import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import SellItem from "@/components/exchange/SellItem"
 import { ReservePool, Token } from "@/lib/type"
+import { skipToken } from '@reduxjs/toolkit/query'
+import TokenTransactionWaiting from '@/components/transaction/TokenTransactionWaiting'
+import { useGasSwapToken } from '@/hooks/useGas'
 
 export default function SellBox() {
-    const { address } = useAccount()
+    const { isConnected, address } = useAccount()
     const web3 = useWeb3()
     const provider = web3?.provider
     const signer = web3?.signer
+    const { showError } = useToast()
+    const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
+    const [isChecked, setIsChecked] = useState<boolean>(false)
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
@@ -20,6 +28,7 @@ export default function SellBox() {
     const [updateTokenTransaction, { data: updateTransaction, isSuccess: updateSuccess }] = useUpdateTokenTransactionMutation()
     const [reserve1, setReserve1] = useState<number>(0)
     const [reserve2, setReserve2] = useState<number>(0)
+    const [balance1, setBalance1] = useState<string>("0")
     const [amount1, setAmount1] = useState<string>("")
     const [amount2, setAmount2] = useState<string>("")
     const { data: allTokens, isFetching: isFetchingToken } = useGetTokensQuery()
@@ -27,6 +36,7 @@ export default function SellBox() {
     const usdToken = allTokens?.find(token => token.symbol === 'USD')
     const newTokens = allTokens?.filter(token => token.symbol === 'USDT' || token.symbol === 'ETH')
     const optionTokens = newTokens?.filter(token => token.symbol !== tokenOne?.symbol)
+    const gas = useGasSwapToken().toString()
 
     useEffect(() => {
         if (!isFetchingToken && newTokens) {
@@ -47,6 +57,7 @@ export default function SellBox() {
                 setReserve2(parseFloat(currentPool?.reserve1 || '0'))
             }
             setCurrentPool(currentPool)
+            setBalance1(tokenBalances?.find(item => item.info.symbol === tokenOne.symbol)?.balance?.formatted || "0")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tokenOne, tokenTwo, reserves])
@@ -54,12 +65,14 @@ export default function SellBox() {
     useEffect(() => {
         if (amount1 === "") {
             setAmount2("")
+            setIsChecked(false)
         } else {
             const value = parseFloat(amount1)
             const amountReceiver = value * reserve2 / (reserve1 + value)
             setAmount2(amountReceiver.toString())
+            setIsChecked(parseFloat(balance1) > parseFloat(amount1))
         }
-    }, [amount1, reserve1, reserve2])
+    }, [amount1, balance1, reserve1, reserve2])
 
     useEffect(() => {
         if (updateTransaction && updateSuccess) {
@@ -109,14 +122,38 @@ export default function SellBox() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider, signer, currentPool, address, tokenOne, amount1, tokenTwo, amount2])
 
+    const handleToast = () => {
+        if (!isChecked) {
+            showError("Invalid token quantity!")
+        }
+    }
+
     return (
         <>
             {!isFetchingToken && optionTokens &&
                 <div className="flex flex-col select-none justify-center items-center">
                     <SellItem token={tokenOne} tokens={optionTokens} setToken={setTokenOne} setAmount={setAmount1} amount1={amount1} amount2={amount2} />
-                    <div onClick={handleSend} className='flex w-full'>
-                        <SubmitItem name="Sell" />
-                    </div>
+                    {isConnected ?
+                        <div onClick={handleToast} className='flex w-full'>
+                            {isChecked ?
+                                <TokenTransactionWaiting type="Sell Token" handleSend={handleSend} tokenOne={tokenOne} tokenTwo={tokenTwo} address={address} pool={currentPool} value={amount1} gasEth={gas}>
+                                    <div className='flex w-full'>
+                                        <SubmitItem name="Sell" isChecked={isChecked} />
+                                    </div>
+                                </TokenTransactionWaiting>
+                                :
+                                <div className='flex w-full'>
+                                    <SubmitItem name="Sell" isChecked={isChecked} />
+                                </div>
+                            }
+                        </div>
+                        :
+                        <PopoverConnectWallet>
+                            <div className='flex w-full'>
+                                <SubmitItem name="Connect Wallet" />
+                            </div>
+                        </PopoverConnectWallet>
+                    }
                 </div>
             }
         </>

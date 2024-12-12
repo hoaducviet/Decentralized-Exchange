@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { useEffect, useState, useCallback } from "react"
 import { useAccount } from "wagmi"
 import { useWeb3 } from "@/hooks/useWeb3"
-import { skipToken } from "@reduxjs/toolkit/query"
+import { useToast } from '@/hooks/useToast'
 import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery, useAddOrderMutation, useUpdateOrderMutation } from "@/redux/features/api/apiSlice"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
@@ -11,15 +10,20 @@ import TimeItem from "@/components/exchange/TimeItem"
 import TradeItem from "@/components/exchange/TradeItem"
 import LimitItem from "@/components/exchange/LimitItem"
 import { swapLimitPool } from "@/services/liquiditypool/swapLimitPool"
+import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet"
 import { HeightIcon } from "@radix-ui/react-icons"
+import { skipToken } from "@reduxjs/toolkit/query"
 import { ReservePool, Token, Address } from "@/lib/type"
+import TokenTransactionWaiting from "@/components/transaction/TokenTransactionWaiting"
+import { useGasSwapLimit } from "@/hooks/useGas"
 
 const addressLimitContract = process.env.NEXT_PUBLIC_ADDRESS_LIMIT as Address
 export default function LimitBox() {
-    const { address } = useAccount()
+    const { isConnected, address } = useAccount()
     const web3 = useWeb3()
     const provider = web3?.provider
     const signer = web3?.signer
+    const { showError } = useToast()
     const { data: allTokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const { data: reserves } = useGetReservesQuery()
@@ -28,6 +32,7 @@ export default function LimitBox() {
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
+    const [isChecked, setIsChecked] = useState<boolean>(false)
     const [timeDate, setTimeDate] = useState<string>("1")
     const [reserve1, setReserve1] = useState<number>(0)
     const [reserve2, setReserve2] = useState<number>(0)
@@ -39,6 +44,7 @@ export default function LimitBox() {
     const [percent, setPercent] = useState<string>("1.0")
     const tokens = allTokens?.filter(token => token.symbol !== 'USD')
     const newTokens = tokens?.filter(token => token?.address !== tokenOne?.address && token?.address !== tokenTwo?.address);
+    const gas = useGasSwapLimit().toString()
 
     useEffect(() => {
         if (!isFetchingToken && tokens) {
@@ -78,12 +84,14 @@ export default function LimitBox() {
     useEffect(() => {
         if (amount1 === "") {
             setAmount2("")
+            setIsChecked(false)
         } else {
             const value = parseFloat(amount1)
             const amountReceiver = value * reserve2 * parseFloat(percent) / (reserve1 + value)
             setAmount2(amountReceiver.toString())
+            setIsChecked(parseFloat(balance1) > parseFloat(amount1))
         }
-    }, [amount1, reserve1, reserve2, percent])
+    }, [amount1, balance1, reserve1, reserve2, percent])
 
     useEffect(() => {
         if (reserve1 > 0 && reserve2 > 0) {
@@ -134,7 +142,14 @@ export default function LimitBox() {
                 }
             }
         }
-    }, [provider, signer, currentPool, address, tokenOne, tokenTwo, amount1, price])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [provider, signer, currentPool, address, tokenOne, tokenTwo, amount1, price, timeDate])
+
+    const handleToast = () => {
+        if (!isChecked) {
+            showError("Invalid token quantity!")
+        }
+    }
 
     return (
         <>
@@ -151,9 +166,27 @@ export default function LimitBox() {
                         </div>
                     </div>
                     <TimeItem setTimeDate={setTimeDate} />
-                    <div onClick={handleSend}>
-                        <SubmitItem name="Confirm" />
-                    </div>
+                    {isConnected ?
+                        <div onClick={handleToast}>
+                            {isChecked ?
+                                <TokenTransactionWaiting type="Swap Token Limit" handleSend={handleSend} tokenOne={tokenOne} tokenTwo={tokenTwo} address={address} pool={currentPool} value={amount1} gasEth={gas}>
+                                    <div className="flex w-full">
+                                        <SubmitItem name="Confirm" isChecked={isChecked} />
+                                    </div>
+                                </TokenTransactionWaiting>
+                                :
+                                <div className="flex w-full">
+                                    <SubmitItem name="Confirm" isChecked={isChecked} />
+                                </div>
+                            }
+                        </div>
+                        :
+                        <PopoverConnectWallet>
+                            <div>
+                                <SubmitItem name="Connect Wallet" />
+                            </div>
+                        </PopoverConnectWallet>
+                    }
                 </div>
             }
         </>

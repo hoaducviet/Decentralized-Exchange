@@ -225,7 +225,7 @@ function socket(io) {
         io.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
-        if (change.operationType === "update") {
+        if (change.operationType === "update" && updateDocument.status === "Completed") {
           io.emit("updateNFTItemTransactions", {
             data: updateDocument,
           });

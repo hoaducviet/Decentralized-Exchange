@@ -3,14 +3,15 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { useWeb3 } from "@/hooks/useWeb3";
+import { useToast } from "@/hooks/useToast";
 import { useCollection } from "@/hooks/useCollection"
-import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetNFTByCollectionQuery } from "@/redux/features/api/apiSlice";
+import { useGetTokenBalancesQuery, useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetNFTByCollectionQuery } from "@/redux/features/api/apiSlice";
 import { buyNFT } from "@/services/nftmarket/buyNFT"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { skipToken } from "@reduxjs/toolkit/query";
 import { NFT } from "@/lib/type";
+import TransactionWaiting from "@/components/transaction/TransactionWaiting";
 
 const options = [
     {
@@ -31,6 +32,7 @@ const options = [
 ]
 
 export default function Listed() {
+    const { showError } = useToast()
     const { currentCollection } = useCollection()
     const [nft, setNft] = useState<NFT | undefined>(undefined)
     const web3 = useWeb3()
@@ -39,15 +41,28 @@ export default function Listed() {
     const provider = web3?.provider
     const { address } = useAccount()
     const router = useRouter()
+    const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const [addNftTransaction] = useAddNftTransactionMutation()
     const [updateNftTransaction] = useUpdateNftTransactionMutation()
     const { data: nfts, isFetching } = useGetNFTByCollectionQuery(currentCollection?._id ?? skipToken)
     const [listed, setListed] = useState<NFT[] | undefined>(undefined)
+    const [balance, setBalance] = useState<string>("")
+
+    useEffect(() => {
+        if (tokenBalances) {
+            setBalance(tokenBalances.find(item => item.info.symbol === 'ETH')?.balance?.formatted || "")
+        }
+    }, [tokenBalances])
+
     useEffect(() => {
         if (nfts) {
             setListed(nfts.filter(item => item.isListed))
         }
     }, [nfts])
+
+    const handleToastBalance = () => {
+        showError("Your balance ETH is not enoungh!")
+    }
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!address && !!nft && !!currentCollection) {
@@ -118,24 +133,12 @@ export default function Listed() {
                                 <div className="flex justify-start w-[25%]">{nft.owner.slice(0, 6) + "..." + nft.owner.slice(38)}</div>
                             </div>
                             <div className="flex justify-start w-[20%]">
-                                {nft.owner !== address &&
-                                    <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                            <Button onClick={() => setNft(nft)} variant="secondary">Buy</Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                                <AlertDialogDescription>
-                                                    This will permanently withdraw your liquidity and send your tokens from liquidity pool.
-                                                </AlertDialogDescription>
-                                            </AlertDialogHeader>
-                                            <AlertDialogFooter>
-                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                <AlertDialogAction onClick={handleSend}>Continue</AlertDialogAction>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialog>
+                                {nft.owner !== address && parseFloat(balance) > parseFloat(nft?.formatted || "") ?
+                                    <TransactionWaiting type="Buy NFT" handleSend={handleSend}>
+                                        <Button onClick={() => setNft(nft)} variant="secondary">Buy</Button>
+                                    </TransactionWaiting>
+                                    :
+                                    <Button onClick={handleToastBalance} variant="secondary">Buy</Button>
                                 }
                             </div>
                         </div>

@@ -1,10 +1,10 @@
 'use client'
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { useParams } from "next/navigation";
 import { useCollection } from "@/hooks/useCollection"
 import { useWeb3 } from "@/hooks/useWeb3";
-import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetNFTByCollectionQuery } from "@/redux/features/api/apiSlice";
+import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetNFTByCollectionQuery, useGetTokenBalancesQuery } from "@/redux/features/api/apiSlice";
 import { buyNFT } from "@/services/nftmarket/buyNFT"
 import NFTCards from "@/components/nfts/NFTCards"
 import { NFT } from "@/lib/type";
@@ -17,10 +17,18 @@ export default function CollectionNFT() {
     const web3 = useWeb3()
     const signer = web3?.signer
     const provider = web3?.provider
-    const { address } = useAccount()
+    const { isConnected, address } = useAccount()
     const [addNftTransaction] = useAddNftTransactionMutation()
     const [updateNftTransaction] = useUpdateNftTransactionMutation()
     const { data: nfts, isFetching } = useGetNFTByCollectionQuery(currentCollection?._id ?? skipToken)
+    const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
+    const [balance, setBalance] = useState<string>("")
+
+    useEffect(() => {
+        if (tokenBalances) {
+            setBalance(tokenBalances.find(item => item.info.symbol === 'ETH')?.balance?.formatted || "")
+        }
+    }, [tokenBalances])
 
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!address && !!nft && !!currentCollection) {
@@ -64,7 +72,7 @@ export default function CollectionNFT() {
     }, [provider, signer, address, nft, currentCollection])
     return (
         <div className="flex flex-co h-full">
-            {!isFetching && nfts && <NFTCards nfts={nfts} setNft={setNft} handleSend={handleSend} address={address} collectionName={collection as string} />}
+            {!isFetching && nfts && <NFTCards nfts={nfts} setNft={setNft} handleSend={handleSend} address={address} isConnected={isConnected} collectionName={collection as string} balance={balance}/>}
         </div>
     )
 }

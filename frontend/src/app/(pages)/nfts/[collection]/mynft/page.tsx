@@ -4,7 +4,8 @@ import { useCallback, useState, useEffect } from "react";
 import { useAccount } from "wagmi";
 import { ethers } from 'ethers';
 import { useWeb3 } from "@/hooks/useWeb3";
-import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetNFTByCollectionQuery } from "@/redux/features/api/apiSlice";
+import { useToast } from "@/hooks/useToast";
+import { useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetNFTByCollectionQuery, useGetTokenBalancesQuery } from "@/redux/features/api/apiSlice";
 import { useCollection } from "@/hooks/useCollection"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -15,6 +16,7 @@ import { withdrawNFT } from "@/services/nftmarket/withdrawNFT";
 import { transferNFT } from "@/services/nftmarket/transferNFT";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { NFT, Address } from "@/lib/type";
+import TransactionWaiting from "@/components/transaction/TransactionWaiting";
 
 const options = [
     {
@@ -32,6 +34,7 @@ const options = [
 ]
 
 export default function MyNFT() {
+    const { showError } = useToast()
     const { currentCollection } = useCollection()
     const [nft, setNft] = useState<NFT | undefined>(undefined)
     const web3 = useWeb3()
@@ -42,10 +45,18 @@ export default function MyNFT() {
     const router = useRouter()
     const [amount, setAmount] = useState<string>("")
     const [to, setTo] = useState<string>("")
+    const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const [addNftTransaction] = useAddNftTransactionMutation()
     const [updateNftTransaction] = useUpdateNftTransactionMutation()
     const { data: nfts, isFetching } = useGetNFTByCollectionQuery(currentCollection?._id ?? skipToken)
     const [mylist, setMylist] = useState<NFT[] | undefined>(undefined)
+    const [balance, setBalance] = useState<string>("")
+
+    useEffect(() => {
+        if (tokenBalances) {
+            setBalance(tokenBalances.find(item => item.info.symbol === 'ETH')?.balance?.formatted || "")
+        }
+    }, [tokenBalances])
 
     useEffect(() => {
         if (nfts) {
@@ -59,6 +70,10 @@ export default function MyNFT() {
 
     const handleChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAmount(e.target.value)
+    }
+
+    const handleToastBalance = () => {
+        showError("Your balance ETH is not enoungh!")
     }
 
     const handleWithdraw = useCallback(async () => {
@@ -231,53 +246,46 @@ export default function MyNFT() {
                                         </div>
                                         <AlertDialogFooter>
                                             <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                            <AlertDialogAction onClick={handleTransfer}>Continue</AlertDialogAction>
+                                            <AlertDialogAction onClick={parseFloat(balance) > 0 ? handleTransfer : handleToastBalance}>Continue</AlertDialogAction>
                                         </AlertDialogFooter>
                                     </AlertDialogContent>
                                 </AlertDialog>
-                                {nft.isListed ?
-                                    <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                            <Button onClick={() => setNft(nft)} variant="secondary">
+                                {nft.isListed &&
+                                    <>
+                                        {parseFloat(balance) > 0 ?
+                                            <TransactionWaiting type="Withdraw NFT" handleSend={handleWithdraw}>
+                                                <Button onClick={() => setNft(nft)} variant="secondary">
+                                                    Withdraw
+                                                </Button>
+                                            </TransactionWaiting>
+                                            :
+                                            <Button onClick={handleToastBalance} variant="secondary">
                                                 Withdraw
-                                            </Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                                <AlertDialogDescription>
-                                                    This will permanently withdraw your liquidity and send your tokens from liquidity pool.
-                                                </AlertDialogDescription>
-                                            </AlertDialogHeader>
-                                            <AlertDialogFooter>
-                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                <AlertDialogAction onClick={handleWithdraw}>Continue</AlertDialogAction>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialog>
-                                    :
-                                    <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                            <Button onClick={() => setNft(nft)} variant="secondary">
-                                                Sell
-                                            </Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                                <AlertDialogDescription>
-                                                    This will permanently withdraw your liquidity and send your tokens from liquidity pool.
-                                                </AlertDialogDescription>
-                                            </AlertDialogHeader>
-                                            <div>
-                                                <Input type="text" placeholder="price" value={amount} onChange={handleChangeAmount} />
-                                            </div>
-                                            <AlertDialogFooter>
-                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                <AlertDialogAction onClick={handleSell}>Continue</AlertDialogAction>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialog>}
+                                            </Button>}
+                                    </>
+                                }
+                                <AlertDialog>
+                                    <AlertDialogTrigger asChild>
+                                        <Button onClick={() => setNft(nft)} variant="secondary">
+                                            Sell
+                                        </Button>
+                                    </AlertDialogTrigger>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader>
+                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                            <AlertDialogDescription>
+                                                This will permanently withdraw your liquidity and send your tokens from liquidity pool.
+                                            </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <div>
+                                            <Input type="text" placeholder="price" value={amount} onChange={handleChangeAmount} />
+                                        </div>
+                                        <AlertDialogFooter>
+                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                            <AlertDialogAction onClick={parseFloat(balance) > 0 ? handleSell : handleToastBalance}>Continue</AlertDialogAction>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialog>
                             </div>
                         </div>
                     )

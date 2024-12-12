@@ -1,25 +1,45 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger, } from "@/components/ui/alert-dialog"
 import { Address, NFT } from '@/lib/type';
 import Link from "next/link";
+import { useToast } from "@/hooks/useToast";
+import TransactionWaiting from "@/components/transaction/TransactionWaiting";
 interface Props {
     nft: NFT;
     setNft: Dispatch<SetStateAction<NFT | undefined>>;
     handleSend: () => Promise<void>;
     address: Address | undefined;
-    collectionName: string
+    isConnected: boolean;
+    collectionName: string;
+    balance: string;
 }
 
-export default function NFTItem({ nft, setNft, address, handleSend, collectionName }: Props) {
+export default function NFTItem({ nft, setNft, address, isConnected, handleSend, collectionName, balance }: Props) {
+    const { showError } = useToast()
+    const [isCheck, setIsCheck] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (parseFloat(balance) > 0) {
+            setIsCheck(parseFloat(balance) > parseFloat(nft.formatted))
+        }
+    }, [balance, nft])
 
     const handleClick = () => {
         if (!!nft) {
             setNft(nft)
         }
     }
+
+    const handleToastBalance = () => {
+        showError("Your balance ETH is not enoungh!")
+    }
+
+    const handleToastConnectWallet = () => {
+        showError("Please Connect Wallet for Buy NFT!")
+    }
+
     return (
         <Card className='border-none outline-none select-none w-full px-0 mx-0'>
             <CardContent className='cursor-pointer w-full px-0'>
@@ -35,26 +55,22 @@ export default function NFTItem({ nft, setNft, address, handleSend, collectionNa
                         <p className='text-md font-semibold'>ETH</p>
                     </div>
                     {nft.isListed && nft.owner !== address &&
-                        <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                                <Button onClick={handleClick} variant="secondary">Buy</Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                                <AlertDialogHeader>
-                                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                    <AlertDialogDescription>
-                                        This will permanently withdraw your liquidity and send your tokens from liquidity pool.
-                                    </AlertDialogDescription>
-                                </AlertDialogHeader>
-                                <AlertDialogFooter>
-                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                    <AlertDialogAction onClick={handleSend}>Continue</AlertDialogAction>
-                                </AlertDialogFooter>
-                            </AlertDialogContent>
-                        </AlertDialog>
+                        <>
+                            {isConnected ?
+                                <>{isCheck ?
+                                    <TransactionWaiting type="Buy NFT" handleSend={handleSend}>
+                                        <Button onClick={handleClick} variant="secondary">Buy</Button>
+                                    </TransactionWaiting>
+                                    :
+                                    <Button onClick={handleToastBalance} variant="secondary">Buy</Button>
+                                }
+                                </>
+                                : <Button onClick={handleToastConnectWallet} variant="secondary">Buy</Button>
+                            }
+                        </>
                     }
                 </div>
-            </CardFooter>
-        </Card>
+            </CardFooter >
+        </Card >
     )
 }

@@ -5,12 +5,12 @@ import { useAddLiquidityTransactionMutation, useGetPoolsQuery, useUpdateLiquidit
 import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { removeLiquidityPool } from "@/services/liquiditypool/removeLiquidityPool"
 import { TrashIcon } from "@radix-ui/react-icons"
 import { LiquidBalancesType } from '@/lib/type'
 import { Card } from "@/components/ui/card"
 import { formatPrice } from "@/utils/formatPrice"
+import TransactionWaiting from "@/components/transaction/TransactionWaiting"
 
 const headers = [
     { name: "#" },
@@ -114,25 +114,11 @@ export default function PoolBalances({ liquidBalances }: Props) {
                                 <div className="flex flex-col justify-center items-start  w-[25%]">{liquidityBalance.balance?.formatted}</div>
                                 <div className="flex flex-col justify-center items-start  w-[15%]">{`$${formatPrice(price)}`}</div>
                                 <div className="flex flex-col justify-center items-start  w-[20%]">
-                                    <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                            <Button onClick={() => handleClick(index)} variant="ghost">
-                                                <TrashIcon />
-                                            </Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                                <AlertDialogDescription>
-                                                    This will permanently withdraw your liquidity and send your tokens from liquidity pool.
-                                                </AlertDialogDescription>
-                                            </AlertDialogHeader>
-                                            <AlertDialogFooter>
-                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                <AlertDialogAction onClick={handleSend}>Continue</AlertDialogAction>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialog>
+                                    <TransactionWaiting type="Remove Liquidity" handleSend={handleSend}>
+                                        <Button onClick={() => handleClick(index)} variant="ghost">
+                                            <TrashIcon />
+                                        </Button>
+                                    </TransactionWaiting>
                                 </div>
                             </div>
                         )

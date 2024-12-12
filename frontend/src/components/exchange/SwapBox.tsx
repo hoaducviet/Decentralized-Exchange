@@ -2,25 +2,31 @@
 import { useCallback, useEffect, useState } from "react"
 import { useAccount } from "wagmi"
 import { useWeb3 } from "@/hooks/useWeb3"
+import { useToast } from '@/hooks/useToast'
 import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { skipToken } from "@reduxjs/toolkit/query"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import TradeItem from "@/components/exchange/TradeItem"
+import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet"
 import { swapLiquidityPool } from "@/services/liquiditypool/swapLiquidityPool"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { ReservePool, Token } from "@/lib/type"
+import TokenTransactionWaiting from "@/components/transaction/TokenTransactionWaiting"
+import { useGasSwapToken } from "@/hooks/useGas"
 
 export default function SwapBox() {
-    const { address } = useAccount()
+    const { isConnected, address } = useAccount()
     const web3 = useWeb3()
     const provider = web3?.provider
     const signer = web3?.signer
+    const { showError } = useToast()
     const { data: allTokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const { data: reserves } = useGetReservesQuery()
     const [addTokenTransaction] = useAddTokenTransactionMutation()
     const [updateTokenTransaction, { data: updateTransaction, isSuccess: updateSuccess }] = useUpdateTokenTransactionMutation()
+    const [isChecked, setIsChecked] = useState<boolean>(false)
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
@@ -32,6 +38,7 @@ export default function SwapBox() {
     const [amount2, setAmount2] = useState<string>("")
     const tokens = allTokens?.filter(token => token.symbol !== 'USD')
     const newTokens = tokens?.filter(token => token?.address !== tokenOne?.address && token?.address !== tokenTwo?.address);
+    const gas = useGasSwapToken().toString()
 
     useEffect(() => {
         if (!isFetchingToken && tokens) {
@@ -69,12 +76,14 @@ export default function SwapBox() {
     useEffect(() => {
         if (amount1 === "") {
             setAmount2("")
+            setIsChecked(false)
         } else {
             const value = parseFloat(amount1)
             const amountReceiver = value * reserve2 / (reserve1 + value)
             setAmount2(amountReceiver.toString())
+            setIsChecked(parseFloat(balance1) > parseFloat(amount1))
         }
-    }, [amount1, reserve1, reserve2])
+    }, [amount1, reserve1, reserve2, balance1])
 
     useEffect(() => {
         if (updateTransaction && updateSuccess) {
@@ -126,6 +135,12 @@ export default function SwapBox() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider, signer, currentPool, address, tokenOne, tokenTwo, amount1, amount2])
 
+    const handleToast = () => {
+        if (!isChecked) {
+            showError("Invalid token quantity!")
+        }
+    }
+
     return (
         <>
             {!isFetchingToken && newTokens &&
@@ -139,9 +154,27 @@ export default function SwapBox() {
                             </Button>
                         </div>
                     </div>
-                    <div onClick={handleSend}>
-                        <SubmitItem name="Send" />
-                    </div>
+                    {isConnected ?
+                        <div onClick={handleToast}>
+                            {isChecked ?
+                                <TokenTransactionWaiting type="Swap Token" handleSend={handleSend} tokenOne={tokenOne} tokenTwo={tokenTwo} address={address} pool={currentPool} value={amount1} gasEth={gas}>
+                                    <div className="flex w-full">
+                                        <SubmitItem name="Send" isChecked={isChecked} />
+                                    </div>
+                                </TokenTransactionWaiting>
+                                :
+                                <div className="flex w-full">
+                                    <SubmitItem name="Send" isChecked={isChecked} />
+                                </div>
+                            }
+                        </div>
+                        :
+                        <PopoverConnectWallet>
+                            <div>
+                                <SubmitItem name="Connect Wallet" />
+                            </div>
+                        </PopoverConnectWallet>
+                    }
                 </div>
             }
         </>

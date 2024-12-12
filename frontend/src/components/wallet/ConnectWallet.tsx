@@ -1,16 +1,8 @@
 'use client'
-
 import { useAccount } from "wagmi"
 import Account from "@/components/wallet/AccountWallet"
-
-import OptionsWallet from "@/components/wallet/OptionsWallet"
 import { Button } from "@/components/ui/button"
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover"
-
+import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet"
 
 export default function ConnectWallet() {
     const { isConnected } = useAccount()
@@ -19,16 +11,11 @@ export default function ConnectWallet() {
         <div className="flex items-center">
             {isConnected ? <Account /> : (
                 <div className="flex flex-row">
-                    <Popover>
-                        <PopoverTrigger asChild>
-                            <Button variant="secondary">
-                                Connect Wallet
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="rounded-2xl">
-                            <OptionsWallet />
-                        </PopoverContent>
-                    </Popover>
+                    <PopoverConnectWallet>
+                        <Button variant="secondary">
+                            Connect Wallet
+                        </Button>
+                    </PopoverConnectWallet>
                 </div>
             )}
         </div>

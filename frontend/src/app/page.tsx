@@ -1,10 +1,10 @@
 'use client'
 import { useState } from "react"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { useAccount } from "wagmi"
 import Image from "next/image"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import OptionsWallet from "@/components/wallet/OptionsWallet"
-import { useAccount } from "wagmi"
 import Link from "next/link"
 
 const mainTitle1 = "Fast for everyone."
@@ -60,11 +60,12 @@ export default function Home() {
             <p>{mainTitle2}</p>
           </div>
           <p className="flex flex-col justify-center items-center text-xl pb-[7vw] bg-gradient-to-br from-white to-purple-500  bg-clip-text text-transparent">{mainDetail}</p>
-          {isConnected ? <Link href="/trade">
-            <div className="cursor-pointer hover:opacity-100 opacity-80 bg-transparent flex flex-row border-[1px] dark:border-white  rounded-full justify-center items-center text-lg font-semibold py-[1vw] px-[1.5vw]">
-              <p className="bg-gradient-to-tr from-white to-blue-500  bg-clip-text text-transparent">Start Exchange</p>
-            </div>
-          </Link> :
+          {isConnected ?
+            <Link href="/trade">
+              <div className="cursor-pointer hover:opacity-100 opacity-80 bg-transparent flex flex-row border-[1px] dark:border-white  rounded-full justify-center items-center text-lg font-semibold py-[1vw] px-[1.5vw]">
+                <p className="bg-gradient-to-tr from-white to-blue-500  bg-clip-text text-transparent">Start Exchange</p>
+              </div>
+            </Link> :
             <Popover>
               <PopoverTrigger asChild>
                 <div className="cursor-pointer hover:opacity-100 opacity-80 bg-transparent flex flex-row border-[1px] dark:border-white  rounded-full justify-center items-center text-lg font-semibold py-[1vw] px-[1.5vw]">
@@ -159,14 +160,14 @@ export default function Home() {
           <div className="flex flex-col w-1/3 space-y-[1.2vw]">
             <div className="relative rounded-2xl shadow-md w-full h-[28vw]">
               <Image src="/landing/creator.png" alt="info" width={20} height={20} className="w-full h-full rounded-2xl object-cover pb-[1px]" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/60 to-black/5 flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
                 <p className="text-6xl font-medium bg-gradient-to-br from-white to-blue-500  bg-clip-text text-transparent">30K+</p>
                 <p className="text-2xl font-medium opacity-80 bg-gradient-to-br from-white via-blue-500 to-purple-500  bg-clip-text text-transparent">Total Contract Creators</p>
               </div>
             </div>
             <div className="relative rounded-2xl shadow-md w-full h-[28vw]">
               <Image src="/landing/nft.png" alt="info" width={20} height={20} className="w-full h-full rounded-2xl object-cover pb-[1px]" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/60 to-black/5 flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
                 <p className="text-6xl font-medium bg-gradient-to-br from-white to-blue-500  bg-clip-text text-transparent">20K+</p>
                 <p className="text-2xl font-medium opacity-80 bg-gradient-to-br from-white via-blue-500 to-purple-500  bg-clip-text text-transparent">NFT Sales Volume</p>
               </div>
@@ -175,14 +176,14 @@ export default function Home() {
           <div className="flex flex-col w-1/3 space-y-[1.2vw] pt-[9vw]">
             <div className="relative rounded-2xl shadow-md w-full h-[28vw]">
               <Image src="/landing/address.png" alt="info" width={20} height={20} className="w-full h-full rounded-2xl object-cover pb-[1px]" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/60 to-black/5 flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
                 <p className="text-6xl font-medium bg-gradient-to-br from-white to-blue-500  bg-clip-text text-transparent">300.20M+</p>
                 <p className="text-2xl font-medium opacity-80 bg-gradient-to-br from-white via-blue-500 to-purple-500  bg-clip-text text-transparent ">Unique Addresses</p>
               </div>
             </div>
             <div className="relative rounded-2xl shadow-md w-full h-[28vw]">
               <Image src="/landing/tax.png" alt="info" width={20} height={20} className="w-full h-full rounded-2xl object-cover pb-[1px]" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/60 to-black/5 flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
                 <p className="text-6xl font-medium bg-gradient-to-br from-white to-blue-500  bg-clip-text text-transparent">~$0.03%</p>
                 <p className="text-2xl font-medium opacity-80 bg-gradient-to-br from-white via-blue-500 to-purple-500  bg-clip-text text-transparent ">Avg. Cost per txn</p>
               </div>
@@ -191,14 +192,14 @@ export default function Home() {
           <div className="flex flex-col w-1/3 space-y-[1.2vw]">
             <div className="relative border-[0.5px] border-white/5 rounded-2xl shadow-md w-full h-[28vw]">
               <Image src="/landing/transaction.png" alt="info" width={20} height={20} className="w-full h-full rounded-2xl object-cover pb-[1px]" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/60 to-black/5 flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
                 <p className="text-6xl font-medium bg-gradient-to-br from-white to-blue-500  bg-clip-text text-transparent">5.55B+</p>
                 <p className="text-2xl font-medium opacity-80 bg-gradient-to-br from-white via-blue-500 to-purple-500  bg-clip-text text-transparent ">Transactions</p>
               </div>
             </div>
             <div className="relative rounded-2xl shadow-md w-full h-[28vw]">
               <Image src="/landing/contract.png" alt="info" width={20} height={20} className="w-full h-full rounded-2xl object-cover pb-[1px]" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/60 to-black/5 flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end items-start px-[10%] py-[5%] hover:py-[10%] border-[0.1px] border-white/15 hover:shadow-sm hover:border-blue-300 transform transition-all duration-500 ease-out hover:translate-y-0 hover:opacity-100 ">
                 <p className="text-6xl font-medium bg-gradient-to-br from-white to-blue-500  bg-clip-text text-transparent">500+</p>
                 <p className="text-2xl font-medium opacity-80 bg-gradient-to-br from-white via-blue-500 to-purple-500  bg-clip-text text-transparent ">Deployed Smart Contracts</p>
               </div>

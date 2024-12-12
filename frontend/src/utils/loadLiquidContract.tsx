@@ -1,10 +1,10 @@
-import { BrowserProvider, JsonRpcSigner, Contract } from 'ethers'
+import { BrowserProvider, JsonRpcSigner, Contract, JsonRpcProvider } from 'ethers'
 import LiquidityPool from '@/artifacts/LiquidityPool.json';
 import LiquidityPoolETH from '@/artifacts/LiquidityPoolETH.json';
 import { Address } from "@/lib/type"
 
 interface Props {
-    provider: BrowserProvider | JsonRpcSigner;
+    provider: BrowserProvider | JsonRpcSigner | JsonRpcProvider;
     address: Address;
     isEth?: boolean;
 }

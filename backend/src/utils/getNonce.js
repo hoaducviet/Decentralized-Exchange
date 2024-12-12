@@ -3,9 +3,7 @@ const { wallet } = require("../controllers/WalletController");
 
 async function getNonce() {
   try {
-    const nonce = await provider.getTransactionCount(wallet.address, "latest");
-
-    return nonce;
+    return await provider.getTransactionCount(wallet.address, "latest");
   } catch (error) {
     console.log(error);
   }

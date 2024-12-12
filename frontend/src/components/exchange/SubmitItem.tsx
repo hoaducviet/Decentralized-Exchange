@@ -1,14 +1,14 @@
-import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card'
 
 interface Props {
     name: string;
+    isChecked?: boolean;
 }
 
-export default function SubmitItem({ name }: Props) {
+export default function SubmitItem({ name, isChecked }: Props) {
     return (
-        <Card className="flex flex-col justify-center items-center border-none outline-none w-full h-full my-[2vh] ">
-            <Button variant="ghost" className="flex flex-col bg-secondary/80 border-none outline-none justify-center items-center w-full h-full text-base">{name}</Button>
+        <Card className="cursor-pointer select-none flex flex-col justify-center items-center border-none outline-none w-full h-[3vw] my-[2vh] rounded-2xl">
+            <div className={`flex flex-col rounded-2xl justify-center items-center w-full h-full text-xl ${isChecked ? "bg-blue-400 text-white" : "bg-secondary/80"}`}>{name}</div>
         </Card>
     )
 }

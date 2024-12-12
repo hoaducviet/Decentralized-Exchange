@@ -2,14 +2,16 @@
 import { useCallback, useEffect, useState } from "react"
 import { useAccount } from "wagmi"
 import { useWeb3 } from "@/hooks/useWeb3"
+import { useToast } from '@/hooks/useToast'
 import { useAddLiquidityTransactionMutation, useUpdateLiquidityTransactionMutation } from "@/redux/features/api/apiSlice"
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import TradeItem from "@/components/exchange/TradeItem"
 import { addLiquidityPool } from "@/services/liquiditypool/addLiquidityPool"
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { HeightIcon } from "@radix-ui/react-icons"
 import { TokenBalancesType, ReservePool, Token } from "@/lib/type"
+import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet"
+import TransactionWaiting from "@/components/transaction/TransactionWaiting"
 
 interface Props {
     tokens: Token[];
@@ -18,10 +20,12 @@ interface Props {
 }
 
 export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
-    const { address } = useAccount()
+    const { isConnected, address } = useAccount()
     const web3 = useWeb3()
     const provider = web3?.provider
     const signer = web3?.signer
+    const { showError } = useToast()
+    const [isChecked, setIsChecked] = useState<boolean>(false)
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
     const [currentPool, setCurrentPool] = useState<ReservePool | undefined>(undefined);
@@ -74,11 +78,13 @@ export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
     useEffect(() => {
         if (amount1 === "") {
             setAmount2("")
+            setIsChecked(false)
         } else {
             const value = parseFloat(amount1) * reserve2 / reserve1
             setAmount2(value.toString())
+            setIsChecked(parseFloat(balance1) > parseFloat(amount1) && parseFloat(balance2) > value)
         }
-    }, [amount1, reserve1, reserve2])
+    }, [amount1, balance1, balance2, reserve1, reserve2])
 
     useEffect(() => {
         if (updateTransaction && updateSuccess) {
@@ -125,6 +131,13 @@ export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider, signer, address, currentPool, tokenOne, tokenTwo, amount1, amount2])
+
+    const handleToast = () => {
+        if (!isChecked) {
+            showError("Invalid USD quantity!")
+        }
+    }
+
     return (
         <div className="flex flex-col w-full h-full">
             <div className="relative flex flex-col w-full h-full">
@@ -136,29 +149,27 @@ export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
                     </Button>
                 </div>
             </div>
-            <div >
-                <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                        <div>
-                            <SubmitItem name="Send" />
+            {isConnected ?
+                <div onClick={handleToast} className='flex w-full'>
+                    {isChecked ?
+                        <TransactionWaiting type="Add Liquidity" handleSend={handleSend}>
+                            <div className="flex w-full">
+                                <SubmitItem name="Send" isChecked={isChecked} />
+                            </div>
+                        </TransactionWaiting>
+                        :
+                        <div className="flex w-full">
+                            <SubmitItem name="Send" isChecked={isChecked} />
                         </div>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                            <AlertDialogDescription>
-                                This will permanently withdraw your liquidity and send your tokens from liquidity pool.
-                            </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={handleSend} >
-                                Continue
-                            </AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
-            </div>
+                    }
+                </div>
+                :
+                <PopoverConnectWallet>
+                    <div className='flex w-full'>
+                        <SubmitItem name="Connect Wallet" isChecked={isChecked} />
+                    </div>
+                </PopoverConnectWallet>
+            }
         </div>
     )
 }

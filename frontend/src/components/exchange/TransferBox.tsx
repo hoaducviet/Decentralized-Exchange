@@ -3,10 +3,12 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAccount } from 'wagmi';
 import { ethers } from 'ethers';
 import { useWeb3 } from '@/hooks/useWeb3';
+import { useToast } from '@/hooks/useToast'
 import { skipToken } from '@reduxjs/toolkit/query';
-import { useGetTokenBalancesQuery, useGetTokensQuery, useGetReservesQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useGetTokenBalancesQuery, useGetTokensQuery, useAddTokenTransactionMutation, useUpdateTokenTransactionMutation } from "@/redux/features/api/apiSlice"
 import { Card } from '@/components/ui/card'
 import { transferToken } from '@/services/liquiditypool/transferToken';
+import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet"
 import Image from "next/image";
 import TransferItem from "@/components/exchange/TransferItem";
 import DialogItem from "@/components/exchange/DialogItem"
@@ -14,28 +16,30 @@ import AddressItem from "@/components/exchange/AddressItem";
 import SubmitItem from "@/components/exchange/SubmitItem"
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { Token, Address } from '@/lib/type'
+import TokenTransactionWaiting from '@/components/transaction/TokenTransactionWaiting';
+import { useGasTransferToken } from '@/hooks/useGas'
 
 export default function TransferBox() {
-    const { address } = useAccount()
+    const { isConnected, address } = useAccount()
     const web3 = useWeb3()
     const provider = web3?.provider
     const signer = web3?.signer
+    const { showError } = useToast()
     const { data: tokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
-    const { data: reserves } = useGetReservesQuery()
     const [addTokenTransaction] = useAddTokenTransactionMutation()
     const [updateTokenTransaction, { data: updateTransaction, isSuccess: updateSuccess }] = useUpdateTokenTransactionMutation()
+    const [isChecked, setIsChecked] = useState<boolean>(false)
     const [tokenOne, setTokenOne] = useState<Token | undefined>(undefined);
     const [tokenTwo, setTokenTwo] = useState<Token | undefined>(undefined);
-    const [reserve1, setReserve1] = useState<number>(0)
-    const [reserve2, setReserve2] = useState<number>(0)
     const [balance1, setBalance1] = useState<string>("0")
     const [balance2, setBalance2] = useState<string>("0")
     const [amount1, setAmount1] = useState<string>("")
     const [amount2, setAmount2] = useState<string>("")
     const [addressReceiver, setAddressReceiver] = useState<string>("");
     const usdToken = tokens?.find(token => token.symbol === 'USD')
-    const newTokens = tokens?.filter(token => token.symbol !== tokenOne?.symbol && token.symbol !== tokenTwo?.symbol);
+    const newTokens = tokens?.filter(token => token.symbol !== tokenOne?.symbol && token.symbol !== tokenTwo?.symbol && token.symbol !== "USD");
+    const gas = useGasTransferToken().toString()
 
     useEffect(() => {
         if (!isFetchingToken && newTokens) {
@@ -54,49 +58,34 @@ export default function TransferBox() {
     }
 
     useEffect(() => {
-        if (tokenOne && tokenTwo && reserves) {
-            const currentPool = reserves.find(pool => [`${tokenOne.symbol}/${tokenTwo.symbol}`, `${tokenTwo.symbol}/${tokenOne.symbol}`].includes(pool.info.name))
-            if (currentPool?.info.token1.address === tokenOne.address) {
-                setReserve1(parseFloat(currentPool.reserve1))
-                setReserve2(parseFloat(currentPool.reserve2))
-            } else {
-                setReserve1(parseFloat(currentPool?.reserve2 || '0'))
-                setReserve2(parseFloat(currentPool?.reserve1 || '0'))
-            }
+        if (tokenOne && tokenTwo) {
             setBalance1(tokenBalances?.find(item => item.info.symbol === tokenOne.symbol)?.balance?.formatted || "0")
             setBalance2(tokenBalances?.find(item => item.info.symbol === tokenTwo.symbol)?.balance?.formatted || "0")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tokenOne, tokenTwo, tokenBalances, reserves])
+    }, [tokenOne, tokenTwo, tokenBalances])
 
     useEffect(() => {
         if (amount1 === "") {
             setAmount2("")
+            setIsChecked(false)
             return
         }
-        if (!!tokenOne && !!tokenTwo && reserves) {
+        if (!!tokenOne && !!tokenTwo) {
             const value = parseFloat(amount1)
-            if (['USD', 'USDT', 'ETH'].includes(tokenOne.symbol) && ['USD', 'USDT', 'ETH'].includes(tokenTwo.symbol)) {
-                const amountReceiver = value * reserve2 / reserve1
-                setAmount2(amountReceiver.toString())
+            if (tokenOne.symbol !== 'USD') {
+                const amountUsd = value * parseFloat(tokenOne.price)
+                setAmount2(amountUsd.toString())
+                setIsChecked(parseFloat(balance1) > parseFloat(amount1) && ethers.isAddress(addressReceiver))
                 return
             } else {
-                const usdPool = reserves.find(pool => pool.info.name === 'USD/ETH')
-                const tokenPool = tokenOne.symbol !== 'USD' ? reserves.find(pool => pool.info.name === `${tokenOne.symbol}/ETH`) : reserves.find(pool => pool.info.name === `${tokenTwo.symbol}/ETH`)
-                const [tokenReserve1, tokenReserve2] = [parseFloat(tokenPool?.reserve1 || '0'), parseFloat(tokenPool?.reserve2 || '0')]
-                const [usdReserve1, usdReserve2] = [parseFloat(usdPool?.reserve1 || '0'), parseFloat(usdPool?.reserve2 || '0')]
-                if (tokenOne.symbol !== 'USD') {
-                    const amountReceiver = value * (tokenReserve2 / tokenReserve1) * (usdReserve1 / usdReserve2)
-                    setAmount2(amountReceiver.toString())
-                    return
-                } else {
-                    const amountReceiver = value * (tokenReserve1 / tokenReserve2) * (usdReserve2 / usdReserve1)
-                    setAmount2(amountReceiver.toString())
-                    return
-                }
+                const amountToken = value * (1 / parseFloat(tokenTwo.price))
+                setAmount2(amountToken.toString())
+                setIsChecked(parseFloat(balance2) > amountToken && ethers.isAddress(addressReceiver))
+                return
             }
         }
-    }, [amount1, reserve1, reserve2, tokenOne, tokenTwo, reserves])
+    }, [amount1, balance1, balance2, tokenOne, tokenTwo, addressReceiver])
 
     useEffect(() => {
         if (updateTransaction && updateSuccess) {
@@ -107,7 +96,7 @@ export default function TransferBox() {
 
     const handleSend = useCallback(async () => {
         if (!ethers.isAddress(addressReceiver)) {
-            console.log("Address incorrect")
+            showError("Address incorrect")
             return
         }
         if (!!provider && !!signer && !!address && !!addressReceiver && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0 && parseFloat(amount2) > 0) {
@@ -148,6 +137,16 @@ export default function TransferBox() {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider, signer, address, addressReceiver, tokenOne, tokenTwo, amount1, amount2])
+
+    const handleToast = () => {
+        if (!isChecked) {
+            showError("Invalid token quantity!")
+        }
+        if (!ethers.isAddress(addressReceiver)) {
+            showError("Invalid address receiver!")
+        }
+    }
+
     return (
         <>
             {!isFetchingToken && newTokens &&
@@ -168,9 +167,28 @@ export default function TransferBox() {
                         </Card>
                     </div>
                     <AddressItem address={addressReceiver} setAddress={setAddressReceiver} />
-                    <div onClick={handleSend} className='flex w-full'>
-                        <SubmitItem name="Tranfer" />
-                    </div>
+
+                    {isConnected ?
+                        <div onClick={handleToast} className='flex w-full'>
+                            {isChecked && ethers.isAddress(addressReceiver) ?
+                                <TokenTransactionWaiting type="Transfer Token" handleSend={handleSend} tokenOne={tokenOne?.symbol === "USD" ? tokenTwo : tokenOne} address={address} value={tokenOne?.symbol === "USD" ? amount2 : amount1} gasEth={gas} addressReceiver={addressReceiver as Address}>
+                                    <div className='flex w-full'>
+                                        <SubmitItem name="Tranfer" isChecked={isChecked} />
+                                    </div>
+                                </TokenTransactionWaiting>
+                                :
+                                <div className='flex w-full'>
+                                    <SubmitItem name="Transfer" isChecked={isChecked} />
+                                </div>
+                            }
+                        </div>
+                        :
+                        <PopoverConnectWallet>
+                            <div className='flex w-full'>
+                                <SubmitItem name="Connect Wallet" />
+                            </div>
+                        </PopoverConnectWallet>
+                    }
                 </div>
             }
         </>

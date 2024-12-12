@@ -17,6 +17,7 @@ export default function DialogItem({ children, tokens, setToken }: Props) {
         setToken(token);
         setOpen(false)
     }
+    console.log(tokens)
 
     return (
         <div className="flex justify-center items-center w-full h-full">

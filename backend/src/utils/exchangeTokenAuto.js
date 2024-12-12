@@ -30,7 +30,7 @@ const mockRes = () => {
 async function exchangeTokenAuto() {
   const pools = await Pool.find();
   const rand2 = Math.floor(Math.random() * pools.length);
-  const rand3 = Math.floor(Math.random() * 500);
+  const rand3 = Math.floor(Math.random() * 100);
   const rand4 = Math.floor(Math.random() * 2);
   const pool = pools[rand2];
 

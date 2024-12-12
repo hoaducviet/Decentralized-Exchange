@@ -6,7 +6,8 @@ import { useAccount } from "wagmi"
 import { ethers } from "ethers"
 import { useCollection } from "@/hooks/useCollection"
 import { useWeb3 } from "@/hooks/useWeb3"
-import { useGetNFTItemQuery, useGetNFTTransactionsByItemQuery, useGetReservesQuery, useAddNftTransactionMutation, useUpdateNftTransactionMutation } from "@/redux/features/api/apiSlice"
+import { useToast } from "@/hooks/useToast"
+import { useGetNFTItemQuery, useGetNFTTransactionsByItemQuery, useGetReservesQuery, useAddNftTransactionMutation, useUpdateNftTransactionMutation, useGetTokenBalancesQuery } from "@/redux/features/api/apiSlice"
 import { buyNFT } from "@/services/nftmarket/buyNFT"
 import { sellNFT } from "@/services/nftmarket/sellNFT";
 import { withdrawNFT } from "@/services/nftmarket/withdrawNFT";
@@ -24,14 +25,17 @@ import ItemDescription from "@/components/nfts/ItemDescription"
 import ItemImage from "@/components/nfts/ItemImage"
 import { skipToken } from "@reduxjs/toolkit/query"
 import { Address, NFTActiveTransaction } from "@/lib/type"
+import TransactionWaiting from "@/components/transaction/TransactionWaiting"
 
 export default function NFTPage() {
-    const { address } = useAccount()
+    const { isConnected, address } = useAccount()
     const { signer, provider } = useWeb3() || {}
     const { currentCollection } = useCollection()
     const { collection, nft } = useParams()
+    const { showError } = useToast()
     const [listed, setListed] = useState<NFTActiveTransaction[] | []>([])
     const [prices, setPrices] = useState<NFTActiveTransaction[] | []>([])
+    const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const { data: actives } = useGetNFTTransactionsByItemQuery(currentCollection?._id && nft ? { collectionId: currentCollection?._id as string, nftId: nft as string } : skipToken)
     const { data: currentNft } = useGetNFTItemQuery(currentCollection?._id && nft ? { collectionId: currentCollection?._id as string, nftId: nft as string } : skipToken)
     const { data: reserves } = useGetReservesQuery()
@@ -41,6 +45,13 @@ export default function NFTPage() {
     const [amount, setAmount] = useState<string>("")
     const UsdEth = reserves?.find(item => item.info.name === 'USD/ETH')
     const usdPriceCurrentNft = (parseFloat(currentNft?.formatted || '0') * parseFloat(UsdEth?.reserve1 || '0') / parseFloat(UsdEth?.reserve2 || '0')).toString()
+    const [balance, setBalance] = useState<string>("")
+
+    useEffect(() => {
+        if (tokenBalances) {
+            setBalance(tokenBalances.find(item => item.info.symbol === 'ETH')?.balance?.formatted || "")
+        }
+    }, [tokenBalances])
 
     useEffect(() => {
         if (actives) {
@@ -56,6 +67,10 @@ export default function NFTPage() {
 
     const handleChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAmount(e.target.value)
+    }
+
+    const handleToastBalance = () => {
+        showError("Your balance ETH is not enoungh!")
     }
 
     const handleBuy = useCallback(async () => {
@@ -219,6 +234,10 @@ export default function NFTPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider, signer, address, nft, currentCollection, to])
 
+    const handleToastConnectWallet = () => {
+        showError("Please Connect Wallet for Buy NFT")
+    }
+
     return (<div className=" flex flex-col space-y-5">
         {nft &&
             <div className="flex flex-row space-x-5 select-none">
@@ -252,10 +271,31 @@ export default function NFTPage() {
                             <div className="flex flex-row space-x-2">
                                 {currentNft?.owner !== address ? <>
                                     {currentNft?.isListed &&
-                                        <Button onClick={handleBuy} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[100%]">
-                                            <ShoppingCartIcon className="w-6 h-6" />
-                                            <div className="text-md font-semibold">Buy now</div>
-                                        </Button>
+                                        <>
+                                            {isConnected ?
+                                                <>
+                                                    {
+                                                        parseFloat(balance) > 0 ?
+                                                            <TransactionWaiting type="Buy NFT" handleSend={handleBuy}>
+                                                                <Button onClick={handleBuy} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[100%]">
+                                                                    <ShoppingCartIcon className="w-6 h-6" />
+                                                                    <div className="text-md font-semibold">Buy now</div>
+                                                                </Button>
+                                                            </TransactionWaiting>
+                                                            :
+                                                            <Button onClick={handleToastBalance} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[100%]">
+                                                                <ShoppingCartIcon className="w-6 h-6" />
+                                                                <div className="text-md font-semibold">Buy now</div>
+                                                            </Button>
+                                                    }
+                                                </>
+                                                :
+                                                <Button onClick={handleToastConnectWallet} className="bg-blue-500 hover:bg-blue-600 flex flex-row justify-center items-center w-[100%]">
+                                                    <ShoppingCartIcon className="w-6 h-6" />
+                                                    <div className="text-md font-semibold">Buy now</div>
+                                                </Button>
+                                            }
+                                        </>
                                     }
                                 </> : <>
                                     {currentNft?.isListed ?
