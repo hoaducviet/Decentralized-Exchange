@@ -21,7 +21,7 @@ const UsdTransaction = new Schema(
       required: false,
       minLength: 42,
       maxLength: 42,
-      required: true
+      required: true,
     },
     amount: { type: String, required: true, default: "" },
     currency: { type: String, required: true, default: "USD" },

@@ -92,7 +92,7 @@ export default function SellItem({ token, tokens, setToken, setAmount, amount1, 
                             key={index}
                             variant="ghost"
                             onClick={() => handleActive(index, item)}
-                            className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || amount1 === item.value) && 'bg-purple-200 hover:bg-purple-200 opacity-100'}`}>
+                            className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || amount1 === item.value) && 'bg-purple-200 dark:bg-white/20 opacity-100'}`}>
                             <div className="flex flex-row">
                                 <p className="mr-[0.1vw]">{item.name}</p>
                                 <p className="font-semibold ml-[0.1vw]">{token?.symbol}</p>

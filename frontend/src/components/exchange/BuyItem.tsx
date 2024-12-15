@@ -87,7 +87,7 @@ export default function BuyItem({ token, tokens, setToken, setAmount, amount1, a
                             key={index}
                             variant="ghost"
                             onClick={() => handleActive(index, item)}
-                            className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || amount1 === item.value) && 'bg-purple-200 hover:bg-purple-200 opacity-100'}`}>
+                            className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || amount1 === item.value) && 'bg-purple-200  dark:bg-white/20 opacity-100'}`}>
                             {item.name}
                         </Button>
                     )

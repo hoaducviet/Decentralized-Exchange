@@ -9,6 +9,7 @@ const UsdTransaction = require("../models/UsdTransaction.js");
 const { mongooseToObject } = require("../utils/mongoose.js");
 const { wallet } = require("./WalletController.js");
 
+const payee_email = process.env.PAYEE_EMAIL;
 class PaymentController {
   async payout(req, res) {
     let transactionId;
@@ -24,6 +25,7 @@ class PaymentController {
         wallet: address,
         amount: value,
         payer_email: email,
+        payee_email: payee_email,
         status: "Pending",
       }).save();
 

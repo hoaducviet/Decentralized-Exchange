@@ -1,19 +1,15 @@
 'use client'
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Children, NFTActiveTransaction } from "@/lib/type"
-import Image from "next/image";
-import { skipToken } from "@reduxjs/toolkit/query";
-import { useGetNFTItemQuery } from "@/redux/features/api/apiSlice";
+import { Children, USDActiveTransaction } from "@/lib/type"
 
 interface Props {
     children: Children;
-    transaction: NFTActiveTransaction;
+    transaction: USDActiveTransaction;
 }
 
-export default function NFTTransactionOverview({ children, transaction }: Props) {
+export default function PaymentTransactionOverview({ children, transaction }: Props) {
     const [open, setOpen] = useState(false)
-    const { data: nft } = useGetNFTItemQuery(transaction.collection_id._id && transaction.nft_id ? { collectionId: transaction.collection_id._id as string, nftId: transaction.nft_id as string } : skipToken)
 
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {
@@ -31,45 +27,36 @@ export default function NFTTransactionOverview({ children, transaction }: Props)
             </DialogTrigger>
             <DialogContent className="select-none w-[23vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <DialogHeader className="bg-fixed w-full">
-                    <DialogTitle >{transaction.type}</DialogTitle>
+                    <DialogTitle className="flex flex-row justify-center" >{transaction.type}</DialogTitle>
                 </DialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
-                    <div className="flex flex-col justify-center items-center space-y-2">
-                        <Image src={nft?.img || '/image/default-nft.png'} alt="NFT" width={20} height={20} className="w-[5vw] h-[5vw] rounded-2xl object-cover" />
-                        <div className="text-md font-semibold">{nft?.name}</div>
-                    </div>
                     <div className="flex flex-col space-y-4 text-sm divide-y-reverse-[5px]">
                         <div className="flex flex-row justify-between items-center">
-                            <p>From</p>
-                            <p>{`${transaction.from_wallet.slice(0, 6)}...${transaction.from_wallet.slice(38)}`}</p>
+                            <p>Method</p>
+                            <p>{transaction.method}</p>
                         </div>
-                        <div className="flex flex-row justify-between items-center">
-                            <p>To</p>
-                            <p>{`${transaction.to_wallet?.slice(0, 6)}...${transaction.to_wallet?.slice(38)}`}</p>
+                        <div className="flex flex-row justify-between items-start">
+                            <p>Price</p>
+                            <div className="flex flex-row space-x-1 justify-end">
+                                <p>{parseFloat(transaction.amount || "")?.toFixed(2)}</p>
+                                <p className="font-semibold">{transaction.currency}</p>
+                            </div>
                         </div>
                         <div className="flex flex-row justify-between items-center">
                             <p>Status</p>
                             <p>{transaction.status}</p>
                         </div>
-                        <div className="flex flex-row justify-between items-start">
-                            <p>Collection</p>
-                            <div className="flex flex-col items-end">
-                                <p className="font-semibold">{transaction.collection_id?.name}</p>
-                                <p>{`${transaction.collection_id?.address.slice(0, 6)}...${transaction.collection_id?.address.slice(38)}`}</p>
-                            </div>
+                        <div className="flex flex-row justify-between items-center">
+                            <p>From</p>
+                            <p>{`${transaction.wallet.slice(0, 6)}...${transaction.wallet.slice(38)}`}</p>
                         </div>
-                        <div className="flex flex-row justify-between items-start">
-                            <p>Price</p>
-                            <div className="flex flex-col">
-                                <div className="flex flex-row space-x-1 justify-end">
-                                    <p>{parseFloat(transaction.price || "")?.toFixed(6)}</p>
-                                    <p className="font-semibold">{transaction.currency}</p>
-                                </div>
-                                <div className="flex flex-row space-x-1 justify-end">
-                                    <p>{`$${parseFloat(transaction.priceUsd || "")?.toFixed(2)}`}</p>
-                                    <p className="font-semibold">USD</p>
-                                </div>
-                            </div>
+                        <div className="flex flex-row justify-between items-center">
+                            <p>Payer</p>
+                            <p>{transaction.payer_email}</p>
+                        </div>
+                        <div className="flex flex-row justify-between items-center">
+                            <p>Payee</p>
+                            <p>{transaction.payee_email}</p>
                         </div>
                         <div className="flex flex-row justify-between items-start">
                             <p>Platform fee (0.3%)</p>
@@ -85,9 +72,13 @@ export default function NFTTransactionOverview({ children, transaction }: Props)
                             <div className="flex flex-col">
                                 <div className="flex flex-row space-x-1 justify-end">
                                     <p>{`${parseFloat(transaction.gas_fee || "").toFixed(6)}`}</p>
-                                    <p className="font-semibold">{transaction.currency}</p>
+                                    <p className="font-semibold">ETH</p>
                                 </div>
                             </div>
+                        </div>
+                        <div className="flex flex-row justify-between items-center">
+                            <p>Order Id</p>
+                            <p className="text-xs italic">{transaction.order_id}</p>
                         </div>
                         <div className="flex flex-row justify-between items-center">
                             <p>Hash</p>
@@ -96,6 +87,10 @@ export default function NFTTransactionOverview({ children, transaction }: Props)
                         <div className="flex flex-row justify-between items-center">
                             <p>Time</p>
                             <p className="text-xs italic">{formattedDate}</p>
+                        </div>
+                        <div className="flex flex-row justify-between items-center">
+                            <p>Notes</p>
+                            <p className="text-xs italic text-wrap">{transaction.notes}</p>
                         </div>
                     </div>
                 </div>

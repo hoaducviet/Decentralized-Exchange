@@ -79,7 +79,7 @@ export default function LimitItem({ tokenOne, tokenTwo, tokens, setTokenOne, set
                                 key={index}
                                 variant="ghost"
                                 onClick={() => handleActive(index)}
-                                className={`flex justify-center items-center rounded-2xl shadow-md  mr-2 ${isActive === index && 'bg-purple-200 hover:bg-purple-200'}`}
+                                className={`flex justify-center items-center rounded-2xl shadow-md  mr-2 ${isActive === index && 'bg-purple-200 dark:bg-white/20'}`}
                             >{item.name}</Button>
                         )
                     })}

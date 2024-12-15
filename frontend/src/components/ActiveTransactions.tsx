@@ -12,6 +12,7 @@ import OrderLimitTransaction from "@/components/transaction/OrderLimitTransactio
 import TokenTransactionOverview from "@/components/transaction/TokenTransactionOverview"
 import LiquidityTransactionOverview from "@/components/transaction/LiquidityTransactionOverview"
 import NFTTransactionOverview from "@/components/transaction/NFTTransactionOverview"
+import PaymentTransactionOverview from "@/components/transaction/PaymentTransactionOverview"
 
 export default function ActiveTransactions() {
     const { address } = useAccount()
@@ -29,6 +30,15 @@ export default function ActiveTransactions() {
                         if (item.type.includes("Pay")) {
                             TypeCard = USDCardAcitve
                             transaction = item as USDActiveTransaction
+                            return (
+                                <div key={index} className="flex flex-col">
+                                    <PaymentTransactionOverview transaction={transaction}>
+                                        <div className="flex flex-col">
+                                            <TypeCard transaction={transaction} />
+                                        </div>
+                                    </PaymentTransactionOverview>
+                                </div>
+                            )
                         }
                         if (item.type.includes("NFT")) {
                             TypeCard = NFTCardAcitve

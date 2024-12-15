@@ -1,12 +1,17 @@
 'use client'
-import { useState, useRef, useCallback } from "react"
+import { useState, useRef, useCallback, useEffect } from "react"
 import { useAccount } from 'wagmi';
 import { useAddPayoutMutation } from '@/redux/features/pay/paySlice'
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import AddressItem from "@/components/exchange/AddressItem";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
+import PaymentTransactionWaiting from "@/components/transaction/PaymentTransactionWaiting";
+import { useGasWithdrawUSD } from "@/hooks/useGas";
+import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet";
+import { useToast } from "@/hooks/useToast";
+import Image from 'next/image'
+import * as EmailValidator from 'email-validator';
 
 type Price = {
     name: string;
@@ -19,12 +24,20 @@ const listPrice: Price[] = [
 ]
 
 export default function Payout() {
-    const { address } = useAccount()
+    const { isConnected, address } = useAccount()
     const ref = useRef<HTMLInputElement>(null)
     const [amount, setAmount] = useState<string>('')
+    const [isChecked, setIsChecked] = useState<boolean>(false)
     const [isActive, setIsActive] = useState<number | undefined>(undefined)
     const [emailReceiver, setEmailReceiver] = useState<string>("");
     const [addPayout] = useAddPayoutMutation()
+    const { showError } = useToast()
+    const gasEth = useGasWithdrawUSD().toString()
+
+    useEffect(() => {
+        setIsChecked(parseFloat(amount) > 0 && EmailValidator.validate(emailReceiver))
+    }, [emailReceiver, amount])
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
         setAmount(value.replace(',', '.'))
@@ -41,7 +54,6 @@ export default function Payout() {
         setAmount(item.value)
     }
     const handleWithdraw = useCallback(async () => {
-        console.log(amount, emailReceiver)
         if (address && parseFloat(amount) > 0) {
             try {
                 const { data: response } = await addPayout({
@@ -53,22 +65,32 @@ export default function Payout() {
                     setIsActive(undefined)
                     setAmount("")
                     setEmailReceiver("")
-                    alert('success withdraw')
                 }
             } catch (error) {
                 console.error(error)
-            } finally {
-                alert("withdraw pending...")
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [address, amount, emailReceiver])
+
+    const handleToastAmount = () => {
+        if (!isChecked) {
+            showError("Invalid token quantity!")
+        }
+    }
+    const handleToastEmail = () => {
+        if (!isChecked) {
+            showError("Invalid Email!")
+        }
+    }
+
     return (
         <div className=" flex flex-col justify-start items-center pt-[10vw]">
             <div className="flex flex-col w-[40vw] space-y-[0.5vw]">
                 <Card onClick={handleClick} className=" flex flex-col w-full h-[15vw] select-none border-none outline-none">
-                    <CardHeader className="flex justify-start">
-                        <CardDescription>You are depositing USD from Bank</CardDescription>
+                    <CardHeader className="flex flex-row justify-between items-center">
+                        <CardDescription>You are withdraw USD to Paypal</CardDescription>
+                        <Image src="/image/paypal-logo.png" alt="Paypal" width={20} height={20} className="w-[8vw] h-[2.5vw] object-cover" />
                     </CardHeader>
                     <CardContent className='flex flex-col justify-center items-center w-full'>
                         <div className='flex flex-row justify-center items-center w-full text-7xl'>
@@ -93,7 +115,7 @@ export default function Payout() {
                                     key={index}
                                     variant="ghost"
                                     onClick={() => handleActive(index, item)}
-                                    className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || amount === item.value) && 'bg-purple-200 hover:bg-purple-200 opacity-100'}`}>
+                                    className={`text-lg rounded-2xl shadow-md mx-2 ${(isActive === index || amount === item.value) && 'bg-purple-200 hover:bg-purple-200 dark:bg-white/20 dark:hover:bg-white/10 opacity-100'}`}>
                                     {item.name}
                                 </Button>
                             )
@@ -101,40 +123,30 @@ export default function Payout() {
                     </CardFooter>
                 </Card>
                 <AddressItem address={emailReceiver} setAddress={setEmailReceiver} isEmail />
+                {
+                    isConnected ?
+                        <>
+                            {
+                                isChecked ?
+                                    <PaymentTransactionWaiting handleSend={handleWithdraw} type="Withdraw USD to Paypal" address={address} amount={amount} email={emailReceiver} gasEth={gasEth}>
+                                        <div className="flex w-full">
+                                            <SubmitItem name="Withdraw" isChecked={isChecked} />
+                                        </div>
+                                    </PaymentTransactionWaiting>
+                                    :
+                                    <div onClick={parseFloat(amount) > 0 ? handleToastEmail : handleToastAmount} className="flex w-full">
+                                        <SubmitItem name="Withdraw" isChecked={isChecked} />
+                                    </div>
+                            }
 
-                <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                        <div>
-                            <SubmitItem name="Withdraw" />
-                        </div>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Withdraw USD to Paypal</AlertDialogTitle>
-                            <div className="flex font-semibold text-md">Transaction</div>
-                            <div className="flex flex-col">
-                                <div className="flex flex-row font-semibold text-md space-x-[1vw]">
-                                    <div className="w-[15%]">Currency</div>
-                                    <div className="w-[15%]">Amount</div>
-                                    <div className="w-[30%]">Address</div>
-                                    <div className="w-[40%]">Email</div>
-                                </div>
-                                <div className="flex flex-row space-x-[1vw]">
-                                    <div className="w-[15%]">USD</div>
-                                    <div className="w-[15%]">{amount ? amount : '0'}</div>
-                                    <div className="w-[30%]">{address ? address.slice(0, 6) + "..." + address.slice(38) : ""}</div>
-                                    <div className="w-[40%]">{emailReceiver}</div>
-                                </div>
+                        </>
+                        :
+                        <PopoverConnectWallet>
+                            <div className="flex w-full">
+                                <SubmitItem name="Connect Wallet" />
                             </div>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={handleWithdraw} >
-                                Withdraw
-                            </AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
+                        </PopoverConnectWallet>
+                }
             </div>
         </div>
 

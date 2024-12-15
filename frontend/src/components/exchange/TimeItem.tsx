@@ -29,7 +29,7 @@ export default function TimeItem({ setTimeDate }: Props) {
                             key={index}
                             variant="ghost"
                             onClick={() => handleActive(index)}
-                            className={`rounded-2xl shadow-md p-2 mx-[0.5%] h-[2vw] mr-2 ${isActive === index && 'bg-purple-200 hover:bg-purple-200'}`}
+                            className={`rounded-2xl shadow-md p-2 mx-[0.5%] h-[2vw] mr-2 ${isActive === index && 'bg-purple-200 dark:bg-white/20'}`}
                         >{item.name}</Button>
                     )
                 })}

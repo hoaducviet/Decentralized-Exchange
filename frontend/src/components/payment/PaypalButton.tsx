@@ -1,4 +1,5 @@
 'use client'
+import { Dispatch, SetStateAction } from 'react';
 import { PayPalButtons, PayPalScriptProvider, PayPalButtonsComponentProps, ReactPayPalScriptOptions } from '@paypal/react-paypal-js';
 import { useAddPaymentMutation } from '@/redux/features/pay/paySlice';
 import { Address } from '@/lib/type';
@@ -17,8 +18,9 @@ const displayOnly: PayPalButtonsComponentProps["displayOnly"] = ["vaultable"];
 
 interface Props {
     orderId: string;
+    setOpen: Dispatch<SetStateAction<boolean>>;
 }
-export default function PaypalButton({ orderId }: Props) {
+export default function PaypalButton({ orderId, setOpen }: Props) {
     const [addPayment] = useAddPaymentMutation()
     const createOrder: PayPalButtonsComponentProps["createOrder"] = async () => {
         try {
@@ -35,7 +37,6 @@ export default function PaypalButton({ orderId }: Props) {
 
     const onApprove: PayPalButtonsComponentProps["onApprove"] = async (data, actions) => {
         const details = await actions.order?.capture();
-        alert("Transaction completed by ")
         const response = await addPayment({
             wallet: details?.purchase_units?.[0].custom_id as Address,
             amount: details?.purchase_units?.[0]?.amount?.value,
@@ -44,22 +45,20 @@ export default function PaypalButton({ orderId }: Props) {
             invoice_id: details?.purchase_units?.[0].invoice_id,
             payer_email: details?.payer?.email_address,
             payee_email: details?.purchase_units?.[0]?.payee?.email_address,
-
         })
 
         console.log(response)
-        // Bạn có thể xử lý thông tin thanh toán ở đây
+        setOpen(false)
     };
 
     const onCancel: PayPalButtonsComponentProps["onCancel"] = (data) => {
         console.log("Transaction canceled", data);
-        // Show a cancel page, or return to cart
-        window.location.assign("/your-cancel-page");
+        setOpen(false)
+
     }
     const onError: PayPalButtonsComponentProps["onError"] = (err) => {
         console.log("Transaction canceled", err);
-        // For example, redirect to a specific error page
-        window.location.assign("/your-error-page-here");
+        setOpen(false)
     }
 
     return (
