@@ -105,13 +105,15 @@ export default function LimitBox() {
     const handleSend = useCallback(async () => {
         if (!!provider && !!signer && !!currentPool && !!address && !!tokenOne && !!tokenTwo && parseFloat(amount1) > 0) {
             const { data: newOrder } = await addOrder({
-                wallet: address,
+                from_wallet: address,
+                to_wallet: addressLimitContract,
                 pool_id: currentPool.pool_id,
                 from_token_id: tokenOne._id,
                 to_token_id: tokenTwo._id,
                 amount_in: amount1,
                 price
             })
+            console.log(newOrder)
             try {
                 const receipt = await swapLimitPool({ provider, signer, address, addressContract: addressLimitContract, pool: currentPool, tokenOne, tokenTwo, amount: amount1, price })
                 const confirmedReceipt = await signer.provider.waitForTransaction(receipt.hash);
@@ -142,7 +144,7 @@ export default function LimitBox() {
                 }
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider, signer, currentPool, address, tokenOne, tokenTwo, amount1, price, timeDate])
 
     const handleToast = () => {

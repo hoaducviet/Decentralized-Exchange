@@ -8,7 +8,7 @@ async function main() {
   listNfts.map((item) => {
     const data = [];
     for (let index = 0; index < item.number; index++) {
-      if (index >= 2000) {
+      if (index >= 50) {
         break;
       }
       data.push({

@@ -1,14 +1,17 @@
+'use client'
+import { useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import routes from "@/config/configRoutes"
+import { publicRoutes } from "@/routes/routes"
 import ConnectWallet from "@/components/wallet/ConnectWallet"
 import SearchForm from "@/components/SearchForm"
 import ThemeMode from "@/components/ThemeMode"
 import NetworkBox from "@/components/NetworkBox"
-import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { publicRoutes } from "@/routes/routes"
-import routes from "@/config/configRoutes"
 
 export default function Header() {
+    const [isActive, setIsActive] = useState<number>(-1)
     return <div className="bg-transparent flex justify-between items-center h-16">
         <div className="flex flex-row items-center">
             <Link href={routes.home}>
@@ -23,7 +26,7 @@ export default function Header() {
                         href={item.path}
                         className="mx-2"
                     >
-                        <Button variant="link">
+                        <Button onClick={() => setIsActive(index)} variant="link" className={`${isActive === index ? "underline" : ""}`}>
                             {item.content}
                         </Button>
                     </Link>

@@ -26,7 +26,6 @@ export default function NFTTransactionWaiting({ children, handleSend, type, coll
     const [priceEth, setPriceEth] = useState<number>(0)
     const [pricePlatformEth, setPricePlatformEth] = useState<number>(0)
     const [priceTotalEth, setPriceTotalEth] = useState<number>(0)
-
     const price = priceEth * parseFloat(eth?.price || "")
     const pricePlatform = pricePlatformEth * parseFloat(eth?.price || "")
     const priceGas = parseFloat(eth?.price || "") * parseFloat(gasEth)
@@ -152,6 +151,5 @@ export default function NFTTransactionWaiting({ children, handleSend, type, coll
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
-
     )
 }

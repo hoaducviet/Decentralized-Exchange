@@ -247,7 +247,8 @@ function socket(io) {
           _id: change.fullDocument._id,
           type: change.fullDocument.type,
           order_id: change.fullDocument.order_id,
-          wallet: change.fullDocument.wallet,
+          from_wallet: change.fullDocument.from_wallet,
+          to_wallet: change.fullDocument.to_wallet,
           pool_id: change.fullDocument.pool_id,
           from_token_id: await Token.findById(
             change.fullDocument.from_token_id
@@ -261,7 +262,7 @@ function socket(io) {
           expiredAt: change.fullDocument.expiredAt,
           createdAt: change.fullDocument.createdAt,
         };
-        io.to(updateDocument.wallet).emit("updateActiveTransactions", {
+        io.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
         if (["Failed", "Completed"].includes(change.fullDocument.status)) {

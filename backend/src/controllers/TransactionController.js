@@ -363,7 +363,7 @@ class TransactionController {
 
       const newTransaction = {
         type: "Swap Token Limit",
-        from_wallet: order.wallet,
+        from_wallet: order.from_wallet,
         to_wallet: pool.address,
         from_token_id: order.from_token_id,
         to_token_id: order.to_token_id,
@@ -380,9 +380,6 @@ class TransactionController {
       return;
     } catch (error) {
       console.error("Error transaction:", error.message);
-      return res
-        .status(500)
-        .json({ message: "Internal server error get all transaction" });
     }
   }
 
@@ -449,12 +446,12 @@ class TransactionController {
       })
         .populate({
           path: "from_token_id",
-          select: "_id name symbol img decimals address owner volume",
+          select: "_id name symbol img decimals address owner volume price",
           model: "token",
         })
         .populate({
           path: "to_token_id",
-          select: "_id name symbol img decimals address owner volume",
+          select: "_id name symbol img decimals address owner volume price",
           model: "token",
         })
         .exec();
@@ -489,7 +486,7 @@ class TransactionController {
         .exec();
 
       const orderTransactions = await Order.find({
-        wallet: address,
+        from_wallet: address,
         status: "Pending",
       })
         .populate({

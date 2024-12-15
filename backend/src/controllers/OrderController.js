@@ -50,8 +50,10 @@ class OrderController {
   async addOrder(req, res) {
     try {
       const newOrder = req.body;
+      console.log(newOrder)
       if (
-        !newOrder.wallet ||
+        !newOrder.from_wallet ||
+        !newOrder.to_wallet ||
         !newOrder.pool_id ||
         !newOrder.from_token_id ||
         !newOrder.to_token_id ||

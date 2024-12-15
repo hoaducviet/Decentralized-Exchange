@@ -115,7 +115,8 @@ export type Order = {
     _id?: string;
     type?: string;
     order_id?: number;
-    wallet: Address;
+    from_wallet: Address;
+    to_wallet: Address;
     pool_id: string;
     from_token_id: string;
     to_token_id: string;
@@ -283,7 +284,8 @@ export type OrderActiveTransaction = {
     _id: string;
     type: string;
     order_id: number;
-    wallet: Address;
+    from_wallet: Address;
+    to_wallet: Address;
     pool_id: Pool;
     from_token_id: Token;
     to_token_id: Token;

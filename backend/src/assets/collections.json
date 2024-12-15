@@ -126,6 +126,20 @@
     "instagram_username": ""
   },
   {
+    "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/RumbleKongLeague.json",
+    "name": "RumbleKongLeague",
+    "symbol": "RKL",
+    "logo": "https://i.seadn.io/s/raw/files/866ed37820afd3d81fd2d942edbe5c0d.jpg?w=500&auto=format",
+    "banner": "https://i.seadn.io/s/primary-drops/0xef0182dc0574cd5874494a120750fd222fdb909a/830988:about:media:d27ddcfc-65bb-4b64-bba1-58bc3e305644.png?auto=format&dpr=1&w=3840",
+    "verified": true,
+    "project_url": "http://www.rumblekongleague.com",
+    "discord_url": "https://discord.gg/ZFvmvuZxdA",
+    "twitter_username": "RumbleKongs",
+    "instagram_username": "therumblekongs"
+  },
+  {
     "address": "0x1588f268fad0DecDBd448473C8C301292639eA5b",
     "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/MutantApeYachtClub.json",
@@ -166,19 +180,5 @@
     "discord_url": "https://discord.gg/PirateNation",
     "twitter_username": "PirateNation",
     "instagram_username": ""
-  },
-  {
-    "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
-    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/RumbleKongLeague.json",
-    "name": "RumbleKongLeague",
-    "symbol": "RKL",
-    "logo": "https://i.seadn.io/s/raw/files/866ed37820afd3d81fd2d942edbe5c0d.jpg?w=500&auto=format",
-    "banner": "https://i.seadn.io/s/primary-drops/0xef0182dc0574cd5874494a120750fd222fdb909a/830988:about:media:d27ddcfc-65bb-4b64-bba1-58bc3e305644.png?auto=format&dpr=1&w=3840",
-    "verified": true,
-    "project_url": "http://www.rumblekongleague.com",
-    "discord_url": "https://discord.gg/ZFvmvuZxdA",
-    "twitter_username": "RumbleKongs",
-    "instagram_username": "therumblekongs"
   }
 ]

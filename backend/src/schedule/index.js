@@ -19,23 +19,23 @@ async function schedule() {
   task.start();
   cancelOrderTask.start();
 
-  setInterval(async () => {
-    try {
-      await exchangeTokenAuto();
-    } catch (error) {
-      console.error("Error in exchangeTokenAuto:", error);
-    }
-  }, 15000);
+  // setInterval(async () => {
+  //   try {
+  //     await exchangeTokenAuto();
+  //   } catch (error) {
+  //     console.error("Error in exchangeTokenAuto:", error);
+  //   }
+  // }, 15000);
 
-  await new Promise((resolve) => setTimeout(resolve, 7500));
+  // await new Promise((resolve) => setTimeout(resolve, 7500));
 
-  setInterval(async () => {
-    try {
-      await exchangeLiquidityAuto();
-    } catch (error) {
-      console.error("Error in exchangeLiquidityAuto:", error);
-    }
-  }, 15000);
+  // setInterval(async () => {
+  //   try {
+  //     await exchangeLiquidityAuto();
+  //   } catch (error) {
+  //     console.error("Error in exchangeLiquidityAuto:", error);
+  //   }
+  // }, 15000);
 }
 
 module.exports = schedule;

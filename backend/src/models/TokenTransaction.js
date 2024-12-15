@@ -25,12 +25,7 @@ const TokenTransaction = new Schema(
       ref: "token",
     },
     to_token_id: { type: Schema.Types.ObjectId, required: false, ref: "token" },
-    pool_id: {
-      type: Schema.Types.ObjectId,
-      required: false,
-      ref: "pool",
-      default: "",
-    },
+    pool_id: { type: Schema.Types.ObjectId, required: false, ref: "pool" },
     amount_in: { type: String, required: true },
     amount_out: { type: String, required: false, default: "0" },
     price: { type: String, required: false, default: "0" },
