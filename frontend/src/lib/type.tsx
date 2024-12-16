@@ -1,3 +1,7 @@
+export type User = {
+    wallet: Address;
+    walletAccess: boolean;
+}
 
 export type Address = `0x${string}`
 

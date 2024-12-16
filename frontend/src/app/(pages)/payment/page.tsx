@@ -143,7 +143,6 @@ export default function Payment() {
                         })}
                     </CardFooter>
                 </Card>
-
                 <Card className='select-none border-none outline-none'>
                     <CardHeader className="flex flex-col justify-start items-start">
                         <CardTitle>Give percent Ether</CardTitle>
@@ -171,7 +170,6 @@ export default function Payment() {
                         })}
                     </CardFooter>
                 </Card>
-
                 {
                     isConnected ?
                         <>

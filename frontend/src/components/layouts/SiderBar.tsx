@@ -37,6 +37,9 @@ export default function SiderBar({ address }: Props) {
 
     const handleDisconnect = () => {
         disconnect()
+        if (localStorage.getItem('token')) {
+            localStorage.removeItem('token')
+        }
     }
     return (
         <div className={`absolute bg-white dark:bg-black border-l-[0.1px] dark:border-white/20 border-gray-200 select-none top-0 right-0 flex flex-col h-[100vh] overflow-hidden z-10 animation-ping duration-300 ${isOpen ? 'w-full' : 'w-0'}`}>

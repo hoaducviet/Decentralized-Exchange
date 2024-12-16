@@ -11,15 +11,28 @@ const TransactionController = require("../controllers/TransactionController");
 const ReserveController = require("../controllers/ReserveController");
 const TokenPriceController = require("../controllers/TokenPriceController");
 const OrderController = require("../controllers/OrderController");
+const AuthController = require("../controllers/AuthController");
 const UserController = require("../controllers/UserController");
 //Site
 router.get("/search", SiteController.search);
 
 //Wallet
 router.get("/collection", WalletController.getCollection);
-router.get("/tokenbalances", WalletController.getTokenBalances);
-router.get("/liquiditybalances", WalletController.getLiquidityBalances);
-router.get("/nftbalances", WalletController.getNFTBalances);
+router.get(
+  "/tokenbalances",
+  AuthController.authenticateJWT,
+  WalletController.getTokenBalances
+);
+router.get(
+  "/liquiditybalances",
+  AuthController.authenticateJWT,
+  WalletController.getLiquidityBalances
+);
+router.get(
+  "/nftbalances",
+  AuthController.authenticateJWT,
+  WalletController.getNFTBalances
+);
 
 //Token
 router.get("/updatetokens", TokenController.updateToken);
@@ -49,30 +62,53 @@ router.get("/collections", CollectionController.getCollectionAll);
 router.get("/collections/top", CollectionController.getCollectionTop);
 
 //Order
-router.post("/addorder", OrderController.addOrder);
-router.patch("/updateorder", OrderController.updateOrder);
-router.post("/cancelorder", OrderController.cancelOrder);
-
+router.post(
+  "/addorder",
+  AuthController.authenticateJWT,
+  OrderController.addOrder
+);
+router.patch(
+  "/updateorder",
+  AuthController.authenticateJWT,
+  OrderController.updateOrder
+);
+router.post(
+  "/cancelorder",
+  AuthController.authenticateJWT,
+  OrderController.cancelOrder
+);
 
 //Transaction
-router.post("/addtransaction/token", TransactionController.addTokenTransaction);
+router.post(
+  "/addtransaction/token",
+  AuthController.authenticateJWT,
+  TransactionController.addTokenTransaction
+);
 router.patch(
   "/updatetransaction/token",
+  AuthController.authenticateJWT,
   TransactionController.updateTokenTransaction
 );
 
 router.post(
   "/addtransaction/liquidity",
+  AuthController.authenticateJWT,
   TransactionController.addLiquidityTransaction
 );
 router.patch(
   "/updatetransaction/liquidity",
+  AuthController.authenticateJWT,
   TransactionController.updateLiquidityTransaction
 );
 
-router.post("/addtransaction/nft", TransactionController.addNftTransaction);
+router.post(
+  "/addtransaction/nft",
+  AuthController.authenticateJWT,
+  TransactionController.addNftTransaction
+);
 router.patch(
   "/updatetransaction/nft",
+  AuthController.authenticateJWT,
   TransactionController.updateNftTransaction
 );
 
@@ -101,8 +137,13 @@ router.get("/transactions/dailytvl", TransactionController.getDailyTVL);
 //Active
 router.get(
   "/actives/:address",
+  AuthController.authenticateJWT,
   TransactionController.getActiveTransactionsByAddress
 );
+
+//JWT
+router.post("/login", AuthController.generateTokenJWT);
+router.get("/jwt/auth", AuthController.authenticateJWT);
 
 //User
 router.get("/insertuser", UserController.insertUser);

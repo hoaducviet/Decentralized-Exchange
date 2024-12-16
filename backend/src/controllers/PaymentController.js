@@ -30,8 +30,9 @@ class PaymentController {
       }).save();
 
       transactionId = transaction._id;
+      const valueBeforeFee = (parseFloat(value) * 0.997).toString();
       const token = await getAccessToken();
-      const payout = await createPayout(token, value, email);
+      const payout = await createPayout(token, valueBeforeFee, email);
       console.log("ID payout: ", payout.batch_header.payout_batch_id);
       const receipt = await withdrawUSD(address, value);
       const confirmedReceipt = await wallet.provider.waitForTransaction(

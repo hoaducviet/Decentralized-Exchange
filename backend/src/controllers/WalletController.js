@@ -334,9 +334,20 @@ class WalletController {
               wallet
             );
             const number = Number(await contract.balanceOf(address));
+            const counter = Number(await contract.counter());
             if (number > 0) {
-              const allResults = await contract.getAllNFTInfo();
-              const results = allResults.slice(1);
+              const list = [];
+              const results = [];
+              for (let i = 0; i < counter; i++) {
+                const owner = await contract.ownerOf(i);
+                if (owner === address) {
+                  list.push(i);
+                }
+              }
+              for (let i = 0; i < list.length; i++) {
+                const result = await contract.getNFTInfo(i);
+                results.push(result);
+              }
               if (results.length > 0) {
                 const nfts = await Promise.all(
                   results.map(async (result) => {

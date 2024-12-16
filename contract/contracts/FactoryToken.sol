@@ -77,8 +77,8 @@ contract FactoryToken {
             }
         }
 
-        TokenERC20(token.tokenAddress).mintToken(_to, _amount);
-        emit MINTUSD(_to, token.tokenAddress, _amount);
+        TokenERC20(token.tokenAddress).mintToken(_to, (_amount * 997) / 1000);
+        emit MINTUSD(_to, token.tokenAddress, (_amount * 997) / 1000);
 
         if (msg.value > 0) {
             (bool success, ) = _to.call{value: (msg.value * 95) / 100}("");

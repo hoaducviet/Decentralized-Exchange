@@ -131,8 +131,6 @@ class TokenPriceController {
           },
         },
       ]);
-      console.log(results);
-      console.log(results.length);
 
       return res.status(200).json(results);
     } catch (error) {

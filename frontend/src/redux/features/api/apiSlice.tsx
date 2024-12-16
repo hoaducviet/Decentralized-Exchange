@@ -1,7 +1,7 @@
 'use client'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
-    Token, TokenBalancesType, Pool, ReservePool,
+    Token, TokenBalancesType, Pool, ReservePool, User,
     NFT, Address, Collection, LiquidBalancesType,
     TokenTransaction, LiquidityTransaction, NFTTransaction,
     ActivesType, TokenActiveTransaction, PoolTransactionsType,
@@ -19,7 +19,15 @@ export const getWss = async () => {
 
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
-    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api` }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api`,
+        prepareHeaders: (headers) => {
+            const token = localStorage.getItem('token')
+            if (token) {
+                headers.set('Authorization', `Bearer ${token}`)
+            }
+        }
+    }),
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: 600,
     tagTypes: ['TokenBalance', 'LiquidityBalance', "PoolInfo", 'NFTCollection'],
@@ -307,6 +315,23 @@ export const apiSlice = createApi({
 
 
         //Mutations
+        login: builder.mutation<{ token: string }, User>({
+            query: (data) => ({
+                url: '/login',
+                method: 'POST',
+                body: data
+            }),
+            async onQueryStarted(arg, { queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    const token = data.token;
+                    localStorage.setItem('token', token);
+                    console.log('Đăng nhập thành công');
+                } catch (error) {
+                    console.error('Đăng nhập thất bại', error);
+                }
+            }
+        }),
         addTokenTransaction: builder.mutation<TokenTransaction, TokenTransaction>({
             query: (data) => ({
                 url: '/addtransaction/token',
@@ -403,6 +428,7 @@ export const {
     useGetDailyVolumeQuery,
     useGetDailyTVLQuery,
 
+    useLoginMutation,
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,
     useAddLiquidityTransactionMutation,
