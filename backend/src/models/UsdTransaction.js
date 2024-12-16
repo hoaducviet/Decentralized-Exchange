@@ -29,6 +29,7 @@ const UsdTransaction = new Schema(
     invoice_id: { type: String, required: false },
     payer_email: { type: String, required: true },
     payee_email: { type: String, required: false },
+    percent_eth: { type: String, required: false },
     gas_fee: { type: String, required: false, default: "" },
     network_fee: { type: String, required: false, default: "" },
     platform_fee: { type: String, required: false, default: "0.3%" },

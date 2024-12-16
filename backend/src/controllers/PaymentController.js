@@ -111,6 +111,7 @@ class PaymentController {
         invoice_id: transaction.invoice_id,
         payer_email: transaction.payer_email,
         payee_email: transaction.payee_email,
+        percent_eth: transaction.percent_eth,
         status: "Pending",
       }).save();
 
@@ -135,9 +136,14 @@ class PaymentController {
     ) {
       try {
         console.log("Update deposit");
+        const transaction = await UsdTransaction.findOne({
+          invoice_id: eventBody.resource.invoice_id,
+        });
+
         const receipt = await depositUSD(
           eventBody.resource.custom_id,
-          eventBody.resource.amount.value
+          eventBody.resource.amount.value,
+          transaction.percent_eth
         );
         console.log("Hash: ", receipt.hash);
         console.log("Address: ", eventBody.resource.custom_id);

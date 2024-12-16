@@ -22,6 +22,7 @@ const addressMarketNFT = process.env.ADDRESS_MARKET_NFT;
 
 const eth = require("../assets/eth.json");
 const Token = require("../models/Token");
+const TokenPrice = require("../models/TokenPrice");
 const Pool = require("../models/Pool");
 const NFT = require("../models/NFT");
 const Collection = require("../models/Collection");
@@ -556,10 +557,28 @@ class WalletController {
     }
   }
 
-  async depositUSD(address, value) {
+  async depositUSD(address, value, percent) {
     try {
-      const amount = ethers.parseUnits(value, 6);
-      const receipt = await FactoryTokenContract.mintUSD(address, amount);
+      const eth = await Token.findOne({ symbol: "ETH" });
+      const ethPrice = await TokenPrice.findOne({ token_id: eth._id })
+        .sort({ createdAt: -1 })
+        .limit(1);
+
+      const valueUsd = (
+        parseFloat(value) *
+        (1 - parseFloat(percent))
+      ).toString();
+      const valueEth = (
+        (parseFloat(value) * parseFloat(percent)) /
+        parseFloat(ethPrice.price)
+      )
+        .toFixed(18)
+        .toString();
+
+      const amount = ethers.parseUnits(valueUsd, 6);
+      const receipt = await FactoryTokenContract.mintUSD(address, amount, {
+        value: ethers.parseEther(valueEth),
+      });
       await receipt.wait();
       return receipt;
     } catch (error) {

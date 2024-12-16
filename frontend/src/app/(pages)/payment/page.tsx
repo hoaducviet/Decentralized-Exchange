@@ -1,15 +1,17 @@
 'use client'
-import { useState, useRef, useCallback } from "react"
+import { useState, useRef, useCallback, useEffect } from "react"
 import { useAccount } from 'wagmi';
 import { useCreateOrderIdPayMutation } from "@/redux/features/pay/paySlice";
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import PaypalButton from '@/components/payment/PaypalButton'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
 import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet";
 import { useToast } from "@/hooks/useToast";
+import { useGetTokensQuery } from "@/redux/features/api/apiSlice";
+import { WidthIcon } from "@radix-ui/react-icons";
 
 type Price = {
     name: string;
@@ -21,10 +23,22 @@ const listPrice: Price[] = [
     { name: '$1000', value: '1000' },
 ]
 
+type list = {
+    name: string;
+    value: string;
+}
+
+const listOptions: list[] = [
+    { name: '0%', value: "0" },
+    { name: '20%', value: "0.2" },
+    { name: '50%', value: "0.5" },
+    { name: '100%', value: "1" },
+] as list[];
+
 export default function Payment() {
     const { isConnected, address } = useAccount()
     const ref = useRef<HTMLInputElement>(null)
-    const [amount, setAmount] = useState<string>('')
+    const [amount, setAmount] = useState<string>('0')
     const [isActive, setIsActive] = useState<number | undefined>(undefined)
     const [open, setOpen] = useState<boolean>(false)
     const [orderId, setOrderId] = useState<string>('')
@@ -32,6 +46,21 @@ export default function Payment() {
     const [loading, setLoading] = useState<boolean>(true)
     const [createOrderIdPay] = useCreateOrderIdPayMutation()
     const { showError } = useToast()
+    const { data: tokens } = useGetTokensQuery()
+    const eth = tokens?.find(item => item.symbol === 'ETH')
+    const [valuePercent, setValuePercent] = useState<string>("0")
+    const [percent, setPercent] = useState<string>("0")
+    const [isActivePercent, setIsActivePercent] = useState<number>(0)
+
+    const handleActivePercent = (index: number) => {
+        setIsActivePercent(index)
+        setPercent(listOptions[index].value)
+    }
+
+    useEffect(() => {
+        const value = parseFloat(amount) * parseFloat(percent)
+        setValuePercent(value.toFixed(2).toString())
+    }, [amount, percent])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
@@ -78,8 +107,8 @@ export default function Payment() {
     }
 
     return (
-        <div className=" flex flex-col justify-start items-center pt-[10vw]">
-            <div className="flex flex-col w-[40vw]">
+        <div className=" flex flex-col justify-start items-center pt-[10vw] ">
+            <div className="flex flex-col w-[40vw] space-y-[2vw]">
                 <Card onClick={handleClick} className=" flex flex-col w-full h-[15vw] select-none border-none outline-none">
                     <CardHeader className="flex flex-row justify-between items-center">
                         <CardDescription>You are depositing USD from Paypal</CardDescription>
@@ -114,6 +143,35 @@ export default function Payment() {
                         })}
                     </CardFooter>
                 </Card>
+
+                <Card className='select-none border-none outline-none'>
+                    <CardHeader className="flex flex-col justify-start items-start">
+                        <CardTitle>Give percent Ether</CardTitle>
+                        <CardDescription>The fee for give ETH from Exchange is +5%</CardDescription>
+                    </CardHeader>
+                    <div className="flex flex-row justify-center items-center text-2xl space-x-[1vw] mb-[1vw] ">
+                        <p>
+                            {`$${valuePercent}`}
+                        </p>
+                        <WidthIcon className="w-[2vw] h-[2vw]" />
+                        <p>
+                            {`${(parseFloat(valuePercent) * 0.95 / parseFloat(eth?.price || "")).toFixed(6)}ETH`}
+                        </p>
+                    </div>
+                    <CardFooter className="flex justify-start items-center pb-[2%]">
+                        {listOptions.map((item, index) => {
+                            return (
+                                <Button
+                                    key={index}
+                                    variant="ghost"
+                                    onClick={() => handleActivePercent(index)}
+                                    className={`flex justify-center items-center rounded-2xl shadow-md  mr-2 ${isActivePercent === index && 'bg-purple-200 dark:bg-white/20'}`}
+                                >{item.name}</Button>
+                            )
+                        })}
+                    </CardFooter>
+                </Card>
+
                 {
                     isConnected ?
                         <>
@@ -154,10 +212,23 @@ export default function Payment() {
                                                                         <p>Address</p>
                                                                         <div >{address ? address.slice(0, 6) + "..." + address.slice(38) : ""}</div>
                                                                     </div>
+                                                                    <div className="flex flex-row justify-between items-start">
+                                                                        <p>Percent ETH</p>
+                                                                        <div className="flex flex-col justify-start items-end space-y-[0.1vw]">
+                                                                            <div className="flex flex-row justify-end">
+                                                                                <p>{parseFloat(percent) * 100}</p>
+                                                                                <p className="font-semibold">%</p>
+                                                                            </div>
+                                                                            <div className="flex flex-row justify-end">
+                                                                                <p>{`${valuePercent}`}</p>
+                                                                                <p className="font-semibold">USD</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div className='bg-transparent flex flex-col justify-end'>
-                                                                <PaypalButton orderId={orderId} setOpen={setOpen} />
+                                                            <div className='bg-transparent flex flex-col justify-end mt-[1vw]'>
+                                                                <PaypalButton orderId={orderId} setOpen={setOpen} percent={percent} />
                                                             </div>
                                                         </div>
                                                     </div>

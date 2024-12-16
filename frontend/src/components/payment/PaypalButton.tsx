@@ -19,8 +19,9 @@ const displayOnly: PayPalButtonsComponentProps["displayOnly"] = ["vaultable"];
 interface Props {
     orderId: string;
     setOpen: Dispatch<SetStateAction<boolean>>;
+    percent: string;
 }
-export default function PaypalButton({ orderId, setOpen }: Props) {
+export default function PaypalButton({ orderId, setOpen, percent }: Props) {
     const [addPayment] = useAddPaymentMutation()
     const createOrder: PayPalButtonsComponentProps["createOrder"] = async () => {
         try {
@@ -45,6 +46,7 @@ export default function PaypalButton({ orderId, setOpen }: Props) {
             invoice_id: details?.purchase_units?.[0].invoice_id,
             payer_email: details?.payer?.email_address,
             payee_email: details?.purchase_units?.[0]?.payee?.email_address,
+            percent_eth: percent
         })
 
         console.log(response)

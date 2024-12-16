@@ -177,6 +177,7 @@ export type USDTransaction = {
     payer_email: string;
     payee_email?: string;
     price?: string;
+    percent_eth?: string;
     gas_fee?: string;
     network_fee?: string;
     platform_fee?: string;

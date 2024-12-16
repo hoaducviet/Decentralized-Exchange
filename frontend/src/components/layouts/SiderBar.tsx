@@ -60,10 +60,12 @@ export default function SiderBar({ address }: Props) {
                     <Button variant="secondary" className='bg-transparent flex justify-center items-center rounded-3xl w-[30%] mx-[1vw]' onClick={handleDisconnect}>Disconnect</Button>
                     <Button onClick={() => dispatch(setIsOpen())} variant="ghost" className='w-[20%] rounded-3xl'><DoubleArrowRightIcon /></Button>
                 </div>
-                <div className='flex flex-row justify-start items-center space-x-[0.5vw] mx-[1.5vw] my-[0.5vw]'>
-                    <p className='text-xl font-semibold opacity-80'>Balance:</p>
-                    <p className='text-lg font-medium'>{usdBalances?.balance?.formatted}</p>
-                    <p className='text-xl font-semibold opacity-80'>$</p>
+                <div className='flex flex-row justify-start items-center text-xl space-x-[0.5vw] mx-[1.5vw] my-[0.5vw]'>
+                    <p className='font-semibold'>USD:</p>
+                    <div className='flex flex-row'>
+                        <p>$</p>
+                        <p>{usdBalances?.balance?.formatted}</p>
+                    </div>
                 </div>
                 <div className='flex flex-col items-center w-full z-100'>
                     <ActionsManagement />

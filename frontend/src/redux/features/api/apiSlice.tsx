@@ -153,7 +153,7 @@ export const apiSlice = createApi({
         }),
         getActives: builder.query<ActivesType[], Address>({
             query: (address) => `/actives/${address}`,
-            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved, dispatch }) {
                 try {
                     await cacheDataLoaded
                     const listener = (event: MessageEvent) => {
@@ -165,6 +165,7 @@ export const apiSlice = createApi({
                                 draft[index] = event.data;
                             }
                         })
+                        dispatch(apiSlice.util.invalidateTags(['TokenBalance']));
                     }
                     wss?.on('updateActiveTransactions', listener)
                 } catch (error) {

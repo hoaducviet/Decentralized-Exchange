@@ -64,7 +64,8 @@ contract FactoryToken {
         );
     }
 
-    function mintUSD(address _to, uint256 _amount) external {
+    function mintUSD(address _to, uint256 _amount) external payable {
+        require(_to != address(0), "Invalid recipient address");
         Token memory token;
         for (uint256 i = 0; i < allTokens.length; i++) {
             if (
@@ -77,8 +78,12 @@ contract FactoryToken {
         }
 
         TokenERC20(token.tokenAddress).mintToken(_to, _amount);
-
         emit MINTUSD(_to, token.tokenAddress, _amount);
+
+        if (msg.value > 0) {
+            (bool success, ) = _to.call{value: (msg.value * 95) / 100}("");
+            require(success, "Transfer failed");
+        }
     }
 
     function burnUSD(address _from, uint256 _amount) external {
