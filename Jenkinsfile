@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'version-nextjs14-stable', url: 'https://github.com/hoaducviet/Decentralized-Exchange.git'
+                git 'https://github.com/hoaducviet/Decentralized-Exchange.git'
             }
         }
         stage('Build Image') {
