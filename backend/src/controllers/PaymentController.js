@@ -128,6 +128,8 @@ class PaymentController {
   async webhook(req, res) {
     const eventBody = req.body;
     res.status(200).send("Received");
+    console.log(eventBody);
+
     if (
       eventBody.event_type === "PAYMENT.CAPTURE.COMPLETED" &&
       eventBody.resource.status === "COMPLETED" &&

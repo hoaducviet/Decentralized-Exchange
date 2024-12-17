@@ -1,5 +1,7 @@
 FROM node:18-alpine
 
+RUN apk add --no-cache make bash
+
 ENV PORT=8545
 ENV ALCHEMY_SEPOLIA_URL="https://eth-sepolia.g.alchemy.com/v2/NYJHqIaI2H9v0prOyeBB8BEZgyc2jGeT"
 ENV ACCOUNT_PRIVATE_KEY="400905baced628d6330cd54739016073ff332881a731069c4d9caec1c3791d5d"

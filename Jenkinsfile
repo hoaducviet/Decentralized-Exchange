@@ -5,18 +5,18 @@ pipeline {
     environment {
         DOCKER_IMAGE_FRONTEND = 'viethoaduc/dex_frontend'
         DOCKER_IMAGE_BACKEND = 'viethoaduc/dex_backend'
+        DOCKER_IMAGE_CONTRACT = 'viethoaduc/dex_contract'
     }
 
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/hoaducviet/Decentralized-Exchange.git'
+                git branch: 'version-nextjs14-stable', url: 'https://github.com/hoaducviet/Decentralized-Exchange.git'
             }
         }
         stage('Build Image') {
             steps {
                 script{
-
                     dir('backend') {
                         // Chuyển vào thư mục backend và build Docker image
                         script {
@@ -32,6 +32,14 @@ pipeline {
                             sh "docker tag $DOCKER_IMAGE_FRONTEND:${timestamp} $DOCKER_IMAGE_FRONTEND:latest || true"
                         }
                     }
+
+                    dir('contract') {
+                        // Chuyển vào thư mục contract và build Docker image
+                        script {
+                            sh "docker build -t $DOCKER_IMAGE_CONTRACT:${timestamp} --platform linux/amd64 ."
+                            sh "docker tag $DOCKER_IMAGE_CONTRACT:${timestamp} $DOCKER_IMAGE_CONTRACT:latest || true"
+                        }
+                    }
                 }
             }
         }
@@ -44,8 +52,10 @@ pipeline {
                     script{
                         sh "docker push $DOCKER_IMAGE_FRONTEND:${timestamp} || true"
                         sh "docker push $DOCKER_IMAGE_BACKEND:${timestamp} || true"
+                        sh "docker push $DOCKER_IMAGE_CONTRACT:${timestamp} || true"
                         sh "docker push $DOCKER_IMAGE_FRONTEND:latest"
                         sh "docker push $DOCKER_IMAGE_BACKEND:latest"
+                        sh "docker push $DOCKER_IMAGE_CONTRACT:latest"
                     }
                 }
             }
@@ -60,7 +70,7 @@ pipeline {
                                 sshTransfer(
                                     cleanRemote: false, 
                                     remoteDirectory: 'DEX', 
-                                    sourceFiles: 'docker-compose.server.yml, nginx.conf',
+                                    sourceFiles: 'server/docker-compose.yml, server/nginx.conf',
                                     execTimeout: 120000, 
                                     flatten: false, 
                                     makeEmptyDirs: false, 
@@ -83,7 +93,6 @@ pipeline {
                 sshagent(['ssh_remote']) {
                     sh '''ssh -o StrictHostKeyChecking=no root@52.64.41.231 "
                     cd DEX
-                    mv -f docker-compose.server.yml docker-compose.yml || true
                     docker compose down || true
                     docker rmi $(docker images -q)        
                     docker compose up -d
@@ -101,6 +110,7 @@ pipeline {
                 // Xóa Docker image đã tạo ra
                 sh 'docker rmi $(docker images -q viethoaduc/dex_frontend) || true'
                 sh 'docker rmi $(docker images -q viethoaduc/dex_backend) || true'
+                sh 'docker rmi $(docker images -q viethoaduc/dex_contract) || true'
 
                 echo 'Hoàn thành dọn dẹp Docker.'
             }

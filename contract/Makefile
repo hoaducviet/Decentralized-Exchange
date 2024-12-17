@@ -10,11 +10,8 @@ deploy:
 	npx hardhat run ./scripts/FactoryNFT.js
 	npx hardhat run ./scripts/MarketNFT.js
 	npx hardhat run ./scripts/OrderLimit.js
-
 	npx hardhat run ./scripts/AddLP.js
-	cp ./artifacts/contracts/*/*.json ../frontend/src/artifacts
-	cp ./artifacts/contracts/*/*.json ../backend/src/artifacts
-
+	
 nft1:
 	npx hardhat run ./scripts/addnft/HOPE.js
 	npx hardhat run ./scripts/addnft/Pirate.js
@@ -37,9 +34,8 @@ nft:
 	npx hardhat run ./scripts/addnft/CRYPTOPUNKS.js
 	npx hardhat run scripts/BlockNumber.js
 	npx hardhat run ./scripts/addnft/Captainz.js
-
-
 	npx hardhat run ./scripts/addnft/MutantApeYachtClub.js
+	
 rund:
 	npx hardhat run ./scripts/AddLP.js
 
@@ -48,10 +44,14 @@ copy:
 	cp ./artifacts/contracts/*/*.json ../frontend/src/artifacts
 	cp ./artifacts/contracts/*/*.json ../backend/src/artifacts
 
-
 end:
 	$(MAKE) clean && \
-	$(MAKE) deploy
+	$(MAKE) deploy && \
+	$(MAKE) nft1 && \
+	$(MAKE) nft2 && \
+	$(MAKE) nft3 && \
+	$(MAKE) copy
+
 
 start:
 	$(MAKE) clean && \

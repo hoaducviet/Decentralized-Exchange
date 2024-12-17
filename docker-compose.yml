@@ -1,73 +1,46 @@
 
 services:
-  # app:
-  #   networks:
-  #     - DEX
-  #   container_name: app
-  #   image: node:18
-  #   working_dir: /usr/src/frontend
-  #   env_file:
-  #     - ./frontend/.env
-  #   environment:
-  #     - NEXT_PUBLIC_BACKEND_API=http://backend:8000
-  #     - PORT=3002
-  #   volumes:
-  #     - ./frontend:/usr/src/frontend
-  #   command: bash -c "cd /usr/src/frontend && npm install && npm run dev"
-  #   ports:
-  #   - 3002:3002
+  frontend:
+    networks:
+      - DEX
+    container_name: dex_frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      - NEXT_PUBLIC_BACKEND_API=http://backend:8000
+      - NETWORK_URL="http://contract:8545"
 
-  # nginx_app:
-  #   networks:
-  #     - DEX
-  #   image: nginx:alpine
-  #   container_name: nginx_app
-  #   ports:
-  #     - 80:80
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/nginx.conf
-  #   depends_on:
-  #     - app
-
-  # frontend_v14:
-  #   networks:
-  #     - DEX
-  #   container_name: dex_frontend_v14
-  #   build: 
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   environment:
-  #     - NEXT_PUBLIC_BACKEND_API=http://backend:8000
-
-  # nginx_14:
-  #   networks:
-  #     - DEX
-  #   image: nginx:alpine
-  #   container_name: nginx_v14
-  #   ports:
-  #     - 80:80
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/nginx.conf
-  #   depends_on:
-  #     - frontend_v14
+  nginx:
+    networks:
+      - DEX
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
   
-  # contract:
-  #   networks:
-  #     - DEX
-  #   container_name: dex_contract
-  #   build: 
-  #     context: ./contract
-  #     dockerfile: Dockerfile
-  #   environment:
-  #   - PORT=8545
-  #   ports:
-  #     - 8545:8545
 
+  contract:
+    networks:
+      - DEX
+    container_name: dex_contract
+    build: 
+      context: ./contract
+      dockerfile: Dockerfile
+    environment:
+    - PORT=8545
+    ports:
+      - 8545:8545
 
   backend:
     networks:
       - DEX
     container_name: dex_backend
+    restart: always
     build: 
       context: ./backend
       dockerfile: Dockerfile
@@ -75,6 +48,8 @@ services:
     - PORT=8000
     - MONGODBURI=mongodb://mongo-primary:27017,mongo-secondary1:27017,mongo-secondary2:27017/dex?replicaSet=rs0
     - NETWORK_URL=http://contract:8545
+    - SOCKET_NETWORK_URL=ws://contract:8545
+    - FRONTEND_URL=http://localhost
     ports:
       - 8000:8000
     depends_on:
@@ -83,7 +58,6 @@ services:
       - mongo-secondary2
       
 
-    
   mongo-primary:
     networks:
       - DEX
@@ -95,8 +69,8 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    volumes:
-      - mongodb-primary:/data/db
+    # volumes:
+    #   - mongodb-primary:/data/db
   
   mongo-secondary1:
     networks:
@@ -109,8 +83,8 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    volumes:
-      - mongodb-secondary1:/data/db
+    # volumes:
+    #   - mongodb-secondary1:/data/db
 
   mongo-secondary2:
     networks:
@@ -123,16 +97,43 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    volumes:
-      - mongodb-secondary2:/data/db
+    # volumes:
+    #   - mongodb-secondary2:/data/db
   
+  rs-init:
+    networks:
+      - DEX
+    image: mongo:5.0
+    container_name: dex_rs_init
+    restart: 'no'
+    depends_on:
+      - mongo-primary
+      - mongo-secondary1
+      - mongo-secondary2
+    entrypoint: >
+      bash -c "
+      echo 'Waiting for MongoDB nodes to be ready...' &&
+      sleep 10 &&
+      mongo --host mongo-primary:27017 --eval '
+        rs.initiate({
+          _id: \"rs0\",
+          members: [
+            { _id: 0, host: \"mongo-primary:27017\" },
+            { _id: 1, host: \"mongo-secondary1:27017\" },
+            { _id: 2, host: \"mongo-secondary2:27017\" }
+          ]
+        });
+      ' &&
+      echo 'Replica Set initialized successfully.'
+      "
+
 
 networks:
   DEX:
     driver: bridge
 
-volumes:
-  mongodb-primary:
-  mongodb-secondary1:
-  mongodb-secondary2:
+# volumes:
+#   mongodb-primary:
+#   mongodb-secondary1:
+#   mongodb-secondary2:
 

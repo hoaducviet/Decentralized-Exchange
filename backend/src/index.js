@@ -8,7 +8,6 @@ const http = require("http");
 const route = require("./routes");
 const db = require("./config/database");
 const { provider } = require("./config/provider");
-const { checkWallet } = require("./controllers/WalletController");
 const socket = require("./socket");
 const event = require("./event");
 const schedule = require("./schedule");
@@ -30,16 +29,12 @@ app.use(express.json());
 app.use(morgan("combined"));
 route(app);
 
-// const wsProvider = new ethers.WebSocketProvider(
-//   process.env.ALCHEMY_SEPOLIA_URL
-// );
-
 event(provider);
 
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST"],
   },
 });
