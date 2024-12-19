@@ -93,7 +93,7 @@ pipeline {
                     sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
                     cd DEX
                     sudo docker compose down || true
-                    sudo docker rmi -f $(sudo docker images -q)        
+                    sudo docker rmi -f \$(sudo docker images -q)        
                     sudo docker compose up -d
                     "
                     '''
