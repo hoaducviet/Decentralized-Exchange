@@ -56,10 +56,10 @@ services:
     networks:
       - DEX
     image: mongo:5.0
-    container_name: dex_mongo_primary
+    container_name: mongo_primary
     restart: always
     ports:
-      - 27019:27017
+      - 27017:27017
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
@@ -70,10 +70,10 @@ services:
     networks:
       - DEX
     image: mongo:5.0
-    container_name: dex_mongo_secondary1
+    container_name: mongo_secondary1
     restart: always
     ports:
-      - 27020:27017
+      - 27018:27017
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
@@ -84,10 +84,10 @@ services:
     networks:
       - DEX
     image: mongo:5.0
-    container_name: dex_mongo_secondary2
+    container_name: mongo_secondary2
     restart: always
     ports:
-      - 27021:27017
+      - 27019:27017
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
