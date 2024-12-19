@@ -90,12 +90,12 @@ pipeline {
         stage('Exec Command to SSH-Server') {
             steps {
                 sshagent(['ssh-remote']) {
-                    sh '''
-                    cat << EOF | ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226
+                    sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
                     cd DEX &&
                     sudo docker compose down || true &&
                     sudo docker system prune -a 
                     sudo docker compose up -d
+                    "
                     '''
                 }
             }
