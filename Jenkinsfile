@@ -69,7 +69,7 @@ pipeline {
                             transfers: [
                                 sshTransfer(
                                     cleanRemote: false, 
-                                    remoteDirectory: 'home/ubuntu/DEX', 
+                                    remoteDirectory: 'DEX', 
                                     sourceFiles: 'server/docker-compose.yml, server/nginx.conf',
                                     execTimeout: 120000, 
                                     flatten: false, 
@@ -87,19 +87,19 @@ pipeline {
                 )
             }
         }
-        stage('Exec Command to SSH-Server') {
-            steps {
-                sshagent(['ssh-remote']) {
-                    sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
-                    cd DEX
-                    docker compose down || true
-                    docker rmi $(docker images -q)        
-                    docker compose up -d
-                    "
-                    '''
-                }
-            }
-        }
+        // stage('Exec Command to SSH-Server') {
+        //     steps {
+        //         sshagent(['ssh-remote']) {
+        //             sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
+        //             cd DEX
+        //             docker compose down || true
+        //             docker rmi $(docker images -q)        
+        //             docker compose up -d
+        //             "
+        //             '''
+        //         }
+        //     }
+        // }
     }
     post {
         always {
