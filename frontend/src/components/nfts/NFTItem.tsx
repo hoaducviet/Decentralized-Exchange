@@ -24,7 +24,7 @@ export default function NFTItem({ nft, setNft, address, isConnected, handleSend,
     const gas = useGasBuyNFT().toString()
 
     useEffect(() => {
-        if (parseFloat(balance) > 0) {
+        if (parseFloat(balance) > 0) { 
             setIsCheck(parseFloat(balance) > parseFloat(nft.formatted))
         }
     }, [balance, nft])

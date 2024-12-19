@@ -12,7 +12,7 @@ export const description = "A simple area chart"
 const chartConfig = {
     price: {
         label: "Price",
-        color: "hsl(var(--chart-1))",
+        color: "hsl(var(--chart-1))", 
     },
 } satisfies ChartConfig
 

@@ -16,8 +16,8 @@ import { useGasSwapToken } from '@/hooks/useGas'
 export default function SellBox() {
     const { isConnected, address } = useAccount()
     const web3 = useWeb3()
-    const provider = web3?.provider
-    const signer = web3?.signer
+    const provider = web3?.provider 
+    const signer = web3?.signer 
     const { showError } = useToast()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)
     const [isChecked, setIsChecked] = useState<boolean>(false)

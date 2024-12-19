@@ -26,7 +26,7 @@ export default function NFTsTopPrice() {
                 spaceBetween={0}
                 centeredSlides={true}
                 slidesPerView={1}
-                loop={false}
+                loop={false} 
                 pagination={{
                     clickable: true,
                 }}

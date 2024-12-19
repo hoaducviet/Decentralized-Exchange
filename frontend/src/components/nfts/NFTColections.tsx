@@ -7,7 +7,7 @@ import { formatPrice } from '@/utils/formatPrice'
 import { Collection } from '@/lib/type'
 import { useGetTokensQuery } from '@/redux/features/api/apiSlice'
 
-interface Props {
+interface Props { 
     collections: Collection[];
 }
 

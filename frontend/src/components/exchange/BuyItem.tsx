@@ -11,7 +11,7 @@ type Price = {
     name: string;
     value: string;
 }
-
+ 
 const listPrice: Price[] = [
     { name: '$100', value: '100' },
     { name: '$300', value: '300' },

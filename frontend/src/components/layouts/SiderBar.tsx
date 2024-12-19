@@ -14,7 +14,7 @@ import { Address } from '@/lib/type'
 import { useToast } from '@/hooks/useToast'
 interface Props {
     address: Address;
-}
+} 
 
 export default function SiderBar({ address }: Props) {
     const { disconnect } = useDisconnect()

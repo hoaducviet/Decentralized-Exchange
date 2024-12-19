@@ -21,4 +21,4 @@ export default function ItemDescription({ nft }: Props) {
             </CardContent>
         </Card>
     )
-}
+} 

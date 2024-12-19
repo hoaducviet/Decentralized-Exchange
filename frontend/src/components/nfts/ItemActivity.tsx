@@ -12,7 +12,7 @@ interface Props {
 
 const options = ['Event', 'Price', 'From', 'To', 'Date']
 export default function ItemActivity({ actives }: Props) {
-
+ 
     return (
         <Card className="rounded-2xl my-0">
             <CardHeader className="my-0 py-4 rounded-t-2xl text-md font-semibold border-b-[1px]">

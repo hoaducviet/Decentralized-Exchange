@@ -10,7 +10,7 @@ const socials = [
         Icon: LinkedInLogoIcon,
         link: "https://www.linkedin.com/in/viethoaduc",
     },
-    {
+    { 
         Icon: GitHubLogoIcon,
         link: "https://github.com/hoaducviet/Decentralized-Exchange",
     },

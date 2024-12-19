@@ -14,7 +14,7 @@ interface Props {
     addressReceiver?: Address | undefined;
     nft: NFT | undefined;
     gasEth: string;
-    newPrice?: string;
+    newPrice?: string; 
 }
 
 const addressMarket = process.env.NEXT_PUBLIC_ADDRESS_MARKET_NFT as Address

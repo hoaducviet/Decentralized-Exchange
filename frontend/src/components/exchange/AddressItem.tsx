@@ -6,6 +6,7 @@ interface Props {
     address: string;
     setAddress: Dispatch<SetStateAction<string>>;
     isEmail?: boolean;
+    
 }
 
 export default function AddressItem({ address, setAddress, isEmail = false }: Props) {

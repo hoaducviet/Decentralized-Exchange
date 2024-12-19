@@ -22,7 +22,7 @@ export default function TransferItem({ token1, token2, amount1, amount2, setAmou
     const handleClick = () => {
         if (ref.current) {
             ref.current.focus()
-        }
+        } 
     }
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAmount(e.target.value)

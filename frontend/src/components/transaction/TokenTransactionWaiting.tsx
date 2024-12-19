@@ -18,7 +18,7 @@ interface Props {
     value: string;
     gasEth: string;
 
-}
+} 
 
 export default function TokenTransactionWaiting({ children, handleSend, type, tokenOne, tokenTwo, address, addressReceiver, pool, value, gasEth }: Props) {
     const [open, setOpen] = useState(false)

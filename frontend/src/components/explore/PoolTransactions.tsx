@@ -11,7 +11,7 @@ interface Props {
     pool: Pool | undefined;
 }
 export default function PoolTransactions({ transactions, pool }: Props) {
-
+ 
     return (
         <Card className="flex flex-col w-full rounded-2xl border-[1px] shadow-md">
             <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center text-md font-semibold rounded-t-2xl h-[3vw] px-4">

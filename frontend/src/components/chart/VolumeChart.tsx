@@ -13,7 +13,7 @@ const chartConfig = {
         color: "hsl(var(--chart-1))",
     },
     transaction_count: {
-        label: "Transaction",
+        label: "Transaction", 
         color: "hsl(var(--chart-2))",
     },
 } satisfies ChartConfig

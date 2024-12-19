@@ -48,6 +48,4 @@ export const swapLimitPool = async ({ provider, signer, address, addressContract
     } catch {
         throw new Error("Failed to approve token 1");
     }
-
-
-}
+} 

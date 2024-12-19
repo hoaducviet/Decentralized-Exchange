@@ -17,7 +17,7 @@ interface Props {
     setPercent: Dispatch<SetStateAction<string>>;
     price: string;
 }
-
+ 
 type list = {
     name: string;
     value: string;

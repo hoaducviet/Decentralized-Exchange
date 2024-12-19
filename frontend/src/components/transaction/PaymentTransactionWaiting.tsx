@@ -14,7 +14,7 @@ interface Props {
     email: string;
     gasEth: string;
     currency?: string;
-}
+} 
 
 export default function PaymentTransactionWaiting({ children, handleSend, type, address, amount, currency = "USD", email, gasEth }: Props) {
     const [open, setOpen] = useState(false)

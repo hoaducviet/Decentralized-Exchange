@@ -25,7 +25,7 @@ interface Props {
     setAmount: Dispatch<SetStateAction<string>>;
     amount1: string;
     amount2: string;
-}
+} 
 
 export default function SellItem({ token, tokens, setToken, setAmount, amount1, amount2 }: Props) {
     const ref = useRef<HTMLInputElement>(null)

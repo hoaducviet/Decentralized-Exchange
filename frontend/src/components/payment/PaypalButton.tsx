@@ -12,7 +12,7 @@ const styles: PayPalButtonsComponentProps["style"] = {
     shape: "sharp",
     layout: "vertical",
     color: "gold",
-};
+}; 
 
 const displayOnly: PayPalButtonsComponentProps["displayOnly"] = ["vaultable"];
 

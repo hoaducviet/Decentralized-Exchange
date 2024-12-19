@@ -24,4 +24,4 @@ export default function NFTCards({ nfts, setNft, handleSend, address, isConnecte
             })}
         </div>
     )
-}
+} 

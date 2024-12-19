@@ -18,7 +18,7 @@ export default function PaymentTransactionOverview({ children, transaction }: Pr
         second: '2-digit',
         year: 'numeric',
         month: '2-digit',
-        day: '2-digit',
+        day: '2-digit', 
     });
     return (
         <Dialog open={open} onOpenChange={setOpen}>

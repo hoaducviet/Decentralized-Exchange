@@ -12,7 +12,7 @@ interface Props {
     token1: Token | undefined;
     token2: Token | undefined;
 }
-
+ 
 const chartConfig = {
     price: {
         label: "price",

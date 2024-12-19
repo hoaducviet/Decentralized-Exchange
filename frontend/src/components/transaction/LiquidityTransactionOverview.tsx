@@ -15,7 +15,7 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
 
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {
-        hour: '2-digit',
+        hour: '2-digit', 
         minute: '2-digit',
         second: '2-digit',
         year: 'numeric',

@@ -22,7 +22,7 @@ const AlertDialogOverlay = React.forwardRef<
       className
     )}
     {...props}
-    ref={ref}
+    ref={ref} 
   />
 ))
 AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName

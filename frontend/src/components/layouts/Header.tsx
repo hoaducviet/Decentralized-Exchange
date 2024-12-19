@@ -9,7 +9,7 @@ import SearchForm from "@/components/SearchForm"
 import ThemeMode from "@/components/ThemeMode"
 import NetworkBox from "@/components/NetworkBox"
 import { Button } from "@/components/ui/button"
-
+ 
 export default function Header() {
     const [isActive, setIsActive] = useState<number>(-1)
     return <div className="bg-transparent flex justify-between items-center h-16">
