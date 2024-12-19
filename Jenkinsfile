@@ -92,9 +92,9 @@ pipeline {
                 sshagent(['ssh-remote']) {
                     sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
                     cd DEX
-                    docker compose down || true
-                    docker rmi $(docker images -q)        
-                    docker compose up -d
+                    sudo docker compose down || true
+                    sudo docker rmi -f $(sudo docker images -q)        
+                    sudo docker compose up -d
                     "
                     '''
                 }
