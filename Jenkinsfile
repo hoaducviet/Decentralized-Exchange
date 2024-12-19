@@ -72,7 +72,7 @@ pipeline {
                                     remoteDirectory: 'DEX', 
                                     sourceFiles: 'server/docker-compose.yml, server/nginx.conf',
                                     execTimeout: 120000, 
-                                    flatten: false, 
+                                    flatten: true, 
                                     makeEmptyDirs: false, 
                                     noDefaultExcludes: false, 
                                     patternSeparator: '[, ]+', 
@@ -81,25 +81,25 @@ pipeline {
                             ], 
                             usePromotionTimestamp: false, 
                             useWorkspaceInPromotion: false, 
-                            verbose: false
+                            verbose: true
                         )
                     ]
                 )
             }
         }
-        // stage('Exec Command to SSH-Server') {
-        //     steps {
-        //         sshagent(['ssh-remote']) {
-        //             sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
-        //             cd DEX
-        //             docker compose down || true
-        //             docker rmi $(docker images -q)        
-        //             docker compose up -d
-        //             "
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Exec Command to SSH-Server') {
+            steps {
+                sshagent(['ssh-remote']) {
+                    sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
+                    cd DEX
+                    docker compose down || true
+                    docker rmi $(docker images -q)        
+                    docker compose up -d
+                    "
+                    '''
+                }
+            }
+        }
     }
     post {
         always {
