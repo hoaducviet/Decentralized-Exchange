@@ -1,0 +1,106 @@
+[
+  {
+    "name": "AzraGames - The Hopeful",
+    "symbol": "HOPE",
+    "number": 5555,
+    "base_url": "https://ipfs.io/ipfs/bafybeieldy3ybghe5aqtby6y62jahtetizhaagycem4dzgwofmphlkzsde/",
+    "end_url": ".json",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/HOPE.json"
+  },
+  {
+    "name": "Block Queens by Jeremy Cowart",
+    "symbol": "BQ",
+    "number": 999,
+    "base_url": "https://cowart.mypinata.cloud/ipfs/Qmdjay2myqgkkTJsvPdF1AM8JB5P2skh7MyQV1QzBpp5B5/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Block%20Queens.json"
+  },
+  {
+    "name": "Bored Ape Yacht Club",
+    "symbol": "BAYC",
+    "number": 9997,
+    "base_url": "https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/BoredApeYachtClub.json"
+  },
+  {
+    "name": "Captainz",
+    "symbol": "Captainz",
+    "number": 9999,
+    "base_url": "https://captainz-api.memeland.com/metadata/",
+    "end_url": ".json",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Captainz.json"
+  },
+  {
+    "name": "CloneX - X TAKASHI MURAKAMI",
+    "symbol": "CloneX",
+    "number": 19602,
+    "base_url": "https://clonex-assets.rtfkt.com/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/CloneX.json"
+  },
+  {
+    "name": "Cool Cats",
+    "symbol": "COOL",
+    "number": 999,
+    "base_url": "https://cowart.mypinata.cloud/ipfs/Qmdjay2myqgkkTJsvPdF1AM8JB5P2skh7MyQV1QzBpp5B5/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Cool%20Cats.json"
+  },
+  {
+    "name": "CryptoPunks",
+    "symbol": "Ͼ",
+    "number": 999,
+    "base_url": "Ͼ/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/CRYPTOPUNKS.json"
+  },
+  {
+    "name": "Doodles",
+    "symbol": "DOODLE",
+    "number": 9998,
+    "base_url": "https://ipfs.io/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Doodles.json"
+  },
+  {
+    "name": "Fijis",
+    "symbol": "FIJI",
+    "number": 3332,
+    "base_url": "https://fijis.io/metadata/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Fijis.json"
+  },
+  {
+    "name": "Mutan Ape Yacht Club",
+    "symbol": "MAYC",
+    "number": 19509,
+    "base_url": "https://boredapeyachtclub.com/api/mutants/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/MutantApeYachtClub.json"
+  },
+  {
+    "name": "Nyan Balloon",
+    "symbol": "NyanBall",
+    "number": 27,
+    "base_url": "https://arweave.net/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Nyan%20Balloon.json"
+  },
+  {
+    "name": "Pirate Nation - Founder's Pirate",
+    "symbol": "PIRATE",
+    "number": 9999,
+    "base_url": "https://api.proofofplay.gg/api/metadata/pirate/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Pirate.json"
+  },
+  {
+    "name": "Rumble Kong League",
+    "symbol": "RKL",
+    "number": 10000,
+    "base_url": "https://ipfs.io/ipfs/QmaWwYXk4WwAX6kMRzbQfhrit2mkiw8FYixo2ChbEwwHnh/",
+    "end_url": "",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/RumbleKongLeague.json"
+  }
+]
