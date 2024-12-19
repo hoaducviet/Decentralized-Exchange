@@ -98,7 +98,7 @@ services:
     networks:
       - DEX
     image: mongo:5.0
-    container_name: dex_rs_init
+    container_name: rs_init
     restart: 'no'
     depends_on:
       - mongo-primary
