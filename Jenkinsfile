@@ -60,19 +60,36 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Transfer file to SSH-Server') {
-            steps {
-                sshagent(['ssh-remote']) {
-                    sh '''
-                    scp -o StrictHostKeyChecking=no server/docker-compose.yml root@52.64.41.231:/home/ubuntu/DEX/
-                    scp -o StrictHostKeyChecking=no server/nginx.conf root@52.64.41.231:/home/ubuntu/DEX/
-                    '''
-                }
-            }
-        }
+        // stage('Transfer file to SSH-Server') {
+        //     steps {
+        //         sshPublisher(
+        //             publishers: [
+        //                 sshPublisherDesc(
+        //                     configName: 'remote-server', 
+        //                     transfers: [
+        //                         sshTransfer(
+        //                             cleanRemote: false, 
+        //                             remoteDirectory: 'home/ubuntu/DEX', 
+        //                             sourceFiles: 'server/docker-compose.yml, server/nginx.conf',
+        //                             execTimeout: 120000, 
+        //                             flatten: false, 
+        //                             makeEmptyDirs: false, 
+        //                             noDefaultExcludes: false, 
+        //                             patternSeparator: '[, ]+', 
+        //                             remoteDirectorySDF: false
+        //                         )
+        //                     ], 
+        //                     usePromotionTimestamp: false, 
+        //                     useWorkspaceInPromotion: false, 
+        //                     verbose: false
+        //                 )
+        //             ]
+        //         )
+        //     }
+        // }
         stage('Exec Command to SSH-Server') {
             steps {
-                sshagent(['ssh-remote']) {
+                sshagent(['ssh_remote']) {
                     sh '''ssh -o StrictHostKeyChecking=no root@52.64.41.231 "
                     cd DEX
                     docker compose down || true
