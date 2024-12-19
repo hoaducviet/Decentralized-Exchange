@@ -62,7 +62,7 @@ pipeline {
         // }
         stage('Transfer file to SSH-Server') {
             steps {
-                sshagent(['ssh_remote']) {
+                sshagent(['ssh-remote']) {
                     sh '''
                     scp -o StrictHostKeyChecking=no server/docker-compose.yml root@52.64.41.231:/home/ubuntu/DEX/
                     scp -o StrictHostKeyChecking=no server/nginx.conf root@52.64.41.231:/home/ubuntu/DEX/
@@ -72,7 +72,7 @@ pipeline {
         }
         stage('Exec Command to SSH-Server') {
             steps {
-                sshagent(['ssh_remote']) {
+                sshagent(['ssh-remote']) {
                     sh '''ssh -o StrictHostKeyChecking=no root@52.64.41.231 "
                     cd DEX
                     docker compose down || true
