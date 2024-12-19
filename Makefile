@@ -1,8 +1,9 @@
 connect:
-	ssh -i ~/ssh/exchange.pem ubuntu@52.64.41.231
+	ssh -i ~/ssh/exchange.pem ubuntu@3.1.101.226
 
-jenkin:
-	ssh -i ~/ssh/Jenkin-singapore.pem ubuntu@47.129.219.201
+connect2:
+	ssh -i ~/ssh/id_rsa ubuntu@3.1.101.226
+
 
 transfer:
-	scp -i ~/ssh/Jenkin-singapore.pem ~/ssh/docker-compose.yml  ubuntu@47.129.219.201:/home/ubuntu/jenkin
+	scp -i ~/ssh/exchange.pem ~/ssh/id_rsa.pub  ubuntu@3.1.101.226:/home/ubuntu/.ssh

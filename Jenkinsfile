@@ -60,37 +60,37 @@ pipeline {
         //         }
         //     }
         // }
-        // stage('Transfer file to SSH-Server') {
-        //     steps {
-        //         sshPublisher(
-        //             publishers: [
-        //                 sshPublisherDesc(
-        //                     configName: 'remote-server', 
-        //                     transfers: [
-        //                         sshTransfer(
-        //                             cleanRemote: false, 
-        //                             remoteDirectory: 'home/ubuntu/DEX', 
-        //                             sourceFiles: 'server/docker-compose.yml, server/nginx.conf',
-        //                             execTimeout: 120000, 
-        //                             flatten: false, 
-        //                             makeEmptyDirs: false, 
-        //                             noDefaultExcludes: false, 
-        //                             patternSeparator: '[, ]+', 
-        //                             remoteDirectorySDF: false
-        //                         )
-        //                     ], 
-        //                     usePromotionTimestamp: false, 
-        //                     useWorkspaceInPromotion: false, 
-        //                     verbose: false
-        //                 )
-        //             ]
-        //         )
-        //     }
-        // }
+        stage('Transfer file to SSH-Server') {
+            steps {
+                sshPublisher(
+                    publishers: [
+                        sshPublisherDesc(
+                            configName: 'remote-server', 
+                            transfers: [
+                                sshTransfer(
+                                    cleanRemote: false, 
+                                    remoteDirectory: 'home/ubuntu/DEX', 
+                                    sourceFiles: 'server/docker-compose.yml, server/nginx.conf',
+                                    execTimeout: 120000, 
+                                    flatten: false, 
+                                    makeEmptyDirs: false, 
+                                    noDefaultExcludes: false, 
+                                    patternSeparator: '[, ]+', 
+                                    remoteDirectorySDF: false
+                                )
+                            ], 
+                            usePromotionTimestamp: false, 
+                            useWorkspaceInPromotion: false, 
+                            verbose: false
+                        )
+                    ]
+                )
+            }
+        }
         stage('Exec Command to SSH-Server') {
             steps {
                 sshagent(['ssh-remote']) {
-                    sh '''ssh -o StrictHostKeyChecking=no root@52.64.41.231 "
+                    sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
                     cd DEX
                     docker compose down || true
                     docker rmi $(docker images -q)        
