@@ -62,29 +62,12 @@ pipeline {
         // }
         stage('Transfer file to SSH-Server') {
             steps {
-                sshPublisher(
-                    publishers: [
-                        sshPublisherDesc(
-                            configName: 'remote-server', 
-                            transfers: [
-                                sshTransfer(
-                                    cleanRemote: false, 
-                                    remoteDirectory: 'DEX', 
-                                    sourceFiles: 'server/docker-compose.yml, server/nginx.conf',
-                                    execTimeout: 120000, 
-                                    flatten: false, 
-                                    makeEmptyDirs: false, 
-                                    noDefaultExcludes: false, 
-                                    patternSeparator: '[, ]+', 
-                                    remoteDirectorySDF: false
-                                )
-                            ], 
-                            usePromotionTimestamp: false, 
-                            useWorkspaceInPromotion: false, 
-                            verbose: false
-                        )
-                    ]
-                )
+                sshagent(['ssh_remote']) {
+                    sh '''
+                    scp -o StrictHostKeyChecking=no server/docker-compose.yml root@52.64.41.231:/root/DEX/
+                    scp -o StrictHostKeyChecking=no server/nginx.conf root@52.64.41.231:/root/DEX/
+                    '''
+                }
             }
         }
         stage('Exec Command to SSH-Server') {
