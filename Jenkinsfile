@@ -89,7 +89,7 @@ pipeline {
         // }
         stage('Exec Command to SSH-Server') {
             steps {
-                sshagent(['ssh_remote']) {
+                sshagent(['ssh-remote']) {
                     sh '''ssh -o StrictHostKeyChecking=no root@52.64.41.231 "
                     cd DEX
                     docker compose down || true
