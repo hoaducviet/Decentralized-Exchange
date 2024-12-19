@@ -91,8 +91,8 @@ pipeline {
             steps {
                 sshagent(['ssh-remote']) {
                     sh '''ssh -o StrictHostKeyChecking=no ubuntu@3.1.101.226 "
-                    cd DEX &&
-                    sudo docker compose down || true &&
+                    cd DEX
+                    sudo docker compose down || true
                     sudo docker system prune -a 
                     sudo docker compose up -d
                     "
