@@ -61,20 +61,20 @@
   },
   {
     "address": "0xEa85E71BC7F2ed5a96A9e90F47aeB8c12ad328AC",
+    "name": "Rumble Kong League",
+    "symbol": "RKL",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/RumbleKongLeague.json"
+  },
+  {
+    "address": "0x89a51cD8bb0b0d15B8c7C6a206f5010A69739538",
     "name": "Nyan Balloon",
     "symbol": "NyanBall",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Nyan%20Balloon.json"
   },
   {
-    "address": "0x89a51cD8bb0b0d15B8c7C6a206f5010A69739538",
+    "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
     "name": "Pirate Nation - Founder's Pirate",
     "symbol": "PIRATE",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Pirate.json"
-  },
-  {
-    "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
-    "name": "Rumble Kong League",
-    "symbol": "RKL",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/RumbleKongLeague.json"
   }
 ]

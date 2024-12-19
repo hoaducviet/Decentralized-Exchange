@@ -69,8 +69,8 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    # volumes:
-    #   - mongodb-primary:/data/db
+    volumes:
+      - mongodb-primary:/data/db
   
   mongo-secondary1:
     networks:
@@ -83,8 +83,8 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    # volumes:
-    #   - mongodb-secondary1:/data/db
+    volumes:
+      - mongodb-secondary1:/data/db
 
   mongo-secondary2:
     networks:
@@ -97,8 +97,8 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    # volumes:
-    #   - mongodb-secondary2:/data/db
+    volumes:
+      - mongodb-secondary2:/data/db
   
   rs-init:
     networks:
@@ -132,8 +132,8 @@ networks:
   DEX:
     driver: bridge
 
-# volumes:
-#   mongodb-primary:
-#   mongodb-secondary1:
-#   mongodb-secondary2:
+volumes:
+  mongodb-primary:
+  mongodb-secondary1:
+  mongodb-secondary2:
 
