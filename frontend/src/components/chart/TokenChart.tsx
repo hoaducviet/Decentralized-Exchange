@@ -51,7 +51,7 @@ export default function TokenChart({ prices, token }: Props) {
                         </div>
                     }</div>
                 </div>
-                <div className="text-[2vw] mx-[0.5vw] font-medium">${parseFloat(token?.price ?? "").toFixed(2)}</div>
+                <div className="text-[2vw] mx-[0.5vw] font-medium">${parseFloat(token?.price ?? "").toFixed(6)}</div>
                 <CardDescription>
                     The prices last month
                 </CardDescription>
