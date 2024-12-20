@@ -191,7 +191,7 @@ export default function Payment() {
                                                 </DialogHeader>
                                                 <div className=' flex flex-col justify-center items-center w-full'>
                                                     <div className='flex flex-row w-full space-x-[1vw]'>
-                                                        <div className='flex w-[40%]'>
+                                                        <div className='flex w-[50%]'>
                                                             <Image src={qrCode ? `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrCode)}&size=70x70` : "/image/default-image.png"} alt='qrcode' width={20} height={20} className='w-full h-full' />
                                                         </div>
                                                         <div className='flex flex-col justify-between w-[60%]'>
