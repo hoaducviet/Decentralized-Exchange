@@ -15,27 +15,41 @@ const cancelOrderTask = cron.schedule("*/30 * * * *", async () => {
   await OrderController.cancelOrderAuto();
 });
 
+const auto = 1;
+
 async function schedule() {
   task.start();
   cancelOrderTask.start();
 
-  // setInterval(async () => {
-  //   try {
-  //     await exchangeTokenAuto();
-  //   } catch (error) {
-  //     console.error("Error in exchangeTokenAuto:", error);
-  //   }
-  // }, 15000);
+  setInterval(async () => {
+    if (auto === 1) {
+      try {
+        await exchangeTokenAuto();
+      } catch (error) {
+        console.error("Error in exchangeTokenAuto:", error);
+      }
+    }
+  }, 5000);
 
-  // await new Promise((resolve) => setTimeout(resolve, 7500));
+  if (auto === 2) {
+    setInterval(async () => {
+      try {
+        await exchangeTokenAuto();
+      } catch (error) {
+        console.error("Error in exchangeTokenAuto:", error);
+      }
+    }, 15000);
 
-  // setInterval(async () => {
-  //   try {
-  //     await exchangeLiquidityAuto();
-  //   } catch (error) {
-  //     console.error("Error in exchangeLiquidityAuto:", error);
-  //   }
-  // }, 15000);
+    await new Promise((resolve) => setTimeout(resolve, 7500));
+
+    setInterval(async () => {
+      try {
+        await exchangeLiquidityAuto();
+      } catch (error) {
+        console.error("Error in exchangeLiquidityAuto:", error);
+      }
+    }, 15000);
+  }
 }
 
 module.exports = schedule;

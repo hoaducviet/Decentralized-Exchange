@@ -3,7 +3,7 @@
     "name": "AzraGames - The Hopeful",
     "symbol": "HOPE",
     "number": 5555,
-    "base_url": "https://ipfs.io/ipfs/bafybeieldy3ybghe5aqtby6y62jahtetizhaagycem4dzgwofmphlkzsde/",
+    "base_url": "https://ipfs.moralis.io:2053/ipfs/bafybeieldy3ybghe5aqtby6y62jahtetizhaagycem4dzgwofmphlkzsde/",
     "end_url": ".json",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/HOPE.json"
   },
@@ -19,7 +19,7 @@
     "name": "Bored Ape Yacht Club",
     "symbol": "BAYC",
     "number": 9997,
-    "base_url": "https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/",
+    "base_url": "https://ipfs.moralis.io:2053/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/",
     "end_url": "",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/BoredApeYachtClub.json"
   },
@@ -43,7 +43,7 @@
     "name": "Cool Cats",
     "symbol": "COOL",
     "number": 999,
-    "base_url": "https://cowart.mypinata.cloud/ipfs/Qmdjay2myqgkkTJsvPdF1AM8JB5P2skh7MyQV1QzBpp5B5/",
+    "base_url": "https://api.coolcatsnft.com/cat/",
     "end_url": "",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Cool%20Cats.json"
   },
@@ -59,7 +59,7 @@
     "name": "Doodles",
     "symbol": "DOODLE",
     "number": 9998,
-    "base_url": "https://ipfs.io/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/",
+    "base_url": "https://ipfs.moralis.io:2053/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/",
     "end_url": "",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Doodles.json"
   },
@@ -99,7 +99,7 @@
     "name": "Rumble Kong League",
     "symbol": "RKL",
     "number": 10000,
-    "base_url": "https://ipfs.io/ipfs/QmaWwYXk4WwAX6kMRzbQfhrit2mkiw8FYixo2ChbEwwHnh/",
+    "base_url": "https://ipfs.moralis.io:2053/ipfs/QmaWwYXk4WwAX6kMRzbQfhrit2mkiw8FYixo2ChbEwwHnh/",
     "end_url": "",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/RumbleKongLeague.json"
   }

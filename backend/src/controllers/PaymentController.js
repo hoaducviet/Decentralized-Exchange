@@ -41,11 +41,11 @@ class PaymentController {
       if (confirmedReceipt?.status !== 1) {
         return res.status(500).json({ message: "Withdraw failer" });
       }
-      console.log("Receipt withdraw:", receipt.hash);
       const response = await UsdTransaction.findByIdAndUpdate(
         transaction._id,
         {
           order_id: payout.batch_header.payout_batch_id,
+          platform_fee: (parseFloat(value) * 0.03).toString(),
           gas_fee: formatEther(
             confirmedReceipt.gasPrice * confirmedReceipt.gasUsed
           ),
@@ -97,23 +97,41 @@ class PaymentController {
     try {
       console.log("Deposit");
       const transaction = req.body;
-
       if (!transaction) {
         return res.status(404).json({ message: "Erorr" });
+      }
+
+      const receipt = await depositUSD(
+        transaction.wallet,
+        transaction.amount,
+        transaction.percent_eth
+      );
+      const confirmedReceipt = await wallet.provider.waitForTransaction(
+        receipt.hash
+      );
+
+      if (confirmedReceipt?.status !== 1) {
+        await new UsdTransaction({
+          type: "Payment",
+          method: "Paypal",
+          ...transaction,
+          status: "Failed",
+        }).save();
+        return;
       }
 
       const result = await new UsdTransaction({
         type: "Payment",
         method: "Paypal",
-        wallet: transaction.wallet,
-        amount: transaction.amount,
-        currency: transaction.currency,
-        order_id: transaction.order_id,
-        invoice_id: transaction.invoice_id,
-        payer_email: transaction.payer_email,
-        payee_email: transaction.payee_email,
-        percent_eth: transaction.percent_eth,
-        status: "Pending",
+        ...transaction,
+        platform_fee:
+          parseFloat(transaction.amount) *
+          (0.03 + 0.02 * parseFloat(transaction.percent_eth)),
+        gas_fee: formatEther(
+          confirmedReceipt.gasPrice * confirmedReceipt.gasUsed
+        ),
+        receipt_hash: receipt.hash,
+        status: "Completed",
       }).save();
 
       return res.status(200).json({
@@ -122,68 +140,6 @@ class PaymentController {
       });
     } catch (error) {
       console.error("Error avatar:", error.message);
-    }
-  }
-
-  async webhook(req, res) {
-    const eventBody = req.body;
-    res.status(200).send("Received");
-    console.log(eventBody);
-
-    if (
-      eventBody.event_type === "PAYMENT.CAPTURE.COMPLETED" &&
-      eventBody.resource.status === "COMPLETED" &&
-      ethers.isAddress(eventBody.resource.custom_id) &&
-      parseFloat(eventBody.resource.amount.value) > 0 &&
-      eventBody.resource.amount.currency_code === "USD"
-    ) {
-      try {
-        console.log("Update deposit");
-        const transaction = await UsdTransaction.findOne({
-          invoice_id: eventBody.resource.invoice_id,
-        });
-
-        const receipt = await depositUSD(
-          eventBody.resource.custom_id,
-          eventBody.resource.amount.value,
-          transaction.percent_eth
-        );
-        console.log("Hash: ", receipt.hash);
-        console.log("Address: ", eventBody.resource.custom_id);
-
-        const confirmedReceipt = await wallet.provider.waitForTransaction(
-          receipt.hash
-        );
-
-        if (confirmedReceipt?.status !== 1) {
-          return;
-        }
-        const response = await UsdTransaction.findOneAndUpdate(
-          { invoice_id: eventBody.resource.invoice_id },
-          {
-            gas_fee: formatEther(
-              confirmedReceipt.gasPrice * confirmedReceipt.gasUsed
-            ),
-            receipt_hash: confirmedReceipt.hash,
-            status: "Completed",
-            notes: eventBody.summary,
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-        console.log("Status: ", response.status);
-      } catch (error) {
-        console.log(error);
-        await UsdTransaction.updateOne(
-          { invoice_id: eventBody.resource.invoice_id },
-          {
-            status: "Failed",
-            notes: eventBody.summary,
-          }
-        );
-      }
     }
   }
 

@@ -32,7 +32,7 @@ const UsdTransaction = new Schema(
     percent_eth: { type: String, required: false },
     gas_fee: { type: String, required: false, default: "" },
     network_fee: { type: String, required: false, default: "" },
-    platform_fee: { type: String, required: false, default: "0.3%" },
+    platform_fee: { type: String, required: false, default: "" },
     receipt_hash: {
       type: String,
       required: function () {
