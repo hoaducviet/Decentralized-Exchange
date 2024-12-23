@@ -25,13 +25,13 @@ pipeline {
         
                         }
                     }
-                    dir('frontend') {
-                        // Chuyển vào thư mục frontend và build Docker image
-                        script {
-                            sh "docker build -t $DOCKER_IMAGE_FRONTEND:${timestamp} --platform linux/amd64 ."
-                            sh "docker tag $DOCKER_IMAGE_FRONTEND:${timestamp} $DOCKER_IMAGE_FRONTEND:latest || true"
-                        }
-                    }
+                    // dir('frontend') {
+                    //     // Chuyển vào thư mục frontend và build Docker image
+                    //     script {
+                    //         sh "docker build -t $DOCKER_IMAGE_FRONTEND:${timestamp} --platform linux/amd64 ."
+                    //         sh "docker tag $DOCKER_IMAGE_FRONTEND:${timestamp} $DOCKER_IMAGE_FRONTEND:latest || true"
+                    //     }
+                    // }
 
                     // dir('contract') {
                     //     // Chuyển vào thư mục contract và build Docker image
@@ -50,10 +50,10 @@ pipeline {
                 // This step should not normally be used in your script. Consult the inline help for details.
                 withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
                     script{
-                        sh "docker push $DOCKER_IMAGE_FRONTEND:${timestamp} || true"
+                        // sh "docker push $DOCKER_IMAGE_FRONTEND:${timestamp} || true"
                         sh "docker push $DOCKER_IMAGE_BACKEND:${timestamp} || true"
                         // sh "docker push $DOCKER_IMAGE_CONTRACT:${timestamp} || true"
-                        sh "docker push $DOCKER_IMAGE_FRONTEND:latest"
+                        // sh "docker push $DOCKER_IMAGE_FRONTEND:latest"
                         sh "docker push $DOCKER_IMAGE_BACKEND:latest"
                         // sh "docker push $DOCKER_IMAGE_CONTRACT:latest"
                     }

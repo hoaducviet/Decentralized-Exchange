@@ -657,7 +657,15 @@ class TransactionController {
         {
           $project: {
             date: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
-            price: { $toDouble: "$price" },
+            price: {
+              $toDouble: {
+                $cond: {
+                  if: { $eq: [{ $trim: { input: "$price" } }, "0"] }, // Kiểm tra nếu giá trị là chuỗi "0"
+                  then: 0, // Nếu đúng, chuyển thành 0
+                  else: { $toDouble: { $ifNull: ["$price", 0] } }, // Nếu không, thực hiện chuyển đổi thành số thực
+                },
+              },
+            },
             type: 1,
           },
         },
@@ -669,7 +677,9 @@ class TransactionController {
                 $cond: [
                   { $eq: ["$type", "Add Liquidity"] },
                   "$price",
-                  { $multiply: ["$price", -1] },
+                  {
+                    $multiply: ["$price", -1],
+                  },
                 ],
               },
             },
@@ -686,7 +696,7 @@ class TransactionController {
           $sort: { date: 1 },
         },
       ]);
-
+      console.log(tvls);
       let cumulativeTVL = 0;
       const results = tvls.map((item) => {
         cumulativeTVL += item.tvl;
@@ -699,7 +709,7 @@ class TransactionController {
       if (!results.length) {
         return res.status(404).json({ message: "Volume's nft is null" });
       }
-      return res.status(200).json(results);
+      return res.status(200).json(results.slice(0, 30));
     } catch (error) {
       console.error("Error transaction:", error.message);
       return res.status(500).json({ message: "Internal server error get tvl" });

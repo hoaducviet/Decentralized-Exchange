@@ -8,8 +8,8 @@ async function getPriceLiquidityTransaction(token1, token2, amount1, amount2) {
     .sort({ createdAt: -1 })
     .exec();
   return (
-    parseFloat(amount1) * parseFloat(token1Price.price) +
-    parseFloat(amount2) * parseFloat(token2Price.price)
+    parseFloat(amount1 || "") * parseFloat(token1Price.price || "") +
+    parseFloat(amount2 || "") * parseFloat(token2Price.price || "")
   ).toString();
 }
 
