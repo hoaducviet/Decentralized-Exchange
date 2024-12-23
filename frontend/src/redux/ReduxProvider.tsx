@@ -14,4 +14,4 @@ export function ReduxProvider({ children }: ProvidersProps) {
             {children}
         </Provider>
     )
-}
+} 

@@ -26,7 +26,7 @@ const SheetOverlay = React.forwardRef<
     )}
     {...props}
     ref={ref}
-  />
+  /> 
 ))
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 

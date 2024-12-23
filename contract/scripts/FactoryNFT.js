@@ -5,7 +5,6 @@ const collectionsBuild = require("../assets/collectionsBuild.json");
 
 async function main() {
   const { factoryNFT } = await hre.ignition.deploy(FactoryNFT);
-  console.log(`Factory NFT deployed to: ${await factoryNFT.getAddress()}`);
 
   await Promise.all(
     collectionsBuild.map(async ({ name, symbol, uri, base_url }) => {

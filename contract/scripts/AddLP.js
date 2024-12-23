@@ -1,9 +1,12 @@
 const { ethers } = require("hardhat");
+const addresses = require("../ignition/deployments/chain-31337/deployed_addresses.json");
 const pools = require("../assets/pools.json");
 const tokensAll = require("../assets/tokens.json");
 const eth = require("../assets/eth.json");
 const tokens = [eth, ...tokensAll];
 const variable = 10;
+
+console.log(addresses);
 
 async function main() {
   await Promise.all(

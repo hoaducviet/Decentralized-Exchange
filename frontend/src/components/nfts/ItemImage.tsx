@@ -24,4 +24,4 @@ export default function ItemImage({ nft }: Props) {
             </CardContent>
         </Card>
     )
-}
+} 

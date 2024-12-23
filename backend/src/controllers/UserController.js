@@ -1,4 +1,3 @@
-const User = require("../models/User");
 const TokenController = require("./TokenController.js");
 const OrderController = require("./OrderController.js");
 

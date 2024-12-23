@@ -8,11 +8,11 @@ import { NFTActiveTransaction, ReservePool } from "@/lib/type"
 interface Props {
     listed: NFTActiveTransaction[] | [];
     UsdEth: ReservePool | undefined;
-}
+} 
 
 const options = ['Price', 'USD Price', 'Quantity', 'Expiration', 'From', '']
 export default function ItemListings({ listed, UsdEth }: Props) {
-
+ 
     return (
         <Card className="rounded-2xl my-0">
             <CardHeader className="my-0 py-4 rounded-t-2xl text-md font-semibold border-b-[1px]">

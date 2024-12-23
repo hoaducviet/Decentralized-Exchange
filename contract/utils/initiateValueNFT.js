@@ -1,12 +1,14 @@
 const { ethers } = require("hardhat");
-const addressFactoryNft = process.env.ADDRESS_FACTORY_NFT;
-const addressMarketNft = process.env.ADDRESS_MARKET_NFT;
+const addresses = require("../ignition/deployments/chain-31337/deployed_addresses.json");
 
 async function initiateValueNFT(nfts, collection) {
-  const contract = await ethers.getContractAt("FactoryNFT", addressFactoryNft);
+  const contract = await ethers.getContractAt(
+    "FactoryNFT",
+    addresses["FactoryNFT#FactoryNFT"]
+  );
   const martketContract = await ethers.getContractAt(
     "MarketNFT",
-    addressMarketNft
+    addresses["MarketNFT#MarketNFT"]
   );
   const contractCollection = await ethers.getContractAt(
     "NFTCollection",
@@ -25,7 +27,10 @@ async function initiateValueNFT(nfts, collection) {
     }
   }
   await new Promise((resolve) => setTimeout(resolve, 5000));
-  await contractCollection.setApprovalForAll(addressMarketNft, true);
+  await contractCollection.setApprovalForAll(
+    addresses["MarketNFT#MarketNFT"],
+    true
+  );
 
   // // Cấp quyền thi hành cho market
   const counter = await contractCollection.counter();

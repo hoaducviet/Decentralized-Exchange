@@ -11,4 +11,4 @@ export default function SubmitItem({ name, isChecked }: Props) {
             <div className={`flex flex-col rounded-2xl justify-center items-center w-full h-full text-xl ${isChecked ? "bg-blue-400 text-white" : "bg-secondary/80"}`}>{name}</div>
         </Card>
     )
-}
+} 

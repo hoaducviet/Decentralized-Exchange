@@ -5,8 +5,8 @@ const FactoryToken = require("../ignition/modules/FactoryToken");
 const tokensBuild = require("../assets/tokensBuild.json");
 
 async function main() {
+  const accounts = await hre.network.provider.send("eth_accounts", []);
   const { factoryToken } = await hre.ignition.deploy(FactoryToken);
-  console.log(`Factory deployed to: ${await factoryToken.getAddress()}`);
 
   await Promise.all(
     tokensBuild.map(async (token) => {
@@ -15,7 +15,7 @@ async function main() {
         token.ticker,
         token.img,
         token.decimals,
-        process.env.ACCOUT_ADDRESS_HARDHAT,
+        accounts[0],
         ethers.parseUnits("90000000000", token.decimals)
       ); // Gọi hàm launch
       await receipt.wait(); // Chờ giao dịch hoàn thành

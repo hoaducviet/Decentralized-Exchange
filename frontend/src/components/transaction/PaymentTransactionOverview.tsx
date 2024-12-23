@@ -18,7 +18,7 @@ export default function PaymentTransactionOverview({ children, transaction }: Pr
         second: '2-digit',
         year: 'numeric',
         month: '2-digit',
-        day: '2-digit',
+        day: '2-digit', 
     });
     return (
         <Dialog open={open} onOpenChange={setOpen}>
@@ -59,10 +59,10 @@ export default function PaymentTransactionOverview({ children, transaction }: Pr
                             <p>{transaction.payee_email}</p>
                         </div>
                         <div className="flex flex-row justify-between items-start">
-                            <p>Platform fee (0.3%)</p>
+                            <p>Platform fee (3%)</p>
                             <div className="flex flex-col">
                                 <div className="flex flex-row space-x-1 justify-end">
-                                    <p>{`$${parseFloat(transaction.platform_fee || "")?.toFixed(6)}`}</p>
+                                    <p>{`$${parseFloat(transaction.platform_fee || "")?.toFixed(2)}`}</p>
                                     <p className="font-semibold">{transaction.currency}</p>
                                 </div>
                             </div>

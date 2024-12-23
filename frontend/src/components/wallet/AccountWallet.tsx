@@ -23,7 +23,7 @@ export default function Account() {
       </Avatar>
       <div className='flex items-center'>
         {ensName ? (
-          <div className='flex flew-col'>
+          <div className='flex flew-col'> 
             <div className='w-full'>
               {ensName}
             </div>

@@ -12,7 +12,7 @@ interface Props {
 
 const headers = ["Time", "Type", "From", "To", "USD", "Wallet"]
 export default function TokenTransactions({ transactions, symbol }: Props) {
-
+ 
     return (
         <Card className="flex flex-col w-full rounded-2xl border-[1px] shadow-md">
             <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center text-md font-semibold rounded-t-2xl h-[3vw] px-4">

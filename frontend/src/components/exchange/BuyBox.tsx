@@ -12,7 +12,7 @@ import { ReservePool, Token } from "@/lib/type"
 import { skipToken } from '@reduxjs/toolkit/query'
 import TokenTransactionWaiting from '@/components/transaction/TokenTransactionWaiting'
 import { useGasSwapToken } from '@/hooks/useGas'
-
+ 
 export default function BuyBox() {
     const { isConnected, address } = useAccount()
     const web3 = useWeb3()

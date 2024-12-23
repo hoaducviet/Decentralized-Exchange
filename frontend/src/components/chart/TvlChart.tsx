@@ -7,7 +7,7 @@ import { formatPrice } from "@/utils/formatPrice"
 import { TVL } from '@/lib/type'
 export const description = "A linear area chart"
 
-interface Props {
+interface Props { 
     tvls: TVL[];
 }
 

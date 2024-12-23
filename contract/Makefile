@@ -40,6 +40,8 @@ rund:
 	npx hardhat run ./scripts/AddLP.js
 
 
+
+
 copy:
 	cp ./artifacts/contracts/*/*.json ../frontend/src/artifacts
 	cp ./artifacts/contracts/*/*.json ../backend/src/artifacts

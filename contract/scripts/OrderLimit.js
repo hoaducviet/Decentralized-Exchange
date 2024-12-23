@@ -4,7 +4,6 @@ const OrderLimit = require("../ignition/modules/OrderLimit");
 async function main() {
   const { orderLimit } = await hre.ignition.deploy(OrderLimit);
   const contractAddress = await orderLimit.getAddress();
-  console.log(`Order limit deployed to: ${contractAddress}`);
 
   const [sender] = await hre.ethers.getSigners();
   const tx = await sender.sendTransaction({

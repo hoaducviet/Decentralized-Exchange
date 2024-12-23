@@ -14,7 +14,7 @@ interface Props {
     email: string;
     gasEth: string;
     currency?: string;
-}
+} 
 
 export default function PaymentTransactionWaiting({ children, handleSend, type, address, amount, currency = "USD", email, gasEth }: Props) {
     const [open, setOpen] = useState(false)
@@ -60,9 +60,9 @@ export default function PaymentTransactionWaiting({ children, handleSend, type, 
                             </div>
                         </div>
                         <div className="flex flex-row justify-between items-start">
-                            <p>Platform fee (0.3%)</p>
+                            <p>Platform fee (3%)</p>
                             <div className="flex flex-row space-x-1 justify-end">
-                                <p>{`$${(parseFloat(amount) * 0.3 / 100).toFixed(6)}`}</p>
+                                <p>{`$${(parseFloat(amount) * 3 / 100).toFixed(2)}`}</p>
                                 <p className="font-semibold">{currency}</p>
                             </div>
                         </div>

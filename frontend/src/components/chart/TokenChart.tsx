@@ -12,7 +12,7 @@ export const description = "A simple area chart"
 const chartConfig = {
     price: {
         label: "Price",
-        color: "hsl(var(--chart-1))",
+        color: "hsl(var(--chart-1))", 
     },
 } satisfies ChartConfig
 
@@ -51,7 +51,7 @@ export default function TokenChart({ prices, token }: Props) {
                         </div>
                     }</div>
                 </div>
-                <div className="text-[2vw] mx-[0.5vw] font-medium">${parseFloat(token?.price ?? "").toFixed(2)}</div>
+                <div className="text-[2vw] mx-[0.5vw] font-medium">${parseFloat(token?.price ?? "").toFixed(6)}</div>
                 <CardDescription>
                     The prices last month
                 </CardDescription>

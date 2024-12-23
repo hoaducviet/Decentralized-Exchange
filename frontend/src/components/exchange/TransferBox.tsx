@@ -17,7 +17,7 @@ import SubmitItem from "@/components/exchange/SubmitItem"
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { Token, Address } from '@/lib/type'
 import TokenTransactionWaiting from '@/components/transaction/TokenTransactionWaiting';
-import { useGasTransferToken } from '@/hooks/useGas'
+import { useGasTransferToken } from '@/hooks/useGas' 
 
 export default function TransferBox() {
     const { isConnected, address } = useAccount()

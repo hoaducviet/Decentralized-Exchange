@@ -18,7 +18,7 @@ export default function OrderLimitTransaction({ children, transaction }: Props) 
         console.log("Withdraw")
         await cancelOrder({ order_id: transaction.order_id })
         setOpen(false)
-    }
+    } 
 
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {

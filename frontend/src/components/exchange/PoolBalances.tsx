@@ -14,7 +14,7 @@ import { useToast } from '@/hooks/useToast'
 import LiquidityTransactionWaiting from "@/components/transaction/LiquidityTransactionWaiting"
 import { useGasRemoveLiquidity } from "@/hooks/useGas"
 import { skipToken } from "@reduxjs/toolkit/query"
-
+  
 const headers = [
     { name: "#" },
     { name: "Pool" },

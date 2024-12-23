@@ -15,11 +15,11 @@ import { ReservePool, Token } from "@/lib/type"
 import TokenTransactionWaiting from "@/components/transaction/TokenTransactionWaiting"
 import { useGasSwapToken } from "@/hooks/useGas"
 
-export default function SwapBox() {
+export default function SwapBox() { 
     const { isConnected, address } = useAccount()
     const web3 = useWeb3()
     const provider = web3?.provider
-    const signer = web3?.signer
+    const signer = web3?.signer 
     const { showError } = useToast()
     const { data: allTokens, isFetching: isFetchingToken } = useGetTokensQuery()
     const { data: tokenBalances } = useGetTokenBalancesQuery(address ?? skipToken)

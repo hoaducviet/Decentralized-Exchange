@@ -7,9 +7,6 @@ async function main() {
   const { factoryLiquidityPool } = await hre.ignition.deploy(
     FactoryLiquidityPool
   );
-  console.log(
-    `Factory deployed to: ${await factoryLiquidityPool.getAddress()}`
-  );
 
   await Promise.all(
     tokens.map(async (token, index) => {

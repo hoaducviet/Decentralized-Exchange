@@ -28,7 +28,7 @@ export default function ItemPriceHistory({ prices }: Props) {
                     <div>Price History</div>
                 </CardTitle>
             </CardHeader>
-            {prices.length ?
+            {prices.length ? 
                 <CardContent className="py-3 px-0">
                     <ChartContainer config={chartConfig}>
                         <LineChart

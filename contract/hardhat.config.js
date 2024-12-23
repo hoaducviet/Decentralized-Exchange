@@ -22,7 +22,7 @@ task("envtest", async (taskArgs, hre) => {
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  defaultNetwork: "localhost",
+  defaultNetwork: process.env.DEFAULT_NETWORK || "localhost",
   networks: {
     localhost: {
       url: "http://127.0.0.1:8545",

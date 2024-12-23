@@ -72,17 +72,16 @@ pipeline {
                                     remoteDirectory: 'DEX', 
                                     sourceFiles: 'server/docker-compose.yml, server/nginx.conf',
                                     execTimeout: 120000, 
-                                    flatten: false, 
+                                    flatten: true, 
                                     makeEmptyDirs: false, 
                                     noDefaultExcludes: false, 
                                     patternSeparator: '[, ]+', 
-                                    remoteDirectorySDF: false,
-                                    
+                                    remoteDirectorySDF: false
                                 )
                             ], 
                             usePromotionTimestamp: false, 
                             useWorkspaceInPromotion: false, 
-                            verbose: false
+                            verbose: true
                         )
                     ]
                 )
@@ -90,12 +89,14 @@ pipeline {
         }
         stage('Exec Command to SSH-Server') {
             steps {
-                sshagent(['ssh_remote']) {
-                    sh '''ssh -o StrictHostKeyChecking=no root@52.64.41.231 "
+                sshagent(['ssh-remote']) {
+                    sh '''ssh -o StrictHostKeyChecking=no ubuntu@54.179.238.210 "
                     cd DEX
-                    docker compose down || true
-                    docker rmi $(docker images -q)        
-                    docker compose up -d
+                    sudo docker compose down || true
+                    sudo docker system prune -a 
+                    sudo docker compose up -d
+                    sudo docker exec -it contract /bin/bash
+                    make start
                     "
                     '''
                 }

@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { getWss } from '@/redux/features/api/apiSlice'
 interface Props {
     children: Children;
-}
+} 
 
 export default function MainLayout({ children }: Props) {
     const { isConnected, address } = useAccount()

@@ -6,7 +6,6 @@ const collections = require("../assets/collections.json");
 
 async function main() {
   const { marketNFT } = await hre.ignition.deploy(MarketNFT);
-  console.log(`Market NFT deployed to: ${await marketNFT.getAddress()}`);
 
   await Promise.all(
     collections.map(async ({ address }) => {

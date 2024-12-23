@@ -38,7 +38,7 @@ export default function PaypalButton({ orderId, setOpen, percent }: Props) {
 
     const onApprove: PayPalButtonsComponentProps["onApprove"] = async (data, actions) => {
         const details = await actions.order?.capture();
-        const response = await addPayment({
+        await addPayment({
             wallet: details?.purchase_units?.[0].custom_id as Address,
             amount: details?.purchase_units?.[0]?.amount?.value,
             currency: details?.purchase_units?.[0]?.amount?.currency_code,
@@ -46,10 +46,10 @@ export default function PaypalButton({ orderId, setOpen, percent }: Props) {
             invoice_id: details?.purchase_units?.[0].invoice_id,
             payer_email: details?.payer?.email_address,
             payee_email: details?.purchase_units?.[0]?.payee?.email_address,
-            percent_eth: percent
+            percent_eth: percent,
+            notes: "Buy token"
         })
 
-        console.log(response)
         setOpen(false)
     };
 

@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - NEXT_PUBLIC_BACKEND_API=http://backend:8000
-      - NETWORK_URL="http://contract:8545"
+      - NETWORK_URL=http://contract:8545
 
   nginx:
     networks:
@@ -33,8 +33,8 @@ services:
       dockerfile: Dockerfile
     environment:
     - PORT=8545
-    ports:
-      - 8545:8545
+    # ports:
+    #   - 8545:8545
 
   backend:
     networks:
@@ -50,8 +50,8 @@ services:
     - NETWORK_URL=http://contract:8545
     - SOCKET_NETWORK_URL=ws://contract:8545
     - FRONTEND_URL=http://localhost
-    ports:
-      - 8000:8000
+    # ports:
+    #   - 8000:8000
     depends_on:
       - mongo-primary
       - mongo-secondary1

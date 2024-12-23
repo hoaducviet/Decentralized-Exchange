@@ -17,7 +17,7 @@ export default function DialogItem({ children, tokens, setToken }: Props) {
         setToken(token);
         setOpen(false)
     }
-
+ 
     return (
         <div className="flex justify-center items-center w-full h-full">
             <Dialog open={open} onOpenChange={setOpen}>

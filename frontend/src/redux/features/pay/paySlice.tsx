@@ -1,5 +1,5 @@
 'use client'
-
+import { apiSlice } from '@/redux/features/api/apiSlice'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { OrderIdPay, Payout, USDTransaction } from "@/lib/type";
 
@@ -20,14 +20,30 @@ export const paySlice = createApi({
                 url: '/paypal/payout',
                 method: 'POST',
                 body: data
-            })
+            }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(apiSlice.util.invalidateTags(['TokenBalance']));
+                } catch (err) {
+                    console.error('Error invalidating tags:', err);
+                }
+            }
         }),
         addPayment: builder.mutation<USDTransaction, Partial<USDTransaction>>({
             query: (data) => ({
                 url: '/paypal/payment',
                 method: 'POST',
                 body: data
-            })
+            }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(apiSlice.util.invalidateTags(['TokenBalance']));
+                } catch (err) {
+                    console.error('Error invalidating tags:', err);
+                }
+            }
         })
     })
 })

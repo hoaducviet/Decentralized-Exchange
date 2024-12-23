@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 interface Props {
     children: Children;
     transaction: OrderActiveTransaction;
-}
+} 
 
 export default function TransactionOverview({ children, transaction }: Props) {
     const [open, setOpen] = useState(false)

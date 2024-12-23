@@ -19,7 +19,7 @@ interface Props {
     tokenBalances: TokenBalancesType[] | undefined,
     reserves: ReservePool[],
 }
-
+ 
 export default function PoolBox({ tokens, tokenBalances, reserves }: Props) {
     const { isConnected, address } = useAccount()
     const web3 = useWeb3()

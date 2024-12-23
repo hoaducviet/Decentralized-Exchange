@@ -16,7 +16,7 @@ interface Props {
 export default function TimeItem({ setTimeDate }: Props) {
     const [isActive, setIsActive] = useState<number | null>(0)
     const handleActive = (index: number) => {
-        setIsActive(index)
+        setIsActive(index) 
         setTimeDate(listTime[index].value)
     }
     return (

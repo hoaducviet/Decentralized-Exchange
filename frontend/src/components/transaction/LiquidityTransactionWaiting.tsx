@@ -15,7 +15,7 @@ interface Props {
     address: Address | undefined;
     pool?: ReservePool | undefined;
     liquidPool?: LiquidBalancesType | undefined;
-    amount1?: string;
+    amount1?: string; 
     amount2?: string;
     gasEth: string;
 }

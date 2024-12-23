@@ -14,14 +14,14 @@ interface Props {
     tokens: Token[];
     setToken: Dispatch<SetStateAction<Token | undefined>>;
     amount: string;
-    setAmount: Dispatch<SetStateAction<string>>;
+    setAmount: Dispatch<SetStateAction<string>>; 
     balance?: string;
 }
 
 export default function TradeItem({ isDisabled = false, title, token, tokens, setToken, amount, setAmount, balance = "0" }: Props) {
     const ref = useRef<HTMLInputElement>(null)
     const { isConnected } = useAccount()
-    const handleClick = () => {
+    const handleClick = () => { 
         if (ref.current) {
             ref.current.focus()
         }
