@@ -33,13 +33,13 @@ pipeline {
                         }
                     }
 
-                    dir('contract') {
-                        // Chuyển vào thư mục contract và build Docker image
-                        script {
-                            sh "docker build -t $DOCKER_IMAGE_CONTRACT:${timestamp} --platform linux/amd64 ."
-                            sh "docker tag $DOCKER_IMAGE_CONTRACT:${timestamp} $DOCKER_IMAGE_CONTRACT:latest || true"
-                        }
-                    }
+                    // dir('contract') {
+                    //     // Chuyển vào thư mục contract và build Docker image
+                    //     script {
+                    //         sh "docker build -t $DOCKER_IMAGE_CONTRACT:${timestamp} --platform linux/amd64 ."
+                    //         sh "docker tag $DOCKER_IMAGE_CONTRACT:${timestamp} $DOCKER_IMAGE_CONTRACT:latest || true"
+                    //     }
+                    // }
                 }
             }
         }
@@ -52,10 +52,10 @@ pipeline {
                     script{
                         sh "docker push $DOCKER_IMAGE_FRONTEND:${timestamp} || true"
                         sh "docker push $DOCKER_IMAGE_BACKEND:${timestamp} || true"
-                        sh "docker push $DOCKER_IMAGE_CONTRACT:${timestamp} || true"
+                        // sh "docker push $DOCKER_IMAGE_CONTRACT:${timestamp} || true"
                         sh "docker push $DOCKER_IMAGE_FRONTEND:latest"
                         sh "docker push $DOCKER_IMAGE_BACKEND:latest"
-                        sh "docker push $DOCKER_IMAGE_CONTRACT:latest"
+                        // sh "docker push $DOCKER_IMAGE_CONTRACT:latest"
                     }
                 }
             }
@@ -87,21 +87,20 @@ pipeline {
                 )
             }
         }
-        stage('Exec Command to SSH-Server') {
-            steps {
-                sshagent(['ssh-remote']) {
-                    sh '''ssh -o StrictHostKeyChecking=no ubuntu@54.179.238.210 "
-                    cd DEX
-                    sudo docker compose down || true
-                    sudo docker system prune -a 
-                    sudo docker compose up -d
-                    sudo docker exec -it contract /bin/bash
-                    make start
-                    "
-                    '''
-                }
-            }
-        }
+        // stage('Exec Command to SSH-Server') {
+        //     steps {
+        //         sshagent(['ssh-remote']) {
+        //             sh '''ssh -o StrictHostKeyChecking=no ubuntu@54.179.238.210 "
+        //             cd DEX
+        //             sudo docker compose down || true
+        //             sudo docker system prune -a -f
+        //             sudo docker compose up -d
+        //             sudo docker exec -it contract make start
+        //             "
+        //             '''
+        //         }
+        //     }
+        // }
     }
     post {
         always {
@@ -109,9 +108,9 @@ pipeline {
                 echo 'Dọn dẹp Docker images...'
 
                 // Xóa Docker image đã tạo ra
-                sh 'docker rmi $(docker images -q viethoaduc/dex_frontend) || true'
-                sh 'docker rmi $(docker images -q viethoaduc/dex_backend) || true'
-                sh 'docker rmi $(docker images -q viethoaduc/dex_contract) || true'
+                sh 'docker rmi -f $(docker images -q viethoaduc/dex_frontend) || true'
+                sh 'docker rmi -f $(docker images -q viethoaduc/dex_backend) || true'
+                sh 'docker rmi -f $(docker images -q viethoaduc/dex_contract) || true'
 
                 echo 'Hoàn thành dọn dẹp Docker.'
             }

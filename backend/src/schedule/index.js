@@ -23,7 +23,7 @@ async function schedule() {
 
   //Trigger only one time for update price tokens
   setTimeout(async () => {
-    console.log("Chạy sau 20 giây khởi động!");
+    console.log("Chạy sau 10 giây khởi động!");
     await TokenController.updatePriceRefercence();
     await TokenController.updateTotalSupply();
   }, 20000);

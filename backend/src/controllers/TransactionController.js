@@ -515,7 +515,9 @@ class TransactionController {
         ...orderTransactions,
       ];
       results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      return res.status(200).json(mutipleMongooseToObject(results));
+      return res
+        .status(200)
+        .json(mutipleMongooseToObject(results.slice(0, 100)));
     } catch (error) {
       console.error("Error transaction:", error.message);
       return res

@@ -56,11 +56,11 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
                                 <div className="flex flex-row justify-center items-center space-x-2">
                                     <Avatar className="w-[1.7vw] h-[1.7vw] border border-black">
                                         <div className="realtive flex">
-                                            <AvatarImage src={transaction.token1_id.img}
+                                            <AvatarImage src={transaction.token1_id?.img}
                                                 className="absolute w-full h-full object-cover"
                                                 style={{ clipPath: "inset(0 50% 0 0)" }}
                                                 alt="Token1" />
-                                            <AvatarImage src={transaction.token2_id.img}
+                                            <AvatarImage src={transaction.token2_id?.img}
                                                 className="absolute w-full h-full object-cover"
                                                 style={{ clipPath: "inset(0 0 0 50%)" }}
                                                 alt="Token2" />
@@ -113,7 +113,7 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
                         </div>
                         <div className="flex flex-row justify-between items-center">
                             <p>To</p>
-                            <p>{`${transaction.pool_id.address.slice(0, 6)}...${transaction.pool_id.address.slice(38)}`}</p>
+                            <p>{`${transaction.pool_id?.address.slice(0, 6)}...${transaction.pool_id?.address.slice(38)}`}</p>
                         </div>
                         <div className="flex flex-row justify-between items-center">
                             <p>Status</p>
@@ -131,7 +131,7 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
                                             </div>
                                             <div className="flex flex-row space-x-1 justify-end text-xs italic">
                                                 <p>Address:</p>
-                                                <p>{`${transaction.token1_id.address?.slice(0, 6)}...${transaction.token1_id.address?.slice(38)}`}</p>
+                                                <p>{`${transaction.token1_id?.address?.slice(0, 6)}...${transaction.token1_id?.address?.slice(38)}`}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
                                             </div>
                                             <div className="flex flex-row space-x-1 justify-end text-xs italic">
                                                 <p>Address:</p>
-                                                <p>{`${transaction.token2_id.address?.slice(0, 6)}...${transaction.token2_id.address?.slice(38)}`}</p>
+                                                <p>{`${transaction.token2_id?.address?.slice(0, 6)}...${transaction.token2_id?.address?.slice(38)}`}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -153,11 +153,11 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
                                         <div className="flex flex-col">
                                             <div className="flex flex-row space-x-1 justify-end">
                                                 <p>{`+ ${transaction.amount_lpt?.slice(0, transaction.amount_lpt.indexOf(".") + 7)}`}</p>
-                                                <p className="font-semibold">{transaction.pool_id.name}</p>
+                                                <p className="font-semibold">{transaction.pool_id?.name}</p>
                                             </div>
                                             <div className="flex flex-row space-x-1 justify-end text-xs italic">
                                                 <p>Address:</p>
-                                                <p>{`${transaction.pool_id.address_lpt?.slice(0, 6)}...${transaction.pool_id.address_lpt?.slice(38)}`}</p>
+                                                <p>{`${transaction.pool_id?.address_lpt?.slice(0, 6)}...${transaction.pool_id?.address_lpt?.slice(38)}`}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -212,18 +212,18 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
                                     <div className="flex flex-col justify-start items-end">
                                         <div className="flex flex-row space-x-1 justify-end">
                                             <p>{`${(parseFloat(transaction.amount_token1 || "") * 0.3 / 100).toFixed(6)}`}</p>
-                                            <p className="font-semibold">{transaction.token1_id.symbol}</p>
+                                            <p className="font-semibold">{transaction.token1_id?.symbol}</p>
                                         </div>
                                         <div className="flex flex-row space-x-1 justify-end">
                                             <p>{`${(parseFloat(transaction.amount_token2 || "") * 0.3 / 100).toFixed(6)}`}</p>
-                                            <p className="font-semibold">{transaction.token2_id.symbol}</p>
+                                            <p className="font-semibold">{transaction.token2_id?.symbol}</p>
                                         </div>
                                     </div>
                                     :
                                     <div className="flex flex-col">
                                         <div className="flex flex-row justify-end items-center space-x-1">
                                             <p>{`${(parseFloat(transaction.amount_lpt || "") * 0.3 / 100).toFixed(6)}`}</p>
-                                            <p className="font-semibold">{transaction.pool_id.name}</p>
+                                            <p className="font-semibold">{transaction.pool_id?.name}</p>
                                         </div>
                                     </div>
                             }

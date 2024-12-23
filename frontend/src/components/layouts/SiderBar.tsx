@@ -14,14 +14,14 @@ import { Address } from '@/lib/type'
 import { useToast } from '@/hooks/useToast'
 interface Props {
     address: Address;
-} 
+}
 
 export default function SiderBar({ address }: Props) {
     const { disconnect } = useDisconnect()
     const { isOpen } = useSidebar()
     const dispatch = useDispatch()
-    const { data: tokenBalances, isFetching: isFetchingTokens } = useGetTokenBalancesQuery(address)
-    const { data: liquidBalances, isFetching: isFetchingLiquid } = useGetLiquidityBalancesQuery(address)
+    const { data: tokenBalances } = useGetTokenBalancesQuery(address)
+    const { data: liquidBalances } = useGetLiquidityBalancesQuery(address)
     const { data: ensName } = useEnsName({ address })
     const { data: ensAvatar } = useEnsAvatar({ name: ensName! })
     const addressConfig = (address ? address.slice(0, 6) + "..." + address.slice(38) : "")
@@ -74,8 +74,8 @@ export default function SiderBar({ address }: Props) {
                     <ActionsManagement />
                 </div>
             </div>
-            <div className='w-full overflow-y-auto'>{!isFetchingTokens && !isFetchingLiquid &&
-                <AddressBalance tokenBalances={tokenBalances} liquidBalances={liquidBalances} />}
+            <div className='w-full overflow-y-auto'>
+                <AddressBalance tokenBalances={tokenBalances} liquidBalances={liquidBalances} />
             </div>
         </div>
     )
