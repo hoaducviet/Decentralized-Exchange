@@ -43,8 +43,6 @@ export default function NFTItem({ nft, setNft, address, isConnected, handleSend,
         showError("Please Connect Wallet for Buy NFT!")
     }
 
-    console.log(nft)
-
     return (
         <Card className='border-none outline-none select-none w-full px-0 mx-0'>
             <CardContent className='cursor-pointer w-full px-0'>

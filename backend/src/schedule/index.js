@@ -15,7 +15,7 @@ const cancelOrderTask = cron.schedule("*/30 * * * *", async () => {
   await OrderController.cancelOrderAuto();
 });
 
-const auto = 0;
+const auto = 2;
 
 async function schedule() {
   task.start();

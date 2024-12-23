@@ -1,4 +1,3 @@
-
 services:
   frontend:
     networks:
@@ -8,8 +7,13 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     environment:
-      - NEXT_PUBLIC_BACKEND_API=http://backend:8000
-      - NETWORK_URL=http://contract:8545
+      - PORT=${FRONTEND_PORT}
+      - NETWORK_URL=${NETWORK_URL}
+      - NEXT_PUBLIC_BACKEND_API=${BACKEND_URL}
+      - NEXT_PUBLIC_PAYPAL_CLIENT_ID=${CLIENT_ID}
+      - NEXT_PUBLIC_ADDRESS_LIMIT=${ADDRESS_ORDER_LIMIT}
+      - NEXT_PUBLIC_ADDRESS_MARKET_NFT=${ADDRESS_MARKET_NFT}
+    
 
   nginx:
     networks:
@@ -32,9 +36,9 @@ services:
       context: ./contract
       dockerfile: Dockerfile
     environment:
-    - PORT=8545
-    # ports:
-    #   - 8545:8545
+      - PORT=${CONTRACT_PORT}
+    ports:
+      - 8545:8545
 
   backend:
     networks:
@@ -45,11 +49,21 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-    - PORT=8000
-    - MONGODBURI=mongodb://mongo-primary:27017,mongo-secondary1:27017,mongo-secondary2:27017/dex?replicaSet=rs0
-    - NETWORK_URL=http://contract:8545
-    - SOCKET_NETWORK_URL=ws://contract:8545
-    - FRONTEND_URL=http://localhost
+      - PORT=${BACKEND_PORT}
+      - MONGODBURI=${MONGODBURI}
+      - NETWORK_URL=${NETWORK_URL}
+      - SOCKET_NETWORK_URL=${NETWORK_URL}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - PRIVATE_KEY_ADDRESS=${PRIVATE_KEY_ADDRESS}
+      - CLIENT_ID=${CLIENT_ID}
+      - SECRET_KEY=${SECRET_KEY}
+      - ADDRESS_FACTORY_TOKEN=${ADDRESS_FACTORY_TOKEN}
+      - ADDRESS_FACTORY_LIQUIDITYPOOL=${ADDRESS_FACTORY_LIQUIDITYPOOL}
+      - ADDRESS_MARKET_NFT=${ADDRESS_MARKET_NFT}
+      - ADDRESS_ORDER_LIMIT=${ADDRESS_ORDER_LIMIT}
+      - IPFSLINK=${IPFSLINK}
+      - ALCHEMY_SEPOLIA_URL=${ALCHEMY_SEPOLIA_URL}
+      - PAYEE_EMAIL=${PAYEE_EMAIL}
     # ports:
     #   - 8000:8000
     depends_on:

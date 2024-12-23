@@ -50,7 +50,7 @@ export default function Home() {
   const handleNft = () => {
     setIsBuy(false)
   }
-
+  
   return (
     <div className="flex flex-col w-full h-full">
       <div className="relative select-none bg-black flex flex-row w-full py-[2vw] h-[45vw] space-x-[3vw]">

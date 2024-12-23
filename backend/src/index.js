@@ -35,9 +35,9 @@ const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: [
+      "http://localhost:3000",
       process.env.FRONTEND_URL,
       "https://viethoaduc.com",
-      "https://www.viethoaduc.com",
     ],
     methods: ["GET", "POST"],
   },
