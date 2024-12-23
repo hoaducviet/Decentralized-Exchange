@@ -98,6 +98,12 @@ export type NFT = {
     formatted: string;
     isListed: boolean;
     description: string;
+    traits: Trait[] | []
+}
+
+export type Trait = {
+    trait_type: string;
+    value: string;
 }
 
 export type ReservePool = {

@@ -9,7 +9,7 @@ let wss: Socket | undefined
 const getSocket = async () => {
     const address: Address | string | undefined = getAddressFromLocalStorage() as Address;
     if (!wss && address) {
-        const socket: Socket = io(process.env.NEXT_PUBLIC_BACKEND_API, {
+        const socket: Socket = io(process.env.NEXT_PUBLIC_BACKEND_API || 'http://localhost', {
             query: {
                 wallet: address,
             }

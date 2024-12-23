@@ -4,13 +4,6 @@ services:
       - DEX
     image: 'viethoaduc/dex_frontend:latest'
     container_name: frontend
-    environment:
-      - PORT=${FRONTEND_PORT}
-      - NETWORK_URL=${NETWORK_URL}
-      - NEXT_PUBLIC_BACKEND_API=${BACKEND_URL}
-      - NEXT_PUBLIC_PAYPAL_CLIENT_ID=${CLIENT_ID}
-      - NEXT_PUBLIC_ADDRESS_LIMIT=${ADDRESS_ORDER_LIMIT}
-      - NEXT_PUBLIC_ADDRESS_MARKET_NFT=${ADDRESS_MARKET_NFT}
 
   nginx:
     networks:

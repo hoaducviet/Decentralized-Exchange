@@ -185,9 +185,9 @@ class WalletController {
       // "Block Queens by Jeremy Cowart", //1
 
       // "Bored Ape Yacht Club",
-      // // "Doodles",
+      // "Doodles",
       // "RumbleKongLeague",
-      // "AzraGames - The Hopeful",
+      "AzraGames - The Hopeful",
     ];
     const collections = await Collection.find({
       name: { $nin: excludedName },
@@ -238,6 +238,7 @@ class WalletController {
                     formatted,
                     isListed: result[3],
                     description: response.description || "",
+                    attributes: response.attributes || [],
                   };
                 }
               });

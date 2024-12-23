@@ -5,7 +5,7 @@ import { OrderIdPay, Payout, USDTransaction } from "@/lib/type";
 
 export const paySlice = createApi({
     reducerPath: 'paySlice',
-    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/pay` }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API ? process.env.NEXT_PUBLIC_BACKEND_API : "http://localhost"}/pay` }),
     endpoints: (builder) => ({
 
         createOrderIdPay: builder.mutation<{ id: string, url: string }, OrderIdPay>({

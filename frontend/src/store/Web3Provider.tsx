@@ -13,7 +13,7 @@ interface Web3ContextType {
     jsonProvider: JsonRpcProvider | undefined;
     isLoaded: boolean;
 }
-const networkUrl = process.env.NETWORK_URL
+const networkUrl = process.env.NEXT_PUBLIC_NETWORK_URL || 'http://localhost:8545'
 export const Web3Context = createContext<Web3ContextType | undefined>(undefined)
 export function Web3Provider({ children }: Props) {
     const { isConnected } = useAccount()

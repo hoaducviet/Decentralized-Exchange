@@ -20,7 +20,7 @@ pipeline {
                     dir('backend') {
                         // Chuyển vào thư mục backend và build Docker image
                         script {
-                            sh "docker build -t $DOCKER_IMAGE_BACKEND:${timestamp} --platform linux/amd64 ."
+                            sh "docker build --build-arg NEXT_PUBLIC_API_URL=http://54.179.238.210:8545 -t $DOCKER_IMAGE_BACKEND:${timestamp} --platform linux/amd64 ."
                             sh "docker tag $DOCKER_IMAGE_BACKEND:${timestamp} $DOCKER_IMAGE_BACKEND:latest || true"
         
                         }

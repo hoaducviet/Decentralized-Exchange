@@ -1,13 +1,5 @@
 [
   {
-    "name": "AzraGames - The Hopeful",
-    "symbol": "HOPE",
-    "number": 5555,
-    "base_url": "https://ipfs.moralis.io:2053/ipfs/bafybeieldy3ybghe5aqtby6y62jahtetizhaagycem4dzgwofmphlkzsde/",
-    "end_url": ".json",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/HOPE.json"
-  },
-  {
     "name": "Block Queens by Jeremy Cowart",
     "symbol": "BQ",
     "number": 999,
@@ -46,14 +38,6 @@
     "base_url": "https://api.coolcatsnft.com/cat/",
     "end_url": "",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Cool%20Cats.json"
-  },
-  {
-    "name": "CryptoPunks",
-    "symbol": "Ͼ",
-    "number": 999,
-    "base_url": "Ͼ/",
-    "end_url": "",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/CRYPTOPUNKS.json"
   },
   {
     "name": "Doodles",

@@ -6,8 +6,13 @@ mongoose.plugin(slug);
 
 const Trait = new Schema(
   {
-    nft_id: { type: Schema.Types.ObjectId, required: true, ref: "nft" },
-    trait_type: { type: String, required: true, default: "" },
+    collection_id: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "collection",
+    },
+    nft_id: { type: String, required: true },
+    trait_type: { type: String, required: false, default: "" },
     value: { type: String, required: false, default: "" },
   },
   {

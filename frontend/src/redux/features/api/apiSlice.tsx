@@ -20,7 +20,7 @@ export const getWss = async () => {
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
     baseQuery: fetchBaseQuery({
-        baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API}/api`,
+        baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API ? process.env.NEXT_PUBLIC_BACKEND_API : "http://localhost"}/api`,
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('token')
             if (token) {

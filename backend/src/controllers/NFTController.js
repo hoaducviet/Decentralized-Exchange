@@ -1,5 +1,6 @@
 const Collection = require("../models/Collection");
 const NFT = require("../models/NFT");
+const Trait = require("../models/Trait");
 const CollectionController = require("../controllers/CollectionController");
 const WalletController = require("./WalletController");
 const {
@@ -22,6 +23,7 @@ class NFTController {
 
       const validNFT = [];
       const errors = [];
+      const validAttributes = [];
 
       for (let nft of nfts) {
         if (
@@ -40,15 +42,25 @@ class NFTController {
           nft_id: nft.nft_id,
           uri: nft.uri,
         });
+        const { attributes, ...info } = nft;
 
         if (existNFT) {
           errors.push({
-            nft,
+            info,
             error: "NFT with this name already exists",
           });
           continue;
         }
-        validNFT.push(nft);
+        validNFT.push(info);
+        if (nft.attributes.length) {
+          const attrs = attributes.map(({ trait_type, value }) => ({
+            collection_id: nft.collection_id,
+            nft_id: nft.nft_id,
+            trait_type,
+            value,
+          }));
+          validAttributes.push(...attrs);
+        }
       }
 
       console.log("Valid: ", validNFT.length, "Error: ", errors.length);
@@ -60,6 +72,7 @@ class NFTController {
         });
       }
       const results = await NFT.insertMany(validNFT);
+      const traits = await Trait.insertMany(validAttributes);
       const collections = await Collection.find();
       if (results) {
         collections.map((item) => {
@@ -68,7 +81,11 @@ class NFTController {
       }
       return res.status(201).json({
         message: "NFTs data added successfully",
-        data: { results: mutipleMongooseToObject(results), errors: errors },
+        data: {
+          results: mutipleMongooseToObject(results),
+          attributes: mutipleMongooseToObject(traits),
+          errors: errors,
+        },
       });
     } catch (error) {
       console.error("Error collection:", error.message);
@@ -82,13 +99,19 @@ class NFTController {
       const result = await NFT.findOne({
         collection_id: collection,
         nft_id: nft,
+      }).lean();
+      let traits = await Trait.find({
+        collection_id: collection,
+        nft_id: nft,
       });
+      traits = traits.map(({ trait_type, value }) => ({ trait_type, value }));
 
       if (!result) {
         return res.status(404).json({ message: "Collection's nft is null" });
       }
 
-      return res.status(200).json(mongooseToObject(result));
+      const response = { ...result, traits };
+      return res.status(200).json(response);
     } catch (error) {
       console.error("Error collection:", error.message);
       return res.status(500).json({ message: "Internal server error" });

@@ -23,6 +23,7 @@ import ItemListings from "@/components/nfts/ItemListings"
 import ItemPriceHistory from "@/components/nfts/ItemPriceHistory"
 import ItemDescription from "@/components/nfts/ItemDescription"
 import ItemImage from "@/components/nfts/ItemImage"
+import Attributes from "@/components/nfts/Attributes"
 import { skipToken } from "@reduxjs/toolkit/query"
 import { Address, NFTActiveTransaction } from "@/lib/type"
 import NFTTransactionWaiting from "@/components/transaction/NFTTransactionWaiting"
@@ -51,7 +52,6 @@ export default function NFTPage() {
     const gasTransfer = useGasTransferNFT().toString()
     const gasSell = useGasSellNFT().toString()
     const gasWithdraw = useGasWithdrawNFT().toString()
-
 
     useEffect(() => {
         if (tokenBalances) {
@@ -258,6 +258,7 @@ export default function NFTPage() {
                 <div className="flex flex-col w-[40%] space-y-3">
                     <ItemImage nft={currentNft} />
                     <ItemDescription nft={currentNft} />
+                    <Attributes traits={currentNft?.traits || []} />
                 </div>
                 <div className="flex flex-col w-[60%] space-y-5">
                     <div className="flex flex-col space-y-3">
