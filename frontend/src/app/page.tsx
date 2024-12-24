@@ -1,11 +1,11 @@
 'use client'
-import { useState } from "react"
+import {  useState } from "react"
 import { useAccount } from "wagmi"
+import Link from "next/link"
 import Image from "next/image"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import OptionsWallet from "@/components/wallet/OptionsWallet"
-import Link from "next/link"
 
 const mainTitle1 = "Fast for everyone."
 const mainTitle2 = " Trade Easy, Trade Everywhere."
@@ -50,7 +50,7 @@ export default function Home() {
   const handleNft = () => {
     setIsBuy(false)
   }
-  
+
   return (
     <div className="flex flex-col w-full h-full">
       <div className="relative select-none bg-black flex flex-row w-full py-[2vw] h-[45vw] space-x-[3vw]">

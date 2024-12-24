@@ -4,7 +4,7 @@ const slug = require("mongoose-slug-generator");
 const mongooseDelete = require("mongoose-delete");
 
 mongoose.plugin(slug);
-const Wallet = new Schema(
+const Account = new Schema(
   {
     address: { type: String, required: true, minLength: 42, maxLength: 42 },
     role: {
@@ -20,7 +20,7 @@ const Wallet = new Schema(
 );
 
 //Custom query helpers
-Wallet.query.sortable = function (req) {
+Account.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {
     const isValidType = ["asc", "desc"].includes(req.query.type);
     return this.sort({
@@ -31,9 +31,9 @@ Wallet.query.sortable = function (req) {
 };
 
 //Add Plugin
-Wallet.plugin(mongooseDelete, {
+Account.plugin(mongooseDelete, {
   deletedAt: true,
   overrideMethods: "all",
 });
 
-module.exports = mongoose.model("wallet", Wallet);
+module.exports = mongoose.model("account", Account);

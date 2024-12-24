@@ -14,8 +14,6 @@ import { ReduxProvider } from "@/redux/ReduxProvider";
 import { configWallet } from "@/config/configWallet";
 import MainLayout from '@/components/layouts/MainLayout';
 import { Toaster } from '@/components/ui/toaster';
-import { Suspense } from 'react';
-import LoadingSkeleton from '@/components/LoadingSkeleton';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -60,11 +58,9 @@ export default async function RootLayout({
             <ConnectProvider initialState={initialState}>
               <Web3Provider>
                 <SocketProvider>
-                  <Suspense fallback={<LoadingSkeleton />}>
-                    <MainLayout>
-                      {children}
-                    </MainLayout>
-                  </Suspense>
+                  <MainLayout>
+                    {children}
+                  </MainLayout>
                 </SocketProvider>
               </Web3Provider>
             </ConnectProvider>

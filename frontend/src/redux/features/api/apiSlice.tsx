@@ -320,17 +320,7 @@ export const apiSlice = createApi({
                 url: '/login',
                 method: 'POST',
                 body: data
-            }),
-            async onQueryStarted(arg, { queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-                    const token = data.token;
-                    localStorage.setItem('token', token);
-                    console.log('Đăng nhập thành công');
-                } catch (error) {
-                    console.error('Đăng nhập thất bại', error);
-                }
-            }
+            })
         }),
         addTokenTransaction: builder.mutation<TokenTransaction, TokenTransaction>({
             query: (data) => ({
