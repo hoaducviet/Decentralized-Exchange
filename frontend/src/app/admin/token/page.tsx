@@ -10,7 +10,7 @@ import { PlusCircleIcon, LinkIcon } from "@heroicons/react/24/outline"
 
 const options = ['#', 'Token', 'Price', '1 day', 'FDV', 'Volume']
 const list = ['Total', 'Add Token', 'Create Token']
-export default function Admin() {
+export default function TokenAdmin() {
     const { data: tokens } = useGetTokensQuery()
     return (
         <div className="select-none flex flex-col justify-center items-center w-full  py-[2vw] space-y-[2vw]">

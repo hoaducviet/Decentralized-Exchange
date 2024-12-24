@@ -5,7 +5,8 @@ const routes = {
     explore: '/explore/tokens',
     nfts: '/nfts',
     pool: '/pool',
-    notfound: '*'
+    notfound: '*',
+    admin: '/admin'
 }
 
 export default routes;

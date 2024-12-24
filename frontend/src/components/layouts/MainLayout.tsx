@@ -7,8 +7,11 @@ import { useToast } from "@/hooks/useToast";
 import { useLoginMutation } from '@/redux/features/api/apiSlice'
 import { getWss } from '@/redux/features/api/apiSlice'
 import Header from "@/components/layouts/Header";
+import HeaderAdmin from "@/components/layouts/HeaderAdmin";
 import SiderBar from "@/components/layouts/SiderBar";
+import SiderBarAdmin from "@/components/layouts/SiderBarAdmin";
 import Footer from "@/components/layouts/Footer";
+import FooterAdmin from "@/components/layouts/FooterAdmin";
 import { type Children } from "@/lib/type";
 
 interface Props {
@@ -86,12 +89,12 @@ export default function MainLayout({ children }: Props) {
                 </div >
                 :
                 <div className="bg-transparent w-[100vw]">
-                    <Header />
-                    <div className="flex flex-row w-full max-h-[100vh]">
-                        <div className="w-[20%]">{isConnected && address && <SiderBar address={address} />}</div>
+                    <HeaderAdmin />
+                    <div className="flex flex-row w-full h-[93vh] overflow-x-hidden overflow-y-auto">
+                        <div className="w-[20%]"><SiderBarAdmin /></div>
                         <div className="w-[80%]">{children}</div>
                     </div>
-                    <Footer />
+                    <FooterAdmin />
                 </div>
             }
         </>
