@@ -1,6 +1,6 @@
 'use client'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Account } from "@/lib/type";
+import { Account, Address } from "@/lib/type";
 
 export const adminSlice = createApi({
     reducerPath: 'adminSlice',
@@ -13,9 +13,39 @@ export const adminSlice = createApi({
             }
         }
     }),
+    refetchOnReconnect: true,
+    refetchOnMountOrArgChange: 600,
+    tagTypes: ['Account'],
     endpoints: (builder) => ({
         getAccounts: builder.query<Account[], void>({
-            query: () => `/accounts`
+            query: () => `/accounts`,
+            providesTags: ['Account']
+        }),
+
+
+        createAccount: builder.mutation<Account, { address: Address, role: string }>({
+            query: (data) => ({
+                url: '/insert/account',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['Account']
+        }),
+        updateAccount: builder.mutation<Account, Account>({
+            query: (data) => ({
+                url: '/update/account',
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['Account']
+        }),
+        deleteAccount: builder.mutation<Account, {_id: string}>({
+            query: (data) => ({
+                url: '/delete/account',
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['Account']
         }),
 
     })
@@ -23,5 +53,9 @@ export const adminSlice = createApi({
 
 
 export const {
-    useGetAccountsQuery
+    useGetAccountsQuery,
+
+    useCreateAccountMutation,
+    useUpdateAccountMutation,
+    useDeleteAccountMutation
 } = adminSlice

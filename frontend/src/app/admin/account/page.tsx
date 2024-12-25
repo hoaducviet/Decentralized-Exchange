@@ -4,9 +4,16 @@ import { useToast } from "@/hooks/useToast"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { PlusCircleIcon } from "@heroicons/react/24/outline"
-import { useGetAccountsQuery } from "@/redux/features/admin/adminSlice"
+import { useCreateAccountMutation, useDeleteAccountMutation, useGetAccountsQuery, useUpdateAccountMutation } from "@/redux/features/admin/adminSlice"
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { LayersIcon } from "@radix-ui/react-icons"
-import { Address } from "@/lib/type"
+import { Account, Address } from "@/lib/type"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useState } from "react"
+import { ethers } from "ethers"
+import { Checkbox } from "@/components/ui/checkbox"
 
 const options = ['#', 'Address', 'Role', 'Active', 'Created At']
 const list = ['Total', 'Create New Account']
@@ -14,13 +21,44 @@ export default function AccountAdmin() {
     useAuthCheck()
     const { data: accounts } = useGetAccountsQuery()
     const { showInfo } = useToast()
-
+    const [selectedRole, setSelectedRole] = useState<string>("");
+    const [address, setAddress] = useState<string>("");
+    const [createAccount] = useCreateAccountMutation()
+    const [updateAccount] = useUpdateAccountMutation()
+    const [deleteAccount] = useDeleteAccountMutation()
+    const [isChecked, setIsChecked] = useState<boolean>(false);
     const handleCopy = async (address: Address) => {
         await navigator.clipboard.writeText(address)
         showInfo(
             "Copied address successfully!",
             `Address: ${address.slice(0, 8) + "..." + address.slice(35)}`
         )
+    }
+
+    const handleCreatedAccount = async () => {
+        if (ethers.isAddress(address) && selectedRole) {
+            await createAccount({ address: address as Address, role: selectedRole })
+        }
+    }
+    const handleUpdateAccount = async (account: Account) => {
+        if (selectedRole) {
+            await updateAccount({ ...account, role: selectedRole, active: isChecked })
+        }
+    }
+    const handleDeleteAccount = async (_id: string) => {
+        await deleteAccount({ _id })
+    }
+
+    const handleCheckboxChange = (checked: boolean) => {
+        setIsChecked(checked)
+    }
+
+    const handleValueChange = (value: string) => {
+        setSelectedRole(value);
+    };
+
+    const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setAddress(e.target.value)
     }
 
     return (
@@ -31,10 +69,45 @@ export default function AccountAdmin() {
                     <p >{`${accounts?.length} Accounts`}</p>
                 </div>
                 <div className="flex flex-row justify-end items-center space-x-[1vw]">
-                    <div className="cursor-pointer dark:bg-white/10 bg-blue-500 dark:border-white/40 hover:dark:border-blue-500 border-[0.1px] flex flex-row justify-end items-center rounded-2xl shadow-md space-x-2 h-[3vw] px-[1vw]">
-                        <PlusCircleIcon className="w-[1.5vw] h-[1.5vw]" />
-                        <p className="font-semibold">{list[1]}</p>
-                    </div>
+                    <AlertDialog >
+                        <AlertDialogTrigger asChild>
+                            <div className="cursor-pointer dark:bg-white/10 bg-blue-500 dark:border-white/40 hover:dark:border-blue-500 border-[0.1px] flex flex-row justify-end items-center rounded-2xl shadow-md space-x-2 h-[3vw] px-[1vw]">
+                                <PlusCircleIcon className="w-[1.5vw] h-[1.5vw]" />
+                                <p className="font-semibold">{list[1]}</p>
+                            </div>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
+                            <AlertDialogHeader className="bg-fixed w-full">
+                                <AlertDialogTitle>{list[1]}</AlertDialogTitle>
+                            </AlertDialogHeader>
+                            <div className="flex flex-col w-full space-y-[2vw]">
+                                <div className="flex flex-col w-full space-y-[0.5vw]">
+                                    <Label htmlFor="address" className="font-semibold">Address</Label>
+                                    <Input onChange={handleAddressChange} type="text" value={address} placeholder="0x123...456" id="address" />
+                                </div>
+                                <div className="flex flex-row justify-start items-center space-x-[1vw] w-full">
+                                    <Label className="font-semibold">Role</Label>
+                                    <Select onValueChange={handleValueChange}>
+                                        <SelectTrigger className="w-[180px]">
+                                            <SelectValue placeholder="Select a role" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                <SelectLabel>Role</SelectLabel>
+                                                <SelectItem value="admin">Admin</SelectItem>
+                                                <SelectItem value="developer">Developer</SelectItem>
+                                                <SelectItem value="staff">Staff</SelectItem>
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel >Close</AlertDialogCancel>
+                                <AlertDialogAction onClick={handleCreatedAccount} >Continue</AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
                 </div>
             </div>
             <div className="w-full px-[4vw]">
@@ -72,8 +145,74 @@ export default function AccountAdmin() {
                                     <p className="flex flex-row justify-start w-[15%]">{account.active ? "True" : "False"}</p>
                                     <p className="flex flex-row justify-start w-[20%]">{createdDate}</p>
                                     <div className="flex flex-row justify-around w-[15%]">
-                                        <Button variant="outline">Edit</Button>
-                                        <Button variant="outline">Delete</Button>
+                                        <AlertDialog >
+                                            <AlertDialogTrigger asChild>
+                                                <Button onClick={() => setIsChecked(account.active)} variant="outline">Edit</Button>
+                                            </AlertDialogTrigger>
+                                            <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
+                                                <AlertDialogHeader className="bg-fixed w-full">
+                                                    <AlertDialogTitle>Edit Infomation Account</AlertDialogTitle>
+                                                </AlertDialogHeader>
+                                                <div className="flex flex-col w-full space-y-[1vw]">
+                                                    <div className="flex flex-col w-full space-y-[0.5vw]">
+                                                        <Label className="font-semibold">Address</Label>
+                                                        <Input disabled type="text" value={account.address} />
+                                                    </div>
+                                                    <div className="flex flex-row justify-start items-center space-x-[1vw] w-full">
+                                                        <Label className="font-semibold">Role</Label>
+                                                        <Select onValueChange={handleValueChange}>
+                                                            <SelectTrigger className="w-[180px]">
+                                                                <SelectValue placeholder="Select a role" />
+                                                            </SelectTrigger>
+                                                            <SelectContent>
+                                                                <SelectGroup>
+                                                                    <SelectLabel>Role</SelectLabel>
+                                                                    <SelectItem value="admin">Admin</SelectItem>
+                                                                    <SelectItem value="developer">Developer</SelectItem>
+                                                                    <SelectItem value="staff">Staff</SelectItem>
+                                                                </SelectGroup>
+                                                            </SelectContent>
+                                                        </Select>
+                                                    </div>
+                                                    <div className="flex flex-row justify-start items-center space-x-[1vw] w-full">
+                                                        <Label className="font-semibold">Active</Label>
+                                                        <Checkbox checked={isChecked} onCheckedChange={handleCheckboxChange} />
+                                                    </div>
+                                                </div>
+                                                <AlertDialogFooter>
+                                                    <AlertDialogCancel >Close</AlertDialogCancel>
+                                                    <AlertDialogAction onClick={() => handleUpdateAccount(account)} >Continue</AlertDialogAction>
+                                                </AlertDialogFooter>
+                                            </AlertDialogContent>
+                                        </AlertDialog>
+                                        <AlertDialog >
+                                            <AlertDialogTrigger asChild>
+                                                <Button variant="outline">Delete</Button>
+                                            </AlertDialogTrigger>
+                                            <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
+                                                <AlertDialogHeader className="bg-fixed w-full">
+                                                    <AlertDialogTitle>Delete Account</AlertDialogTitle>
+                                                </AlertDialogHeader>
+                                                <div className="flex flex-col w-full space-y-[1vw]">
+                                                    <div className="flex flex-col w-full space-y-[0.5vw]">
+                                                        <Label className="font-semibold">Address</Label>
+                                                        <Input disabled type="text" value={account.address} />
+                                                    </div>
+                                                    <div className="flex flex-row justify-start items-center space-x-[1vw] w-full">
+                                                        <Label className="font-semibold">Role</Label>
+                                                        <Input disabled type="text" value={account.role} />
+                                                    </div>
+                                                    <div className="flex flex-row justify-start items-center space-x-[1vw] w-full">
+                                                        <Label className="font-semibold">Active</Label>
+                                                        <Checkbox disabled checked={account.active} />
+                                                    </div>
+                                                </div>
+                                                <AlertDialogFooter>
+                                                    <AlertDialogCancel >Close</AlertDialogCancel>
+                                                    <AlertDialogAction onClick={() => handleDeleteAccount(account._id)} >Continue</AlertDialogAction>
+                                                </AlertDialogFooter>
+                                            </AlertDialogContent>
+                                        </AlertDialog>
                                     </div>
                                 </div>
                             )

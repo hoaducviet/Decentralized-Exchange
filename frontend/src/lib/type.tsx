@@ -4,6 +4,7 @@ export type User = {
 }
 
 export type Account = {
+    _id: string;
     address: Address;
     role: string;
     active: boolean;
