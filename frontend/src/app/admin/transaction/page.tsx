@@ -1,4 +1,5 @@
 'use client'
+import useAuthCheck from "@/hooks/useAuthCheck"
 import { useGetTokenTransactionsAllQuery } from "@/redux/features/api/apiSlice"
 import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -8,6 +9,7 @@ import { formatPrice } from "@/utils/formatPrice";
 const options = ['Time', 'Type', 'USD', 'Detail', 'Wallet']
 
 export default function TransactionAdmin() {
+    useAuthCheck()
     const { data: transactions, isFetching } = useGetTokenTransactionsAllQuery()
     const limitTransactions = transactions?.slice(0, 100)
 

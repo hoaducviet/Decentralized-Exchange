@@ -1,4 +1,5 @@
 'use client'
+import useAuthCheck from "@/hooks/useAuthCheck"
 import { useGetCollectionsQuery } from '@/redux/features/api/apiSlice'
 import { Card, CardTitle } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -6,13 +7,13 @@ import Link from 'next/link'
 import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { formatNumber } from '@/utils/formatNumber'
 import { formatPrice } from '@/utils/formatPrice'
-import { PlusCircleIcon, LinkIcon } from "@heroicons/react/24/outline"
 import { useGetTokensQuery } from '@/redux/features/api/apiSlice'
 
 const options = ['Colleciton name', 'Volume (ETH)', 'Volume (USD)', 'Floor (ETH)', 'Items', 'Owners']
 const list = ['Total', "Add Collection", 'Create New Collection']
 
 export default function CollectionRegisterAdmin() {
+    useAuthCheck()
     const { data: collections } = useGetCollectionsQuery()
     const { data: tokens } = useGetTokensQuery()
     const eth = tokens?.find(item => item.symbol === 'ETH')

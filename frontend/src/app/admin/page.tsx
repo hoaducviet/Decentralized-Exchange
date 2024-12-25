@@ -1,6 +1,7 @@
 'use client'
-import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
 import Link from "next/link"
+import useAuthCheck from "@/hooks/useAuthCheck"
+import { useGetTokensQuery } from "@/redux/features/api/apiSlice"
 import { Card } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { formatPrice } from "@/utils/formatPrice"
@@ -11,6 +12,7 @@ import { PlusCircleIcon, LinkIcon } from "@heroicons/react/24/outline"
 const options = ['#', 'Token', 'Price', '1 day', 'FDV', 'Volume']
 const list = ['Total', 'Add Token', 'Create Token']
 export default function Admin() {
+    useAuthCheck()
     const { data: tokens } = useGetTokensQuery()
     return (
         <div className="select-none flex flex-col justify-center items-center w-full  py-[2vw] space-y-[2vw]">

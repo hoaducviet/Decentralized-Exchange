@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link"
+import useAuthCheck from "@/hooks/useAuthCheck"
 import { useGetPoolsQuery } from "@/redux/features/api/apiSlice"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { formatPrice } from "@/utils/formatPrice"
@@ -10,6 +11,7 @@ import { PlusCircleIcon, LinkIcon } from "@heroicons/react/24/outline"
 const options = ['#', 'Pool', 'TVL', 'APR', '1D vol', '7D vol', '1D/TVL']
 const list = ['Total', 'Pool', 'Create Pool']
 export default function PoolAdmin() {
+    useAuthCheck()
     const { data: pools } = useGetPoolsQuery()
 
     return (

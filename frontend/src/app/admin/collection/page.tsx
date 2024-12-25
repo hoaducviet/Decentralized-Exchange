@@ -3,6 +3,7 @@ import { useGetCollectionsQuery } from '@/redux/features/api/apiSlice'
 import { Card, CardTitle } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from 'next/link'
+import useAuthCheck from "@/hooks/useAuthCheck"
 import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { formatNumber } from '@/utils/formatNumber'
 import { formatPrice } from '@/utils/formatPrice'
@@ -14,6 +15,7 @@ const options = ['Colleciton name', 'Volume (ETH)', 'Volume (USD)', 'Floor (ETH)
 const list = ['Total', "Add Collection", 'Create New Collection']
 
 export default function CollectionAdmin() {
+    useAuthCheck()
     const { data: collections } = useGetCollectionsQuery()
     const { data: tokens } = useGetTokensQuery()
     const eth = tokens?.find(item => item.symbol === 'ETH')

@@ -1,4 +1,5 @@
 'use client'
+import useAuthCheck from "@/hooks/useAuthCheck"
 import { useToast } from "@/hooks/useToast"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -10,6 +11,7 @@ import { Address } from "@/lib/type"
 const options = ['#', 'Address', 'Role', 'Active', 'Created At']
 const list = ['Total', 'Create New Account']
 export default function AccountAdmin() {
+    useAuthCheck()
     const { data: accounts } = useGetAccountsQuery()
     const { showInfo } = useToast()
 
