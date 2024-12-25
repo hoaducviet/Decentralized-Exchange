@@ -5,6 +5,7 @@ import depositReducer from './features/deposit/depositSlice';
 import sidebarReducer from './features/sidebar/sidebarSlice';
 import { apiSlice } from './features/api/apiSlice'
 import { paySlice } from '@/redux/features/pay/paySlice';
+import { adminSlice } from '@/redux/features/admin/adminSlice';
 
 export const store = configureStore({
     reducer: {
@@ -13,12 +14,14 @@ export const store = configureStore({
         sidebar: sidebarReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
         [paySlice.reducerPath]: paySlice.reducer,
+        [adminSlice.reducerPath]: adminSlice.reducer,
     },
 
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
             .concat(apiSlice.middleware)
             .concat(paySlice.middleware)
+            .concat(adminSlice.middleware)
 })
 
 setupListeners(store.dispatch)

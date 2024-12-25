@@ -17,7 +17,7 @@ export default function PoolAdmin() {
             <div className="flex flex-row w-full justify-between items-center pr-[4vw] text-white">
                 <div className="flex flex-col justify-center items-start bg-blue-500 dark:bg-white/10 dark:border-white/40 border-y-[0.1px] border-r-[0.1px] w-[8vw] h-[3.5vw] pl-[1vw] rounded-r-full">
                     <p className="text-xl font-semibold">{list[0]}</p>
-                    <p >{`${pools?.length} Pool`}</p>
+                    <p >{`${pools?.length} Pools`}</p>
                 </div>
                 <div className="flex flex-row justify-end items-center space-x-[1vw]">
                     <div className="cursor-pointer dark:bg-white/10 bg-blue-500 dark:border-white/40 hover:dark:border-blue-500 border-[0.1px] flex flex-row justify-end items-center rounded-2xl shadow-2xl space-x-2 h-[3vw] px-[1vw]">
@@ -31,7 +31,7 @@ export default function PoolAdmin() {
                 </div>
             </div>
             <div className="w-full px-[4vw]">
-                <Card className="flex flex-col w-full rounded-2xl border-[1px] shadow-md h-[80vh] overflow-y-auto">
+                <Card className="flex flex-col w-full rounded-2xl border-[1px] shadow-md h-[79vh] overflow-y-auto">
                     <div className="w-full">
                         <div className="bg-secondary/80 hover:bg-secondary flex flex-row justify-between items-center text-md font-semibold rounded-t-2xl h-[3vw] px-4">
                             <p className="w-[5%] flex flex-row justify-start items-center">{options[0]}</p>

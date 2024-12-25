@@ -18,8 +18,12 @@ const options = [
         link: '/admin/collection'
     },
     {
-        name: 'Collection Register',
+        name: 'Register',
         link: '/admin/collection/register'
+    },
+    {
+        name: 'Transaction',
+        link: '/admin/transaction'
     },
     {
         name: 'Account',

@@ -3,6 +3,13 @@ export type User = {
     walletAccess: boolean;
 }
 
+export type Account = {
+    address: Address;
+    role: string;
+    active: boolean;
+    createdAt: string;
+}
+
 export type Address = `0x${string}`
 
 export type Token = {

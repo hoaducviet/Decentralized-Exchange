@@ -90,7 +90,7 @@ export default function MainLayout({ children }: Props) {
                 :
                 <div className="bg-transparent w-[100vw]">
                     <HeaderAdmin />
-                    <div className="flex flex-row w-full h-[93vh] overflow-x-hidden overflow-y-auto">
+                    <div className="flex flex-row w-full h-[90vh] overflow-x-hidden">
                         <div className="w-[20%]"><SiderBarAdmin /></div>
                         <div className="w-[80%]">{children}</div>
                     </div>
