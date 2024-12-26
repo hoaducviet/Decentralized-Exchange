@@ -146,6 +146,14 @@ export const adminSlice = createApi({
                 }
             }
         }),
+        createPool: builder.mutation<Pool, Partial<Pool>>({
+            query: (data) => ({
+                url: '/create/pool',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['Suspended Pool'],
+        }),
         updateReserves: builder.mutation<ReservePool[], void>({
             query: () => ({
                 url: '/update/reserves',
@@ -197,6 +205,7 @@ export const {
     useUpdatePoolsMutation,
     useDeletePoolMutation,
     useActivePoolMutation,
+    useCreatePoolMutation,
 
     useUpdateReservesMutation,
     useCreateAccountMutation,

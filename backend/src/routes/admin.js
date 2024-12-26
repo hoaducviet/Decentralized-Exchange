@@ -40,6 +40,7 @@ router.patch("/active/token", TokenController.activeToken);
 //Pool
 router.get("/pools/suspended", PoolController.getPoolSuspended);
 router.post("/update/pools", PoolController.updatePool);
+router.post("/create/pool", PoolController.createPool);
 router.patch("/delete/pool", PoolController.deletePool);
 router.patch("/active/pool", PoolController.activePool);
 

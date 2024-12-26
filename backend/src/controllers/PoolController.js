@@ -288,6 +288,31 @@ class PoolController {
         .json({ message: "Internal server error get Pool" });
     }
   }
+
+  async createPool(req, res) {
+    try {
+      const { token1, token2 } = req.body;
+      const existPool = await Pool.findOne({
+        $or: [
+          { token1_id: token1._id, token2_id: token2._id },
+          { token1_id: token2._id, token2_id: token1._id },
+        ],
+      });
+      if (existPool) {
+        return res.status(404).json({ message: "Pool has existed!" });
+      }
+      const hash = await WalletController.createPool(req.body);
+      console.log(hash);
+      return res.status(200).json({
+        message: "Pool created successfully",
+        data: hash,
+      });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Token" });
+    }
+  }
 }
 
 module.exports = new PoolController();

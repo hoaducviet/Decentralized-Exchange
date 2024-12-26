@@ -1,31 +1,46 @@
 'use client'
 import Link from "next/link"
 import useAuthCheck from "@/hooks/useAuthCheck"
-import { useGetPoolsQuery } from "@/redux/features/api/apiSlice"
+import { useGetPoolsQuery, useGetTokensQuery } from "@/redux/features/api/apiSlice"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { formatPrice } from "@/utils/formatPrice"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { PlusCircleIcon, LinkIcon, ArrowTrendingUpIcon, ArrowPathIcon } from "@heroicons/react/24/outline"
-import { useActivePoolMutation, useDeletePoolMutation, useGetSuspendedPoolsQuery, useUpdatePoolsMutation, useUpdateReservesMutation } from "@/redux/features/admin/adminSlice"
+import { PlusCircleIcon, ArrowTrendingUpIcon, ArrowPathIcon } from "@heroicons/react/24/outline"
+import { useActivePoolMutation, useCreatePoolMutation, useDeletePoolMutation, useGetSuspendedPoolsQuery, useUpdatePoolsMutation, useUpdateReservesMutation } from "@/redux/features/admin/adminSlice"
 import { useToast } from "@/hooks/useToast"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components//ui/tabs'
 import { CommitIcon } from "@radix-ui/react-icons"
-
+import { Address, Token } from "@/lib/type"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const options = ['#', 'Pool', 'TVL', 'APR', '1D/TVL', 'Status']
-const list = ['Total', 'Update Reserve', 'Update Pools', 'Add Pool', 'Create Pool']
+const list = ['Total', 'Update Reserve', 'Update Pools', 'Create Pool']
 export default function PoolAdmin() {
     useAuthCheck()
     const { showSuccess, showError } = useToast()
     const { data: pools } = useGetPoolsQuery()
+    const { data: tokens } = useGetTokensQuery()
     const { data: suspendedPools } = useGetSuspendedPoolsQuery()
     const [updatePools, { isSuccess: isSuccessUpdatePools, isError: isErrorUpdatePools }] = useUpdatePoolsMutation()
     const [updateReserves, { isSuccess: isSuccessUpdateReserves, isError: isErrorUpdateReserves }] = useUpdateReservesMutation()
     const [deletePool, { isSuccess: isSuccessDeletePool, isError: isErrorDeletePool }] = useDeletePoolMutation()
     const [activePool, { isSuccess: isSuccessActivePool, isError: isErrorActivePool }] = useActivePoolMutation()
+    const [createPool, { isSuccess: isSuccessCreatePool, isError: isErrorCreatePool }] = useCreatePoolMutation()
+    const [token1, setToken1] = useState<Token | undefined>(undefined)
+    const [token2, setToken2] = useState<Token | undefined>(undefined)
+
+    useEffect(() => {
+        if (isSuccessCreatePool) {
+            showSuccess("Create Pools Is Success!")
+        }
+        if (isErrorCreatePool) {
+            showError("Create Pools Failed!")
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isSuccessCreatePool, isErrorCreatePool])
 
     useEffect(() => {
         if (isSuccessUpdatePools) {
@@ -75,12 +90,29 @@ export default function PoolAdmin() {
         await activePool({ _id })
     }
 
+    const handleCreatePool = async () => {
+        await createPool({ token1, token2 })
+        setToken1(undefined)
+        setToken2(undefined)
+    }
+
+
+    const handleValueChangeToken1 = (value: Address) => {
+        const token = tokens?.find(item => item.address === value)
+        setToken1(token);
+    };
+
+    const handleValueChangeToken2 = (value: Address) => {
+        const token = tokens?.find(item => item.address === value)
+        setToken2(token);
+    };
+
     return (
         <div className="select-none flex flex-col justify-center items-center w-full  py-[2vw] space-y-[2vw]">
             <div className="flex flex-row w-full justify-between items-center pr-[4vw] text-white">
-                <div className="flex flex-col justify-center items-start bg-blue-500 dark:bg-white/10 dark:border-white/40 border-y-[0.1px] border-r-[0.1px] w-[8vw] h-[3.5vw] pl-[1vw] rounded-r-full">
+                <div className="flex flex-col justify-center items-start bg-blue-500 dark:bg-white/10 dark:border-white/40 border-y-[0.1px] border-r-[0.1px] w-[10vw] h-[3.5vw] pl-[1vw] rounded-r-full">
                     <p className="text-xl font-semibold">{list[0]}</p>
-                    <p >{`${pools?.length} Pools`}</p>
+                    <p >{`${pools ? pools?.length : 0} Pools Active`}</p>
                 </div>
                 <div className="flex flex-row justify-end items-center space-x-[1vw]">
                     <div onClick={() => updateReserves()} className="cursor-pointer dark:bg-white/10 bg-blue-500 dark:border-white/40 hover:dark:border-blue-500 border-[0.1px] flex flex-row justify-end items-center rounded-2xl shadow-2xl space-x-2 h-[3vw] px-[1vw]">
@@ -91,14 +123,74 @@ export default function PoolAdmin() {
                         <ArrowPathIcon className="w-[1.5vw] h-[1.5vw]" />
                         <p className="font-semibold ">{list[2]}</p>
                     </div>
-                    <div className="cursor-pointer dark:bg-white/10 bg-blue-500 dark:border-white/40 hover:dark:border-blue-500 border-[0.1px] flex flex-row justify-end items-center rounded-2xl shadow-2xl space-x-2 h-[3vw] px-[1vw]">
-                        <LinkIcon className="w-[1.5vw] h-[1.5vw]" />
-                        <p className="font-semibold ">{list[3]}</p>
-                    </div>
-                    <div className="cursor-pointer dark:bg-white/10 bg-blue-500 dark:border-white/40 hover:dark:border-blue-500 border-[0.1px] flex flex-row justify-end items-center rounded-2xl shadow-md space-x-2 h-[3vw] px-[1vw]">
-                        <PlusCircleIcon className="w-[1.5vw] h-[1.5vw]" />
-                        <p className="font-semibold">{list[4]}</p>
-                    </div>
+                    <AlertDialog >
+                        <AlertDialogTrigger asChild>
+                            <div className="cursor-pointer dark:bg-white/10 bg-blue-500 dark:border-white/40 hover:dark:border-blue-500 border-[0.1px] flex flex-row justify-end items-center rounded-2xl shadow-md space-x-2 h-[3vw] px-[1vw]">
+                                <PlusCircleIcon className="w-[1.5vw] h-[1.5vw]" />
+                                <p className="font-semibold">{list[3]}</p>
+                            </div>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
+                            <AlertDialogHeader className="bg-fixed w-full">
+                                <AlertDialogTitle>Create Pool</AlertDialogTitle>
+                            </AlertDialogHeader>
+                            <div className="flex flex-col w-full space-y-[1vw]">
+                                <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">
+                                    <Avatar className="w-[1.5vw] h-[1.5vw] max-w-[5vw] border border-black">
+                                        <div className="realtive flex">
+                                            <AvatarImage src={token1?.img}
+                                                className="absolute w-full h-full object-cover"
+                                                style={{ clipPath: "inset(0 50% 0 0)" }}
+                                                alt="Token1" />
+                                            <AvatarImage src={token2?.img}
+                                                className="absolute w-full h-full object-cover"
+                                                style={{ clipPath: "inset(0 0 0 50%)" }}
+                                                alt="Token2" />
+                                        </div>
+                                        <AvatarFallback>T</AvatarFallback>
+                                    </Avatar>
+                                    <p className="font-semibold">{`${token1 ? token1?.name : "Token"}/${token2 ? token2?.name : "Token"}`}</p>
+                                </div>
+                                <div className="flex flex-col justify-center items-start w-full space-y-[0.5vw]">
+                                    <p>Token</p>
+                                    <Select onValueChange={handleValueChangeToken1}>
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="Select a token" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                <SelectLabel>Tokens</SelectLabel>
+                                                {tokens?.filter(item => item.address !== token2?.address).map((token, index) => (
+                                                    <SelectItem key={index} value={token.address}>{token?.name}</SelectItem>
+                                                ))}
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="flex flex-col justify-center items-start w-full space-y-[0.5vw]">
+                                    <p>Token</p>
+                                    <Select onValueChange={handleValueChangeToken2}>
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="Select a token" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                <SelectLabel>Tokens</SelectLabel>
+                                                {tokens?.filter(item => item.address !== token1?.address).map((token, index) => (
+                                                    <SelectItem key={index} value={token.address}>{token?.name}</SelectItem>
+                                                ))}
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+
+                            </div>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel >Close</AlertDialogCancel>
+                                <AlertDialogAction onClick={handleCreatePool} >Continue</AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
                 </div>
             </div>
             <div className="w-full px-[4vw]">

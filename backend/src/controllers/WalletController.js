@@ -594,6 +594,32 @@ class WalletController {
     }
   }
 
+  async createPool(newPool) {
+    try {
+      const { token1, token2 } = newPool;
+      const isEth = token1.symbol === "ETH" || token2 === "ETH";
+      const nonce = await getNonce();
+      const receipt = isEth
+        ? await FactoryLiquidityPoolContract.createLiquidityPoolETH(
+            token1.symbol === "ETH" ? token2.address : token1.address,
+            {
+              nonce,
+            }
+          )
+        : await FactoryLiquidityPoolContract.createLiquidityPool(
+            token1.address,
+            token2.address,
+            {
+              nonce,
+            }
+          );
+      await receipt.wait();
+      return receipt.hash;
+    } catch (error) {
+      return console.log(error);
+    }
+  }
+
   async addToken(newToken) {
     try {
       const { img, address } = newToken;

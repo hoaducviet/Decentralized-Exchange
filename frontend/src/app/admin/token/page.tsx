@@ -31,13 +31,13 @@ export default function TokenAdmin() {
     const [createToken, { isSuccess: isSuccessCreateToken, isError: isErrorCreateToken }] = useCreateTokenMutation()
     const [addToken, { isSuccess: isSuccessAddToken, isError: isErrorAddToken }] = useAddTokenMutation()
 
-    const [name, setName] = useState<string>("Gold")
-    const [img, setImg] = useState<string>("https://www.tpsnewengland.com/wp-content/uploads/2017/05/Silver-Icon.png")
-    const [symbol, setSymbol] = useState<string>("GDP")
-    const [owner, setOwner] = useState<string>("0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC")
-    const [supply, setSupply] = useState<string>("9900")
+    const [name, setName] = useState<string>("")
+    const [img, setImg] = useState<string>("")
+    const [symbol, setSymbol] = useState<string>("")
+    const [owner, setOwner] = useState<string>("")
+    const [supply, setSupply] = useState<string>("")
     const [decimals, setDecimals] = useState<number>(18)
-    const [address, setAddress] = useState<string>("0x1bEfE2d8417e22Da2E0432560ef9B2aB68Ab75Ad")
+    const [address, setAddress] = useState<string>("")
 
     useEffect(() => {
         if (isSuccessUpdateTokens) {
@@ -149,7 +149,7 @@ export default function TokenAdmin() {
     return (
         <div className="select-none flex flex-col justify-center items-center w-full  py-[2vw] space-y-[2vw]">
             <div className="flex flex-row w-full justify-between items-center pr-[4vw] text-white">
-                <div className="flex flex-col justify-center items-start bg-blue-500 dark:bg-white/10 dark:border-white/40 border-y-[0.1px] border-r-[0.1px] w-[13vw] h-[3.5vw] pl-[1vw] rounded-r-full">
+                <div className="flex flex-col justify-center items-start bg-blue-500 dark:bg-white/10 dark:border-white/40 border-y-[0.1px] border-r-[0.1px] w-[10vw] h-[3.5vw] pl-[1vw] rounded-r-full">
                     <p className="text-xl font-semibold">{list[0]}</p>
                     <p >{`${tokens ? tokens?.length : 0} Token Active`}</p>
                 </div>
