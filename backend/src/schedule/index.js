@@ -15,7 +15,7 @@ const cancelOrderTask = cron.schedule("*/30 * * * *", async () => {
   await OrderController.cancelOrderAuto();
 });
 
-const auto = 2;
+const auto = 0;
 
 async function schedule() {
   task.start();
@@ -23,10 +23,10 @@ async function schedule() {
 
   //Trigger only one time for update price tokens
   setTimeout(async () => {
-    console.log("Chạy sau 10 giây khởi động!");
+    console.log("Chạy sau 20 giây khởi động!");
     await TokenController.updatePriceRefercence();
     await TokenController.updateTotalSupply();
-  }, 20000);
+  }, 10000);
 
   setInterval(async () => {
     if (auto === 1) {

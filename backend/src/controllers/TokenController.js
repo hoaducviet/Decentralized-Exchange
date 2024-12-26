@@ -16,6 +16,7 @@ class TokenController {
           message: "Invalid data format. Expected an array of tokens objects.",
         });
       }
+      console.log("New tokens: ", newTokens);
 
       const validToken = [];
       const errors = [];
@@ -39,6 +40,7 @@ class TokenController {
           img: token.img,
           address: token.address,
         });
+
         if (existToken) {
           errors.push({
             token,
@@ -48,14 +50,17 @@ class TokenController {
         }
         validToken.push(token);
       }
-      if (errors.length) {
-        return res.status(400).json({
-          message: "Some token items could not be added",
+      console.log("Valid Token:", validToken);
+      const tokens = await Token.find();
+      if (newTokens.length === tokens.length && validToken.length <= 0) {
+        return res.status(200).json({
+          message: "All token has updated",
           errors,
         });
       }
 
       const results = await Token.insertMany(validToken);
+      console.log(results);
       return res.status(200).json({
         message: "Token data added successfully",
         data: mutipleMongooseToObject(results),
@@ -68,8 +73,26 @@ class TokenController {
 
   async getTokenAll(req, res) {
     try {
-      const results = await Token.find().select(
-        "_id name symbol img decimals address owner total_supply volume"
+      const results = await Token.find({ active: true }).select(
+        "_id name symbol img decimals address owner price price_reference total_supply volume deleted"
+      );
+      if (!results.length) {
+        return res.status(404).json({ message: "Token is null" });
+      }
+
+      return res.status(200).json(mutipleMongooseToObject(results));
+    } catch (error) {
+      console.error("Error token:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all token" });
+    }
+  }
+
+  async getTokenSuspended(req, res) {
+    try {
+      const results = await Token.find({ active: false }).select(
+        "_id name symbol img decimals address owner price price_reference total_supply volume deleted"
       );
       if (!results.length) {
         return res.status(404).json({ message: "Token is null" });
@@ -163,6 +186,19 @@ class TokenController {
     }
   }
 
+  async updatePrice(newPrice) {
+    try {
+      const { token_id, price } = newPrice;
+      await Token.findByIdAndUpdate(token_id, { price });
+
+      console.log("Update Price Token");
+      return;
+    } catch (error) {
+      console.error("Error Token:", error.message);
+      return;
+    }
+  }
+
   async updateTotalSupply() {
     try {
       const tokens = await Token.find({ symbol: { $nin: ["ETH"] } });
@@ -193,6 +229,85 @@ class TokenController {
     } catch (error) {
       console.error("Error Pool:", error.message);
       return;
+    }
+  }
+
+  async deleteToken(req, res) {
+    try {
+      const { _id } = req.body;
+      const token = await Token.findById(_id);
+      if (!token) {
+        return res.status(404).json({ message: "Token is null" });
+      }
+      await Token.findByIdAndUpdate(_id, { active: false });
+      return res.status(200).json({ message: "Deleted Token" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Token" });
+    }
+  }
+
+  async activeToken(req, res) {
+    try {
+      const { _id } = req.body;
+      const token = await Token.findOne({ _id });
+      if (!token) {
+        return res.status(404).json({ message: "Token is null" });
+      }
+      await Token.findByIdAndUpdate(_id, { active: true });
+      return res.status(200).json({ message: "Active Token" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Token" });
+    }
+  }
+
+  async createToken(req, res) {
+    try {
+      const { name, symbol, img } = req.body;
+      const existToken = await Token.findOne({
+        name,
+        symbol,
+        img,
+      });
+      if (existToken) {
+        return res.status(404).json({ message: "Token has existed!" });
+      }
+      const hash = await WalletController.createToken(req.body);
+      return res.status(200).json({
+        message: "Token created successfully",
+        data: hash,
+      });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Token" });
+    }
+  }
+
+  async addToken(req, res) {
+    try {
+      const { img, address } = req.body;
+      const existToken = await Token.findOne({
+        img,
+        address,
+      });
+      if (existToken) {
+        return res.status(404).json({ message: "Token has existed!" });
+      }
+      console.log(req.body);
+      const hash = await WalletController.addToken(req.body);
+      console.log(hash);
+      return res.status(200).json({
+        message: "Token added successfully",
+        data: hash,
+      });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Token" });
     }
   }
 }

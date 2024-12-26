@@ -20,9 +20,21 @@ const Order = require("../models/Order");
 const OrderController = require("../controllers/OrderController");
 
 function socket(io) {
-  Token.watch().on("change", (change) => {
-    io.emit("transaction", change.fullDocument);
-  });
+  Token.watch([], { fullDocument: "updateLookup" }).on(
+    "change",
+    async (change) => {
+      if (["update"].includes(change.operationType)) {
+        const updateDocument = {
+          _id: change.fullDocument._id,
+          price: change.fullDocument.price,
+          price_reference: change.fullDocument.price_reference,
+          total_supply: change.fullDocument.total_supply,
+          volume: change.fullDocument.volume,
+        };
+        io.emit("updateToken", { data: updateDocument });
+      }
+    }
+  );
 
   Reserve.watch([], { fullDocument: "updateLookup" }).on(
     "change",
@@ -45,7 +57,7 @@ function socket(io) {
 
   TokenPrice.watch([], { fullDocument: "updateLookup" }).on(
     "change",
-    (change) => {
+    async (change) => {
       if (["update", "insert"].includes(change.operationType)) {
         const updateDocument = {
           _id: change.fullDocument._id,
@@ -55,6 +67,7 @@ function socket(io) {
         };
         console.log(updateDocument);
         io.emit("updateTokenPrices", { data: updateDocument });
+        await TokenController.updatePrice(updateDocument);
       }
     }
   );
@@ -225,7 +238,10 @@ function socket(io) {
         io.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
-        if (change.operationType === "update" && updateDocument.status === "Completed") {
+        if (
+          change.operationType === "update" &&
+          updateDocument.status === "Completed"
+        ) {
           io.emit("updateNFTItemTransactions", {
             data: updateDocument,
           });

@@ -26,6 +26,7 @@ const TokenPrice = require("../models/TokenPrice");
 const Pool = require("../models/Pool");
 const NFT = require("../models/NFT");
 const Collection = require("../models/Collection");
+const { getNonce } = require("../utils/getNonce");
 
 const networkUrl = process.env.NETWORK_URL;
 const privateKey = process.env.PRIVATE_KEY_ADDRESS;
@@ -566,6 +567,45 @@ class WalletController {
       res.status(200).json(reservePools);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async createToken(newToken) {
+    try {
+      const { name, symbol, img, decimals, owner, total_supply } = newToken;
+
+      const amount = ethers.parseUnits(total_supply, decimals);
+      const nonce = await getNonce();
+      const receipt = await FactoryTokenContract.createToken(
+        name,
+        symbol,
+        img,
+        decimals,
+        owner,
+        amount,
+        {
+          nonce,
+        }
+      );
+      await receipt.wait();
+      return receipt.hash;
+    } catch (error) {
+      return console.log(error);
+    }
+  }
+
+  async addToken(newToken) {
+    try {
+      const { img, address } = newToken;
+
+      const nonce = await getNonce();
+      const receipt = await FactoryTokenContract.addToken(img, address, {
+        nonce,
+      });
+      await receipt.wait();
+      return receipt.hash;
+    } catch (error) {
+      return console.log(error);
     }
   }
 

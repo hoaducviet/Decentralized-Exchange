@@ -30,31 +30,35 @@ export const apiSlice = createApi({
     }),
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: 600,
-    tagTypes: ['TokenBalance', 'LiquidityBalance', "PoolInfo", 'NFTCollection'],
+    tagTypes: ['TokenBalance', 'LiquidityBalance', "Token", "Pool", 'NFTCollection'],
     endpoints: (builder) => ({
         getTokens: builder.query<Token[], void>({
-            query: () => '/tokenprices',
+            query: () => '/tokens',
             async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
                 try {
                     await cacheDataLoaded
                     const listener = (event: MessageEvent) => {
                         updateCachedData((draft) => {
-                            const token = draft.find(item => item._id === event.data.token_id);
+                            const token = draft.find(item => item._id === event.data._id);
                             if (token) {
                                 token.price = event.data.price
+                                token.price_reference = event.data.price_reference
+                                token.total_supply = event.data.total_supply
+                                token.volume = event.data.volume
                             }
                         })
                     }
-                    ws.on('updateTokenPrices', listener)
+                    ws.on('updateToken', listener)
                 } catch (error) {
                     console.log(error)
                 }
                 await cacheEntryRemoved
-            }
+            },
+            providesTags: ['Token']
         }),
         getPools: builder.query<Pool[], void>({
             query: () => '/pools',
-            providesTags: ['PoolInfo']
+            providesTags: ['Pool']
         }),
         getCollections: builder.query<Collection[], void>({
             query: () => '/collections',
@@ -335,7 +339,7 @@ export const apiSlice = createApi({
                 method: 'PATCH',
                 body: data
             }),
-            invalidatesTags: ['TokenBalance', 'PoolInfo', 'NFTCollection']
+            invalidatesTags: ['TokenBalance', 'Pool', 'NFTCollection']
         }),
 
         addLiquidityTransaction: builder.mutation<LiquidityTransaction, LiquidityTransaction>({
@@ -351,7 +355,7 @@ export const apiSlice = createApi({
                 method: 'PATCH',
                 body: data
             }),
-            invalidatesTags: ['TokenBalance', 'LiquidityBalance', 'PoolInfo']
+            invalidatesTags: ['TokenBalance', 'LiquidityBalance', 'Pool']
         }),
 
         addNftTransaction: builder.mutation<NFTTransaction, NFTTransaction>({

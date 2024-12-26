@@ -8,7 +8,7 @@ const Token = new Schema(
   {
     name: { type: String, unique: true, required: true, maxLength: 255 },
     symbol: { type: String, unique: true, required: true, maxLength: 20 },
-    img: { type: String, unique: true, required: true, maxLength: 255 },
+    img: { type: String, required: true, maxLength: 255 },
     decimals: { type: Number, required: true, default: 18 },
     uri: { type: String, required: false, maxLength: 255 },
     address: {
@@ -19,6 +19,8 @@ const Token = new Schema(
       maxLength: 42,
     },
     owner: { type: String, required: true, minLength: 42, maxLength: 42 },
+    active: { type: Boolean, default: false },
+    price: { type: String, required: false, default: 0 },
     price_reference: { type: String, required: false, default: 0 },
     total_supply: { type: String, required: false, default: 0 },
     volume: { type: String, required: false, default: 0 },

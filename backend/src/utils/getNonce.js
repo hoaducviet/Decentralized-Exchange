@@ -1,5 +1,4 @@
-const { provider } = require("../config/provider");
-const { wallet } = require("../controllers/WalletController");
+const { provider, wallet } = require("../config/provider");
 
 async function getNonce() {
   try {

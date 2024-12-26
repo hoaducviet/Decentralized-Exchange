@@ -16,6 +16,7 @@ class PoolController {
     try {
       const newPools = await WalletController.getPools();
 
+      console.log(newPools);
       if (!Array.isArray(newPools)) {
         return res.status(400).json({
           message: "Invalid data format. Expected an array of pools objects.",
@@ -64,16 +65,17 @@ class PoolController {
         })
       );
 
-      if (errors.length) {
-        return res.status(400).json({
-          message: "Some pool items could not be added",
+      const pools = await Pool.find({ deleted: true });
+      if (errors.length === pools.length && pools.length > 0) {
+        return res.status(200).json({
+          message: "All pools has updated",
           errors,
         });
       }
 
       const results = await Pool.insertMany(validPool);
 
-      return res.status(201).json({
+      return res.status(200).json({
         message: "Pool data added successfully",
         data: mutipleMongooseToObject(results),
       });
@@ -197,7 +199,7 @@ class PoolController {
 
   async getPoolAll(req, res) {
     try {
-      const results = await Pool.find()
+      const results = await Pool.find({ active: true })
         .select(
           "_id name address address_lpt total_tvl tvl_day volume_day volume_week"
         )
@@ -222,6 +224,68 @@ class PoolController {
       return res
         .status(500)
         .json({ message: "Internal server error get all Pool" });
+    }
+  }
+
+  async getPoolSuspended(req, res) {
+    try {
+      const results = await Pool.find({ active: false })
+        .select(
+          "_id name address address_lpt total_tvl tvl_day volume_day volume_week"
+        )
+        .populate({
+          path: "token1_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .populate({
+          path: "token2_id",
+          select: "_id name symbol img decimals address owner volume",
+          model: "token",
+        })
+        .exec();
+      if (!results.length) {
+        return res.status(404).json({ message: "Pool is null" });
+      }
+      const response = await convertToPool(results);
+      return res.status(200).json(response);
+    } catch (error) {
+      console.error("Error Pool:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all Pool" });
+    }
+  }
+
+  async deletePool(req, res) {
+    try {
+      const { _id } = req.body;
+      const pool = await Pool.findById(_id);
+      if (!pool) {
+        return res.status(404).json({ message: "Pool is null" });
+      }
+      await Pool.findByIdAndUpdate(_id, { active: false });
+      return res.status(200).json({ message: "Deleted Pool" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Pool" });
+    }
+  }
+
+  async activePool(req, res) {
+    try {
+      const { _id } = req.body;
+      const pool = await Pool.findById(_id);
+      if (!pool) {
+        return res.status(404).json({ message: "Pool is null" });
+      }
+      await Pool.findByIdAndUpdate(_id, { active: true });
+      return res.status(200).json({ message: "Active Pool" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Pool" });
     }
   }
 }

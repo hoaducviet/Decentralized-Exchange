@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.27;
 
-import {TokenERC20} from "./TokenERC20.sol";
+import {TokenERC20, ERC20} from "./TokenERC20.sol";
 
 contract FactoryToken {
     struct Token {
@@ -24,6 +24,14 @@ contract FactoryToken {
         uint256 initialSupply
     );
 
+    event TokenAdded(
+        address indexed tokenAddress,
+        address indexed sender,
+        string name,
+        string symbol,
+        uint8 decimals,
+        uint256 initialSupply
+    );
     event MINTUSD(address _to, address tokenAddress, uint256 _amount);
     event BURNUSD(address _from, address tokenAddress, uint256 _amount);
 
@@ -61,6 +69,30 @@ contract FactoryToken {
             symbol,
             decimals,
             initialSupply
+        );
+    }
+
+    function addToken(string memory _img, address _address) external {
+        ERC20 newToken = ERC20(_address);
+
+        allTokens.push(
+            Token({
+                name: newToken.name(),
+                symbol: newToken.symbol(),
+                img: _img,
+                decimals: newToken.decimals(),
+                owner: msg.sender,
+                tokenAddress: address(newToken)
+            })
+        );
+
+        emit TokenAdded(
+            address(newToken),
+            msg.sender,
+            newToken.name(),
+            newToken.symbol(),
+            newToken.decimals(),
+            newToken.totalSupply()
         );
     }
 

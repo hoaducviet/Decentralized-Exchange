@@ -25,7 +25,7 @@ class AccountController {
   }
   async getAllAccount(req, res) {
     try {
-      const accounts = await Account.find({ deleted: false });
+      const accounts = await Account.find();
       if (!accounts.length) {
         return res.status(404).json({ message: "Account's is null" });
       }
@@ -43,7 +43,7 @@ class AccountController {
       if (!account) {
         return res.status(404).json({ message: "Account's is null" });
       }
-      await Account.updateOne({ _id }, { deleted: true });
+      await Account.delete({ _id });
       return res.status(200).json({ message: "Deleted Account" });
     } catch (error) {
       return res

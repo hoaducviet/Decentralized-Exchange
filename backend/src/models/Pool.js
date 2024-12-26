@@ -23,6 +23,7 @@ const Pool = new Schema(
     },
     token1_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
     token2_id: { type: Schema.Types.ObjectId, required: true, ref: "token" },
+    active: { type: Boolean, default: false },
     tvl_day: { type: String, required: false, default: 0 },
     total_tvl: { type: String, required: false, default: 0 },
     volume_day: { type: String, required: false, default: "0" },
