@@ -23,7 +23,7 @@ export default function Tokens() {
             <div className="flex flex-col max-h-[55vw] overflow-x-auto ">
                 {tokens && tokens.map((token, index) => {
                     if (token.symbol === 'USD') return <div key={index}></div>
-                    const percentChange = (parseFloat(token.price) - parseFloat(token.price_reference)) / parseFloat(token.price_reference)
+                    const percentChange = parseFloat(token.price_reference) > 0 ? (parseFloat(token.price) - parseFloat(token.price_reference)) / parseFloat(token.price_reference) : 0
                     return (
                         <div key={index}>
                             <Link href={`/explore/tokens/${token.symbol}`}>

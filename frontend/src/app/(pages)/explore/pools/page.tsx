@@ -23,7 +23,7 @@ export default function Pools() {
             </div>
             <div className="flex flex-col max-h-[55vw] overflow-x-auto ">
                 {pools && pools.map((pool, index) => {
-                    const ARP = parseFloat(pool.volume_day) * 0.1 / parseFloat(pool.total_tvl) * 365
+                    const ARP = parseFloat(pool.volume_day) > 0 ? parseFloat(pool.volume_day) * 0.1 / parseFloat(pool.total_tvl) * 365 : 0
                     return (
                         <Link key={index} href={`/explore/pools/${pool.address}`}>
                             <div className={`flex flex-row cursor-pointer hover:bg-secondary/80 dark:hover:bg-white/5 text-md font-medium items-center h-[3.5vw] w-full px-4 border-t-[0.2px] border-gray-300 border-opacity-20 ${index === pools.length - 1 ? 'rounded-b-2xl' : ''}`} >

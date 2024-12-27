@@ -6,8 +6,6 @@ import Link from 'next/link'
 import useAuthCheck from "@/hooks/useAuthCheck"
 import { ArrowPathIcon, CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { formatNumber } from '@/utils/formatNumber'
-import { formatPrice } from '@/utils/formatPrice'
-import { useGetTokensQuery } from '@/redux/features/api/apiSlice'
 import { Button } from "@/components/ui/button"
 import { useActiveCollectionMutation, useDeleteCollectionMutation, useGetSuspendedCollectionsQuery, useUpdateCollectionsMutation, useUpdateNFTsMutation } from '@/redux/features/admin/adminSlice'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components//ui/tabs'
@@ -24,9 +22,7 @@ export default function CollectionAdmin() {
     useAuthCheck()
     const { showSuccess, showError } = useToast()
     const { data: collections } = useGetCollectionsQuery()
-    const { data: tokens } = useGetTokensQuery()
     const { data: suspendedCollections } = useGetSuspendedCollectionsQuery()
-    const eth = tokens?.find(item => item.symbol === 'ETH')
     const [updateCollections, { isSuccess: isSuccessUpdateCollections, isError: isErrorUpdateCollections }] = useUpdateCollectionsMutation()
     const [deleteCollection, { isSuccess: isSuccessDeleteCollection, isError: isErrorDeleteCollection }] = useDeleteCollectionMutation()
     const [activeCollection, { isSuccess: isSuccessActiveCollection, isError: isErrorActiveCollection }] = useActiveCollectionMutation()

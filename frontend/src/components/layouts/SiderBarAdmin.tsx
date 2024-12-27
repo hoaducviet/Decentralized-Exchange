@@ -22,10 +22,6 @@ const options = [
         link: '/admin/collection/register'
     },
     {
-        name: 'Transaction',
-        link: '/admin/transaction'
-    },
-    {
         name: 'Account',
         link: '/admin/account'
     }
