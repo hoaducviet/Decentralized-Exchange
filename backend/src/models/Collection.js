@@ -11,6 +11,7 @@ const Collection = new Schema(
     name: { type: String, unique: true, required: true, maxLength: 255 },
     symbol: { type: String, unique: true, required: true, maxLength: 20 },
     uri: { type: String, unique: true, required: true, maxLength: 255 },
+    active: { type: Boolean, default: false },
     logo: { type: String, unique: true, required: false, maxLength: 255 },
     banner: { type: String, unique: true, required: true, maxLength: 255 },
     verified: { type: Boolean, required: true, default: false },

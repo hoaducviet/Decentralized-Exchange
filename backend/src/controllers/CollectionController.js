@@ -9,17 +9,14 @@ class CollectionController {
   async updateCollection(req, res) {
     try {
       const newCollections = await WalletController.getCollections();
-
       if (!Array.isArray(newCollections)) {
         return res.status(400).json({
           message:
             "Invalid data format. Expected an array of collections objects.",
         });
       }
-
       const validCollection = [];
       const errors = [];
-
       for (let collection of newCollections) {
         if (
           !collection.name ||
@@ -30,15 +27,13 @@ class CollectionController {
           errors.push({ collection, error: "Missing required fields" });
           continue;
         }
-
-        // Kiểm tra tồn tại của pool chưa
+        // Kiểm tra tồn tại của collection chưa
         let existCollection = await Collection.findOne({
           address: collection.address,
           name: collection.name,
           symbol: collection.symbol,
           uri: collection.uri,
         });
-
         if (existCollection) {
           errors.push({
             collection,
@@ -48,13 +43,17 @@ class CollectionController {
         }
         validCollection.push(collection);
       }
-
-      if (validCollection.length === 0) {
-        return res.status(400).json({
-          message: "Some collection items could not be added",
+      const collections = await Collection.find();
+      if (
+        newCollections.length === collections.length &&
+        validCollection.length <= 0
+      ) {
+        return res.status(200).json({
+          message: "All collection has updated",
           errors,
         });
       }
+      console.log("Collection valid: ", validCollection);
       const results = await Collection.insertMany(validCollection);
       return res.status(201).json({
         message: "Collection data added successfully",
@@ -68,7 +67,27 @@ class CollectionController {
 
   async getCollectionAll(req, res) {
     try {
-      const results = await Collection.find()
+      const results = await Collection.find({ active: true })
+        .select(
+          "_id address owner name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume createdAt"
+        )
+        .exec();
+      if (!results.length) {
+        return res.status(404).json({ message: "Collection is null" });
+      }
+
+      return res.status(200).json(mutipleMongooseToObject(results));
+    } catch (error) {
+      console.error("Error Collection:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all Collection" });
+    }
+  }
+
+  async getCollectionSuspended(req, res) {
+    try {
+      const results = await Collection.find({ active: false })
         .select(
           "_id address owner name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume createdAt"
         )
@@ -163,6 +182,38 @@ class CollectionController {
       return res
         .status(500)
         .json({ message: "Internal server error get all Collection" });
+    }
+  }
+
+  async deleteCollection(req, res) {
+    try {
+      const { _id } = req.body;
+      const collection = await Collection.findById(_id);
+      if (!collection) {
+        return res.status(404).json({ message: "Collection is null" });
+      }
+      await Collection.findByIdAndUpdate(_id, { active: false });
+      return res.status(200).json({ message: "Deleted Collection" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Collection" });
+    }
+  }
+
+  async activeCollection(req, res) {
+    try {
+      const { _id } = req.body;
+      const collection = await Collection.findById(_id);
+      if (!collection) {
+        return res.status(404).json({ message: "Collection is null" });
+      }
+      await Collection.findByIdAndUpdate(_id, { active: true });
+      return res.status(200).json({ message: "Active Collection" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Collection" });
     }
   }
 }

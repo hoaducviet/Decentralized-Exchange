@@ -2,34 +2,6 @@
   {
     "address": "0x9264ee2dB87BA0A5ED6a5Dc1790957829B8672a8",
     "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/HOPE.json",
-    "name": "AzraGames - The Hopeful",
-    "symbol": "HOPE",
-    "logo": "https://i.seadn.io/gcs/files/32469815c1d8c3cbec6541f35d991adc.gif?w=500&auto=format",
-    "banner": "https://i.seadn.io/gcs/files/642de8fe6f7326fe571351f5ed77e16b.jpg?auto=format&dpr=1&w=3840",
-    "verified": true,
-    "project_url": "https://azragames.com",
-    "discord_url": "https://discord.gg/azra",
-    "twitter_username": "AzraGames",
-    "instagram_username": ""
-  },
-  {
-    "address": "0xCd35c8901B57d6FFF5c410aDbb981aB44112Fe75",
-    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/MutantApeYachtClub.json",
-    "name": "Mutan Ape Yacht Club",
-    "symbol": "MAYC",
-    "logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
-    "banner": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?auto=format&dpr=1&w=3840",
-    "verified": true,
-    "project_url": "",
-    "discord_url": "",
-    "twitter_username": "",
-    "instagram_username": ""
-  },
-  {
-    "address": "0x137F08d546D1B5f24b6e991a09B1de9482F39259",
-    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Block%20Queens.json",
     "name": "Block Queens by Jeremy Cowart",
     "symbol": "BQ",
@@ -42,7 +14,7 @@
     "instagram_username": "jeremycowart"
   },
   {
-    "address": "0xf51Cb9d19d4039BE076b0edB053394dbb911de12",
+    "address": "0x137F08d546D1B5f24b6e991a09B1de9482F39259",
     "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/BoredApeYachtClub.json",
     "name": "Bored Ape Yacht Club",
@@ -56,7 +28,7 @@
     "instagram_username": ""
   },
   {
-    "address": "0xb4ae503A01467ee84e04a8c1059f26F2A38B51F4",
+    "address": "0xf51Cb9d19d4039BE076b0edB053394dbb911de12",
     "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Captainz.json",
     "name": "Captainz",
@@ -70,7 +42,7 @@
     "instagram_username": "memeland"
   },
   {
-    "address": "0x1f2d8A2316de0d1e2b7Fc79DfC81162d699409FD",
+    "address": "0xb4ae503A01467ee84e04a8c1059f26F2A38B51F4",
     "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/CloneX.json",
     "name": "CloneX - X TAKASHI MURAKAMI",
@@ -84,7 +56,7 @@
     "instagram_username": "rtfkt"
   },
   {
-    "address": "0x209fD72312AdB23B90cA5fAd676C9fC3B9664B57",
+    "address": "0x1f2d8A2316de0d1e2b7Fc79DfC81162d699409FD",
     "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
     "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Cool%20Cats.json",
     "name": "Cool Cats",
@@ -96,6 +68,62 @@
     "discord_url": "https://discord.gg/coolcatsnft",
     "twitter_username": "coolcats",
     "instagram_username": "coolcatsglobal"
+  },
+  {
+    "address": "0x209fD72312AdB23B90cA5fAd676C9fC3B9664B57",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Doodles.json",
+    "name": "Doodles",
+    "symbol": "DOODLE",
+    "logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
+    "banner": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?auto=format&dpr=1&w=3840",
+    "verified": true,
+    "project_url": "https://web3.doodles.app",
+    "discord_url": "https://discord.gg/doodles",
+    "twitter_username": "doodles",
+    "instagram_username": ""
+  },
+  {
+    "address": "0xD2a4C095A9C478C4342318C5232156E260FFb9d1",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Fijis.json",
+    "name": "Fijis",
+    "symbol": "FIJI",
+    "logo": "https://i.seadn.io/s/raw/files/6ed48ea36b34a296379af54918543a24.gif?w=500&auto=format",
+    "banner": "https://i.seadn.io/s/primary-drops/0x12dd66366d45f44128083233c6fbadfe7cbae221/30965802:about:media:8934d986-96a1-44dd-8070-754b549071d7.png?auto=format&dpr=1&w=3840",
+    "verified": true,
+    "project_url": "https://peacecoin.world/",
+    "discord_url": "",
+    "twitter_username": "FijisNFT",
+    "instagram_username": ""
+  },
+  {
+    "address": "0x96B294E162537Ed360088Eea38b2C11C7A4d6aBb",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/MutantApeYachtClub.json",
+    "name": "Mutan Ape Yacht Club",
+    "symbol": "MAYC",
+    "logo": "https://i.seadn.io/gae/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI?w=500&auto=format",
+    "banner": "https://i.seadn.io/gae/5c-HcdLMinTg3LvEwXYZYC-u5nN22Pn5ivTPYA4pVEsWJHU1rCobhUlHSFjZgCHPGSmcGMQGCrDCQU8BfSfygmL7Uol9MRQZt6-gqA?auto=format&dpr=1&w=3840",
+    "verified": true,
+    "project_url": "",
+    "discord_url": "",
+    "twitter_username": "",
+    "instagram_username": ""
+  },
+  {
+    "address": "0xcdf7f698D294BD3c434db17828b3B09B32013B5a",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Nyan%20Balloon.json",
+    "name": "Nyan Balloon",
+    "symbol": "NyanBall",
+    "logo": "https://i.seadn.io/gcs/files/e8bd58f2759b0c260d36aa469e664ec3.gif?w=500&auto=format",
+    "banner": "https://i.seadn.io/gcs/files/dfc777ce66df8576580eaa5970f28c27.png?auto=format&dpr=1&w=3840",
+    "verified": true,
+    "project_url": "https://www.nyan.cat/",
+    "discord_url": "",
+    "twitter_username": "PRguitarman",
+    "instagram_username": ""
   },
   {
     "address": "0x1588f268fad0DecDBd448473C8C301292639eA5b",
@@ -124,61 +152,5 @@
     "discord_url": "https://discord.gg/ZFvmvuZxdA",
     "twitter_username": "RumbleKongs",
     "instagram_username": "therumblekongs"
-  },
-  {
-    "address": "0x89a51cD8bb0b0d15B8c7C6a206f5010A69739538",
-    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Fijis.json",
-    "name": "Fijis",
-    "symbol": "FIJI",
-    "logo": "https://i.seadn.io/s/raw/files/6ed48ea36b34a296379af54918543a24.gif?w=500&auto=format",
-    "banner": "https://i.seadn.io/s/primary-drops/0x12dd66366d45f44128083233c6fbadfe7cbae221/30965802:about:media:8934d986-96a1-44dd-8070-754b549071d7.png?auto=format&dpr=1&w=3840",
-    "verified": true,
-    "project_url": "https://peacecoin.world/",
-    "discord_url": "",
-    "twitter_username": "FijisNFT",
-    "instagram_username": ""
-  },
-  {
-    "address": "0xD2a4C095A9C478C4342318C5232156E260FFb9d1",
-    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/CRYPTOPUNKS.json",
-    "name": "CryptoPunks",
-    "symbol": "Ͼ",
-    "logo": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
-    "banner": "https://i.seadn.io/s/primary-drops/0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb/2563:about:media:ba2e3dbb-06f4-44b8-a813-e47925feda18.png?auto=format&dpr=1&w=3840",
-    "verified": true,
-    "project_url": "https://cryptopunks.app/",
-    "discord_url": "https://discord.gg/tQp4pSE",
-    "twitter_username": "cryptopunksnfts",
-    "instagram_username": ""
-  },
-  {
-    "address": "0x96B294E162537Ed360088Eea38b2C11C7A4d6aBb",
-    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Doodles.json",
-    "name": "Doodles",
-    "symbol": "DOODLE",
-    "logo": "https://i.seadn.io/s/raw/files/c91c80bd4e7e8d9c01ae4cbd87c54cd7.png?w=500&auto=format",
-    "banner": "https://i.seadn.io/gae/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw?auto=format&dpr=1&w=3840",
-    "verified": true,
-    "project_url": "https://web3.doodles.app",
-    "discord_url": "https://discord.gg/doodles",
-    "twitter_username": "doodles",
-    "instagram_username": ""
-  },
-  {
-    "address": "0xcdf7f698D294BD3c434db17828b3B09B32013B5a",
-    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
-    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/Nyan%20Balloon.json",
-    "name": "Nyan Balloon",
-    "symbol": "NyanBall",
-    "logo": "https://i.seadn.io/gcs/files/e8bd58f2759b0c260d36aa469e664ec3.gif?w=500&auto=format",
-    "banner": "https://i.seadn.io/gcs/files/dfc777ce66df8576580eaa5970f28c27.png?auto=format&dpr=1&w=3840",
-    "verified": true,
-    "project_url": "https://www.nyan.cat/",
-    "discord_url": "",
-    "twitter_username": "PRguitarman",
-    "instagram_username": ""
   }
 ]

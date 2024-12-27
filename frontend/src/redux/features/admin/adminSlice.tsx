@@ -1,7 +1,7 @@
 'use client'
 import { apiSlice } from '@/redux/features/api/apiSlice'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Account, Address, Pool, ReservePool, Token } from "@/lib/type";
+import { Account, Address, Collection, NFT, Pool, ReservePool, Token } from "@/lib/type";
 
 export const adminSlice = createApi({
     reducerPath: 'adminSlice',
@@ -16,7 +16,7 @@ export const adminSlice = createApi({
     }),
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: 600,
-    tagTypes: ['Account', 'Suspended Token', 'Suspended Pool'],
+    tagTypes: ['Account', 'Suspended Token', 'Suspended Pool', 'Suspended Collection'],
     endpoints: (builder) => ({
         getAccounts: builder.query<Account[], void>({
             query: () => `/accounts`,
@@ -29,6 +29,10 @@ export const adminSlice = createApi({
         getSuspendedPools: builder.query<Pool[], void>({
             query: () => `/pools/suspended`,
             providesTags: ['Suspended Pool']
+        }),
+        getSuspendedCollections: builder.query<Collection[], void>({
+            query: () => `/collections/suspended`,
+            providesTags: ['Suspended Collection']
         }),
 
 
@@ -161,6 +165,71 @@ export const adminSlice = createApi({
             }),
         }),
 
+        //Collection
+        updateCollections: builder.mutation<Pool[], void>({
+            query: () => ({
+                url: '/update/collections',
+                method: 'POST',
+            }),
+            invalidatesTags: ['Suspended Collection'],
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(apiSlice.util.invalidateTags(['Collection']));
+                } catch (err) {
+                    console.error('Error invalidating tags:', err);
+                }
+            }
+        }),
+        deleteCollection: builder.mutation<Collection, { _id: string }>({
+            query: (data) => ({
+                url: '/delete/collection',
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['Suspended Collection'],
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(apiSlice.util.invalidateTags(['Collection']));
+                } catch (err) {
+                    console.error('Error invalidating tags:', err);
+                }
+            }
+        }),
+        activeCollection: builder.mutation<Collection, { _id: string }>({
+            query: (data) => ({
+                url: '/active/collection',
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['Suspended Collection'],
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(apiSlice.util.invalidateTags(['Collection']));
+                } catch (err) {
+                    console.error('Error invalidating tags:', err);
+                }
+            }
+        }),
+        updateNFTs: builder.mutation<NFT[], void>({
+            query: () => ({
+                url: '/update/nfts',
+                method: 'POST',
+            }),
+            invalidatesTags: ['Suspended Collection'],
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(apiSlice.util.invalidateTags(['Collection']));
+                } catch (err) {
+                    console.error('Error invalidating tags:', err);
+                }
+            }
+        }),
+
+
         //Account
         createAccount: builder.mutation<Account, { address: Address, role: string }>({
             query: (data) => ({
@@ -195,6 +264,7 @@ export const {
     useGetAccountsQuery,
     useGetSuspendedTokensQuery,
     useGetSuspendedPoolsQuery,
+    useGetSuspendedCollectionsQuery,
 
     useUpdateTokensMutation,
     useDeleteTokenMutation,
@@ -206,6 +276,11 @@ export const {
     useDeletePoolMutation,
     useActivePoolMutation,
     useCreatePoolMutation,
+
+    useUpdateCollectionsMutation,
+    useDeleteCollectionMutation,
+    useActiveCollectionMutation,
+    useUpdateNFTsMutation,
 
     useUpdateReservesMutation,
     useCreateAccountMutation,

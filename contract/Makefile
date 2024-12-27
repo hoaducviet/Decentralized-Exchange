@@ -13,7 +13,6 @@ deploy:
 	npx hardhat run ./scripts/AddLP.js
 	
 nft1:
-	npx hardhat run ./scripts/addnft/HOPE.js
 	npx hardhat run ./scripts/addnft/Pirate.js
 	npx hardhat run ./scripts/addnft/NyanBalloon.js
 	npx hardhat run ./scripts/addnft/Fijis.js
@@ -31,7 +30,6 @@ nft3:
 
 
 nft:
-	npx hardhat run ./scripts/addnft/CRYPTOPUNKS.js
 	npx hardhat run scripts/BlockNumber.js
 	npx hardhat run ./scripts/addnft/Captainz.js
 	npx hardhat run ./scripts/addnft/MutantApeYachtClub.js

@@ -30,7 +30,7 @@ export const apiSlice = createApi({
     }),
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: 600,
-    tagTypes: ['TokenBalance', 'LiquidityBalance', "Token", "Pool", 'NFTCollection'],
+    tagTypes: ['TokenBalance', 'LiquidityBalance', "Token", "Pool", 'Collection', 'NFTCollection'],
     endpoints: (builder) => ({
         getTokens: builder.query<Token[], void>({
             query: () => '/tokens',
@@ -62,6 +62,7 @@ export const apiSlice = createApi({
         }),
         getCollections: builder.query<Collection[], void>({
             query: () => '/collections',
+            providesTags: ['Collection'],
             async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
                 try {
                     await cacheDataLoaded

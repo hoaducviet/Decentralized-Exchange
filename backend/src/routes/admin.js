@@ -5,7 +5,9 @@ const SiteController = require("../controllers/SiteController");
 const AccountController = require("../controllers/AccountController");
 const TokenController = require("../controllers/TokenController");
 const PoolController = require("../controllers/PoolController");
+const CollectionController = require("../controllers/CollectionController");
 const ReserveController = require("../controllers/ReserveController");
+const NFTController = require("../controllers/NFTController");
 
 //Account
 router.get(
@@ -44,8 +46,22 @@ router.post("/create/pool", PoolController.createPool);
 router.patch("/delete/pool", PoolController.deletePool);
 router.patch("/active/pool", PoolController.activePool);
 
+//Collection
+router.get(
+  "/collections/suspended",
+  CollectionController.getCollectionSuspended
+);
+router.post("/update/collections", CollectionController.updateCollection);
+router.patch("/delete/collection", CollectionController.deleteCollection);
+router.patch("/active/collection", CollectionController.activeCollection);
+
+router.post("/create/pool", PoolController.createPool);
+
 //Reserve
 router.post("/update/reserves", ReserveController.updateReserve);
+
+//NFT
+router.post("/update/nfts", NFTController.updateNFT);
 
 router.get("/search", SiteController.search);
 

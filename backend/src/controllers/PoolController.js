@@ -66,7 +66,7 @@ class PoolController {
       );
 
       const pools = await Pool.find({ deleted: true });
-      if (errors.length === pools.length && pools.length > 0) {
+      if (newPools.length === pools.length && validPool.length <= 0) {
         return res.status(200).json({
           message: "All pools has updated",
           errors,

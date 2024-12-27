@@ -63,14 +63,14 @@ class NFTController {
         }
       }
 
-      console.log("Valid: ", validNFT.length, "Error: ", errors.length);
-
-      if (validNFT.length === 0) {
-        return res.status(400).json({
-          message: "Some nfts items could not be added",
-          data: { errors: errors },
+      const allNFTs = await NFT.find();
+      if (allNFTs.length === nfts.length && validNFT.length <= 0) {
+        return res.status(200).json({
+          message: "All nfts has updated",
+          errors,
         });
       }
+
       const results = await NFT.insertMany(validNFT);
       const traits = await Trait.insertMany(validAttributes);
       const collections = await Collection.find();

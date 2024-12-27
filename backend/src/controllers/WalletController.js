@@ -175,7 +175,6 @@ class WalletController {
 
   async getNFTAll() {
     const excludedName = [
-      "CryptoPunks",
       // "Nyan Balloon", //0
       // "Pirate Nation - Founder's Pirate", //1
       // "Mutan Ape Yacht Club", //1
@@ -184,11 +183,9 @@ class WalletController {
       // "CloneX - X TAKASHI MURAKAMI", //1
       // "Captainz", //0
       // "Block Queens by Jeremy Cowart", //1
-
       // "Bored Ape Yacht Club",
       // "Doodles",
       // "RumbleKongLeague",
-      "AzraGames - The Hopeful",
     ];
     const collections = await Collection.find({
       name: { $nin: excludedName },
