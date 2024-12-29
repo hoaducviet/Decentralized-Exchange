@@ -13,6 +13,9 @@ const TokenPriceController = require("../controllers/TokenPriceController");
 const OrderController = require("../controllers/OrderController");
 const AuthController = require("../controllers/AuthController");
 const UserController = require("../controllers/UserController");
+const PendingCollectionController = require("../controllers/PendingCollectionController");
+const PendingNFT = require("../models/PendingNFT");
+const PendingNFTController = require("../controllers/PendingNFTController");
 //Site
 router.get("/search", SiteController.search);
 
@@ -60,6 +63,10 @@ router.get("/tokenprices/:id", TokenPriceController.getTokenPrice);
 router.get("/updatecollections", CollectionController.updateCollection);
 router.get("/collections", CollectionController.getCollectionAll);
 router.get("/collections/top", CollectionController.getCollectionTop);
+router.get(
+  "/collections/:address",
+  CollectionController.getCollectionByAddress
+);
 
 //Order
 router.post(
@@ -144,6 +151,20 @@ router.get(
 //JWT
 router.post("/login", AuthController.generateTokenJWT);
 router.get("/jwt/auth", AuthController.authenticateJWT);
+
+//Pending Collection
+router.post(
+  "/register/pendingcollection",
+  PendingCollectionController.registerPendingCollection
+);
+router.get(
+  "/pendingcollections/:address",
+  PendingCollectionController.getPendingCollectionByAddress
+);
+
+//Pending NFT
+router.get("/pendingnfts/:id", PendingNFTController.getPendingNFTsByCollection);
+router.get("/pendingnft", PendingNFTController.getPendingNFTItem);
 
 //User
 router.get("/insertuser", UserController.insertUser);

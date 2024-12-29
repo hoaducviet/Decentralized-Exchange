@@ -5,7 +5,10 @@ import {
     NFT, Address, Collection, LiquidBalancesType,
     TokenTransaction, LiquidityTransaction, NFTTransaction,
     ActivesType, TokenActiveTransaction, PoolTransactionsType,
-    TokenPrice, NFTActiveTransaction, CollectionTop, Volume, TVL, Order
+    TokenPrice, NFTActiveTransaction, CollectionTop, Volume, TVL, Order,
+    FileCollection,
+    PendingNFT,
+    PendingCollection
 } from "@/lib/type";
 import { getSocket, wsGeneral } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
@@ -30,7 +33,7 @@ export const apiSlice = createApi({
     }),
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: 600,
-    tagTypes: ['TokenBalance', 'LiquidityBalance', "Token", "Pool", 'Collection', 'NFTCollection'],
+    tagTypes: ['TokenBalance', 'LiquidityBalance', "Token", "Pool", 'Collection', 'NFTCollection', 'PendingNFTCollection'],
     endpoints: (builder) => ({
         getTokens: builder.query<Token[], void>({
             query: () => '/tokens',
@@ -86,6 +89,35 @@ export const apiSlice = createApi({
                 await cacheEntryRemoved
             }
         }),
+        getCollectionsByAddress: builder.query<Collection[], string>({
+            query: (address) => `/collections/${address}`,
+            providesTags: ['Collection'],
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                try {
+                    await cacheDataLoaded
+                    const listener = (event: MessageEvent) => {
+                        updateCachedData((draft) => {
+                            const collection = draft.find(item => item._id === event.data._id);
+                            if (collection) {
+                                collection.floor_price = event.data.floor_price
+                                collection.highest_price = event.data.highest_price
+                                collection.total_items = event.data.total_items
+                                collection.total_listed = event.data.total_listed
+                                collection.total_owners = event.data.total_owners
+                                collection.volume = event.data.volume
+                            }
+                        })
+                    }
+                    ws.on('updateCollection', listener)
+                } catch (error) {
+                    console.log(error)
+                }
+                await cacheEntryRemoved
+            }
+        }),
+        getPendingCollectionsByAddress: builder.query<PendingCollection[], string>({
+            query: (address) => `/pendingcollections/${address}`,
+        }),
         getReserves: builder.query<ReservePool[], void>({
             query: () => '/reserves',
             async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
@@ -130,6 +162,10 @@ export const apiSlice = createApi({
                 await cacheEntryRemoved
             }
         }),
+        getNFTByPendingCollection: builder.query<PendingNFT[], string>({
+            query: (id) => `/pendingnfts/${id}`,
+            providesTags: ['PendingNFTCollection']
+        }),
         getNFTItem: builder.query<NFT, { collectionId: string, nftId: string }>({
             query: ({ collectionId, nftId }) => `/nft?collection=${collectionId}&nft=${nftId}`,
             async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
@@ -151,6 +187,9 @@ export const apiSlice = createApi({
                 }
                 await cacheEntryRemoved
             }
+        }),
+        getPendingNFTItem: builder.query<PendingNFT, { collectionId: string, nftId: string }>({
+            query: ({ collectionId, nftId }) => `/pendingnft?collection=${collectionId}&nft=${nftId}`,
         }),
         getTokenBalances: builder.query<TokenBalancesType[], Address>({
             query: (address) => `/tokenbalances?address=${address}`,
@@ -374,6 +413,16 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ['TokenBalance', 'NFTCollection']
         }),
+        registerPendingCollection: builder.mutation<FileCollection, FileCollection>({
+            query: (data) => ({
+                url: `/register/pendingcollection`,
+                method: 'POST',
+                body: data
+            })
+        }),
+
+
+
         addOrder: builder.mutation<Order, Order>({
             query: (data) => ({
                 url: '/addorder',
@@ -408,6 +457,7 @@ export const {
     useGetReservesQuery,
     useGetLiquidityBalancesQuery,
     useGetCollectionsQuery,
+    useGetCollectionsByAddressQuery,
     useGetNFTBalancesQuery,
     useGetActivesQuery,
     useGetTokenTransactionsAllQuery,
@@ -422,6 +472,10 @@ export const {
     useGetTopCollectionsQuery,
     useGetDailyVolumeQuery,
     useGetDailyTVLQuery,
+    useRegisterPendingCollectionMutation,
+    useGetNFTByPendingCollectionQuery,
+    useGetPendingNFTItemQuery,
+    useGetPendingCollectionsByAddressQuery,
 
     useLoginMutation,
     useAddTokenTransactionMutation,

@@ -9,14 +9,14 @@ import SearchForm from "@/components/SearchForm"
 import ThemeMode from "@/components/ThemeMode"
 import NetworkBox from "@/components/NetworkBox"
 import { Button } from "@/components/ui/button"
- 
+
 export default function Header() {
     const [isActive, setIsActive] = useState<number>(-1)
     return <div className="bg-transparent flex justify-between items-center h-16">
         <div className="flex flex-row items-center">
             <Link href={routes.home}>
                 <div className="mx-5">
-                    <Image src="/image/logo.png" alt="logo" width={180} height={50} className="w-[9vw] h-[2vw] object-cover" />
+                    <Image src="/image/logo.png" alt="logo" priority={true} width={180} height={50} className="w-[9vw] h-[2vw] object-cover" />
                 </div>
             </Link>
             {publicRoutes.map((item, index) => {

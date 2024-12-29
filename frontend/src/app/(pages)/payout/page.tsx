@@ -90,7 +90,7 @@ export default function Payout() {
                 <Card onClick={handleClick} className=" flex flex-col w-full h-[15vw] select-none border-none outline-none">
                     <CardHeader className="flex flex-row justify-between items-center">
                         <CardDescription>You are withdraw USD to Paypal</CardDescription>
-                        <Image src="/image/paypal-logo.png" alt="Paypal" width={20} height={20} className="w-[8vw] h-[2.5vw] object-cover" />
+                        <Image src="/image/paypal-logo.png" priority={true} alt="Paypal" width={20} height={20} className="w-[8vw] h-[2.5vw] object-cover" />
                     </CardHeader>
                     <CardContent className='flex flex-col justify-center items-center w-full'>
                         <div className='flex flex-row justify-center items-center w-full text-7xl'>

@@ -1,7 +1,7 @@
 'use client'
 import { apiSlice } from '@/redux/features/api/apiSlice'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Account, Address, Collection, NFT, Pool, ReservePool, Token } from "@/lib/type";
+import { Account, Address, Collection, NFT, PendingCollection, PendingNFT, Pool, ReservePool, Token, UpdatePricePendingNFT } from "@/lib/type";
 
 export const adminSlice = createApi({
     reducerPath: 'adminSlice',
@@ -16,7 +16,7 @@ export const adminSlice = createApi({
     }),
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: 600,
-    tagTypes: ['Account', 'Suspended Token', 'Suspended Pool', 'Suspended Collection'],
+    tagTypes: ['Account', 'Suspended Token', 'Suspended Pool', 'Suspended Collection', 'Pending Collection'],
     endpoints: (builder) => ({
         getAccounts: builder.query<Account[], void>({
             query: () => `/accounts`,
@@ -34,6 +34,19 @@ export const adminSlice = createApi({
             query: () => `/collections/suspended`,
             providesTags: ['Suspended Collection']
         }),
+        getAcceptPendingCollections: builder.query<PendingCollection[], void>({
+            query: () => `/pendingcollections/accepted`,
+            providesTags: ['Pending Collection']
+        }),
+        getWaitingPendingCollections: builder.query<PendingCollection[], void>({
+            query: () => `/pendingcollections/waitting`,
+            providesTags: ['Pending Collection']
+        }),
+        getRejectPendingCollections: builder.query<PendingCollection[], void>({
+            query: () => `/pendingcollections/rejected`,
+            providesTags: ['Pending Collection']
+        }),
+
 
 
         //Token
@@ -229,6 +242,48 @@ export const adminSlice = createApi({
             }
         }),
 
+        //Pending Collection
+        rejectPendingCollection: builder.mutation<PendingCollection, { _id: string }>({
+            query: (data) => ({
+                url: '/reject/pendingcollection',
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['Pending Collection'],
+        }),
+        acceptPendingCollection: builder.mutation<PendingCollection, { _id: string }>({
+            query: (data) => ({
+                url: '/accept/pendingcollection',
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['Pending Collection'],
+        }),
+        waittingPendingCollection: builder.mutation<PendingCollection, { _id: string }>({
+            query: (data) => ({
+                url: '/wait/pendingcollection',
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['Pending Collection'],
+        }),
+
+        //Pending NFT
+        updatePricePendingNFT: builder.mutation<PendingNFT, UpdatePricePendingNFT[]>({
+            query: (data) => ({
+                url: '/updateprice/pendingnft',
+                method: 'PATCH',
+                body: data
+            }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(apiSlice.util.invalidateTags(['PendingNFTCollection']));
+                } catch (err) {
+                    console.error('Error invalidating tags:', err);
+                }
+            }
+        }),
 
         //Account
         createAccount: builder.mutation<Account, { address: Address, role: string }>({
@@ -265,6 +320,9 @@ export const {
     useGetSuspendedTokensQuery,
     useGetSuspendedPoolsQuery,
     useGetSuspendedCollectionsQuery,
+    useGetAcceptPendingCollectionsQuery,
+    useGetRejectPendingCollectionsQuery,
+    useGetWaitingPendingCollectionsQuery,
 
     useUpdateTokensMutation,
     useDeleteTokenMutation,
@@ -281,6 +339,11 @@ export const {
     useDeleteCollectionMutation,
     useActiveCollectionMutation,
     useUpdateNFTsMutation,
+    useUpdatePricePendingNFTMutation,
+
+    useAcceptPendingCollectionMutation,
+    useRejectPendingCollectionMutation,
+    useWaittingPendingCollectionMutation,
 
     useUpdateReservesMutation,
     useCreateAccountMutation,

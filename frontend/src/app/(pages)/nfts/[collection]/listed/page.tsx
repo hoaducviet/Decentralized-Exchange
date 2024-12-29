@@ -19,9 +19,6 @@ const options = [
         name: 'Item'
     },
     {
-        name: 'Event'
-    },
-    {
         name: 'Price'
     },
     {

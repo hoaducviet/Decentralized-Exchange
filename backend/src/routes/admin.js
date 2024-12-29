@@ -8,6 +8,9 @@ const PoolController = require("../controllers/PoolController");
 const CollectionController = require("../controllers/CollectionController");
 const ReserveController = require("../controllers/ReserveController");
 const NFTController = require("../controllers/NFTController");
+const PendingCollectionController = require("../controllers/PendingCollectionController");
+const PendingNFT = require("../models/PendingNFT");
+const PendingNFTController = require("../controllers/PendingNFTController");
 
 //Account
 router.get(
@@ -62,6 +65,19 @@ router.post("/update/reserves", ReserveController.updateReserve);
 
 //NFT
 router.post("/update/nfts", NFTController.updateNFT);
+
+//Pending Collection
+router.get("/pendingcollections/accepted", PendingCollectionController.getAcceptPendingCollection);
+router.get("/pendingcollections/waitting", PendingCollectionController.getWaitingPendingCollection);
+router.get("/pendingcollections/rejected", PendingCollectionController.getRejectPendingCollection);
+router.patch("/reject/pendingcollection", PendingCollectionController.rejectCollection);
+router.patch("/accept/pendingcollection", PendingCollectionController.acceptCollection);
+router.patch("/wait/pendingcollection", PendingCollectionController.waitCollection);
+
+//Pending NFT
+router.patch("/updateprice/pendingnft", PendingNFTController.updatePriceExpertNFTs);
+
+
 
 router.get("/search", SiteController.search);
 

@@ -115,7 +115,7 @@ export default function CollectionAdmin() {
                                     return (
                                         <div key={index} className='cursor-pointer hover:bg-secondary/80 rounded-none flex flex-row items-center px-3 h-[4vw]'>
                                             <div className='flex flex-row justify-start items-center space-x-[0.6vw] w-[35%] text-md hover:underline'>
-                                                <Link href={`/nfts/${item.name.toLowerCase().replace(/\s+/g, '')}`} className='flex flex-row justify-start items-center space-x-1'>
+                                                <Link href={`/admin/collection/nfts/${item.name.toLowerCase().replace(/\s+/g, '')}`} className='flex flex-row justify-start items-center space-x-1'>
                                                     <p>{index + 1}</p>
                                                     <Avatar className="ml-[0.5vw] border-black">
                                                         <AvatarImage src={item.logo || '/image/default-nft.png'} />
@@ -142,7 +142,7 @@ export default function CollectionAdmin() {
                                                             <AlertDialogTitle>Suspended Collection</AlertDialogTitle>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
-                                                            <Image src={item.logo} alt='logo.png' width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
+                                                            <Image src={item.logo} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
                                                             <p className='font-semibold'>{item.name}</p>
                                                         </div>
                                                         <AlertDialogFooter>
@@ -173,7 +173,7 @@ export default function CollectionAdmin() {
                                     return (
                                         <div key={index} className='cursor-pointer hover:bg-secondary/80 rounded-none flex flex-row items-center px-3 h-[4vw]'>
                                             <div className='flex flex-row justify-start items-center space-x-[0.6vw] w-[35%] text-md hover:underline'>
-                                                <Link href={`/nfts/${item.name.toLowerCase().replace(/\s+/g, '')}`} className='flex flex-row justify-start items-center space-x-1'>
+                                                <Link href={`/admin/collection/nfts/${item.name.toLowerCase().replace(/\s+/g, '')}`} className='flex flex-row justify-start items-center space-x-1'>
                                                     <p>{index + 1}</p>
                                                     <Avatar className="ml-[0.5vw] border-black">
                                                         <AvatarImage src={item.logo || '/image/default-nft.png'} />
@@ -199,7 +199,7 @@ export default function CollectionAdmin() {
                                                             <AlertDialogTitle>Active Collection</AlertDialogTitle>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
-                                                            <Image src={item.logo} alt='logo.png' width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
+                                                            <Image src={item.logo} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
                                                             <p className='font-semibold'>{item.name}</p>
                                                         </div>
                                                         <AlertDialogFooter>

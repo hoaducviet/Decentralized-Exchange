@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const slug = require("mongoose-slug-generator");
 const mongooseDelete = require("mongoose-delete");
-
 mongoose.plugin(slug);
-const PendingNFT = new Schema(
+
+const PendingTrait = new Schema(
   {
     pending_collection_id: {
       type: Schema.Types.ObjectId,
@@ -12,23 +12,16 @@ const PendingNFT = new Schema(
       ref: "pendingcollection",
     },
     nft_id: { type: String, required: true },
-    name: { type: String, required: false, maxLength: 255 },
-    uri: { type: String, required: true, maxLength: 255 },
-    img: { type: String, required: false, maxLength: 255 },
-    price: { type: String, default: "0" },
-    ai_price: { type: String, default: "0" },
-    expert_price: { type: String, default: "0" },
-    description: { type: String, required: false, default: "" },
+    trait_type: { type: String, required: false, default: "" },
+    value: { type: String, required: false, default: "" },
   },
   {
     timestamps: true,
   }
 );
 
-PendingNFT.index({ owner: "text" });
-
 //Custom query helpers
-PendingNFT.query.sortable = function (req) {
+PendingTrait.query.sortable = function (req) {
   if (req.query.hasOwnProperty("_sort")) {
     const isValidType = ["asc", "desc"].includes(req.query.type);
     return this.sort({
@@ -39,9 +32,9 @@ PendingNFT.query.sortable = function (req) {
 };
 
 //Add Plugin
-PendingNFT.plugin(mongooseDelete, {
+PendingTrait.plugin(mongooseDelete, {
   deletedAt: true,
   overrideMethods: "all",
 });
 
-module.exports = mongoose.model("pendingnft", PendingNFT);
+module.exports = mongoose.model("pendingtrait", PendingTrait);

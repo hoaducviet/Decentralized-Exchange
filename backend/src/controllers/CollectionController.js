@@ -65,6 +65,26 @@ class CollectionController {
     }
   }
 
+  async getCollectionByAddress(req, res) {
+    try {
+      const { address } = req.params;
+      const results = await Collection.find({ owner: address, active: true })
+        .select(
+          "_id address owner name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume active createdAt"
+        )
+        .exec();
+      if (!results.length) {
+        return res.status(404).json({ message: "Collection is null" });
+      }
+      return res.status(200).json(mutipleMongooseToObject(results));
+    } catch (error) {
+      console.error("Error Collection:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get all Collection" });
+    }
+  }
+
   async getCollectionAll(req, res) {
     try {
       const results = await Collection.find({ active: true })

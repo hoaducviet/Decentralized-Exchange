@@ -26,7 +26,7 @@ export default function NFTsTopPrice() {
                 spaceBetween={0}
                 centeredSlides={true}
                 slidesPerView={1}
-                loop={false} 
+                loop={false}
                 pagination={{
                     clickable: true,
                 }}
@@ -45,7 +45,7 @@ export default function NFTsTopPrice() {
                         <div className='absolute bottom-20 left-0 right-0 z-20 h-[7vw] flex flex-row justify-center space-x-3'>
                             {nfts.length > 0 && nfts.map((nft, index) => (
                                 <Card key={index} className='flex rounded-2xl shadow-2xl border-white'>
-                                    <Image src={nft.img} alt={nft.nft_id} width={20} height={20} className='w-[5vw] h-full layout:responsive object-cover object-center rounded-2xl' />
+                                    <Image src={nft.img} priority={true} alt={nft.nft_id} width={20} height={20} className='w-[5vw] h-full layout:responsive object-cover object-center rounded-2xl' />
                                 </Card>
                             ))}
                         </div>

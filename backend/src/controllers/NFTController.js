@@ -13,8 +13,6 @@ class NFTController {
     try {
       const nfts = await WalletController.getNFTAll();
 
-      console.log(nfts.length);
-
       if (!Array.isArray(nfts)) {
         return res.status(400).json({
           message: "Invalid data format. Expected an array of Nfts objects.",

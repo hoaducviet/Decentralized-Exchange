@@ -11,6 +11,19 @@ export type Account = {
     createdAt: string;
 }
 
+export type FileNFT = {
+    token_id: number;
+    token_uri: string;
+}
+
+export type FileCollection = {
+    owner?: Address;
+    uri: string;
+    base_url: string;
+    end_url: string;
+    nfts: FileNFT[]
+}
+
 export type Address = `0x${string}`
 
 export type Token = {
@@ -92,6 +105,27 @@ export type Collection = {
     description: string;
     volume: string;
     createdAt: string;
+    collection_logo?: string;
+}
+
+export type PendingCollection = {
+    _id: string;
+    owner: Address;
+    name: string;
+    symbol: string;
+    logo: string;
+    banner: string,
+    currency: string;
+    project_url?: string;
+    discord_url?: string;
+    total_items: string;
+    total_listed: string;
+    total_owners: string;
+    twitter_username: string;
+    instagram_username: string;
+    description: string;
+    status: string;
+    createdAt: string;
 }
 
 export type NFT = {
@@ -109,9 +143,40 @@ export type NFT = {
     traits: Trait[] | []
 }
 
+export type PendingNFT = {
+    _id: string;
+    pending_collection_id: string;
+    nft_id: string;
+    name: string;
+    uri: string;
+    img: string;
+    price: string;
+    ai_price: string;
+    expert_price: string;
+    description: string;
+    createdAt: string;
+    traits: Trait[] | []
+}
+
 export type Trait = {
     trait_type: string;
     value: string;
+}
+
+export type UpdatePricePendingNFT = {
+    pending_collection_id: string;
+    nft_id: string;
+    expert_price: string;
+}
+
+export type ExpertPriceNFT = {
+    nft_id: string;
+    expert_price: string;
+}
+
+export type FileContentUpdateExpertPriceNFT = {
+    collection_id: string;
+    nfts: ExpertPriceNFT[]
 }
 
 export type ReservePool = {

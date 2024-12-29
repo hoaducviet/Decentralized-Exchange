@@ -6,13 +6,14 @@ const mongooseDelete = require("mongoose-delete");
 mongoose.plugin(slug);
 const PendingCollection = new Schema(
   {
-    from_wallet: { type: String, required: true, minLength: 42, maxLength: 42 },
     owner: { type: String, required: true, minLength: 42, maxLength: 42 },
-    name: { type: String, unique: true, required: true, maxLength: 255 },
-    symbol: { type: String, unique: true, required: true, maxLength: 20 },
-    uri: { type: String, unique: true, required: true, maxLength: 255 },
-    logo: { type: String, unique: true, required: false, maxLength: 255 },
-    banner: { type: String, unique: true, required: true, maxLength: 255 },
+    name: { type: String, required: true, maxLength: 255 },
+    symbol: { type: String, required: true, maxLength: 20 },
+    uri: { type: String, required: true, maxLength: 255 },
+    base_url: { type: String, required: true, maxLength: 255 },
+    end_url: { type: String, maxLength: 255 },
+    logo: { type: String, required: false, maxLength: 255 },
+    banner: { type: String, required: true, maxLength: 255 },
     currency: { type: String, maxLength: 255, default: "ETH" },
     project_url: { type: String, maxLength: 255, default: "" },
     discord_url: { type: String, maxLength: 255, default: "" },
@@ -22,7 +23,7 @@ const PendingCollection = new Schema(
     description: { type: String, required: false, maxLength: 255, default: "" },
     status: {
       type: String,
-      enum: ["Pending", "Accepted", "Failed"],
+      enum: ["Pending", "Accepted", "Rejected"],
       required: false,
       default: "Pending",
     },
