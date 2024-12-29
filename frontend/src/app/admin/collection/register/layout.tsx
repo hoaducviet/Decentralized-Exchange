@@ -1,5 +1,5 @@
 
-export default function PersonalLayout({ children }: Readonly<{
+export default function NFTSRegisterLayout({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
 
