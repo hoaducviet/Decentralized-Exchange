@@ -28,6 +28,7 @@ const infoNft = [
     'NFT ID',
     'AI Price',
     'Expert Price',
+    'Price',
     'Created At'
 ]
 
@@ -40,6 +41,7 @@ export default function CollectionNFTAdmin() {
     const handleSetCurrentNft = (nft: PendingNFT) => {
         setCurrentNft(nft)
     }
+    console.log(nfts)
 
     return (
         <div className="select-none flex flex-col max-h-[70vh] space-y-[1vw] px-[10vw]">
@@ -62,15 +64,15 @@ export default function CollectionNFTAdmin() {
                                             <div>{nft.name ? nft.name : `#${nft.nft_id}`}</div>
                                         </div>
                                         <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
-                                            <p>{parseFloat(nft.price) > 0 ? nft.price : ""}</p>
-                                            <p className="text-md font-semibold">ETH</p>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
                                             <p>{parseFloat(nft.ai_price) > 0 ? nft.ai_price : ""}</p>
                                             <p className="text-md font-semibold">ETH</p>
                                         </div>
                                         <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
                                             <p>{parseFloat(nft.expert_price) > 0 ? nft.expert_price : ""}</p>
+                                            <p className="text-md font-semibold">ETH</p>
+                                        </div>
+                                        <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
+                                            <p>{parseFloat(nft.price) > 0 ? nft.price : ""}</p>
                                             <p className="text-md font-semibold">ETH</p>
                                         </div>
                                     </div>
@@ -110,6 +112,13 @@ export default function CollectionNFTAdmin() {
                                                 </div>
                                                 <div className="flex flex-row justify-between w-full items-center">
                                                     <p className="font-semibold">{infoNft[4]}</p>
+                                                    <div className="flex flex-row space-x-1">
+                                                        <p>{nowNft?.price}</p>
+                                                        <p>{currentPendingCollection?.currency}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-row justify-between w-full items-center">
+                                                    <p className="font-semibold">{infoNft[5]}</p>
                                                     <div className="flex flex-row space-x-1 italic">
                                                         <p>{(new Date(nowNft?.createdAt || '')).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
                                                     </div>

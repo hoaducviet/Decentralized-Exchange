@@ -152,5 +152,19 @@
     "discord_url": "https://discord.gg/ZFvmvuZxdA",
     "twitter_username": "RumbleKongs",
     "instagram_username": "therumblekongs"
+  },
+  {
+    "address": "0x89a51cD8bb0b0d15B8c7C6a206f5010A69739538",
+    "owner": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
+    "uri": "https://blue-familiar-leech-414.mypinata.cloud/ipfs/QmZahaNHQLjQJH9C592Cgymrb4jSikKpwotCZGGxRfnDKU/BoredApeYachtClub.json",
+    "name": "Bored Ape Yacht Club",
+    "symbol": "BAYC",
+    "logo": "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
+    "banner": "https://i.seadn.io/gae/i5dYZRkVCUK97bfprQ3WXyrT9BnLSZtVKGJlKQ919uaUB0sxbngVCioaiyu9r6snqfi2aaTyIvv6DHm4m2R3y7hMajbsv14pSZK8mhs?auto=format&dpr=1&w=3840",
+    "verified": true,
+    "project_url": "http://www.boredapeyachtclub.com/",
+    "discord_url": "https://discord.gg/3P5K3dzgdB",
+    "twitter_username": "BoredApeYC",
+    "instagram_username": ""
   }
 ]

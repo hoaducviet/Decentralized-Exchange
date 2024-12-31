@@ -31,13 +31,12 @@ nft3:
 
 nft:
 	npx hardhat run scripts/BlockNumber.js
-	npx hardhat run ./scripts/addnft/Captainz.js
 	npx hardhat run ./scripts/addnft/MutantApeYachtClub.js
 	
 rund:
-	npx hardhat run ./scripts/AddLP.js
-
-
+	$(MAKE) clean && \
+	$(MAKE) deploy && \
+	$(MAKE) nft
 
 
 copy:

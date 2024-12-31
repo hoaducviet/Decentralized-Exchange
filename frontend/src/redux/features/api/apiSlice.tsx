@@ -420,6 +420,13 @@ export const apiSlice = createApi({
                 body: data
             })
         }),
+        agreePriceCollection: builder.mutation<PendingCollection, { _id: string }>({
+            query: (data) => ({
+                url: `/agree/pendingcollection`,
+                method: 'POST',
+                body: data
+            })
+        }),
 
 
 
@@ -472,11 +479,10 @@ export const {
     useGetTopCollectionsQuery,
     useGetDailyVolumeQuery,
     useGetDailyTVLQuery,
-    useRegisterPendingCollectionMutation,
     useGetNFTByPendingCollectionQuery,
     useGetPendingNFTItemQuery,
     useGetPendingCollectionsByAddressQuery,
-
+    
     useLoginMutation,
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,
@@ -484,7 +490,9 @@ export const {
     useUpdateLiquidityTransactionMutation,
     useAddNftTransactionMutation,
     useUpdateNftTransactionMutation,
+    useRegisterPendingCollectionMutation,
     useAddOrderMutation,
+    useAgreePriceCollectionMutation,
     useUpdateOrderMutation,
     useCancelOrderMutation
 } = apiSlice

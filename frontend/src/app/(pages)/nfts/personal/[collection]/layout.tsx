@@ -14,6 +14,12 @@ const optionsInfo = [
     "Items",
     "Registed",
     "Chain",
+    "Pay expert",
+    "Pay fee",
+    "Fee market",
+    "Fee mint (1%)",
+    "Admin status",
+    "User status",
     "Status",
 ]
 
@@ -48,7 +54,7 @@ export default function CollectionLayout({ children }: Readonly<{
                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 <div className="absolute inset-0 flex flex-row mx-[5vw] my-[2vw] text-white">
-                    <div className="flex flex-col justify-end w-[50%] space-y-[1vw]">
+                    <div className="flex flex-col justify-end w-[40%] space-y-[1vw]">
                         <Image src={newCollection?.logo || "/image/default-image.png"} alt={newCollection?.name || ""} width={20} height={20} className="w-[6vw] h-[6vw] border-[1px] rounded-2xl border-white/70" />
                         <div className="flex flex-row justify-start divide-x-[1px] dark:divide-white items-center space-x-[1.5vw]">
                             <div className="flex flex-row justify-start items-center space-x-[1vw]">
@@ -84,12 +90,55 @@ export default function CollectionLayout({ children }: Readonly<{
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-row justify-end items-end w-[50%] space-x-[2vw]">
+                    <div className="flex flex-row justify-end items-end w-[60%] space-x-[2vw]">
+                        {
+                            newCollection?.payment_expert &&
+                            <div className="flex flex-col">
+                                <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                    <p>{newCollection?.payment_expert}</p>
+                                    <p>{newCollection?.currency}</p>
+                                </div>
+                                <div>{optionsInfo[3]}</div>
+                            </div>
+                        }
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <p>{newCollection?.payment_fee}</p>
+                                <p>{newCollection?.currency}</p>
+                            </div>
+                            <div>{optionsInfo[4]}</div>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <p>{newCollection?.fee_market}</p>
+                                <p>{newCollection?.currency}</p>
+                            </div>
+                            <div>{optionsInfo[5]}</div>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <p>{newCollection?.fee_mint}</p>
+                                <p>{newCollection?.currency}</p>
+                            </div>
+                            <div>{optionsInfo[6]}</div>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <p>{newCollection?.admin_status}</p>
+                            </div>
+                            <div>{optionsInfo[7]}</div>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
+                                <p>{newCollection?.user_status}</p>
+                            </div>
+                            <div>{optionsInfo[8]}</div>
+                        </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
                                 <p>{newCollection?.status}</p>
                             </div>
-                            <div>{optionsInfo[3]}</div>
+                            <div>{optionsInfo[9]}</div>
                         </div>
                     </div>
                 </div>

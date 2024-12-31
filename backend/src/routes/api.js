@@ -157,6 +157,10 @@ router.post(
   "/register/pendingcollection",
   PendingCollectionController.registerPendingCollection
 );
+router.post(
+  "/agree/pendingcollection",
+  PendingCollectionController.agreeCollection
+);
 router.get(
   "/pendingcollections/:address",
   PendingCollectionController.getPendingCollectionByAddress

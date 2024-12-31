@@ -75,7 +75,6 @@ export default function NFTs() {
                     const parsedData: FileCollection = JSON.parse(content);
                     setFileContent(parsedData);
                     showSuccess("Upload success!");
-                    console.log("File content:", content);
                 } catch {
                     showError("Error parsing JSON!.");
                 }

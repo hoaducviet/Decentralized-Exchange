@@ -124,7 +124,16 @@ export type PendingCollection = {
     twitter_username: string;
     instagram_username: string;
     description: string;
+    admin_status: string;
+    user_status: string;
     status: string;
+    fee_expert: string;
+    fee_mint: string;
+    fee_market: string;
+    total_fee: string;
+    payment_expert: string;
+    payment_fee: string;
+    total_payed: string;
     createdAt: string;
 }
 

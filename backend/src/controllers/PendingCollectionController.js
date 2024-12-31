@@ -4,7 +4,10 @@ const PendingCollection = require("../models/PendingCollection");
 const NFT = require("../models/NFT");
 const WalletController = require("./WalletController");
 
-const { mutipleMongooseToObject } = require("../utils/mongoose");
+const {
+  mutipleMongooseToObject,
+  mongooseToObject,
+} = require("../utils/mongoose");
 const { fetchDataURI } = require("../utils/fetchDataURI");
 const { convertToHttps } = require("../utils/convertToHttps");
 const PendingNFT = require("../models/PendingNFT");
@@ -44,7 +47,7 @@ class PendingCollectionController {
             pending_collection_id: newCollection._id,
             nft_id: item.token_id,
             name: response.name || "",
-            uri: url,
+            uri: `${item.token_uri}${fileCollection.end_url}`,
             img: img || "",
             description: response.description || "",
             attributes: response.attributes || [],
@@ -116,16 +119,9 @@ class PendingCollectionController {
 
   async getWaitingPendingCollection(req, res) {
     try {
-      const results = await PendingCollection.find({ status: "Pending" })
-        .select(
-          "_id owner name symbol logo banner currency project_url discord_url total_items twitter_username instagram_username description status createdAt"
-        )
-        .exec();
-      if (!results.length) {
-        return res.status(404).json({ message: "Collection is null" });
-      }
+      const results = await PendingCollection.find({ admin_status: "Pending" });
 
-      return res.status(200).json(mutipleMongooseToObject(results));
+      return res.status(200).json(mutipleMongooseToObject(results || []));
     } catch (error) {
       console.error("Error Collection:", error.message);
       return res
@@ -136,16 +132,11 @@ class PendingCollectionController {
 
   async getAcceptPendingCollection(req, res) {
     try {
-      const results = await PendingCollection.find({ status: "Accepted" })
-        .select(
-          "_id owner name symbol logo banner currency project_url discord_url total_items twitter_username instagram_username description status createdAt"
-        )
-        .exec();
-      if (!results.length) {
-        return res.status(404).json({ message: "Collection is null" });
-      }
+      const results = await PendingCollection.find({
+        admin_status: "Accepted",
+      });
 
-      return res.status(200).json(mutipleMongooseToObject(results));
+      return res.status(200).json(mutipleMongooseToObject(results || []));
     } catch (error) {
       console.error("Error Collection:", error.message);
       return res
@@ -156,16 +147,11 @@ class PendingCollectionController {
 
   async getRejectPendingCollection(req, res) {
     try {
-      const results = await PendingCollection.find({ status: "Rejected" })
-        .select(
-          "_id owner name symbol logo banner currency project_url discord_url total_items twitter_username instagram_username description status createdAt"
-        )
-        .exec();
-      if (!results.length) {
-        return res.status(404).json({ message: "Collection is null" });
-      }
+      const results = await PendingCollection.find({
+        admin_status: "Rejected",
+      });
 
-      return res.status(200).json(mutipleMongooseToObject(results));
+      return res.status(200).json(mutipleMongooseToObject(results || []));
     } catch (error) {
       console.error("Error Collection:", error.message);
       return res
@@ -177,16 +163,9 @@ class PendingCollectionController {
   async getPendingCollectionByAddress(req, res) {
     try {
       const { address } = req.params;
-      const results = await PendingCollection.find({ owner: address })
-        .select(
-          "_id owner name symbol logo banner currency project_url discord_url total_items twitter_username instagram_username description status createdAt"
-        )
-        .exec();
+      const results = await PendingCollection.find({ owner: address });
 
-      if (!results.length) {
-        return res.status(404).json({ message: "Collection is null" });
-      }
-      return res.status(200).json(mutipleMongooseToObject(results));
+      return res.status(200).json(mutipleMongooseToObject(results || []));
     } catch (error) {
       console.error("Error Collection:", error.message);
       return res
@@ -203,7 +182,10 @@ class PendingCollectionController {
       if (!collection) {
         return res.status(404).json({ message: "Collection is null" });
       }
-      await PendingCollection.findByIdAndUpdate(_id, { status: "Rejected" });
+      await PendingCollection.findByIdAndUpdate(_id, {
+        admin_status: "Rejected",
+        status: "Canceled",
+      });
       return res.status(200).json({ message: "Rejected Collection" });
     } catch (error) {
       return res
@@ -219,7 +201,10 @@ class PendingCollectionController {
       if (!collection) {
         return res.status(404).json({ message: "Collection is null" });
       }
-      await PendingCollection.findByIdAndUpdate(_id, { status: "Accepted" });
+      await PendingCollection.findByIdAndUpdate(_id, {
+        admin_status: "Accepted",
+        status: "Pending",
+      });
       return res.status(200).json({ message: "Accepted Collection" });
     } catch (error) {
       return res
@@ -235,8 +220,87 @@ class PendingCollectionController {
       if (!collection) {
         return res.status(404).json({ message: "Collection is null" });
       }
-      await PendingCollection.findByIdAndUpdate(_id, { status: "Pending" });
+      await PendingCollection.findByIdAndUpdate(_id, {
+        admin_status: "Pending",
+        status: "Pending",
+      });
       return res.status(200).json({ message: "Pending Collection" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Collection" });
+    }
+  }
+
+  async mintCollection(req, res) {
+    try {
+      const { _id } = req.body;
+      const collection = await PendingCollection.findById(_id);
+      if (!collection) {
+        return res.status(404).json({ message: "Collection is null" });
+      }
+      console.log(collection);
+      const nfts = await PendingNFT.find({ pending_collection_id: _id });
+      console.log(nfts);
+      const hash = await WalletController.mintCollectionAndAddNFT(
+        collection,
+        nfts
+      );
+      console.log(hash);
+
+      await PendingCollection.findByIdAndUpdate(_id, {
+        status: hash ? "Created" : "Failed",
+      });
+
+      return res.status(200).json({ message: "Pending Collection" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error get Collection" });
+    }
+  }
+
+  async agreeCollection(req, res) {
+    try {
+      const { _id } = req.body;
+      const collection = await PendingCollection.findById(_id);
+      if (!collection) {
+        return res.status(404).json({ message: "Collection is null" });
+      }
+
+      const nfts = await PendingNFT.find({ pending_collection_id: _id });
+      const newNfts = await Promise.all(
+        nfts.map(async (nft) => {
+          const price =
+            parseFloat(nft.expert_price) > 0 ? nft.expert_price : nft.ai_price;
+          return await PendingNFT.findByIdAndUpdate(
+            nft._id,
+            { price },
+            { new: true }
+          );
+        })
+      );
+
+      const fee_mint =
+        newNfts.reduce((sum, item) => sum + parseFloat(item.price), 0) * 0.01;
+      const total_fee = parseFloat(collection.fee_market) + fee_mint;
+
+      console.log(fee_mint);
+      const newCollection = await PendingCollection.findByIdAndUpdate(
+        _id,
+        {
+          user_status: "Agreed",
+          fee_mint,
+          total_fee,
+        },
+        { new: true }
+      );
+
+      console.log(newCollection);
+      return res.status(200).json({
+        message: "Pending Collection",
+        data: mongooseToObject(newCollection),
+      });
     } catch (error) {
       return res
         .status(500)

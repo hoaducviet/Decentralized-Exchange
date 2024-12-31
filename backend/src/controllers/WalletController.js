@@ -7,6 +7,7 @@ const { convertToHttps } = require("../utils/convertToHttps");
 const { convertToPool } = require("../utils/convertToPool");
 
 const FactoryToken = require("../artifacts/FactoryToken.json");
+const FactoryNFT = require("../artifacts/FactoryNFT.json");
 const FactoryLiquidityPool = require("../artifacts/FactoryLiquidityPool.json");
 const MarketNFT = require("../artifacts/MarketNFT.json");
 
@@ -17,6 +18,7 @@ const LPToken = require("../artifacts/LPToken.json");
 const NFTCollection = require("../artifacts/NFTCollection.json");
 
 const addressFactoryToken = process.env.ADDRESS_FACTORY_TOKEN;
+const addressFactoryNFT = process.env.ADDRESS_FACTORY_NFT;
 const addressFactoryLiquidityPool = process.env.ADDRESS_FACTORY_LIQUIDITYPOOL;
 const addressMarketNFT = process.env.ADDRESS_MARKET_NFT;
 
@@ -48,6 +50,12 @@ const FactoryLiquidityPoolContract = new ethers.Contract(
 const MarketNFTContract = new ethers.Contract(
   addressMarketNFT,
   MarketNFT.abi,
+  wallet
+);
+
+const FactoryNFTContract = new ethers.Contract(
+  addressFactoryNFT,
+  FactoryNFT.abi,
   wallet
 );
 
@@ -666,6 +674,55 @@ class WalletController {
       const receipt = await FactoryTokenContract.burnUSD(address, amount);
       await receipt.wait();
       return receipt;
+    } catch (error) {
+      return console.log(error);
+    }
+  }
+
+  async mintCollectionAndAddNFT(collection, nfts) {
+    try {
+      const receipt = await FactoryNFTContract.createCollection(
+        collection.name,
+        collection.symbol,
+        collection.uri,
+        collection.base_url
+      );
+      await receipt.wait();
+      const counter = await FactoryNFTContract.counter();
+      const newCollection = await FactoryNFTContract.InfoCollections(
+        counter - 1n
+      );
+      const addReceipt = await MarketNFTContract.addCollection(
+        newCollection[0],
+        {
+          value: ethers.parseEther("1"),
+        }
+      );
+      await addReceipt.wait();
+      for (let index = 0; index < nfts.length; index++) {
+        const { uri, expert_price } = nfts[index];
+        try {
+          const tx = await FactoryNFTContract.mintNFT(
+            newCollection[0],
+            uri,
+            collection.owner,
+            ethers.parseEther(expert_price)
+          );
+          await tx.wait();
+
+          await new Promise((resolve) => setTimeout(resolve, 1));
+        } catch (error) {
+          console.log(`Error minting NFT #${index}:`, error);
+        }
+      }
+
+      const txTransferOwner = await FactoryNFTContract.transferOwnerCollection(
+        newCollection[0],
+        collection.owner
+      );
+      await txTransferOwner.wait();
+
+      return txTransferOwner.hash;
     } catch (error) {
       return console.log(error);
     }

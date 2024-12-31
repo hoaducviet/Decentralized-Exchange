@@ -37,6 +37,7 @@ const infoNft = [
     'NFT ID',
     'AI Price',
     'Expert Price',
+    'Price',
     'Created At'
 ]
 
@@ -131,7 +132,6 @@ export default function CollectionNFTAdmin() {
                     const parsedData: FileContentUpdateExpertPriceNFT = JSON.parse(content);
                     setFileContent(parsedData);
                     showSuccess("Upload success!");
-                    console.log("File content:", content);
                 } catch {
                     showError("Error parsing JSON!.");
                 }
@@ -146,7 +146,7 @@ export default function CollectionNFTAdmin() {
 
     return (
         <div className="select-none flex flex-col max-h-[70vh] space-y-[1vw]">
-            {currentPendingCollection?.status === 'Pending' &&
+            {currentPendingCollection?.status === 'Pending Expert' &&
                 <div className='flex flex-row justify-end items-center w-full'>
                     <AlertDialog >
                         <AlertDialogTrigger asChild>
@@ -186,7 +186,7 @@ export default function CollectionNFTAdmin() {
             }
             <div className="flex flex-row justify-between items-center text-sm font-semibold opacity-60 h-[3vw]">
                 {options.map((option, index) => {
-                    if (currentPendingCollection?.status === 'Pending') {
+                    if (currentPendingCollection?.status === 'Pending Expert') {
                         return (
                             <div key={index} className="flex flex-row justify-start items-center w-[20%]">
                                 {option.name}
@@ -203,7 +203,7 @@ export default function CollectionNFTAdmin() {
             </div>
             <div className="flex flex-col flex-start border-t-[1px]">
                 {nfts?.length && nfts.map((nft, index) => {
-                    const isPending = currentPendingCollection?.status === 'Pending'
+                    const isPending = currentPendingCollection?.status === 'Pending Expert'
                     return (
                         <div key={index} className="flex flex-row justify-between items-center w-full hover:bg-secondary/80 py-[0.5vw]">
                             <Dialog >
@@ -214,15 +214,15 @@ export default function CollectionNFTAdmin() {
                                             <div>{nft.name ? nft.name : `#${nft.nft_id}`}</div>
                                         </div>
                                         <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
-                                            <p>{parseFloat(nft.price) > 0 ? nft.price : ""}</p>
-                                            <p className="text-md font-semibold">ETH</p>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
                                             <p>{parseFloat(nft.ai_price) > 0 ? nft.ai_price : ""}</p>
                                             <p className="text-md font-semibold">ETH</p>
                                         </div>
                                         <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
                                             <p>{parseFloat(nft.expert_price) > 0 ? nft.expert_price : ""}</p>
+                                            <p className="text-md font-semibold">ETH</p>
+                                        </div>
+                                        <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
+                                            <p>{parseFloat(nft.price) > 0 ? nft.price : ""}</p>
                                             <p className="text-md font-semibold">ETH</p>
                                         </div>
                                     </div>
@@ -249,19 +249,26 @@ export default function CollectionNFTAdmin() {
                                                 <div className="flex flex-row justify-between w-full items-center">
                                                     <p className="font-semibold">{infoNft[2]}</p>
                                                     <div className="flex flex-row space-x-1">
-                                                        <p>{nowNft?.ai_price}</p>
+                                                        <p>{parseFloat(nowNft?.ai_price || "") > 0 ? nowNft?.ai_price : ""}</p>
                                                         <p>{currentPendingCollection?.currency}</p>
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-row justify-between w-full items-center">
                                                     <p className="font-semibold">{infoNft[3]}</p>
                                                     <div className="flex flex-row space-x-1">
-                                                        <p>{nowNft?.expert_price}</p>
+                                                        <p>{parseFloat(nowNft?.expert_price || "") > 0 ? nowNft?.expert_price : ""}</p>
                                                         <p>{currentPendingCollection?.currency}</p>
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-row justify-between w-full items-center">
                                                     <p className="font-semibold">{infoNft[4]}</p>
+                                                    <div className="flex flex-row space-x-1">
+                                                        <p>{parseFloat(nowNft?.price || "") > 0 ? nowNft?.price : ""}</p>
+                                                        <p>{currentPendingCollection?.currency}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-row justify-between w-full items-center">
+                                                    <p className="font-semibold">{infoNft[5]}</p>
                                                     <div className="flex flex-row space-x-1 italic">
                                                         <p>{(new Date(nowNft?.createdAt || '')).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
                                                     </div>
@@ -293,7 +300,7 @@ export default function CollectionNFTAdmin() {
                                 </DialogContent>
                             </Dialog>
                             {
-                                currentPendingCollection?.status === 'Pending' &&
+                                currentPendingCollection?.status === 'Pending Expert' &&
                                 <div className="flex justify-start items-center w-[20%]">
                                     <AlertDialog >
                                         <AlertDialogTrigger asChild>

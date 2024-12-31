@@ -311,6 +311,14 @@ export const adminSlice = createApi({
             invalidatesTags: ['Account']
         }),
 
+        mintCollection: builder.mutation<PendingCollection, { _id: string }>({
+            query: (data) => ({
+                url: '/mint/pendingcollection',
+                method: 'POST',
+                body: data
+            }),
+        }),
+
     })
 })
 
@@ -348,5 +356,7 @@ export const {
     useUpdateReservesMutation,
     useCreateAccountMutation,
     useUpdateAccountMutation,
-    useDeleteAccountMutation
+    useDeleteAccountMutation,
+
+    useMintCollectionMutation
 } = adminSlice

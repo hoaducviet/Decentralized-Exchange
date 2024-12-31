@@ -28,6 +28,8 @@ contract FactoryNFT is Ownable {
         string tokenURI
     );
 
+    event TransferOwnerCollection(address from, address to, address collection);
+
     constructor() Ownable(msg.sender) {
         counter = 0;
     }
@@ -66,7 +68,9 @@ contract FactoryNFT is Ownable {
 
     function mintNFT(
         address _collectionAddress,
-        string memory _tokenURI
+        string memory _tokenURI,
+        address _owner,
+        uint256 _price
     ) external {
         require(
             collections[_collectionAddress] != 0,
@@ -74,11 +78,32 @@ contract FactoryNFT is Ownable {
         );
 
         uint256 tokenId = NFTCollection(_collectionAddress).createNFT(
-            msg.sender,
-            _tokenURI
+            _owner,
+            _tokenURI,
+            _price
         );
 
-        emit MintedNFT(_collectionAddress, msg.sender, tokenId, _tokenURI);
+        emit MintedNFT(_collectionAddress, _owner, tokenId, _tokenURI);
+    }
+
+    function transferOwnerCollection(
+        address _collection,
+        address _newOwner
+    ) external onlyOwner {
+        require(_newOwner != address(0), "Invalid new owner address");
+        NFTCollection collection = NFTCollection(_collection);
+        require(
+            _newOwner != collection.owner(),
+            "New owner must be different from current owner"
+        );
+        require(
+            address(this) == collection.owner(),
+            "Factory contract not is owner of collection"
+        );
+
+        collection.transferOwnership(_newOwner);
+
+        emit TransferOwnerCollection(address(this), _newOwner, _collection);
     }
 
     function getAllCollection()

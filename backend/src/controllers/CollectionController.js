@@ -15,6 +15,7 @@ class CollectionController {
             "Invalid data format. Expected an array of collections objects.",
         });
       }
+      console.log(newCollections);
       const validCollection = [];
       const errors = [];
       for (let collection of newCollections) {
@@ -73,10 +74,8 @@ class CollectionController {
           "_id address owner name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume active createdAt"
         )
         .exec();
-      if (!results.length) {
-        return res.status(404).json({ message: "Collection is null" });
-      }
-      return res.status(200).json(mutipleMongooseToObject(results));
+
+      return res.status(200).json(mutipleMongooseToObject(results || []));
     } catch (error) {
       console.error("Error Collection:", error.message);
       return res

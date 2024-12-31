@@ -73,6 +73,7 @@ router.get("/pendingcollections/rejected", PendingCollectionController.getReject
 router.patch("/reject/pendingcollection", PendingCollectionController.rejectCollection);
 router.patch("/accept/pendingcollection", PendingCollectionController.acceptCollection);
 router.patch("/wait/pendingcollection", PendingCollectionController.waitCollection);
+router.post("/mint/pendingcollection", PendingCollectionController.mintCollection);
 
 //Pending NFT
 router.patch("/updateprice/pendingnft", PendingNFTController.updatePriceExpertNFTs);

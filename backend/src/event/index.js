@@ -2,17 +2,10 @@ const { ethers } = require("ethers");
 const Pool = require("../models/Pool");
 const NFT = require("../models/NFT");
 const Collection = require("../models/Collection");
-const Token = require("../models/Token");
 const Reserve = require("../models/Reserve");
-const util = require("util");
-const WebSocket = require("ws");
-
-const TokenERC20 = require("../artifacts/TokenERC20.json");
 const LiquidityPool = require("../artifacts/LiquidityPool.json");
-const LiquidityPoolETH = require("../artifacts/LiquidityPoolETH.json");
-const LPToken = require("../artifacts/LPToken.json");
-const NFTCollection = require("../artifacts/NFTCollection.json");
 const CollectionController = require("../controllers/CollectionController");
+const PendingCollection = require("../models/PendingCollection");
 
 const eventAbi = [
   "event LiquidityAdded( address indexed provider, uint256 amount1, uint256 amount2, uint256 liquidityTokens)",
@@ -29,6 +22,8 @@ const eventNftAbi = [
   "event NFTTransfer(address collection, address from,address to, uint256 nftId)",
   "event NFTListed(address collection, address from, uint256 tokenId, uint256 price)",
   "event NFTListedRemove(address collection, address owner, uint256 tokenId)",
+  "event PayedFeeExpert(address from, string idCollection, uint256 value)",
+  "event PayedFeeCollection(address from, string idCollection, uint256 value)",
 ];
 
 const eventNftTopics = eventNftAbi.map(
@@ -36,7 +31,6 @@ const eventNftTopics = eventNftAbi.map(
 );
 
 const addressMarketNft = process.env.ADDRESS_MARKET_NFT;
-
 async function addReserves(log, provider) {
   const pool = await Pool.findOne({ address: log.address })
     .select("_id name address")
@@ -228,6 +222,56 @@ async function addNewPriceNft(log) {
       }
 
       await CollectionController.updateInfoCollection(result.collection_id);
+      return;
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  }
+
+  if (eventNftTopics[4] === log.topics[0]) {
+    try {
+      const [from, idCollection, value] =
+        ethers.AbiCoder.defaultAbiCoder().decode(
+          ["address", "string", "uint256"],
+          log.data
+        );
+
+      const newCollection = await PendingCollection.findByIdAndUpdate(
+        idCollection,
+        {
+          payment_expert: ethers.formatEther(value),
+          user_status: "Pending Expert",
+        },
+        { new: true }
+      );
+
+      console.log(newCollection);
+      return;
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  }
+
+  if (eventNftTopics[5] === log.topics[0]) {
+    try {
+      const [from, idCollection, value] =
+        ethers.AbiCoder.defaultAbiCoder().decode(
+          ["address", "string", "uint256"],
+          log.data
+        );
+
+      const newCollection = await PendingCollection.findByIdAndUpdate(
+        idCollection,
+        {
+          payment_fee: ethers.formatEther(value),
+          user_status: "Payed Fee",
+        },
+        { new: true }
+      );
+
+      console.log(newCollection);
       return;
     } catch (error) {
       console.log(error);
