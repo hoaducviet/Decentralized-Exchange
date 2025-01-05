@@ -1,9 +1,9 @@
 connect:
-	ssh -i ~/ssh/exchange.pem ubuntu@54.179.238.210
+	ssh -i ~/ssh/exchange.pem ubuntu@18.140.114.244
 
 connect2:
-	ssh -i ~/ssh/id_rsa ubuntu@54.179.238.210
+	ssh -i ~/ssh/id_rsa ubuntu@18.140.114.244
 
 
 transfer:
-	scp -i ~/ssh/exchange.pem ./.env  ubuntu@54.179.238.210:/home/ubuntu/DEX
+	scp -i ~/ssh/exchange.pem -r ./server/*  ubuntu@18.140.114.244:/home/ubuntu/DEX
