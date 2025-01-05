@@ -20,26 +20,32 @@ pipeline {
                     dir('backend') {
                         // Chuyển vào thư mục backend và build Docker image
                         script {
-                            sh "docker build --build-arg NEXT_PUBLIC_API_URL=http://54.179.238.210:8545 -t $DOCKER_IMAGE_BACKEND:${timestamp} --platform linux/amd64 ."
+                            sh "docker build -t $DOCKER_IMAGE_BACKEND:${timestamp} --platform linux/amd64 ."
                             sh "docker tag $DOCKER_IMAGE_BACKEND:${timestamp} $DOCKER_IMAGE_BACKEND:latest || true"
-        
                         }
                     }
-                    // dir('frontend') {
-                    //     // Chuyển vào thư mục frontend và build Docker image
-                    //     script {
-                    //         sh "docker build -t $DOCKER_IMAGE_FRONTEND:${timestamp} --platform linux/amd64 ."
-                    //         sh "docker tag $DOCKER_IMAGE_FRONTEND:${timestamp} $DOCKER_IMAGE_FRONTEND:latest || true"
-                    //     }
-                    // }
+                    dir('frontend') {
+                        // Chuyển vào thư mục frontend và build Docker image
+                        script {
+                            sh "docker build \
+                                --build-arg PORT=3000 \
+                                --build-arg NEXT_PUBLIC_NETWORK='viethoaduc.com/network' \
+                                --build-arg NEXT_PUBLIC_BACKEND_API='viethoaduc.com/api' \
+                                --build-arg NEXT_PUBLIC_PAYPAL_CLIENT_ID='AbEvzMa8gghbphtvK-C38-xH8S_7YF9QP5roUEfhnApqh_LL-ed9yExO4agkZSv-l5m9QkwgzKhFq_jA' \
+                                --build-arg NEXT_NEXT_PUBLIC_ADDRESS_MARKET_NFT='0xFD6F7A6a5c21A3f503EBaE7a473639974379c351' \
+                                --build-arg NEXT_NEXT_PUBLIC_ADDRESS_LIMIT='0xe1Fd27F4390DcBE165f4D60DBF821e4B9Bb02dEd' \
+                                -t $DOCKER_IMAGE_FRONTEND:${timestamp} --platform linux/amd64 ."
+                            sh "docker tag $DOCKER_IMAGE_FRONTEND:${timestamp} $DOCKER_IMAGE_FRONTEND:latest || true"
+                        }
+                    }
 
-                    // dir('contract') {
-                    //     // Chuyển vào thư mục contract và build Docker image
-                    //     script {
-                    //         sh "docker build -t $DOCKER_IMAGE_CONTRACT:${timestamp} --platform linux/amd64 ."
-                    //         sh "docker tag $DOCKER_IMAGE_CONTRACT:${timestamp} $DOCKER_IMAGE_CONTRACT:latest || true"
-                    //     }
-                    // }
+                    dir('contract') {
+                        // Chuyển vào thư mục contract và build Docker image
+                        script {
+                            sh "docker build -t $DOCKER_IMAGE_CONTRACT:${timestamp} --platform linux/amd64 ."
+                            sh "docker tag $DOCKER_IMAGE_CONTRACT:${timestamp} $DOCKER_IMAGE_CONTRACT:latest || true"
+                        }
+                    }
                 }
             }
         }
@@ -50,12 +56,12 @@ pipeline {
                 // This step should not normally be used in your script. Consult the inline help for details.
                 withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
                     script{
-                        // sh "docker push $DOCKER_IMAGE_FRONTEND:${timestamp} || true"
+                        sh "docker push $DOCKER_IMAGE_FRONTEND:${timestamp} || true"
                         sh "docker push $DOCKER_IMAGE_BACKEND:${timestamp} || true"
-                        // sh "docker push $DOCKER_IMAGE_CONTRACT:${timestamp} || true"
-                        // sh "docker push $DOCKER_IMAGE_FRONTEND:latest"
+                        sh "docker push $DOCKER_IMAGE_CONTRACT:${timestamp} || true"
+                        sh "docker push $DOCKER_IMAGE_FRONTEND:latest"
                         sh "docker push $DOCKER_IMAGE_BACKEND:latest"
-                        // sh "docker push $DOCKER_IMAGE_CONTRACT:latest"
+                        sh "docker push $DOCKER_IMAGE_CONTRACT:latest"
                     }
                 }
             }
