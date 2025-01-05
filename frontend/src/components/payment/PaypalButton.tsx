@@ -3,8 +3,10 @@ import { Dispatch, SetStateAction } from 'react';
 import { PayPalButtons, PayPalScriptProvider, PayPalButtonsComponentProps, ReactPayPalScriptOptions } from '@paypal/react-paypal-js';
 import { useAddPaymentMutation } from '@/redux/features/pay/paySlice';
 import { Address } from '@/lib/type';
+import API from '@/config/configApi'
+
 const initialOptions: ReactPayPalScriptOptions = {
-    clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
+    clientId: API.paypalClientId!,
     currency: "USD",
 };
 

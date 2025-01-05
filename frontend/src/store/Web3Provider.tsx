@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { useAccount, useWalletClient } from "wagmi";
 import { BrowserProvider, JsonRpcProvider, JsonRpcSigner } from 'ethers'
 import { Children } from "@/lib/type";
+import API from "@/config/configApi";
 
 interface Props {
     children: Children;
@@ -13,7 +14,7 @@ interface Web3ContextType {
     jsonProvider: JsonRpcProvider | undefined;
     isLoaded: boolean;
 }
-const networkUrl = process.env.NEXT_PUBLIC_NETWORK_URL || 'http://localhost:8545'
+const networkUrl = API.networkUrl
 export const Web3Context = createContext<Web3ContextType | undefined>(undefined)
 export function Web3Provider({ children }: Props) {
     const { isConnected } = useAccount()

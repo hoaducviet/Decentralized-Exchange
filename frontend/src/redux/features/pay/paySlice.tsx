@@ -2,10 +2,11 @@
 import { apiSlice } from '@/redux/features/api/apiSlice'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { OrderIdPay, Payout, USDTransaction } from "@/lib/type";
+import API from '@/config/configApi'
 
 export const paySlice = createApi({
     reducerPath: 'paySlice',
-    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API ? process.env.NEXT_PUBLIC_BACKEND_API : "http://localhost"}/pay` }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${API.backendUrl}/pay` }),
     endpoints: (builder) => ({
 
         createOrderIdPay: builder.mutation<{ id: string, url: string }, OrderIdPay>({

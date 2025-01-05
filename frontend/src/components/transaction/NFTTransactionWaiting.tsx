@@ -4,6 +4,7 @@ import { useGetTokensQuery } from "@/redux/features/api/apiSlice";
 import { Address, Children, Collection, NFT } from "@/lib/type"
 import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
 import Image from "next/image";
+import API from '@/config/configApi'
 
 interface Props {
     children: Children;
@@ -14,10 +15,10 @@ interface Props {
     addressReceiver?: Address | undefined;
     nft: NFT | undefined;
     gasEth: string;
-    newPrice?: string; 
+    newPrice?: string;
 }
 
-const addressMarket = process.env.NEXT_PUBLIC_ADDRESS_MARKET_NFT as Address
+const addressMarket = API.addressMarketNFT as Address
 export default function NFTTransactionWaiting({ children, handleSend, type, collection, nft, gasEth, address, addressReceiver, newPrice }: Props) {
     const { data: tokens } = useGetTokensQuery()
     const eth = tokens?.find(item => item.symbol === 'ETH')

@@ -2,11 +2,12 @@
 import { apiSlice } from '@/redux/features/api/apiSlice'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Account, Address, Collection, NFT, PendingCollection, PendingNFT, Pool, ReservePool, Token, UpdatePricePendingNFT } from "@/lib/type";
+import API from '@/config/configApi'
 
 export const adminSlice = createApi({
     reducerPath: 'adminSlice',
     baseQuery: fetchBaseQuery({
-        baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API ? process.env.NEXT_PUBLIC_BACKEND_API : "http://localhost"}/admin`,
+        baseUrl: `${API.backendUrl}/admin`,
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('token')
             if (token) {

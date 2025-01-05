@@ -1,4 +1,5 @@
 'use client'
+import API from '@/config/configApi'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
     Token, TokenBalancesType, Pool, ReservePool, User,
@@ -16,14 +17,16 @@ import { Socket } from "socket.io-client";
 const ws: Socket = wsGeneral
 export let wss: Socket | undefined
 
+console.log("WS General: ",ws)
 export const getWss = async () => {
     wss = await getSocket()
+    console.log("WS Personal: ", wss)
 }
 
 export const apiSlice = createApi({
     reducerPath: 'apiSlice',
     baseQuery: fetchBaseQuery({
-        baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API ? process.env.NEXT_PUBLIC_BACKEND_API : "http://localhost"}/api`,
+        baseUrl: `${API.backendUrl}/api`,
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('token')
             if (token) {
@@ -482,7 +485,7 @@ export const {
     useGetNFTByPendingCollectionQuery,
     useGetPendingNFTItemQuery,
     useGetPendingCollectionsByAddressQuery,
-    
+
     useLoginMutation,
     useAddTokenTransactionMutation,
     useUpdateTokenTransactionMutation,

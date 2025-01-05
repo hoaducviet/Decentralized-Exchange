@@ -133,13 +133,17 @@ function socket(io) {
           data: updateDocument,
         });
         if (change.fullDocument.status === "Completed") {
-          io.emit("updateTokenTransactions", { data: updateDocument });
+          io.emit("updateTokenTransactions", {
+            data: updateDocument,
+          });
           if (
             ["Swap Token", "Buy Token", "Sell Token"].includes(
               updateDocument.type
             )
           ) {
-            io.emit("updatePoolTransactions", { data: updateDocument });
+            io.emit("updatePoolTransactions", {
+              data: updateDocument,
+            });
             await TokenController.updateTokenVolume(
               change.fullDocument.from_token_id
             );
@@ -176,7 +180,9 @@ function socket(io) {
           data: updateDocument,
         });
         if (change.fullDocument.status === "Completed") {
-          io.emit("updatePoolTransactions", { data: updateDocument });
+          io.emit("updatePoolTransactions", {
+            data: updateDocument,
+          });
           await PoolController.updatePoolTVL(change.fullDocument.pool_id);
         }
       }
@@ -291,9 +297,31 @@ function socket(io) {
   );
 
   // Xứ lý kết nối
+
+  // io.of("/general").on("connection", (socket) => {
+  //   console.log("A user connected", socket.id);
+
+  //   socket.join("general");
+
+  //   io.of("/general")
+  //     .in("general")
+  //     .fetchSockets()
+  //     .then((sockets) => {
+  //       console.log(`There are ${sockets.length} users in the "general" room.`);
+  //       sockets.forEach((s) => {
+  //         console.log(`Socket ID: ${s.id}`);
+  //       });
+  //     });
+  //   socket.emit("message", "Connected is ok");
+
+  //   socket.on("disconnect", () => {
+  //     console.log(`Socket ${socket.id} disconnected`);
+  //   });
+  // });
+
   io.on("connection", (socket) => {
     const { wallet } = socket.handshake.query;
-    console.log("A user connected", wallet, socket.id);
+    console.log("A Personal connected", wallet, socket.id);
     if (wallet) {
       socket.join(wallet);
       console.log(`Socket ${socket.id} joined room ${wallet}`);

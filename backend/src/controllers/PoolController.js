@@ -60,6 +60,7 @@ class PoolController {
             address_lpt: pool.addressLPT,
             token1_id: token1._id,
             token2_id: token2._id,
+            active: true,
           };
           validPool.push(newPool);
         })

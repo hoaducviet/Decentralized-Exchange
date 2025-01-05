@@ -2,16 +2,18 @@
 import io, { Socket } from "socket.io-client";
 import { getAddressFromLocalStorage } from '@/utils/getAddressFromLocalStorage'
 import { Address } from '@/lib/type'
+import API from "@/config/configApi";
 
-const wsGeneral: Socket = io(process.env.NEXT_PUBLIC_BACKEND_API)
+const wsGeneral: Socket = io(`${API.backendUrl}`)
 let wss: Socket | undefined
 
 const getSocket = async () => {
     const address: Address | string | undefined = getAddressFromLocalStorage() as Address;
     if (!wss && address) {
-        const socket: Socket = io(process.env.NEXT_PUBLIC_BACKEND_API || 'http://localhost', {
+        
+        const socket: Socket = io(`${API.backendUrl}`, {
             query: {
-                wallet: address,
+                wallet: address
             }
         })
         if (socket) {

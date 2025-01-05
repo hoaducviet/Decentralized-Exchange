@@ -2,6 +2,7 @@ import { BrowserProvider, JsonRpcSigner, parseEther } from 'ethers'
 import { Address, Collection, NFT } from '@/lib/type'
 import { loadNFTCollectionContract } from '@/utils/loadNFTCollectionContract'
 import { loadMarketNFTContract } from '@/utils/loadMarketNFTContract'
+import API from '@/config/configApi'
 
 interface Props {
     provider: BrowserProvider,
@@ -12,7 +13,7 @@ interface Props {
     amount: string
 }
 
-const addressMarketNFT = process.env.NEXT_PUBLIC_ADDRESS_MARKET_NFT as Address
+const addressMarketNFT = API.addressMarketNFT as Address
 export const sellNFT = async ({ provider, signer, address, nft, collection, amount }: Props) => {
     const contract = await loadNFTCollectionContract({ provider: signer, address: collection.address });
     const isApproved = await contract.isApprovedForAll(address, addressMarketNFT);

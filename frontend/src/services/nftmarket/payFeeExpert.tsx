@@ -1,6 +1,7 @@
 import { BrowserProvider, JsonRpcSigner, parseEther } from 'ethers'
 import { loadMarketNFTContract } from '@/utils/loadMarketNFTContract'
 import { Address, PendingCollection } from '@/lib/type'
+import API from '@/config/configApi';
 
 interface Props {
     provider: BrowserProvider,
@@ -9,7 +10,7 @@ interface Props {
     collection: PendingCollection;
 }
 
-const addressMarketNFT = process.env.NEXT_PUBLIC_ADDRESS_MARKET_NFT as Address
+const addressMarketNFT = API.addressMarketNFT as Address
 export const payFeeExpert = async ({ provider, signer, address, collection }: Props) => {
     const market = await loadMarketNFTContract({ provider: signer, address: addressMarketNFT })
     const balance = await provider.getBalance(address);

@@ -78,6 +78,7 @@ class WalletController {
             owner: item[4],
             address: item[5],
             total_supply: ethers.formatUnits(supply, decimals),
+            active: true,
           };
         })
       );
@@ -700,13 +701,13 @@ class WalletController {
       );
       await addReceipt.wait();
       for (let index = 0; index < nfts.length; index++) {
-        const { uri, expert_price } = nfts[index];
+        const { uri, price } = nfts[index];
         try {
           const tx = await FactoryNFTContract.mintNFT(
             newCollection[0],
             uri,
             collection.owner,
-            ethers.parseEther(expert_price)
+            ethers.parseEther(price)
           );
           await tx.wait();
 

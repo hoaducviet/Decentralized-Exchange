@@ -4,7 +4,7 @@ import { Collection } from "@/lib/type";
 
 export const dataSlice = createApi({
     reducerPath: 'dataSlice',
-    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_API ? process.env.NEXT_PUBLIC_BACKEND_API : "http://localhost"}/pay` }),
+    baseQuery: fetchBaseQuery({ baseUrl: "" }),
     endpoints: (builder) => ({
         getJsonData: builder.query<Collection, string>({
             query: (url) => url,

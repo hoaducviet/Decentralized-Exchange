@@ -6,7 +6,8 @@
     "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-src": "babel src -d build --copy-files",
-    "build": "node src/index.js"
+    "build": "node src/index.js",
+    "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json"
   },
   "author": "",
   "license": "ISC",
@@ -27,5 +28,8 @@
     "qrcode": "^1.5.4",
     "socket.io": "^4.8.1",
     "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

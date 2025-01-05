@@ -1,24 +1,31 @@
 services:
-  # frontend:
-  #   networks:
-  #     - DEX
-  #   container_name: dex_frontend
-  #   build: 
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  
+  frontend:
+    networks:
+      - DEX
+    container_name: dex_frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        PORT: ${FRONTEND_PORT}
+        NEXT_PUBLIC_BACKEND_API: ${BACKEND_URL}
+        NEXT_PUBLIC_NETWORK: ${NETWORK_URL}
+        NEXT_PUBLIC_PAYPAL_CLIENT_ID: ${CLIENT_ID}
+        NEXT_PUBLIC_ADDRESS_MARKET_NFT: ${ADDRESS_MARKET_NFT}
+        NEXT_PUBLIC_ADDRESS_LIMIT: ${ADDRESS_ORDER_LIMIT}
 
-  # nginx:
-  #   networks:
-  #     - DEX
-  #   image: nginx:alpine
-  #   container_name: nginx
-  #   ports:
-  #     - 80:80
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/nginx.conf
-  #   depends_on:
-  #     - frontend
+
+  nginx:
+    networks:
+      - DEX
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
   
 
   contract:
@@ -46,14 +53,15 @@ services:
     environment:
       PORT: ${BACKEND_PORT}
       MONGODBURI: ${MONGODBURI}
-      NETWORK_URL: ${NETWORK_URL}
-      SOCKET_NETWORK_URL: ${NETWORK_URL}
+      NETWORK_URL: ${CONTRACT_URL}
+      SOCKET_NETWORK_URL: ${CONTRACT_URL}
       FRONTEND_URL: ${FRONTEND_URL}
       PRIVATE_KEY_ADDRESS: ${PRIVATE_KEY_ADDRESS}
       CLIENT_ID: ${CLIENT_ID}
       SECRET_KEY: ${SECRET_KEY}
       ADDRESS_FACTORY_TOKEN: ${ADDRESS_FACTORY_TOKEN}
       ADDRESS_FACTORY_LIQUIDITYPOOL: ${ADDRESS_FACTORY_LIQUIDITYPOOL}
+      ADDRESS_FACTORY_NFT: ${ADDRESS_FACTORY_NFT}
       ADDRESS_MARKET_NFT: ${ADDRESS_MARKET_NFT}
       ADDRESS_ORDER_LIMIT: ${ADDRESS_ORDER_LIMIT}
       IPFSLINK: ${IPFSLINK}
@@ -78,8 +86,8 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    # volumes:
-    #   - mongodb-primary:/data/db
+    volumes:
+      - mongodb-primary:/data/db
   
   mongo-secondary1:
     networks:
@@ -92,8 +100,8 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    # volumes:
-    #   - mongodb-secondary1:/data/db
+    volumes:
+      - mongodb-secondary1:/data/db
 
   mongo-secondary2:
     networks:
@@ -106,8 +114,8 @@ services:
     environment:
       - MONGO_INITIATE_REPLICASET=rs0
     command: mongod --replSet "rs0" --bind_ip_all
-    # volumes:
-    #   - mongodb-secondary2:/data/db
+    volumes:
+      - mongodb-secondary2:/data/db
   
   rs-init:
     networks:
@@ -141,8 +149,8 @@ networks:
   DEX:
     driver: bridge
 
-# volumes:
-#   mongodb-primary:
-#   mongodb-secondary1:
-#   mongodb-secondary2:
+volumes:
+  mongodb-primary:
+  mongodb-secondary1:
+  mongodb-secondary2:
 
