@@ -4,17 +4,36 @@ import { getAddressFromLocalStorage } from '@/utils/getAddressFromLocalStorage'
 import { Address } from '@/lib/type'
 import API from "@/config/configApi";
 
-const wsGeneral: Socket = io(`${API.backendUrl}`)
+let wsGeneral: Socket
 let wss: Socket | undefined
+
+
+const getGeneralSocket = () => {
+    if (!wsGeneral) {
+        const newSocket: Socket = io(`${API.backendUrl}/general`, {
+            reconnectionDelayMax: 10000,
+            query: {
+                "wallet": "456"
+            },
+            forceNew: true
+        })
+        if (newSocket) {
+            wsGeneral = newSocket;
+            return newSocket
+        }
+    }
+    return wsGeneral
+}
 
 const getSocket = async () => {
     const address: Address | string | undefined = getAddressFromLocalStorage() as Address;
     if (!wss && address) {
-        
-        const socket: Socket = io(`${API.backendUrl}`, {
+        const socket: Socket = io(`${API.backendUrl}/personal`, {
+            reconnectionDelayMax: 10000,
             query: {
-                wallet: address
-            }
+                "wallet": address
+            },
+            forceNew: true
         })
         if (socket) {
             wss = socket;
@@ -27,4 +46,4 @@ const getSocket = async () => {
     return wss!;
 };
 
-export { getSocket, wsGeneral }
+export { getSocket, getGeneralSocket }

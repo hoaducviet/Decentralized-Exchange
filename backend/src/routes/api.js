@@ -12,7 +12,6 @@ const ReserveController = require("../controllers/ReserveController");
 const TokenPriceController = require("../controllers/TokenPriceController");
 const OrderController = require("../controllers/OrderController");
 const AuthController = require("../controllers/AuthController");
-const UserController = require("../controllers/UserController");
 const PendingCollectionController = require("../controllers/PendingCollectionController");
 const PendingNFT = require("../models/PendingNFT");
 const PendingNFTController = require("../controllers/PendingNFTController");
@@ -170,7 +169,5 @@ router.get(
 router.get("/pendingnfts/:id", PendingNFTController.getPendingNFTsByCollection);
 router.get("/pendingnft", PendingNFTController.getPendingNFTItem);
 
-//User
-router.get("/insertuser", UserController.insertUser);
 
 module.exports = router;

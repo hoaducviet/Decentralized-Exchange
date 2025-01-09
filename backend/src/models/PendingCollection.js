@@ -26,7 +26,7 @@ const PendingCollection = new Schema(
     fee_market: { type: String, required: false, default: "0.5" },
     fee_mint: { type: String, required: false, default: "0" },
     total_fee: { type: String, required: false, default: "0" },
-    payment_fee: { type: String, required: false, default: "" },
+    payment_fee: { type: String, required: false, default: "0" },
     admin_status: {
       type: String,
       enum: ["Pending", "Accepted", "Rejected"],

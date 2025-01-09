@@ -72,7 +72,7 @@ export default function BuyItem({ token, tokens, setToken, setAmount, amount1, a
                 </div>
                 <DialogItem tokens={tokens} setToken={setToken}>
                     <div className="flex flex-row justify-center items-center text-xl font-medium w-full h-full">
-                        <Image src={token?.img || "/image/default-token.png"} alt={token?.name || "token"} width="20" height="24" className="mr-[0.1vw]" />
+                        <Image src={token?.img || "/image/default-token.png"} priority={true} alt={token?.name || "token"} width="20" height="20" className="mr-[0.1vw]" />
                         <p className="opacity-50 mx-[0.1vw]">{amount2.slice(0, amount2.indexOf(".") + 7)}</p>
                         {amount2.length === 0 ? <p className="opacity-50 font-medium ml-[0.1vw]">0</p> : <></>}
                         <p className="opacity-50 font-semibold ml-[0.1vw]">{token?.symbol}</p>

@@ -2,9 +2,10 @@
 import { useState } from "react";
 import { useGetTokensQuery } from "@/redux/features/api/apiSlice";
 import { Address, Children, ReservePool, Token, } from "@/lib/type"
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription, AlertDialogOverlay } from "@/components/ui/alert-dialog";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Props {
     children: Children;
@@ -18,7 +19,7 @@ interface Props {
     value: string;
     gasEth: string;
 
-} 
+}
 
 export default function TokenTransactionWaiting({ children, handleSend, type, tokenOne, tokenTwo, address, addressReceiver, pool, value, gasEth }: Props) {
     const [open, setOpen] = useState(false)
@@ -37,6 +38,12 @@ export default function TokenTransactionWaiting({ children, handleSend, type, to
             <AlertDialogContent className="w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <AlertDialogHeader className="bg-fixed w-full">
                     <AlertDialogTitle>{type}</AlertDialogTitle>
+                    <VisuallyHidden>
+                        <AlertDialogDescription>Transactions</AlertDialogDescription>
+                        <VisuallyHidden>
+                            <AlertDialogOverlay>Information Token Transaction</AlertDialogOverlay>
+                        </VisuallyHidden>
+                    </VisuallyHidden>
                 </AlertDialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
                     {

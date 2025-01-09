@@ -1,9 +1,10 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { useState } from "react";
 import { Children, OrderActiveTransaction } from "@/lib/type"
 import { useCancelOrderMutation } from "@/redux/features/api/apiSlice";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Props {
     children: Children;
@@ -47,6 +48,9 @@ export default function OrderLimitTransaction({ children, transaction }: Props) 
             <DialogContent className="select-none w-[23vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <DialogHeader className="bg-fixed w-full">
                     <DialogTitle>{transaction.type}</DialogTitle>
+                    <VisuallyHidden>
+                        <DialogDescription>Information Order Limit Transaction</DialogDescription>
+                    </VisuallyHidden>
                 </DialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
                     <div className="flex flex-row justify-center items-center space-x-2">

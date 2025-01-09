@@ -121,7 +121,7 @@ export default function Listed() {
                         <div key={index} className="cursor-pointer flex flex-row justify-between items-center border-gray-200 border-b-[0.1px] h-[6vw] px-[1.5vw]">
                             <div onClick={() => router.push(`/nfts/${collection}/${nft.nft_id}`)} className="flex flex-row justify-start items-center w-[80%]">
                                 <div className="flex flex-row justify-start items-center w-[25%] h-full space-x-[0.5vw]">
-                                    <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={20} height={20} className="object-cover rounded-xl h-[4vw] w-[4vw]" />
+                                    <Image src={nft.img || '/image/default-nft.png'} priority={true} alt={nft.name || "nft"} width={20} height={20} className="object-cover rounded-xl h-[4vw] w-[4vw]" />
                                     <div>{nft.name ? nft.name : `#${nft.nft_id}`}</div>
                                 </div>
                                 <div className="flex justify-start w-[25%]">Listed</div>

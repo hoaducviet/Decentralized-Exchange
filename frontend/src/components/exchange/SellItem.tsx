@@ -58,7 +58,7 @@ export default function SellItem({ token, tokens, setToken, setAmount, amount1, 
                 <div className="flex flex-col justify-center items-center w-[30%]">
                     <DialogItem tokens={tokens} setToken={setToken}>
                         <div className="flex flex-row justify-end items-center text-xl font-medium h-full px-[1vw]">
-                            <Image src={token?.img || "/image/default-token.png"} alt={token?.name || "token"} width="20" height="24" className="mr-[0.2vw]" />
+                            <Image src={token?.img || "/image/default-token.png"} priority={true} alt={token?.name || "token"} width="20" height="20" className="mr-[0.2vw]" />
                             <p className="font-semibold ml-[0.2vw]">{token?.symbol}</p>
                             <CaretDownIcon className="w-[1.5vw] h-[2.5vh]" />
                         </div>

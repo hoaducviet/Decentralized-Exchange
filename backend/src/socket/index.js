@@ -20,6 +20,9 @@ const Order = require("../models/Order");
 const OrderController = require("../controllers/OrderController");
 
 function socket(io) {
+  const generalNamespace = io.of("/general");
+  const personalNamespace = io.of("/personal");
+
   Token.watch([], { fullDocument: "updateLookup" }).on(
     "change",
     async (change) => {
@@ -31,7 +34,7 @@ function socket(io) {
           total_supply: change.fullDocument.total_supply,
           volume: change.fullDocument.volume,
         };
-        io.emit("updateToken", { data: updateDocument });
+        generalNamespace.emit("updateToken", { data: updateDocument });
       }
     }
   );
@@ -46,7 +49,7 @@ function socket(io) {
           reserve2: change.fullDocument.reserve_token2,
         };
         console.log(updateDocument);
-        io.emit("updateReserves", { data: updateDocument });
+        generalNamespace.emit("updateReserves", { data: updateDocument });
         await TokenPriceController.addTokenPrice(updateDocument);
         setTimeout(async () => {
           await OrderController.exchangeOrder(updateDocument.pool_id);
@@ -66,7 +69,7 @@ function socket(io) {
           createdAt: change.fullDocument.createdAt,
         };
         console.log(updateDocument);
-        io.emit("updateTokenPrices", { data: updateDocument });
+        generalNamespace.emit("updateTokenPrices", { data: updateDocument });
         await TokenController.updatePrice(updateDocument);
       }
     }
@@ -86,7 +89,7 @@ function socket(io) {
           volume: change.fullDocument.volume,
         };
         console.log(updateDocument);
-        io.emit("updateCollection", { data: updateDocument });
+        generalNamespace.emit("updateCollection", { data: updateDocument });
       }
     }
   );
@@ -101,7 +104,7 @@ function socket(io) {
         isListed: change.fullDocument.isListed,
       };
       console.log(updateDocument);
-      io.emit("updateNft", { data: updateDocument });
+      generalNamespace.emit("updateNft", { data: updateDocument });
     }
   });
 
@@ -129,11 +132,11 @@ function socket(io) {
           status: change.fullDocument.status,
           createdAt: change.fullDocument.createdAt,
         };
-        io.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
+        personalNamespace.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
         if (change.fullDocument.status === "Completed") {
-          io.emit("updateTokenTransactions", {
+          generalNamespace.emit("updateTokenTransactions", {
             data: updateDocument,
           });
           if (
@@ -141,7 +144,7 @@ function socket(io) {
               updateDocument.type
             )
           ) {
-            io.emit("updatePoolTransactions", {
+            generalNamespace.emit("updatePoolTransactions", {
               data: updateDocument,
             });
             await TokenController.updateTokenVolume(
@@ -176,11 +179,11 @@ function socket(io) {
           status: change.fullDocument.status,
           createdAt: change.fullDocument.createdAt,
         };
-        io.to(updateDocument.wallet).emit("updateActiveTransactions", {
+        personalNamespace.to(updateDocument.wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
         if (change.fullDocument.status === "Completed") {
-          io.emit("updatePoolTransactions", {
+          generalNamespace.emit("updatePoolTransactions", {
             data: updateDocument,
           });
           await PoolController.updatePoolTVL(change.fullDocument.pool_id);
@@ -211,7 +214,7 @@ function socket(io) {
           status: change.fullDocument.status,
           createdAt: change.fullDocument.createdAt,
         };
-        io.to(updateDocument.wallet).emit("updateActiveTransactions", {
+        personalNamespace.to(updateDocument.wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
       }
@@ -241,14 +244,14 @@ function socket(io) {
           status: change.fullDocument.status,
           createdAt: change.fullDocument.createdAt,
         };
-        io.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
+        personalNamespace.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
         if (
           change.operationType === "update" &&
           updateDocument.status === "Completed"
         ) {
-          io.emit("updateNFTItemTransactions", {
+          generalNamespace.emit("updateNFTItemTransactions", {
             data: updateDocument,
           });
           if (change.fullDocument.type === "Buy NFT") {
@@ -284,7 +287,7 @@ function socket(io) {
           expiredAt: change.fullDocument.expiredAt,
           createdAt: change.fullDocument.createdAt,
         };
-        io.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
+        personalNamespace.to(updateDocument.from_wallet).emit("updateActiveTransactions", {
           data: updateDocument,
         });
         if (["Failed", "Completed"].includes(change.fullDocument.status)) {
@@ -298,37 +301,24 @@ function socket(io) {
 
   // Xứ lý kết nối
 
-  // io.of("/general").on("connection", (socket) => {
-  //   console.log("A user connected", socket.id);
+  generalNamespace.on("connection", (socket) => {
+    console.log("A user connected", socket.id);
 
-  //   socket.join("general");
+    socket.emit("message", `Connected general is ok ${socket.id}`);
 
-  //   io.of("/general")
-  //     .in("general")
-  //     .fetchSockets()
-  //     .then((sockets) => {
-  //       console.log(`There are ${sockets.length} users in the "general" room.`);
-  //       sockets.forEach((s) => {
-  //         console.log(`Socket ID: ${s.id}`);
-  //       });
-  //     });
-  //   socket.emit("message", "Connected is ok");
+    socket.on("disconnect", () => {
+      console.log(`Socket ${socket.id} disconnected`);
+    });
+  });
 
-  //   socket.on("disconnect", () => {
-  //     console.log(`Socket ${socket.id} disconnected`);
-  //   });
-  // });
-
-  io.on("connection", (socket) => {
+  personalNamespace.on("connection", (socket) => {
     const { wallet } = socket.handshake.query;
     console.log("A Personal connected", wallet, socket.id);
     if (wallet) {
       socket.join(wallet);
-      console.log(`Socket ${socket.id} joined room ${wallet}`);
     }
 
-    socket.emit("message", "Connected is ok");
-
+    socket.emit("message", `Connected personal is ok ${socket.id}`);
     socket.on("disconnect", () => {
       console.log(`Socket ${socket.id} disconnected`);
     });

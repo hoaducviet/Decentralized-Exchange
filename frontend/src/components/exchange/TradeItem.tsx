@@ -55,14 +55,14 @@ export default function TradeItem({ isDisabled = false, title, token, tokens, se
                             {token?.symbol !== 'USD' ?
                                 <DialogItem tokens={tokens} setToken={setToken}>
                                     <div className="flex flex-row justify-around items-center hover:bg-secondary/80 rounded-xl shadow-lg w-full h-full">
-                                        <Image src={token?.img || "/image/default-token.png"} alt={token?.name || "token name"} width="20" height="20" />
+                                        <Image src={token?.img || "/image/default-token.png"} priority={true} alt={token?.name || "token name"} width="20" height="20" />
                                         <p className="text-xl font-semibold">{token?.symbol}</p>
                                         <CaretDownIcon className="w-[20px] h-[20px]" />
                                     </div>
                                 </DialogItem>
                                 :
                                 <div className="flex flex-row justify-start items-center space-x-[1vw] w-full h-full mx-[0.5vw]">
-                                    <Image src={token?.img || "/image/default-token.png"} alt={token?.name || "token name"} width="20" height="20" />
+                                    <Image src={token?.img || "/image/default-token.png"} priority={true} alt={token?.name || "token name"} width="20" height="20" />
                                     <p className="text-xl font-semibold">{token?.symbol}</p>
                                 </div>
                             }

@@ -64,6 +64,7 @@ async function addReserves(log, provider) {
 }
 
 async function addNewPriceNft(log) {
+  console.log(log.topics[0])
   if (eventNftTopics[0] === log.topics[0]) {
     try {
       const [collection, to, tokenId, price] =
@@ -112,6 +113,8 @@ async function addNewPriceNft(log) {
           log.data
         );
 
+      console.log({ collection, from, to, nftId });
+
       const newCollection = await Collection.findOne({
         address: collection,
       });
@@ -131,6 +134,7 @@ async function addNewPriceNft(log) {
           runValidators: true,
         }
       );
+      console.log(result);
       if (!result) {
         console.log("Không tìm thấy NFT để cập nhật", {
           collection_id: newCollection._id,

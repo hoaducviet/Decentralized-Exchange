@@ -156,7 +156,7 @@ export default function TransferBox() {
                         <Card className="w-full select-none border-none outline-none py-[0.8vh] hover:opacity-50">
                             <DialogItem tokens={newTokens} setToken={tokenOne?.symbol === 'USD' ? setTokenTwo : setTokenOne}>
                                 <div className="flex flex-row justify-center items-center w-full mx-[1vw]">
-                                    <Image src={(tokenOne?.symbol === 'USD' ? tokenTwo?.img : tokenOne?.img) || "/image/default-token.png"} alt={(tokenOne?.symbol === 'USD' ? tokenTwo?.name : tokenOne?.name) || "token"} width="48" height="48" className="justify-center" />
+                                    <Image src={(tokenOne?.symbol === 'USD' ? tokenTwo?.img : tokenOne?.img) || "/image/default-token.png"} priority={true} alt={(tokenOne?.symbol === 'USD' ? tokenTwo?.name : tokenOne?.name) || "token"} width="48" height="48" className="justify-center" />
                                     <div className="flex flex-col justify-center items-start mx-4 w-full h-full">
                                         <p className="text-xl font-medium">{(tokenOne?.symbol === 'USD' ? tokenTwo?.name : tokenOne?.name)}</p>
                                         {address && <p>Balance: {tokenOne?.symbol === 'USD' ? balance2 : balance1}</p>}

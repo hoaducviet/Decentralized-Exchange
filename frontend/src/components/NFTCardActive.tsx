@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function NFTCardAcitve({ transaction }: Props) {
-    const { data: nft } = useGetNFTItemQuery(transaction?.collection_id._id && transaction?.nft_id ? { collectionId: transaction.collection_id._id, nftId: transaction?.nft_id } : skipToken)
+    const { data: nft } = useGetNFTItemQuery(transaction?.collection_id?._id && transaction?.nft_id ? { collectionId: transaction.collection_id._id, nftId: transaction?.nft_id } : skipToken)
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {
         hour: '2-digit',

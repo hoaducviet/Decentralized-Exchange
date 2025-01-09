@@ -1,10 +1,11 @@
 'use client'
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Children, NFTActiveTransaction } from "@/lib/type"
 import Image from "next/image";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useGetNFTItemQuery } from "@/redux/features/api/apiSlice";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Props {
     children: Children;
@@ -13,7 +14,7 @@ interface Props {
 
 export default function NFTTransactionOverview({ children, transaction }: Props) {
     const [open, setOpen] = useState(false)
-    const { data: nft } = useGetNFTItemQuery(transaction.collection_id._id && transaction.nft_id ? { collectionId: transaction.collection_id._id as string, nftId: transaction.nft_id as string } : skipToken)
+    const { data: nft } = useGetNFTItemQuery(transaction.collection_id?._id && transaction.nft_id ? { collectionId: transaction.collection_id._id as string, nftId: transaction.nft_id as string } : skipToken)
 
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {
@@ -32,10 +33,13 @@ export default function NFTTransactionOverview({ children, transaction }: Props)
             <DialogContent className="select-none w-[23vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <DialogHeader className="bg-fixed w-full">
                     <DialogTitle >{transaction.type}</DialogTitle>
+                    <VisuallyHidden>
+                        <DialogDescription>Overview NFT Transaction</DialogDescription>
+                    </VisuallyHidden>
                 </DialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
                     <div className="flex flex-col justify-center items-center space-y-2">
-                        <Image src={nft?.img || '/image/default-nft.png'} alt="NFT" width={20} height={20} className="w-[5vw] h-[5vw] rounded-2xl object-cover" />
+                        <Image src={nft?.img || '/image/default-nft.png'} priority={true} alt="NFT" width={20} height={20} className="w-[5vw] h-[5vw] rounded-2xl object-cover" />
                         <div className="text-md font-semibold">{nft?.name}</div>
                     </div>
                     <div className="flex flex-col space-y-4 text-sm divide-y-reverse-[5px]">

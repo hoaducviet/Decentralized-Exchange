@@ -11,7 +11,7 @@ export default function HeaderAdmin() {
         <div className="flex flex-row items-center">
             <Link href={routes.admin}>
                 <div className="mx-5">
-                    <Image src="/image/logo-admin.png" alt="logo" width={180} height={50} className="w-[13vw] h-[2vw] object-cover" />
+                    <Image src="/image/logo-admin.png" priority={true} alt="logo" width={180} height={50} className="w-[13vw] h-[2vw] object-cover" />
                 </div>
             </Link>
         </div>

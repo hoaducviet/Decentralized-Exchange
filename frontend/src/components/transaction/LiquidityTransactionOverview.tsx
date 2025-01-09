@@ -1,9 +1,10 @@
 'use client'
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Children, LiquidityActiveTransaction } from "@/lib/type"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ArrowRightIcon, PlusIcon } from "@radix-ui/react-icons";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Props {
     children: Children;
@@ -15,7 +16,7 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
 
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {
-        hour: '2-digit', 
+        hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
         year: 'numeric',
@@ -32,6 +33,9 @@ export default function LiquidityTransactionOverview({ children, transaction }: 
             <DialogContent className="select-none w-[23vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <DialogHeader className="bg-fixed w-full">
                     <DialogTitle >{transaction.type}</DialogTitle>
+                    <VisuallyHidden>
+                        <DialogDescription>Overview Transaction</DialogDescription>
+                    </VisuallyHidden>
                 </DialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
                     {

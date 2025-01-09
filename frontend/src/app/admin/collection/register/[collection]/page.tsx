@@ -210,7 +210,7 @@ export default function CollectionNFTAdmin() {
                                 <DialogTrigger className={`flex justify-around items-center h-full ${isPending ? "w-[80%]" : "w-full"}`} onClick={() => handleSetCurrentNft(nft)}>
                                     <div className='hover:underline flex flex-row border-none outline-none select-none w-full px-0 mx-0'>
                                         <div className="flex flex-row justify-start items-center w-[25%] h-full space-x-[0.5vw]">
-                                            <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={25} height={25} className="object-cover rounded-xl h-[4vw] w-[4vw]" />
+                                            <Image src={nft.img || '/image/default-nft.png'} priority={true} alt={nft.name || "nft"} width={25} height={25} className="object-cover rounded-xl h-[4vw] w-[4vw]" />
                                             <div>{nft.name ? nft.name : `#${nft.nft_id}`}</div>
                                         </div>
                                         <div className="flex flex-row justify-start items-center space-x-[0.4vw] w-[25%]">
@@ -294,7 +294,7 @@ export default function CollectionNFTAdmin() {
                                             </div>
                                         </div>
                                         <div className="flex flex-row w-[70%]">
-                                            <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full rounded-2xl" />
+                                            <Image src={nft.img || '/image/default-nft.png'} priority={true} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full rounded-2xl" />
                                         </div>
                                     </div>
                                 </DialogContent>

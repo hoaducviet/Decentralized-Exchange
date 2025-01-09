@@ -20,7 +20,7 @@ export default function NFTBalance() {
                         <Card className=' rounded-none shadow-md select-none w-full  p-0 m-0 space-y-0'>
                             <Link href={`/nfts/${collection?.name.toLowerCase().replace(/\s+/g, '')}/${nft.nft_id}`}>
                                 <CardContent className=' w-full px-0 pb-[0.5vw] my-0'>
-                                    <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-[5vw]" />
+                                    <Image src={nft.img || '/image/default-nft.png'} priority={true} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-[5vw]" />
                                 </CardContent>
                                 <CardFooter className=" flex flex-col justify-center items-start text-xs pb-[0.5vw] px-0 my-0">
                                     <CardTitle className='opacity-70'>{nft.name ? nft.name : `${collection?.name} #${nft.nft_id}`}</CardTitle>

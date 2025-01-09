@@ -18,7 +18,7 @@ export default function LiquidityBalance({ liquidityBalances }: Props) {
                         <div className="flex flex-row justify-start items-center w-[55%]">
                             <Avatar className="w-[1.5vw] h-[1.5vw] border border-black">
                                 <div className="realtive flex">
-                                    <AvatarImage src={balance.info.token1.img}
+                                    <AvatarImage src={balance.info.token1?.img}
                                         className="absolute w-full h-full object-cover"
                                         style={{ clipPath: "inset(0 50% 0 0)" }} />
                                     <AvatarImage src={balance.info.token2.img}

@@ -20,7 +20,6 @@ nft1:
 nft2:
 	npx hardhat run ./scripts/addnft/CoolCats.js
 	npx hardhat run ./scripts/addnft/BlockQueens.js
-	npx hardhat run ./scripts/addnft/BoredApeYachtClub.js
 	npx hardhat run ./scripts/addnft/Captainz.js
 
 nft3:
@@ -30,6 +29,7 @@ nft3:
 
 
 nft:
+	npx hardhat run ./scripts/addnft/BoredApeYachtClub.js
 	npx hardhat run scripts/BlockNumber.js
 	npx hardhat run ./scripts/addnft/MutantApeYachtClub.js
 	

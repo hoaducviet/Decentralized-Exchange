@@ -1,7 +1,8 @@
 'use client'
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Children, USDActiveTransaction } from "@/lib/type"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Props {
     children: Children;
@@ -28,6 +29,9 @@ export default function PaymentTransactionOverview({ children, transaction }: Pr
             <DialogContent className="select-none w-[23vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <DialogHeader className="bg-fixed w-full">
                     <DialogTitle className="flex flex-row justify-center" >{transaction.type}</DialogTitle>
+                    <VisuallyHidden>
+                        <DialogDescription>Overview Payment Transaction</DialogDescription>
+                    </VisuallyHidden>
                 </DialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
                     <div className="flex flex-col space-y-4 text-sm divide-y-reverse-[5px]">

@@ -1,9 +1,10 @@
 'use client'
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Children, TokenActiveTransaction } from "@/lib/type"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Props {
     children: Children;
@@ -30,6 +31,9 @@ export default function TokenTransactionOverview({ children, transaction }: Prop
             <DialogContent className="select-none w-[23vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <DialogHeader className="bg-fixed w-full">
                     <DialogTitle >{transaction.type}</DialogTitle>
+                    <VisuallyHidden>
+                        <DialogDescription>Overview Token Transaction</DialogDescription>
+                    </VisuallyHidden>
                 </DialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
                     {

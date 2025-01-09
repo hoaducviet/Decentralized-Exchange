@@ -40,7 +40,7 @@ export default function NFTsTopPrice() {
             >
                 {!isFetching && collectionTop?.length && collectionTop?.map(({ collection, nfts }, index) => (
                     <SwiperSlide key={index}>
-                        <Image src={collection.banner} alt={collection.name} width={20} height={20} className='w-full h-full layout:responsive object-cover object-center' />
+                        <Image src={collection.banner} priority={true} alt={collection.name} width={20} height={20} className='w-full h-full layout:responsive object-cover object-center' />
                         <div className='absolute inset-0 bg-black/30'></div>
                         <div className='absolute bottom-20 left-0 right-0 z-20 h-[7vw] flex flex-row justify-center space-x-3'>
                             {nfts.length > 0 && nfts.map((nft, index) => (

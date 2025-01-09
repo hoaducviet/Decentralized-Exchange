@@ -29,7 +29,7 @@ pipeline {
                         script {
                             sh "docker build \
                                 --build-arg PORT=3000 \
-                                --build-arg NEXT_PUBLIC_NETWORK='http://18.140.114.244:8545' \
+                                --build-arg NEXT_PUBLIC_NETWORK='/network' \
                                 --build-arg NEXT_PUBLIC_BACKEND_API='/api' \
                                 --build-arg NEXT_PUBLIC_PAYPAL_CLIENT_ID='AbEvzMa8gghbphtvK-C38-xH8S_7YF9QP5roUEfhnApqh_LL-ed9yExO4agkZSv-l5m9QkwgzKhFq_jA' \
                                 --build-arg NEXT_NEXT_PUBLIC_ADDRESS_MARKET_NFT='0xFD6F7A6a5c21A3f503EBaE7a473639974379c351' \

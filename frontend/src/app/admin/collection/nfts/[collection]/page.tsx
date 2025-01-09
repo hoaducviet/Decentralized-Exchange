@@ -20,7 +20,7 @@ export default function CollectionNFTAdmin() {
                                 <DialogTrigger className="flex flex-row justify-around items-center w-full h-full">
                                     <Card className='border-none outline-none select-none w-full px-0 mx-0'>
                                         <CardContent className='cursor-pointer w-full px-0'>
-                                            <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full" />
+                                            <Image src={nft.img || '/image/default-nft.png'} priority={true} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full" />
                                         </CardContent>
                                         <CardFooter className="flex flex-col justify-center items-center space-y-[0.5vw] h-[4vw]">
                                             <CardTitle className='opacity-70'>{nft.name ? nft.name : `#${nft.nft_id}`}</CardTitle>
@@ -32,7 +32,7 @@ export default function CollectionNFTAdmin() {
                                     </Card >
                                 </DialogTrigger>
                                 <DialogContent className="bg-transparent max-w-[50vw] max-h-[60vw] p-0 m-0 rounded-2xl border-none">
-                                    <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full rounded-2xl" />
+                                    <Image src={nft.img || '/image/default-nft.png'} priority={true} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full rounded-2xl" />
                                 </DialogContent>
                             </Dialog>
                         </div>

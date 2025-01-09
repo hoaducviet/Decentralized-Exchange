@@ -3,6 +3,8 @@ const NftTransaction = require("../models/NftTransaction");
 const PendingCollection = require("../models/PendingCollection");
 const NFT = require("../models/NFT");
 const WalletController = require("./WalletController");
+const ort = require("onnxruntime-node");
+const AIController = require("./AIController");
 
 const {
   mutipleMongooseToObject,
@@ -33,6 +35,7 @@ class PendingCollectionController {
         total_items: fileCollection.nfts.length || "",
         twitter_username: collectionRaw.twitter_username || "",
         instagram_username: collectionRaw.instagram_username || "",
+        status: "AI Price",
       };
 
       const newCollection = await PendingCollection(collection).save();
@@ -51,6 +54,7 @@ class PendingCollectionController {
             img: img || "",
             description: response.description || "",
             attributes: response.attributes || [],
+            ai_price: "0.5",
           };
         })
       );
@@ -109,6 +113,8 @@ class PendingCollectionController {
       await PendingCollection.findByIdAndUpdate(newCollection._id, {
         total_items: results.length,
       });
+
+      await AIController.predictAIPrice(newCollection._id);
 
       return res.status(200).json({ message: "Add success!" });
     } catch (error) {
@@ -203,7 +209,6 @@ class PendingCollectionController {
       }
       await PendingCollection.findByIdAndUpdate(_id, {
         admin_status: "Accepted",
-        status: "Pending",
       });
       return res.status(200).json({ message: "Accepted Collection" });
     } catch (error) {

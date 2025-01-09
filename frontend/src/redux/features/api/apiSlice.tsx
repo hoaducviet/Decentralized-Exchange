@@ -11,16 +11,14 @@ import {
     PendingNFT,
     PendingCollection
 } from "@/lib/type";
-import { getSocket, wsGeneral } from '@/services/socket/createSocket'
+import { getSocket, getGeneralSocket } from '@/services/socket/createSocket'
 import { Socket } from "socket.io-client";
 
-const ws: Socket = wsGeneral
+const ws: Socket = getGeneralSocket()
 export let wss: Socket | undefined
 
-console.log("WS General: ",ws)
 export const getWss = async () => {
     wss = await getSocket()
-    console.log("WS Personal: ", wss)
 }
 
 export const apiSlice = createApi({

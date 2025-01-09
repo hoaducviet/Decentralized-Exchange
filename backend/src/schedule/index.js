@@ -3,6 +3,7 @@ const TokenController = require("../controllers/TokenController");
 const OrderController = require("../controllers/OrderController");
 const { exchangeTokenAuto } = require("../utils/exchangeTokenAuto");
 const { exchangeLiquidityAuto } = require("../utils/exchangeLiquidityAuto");
+const AIController = require("../controllers/AIController");
 
 const task = cron.schedule("0 0 * * *", async () => {
   console.log("Cron job đang chạy vào 12h đêm!");
@@ -15,18 +16,21 @@ const cancelOrderTask = cron.schedule("*/30 * * * *", async () => {
   await OrderController.cancelOrderAuto();
 });
 
-const auto = 0;
+const auto = 1;
 
 async function schedule() {
   task.start();
   cancelOrderTask.start();
 
+  // setTimeout(async () => {
+  //   await AIController.predictAIPrice();
+  // }, 1000);
   //Trigger only one time for update price tokens
-  setTimeout(async () => {
-    console.log("Chạy sau 20 giây khởi động!");
-    await TokenController.updatePriceRefercence();
-    await TokenController.updateTotalSupply();
-  }, 10000);
+  // setTimeout(async () => {
+  //   console.log("Chạy sau 20 giây khởi động!");
+  //   await TokenController.updatePriceRefercence();
+  //   await TokenController.updateTotalSupply();
+  // }, 10000);
 
   setInterval(async () => {
     if (auto === 1) {

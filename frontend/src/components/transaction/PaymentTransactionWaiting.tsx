@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { useGetTokensQuery } from "@/redux/features/api/apiSlice";
 import { Address, Children } from "@/lib/type"
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Props {
     children: Children;
@@ -32,6 +33,9 @@ export default function PaymentTransactionWaiting({ children, handleSend, type, 
             <AlertDialogContent className="w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <AlertDialogHeader className="bg-fixed w-full">
                     <AlertDialogTitle>{type}</AlertDialogTitle>
+                    <VisuallyHidden>
+                        <AlertDialogDescription>Information Payment Transaction</AlertDialogDescription>
+                    </VisuallyHidden>
                 </AlertDialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
                     <div className="flex flex-row justify-center items-center space-x-2">

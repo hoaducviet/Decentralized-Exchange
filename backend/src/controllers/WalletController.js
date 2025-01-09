@@ -192,7 +192,7 @@ class WalletController {
       // "CloneX - X TAKASHI MURAKAMI", //1
       // "Captainz", //0
       // "Block Queens by Jeremy Cowart", //1
-      // "Bored Ape Yacht Club",
+      "Bored Ape Yacht Club",
       // "Doodles",
       // "RumbleKongLeague",
     ];

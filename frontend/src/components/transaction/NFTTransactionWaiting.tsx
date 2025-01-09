@@ -5,6 +5,8 @@ import { Address, Children, Collection, NFT } from "@/lib/type"
 import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
 import Image from "next/image";
 import API from '@/config/configApi'
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { DialogDescription } from "@/components/ui/dialog";
 
 interface Props {
     children: Children;
@@ -65,10 +67,13 @@ export default function NFTTransactionWaiting({ children, handleSend, type, coll
             <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                 <AlertDialogHeader className="bg-fixed w-full">
                     <AlertDialogTitle>{type}</AlertDialogTitle>
+                    <VisuallyHidden>
+                        <DialogDescription>Information NFT Transaction</DialogDescription>
+                    </VisuallyHidden>
                 </AlertDialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">
                     <div className="flex flex-col justify-center items-center space-y-2">
-                        <Image src={nft?.img || '/image/default-nft.png'} alt="NFT" width={20} height={20} className="w-[5vw] h-[5vw] rounded-2xl object-cover" />
+                        <Image src={nft?.img || '/image/default-nft.png'} priority={true} alt="NFT" width={20} height={20} className="w-[5vw] h-[5vw] rounded-2xl object-cover" />
                         <div className="text-md font-semibold">{nft?.name}</div>
                     </div>
                     <div className="flex flex-col space-y-4 text-sm divide-y-reverse-[5px]">

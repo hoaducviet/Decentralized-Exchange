@@ -41,7 +41,7 @@ export function Web3Provider({ children }: Props) {
         const provider = new JsonRpcProvider(networkUrl)
         setJsonProvider(provider)
     }, [])
-    
+
     const value = {
         provider,
         signer,

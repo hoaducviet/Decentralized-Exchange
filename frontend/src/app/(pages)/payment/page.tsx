@@ -7,11 +7,12 @@ import { Button } from "@/components/ui/button"
 import SubmitItem from "@/components/exchange/SubmitItem"
 import PaypalButton from '@/components/payment/PaypalButton'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
 import PopoverConnectWallet from "@/components/wallet/PopoverConnectWallet";
 import { useToast } from "@/hooks/useToast";
 import { useGetTokensQuery } from "@/redux/features/api/apiSlice";
 import { WidthIcon } from "@radix-ui/react-icons";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 type Price = {
     name: string;
@@ -188,11 +189,14 @@ export default function Payment() {
                                             <DialogContent className="select-none bg-transparent text-white w-[70vw] px-0 pb-0 border-none space-y-[1vw]">
                                                 <DialogHeader>
                                                     <DialogTitle className="flex flex-row justify-center">Deposit USD from Paypal.</DialogTitle>
+                                                    <VisuallyHidden>
+                                                        <DialogDescription>Please review number USD for deposit into Exchange!</DialogDescription>
+                                                    </VisuallyHidden>
                                                 </DialogHeader>
                                                 <div className=' flex flex-col justify-center items-center w-full'>
                                                     <div className='flex flex-row w-full space-x-[1vw]'>
                                                         <div className='flex w-[50%]'>
-                                                            <Image src={qrCode ? `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrCode)}&size=70x70` : "/image/default-image.png"} alt='qrcode' width={20} height={20} className='w-full h-full' />
+                                                            <Image src={qrCode ? `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrCode)}&size=70x70` : "/image/default-image.png"} priority={true} alt='qrcode' width={20} height={20} className='w-full h-full' />
                                                         </div>
                                                         <div className='flex flex-col justify-between w-[60%]'>
                                                             <div className="flex flex-col space-y-[1vw]">

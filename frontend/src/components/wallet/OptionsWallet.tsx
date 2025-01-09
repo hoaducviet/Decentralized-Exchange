@@ -17,6 +17,7 @@ export default function OptionsWallet() {
         >
           <Image
             src={connector.icon?.trimStart() || "/image/default-image.png"}
+            priority={true}
             alt={connector.name}
             className="mx-5 w-[1.5vw] h-[1.5vw] object-cover" width="36" height="36" />
           <div className="mx-5">

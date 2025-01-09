@@ -47,7 +47,7 @@ export default function NFTItem({ nft, setNft, address, isConnected, handleSend,
         <Card className='border-none outline-none select-none w-full px-0 mx-0'>
             <CardContent className='cursor-pointer w-full px-0'>
                 <Link href={`/nfts/${collectionName}/${nft.nft_id}`}>
-                    <Image src={nft.img || '/image/default-nft.png'} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full" />
+                    <Image src={nft.img || '/image/default-nft.png'} priority={true} alt={nft.name || "nft"} width={200} height={200} className="object-cover w-full h-full" />
                 </Link>
             </CardContent>
             <CardFooter className="flex flex-col justify-center items-start space-y-[0.5vw] h-[4vw]">

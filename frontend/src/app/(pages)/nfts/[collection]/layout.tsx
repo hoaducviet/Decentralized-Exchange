@@ -83,12 +83,12 @@ export default function CollectionLayout({ children }: Readonly<{
     return (
         <div className="flex flex-col min-h-[100vh]">
             <div className="relative select-none flex flex-col">
-                <Image src={newCollection?.banner || '/image/default-image.png'} alt={newCollection?.name || ''} width={200} height={200} className="w-full max-h-[50vh] layout:responsive object-cover object-center" />
+                <Image src={newCollection?.banner || '/image/default-image.png'} priority={true} alt={newCollection?.name || ''} width={200} height={200} className="w-full max-h-[50vh] layout:responsive object-cover object-center" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 <div className="absolute inset-0 flex flex-row mx-[5vw] my-[2vw] text-white">
                     <div className="flex flex-col justify-end w-[50%] space-y-[1vw]">
-                        <Image src={newCollection?.logo || "/image/default-image.png"} alt={newCollection?.name || ""} width={20} height={20} className="w-[6vw] h-[6vw] border-[1px] rounded-2xl border-white/70" />
+                        <Image src={newCollection?.logo || "/image/default-image.png"} priority={true} alt={newCollection?.name || ""} width={20} height={20} className="w-[6vw] h-[6vw] border-[1px] rounded-2xl border-white/70" />
                         <div className="flex flex-row justify-start divide-x-[1px] dark:divide-white items-center space-x-[1.5vw]">
                             <div className="flex flex-row justify-start items-center space-x-[1vw]">
                                 <div className="text-2xl font-semibold">{newCollection?.name}</div>
