@@ -35,7 +35,6 @@ class PendingCollectionController {
         total_items: fileCollection.nfts.length || "",
         twitter_username: collectionRaw.twitter_username || "",
         instagram_username: collectionRaw.instagram_username || "",
-        status: "AI Price",
       };
 
       const newCollection = await PendingCollection(collection).save();
@@ -54,7 +53,6 @@ class PendingCollectionController {
             img: img || "",
             description: response.description || "",
             attributes: response.attributes || [],
-            ai_price: "0.5",
           };
         })
       );

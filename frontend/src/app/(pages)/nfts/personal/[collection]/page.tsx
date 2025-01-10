@@ -3,7 +3,7 @@ import { useCollection } from "@/hooks/useCollection"
 import { useGetNFTByPendingCollectionQuery, useGetPendingNFTItemQuery } from "@/redux/features/api/apiSlice"
 import { skipToken } from "@reduxjs/toolkit/query";
 import Image from 'next/image';
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { useState } from "react";
 import { PendingNFT } from "@/lib/type";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
@@ -78,10 +78,12 @@ export default function CollectionNFTAdmin() {
                                     </div>
                                 </DialogTrigger>
                                 <DialogContent className="select-none bg-transparent max-w-[70vw] max-h-[70vw] p-0 m-0 rounded-2xl border-none">
-                                    <VisuallyHidden>
-                                        <DialogTitle>Pending NFT</DialogTitle>
-                                        <DialogDescription>{nft.description}</DialogDescription>
-                                    </VisuallyHidden>
+                                    <DialogHeader>
+                                        <VisuallyHidden>
+                                            <DialogTitle>Pending NFT</DialogTitle>
+                                            <DialogDescription>{nft.description}</DialogDescription>
+                                        </VisuallyHidden>
+                                    </DialogHeader>
                                     <div className="flex flex-row w-full space-x-[1vw]">
                                         <div className="flex flex-col w-[30%] bg-white/10 rounded-2xl text-white px-3 py-[2vw] space-y-[1vw]">
                                             <div className="flex flex-col justify-center items-center">

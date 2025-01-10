@@ -4,7 +4,7 @@ import NFTColections from '@/components/nfts/NFTColections'
 import { useGetCollectionsByAddressQuery, useGetCollectionsQuery, useGetPendingCollectionsByAddressQuery, useRegisterPendingCollectionMutation } from '@/redux/features/api/apiSlice'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components//ui/tabs'
 import { PlusIcon, UploadIcon } from '@radix-ui/react-icons'
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useEffect, useState } from 'react'
@@ -16,11 +16,15 @@ import Image from 'next/image'
 import { useAccount } from 'wagmi'
 import MyNFTColections from '@/components/nfts/MyNFTColections'
 import NFTColectionsPending from '@/components/nfts/NFTColectionsPending'
+import { Popover } from '@radix-ui/react-popover'
+import { PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import OptionsWallet from '@/components/wallet/OptionsWallet'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 
 const heardPersonal = 'Register Collection'
 const note = 'No content. Please upload file!'
 export default function NFTs() {
-    const { address } = useAccount()
+    const { address, isConnected } = useAccount()
     const { data: collections, isFetching } = useGetCollectionsQuery()
     const { data: myCollecttions } = useGetCollectionsByAddressQuery(address ?? skipToken)
     const { data: myPendingCollections } = useGetPendingCollectionsByAddressQuery(address ?? skipToken)
@@ -108,53 +112,69 @@ export default function NFTs() {
             <TabsContent value="personal" className="w-full">
                 <div className='select-none flex flex-col justify-start items-center w-full min-h-[100vh] px-[15vw] py-[2vw] space-y-[2vw]'>
                     <div className='flex flex-row justify-end items-center w-full'>
-                        <AlertDialog >
-                            <AlertDialogTrigger asChild>
-                                <div className='cursor-pointer bg-blue-500 hover:bg-blue-600 dark:bg-white/15 hover:dark:bg-white/20 flex flex-row justify-center items-center space-x-[0.5vw] rounded-2xl p-[1vw] text-white'>
-                                    <PlusIcon className='w-[1.5vw] h-[1.5vw]' />
-                                    <p>{heardPersonal}</p>
-                                </div>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
-                                <AlertDialogHeader className="bg-fixed w-full">
-                                    <AlertDialogTitle className='flex flex-row justify-center'>Register Collection</AlertDialogTitle>
-                                </AlertDialogHeader>
-                                <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
-                                    <div className='border-[1px] w-full flex flex-row justify-center items-center rounded-2xl h-[10vw]'>
-                                        {
-                                            newCollection ?
-                                                <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
-                                                    <Image src={newCollection?.collection_logo || '/image/defaul-image.png'} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
-                                                    <p className='font-semibold'>{newCollection.name}</p>
-                                                </div>
-                                                :
-                                                <p>{note}</p>
-                                        }
+                        {isConnected ?
+                            <AlertDialog >
+                                <AlertDialogTrigger asChild>
+                                    <div className='cursor-pointer bg-blue-500 hover:bg-blue-600 dark:bg-white/15 hover:dark:bg-white/20 flex flex-row justify-center items-center space-x-[0.5vw] rounded-2xl p-[1vw] text-white'>
+                                        <PlusIcon className='w-[1.5vw] h-[1.5vw]' />
+                                        <p>{heardPersonal}</p>
                                     </div>
-                                    <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">
-                                        <Input onChange={handleFileChange} type='file' />
-                                        <Button onClick={handleUpload} variant="outline" className={`${file ? "bg-blue-500 hover:bg-blue-600 dark:bg-white/15 hover:dark:bg-white/20 text-white hover:text-white" : ""}`}>
-                                            <UploadIcon className='w-[1vw] h-[1vw]' />
-                                            <p>Upload</p>
-                                        </Button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
+                                    <AlertDialogHeader className="bg-fixed w-full">
+                                        <AlertDialogTitle className='flex flex-row justify-center'>Register Collection</AlertDialogTitle>
+                                        <VisuallyHidden>
+                                            <AlertDialogDescription>Form Register Collection</AlertDialogDescription>
+                                        </VisuallyHidden>
+                                    </AlertDialogHeader>
+                                    <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
+                                        <div className='border-[1px] w-full flex flex-row justify-center items-center rounded-2xl h-[10vw]'>
+                                            {
+                                                newCollection ?
+                                                    <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
+                                                        <Image src={newCollection?.collection_logo || '/image/defaul-image.png'} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
+                                                        <p className='font-semibold'>{newCollection.name}</p>
+                                                    </div>
+                                                    :
+                                                    <p>{note}</p>
+                                            }
+                                        </div>
+                                        <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">
+                                            <Input onChange={handleFileChange} type='file' />
+                                            <Button onClick={handleUpload} variant="outline" className={`${file ? "bg-blue-500 hover:bg-blue-600 dark:bg-white/15 hover:dark:bg-white/20 text-white hover:text-white" : ""}`}>
+                                                <UploadIcon className='w-[1vw] h-[1vw]' />
+                                                <p>Upload</p>
+                                            </Button>
+                                        </div>
                                     </div>
-                                </div>
-                                <AlertDialogFooter>
-                                    <AlertDialogCancel >Close</AlertDialogCancel>
-                                    <AlertDialogAction onClick={handleRegisterCollection} >Continue</AlertDialogAction>
-                                </AlertDialogFooter>
-                            </AlertDialogContent>
-                        </AlertDialog>
+                                    <AlertDialogFooter>
+                                        <AlertDialogCancel >Close</AlertDialogCancel>
+                                        <AlertDialogAction onClick={handleRegisterCollection} >Continue</AlertDialogAction>
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialog>
+                            :
+                            <Popover>
+                                <PopoverTrigger asChild>
+                                    <div className='cursor-pointer bg-blue-500 hover:bg-blue-600 dark:bg-white/15 hover:dark:bg-white/20 flex flex-row justify-center items-center space-x-[0.5vw] rounded-2xl p-[1vw] text-white'>
+                                        <PlusIcon className='w-[1.5vw] h-[1.5vw]' />
+                                        <p >Connect Wallet for Register Collection</p>
+                                    </div>
+                                </PopoverTrigger>
+                                <PopoverContent className="rounded-2xl border-[2px]">
+                                    <OptionsWallet />
+                                </PopoverContent>
+                            </Popover>
+                        }
                     </div>
-                    {myCollecttions &&
+                    {
                         <div className='w-full'>
-                            <MyNFTColections collections={myCollecttions} />
+                            <MyNFTColections collections={myCollecttions || []} />
                         </div>
-
                     }
-                    {myPendingCollections &&
+                    {
                         <div className='w-full'>
-                            <NFTColectionsPending collections={myPendingCollections} />
+                            <NFTColectionsPending collections={myPendingCollections || []} />
                         </div>
                     }
                 </div>

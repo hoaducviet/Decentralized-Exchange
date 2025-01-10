@@ -6,10 +6,11 @@ import useAuthCheck from "@/hooks/useAuthCheck"
 import { Button } from "@/components/ui/button"
 import { useAcceptPendingCollectionMutation, useGetAcceptPendingCollectionsQuery, useGetRejectPendingCollectionsQuery, useGetWaitingPendingCollectionsQuery, useMintCollectionMutation, useRejectPendingCollectionMutation, useWaittingPendingCollectionMutation } from '@/redux/features/admin/adminSlice'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components//ui/tabs'
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import { useEffect } from 'react'
 import { useToast } from '@/hooks/useToast'
 import Image from 'next/image'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 
 const options = ['Colleciton name', 'Pay fee (ETH)', 'Pay expert (ETH)', 'User status', 'Status']
 export default function CollectionAdmin() {
@@ -127,6 +128,9 @@ export default function CollectionAdmin() {
                                                     <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                         <AlertDialogHeader className="bg-fixed w-full">
                                                             <AlertDialogTitle>Minting Collection</AlertDialogTitle>
+                                                            <VisuallyHidden>
+                                                                <AlertDialogDescription>Form Collection Register Admin</AlertDialogDescription>
+                                                            </VisuallyHidden>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                             <Image src={item.logo} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
@@ -145,6 +149,9 @@ export default function CollectionAdmin() {
                                                     <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                         <AlertDialogHeader className="bg-fixed w-full">
                                                             <AlertDialogTitle>Rejecting Collection</AlertDialogTitle>
+                                                            <VisuallyHidden>
+                                                                <AlertDialogDescription>Form Collection Admin</AlertDialogDescription>
+                                                            </VisuallyHidden>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                             <Image src={item.logo} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
@@ -200,6 +207,9 @@ export default function CollectionAdmin() {
                                                     <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                         <AlertDialogHeader className="bg-fixed w-full">
                                                             <AlertDialogTitle>Accepting Collection</AlertDialogTitle>
+                                                            <VisuallyHidden>
+                                                                <AlertDialogDescription>Form Collection Admin</AlertDialogDescription>
+                                                            </VisuallyHidden>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                             <Image src={item.logo} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
@@ -218,6 +228,9 @@ export default function CollectionAdmin() {
                                                     <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                         <AlertDialogHeader className="bg-fixed w-full">
                                                             <AlertDialogTitle>Rejecting Collection</AlertDialogTitle>
+                                                            <VisuallyHidden>
+                                                                <AlertDialogDescription>Form Collection Admin</AlertDialogDescription>
+                                                            </VisuallyHidden>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                             <Image src={item.logo} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
@@ -273,6 +286,9 @@ export default function CollectionAdmin() {
                                                     <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                         <AlertDialogHeader className="bg-fixed w-full">
                                                             <AlertDialogTitle>Add Pending Collection</AlertDialogTitle>
+                                                            <VisuallyHidden>
+                                                                <AlertDialogDescription>Form Collection Admin</AlertDialogDescription>
+                                                            </VisuallyHidden>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                             <Image src={item.logo} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />

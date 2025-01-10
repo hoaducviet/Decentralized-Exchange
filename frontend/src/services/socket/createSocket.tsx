@@ -12,9 +12,6 @@ const getGeneralSocket = () => {
     if (!wsGeneral) {
         const newSocket: Socket = io(`${API.backendUrl}/general`, {
             reconnectionDelayMax: 10000,
-            query: {
-                "wallet": "456"
-            },
             forceNew: true
         })
         if (newSocket) {

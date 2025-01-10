@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { FileContentUpdateExpertPriceNFT, PendingNFT } from "@/lib/type";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { useUpdatePricePendingNFTMutation } from "@/redux/features/admin/adminSlice";
 import { useToast } from "@/hooks/useToast";
@@ -158,6 +158,9 @@ export default function CollectionNFTAdmin() {
                         <AlertDialogContent className="select-none w-[30vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                             <AlertDialogHeader className="bg-fixed w-full">
                                 <AlertDialogTitle className='flex flex-row justify-center'>Register Collection</AlertDialogTitle>
+                                <VisuallyHidden>
+                                    <AlertDialogDescription>Form Collection Admin</AlertDialogDescription>
+                                </VisuallyHidden>
                             </AlertDialogHeader>
                             <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                 <div className='w-full flex flex-row justify-center items-center min-h-[10vh]:'>
@@ -309,6 +312,9 @@ export default function CollectionNFTAdmin() {
                                         <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                             <AlertDialogHeader className="flex flex-row justify-center w-full">
                                                 <AlertDialogTitle className="text-xl">Update Expert Price NFT</AlertDialogTitle>
+                                                <VisuallyHidden>
+                                                    <AlertDialogDescription>Form Collection Admin</AlertDialogDescription>
+                                                </VisuallyHidden>
                                             </AlertDialogHeader>
                                             <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                 <Image src={currentNft?.img || "/image/default-image.png"} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />

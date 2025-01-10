@@ -10,11 +10,12 @@ import { PlusCircleIcon, ArrowTrendingUpIcon, ArrowPathIcon } from "@heroicons/r
 import { useActivePoolMutation, useCreatePoolMutation, useDeletePoolMutation, useGetSuspendedPoolsQuery, useUpdatePoolsMutation, useUpdateReservesMutation } from "@/redux/features/admin/adminSlice"
 import { useToast } from "@/hooks/useToast"
 import { useEffect, useState } from "react"
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components//ui/tabs'
 import { CommitIcon } from "@radix-ui/react-icons"
 import { Address, Token } from "@/lib/type"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 const options = ['#', 'Pool', 'TVL', 'APR', '1D/TVL', 'Status']
 const list = ['Total', 'Update Reserve', 'Update Pools', 'Create Pool']
@@ -133,6 +134,9 @@ export default function PoolAdmin() {
                         <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                             <AlertDialogHeader className="bg-fixed w-full">
                                 <AlertDialogTitle>Create Pool</AlertDialogTitle>
+                                <VisuallyHidden>
+                                    <AlertDialogDescription>Form Pool Admin</AlertDialogDescription>
+                                </VisuallyHidden>
                             </AlertDialogHeader>
                             <div className="flex flex-col w-full space-y-[1vw]">
                                 <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">
@@ -251,6 +255,9 @@ export default function PoolAdmin() {
                                                     <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                         <AlertDialogHeader className="bg-fixed w-full">
                                                             <AlertDialogTitle>Suspended Token</AlertDialogTitle>
+                                                            <VisuallyHidden>
+                                                                <AlertDialogDescription>Form Pool Admin</AlertDialogDescription>
+                                                            </VisuallyHidden>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col w-full space-y-[1vw]">
                                                             <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">
@@ -347,6 +354,9 @@ export default function PoolAdmin() {
                                                     <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                         <AlertDialogHeader className="bg-fixed w-full">
                                                             <AlertDialogTitle>Active Token</AlertDialogTitle>
+                                                            <VisuallyHidden>
+                                                                <AlertDialogDescription>Form Pool Admin</AlertDialogDescription>
+                                                            </VisuallyHidden>
                                                         </AlertDialogHeader>
                                                         <div className="flex flex-col w-full space-y-[1vw]">
                                                             <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">

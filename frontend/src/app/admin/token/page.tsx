@@ -11,11 +11,12 @@ import { PlusCircleIcon, LinkIcon, ArrowPathIcon } from "@heroicons/react/24/out
 import { useActiveTokenMutation, useAddTokenMutation, useCreateTokenMutation, useDeleteTokenMutation, useGetSuspendedTokensQuery, useUpdateTokensMutation } from "@/redux/features/admin/adminSlice"
 import { useEffect, useState } from "react"
 import { useToast } from "@/hooks/useToast"
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components//ui/tabs'
 import { Input } from "@/components/ui/input"
 import { Address } from "@/lib/type"
 import { ethers } from "ethers"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 
 const options = ['#', 'Token', 'Price', '1 day', 'FDV', 'Status']
@@ -168,6 +169,9 @@ export default function TokenAdmin() {
                         <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                             <AlertDialogHeader className="bg-fixed w-full">
                                 <AlertDialogTitle>Add Token</AlertDialogTitle>
+                                <VisuallyHidden>
+                                    <AlertDialogDescription>Form Token Admin</AlertDialogDescription>
+                                </VisuallyHidden>
                             </AlertDialogHeader>
                             <div className="flex flex-col w-full space-y-[1vw]">
                                 <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">
@@ -201,6 +205,9 @@ export default function TokenAdmin() {
                         <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                             <AlertDialogHeader className="bg-fixed w-full">
                                 <AlertDialogTitle>Create Token</AlertDialogTitle>
+                                <VisuallyHidden>
+                                    <AlertDialogDescription>Form Pool Admin</AlertDialogDescription>
+                                </VisuallyHidden>
                             </AlertDialogHeader>
                             <div className="flex flex-col w-full space-y-[1vw]">
                                 <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">
@@ -306,6 +313,9 @@ export default function TokenAdmin() {
                                                         <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                             <AlertDialogHeader className="bg-fixed w-full">
                                                                 <AlertDialogTitle>Suspended Token</AlertDialogTitle>
+                                                                <VisuallyHidden>
+                                                                    <AlertDialogDescription>Form Pool Admin</AlertDialogDescription>
+                                                                </VisuallyHidden>
                                                             </AlertDialogHeader>
                                                             <div className="flex flex-col w-full space-y-[1vw]">
                                                                 <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">
@@ -394,6 +404,9 @@ export default function TokenAdmin() {
                                                         <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                             <AlertDialogHeader className="bg-fixed w-full">
                                                                 <AlertDialogTitle>Active Token</AlertDialogTitle>
+                                                                <VisuallyHidden>
+                                                                    <AlertDialogDescription>Form Pool Admin</AlertDialogDescription>
+                                                                </VisuallyHidden>
                                                             </AlertDialogHeader>
                                                             <div className="flex flex-col w-full space-y-[1vw]">
                                                                 <div className="flex flex-row justify-center items-center w-full space-x-[1vw]">

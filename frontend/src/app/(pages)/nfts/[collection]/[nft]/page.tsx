@@ -28,6 +28,8 @@ import { skipToken } from "@reduxjs/toolkit/query"
 import { Address, NFTActiveTransaction } from "@/lib/type"
 import NFTTransactionWaiting from "@/components/transaction/NFTTransactionWaiting"
 import { useGasBuyNFT, useGasSellNFT, useGasTransferNFT, useGasWithdrawNFT } from "@/hooks/useGas";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import Image from "next/image"
 
 export default function NFTPage() {
     const { isConnected, address } = useAccount()
@@ -256,7 +258,14 @@ export default function NFTPage() {
         {nft &&
             <div className="flex flex-row space-x-5 select-none">
                 <div className="flex flex-col w-[40%] space-y-3">
-                    <ItemImage nft={currentNft} />
+                    <Dialog>
+                        <DialogTrigger className="flex flex-row justify-around items-center w-full h-full">
+                            <ItemImage nft={currentNft} />
+                        </DialogTrigger>
+                        <DialogContent className="bg-transparent max-w-[50vw] max-h-[60vw] p-0 m-0 rounded-2xl border-none">
+                            <Image src={currentNft?.img || '/image/default-nft.png'} priority={true} alt={currentNft?.name || "nft"} width={200} height={200} className="object-cover w-full h-full rounded-2xl" />
+                        </DialogContent>
+                    </Dialog>
                     <ItemDescription nft={currentNft} />
                     <Attributes traits={currentNft?.traits || []} />
                 </div>

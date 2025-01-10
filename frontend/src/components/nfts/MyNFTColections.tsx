@@ -8,7 +8,7 @@ import { Collection } from '@/lib/type'
 import { useGetTokensQuery } from '@/redux/features/api/apiSlice'
 
 interface Props {
-    collections: Collection[];
+    collections: Collection[] | [];
 }
 
 const options = ['Colleciton name', 'Volume (ETH)', 'Volume (USD)', 'Floor (ETH)', 'Items', 'Owners']

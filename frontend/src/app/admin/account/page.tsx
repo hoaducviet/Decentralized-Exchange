@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { PlusCircleIcon } from "@heroicons/react/24/outline"
 import { useCreateAccountMutation, useDeleteAccountMutation, useGetAccountsQuery, useUpdateAccountMutation } from "@/redux/features/admin/adminSlice"
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import { LayersIcon } from "@radix-ui/react-icons"
 import { Account, Address } from "@/lib/type"
 import { Input } from "@/components/ui/input"
@@ -14,6 +14,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { useState } from "react"
 import { ethers } from "ethers"
 import { Checkbox } from "@/components/ui/checkbox"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 const options = ['#', 'Address', 'Role', 'Active', 'Created At']
 const list = ['Total', 'Create New Account']
@@ -79,6 +80,9 @@ export default function AccountAdmin() {
                         <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                             <AlertDialogHeader className="bg-fixed w-full">
                                 <AlertDialogTitle>{list[1]}</AlertDialogTitle>
+                                <VisuallyHidden>
+                                    <AlertDialogDescription>Form Account Admin</AlertDialogDescription>
+                                </VisuallyHidden>
                             </AlertDialogHeader>
                             <div className="flex flex-col w-full space-y-[2vw]">
                                 <div className="flex flex-col w-full space-y-[0.5vw]">
@@ -152,6 +156,9 @@ export default function AccountAdmin() {
                                             <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                 <AlertDialogHeader className="bg-fixed w-full">
                                                     <AlertDialogTitle>Edit Infomation Account</AlertDialogTitle>
+                                                    <VisuallyHidden>
+                                                        <AlertDialogDescription>Form Account Admin</AlertDialogDescription>
+                                                    </VisuallyHidden>
                                                 </AlertDialogHeader>
                                                 <div className="flex flex-col w-full space-y-[1vw]">
                                                     <div className="flex flex-col w-full space-y-[0.5vw]">
@@ -192,6 +199,9 @@ export default function AccountAdmin() {
                                             <AlertDialogContent className="select-none w-[25vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                                 <AlertDialogHeader className="bg-fixed w-full">
                                                     <AlertDialogTitle>Delete Account</AlertDialogTitle>
+                                                    <VisuallyHidden>
+                                                        <AlertDialogDescription>Form Account Admin</AlertDialogDescription>
+                                                    </VisuallyHidden>
                                                 </AlertDialogHeader>
                                                 <div className="flex flex-col w-full space-y-[1vw]">
                                                     <div className="flex flex-col w-full space-y-[0.5vw]">

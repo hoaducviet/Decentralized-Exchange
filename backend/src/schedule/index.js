@@ -16,15 +16,15 @@ const cancelOrderTask = cron.schedule("*/30 * * * *", async () => {
   await OrderController.cancelOrderAuto();
 });
 
-const auto = 1;
+const auto = 0;
 
 async function schedule() {
   task.start();
   cancelOrderTask.start();
 
-  // setTimeout(async () => {
-  //   await AIController.predictAIPrice();
-  // }, 1000);
+  setTimeout(async () => {
+    await AIController.predictAIPrice("677ba2eed05bd41f79f5d56d");
+  }, 1000);
   //Trigger only one time for update price tokens
   // setTimeout(async () => {
   //   console.log("Chạy sau 20 giây khởi động!");

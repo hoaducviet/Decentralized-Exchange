@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { formatNumber } from '@/utils/formatNumber'
 import { PendingCollection } from '@/lib/type'
 import { Button } from '@/components/ui/button'
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import Image from 'next/image'
 import { useCallback, useState } from 'react'
 import { useAgreePriceCollectionMutation } from '@/redux/features/api/apiSlice'
@@ -12,6 +12,7 @@ import { payFeeExpert } from '@/services/nftmarket/payFeeExpert'
 import { useWeb3 } from '@/hooks/useWeb3'
 import { useAccount } from 'wagmi'
 import { payFeeCollection } from '@/services/nftmarket/payFeeCollection'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 
 interface Props {
     collections: PendingCollection[];
@@ -92,6 +93,9 @@ export default function NFTColectionsPending({ collections }: Props) {
                                         <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                             <AlertDialogHeader className="flex flex-row justify-center w-full">
                                                 <AlertDialogTitle className="text-xl">Pay Fee Expert for Collection</AlertDialogTitle>
+                                                <VisuallyHidden>
+                                                    <AlertDialogDescription>Form Pool Admin</AlertDialogDescription>
+                                                </VisuallyHidden>
                                             </AlertDialogHeader>
                                             <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                 <Image src={currentCollection?.logo || "/image/default-image.png"} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
@@ -134,6 +138,9 @@ export default function NFTColectionsPending({ collections }: Props) {
                                         <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                             <AlertDialogHeader className="flex flex-row justify-center w-full">
                                                 <AlertDialogTitle className="text-xl">Pay Fee Expert for Collection</AlertDialogTitle>
+                                                <VisuallyHidden>
+                                                    <AlertDialogDescription>Form Payment Admin</AlertDialogDescription>
+                                                </VisuallyHidden>
                                             </AlertDialogHeader>
                                             <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                 <Image src={currentCollection?.logo || "/image/default-image.png"} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
@@ -162,6 +169,9 @@ export default function NFTColectionsPending({ collections }: Props) {
                                         <AlertDialogContent className="select-none w-[20vw] max-h-[50vw] px-[1.5vw] rounded-2xl">
                                             <AlertDialogHeader className="flex flex-row justify-center w-full">
                                                 <AlertDialogTitle className="text-xl">Agree Price of Collection</AlertDialogTitle>
+                                                <VisuallyHidden>
+                                                    <AlertDialogDescription>Form Payment Admin</AlertDialogDescription>
+                                                </VisuallyHidden>
                                             </AlertDialogHeader>
                                             <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                 <Image src={currentCollection?.logo || "/image/default-image.png"} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />

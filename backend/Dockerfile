@@ -1,4 +1,6 @@
-FROM node:18-alpine
+FROM node:18-buster
+
+RUN apt-get update && apt-get install -y libc6 libgcc1 libstdc++6
 
 ENV PORT=8000
 
