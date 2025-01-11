@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { TagIcon } from '@heroicons/react/24/outline'
+import { TagIcon } from "@heroicons/react/20/solid";
 import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { NFTActiveTransaction, ReservePool } from "@/lib/type"
 

@@ -6,6 +6,8 @@ import { formatNumber } from '@/utils/formatNumber'
 import { formatPrice } from '@/utils/formatPrice'
 import { Collection } from '@/lib/type'
 import { useGetTokensQuery } from '@/redux/features/api/apiSlice'
+import { TagIcon } from "@heroicons/react/20/solid";
+
 
 interface Props {
     collections: Collection[] | [];
@@ -41,6 +43,10 @@ export default function MyNFTColections({ collections }: Props) {
                                     </Avatar>
                                     <p className='font-semibold oopacity-85'>{item.name}</p>
                                     {item.verified && <CheckBadgeIcon className="w-5 h-5 text-blue-500" />}
+                                    <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-red-100 dark:border-blue-500 rounded-xl text-xs py-1 px-2 shadow-md text-blue-500'>
+                                        <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                        <p>{item.category}</p>
+                                    </div>
                                 </div>
                                 <div className='flex flex-row justify-end w-[15%]'>{formatNumber(parseFloat(item.volume.slice(0, item.volume.indexOf('.') + 4)))}</div>
                                 <div className='flex flex-row justify-end w-[15%]'>${formatPrice(parseFloat(item.volume) * parseFloat(eth?.price || "0")).slice(0, item.volume.indexOf('.') + 3)}</div>

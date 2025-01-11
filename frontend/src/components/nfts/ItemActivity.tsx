@@ -1,7 +1,8 @@
 'use client'
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { TagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { TagIcon } from "@heroicons/react/20/solid";
 import { ArrowsUpDownIcon, ArrowsRightLeftIcon, ArrowDownCircleIcon } from '@heroicons/react/20/solid'
 import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { NFTActiveTransaction } from "@/lib/type"
@@ -12,7 +13,7 @@ interface Props {
 
 const options = ['Event', 'Price', 'From', 'To', 'Date']
 export default function ItemActivity({ actives }: Props) {
- 
+
     return (
         <Card className="rounded-2xl my-0">
             <CardHeader className="my-0 py-4 rounded-t-2xl text-md font-semibold border-b-[1px]">

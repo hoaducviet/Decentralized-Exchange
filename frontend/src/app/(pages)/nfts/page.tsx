@@ -20,6 +20,7 @@ import { Popover } from '@radix-ui/react-popover'
 import { PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import OptionsWallet from '@/components/wallet/OptionsWallet'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { TagIcon } from '@heroicons/react/20/solid'
 
 const heardPersonal = 'Register Collection'
 const note = 'No content. Please upload file!'
@@ -128,12 +129,16 @@ export default function NFTs() {
                                         </VisuallyHidden>
                                     </AlertDialogHeader>
                                     <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
-                                        <div className='border-[1px] w-full flex flex-row justify-center items-center rounded-2xl h-[10vw]'>
+                                        <div className='border-[1px] w-full flex flex-row justify-center items-center rounded-2xl min-h-[10vw] py-[1vw]'>
                                             {
                                                 newCollection ?
                                                     <div className="flex flex-col justify-center items-center w-full space-y-[1vw]">
                                                         <Image src={newCollection?.collection_logo || '/image/defaul-image.png'} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
                                                         <p className='font-semibold'>{newCollection.name}</p>
+                                                        <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-blue-500 dark:border-blue-500 rounded-2xl text-sm py-1 px-4 shadow-md text-blue-500'>
+                                                            <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                                            <p>{newCollection?.collection_category}</p>
+                                                        </div>
                                                     </div>
                                                     :
                                                     <p>{note}</p>

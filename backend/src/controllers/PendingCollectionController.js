@@ -20,11 +20,12 @@ class PendingCollectionController {
     try {
       const fileCollection = req.body;
       const collectionRaw = await fetchDataURI({ uri: fileCollection.uri });
-
+      console.log(collectionRaw);
       const collection = {
         owner: fileCollection.owner,
         name: collectionRaw.name,
         symbol: collectionRaw.symbol,
+        category: collectionRaw.collection_category,
         uri: fileCollection.uri,
         base_url: fileCollection.base_url,
         end_url: fileCollection.end_url,
@@ -47,6 +48,7 @@ class PendingCollectionController {
             : "";
           return {
             pending_collection_id: newCollection._id,
+            category: collection.category,
             nft_id: item.token_id,
             name: response.name || "",
             uri: `${item.token_uri}${fileCollection.end_url}`,
@@ -168,6 +170,7 @@ class PendingCollectionController {
     try {
       const { address } = req.params;
       const results = await PendingCollection.find({ owner: address });
+      console.log(results)
 
       return res.status(200).json(mutipleMongooseToObject(results || []));
     } catch (error) {

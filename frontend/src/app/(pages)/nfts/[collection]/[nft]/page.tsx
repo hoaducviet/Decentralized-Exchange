@@ -12,7 +12,8 @@ import { buyNFT } from "@/services/nftmarket/buyNFT"
 import { sellNFT } from "@/services/nftmarket/sellNFT";
 import { withdrawNFT } from "@/services/nftmarket/withdrawNFT";
 import { transferNFT } from "@/services/nftmarket/transferNFT";
-import { TagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { TagIcon } from "@heroicons/react/20/solid";
 import { CheckBadgeIcon, ArrowsRightLeftIcon, ArrowDownCircleIcon } from '@heroicons/react/20/solid'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -263,7 +264,15 @@ export default function NFTPage() {
                             <ItemImage nft={currentNft} />
                         </DialogTrigger>
                         <DialogContent className="bg-transparent max-w-[50vw] max-h-[60vw] p-0 m-0 rounded-2xl border-none">
-                            <Image src={currentNft?.img || '/image/default-nft.png'} priority={true} alt={currentNft?.name || "nft"} width={200} height={200} className="object-cover w-full h-full rounded-2xl" />
+                            {currentNft?.animation ? (
+                                <iframe
+                                    src={currentNft.animation}
+                                    className="bg-transparent w-[50vw] h-[60vw] border-none object-cover"
+                                    allowFullScreen
+                                ></iframe>
+                            ) : (
+                                <Image src={currentNft?.img || '/image/default-nft.png'} priority={true} alt={currentNft?.name || "nft"} width={200} height={200} className="object-cover w-full h-full rounded-2xl" />
+                            )}
                         </DialogContent>
                     </Dialog>
                     <ItemDescription nft={currentNft} />
@@ -274,6 +283,10 @@ export default function NFTPage() {
                         <div className="flex flex-row justify-start items-center space-x-3 text-blue-500">
                             <div className="text-lg font-semibold text-blue-600">{currentCollection?.name}</div>
                             {currentCollection?.verified && <CheckBadgeIcon className="w-5 h-5" />}
+                            <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-red-100 dark:border-blue-500 rounded-xl text-xs py-1 px-2 shadow-md text-blue-500'>
+                                <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                <p>{currentCollection?.category}</p>
+                            </div>
                         </div>
                         <div className="text-4xl font-bold">{currentNft?.name ? currentNft.name : `${currentCollection?.name} # ${currentNft?.nft_id}`}</div>
                         <div className="flex felx-row text-md font-normal space-x-2">

@@ -13,6 +13,7 @@ import { useWeb3 } from '@/hooks/useWeb3'
 import { useAccount } from 'wagmi'
 import { payFeeCollection } from '@/services/nftmarket/payFeeCollection'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { TagIcon } from "@heroicons/react/20/solid";
 
 interface Props {
     collections: PendingCollection[];
@@ -76,6 +77,10 @@ export default function NFTColectionsPending({ collections }: Props) {
                                         <AvatarFallback>{item.name[0]}</AvatarFallback>
                                     </Avatar>
                                     <p className='font-semibold oopacity-85'>{item.name}</p>
+                                    <div className='flex flex-row bg-white/80 dark:bg-transparent  items-center space-x-2 border-[0.5px] rounded-xl text-xs py-1 px-2 shadow-sm border-blue-500 text-blue-500 '>
+                                        <TagIcon className='w-[1vw] h-[1vw] ' />
+                                        <p>{item?.category}</p>
+                                    </div>
                                 </div>
                                 <div className='flex flex-row justify-end items-center w-[12.5%]'>{formatNumber(parseFloat(item.total_items))}</div>
                                 <div className='flex flex-row justify-end items-center w-[12.5%]'>{item.total_fee}</div>

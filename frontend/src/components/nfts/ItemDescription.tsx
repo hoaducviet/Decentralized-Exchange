@@ -17,7 +17,7 @@ export default function ItemDescription({ nft }: Props) {
                 </CardTitle>
             </CardHeader>
             <CardContent className="my-0 py-4 min-h[2vw]">
-                <div>{nft?.description}</div>
+                <div className="break-words">{nft?.description}</div>
             </CardContent>
         </Card>
     )

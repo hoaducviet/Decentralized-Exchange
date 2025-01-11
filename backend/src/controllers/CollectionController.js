@@ -71,7 +71,7 @@ class CollectionController {
       const { address } = req.params;
       const results = await Collection.find({ owner: address, active: true })
         .select(
-          "_id address owner name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume active createdAt"
+          "_id address owner category name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume active createdAt"
         )
         .exec();
 
@@ -88,7 +88,7 @@ class CollectionController {
     try {
       const results = await Collection.find({ active: true })
         .select(
-          "_id address owner name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume createdAt"
+          "_id address owner category name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume createdAt"
         )
         .exec();
       if (!results.length) {
@@ -108,7 +108,7 @@ class CollectionController {
     try {
       const results = await Collection.find({ active: false })
         .select(
-          "_id address owner name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume createdAt"
+          "_id address owner category name symbol logo banner verified currency project_url discord_url floor_price highest_price total_items total_listed total_owners twitter_username instagram_username description volume createdAt"
         )
         .exec();
       if (!results.length) {

@@ -11,12 +11,14 @@ import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { GlobeIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { formatNumber } from '@/utils/formatNumber'
 import { Collection } from "@/lib/type";
+import { TagIcon } from "@heroicons/react/20/solid";
 
 const twitterUrl = 'https://x.com/'
 const optionsInfo = [
     "Items",
     "Created",
     "Chain",
+    "Category",
     "Total volume",
     'Floor price',
     'Highest price',
@@ -126,6 +128,14 @@ export default function CollectionLayout({ children }: Readonly<{
                                 <div>{optionsInfo[2]}</div>
                                 <div className="font-semibold">Ethereum</div>
                             </div>
+                            <div className="w-[3px] h-[3px] bg-white rounded-full opacity-80"></div>
+                            <div className="flex flex-row space-x-[0.8vw]">
+                                <div>{optionsInfo[3]}</div>
+                                <div className='flex flex-row bg-white/80  items-center space-x-2 border-[0.5px] rounded-xl text-xs py-1 px-2 shadow-sm border-blue-500 text-blue-500 '>
+                                    <TagIcon className='w-[1vw] h-[1vw] ' />
+                                    <p>{newCollection?.category}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="flex flex-row justify-end items-end w-[50%] space-x-[2vw]">
@@ -134,34 +144,34 @@ export default function CollectionLayout({ children }: Readonly<{
                                 <div>{newCollection?.volume.slice(0, newCollection.volume.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
-                            <div>{optionsInfo[3]}</div>
+                            <div>{optionsInfo[4]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
                                 <div>{newCollection?.floor_price.slice(0, newCollection.floor_price.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
-                            <div>{optionsInfo[4]}</div>
+                            <div>{optionsInfo[5]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
                                 <div>{newCollection?.highest_price.slice(0, newCollection.highest_price.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
-                            <div>{optionsInfo[5]}</div>
+                            <div>{optionsInfo[6]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center text-lg font-semibold">
                                 <div>{percentListed}</div>
                                 <div>%</div>
                             </div>
-                            <div>{optionsInfo[6]}</div>
+                            <div>{optionsInfo[7]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
                                 <div>{newCollection?.total_owners}</div>
                             </div>
-                            <div>{optionsInfo[7]}</div>
+                            <div>{optionsInfo[8]}</div>
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useGetCollectionsQuery } from "@/redux/features/api/apiSlice";
 import { setCurrentCollection } from "@/redux/features/collection/collectionSlice";
-import { CheckBadgeIcon } from '@heroicons/react/20/solid'
+import { CheckBadgeIcon, TagIcon } from '@heroicons/react/20/solid'
 import { GlobeIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { formatNumber } from '@/utils/formatNumber'
 import { Collection } from "@/lib/type";
@@ -16,6 +16,7 @@ const optionsInfo = [
     "Items",
     "Created",
     "Chain",
+    "Category",
     "Total volume",
     'Floor price',
     'Highest price',
@@ -57,7 +58,7 @@ export default function CollectionLayout({ children }: Readonly<{
                 <Image src={newCollection?.banner || '/image/default-image.png'} alt={newCollection?.name || ''} priority={true} width={200} height={200} className="w-full max-h-[50vh] layout:responsive object-cover object-center" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                <div className="absolute inset-0 flex flex-row mx-[5vw] my-[2vw] text-white">
+                <div className="absolute inset-0 flex flex-row mx-[2vw] my-[2vw] text-white">
                     <div className="flex flex-col justify-end w-[50%] space-y-[1vw]">
                         <Image src={newCollection?.logo || "/image/default-image.png"} priority={true} alt={newCollection?.name || ""} width={20} height={20} className="w-[6vw] h-[6vw] border-[1px] rounded-2xl border-white/70" />
                         <div className="flex flex-row justify-start divide-x-[1px] dark:divide-white items-center space-x-[1.5vw]">
@@ -97,6 +98,13 @@ export default function CollectionLayout({ children }: Readonly<{
                                 <div>{optionsInfo[2]}</div>
                                 <div className="font-semibold">Ethereum</div>
                             </div>
+                            <div className="flex flex-row space-x-[0.5vw]">
+                                <div>{optionsInfo[3]}</div>
+                                <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-red-100 dark:border-blue-500 rounded-xl text-xs py-1 px-2 shadow-md text-blue-500'>
+                                    <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                    <p>{newCollection?.category}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="flex flex-row justify-end items-end w-[50%] space-x-[2vw]">
@@ -105,34 +113,34 @@ export default function CollectionLayout({ children }: Readonly<{
                                 <div>{newCollection?.volume.slice(0, newCollection.volume.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
-                            <div>{optionsInfo[3]}</div>
+                            <div>{optionsInfo[4]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
                                 <div>{newCollection?.floor_price.slice(0, newCollection.floor_price.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
-                            <div>{optionsInfo[4]}</div>
+                            <div>{optionsInfo[5]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
                                 <div>{newCollection?.highest_price.slice(0, newCollection.highest_price.indexOf('.') + 4)}</div>
                                 <div>{newCollection?.currency ? newCollection.currency.toUpperCase() : ""}</div>
                             </div>
-                            <div>{optionsInfo[5]}</div>
+                            <div>{optionsInfo[6]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center text-lg font-semibold">
                                 <div>{percentListed}</div>
                                 <div>%</div>
                             </div>
-                            <div>{optionsInfo[6]}</div>
+                            <div>{optionsInfo[7]}</div>
                         </div>
                         <div className="flex flex-col">
                             <div className="flex flex-row justify-start items-center space-x-[0.3vw] text-lg font-semibold">
                                 <div>{newCollection?.total_owners}</div>
                             </div>
-                            <div>{optionsInfo[7]}</div>
+                            <div>{optionsInfo[8]}</div>
                         </div>
                     </div>
                 </div>

@@ -152,6 +152,7 @@ class WalletController {
               address: item[0],
               owner: item[1],
               uri: item[2],
+              category: response.collection_category,
               name: response.name,
               symbol: response.symbol,
               logo: response.collection_logo,
@@ -184,17 +185,17 @@ class WalletController {
 
   async getNFTAll() {
     const excludedName = [
-      // "Nyan Balloon", //0
-      // "Pirate Nation - Founder's Pirate", //1
+      "Nyan Balloon", //0
+      "Pirate Nation - Founder's Pirate", //1
       // "Mutan Ape Yacht Club", //1
-      // "Fijis", //1
-      // "Cool Cats", //1
-      // "CloneX - X TAKASHI MURAKAMI", //1
-      // "Captainz", //0
+      "Fijis", //1
+      "Cool Cats", //1
+      "CloneX - X TAKASHI MURAKAMI", //1
+      "Captainz", //0
       // "Block Queens by Jeremy Cowart", //1
       "Bored Ape Yacht Club",
-      // "Doodles",
-      // "RumbleKongLeague",
+      "Doodles",
+      "RumbleKongLeague",
     ];
     const collections = await Collection.find({
       name: { $nin: excludedName },
@@ -237,9 +238,11 @@ class WalletController {
                   return {
                     collection_id: collection._id,
                     owner: result[4],
+                    category: collection.category,
                     nft_id: result[0].toString(),
                     name: response.name || "",
                     uri: result[2],
+                    animation: response.animation_url || "",
                     img: img || `${index}`,
                     price: result[1].toString(),
                     formatted,

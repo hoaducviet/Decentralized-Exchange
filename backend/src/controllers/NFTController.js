@@ -121,7 +121,7 @@ class NFTController {
       const { id } = req.params;
       const results = await NFT.find({ collection_id: id })
         .select(
-          "_id collection_id owner nft_id name uri img price formatted isListed description createdAt"
+          "_id collection_id category owner nft_id name uri img price formatted isListed description createdAt"
         )
         .exec();
       if (!results.length) {

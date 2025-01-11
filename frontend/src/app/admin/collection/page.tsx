@@ -4,7 +4,7 @@ import { Card, CardTitle } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from 'next/link'
 import useAuthCheck from "@/hooks/useAuthCheck"
-import { ArrowPathIcon, CheckBadgeIcon } from '@heroicons/react/20/solid'
+import { ArrowPathIcon, CheckBadgeIcon, TagIcon } from '@heroicons/react/20/solid'
 import { formatNumber } from '@/utils/formatNumber'
 import { Button } from "@/components/ui/button"
 import { useActiveCollectionMutation, useDeleteCollectionMutation, useGetSuspendedCollectionsQuery, useUpdateCollectionsMutation, useUpdateNFTsMutation } from '@/redux/features/admin/adminSlice'
@@ -124,6 +124,10 @@ export default function CollectionAdmin() {
                                                     </Avatar>
                                                     <p className='font-semibold oopacity-85'>{item.name}</p>
                                                     {item.verified && <CheckBadgeIcon className="w-5 h-5 text-blue-500 " />}
+                                                    <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-red-100 dark:border-blue-500 rounded-xl text-xs py-1 px-2 shadow-md text-blue-500'>
+                                                        <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                                        <p>{item.category}</p>
+                                                    </div>
                                                 </Link>
                                             </div>
                                             <div className='flex flex-row justify-end w-[15%]'>{formatNumber(parseFloat(item.volume.slice(0, item.volume.indexOf('.') + 4)))}</div>
@@ -185,6 +189,10 @@ export default function CollectionAdmin() {
                                                     </Avatar>
                                                     <p className='font-semibold oopacity-85'>{item.name}</p>
                                                     {item.verified && <CheckBadgeIcon className="w-5 h-5 text-blue-500 " />}
+                                                    <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-red-100 dark:border-blue-500 rounded-xl text-xs py-1 px-2 shadow-md text-blue-500'>
+                                                        <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                                        <p>{item.category}</p>
+                                                    </div>
                                                 </Link>
                                             </div>
                                             <div className='flex flex-row justify-end w-[15%]'>{item.floor_price.slice(0, item.floor_price.indexOf('.') + 4)}</div>

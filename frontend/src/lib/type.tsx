@@ -89,6 +89,7 @@ export type Collection = {
     owner: Address;
     name: string;
     symbol: string;
+    category: string;
     logo: string;
     banner: string,
     verified: boolean;
@@ -106,6 +107,7 @@ export type Collection = {
     volume: string;
     createdAt: string;
     collection_logo?: string;
+    collection_category?: string;
 }
 
 export type PendingCollection = {
@@ -115,6 +117,7 @@ export type PendingCollection = {
     symbol: string;
     logo: string;
     banner: string,
+    category: string;
     currency: string;
     project_url?: string;
     discord_url?: string;
@@ -141,9 +144,11 @@ export type NFT = {
     _id: string;
     collection_id: string,
     owner: Address;
+    category: string;
     nft_id: string;
     name: string;
     uri: string;
+    animation: string;
     img: string,
     price: string;
     formatted: string;

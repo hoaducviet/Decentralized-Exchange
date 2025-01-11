@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { useToast } from '@/hooks/useToast'
 import Image from 'next/image'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { TagIcon } from '@heroicons/react/20/solid'
 
 const options = ['Colleciton name', 'Pay fee (ETH)', 'Pay expert (ETH)', 'User status', 'Status']
 export default function CollectionAdmin() {
@@ -114,6 +115,10 @@ export default function CollectionAdmin() {
                                                         <AvatarFallback>{item.name[0]}</AvatarFallback>
                                                     </Avatar>
                                                     <p className='font-semibold oopacity-85'>{item.name}</p>
+                                                    <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-red-100 dark:border-blue-500 rounded-xl text-xs py-1 px-2 shadow-md text-blue-500'>
+                                                        <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                                        <p>{item.category}</p>
+                                                    </div>
                                                 </Link>
                                             </div>
                                             <div className='flex flex-row justify-end w-[15%]'>{parseFloat(item.total_fee) > 0 ? parseFloat(item.payment_fee) / parseFloat(item.total_fee) * 100 : 0}%</div>
@@ -193,6 +198,10 @@ export default function CollectionAdmin() {
                                                         <AvatarFallback>{item.name[0]}</AvatarFallback>
                                                     </Avatar>
                                                     <p className='font-semibold oopacity-85'>{item.name}</p>
+                                                    <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-red-100 dark:border-blue-500 rounded-xl text-xs py-1 px-2 shadow-md text-blue-500'>
+                                                        <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                                        <p>{item.category}</p>
+                                                    </div>
                                                 </Link>
                                             </div>
                                             <div className='flex flex-row justify-end w-[15%]'>{parseFloat(item.total_fee) > 0 ? parseFloat(item.payment_fee) / parseFloat(item.total_fee) * 100 : 0}%</div>
@@ -272,6 +281,10 @@ export default function CollectionAdmin() {
                                                         <AvatarFallback>{item.name[0]}</AvatarFallback>
                                                     </Avatar>
                                                     <p className='font-semibold oopacity-85'>{item.name}</p>
+                                                    <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-red-100 dark:border-blue-500 rounded-xl text-xs py-1 px-2 shadow-md text-blue-500'>
+                                                        <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                                        <p>{item.category}</p>
+                                                    </div>
                                                 </Link>
                                             </div>
                                             <div className='flex flex-row justify-end w-[15%]'>{parseFloat(item.total_fee) > 0 ? parseFloat(item.payment_fee) / parseFloat(item.total_fee) * 100 : 0}%</div>

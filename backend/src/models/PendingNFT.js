@@ -11,6 +11,7 @@ const PendingNFT = new Schema(
       required: true,
       ref: "pendingcollection",
     },
+    category: { type: String, required: true },
     nft_id: { type: String, required: true },
     name: { type: String, required: false, maxLength: 255 },
     uri: { type: String, required: true, maxLength: 255 },

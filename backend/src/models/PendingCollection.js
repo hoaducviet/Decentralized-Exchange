@@ -9,6 +9,7 @@ const PendingCollection = new Schema(
     owner: { type: String, required: true, minLength: 42, maxLength: 42 },
     name: { type: String, required: true, maxLength: 255 },
     symbol: { type: String, required: true, maxLength: 20 },
+    category: { type: String, required: true, maxLength: 255 },
     uri: { type: String, required: true, maxLength: 255 },
     base_url: { type: String, required: true, maxLength: 255 },
     end_url: { type: String, maxLength: 255 },
