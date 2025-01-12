@@ -2,11 +2,10 @@
 import { useEffect, useState } from "react";
 import { useGetTokensQuery } from "@/redux/features/api/apiSlice";
 import { Address, Children, Collection, NFT } from "@/lib/type"
-import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { AlertDialogTrigger, AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialogDescription } from "@/components/ui/alert-dialog";
 import Image from "next/image";
 import API from '@/config/configApi'
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { DialogDescription } from "@/components/ui/dialog";
 
 interface Props {
     children: Children;
@@ -68,7 +67,7 @@ export default function NFTTransactionWaiting({ children, handleSend, type, coll
                 <AlertDialogHeader className="bg-fixed w-full">
                     <AlertDialogTitle>{type}</AlertDialogTitle>
                     <VisuallyHidden>
-                        <DialogDescription>Information NFT Transaction</DialogDescription>
+                        <AlertDialogDescription>Information NFT Transaction</AlertDialogDescription>
                     </VisuallyHidden>
                 </AlertDialogHeader>
                 <div className="flex flex-col w-full h-full overflow-x-auto space-y-[1vw] mb-[1vw]">

@@ -186,3 +186,22 @@ export const useGasWithdrawUSD = () => {
     }, [jsonProvider])
     return gasEstimate
 }
+
+
+export const useGasGetPhysicalNFT = () => {
+    const web3 = useWeb3()
+    const [gasEstimate, setGasEstimate] = useState<number>(0)
+    const jsonProvider = web3?.jsonProvider
+
+    useEffect(() => {
+        const getGasEstimate = async () => {
+            if (jsonProvider) {
+                const feeData = await jsonProvider.getFeeData()
+                const gasPrice = feeData.maxFeePerGas || feeData.gasPrice
+                setGasEstimate(parseFloat(formatEther(gasPrice || 0)) * 300000)
+            }
+        }
+        getGasEstimate()
+    }, [jsonProvider])
+    return gasEstimate
+}

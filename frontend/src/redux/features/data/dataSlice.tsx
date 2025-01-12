@@ -8,8 +8,8 @@ export const dataSlice = createApi({
     endpoints: (builder) => ({
         getJsonData: builder.query<Collection, string>({
             query: (url) => url,
+        }),
 
-        })
     })
 })
 

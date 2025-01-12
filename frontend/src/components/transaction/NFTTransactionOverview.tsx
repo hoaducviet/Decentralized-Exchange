@@ -18,7 +18,7 @@ export default function NFTTransactionOverview({ children, transaction }: Props)
 
     const date = new Date(transaction.createdAt);
     const formattedDate = date.toLocaleString('en-US', {
-        hour: '2-digit', 
+        hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
         year: 'numeric',
@@ -62,19 +62,65 @@ export default function NFTTransactionOverview({ children, transaction }: Props)
                                 <p>{`${transaction.collection_id?.address.slice(0, 6)}...${transaction.collection_id?.address.slice(38)}`}</p>
                             </div>
                         </div>
-                        <div className="flex flex-row justify-between items-start">
-                            <p>Price</p>
-                            <div className="flex flex-col">
-                                <div className="flex flex-row space-x-1 justify-end">
-                                    <p>{parseFloat(transaction.price || "")?.toFixed(6)}</p>
-                                    <p className="font-semibold">{transaction.currency}</p>
+                        {transaction.type !== 'Receive Physical NFT' ?
+                            <div className="flex flex-row justify-between items-start">
+                                <p>Price</p>
+                                <div className="flex flex-col">
+                                    <div className="flex flex-row space-x-1 justify-end">
+                                        <p>{parseFloat(transaction.price || "")?.toFixed(6)}</p>
+                                        <p className="font-semibold">{transaction.currency}</p>
+                                    </div>
+                                    <div className="flex flex-row space-x-1 justify-end">
+                                        <p>{`$${parseFloat(transaction.priceUsd || "")?.toFixed(2)}`}</p>
+                                        <p className="font-semibold">USD</p>
+                                    </div>
                                 </div>
-                                <div className="flex flex-row space-x-1 justify-end">
-                                    <p>{`$${parseFloat(transaction.priceUsd || "")?.toFixed(2)}`}</p>
-                                    <p className="font-semibold">USD</p>
+                            </div> :
+                            <>
+                                <div className="flex flex-row justify-between items-start">
+                                    <p>Phone</p>
+                                    <p>{transaction.phone}</p>
                                 </div>
-                            </div>
-                        </div>
+                                <div className="flex flex-row justify-between items-start">
+                                    <p>Name</p>
+                                    <p>{transaction.name}</p>
+                                </div>
+                                <div className="flex flex-row justify-between items-start">
+                                    <p>Address</p>
+                                    <p className="break-words w-[60%] flex flex-row justify-end">{transaction.address}</p>
+                                </div>
+                                <div className="flex flex-row justify-between items-start">
+                                    <p>Shipping status</p>
+                                    <p className="break-words w-[60%] flex flex-row justify-end">{transaction.shipping_status}</p>
+                                </div>
+                                <div className="flex flex-row justify-between items-start">
+                                    <p>Note</p>
+                                    <p className="break-words w-[60%] flex flex-row justify-end">{transaction.note}</p>
+                                </div>
+                                <div className="flex flex-row justify-between items-start">
+                                    <p>Pickup deadline</p>
+                                    <p>{transaction.pickup_deadline}</p>
+                                </div>
+                                <div className="flex flex-row justify-between items-start">
+                                    <p>Shipping fee</p>
+                                    <div className="flex flex-col">
+                                        <div className="flex flex-row space-x-1 justify-end">
+                                            <p>{`$${parseFloat(transaction.shipping_fee || "")?.toFixed(6)}`}</p>
+                                            <p className="font-semibold">{transaction.currency}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row justify-between items-start">
+                                    <p>Storage fee</p>
+                                    <div className="flex flex-col">
+                                        <div className="flex flex-row space-x-1 justify-end">
+                                            <p>{`$${parseFloat(transaction.storage_fee || "")?.toFixed(6)}`}</p>
+                                            <p className="font-semibold">{transaction.currency}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        }
                         <div className="flex flex-row justify-between items-start">
                             <p>Platform fee (0.3%)</p>
                             <div className="flex flex-col">

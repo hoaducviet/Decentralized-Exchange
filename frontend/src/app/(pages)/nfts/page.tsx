@@ -136,7 +136,7 @@ export default function NFTs() {
                                                         <Image src={newCollection?.collection_logo || '/image/defaul-image.png'} alt='logo.png' priority={true} width={20} height={20} className='w-[4vw] h-[4vw] border-[1px] rounded-2xl object-cover' />
                                                         <p className='font-semibold'>{newCollection.name}</p>
                                                         <div className='flex flex-row dark:bg-white/15 items-center space-x-2 border-[0.1px] border-blue-500 dark:border-blue-500 rounded-2xl text-sm py-1 px-4 shadow-md text-blue-500'>
-                                                            <TagIcon className='w-[0.8vw] h-[0.8vw] ' />
+                                                            <TagIcon className='w-[0.8vw] h-[0.8vw]'/>
                                                             <p>{newCollection?.collection_category}</p>
                                                         </div>
                                                     </div>

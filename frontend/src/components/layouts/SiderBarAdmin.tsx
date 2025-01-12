@@ -22,6 +22,10 @@ const options = [
         link: '/admin/collection/register'
     },
     {
+        name: 'Physical Asset',
+        link: '/admin/physicalasset'
+    },
+    {
         name: 'Account',
         link: '/admin/account'
     }

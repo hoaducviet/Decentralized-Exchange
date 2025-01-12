@@ -154,6 +154,7 @@ export type NFT = {
     formatted: string;
     isListed: boolean;
     description: string;
+    has_physical: boolean;
     traits: Trait[] | []
 }
 
@@ -298,10 +299,17 @@ export type NFTTransaction = {
     platform_fee?: string;
     receipt_hash?: string;
     status?: string;
+    phone?: string;
+    name?: string;
+    address?: string;
+    note?: string;
+    pickup_deadline?: string;
+    shipping_fee?: string;
+    storage_fee?: string;
 }
 
 export type NFTActiveTransaction = {
-    _id?: string;
+    _id: string;
     type: string;
     from_wallet: Address;
     to_wallet?: Address;
@@ -315,6 +323,14 @@ export type NFTActiveTransaction = {
     platform_fee?: string;
     receipt_hash?: string;
     status?: string;
+    phone?: string;
+    name?: string;
+    address?: string;
+    note?: string;
+    shipping_status?: string;
+    pickup_deadline?: string;
+    shipping_fee?: string;
+    storage_fee?: string;
     createdAt: string;
 }
 
@@ -409,6 +425,16 @@ export type Volume = {
 export type TVL = {
     date: string;
     tvl: string;
+}
+
+
+export type City = string;
+
+export type Country = {
+    iso2: string;
+    iso3: string;
+    country: string;
+    cities: City[]
 }
 
 export type ActivesType = TokenActiveTransaction | LiquidityActiveTransaction | USDActiveTransaction | NFTActiveTransaction | OrderActiveTransaction;

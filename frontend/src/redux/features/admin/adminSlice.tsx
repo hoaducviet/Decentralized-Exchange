@@ -1,7 +1,7 @@
 'use client'
 import { apiSlice } from '@/redux/features/api/apiSlice'
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Account, Address, Collection, NFT, PendingCollection, PendingNFT, Pool, ReservePool, Token, UpdatePricePendingNFT } from "@/lib/type";
+import { Account, Address, Collection, NFT, NFTActiveTransaction, PendingCollection, PendingNFT, Pool, ReservePool, Token, UpdatePricePendingNFT } from "@/lib/type";
 import API from '@/config/configApi'
 
 export const adminSlice = createApi({
@@ -17,7 +17,7 @@ export const adminSlice = createApi({
     }),
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: 600,
-    tagTypes: ['Account', 'Suspended Token', 'Suspended Pool', 'Suspended Collection', 'Pending Collection'],
+    tagTypes: ['Account', 'Suspended Token', 'Suspended Pool', 'Suspended Collection', 'Pending Collection', 'NFT Physical Confirm', 'NFT Physical Transaction'],
     endpoints: (builder) => ({
         getAccounts: builder.query<Account[], void>({
             query: () => `/accounts`,
@@ -46,6 +46,14 @@ export const adminSlice = createApi({
         getRejectPendingCollections: builder.query<PendingCollection[], void>({
             query: () => `/pendingcollections/rejected`,
             providesTags: ['Pending Collection']
+        }),
+        getNFTPhysicalNotHas: builder.query<NFT[], void>({
+            query: () => `/nfts/nothasphysical`,
+            providesTags: ['NFT Physical Confirm']
+        }),
+        getNFTPhysicalReceiveTransaction: builder.query<NFTActiveTransaction[], void>({
+            query: () => `/transactions/nftphysical/receive`,
+            providesTags: ['NFT Physical Transaction']
         }),
 
 
@@ -320,6 +328,23 @@ export const adminSlice = createApi({
             }),
         }),
 
+        confirmSendPhysicalNFT: builder.mutation<void, { _id: string }>({
+            query: (data) => ({
+                url: '/nfts/physical/confirm',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['NFT Physical Confirm']
+        }),
+        confirmOrderDone: builder.mutation<void, { _id: string }>({
+            query: (data) => ({
+                url: '/transaction/nftphysical/confirm',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['NFT Physical Transaction']
+        }),
+
     })
 })
 
@@ -332,6 +357,8 @@ export const {
     useGetAcceptPendingCollectionsQuery,
     useGetRejectPendingCollectionsQuery,
     useGetWaitingPendingCollectionsQuery,
+    useGetNFTPhysicalNotHasQuery,
+    useGetNFTPhysicalReceiveTransactionQuery,
 
     useUpdateTokensMutation,
     useDeleteTokenMutation,
@@ -359,5 +386,7 @@ export const {
     useUpdateAccountMutation,
     useDeleteAccountMutation,
 
-    useMintCollectionMutation
+    useMintCollectionMutation,
+    useConfirmSendPhysicalNFTMutation,
+    useConfirmOrderDoneMutation
 } = adminSlice

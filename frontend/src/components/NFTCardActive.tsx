@@ -30,7 +30,7 @@ export default function NFTCardAcitve({ transaction }: Props) {
             </div>
             <div className="flex flex-row justify-between items-center text-md font-semibold opacity-85">
                 <div className="">{transaction.collection_id?.name} #{transaction.nft_id}</div>
-                {transaction.type !== 'Transfer NFT' &&
+                {transaction.type !== 'Transfer NFT' && transaction.type !== 'Receive Physical NFT' &&
                     <div className="flex flex-row space-x-[0.2vw]">
                         <div>
                             {transaction.price}

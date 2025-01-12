@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { TagIcon } from "@heroicons/react/20/solid";
+import { ArrowDownTrayIcon, TagIcon } from "@heroicons/react/20/solid";
 import { ArrowsUpDownIcon, ArrowsRightLeftIcon, ArrowDownCircleIcon } from '@heroicons/react/20/solid'
 import { calculateElapsedTime } from "@/utils/calculateElapsedTime"
 import { NFTActiveTransaction } from "@/lib/type"
@@ -44,11 +44,14 @@ export default function ItemActivity({ actives }: Props) {
                             if (type === 'Withdraw') {
                                 Event = ArrowDownCircleIcon
                             }
+                            if (type === 'Receive') {
+                                Event = ArrowDownTrayIcon
+                            }
                             return (<div key={index} className={`hover:bg-secondary/80 cursor-pointer flex flex-row justify-between items-center border-t-[1px] px-4 py-3 ${index === actives.length - 1 ? 'rounded-b-2xl' : ''}`}>
                                 <div className="flex flex-row justify-start items-center w-[20%] space-x-3">
                                     <Event className="w-4 h-4" />
                                     <div>
-                                        {item.type.split(" ")[0]}
+                                        {item.type.split(" ")[0] === 'Receive' ? item.type : item.type.split(" ")[0]}
                                     </div>
                                 </div>
                                 <div className="flex flex-row justify-start w-[20%] text-md font-semibold">{type !== 'Transfer' ? `${item.price?.slice(0, item.price.indexOf('.') + 4)} ETH` : ''}</div>
