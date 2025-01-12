@@ -36,6 +36,12 @@ contract MarketNFT is Ownable {
         uint256 price
     );
     event NFTListedRemove(address collection, address owner, uint256 tokenId);
+    event PayedFeeGetPhysicalNFT(
+        address from,
+        address addressCollection,
+        uint256 tokenId,
+        uint256 value
+    );
     event PayedFeeExpert(address from, string idCollection, uint256 value);
     event PayedFeeCollection(address from, string idCollection, uint256 value);
 
@@ -141,6 +147,25 @@ contract MarketNFT is Ownable {
         delete collections[_collectionAddress];
         counter--;
         emit CollectionRemoved(collection.collectionAddress);
+    }
+
+    function payFeeGetPhysicalNFT(
+        address _collection,
+        uint256 _tokenId,
+        uint256 _value
+    ) external payable {
+        require(
+            msg.sender == NFTCollection(_collection).ownerOf(_tokenId),
+            "You are not owner of NFT"
+        );
+        require(msg.sender != address(0), "Invalid address");
+        require(msg.value >= _value, "The fees is not valid");
+        emit PayedFeeGetPhysicalNFT(
+            msg.sender,
+            _collection,
+            _tokenId,
+            msg.value
+        );
     }
 
     function payFeeExpert(string memory _id, uint256 value) external payable {
