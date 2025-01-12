@@ -136,6 +136,43 @@ class NFTController {
         .json({ message: "Internal server error get all NFT" });
     }
   }
+
+  async getNFTPhysicalNotHas(req, res) {
+    try {
+      const results = await NFT.find({
+        category: { $regex: "physical", $options: "i" },
+        has_physical: false,
+      });
+
+      if (!results) {
+        return res.status(404).json(mutipleMongooseToObject([]));
+      }
+
+      return res.status(200).json(mutipleMongooseToObject(results));
+    } catch (error) {
+      console.error("Error collection:", error.message);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
+  async confirmSendPhysicalNFT(req, res) {
+    try {
+      const { _id } = req.body;
+      const result = await NFT.findByIdAndUpdate(
+        _id,
+        { has_physical: true },
+        { new: true }
+      );
+
+      if (!result) {
+        return res.status(404).json(mutipleMongooseToObject([]));
+      }
+      return res.status(200).json(result);
+    } catch (error) {
+      console.error("Error collection:", error.message);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
 }
 
 module.exports = new NFTController();

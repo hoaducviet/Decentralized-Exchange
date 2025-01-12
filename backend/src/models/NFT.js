@@ -22,6 +22,7 @@ const NFT = new Schema(
     formatted: { type: String, default: "0" },
     isListed: { type: Boolean, required: true },
     description: { type: String, required: false, default: "" },
+    has_physical: { type: Boolean, required: false, default: false },
   },
   {
     timestamps: true,

@@ -263,6 +263,7 @@ class TransactionController {
   async addNftTransaction(req, res) {
     try {
       const newTransaction = req.body;
+
       if (
         !newTransaction.type ||
         !newTransaction.from_wallet ||
@@ -273,9 +274,9 @@ class TransactionController {
           message: "Missing fields.",
         });
       }
+      console.log(newTransaction);
 
       const result = await new NftTransaction(newTransaction).save();
-
       return res.status(200).json(mongooseToObject(result));
     } catch (error) {
       console.error("Error transaction:", error.message);
@@ -422,6 +423,29 @@ class TransactionController {
         nft_id: nft,
         status: "Completed",
       }).lean();
+      results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+      return res.status(200).json(results);
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get nft transaction" });
+    }
+  }
+
+  async getNftTransactionsReceivePhysical(req, res) {
+    try {
+      const results = await NftTransaction.find({
+        type: "Receive Physical NFT",
+        status: "Completed",
+      })
+        .populate({
+          path: "collection_id",
+          select: "_id name address owner total_supply description volume",
+          model: "collection",
+        })
+        .exec();
       results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
       return res.status(200).json(results);
@@ -713,6 +737,26 @@ class TransactionController {
     } catch (error) {
       console.error("Error transaction:", error.message);
       return res.status(500).json({ message: "Internal server error get tvl" });
+    }
+  }
+
+  async confirmNftTransactionsReceivePhysicalDone(req, res) {
+    try {
+      const { _id } = req.body;
+      const result = await NftTransaction.findByIdAndUpdate(
+        _id,
+        {
+          shipping_status: "Completed",
+        },
+        { new: true }
+      );
+
+      return res.status(200).json(result);
+    } catch (error) {
+      console.error("Error transaction:", error.message);
+      return res
+        .status(500)
+        .json({ message: "Internal server error get nft transaction" });
     }
   }
 }

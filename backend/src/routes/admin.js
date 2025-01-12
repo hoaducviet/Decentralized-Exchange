@@ -11,6 +11,7 @@ const NFTController = require("../controllers/NFTController");
 const PendingCollectionController = require("../controllers/PendingCollectionController");
 const PendingNFT = require("../models/PendingNFT");
 const PendingNFTController = require("../controllers/PendingNFTController");
+const TransactionController = require("../controllers/TransactionController");
 
 //Account
 router.get(
@@ -64,21 +65,51 @@ router.post("/create/pool", PoolController.createPool);
 router.post("/update/reserves", ReserveController.updateReserve);
 
 //NFT
+router.get("/nfts/nothasphysical", NFTController.getNFTPhysicalNotHas);
 router.post("/update/nfts", NFTController.updateNFT);
+router.post("/nfts/physical/confirm", NFTController.confirmSendPhysicalNFT);
+
+
+//Transaction
+router.get("/transactions/nftphysical/receive", TransactionController.getNftTransactionsReceivePhysical);
+router.post("/transaction/nftphysical/confirm", TransactionController.confirmNftTransactionsReceivePhysicalDone);
+
 
 //Pending Collection
-router.get("/pendingcollections/accepted", PendingCollectionController.getAcceptPendingCollection);
-router.get("/pendingcollections/waitting", PendingCollectionController.getWaitingPendingCollection);
-router.get("/pendingcollections/rejected", PendingCollectionController.getRejectPendingCollection);
-router.patch("/reject/pendingcollection", PendingCollectionController.rejectCollection);
-router.patch("/accept/pendingcollection", PendingCollectionController.acceptCollection);
-router.patch("/wait/pendingcollection", PendingCollectionController.waitCollection);
-router.post("/mint/pendingcollection", PendingCollectionController.mintCollection);
+router.get(
+  "/pendingcollections/accepted",
+  PendingCollectionController.getAcceptPendingCollection
+);
+router.get(
+  "/pendingcollections/waitting",
+  PendingCollectionController.getWaitingPendingCollection
+);
+router.get(
+  "/pendingcollections/rejected",
+  PendingCollectionController.getRejectPendingCollection
+);
+router.patch(
+  "/reject/pendingcollection",
+  PendingCollectionController.rejectCollection
+);
+router.patch(
+  "/accept/pendingcollection",
+  PendingCollectionController.acceptCollection
+);
+router.patch(
+  "/wait/pendingcollection",
+  PendingCollectionController.waitCollection
+);
+router.post(
+  "/mint/pendingcollection",
+  PendingCollectionController.mintCollection
+);
 
 //Pending NFT
-router.patch("/updateprice/pendingnft", PendingNFTController.updatePriceExpertNFTs);
-
-
+router.patch(
+  "/updateprice/pendingnft",
+  PendingNFTController.updatePriceExpertNFTs
+);
 
 router.get("/search", SiteController.search);
 

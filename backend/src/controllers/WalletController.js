@@ -209,6 +209,7 @@ class WalletController {
               NFTCollection.abi,
               wallet
             );
+            console.log(collection)
 
             const counter = await contract.counter();
             const promises = [];
@@ -229,6 +230,7 @@ class WalletController {
             if (results.length > 0) {
               const nftPromises = results.map(async (result, index) => {
                 if (result[2]) {
+                  console.log(result[2])
                   console.log(collection.name, "index", index);
                   const response = await fetchDataURI({ uri: result[2] });
                   const img = response.image

@@ -8,7 +8,13 @@ const NftTransaction = new Schema(
   {
     type: {
       type: String,
-      enum: ["Buy NFT", "Listed NFT", "Withdraw NFT", "Transfer NFT"],
+      enum: [
+        "Buy NFT",
+        "Listed NFT",
+        "Withdraw NFT",
+        "Transfer NFT",
+        "Receive Physical NFT",
+      ],
       required: true,
     },
     from_wallet: { type: String, required: true, minLength: 42, maxLength: 42 },
@@ -39,6 +45,19 @@ const NftTransaction = new Schema(
       required: false,
       default: "Pending",
     },
+    phone: { type: String, required: false, default: "" },
+    name: { type: String, required: false, default: "" },
+    address: { type: String, required: false, default: "" },
+    note: { type: String, required: false, default: "" },
+    pickup_deadline: { type: String, required: false, default: "" },
+    shipping_status: {
+      type: String,
+      enum: ["Pending", "Completed", "Failed"],
+      required: false,
+      default: "Pending",
+    },
+    shipping_fee: { type: String, required: false, default: "" },
+    storage_fee: { type: String, required: false, default: "" },
   },
   {
     timestamps: true,

@@ -20,7 +20,6 @@ class PendingCollectionController {
     try {
       const fileCollection = req.body;
       const collectionRaw = await fetchDataURI({ uri: fileCollection.uri });
-      console.log(collectionRaw);
       const collection = {
         owner: fileCollection.owner,
         name: collectionRaw.name,
@@ -33,31 +32,34 @@ class PendingCollectionController {
         banner: collectionRaw.collection_banner_image,
         project_url: collectionRaw.project_url || "",
         discord_url: collectionRaw.discord_url || "",
-        total_items: fileCollection.nfts.length || "",
+        total_items: collectionRaw.total_supply || "",
         twitter_username: collectionRaw.twitter_username || "",
         instagram_username: collectionRaw.instagram_username || "",
       };
 
       const newCollection = await PendingCollection(collection).save();
-      const nfts = await Promise.all(
-        fileCollection.nfts.map(async (item) => {
-          const url = `${fileCollection.base_url}${item.token_uri}${fileCollection.end_url}`;
-          const response = await fetchDataURI({ uri: url });
-          const img = response.image
-            ? await convertToHttps({ uri: response.image })
-            : "";
-          return {
-            pending_collection_id: newCollection._id,
-            category: collection.category,
-            nft_id: item.token_id,
-            name: response.name || "",
-            uri: `${item.token_uri}${fileCollection.end_url}`,
-            img: img || "",
-            description: response.description || "",
-            attributes: response.attributes || [],
-          };
-        })
-      );
+
+      const nfts = [];
+      for (let index = 0; index < fileCollection.nfts.length - 94; index++) {
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        const item = fileCollection.nfts[index];
+        const url = `${fileCollection.base_url}${item.token_uri}${fileCollection.end_url}`;
+
+        const response = await fetchDataURI({ uri: url });
+        const img = response.image
+          ? await convertToHttps({ uri: response.image })
+          : "";
+        nfts.push({
+          pending_collection_id: newCollection._id,
+          category: collection.category,
+          nft_id: item.token_id,
+          name: response.name || "",
+          uri: `${item.token_uri}${fileCollection.end_url}`,
+          img: img || "",
+          description: response.description || "",
+          attributes: response.attributes || [],
+        });
+      }
 
       if (!Array.isArray(nfts)) {
         return res.status(400).json({
@@ -114,7 +116,7 @@ class PendingCollectionController {
         total_items: results.length,
       });
 
-      await AIController.predictAIPrice(newCollection._id);
+      // await AIController.predictAIPrice(newCollection._id);
 
       return res.status(200).json({ message: "Add success!" });
     } catch (error) {
@@ -170,7 +172,7 @@ class PendingCollectionController {
     try {
       const { address } = req.params;
       const results = await PendingCollection.find({ owner: address });
-      console.log(results)
+      console.log(results);
 
       return res.status(200).json(mutipleMongooseToObject(results || []));
     } catch (error) {
